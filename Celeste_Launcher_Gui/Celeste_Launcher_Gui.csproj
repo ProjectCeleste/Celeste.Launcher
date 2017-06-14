@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config.cs" />
     <Compile Include="Forms\ChangePwdForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,8 +149,6 @@
     <EmbeddedResource Include="Forms\UpgradeForm.resx">
       <DependentUpon>UpgradeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Config\log4net.config" />
-    <None Include="Config\log4net.unix.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

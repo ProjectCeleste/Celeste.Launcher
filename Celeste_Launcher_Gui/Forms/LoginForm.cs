@@ -16,6 +16,13 @@ namespace Celeste_Launcher_Gui.Forms
         public LoginForm()
         {
             InitializeComponent();
+
+            //Load UserConfig
+            if (Program.UserConfig?.LoginInfo?.RememberMe != true) return;
+
+            tb_Mail.Text = Program.UserConfig.LoginInfo.Email;
+            tb_Password.Text = Program.UserConfig.LoginInfo.Password;
+            cb_RememberMe.Checked = Program.UserConfig.LoginInfo.RememberMe;
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
@@ -125,6 +132,27 @@ namespace Celeste_Launcher_Gui.Forms
             Enabled = true;
 
             if (Program.WebSocketClient.State != WebSocketClientState.Logged) return;
+
+            //Save UserConfig
+            if (Program.UserConfig == null)
+            {
+                Program.UserConfig = new UserConfig
+                {
+                    LoginInfo = new LoginInfo
+                    {
+                        Email = tb_Mail.Text,
+                        Password = tb_Password.Text,
+                        RememberMe = cb_RememberMe.Checked
+                    }
+                };
+            }
+            else
+            {
+                Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
+                Program.UserConfig.LoginInfo.Password = tb_Password.Text;
+                Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+            }
+            Program.UserConfig.Save(Program.UserConfigFilePath);
 
             DialogResult = DialogResult.OK;
             Close();

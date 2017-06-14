@@ -22,6 +22,13 @@ namespace Celeste_Launcher_Gui.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            //Game Lang
+            if (Program.UserConfig != null)
+                comboBox2.SelectedIndex = (int)Program.UserConfig.GameLanguage;
+            else
+                comboBox2.SelectedIndex = (int)GameLanguage.enUS;
+
             //OnPropertyChanged
             Program.WebSocketClient.PropertyChanged += OnPropertyChanged;
 
@@ -206,7 +213,7 @@ namespace Celeste_Launcher_Gui.Forms
                                 Program.WebSocketClient.State,
                                 @"OnPropertyChanged()");
                     }
-                    break;
+                        break;
                 }
             }
         }
@@ -214,19 +221,23 @@ namespace Celeste_Launcher_Gui.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
-            var pname2 = Process.GetProcessesByName("spartan_nolauncher");
-            var pname3 = Process.GetProcessesByName("aoeonline");
-            if (pname.Length > 0 || pname2.Length > 0 || pname3.Length > 0)
+            if (pname.Length > 0)
             {
                 MessageBox.Show(@"Game already runing!");
                 return;
             }
 
-            var path = checkBox1.Checked
-                ? $"{AppDomain.CurrentDomain.BaseDirectory}Spartan_NoLauncher.exe"
-                : $"{AppDomain.CurrentDomain.BaseDirectory}AOEOnline.exe";
+            //Save UserConfig
+            if (Program.UserConfig != null)
+            {
+                Program.UserConfig.GameLanguage = (GameLanguage)comboBox2.SelectedIndex;
 
-            Process.Start(path);
+                Program.UserConfig.Save(Program.UserConfigFilePath);
+            }
+
+            var path =  $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
+
+            Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
         }
 
         #region "User Info"

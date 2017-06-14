@@ -39,7 +39,6 @@
             this.ch_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch_Online = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.p_UserInfo = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.gb_UsefulLink = new System.Windows.Forms.GroupBox();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLbl_aoeo4evernet = new System.Windows.Forms.LinkLabel();
@@ -47,6 +46,9 @@
             this.linkLbl_ReportUser = new System.Windows.Forms.LinkLabel();
             this.linklbl_Wiki = new System.Windows.Forms.LinkLabel();
             this.linklbl_ReportIssue = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.gb_UserInfo = new System.Windows.Forms.GroupBox();
             this.btn_ManageInvite = new System.Windows.Forms.Button();
             this.lbl_Connected = new System.Windows.Forms.Label();
@@ -61,7 +63,6 @@
             this.lbl_Rank = new System.Windows.Forms.Label();
             this.lbl_UserName = new System.Windows.Forms.Label();
             this.lbl_Mail = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.p_Friends.SuspendLayout();
             this.gb_Friends.SuspendLayout();
             this.p_UserInfo.SuspendLayout();
@@ -169,26 +170,16 @@
             // 
             // p_UserInfo
             // 
-            this.p_UserInfo.Controls.Add(this.checkBox1);
-            this.p_UserInfo.Controls.Add(this.button1);
             this.p_UserInfo.Controls.Add(this.gb_UsefulLink);
+            this.p_UserInfo.Controls.Add(this.label1);
+            this.p_UserInfo.Controls.Add(this.comboBox2);
+            this.p_UserInfo.Controls.Add(this.button1);
             this.p_UserInfo.Controls.Add(this.gb_UserInfo);
             this.p_UserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.p_UserInfo.Location = new System.Drawing.Point(0, 0);
             this.p_UserInfo.Name = "p_UserInfo";
             this.p_UserInfo.Size = new System.Drawing.Size(497, 321);
             this.p_UserInfo.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(370, 247);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 60);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Run AOEO and play on Celeste server.";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gb_UsefulLink
             // 
@@ -201,7 +192,7 @@
             this.gb_UsefulLink.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_UsefulLink.Location = new System.Drawing.Point(7, 216);
             this.gb_UsefulLink.Name = "gb_UsefulLink";
-            this.gb_UsefulLink.Size = new System.Drawing.Size(357, 94);
+            this.gb_UsefulLink.Size = new System.Drawing.Size(326, 94);
             this.gb_UsefulLink.TabIndex = 2;
             this.gb_UsefulLink.TabStop = false;
             this.gb_UsefulLink.Text = "Useful Link";
@@ -210,7 +201,7 @@
             // 
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel3.Location = new System.Drawing.Point(234, 56);
+            this.linkLabel3.Location = new System.Drawing.Point(205, 56);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(111, 15);
             this.linkLabel3.TabIndex = 32;
@@ -223,7 +214,7 @@
             // 
             this.linkLbl_aoeo4evernet.AutoSize = true;
             this.linkLbl_aoeo4evernet.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLbl_aoeo4evernet.Location = new System.Drawing.Point(234, 31);
+            this.linkLbl_aoeo4evernet.Location = new System.Drawing.Point(205, 31);
             this.linkLbl_aoeo4evernet.Name = "linkLbl_aoeo4evernet";
             this.linkLbl_aoeo4evernet.Size = new System.Drawing.Size(86, 15);
             this.linkLbl_aoeo4evernet.TabIndex = 31;
@@ -236,7 +227,7 @@
             // 
             this.linkLbl_ProjectCelesteCom.AutoSize = true;
             this.linkLbl_ProjectCelesteCom.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLbl_ProjectCelesteCom.Location = new System.Drawing.Point(13, 56);
+            this.linkLbl_ProjectCelesteCom.Location = new System.Drawing.Point(6, 56);
             this.linkLbl_ProjectCelesteCom.Name = "linkLbl_ProjectCelesteCom";
             this.linkLbl_ProjectCelesteCom.Size = new System.Drawing.Size(114, 15);
             this.linkLbl_ProjectCelesteCom.TabIndex = 29;
@@ -250,7 +241,7 @@
             this.linkLbl_ReportUser.AutoSize = true;
             this.linkLbl_ReportUser.Enabled = false;
             this.linkLbl_ReportUser.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLbl_ReportUser.Location = new System.Drawing.Point(143, 31);
+            this.linkLbl_ReportUser.Location = new System.Drawing.Point(126, 31);
             this.linkLbl_ReportUser.Name = "linkLbl_ReportUser";
             this.linkLbl_ReportUser.Size = new System.Drawing.Size(73, 15);
             this.linkLbl_ReportUser.TabIndex = 27;
@@ -263,7 +254,7 @@
             // 
             this.linklbl_Wiki.AutoSize = true;
             this.linklbl_Wiki.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linklbl_Wiki.Location = new System.Drawing.Point(143, 56);
+            this.linklbl_Wiki.Location = new System.Drawing.Point(126, 56);
             this.linklbl_Wiki.Name = "linklbl_Wiki";
             this.linklbl_Wiki.Size = new System.Drawing.Size(73, 15);
             this.linklbl_Wiki.TabIndex = 26;
@@ -276,7 +267,7 @@
             // 
             this.linklbl_ReportIssue.AutoSize = true;
             this.linklbl_ReportIssue.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linklbl_ReportIssue.Location = new System.Drawing.Point(13, 31);
+            this.linklbl_ReportIssue.Location = new System.Drawing.Point(6, 31);
             this.linklbl_ReportIssue.Name = "linklbl_ReportIssue";
             this.linklbl_ReportIssue.Size = new System.Drawing.Size(77, 15);
             this.linklbl_ReportIssue.TabIndex = 25;
@@ -284,6 +275,44 @@
             this.linklbl_ReportIssue.Text = "Report Issue";
             this.linklbl_ReportIssue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linklbl_ReportIssue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbl_ReportBug_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(339, 228);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 30);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Game\r\nLanguage:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "de-DE",
+            "en-US",
+            "es-ES",
+            "fr-FR",
+            "it-IT",
+            "zh-CHT"});
+            this.comboBox2.Location = new System.Drawing.Point(411, 232);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(75, 23);
+            this.comboBox2.TabIndex = 13;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(339, 265);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(147, 45);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Run AOEO and play on Celeste server.";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gb_UserInfo
             // 
@@ -461,18 +490,6 @@
             this.lbl_Mail.Text = "Email:";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.Black;
-            this.checkBox1.Location = new System.Drawing.Point(378, 224);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 19);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Skip launcher";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -538,7 +555,8 @@
         private System.Windows.Forms.Button btn_ManageInvite;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
 

@@ -120,11 +120,9 @@
             // cb_RememberMe
             // 
             this.cb_RememberMe.AutoSize = true;
-            this.cb_RememberMe.Enabled = false;
             this.cb_RememberMe.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_RememberMe.Location = new System.Drawing.Point(187, 101);
             this.cb_RememberMe.Name = "cb_RememberMe";
-            this.cb_RememberMe.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cb_RememberMe.Size = new System.Drawing.Size(109, 19);
             this.cb_RememberMe.TabIndex = 3;
             this.cb_RememberMe.Text = "Remember Me";

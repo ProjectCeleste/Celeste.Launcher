@@ -2,6 +2,7 @@
 
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Forms;
@@ -26,6 +27,8 @@ namespace Celeste_Launcher_Gui
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
         public static RemoteUser RemoteUser;
         public static readonly Server Server = new Server();
+        public static UserConfig UserConfig;
+        public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
 
         public static readonly ServerConfig ServerConfig = new ServerConfig
         {
@@ -45,6 +48,10 @@ namespace Celeste_Launcher_Gui
             //Only one instance
             if (AlreadyRunning())
                 return;
+
+            //Load UserConfig
+            if (File.Exists(UserConfigFilePath))
+                UserConfig = UserConfig.Load(UserConfigFilePath);
 
             //Start Gui
             Application.Run(new MainForm());
