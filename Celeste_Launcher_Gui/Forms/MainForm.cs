@@ -214,13 +214,17 @@ namespace Celeste_Launcher_Gui.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
-            if (pname.Length > 0)
+            var pname2 = Process.GetProcessesByName("spartan_nolauncher");
+            var pname3 = Process.GetProcessesByName("aoeonline");
+            if (pname.Length > 0 || pname2.Length > 0 || pname3.Length > 0)
             {
                 MessageBox.Show(@"Game already runing!");
                 return;
             }
 
-            var path = $"{AppDomain.CurrentDomain.BaseDirectory}spartan.exe";
+            var path = checkBox1.Checked
+                ? $"{AppDomain.CurrentDomain.BaseDirectory}Spartan_NoLauncher.exe"
+                : $"{AppDomain.CurrentDomain.BaseDirectory}AOEOnline.exe";
 
             Process.Start(path);
         }
