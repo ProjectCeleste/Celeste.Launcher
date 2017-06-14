@@ -1,5 +1,6 @@
 ﻿#region Using directives
 
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 using Celeste_User;
@@ -48,7 +49,7 @@ namespace Celeste_Launcher_Gui
         public string Email { get; set; }
 
         [XmlElement(ElementName = "Password")]
-        public string CryptedPassword { get; set; }
+        public string CryptedPassword { get; set; } = "";
 
         [XmlElement(ElementName = "RememberMe")]
         public bool RememberMe { get; set; }
@@ -58,15 +59,33 @@ namespace Celeste_Launcher_Gui
         {
             get
             {
-                if (!string.IsNullOrEmpty(CryptedPassword))
+                if (string.IsNullOrEmpty(CryptedPassword))
+                    _uncryptedPassword = "";
+
+                try
+                {
                     _uncryptedPassword = Helpers.Decrypt(CryptedPassword, true);
+                }
+                catch (Exception)
+                {
+                    //
+                }
 
                 return _uncryptedPassword;
             }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
+                    CryptedPassword = "";
+
+                try
+                {
                     CryptedPassword = Helpers.Encrypt(value, true);
+                }
+                catch (Exception)
+                {
+                    //
+                }
 
                 _uncryptedPassword = value;
             }
