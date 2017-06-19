@@ -18,6 +18,7 @@ namespace Celeste_Launcher_Gui.Forms
     {
         private static Timer _timer;
         private static bool _loginPassed;
+        private static bool _forceClose;
 
         public MainForm()
         {
@@ -68,7 +69,7 @@ namespace Celeste_Launcher_Gui.Forms
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
-            if (pname.Length > 0)
+            if (pname.Length > 0 && !_forceClose)
             {
                 MessageBox.Show(@"You need to close the game first!");
                 e.Cancel = true;
@@ -173,22 +174,8 @@ namespace Celeste_Launcher_Gui.Forms
                             {
                                 MessageBox.Show(@"You have been disconnected from the server!", @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                                _loginPassed = false;
-
-                                //Login
-                                if (Program.WebSocketClient.State != WebSocketClientState.Logging ||
-                                    Program.WebSocketClient.State != WebSocketClientState.Logged)
-                                    using (var form = new LoginForm())
-                                    {
-                                        var dr = form.ShowDialog();
-
-                                        if (dr != DialogResult.OK)
-                                        {
-                                            Program.WebSocketClient.AgentWebSocket.Close();
-                                            Environment.Exit(0);
-                                        }
-                                    }
+                                _forceClose = true;
+                               Application.Exit();
                             }
                             break;
                         }

@@ -63,6 +63,7 @@
             this.lbl_Rank = new System.Windows.Forms.Label();
             this.lbl_UserName = new System.Windows.Forms.Label();
             this.lbl_Mail = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.p_Friends.SuspendLayout();
             this.gb_Friends.SuspendLayout();
             this.p_UserInfo.SuspendLayout();
@@ -77,7 +78,7 @@
             this.p_Friends.Dock = System.Windows.Forms.DockStyle.Right;
             this.p_Friends.Location = new System.Drawing.Point(497, 0);
             this.p_Friends.Name = "p_Friends";
-            this.p_Friends.Size = new System.Drawing.Size(287, 321);
+            this.p_Friends.Size = new System.Drawing.Size(287, 355);
             this.p_Friends.TabIndex = 0;
             // 
             // gb_Friends
@@ -95,7 +96,7 @@
             this.gb_Friends.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_Friends.Location = new System.Drawing.Point(9, 9);
             this.gb_Friends.Name = "gb_Friends";
-            this.gb_Friends.Size = new System.Drawing.Size(268, 301);
+            this.gb_Friends.Size = new System.Drawing.Size(268, 335);
             this.gb_Friends.TabIndex = 0;
             this.gb_Friends.TabStop = false;
             this.gb_Friends.Text = "Friends (Soon)";
@@ -151,9 +152,9 @@
             this.ch_Online});
             this.lv_Friends.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lv_Friends.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lv_Friends.Location = new System.Drawing.Point(3, 78);
+            this.lv_Friends.Location = new System.Drawing.Point(3, 84);
             this.lv_Friends.Name = "lv_Friends";
-            this.lv_Friends.Size = new System.Drawing.Size(262, 220);
+            this.lv_Friends.Size = new System.Drawing.Size(262, 248);
             this.lv_Friends.TabIndex = 0;
             this.lv_Friends.UseCompatibleStateImageBehavior = false;
             this.lv_Friends.View = System.Windows.Forms.View.Details;
@@ -170,6 +171,7 @@
             // 
             // p_UserInfo
             // 
+            this.p_UserInfo.Controls.Add(this.label2);
             this.p_UserInfo.Controls.Add(this.gb_UsefulLink);
             this.p_UserInfo.Controls.Add(this.label1);
             this.p_UserInfo.Controls.Add(this.comboBox2);
@@ -178,7 +180,7 @@
             this.p_UserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.p_UserInfo.Location = new System.Drawing.Point(0, 0);
             this.p_UserInfo.Name = "p_UserInfo";
-            this.p_UserInfo.Size = new System.Drawing.Size(497, 321);
+            this.p_UserInfo.Size = new System.Drawing.Size(497, 355);
             this.p_UserInfo.TabIndex = 1;
             // 
             // gb_UsefulLink
@@ -335,7 +337,7 @@
             this.gb_UserInfo.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gb_UserInfo.Location = new System.Drawing.Point(7, 9);
             this.gb_UserInfo.Name = "gb_UserInfo";
-            this.gb_UserInfo.Size = new System.Drawing.Size(479, 201);
+            this.gb_UserInfo.Size = new System.Drawing.Size(479, 235);
             this.gb_UserInfo.TabIndex = 1;
             this.gb_UserInfo.TabStop = false;
             this.gb_UserInfo.Text = "My Account";
@@ -490,12 +492,24 @@
             this.lbl_Mail.Text = "Email:";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 315);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(446, 30);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "\"Age of Empires” is a registered trademark of Microsoft Corporation.\r\nProject Cel" +
+    "este is not associated with or sponsored by Microsoft Corporation.";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 321);
+            this.ClientSize = new System.Drawing.Size(784, 355);
             this.Controls.Add(this.p_UserInfo);
             this.Controls.Add(this.p_Friends);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -557,6 +571,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
 
