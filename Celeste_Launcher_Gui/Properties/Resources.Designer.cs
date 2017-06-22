@@ -103,6 +103,16 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mainform {
+            get {
+                object obj = ResourceManager.GetObject("mainform", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap no_avatar {
             get {
                 object obj = ResourceManager.GetObject("no-avatar", resourceCulture);

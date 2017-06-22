@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Celeste_User.Enum;
 using Celeste_User.Remote;
 using Timer = System.Timers.Timer;
+using System.Collections.Generic;
 
 #endregion
 
@@ -23,6 +24,9 @@ namespace Celeste_Launcher_Gui.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            //Configure Skin
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_ManageInvite, lb_Play });
 
             //Game Lang
             if (Program.UserConfig != null)
@@ -205,7 +209,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Play_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
