@@ -6,6 +6,7 @@ using System.Dynamic;
 using System.Windows.Forms;
 using Celeste_User;
 using Celeste_User.Remote;
+using System.Collections.Generic;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Celeste_Launcher_Gui.Forms
         public LoginForm()
         {
             InitializeComponent();
+
+            //Configure Skin
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_Register, lb_Login });
 
             //Load UserConfig
             if (Program.UserConfig?.LoginInfo?.RememberMe != true) return;
