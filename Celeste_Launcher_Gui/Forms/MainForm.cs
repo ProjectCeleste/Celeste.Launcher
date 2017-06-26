@@ -26,9 +26,9 @@ namespace Celeste_Launcher_Gui.Forms
 
             //Game Lang
             if (Program.UserConfig != null)
-                comboBox2.SelectedIndex = (int)Program.UserConfig.GameLanguage;
+                comboBox2.SelectedIndex = (int) Program.UserConfig.GameLanguage;
             else
-                comboBox2.SelectedIndex = (int)GameLanguage.enUS;
+                comboBox2.SelectedIndex = (int) GameLanguage.enUS;
 
             //OnPropertyChanged
             Program.WebSocketClient.PropertyChanged += OnPropertyChanged;
@@ -175,7 +175,7 @@ namespace Celeste_Launcher_Gui.Forms
                                 MessageBox.Show(@"You have been disconnected from the server!", @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 _forceClose = true;
-                               Application.Exit();
+                                Application.Exit();
                             }
                             break;
                         }
@@ -200,7 +200,7 @@ namespace Celeste_Launcher_Gui.Forms
                                 Program.WebSocketClient.State,
                                 @"OnPropertyChanged()");
                     }
-                        break;
+                    break;
                 }
             }
         }
@@ -217,12 +217,12 @@ namespace Celeste_Launcher_Gui.Forms
             //Save UserConfig
             if (Program.UserConfig != null)
             {
-                Program.UserConfig.GameLanguage = (GameLanguage)comboBox2.SelectedIndex;
+                Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
 
                 Program.UserConfig.Save(Program.UserConfigFilePath);
             }
 
-            var path =  $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
+            var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
 
             Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
         }
