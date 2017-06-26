@@ -22,7 +22,7 @@ namespace Celeste_Launcher_Gui.xLiveBridgeServer.Command
                 }
             }
 
-            DoXUserFindUsers(UserName);
+           if(!string.IsNullOrEmpty(UserName)) DoXUserFindUsers(UserName);
         }
 
         public void DoXUserFindUsers(string userName)
