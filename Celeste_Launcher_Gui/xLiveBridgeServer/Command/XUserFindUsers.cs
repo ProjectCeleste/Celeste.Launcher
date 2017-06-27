@@ -13,16 +13,18 @@ namespace Celeste_Launcher_Gui.xLiveBridgeServer.Command
     {
         public override void ExecuteCommand(Session session, RequestInfo requestInfo)
         {
-            var UserName = "";
+            string userName;
             using (var ms = new MemoryStream(requestInfo.Packet))
             {
                 using (var br = new BinaryReader(ms))
                 {
-                    UserName = Encoding.Default.GetString(br.ReadBytes(requestInfo.Packet.Length));
+                    var str0 = Encoding.Default.GetString(br.ReadBytes(requestInfo.Packet.Length));
+                    var str = str0.Split('\0');
+                    userName = str[0];
                 }
             }
 
-           if(!string.IsNullOrEmpty(UserName)) DoXUserFindUsers(UserName);
+           if(!string.IsNullOrEmpty(userName)) DoXUserFindUsers(userName);
         }
 
         public void DoXUserFindUsers(string userName)
