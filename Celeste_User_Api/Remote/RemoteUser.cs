@@ -13,13 +13,14 @@ namespace Celeste_User.Remote
         {
         }
 
-        public RemoteUser(long id, string mail, string profileName, long xuid, Rank rank,
+        public RemoteUser(long id, string ip, string mail, string profileName, long xuid, Rank rank,
             string authToken, bool isConnectedCelesteServer,
             string serverIp, bool bannedGame, bool isConnectedGameServer, bool bannedChat,
             bool isConnectedCustomChatServer, IEnumerable<Civilization> civilizations, List<Friend> friends,
             List<Invite> invites)
         {
             Id = id;
+            Ip = ip;
             Mail = mail;
             ProfileName = profileName;
             Xuid = xuid;
@@ -39,6 +40,8 @@ namespace Celeste_User.Remote
         }
 
         public long Id { get; set; }
+
+        public string Ip { get; set; }
 
         public string Mail { get; set; }
 
