@@ -149,7 +149,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 14);
             this.label1.TabIndex = 8;
-            this.label1.Text = "v126";
+            this.label1.Text = "v127";
             // 
             // LoginForm
             // 

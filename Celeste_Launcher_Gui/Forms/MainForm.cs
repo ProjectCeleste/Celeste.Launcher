@@ -314,5 +314,10 @@ namespace Celeste_Launcher_Gui.Forms
         }
 
         #endregion
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.xbox.com/en-us/developers/rules");
+        }
     }
 }
