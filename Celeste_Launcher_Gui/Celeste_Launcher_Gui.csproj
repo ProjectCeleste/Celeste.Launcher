@@ -192,8 +192,6 @@
     <Content Include="icon.ico" />
     <None Include="Resources\message.png" />
     <None Include="Resources\dialog.png" />
-    <None Include="Resources\button1.png" />
-    <None Include="Resources\button2.png" />
     <None Include="Resources\mainform.png" />
     <None Include="Resources\register.png" />
     <None Include="Resources\login.png" />
