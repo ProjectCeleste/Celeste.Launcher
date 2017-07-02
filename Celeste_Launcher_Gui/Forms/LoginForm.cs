@@ -33,14 +33,14 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                MessageBox.Show(@"Invalid Email!", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
             {
-                MessageBox.Show(@"Password minimum length is 8 char, maximum length is 32 char!",
+                SkinHelper.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
                     @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -66,7 +66,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
                 Program.WebSocketClient.State == WebSocketClientState.Logging)
             {
-                MessageBox.Show(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
@@ -85,7 +85,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                     if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
 
-                    MessageBox.Show(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Login",
+                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Login",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -98,7 +98,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (Program.WebSocketClient.State != WebSocketClientState.Connected)
             {
-                MessageBox.Show(@"Server Offline", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -124,7 +124,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
 
-                MessageBox.Show(@"Server response timeout (> 20sec)!", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -175,7 +175,7 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.WebSocketClient.State = WebSocketClientState.Connected;
 
                 Program.WebSocketClient.ErrorMessage = result["Message"].ToObject<string>();
-                MessageBox.Show($@"{Program.WebSocketClient.ErrorMessage}", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage($@"{Program.WebSocketClient.ErrorMessage}", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -188,7 +188,7 @@ namespace Celeste_Launcher_Gui.Forms
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                MessageBox.Show(@"You need to close the game first!");
+                SkinHelper.ShowMessage(@"You need to close the game first!");
                 e.Cancel = true;
             }
         }

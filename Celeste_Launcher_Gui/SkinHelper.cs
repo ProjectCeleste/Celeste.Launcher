@@ -32,6 +32,18 @@ namespace Celeste_Launcher_Gui
         #endregion
 
 
+        public static void ShowMessage(string message)
+        {
+            var frm = new MsgBox("PROJECT CELESTE", message);
+            frm.ShowDialog();
+        }
+
+        public static void ShowMessage(string message, string title)
+        {
+            var frm = new MsgBox(title, message);
+            frm.ShowDialog();
+        }
+
         public static void ShowMessage(string message, string title, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
             var frm = new MsgBox(title, message);
@@ -84,9 +96,6 @@ namespace Celeste_Launcher_Gui
         {
             try
             {
-                //if (DwmApi.DwmIsCompositionEnabled())
-                //    DwmApi.DwmExtendFrameIntoClientArea(form.Handle, new DwmApi.MARGINS(1, 1, form.ClientRectangle.Width, form.ClientRectangle.Height));
-
                 SetFont(form.Controls);
 
                 lbTitle.MouseDown += LbTitle_MouseDown;
@@ -115,6 +124,9 @@ namespace Celeste_Launcher_Gui
 
                 if (c is System.Windows.Forms.CheckBox)
                     ((System.Windows.Forms.CheckBox)c).Font = GetFont(((System.Windows.Forms.CheckBox)c).Font.Size);
+
+                if (c is ListView)
+                    ((System.Windows.Forms.ListView)c).Font = GetFont(((System.Windows.Forms.ListView)c).Font.Size);
 
                 if (c.Controls.Count > 0)
                     SetFont(c.Controls);

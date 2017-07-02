@@ -75,7 +75,7 @@ namespace Celeste_Launcher_Gui.Forms
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0 && !_forceClose)
             {
-                MessageBox.Show(@"You need to close the game first!");
+                SkinHelper.ShowMessage(@"You need to close the game first!");
                 e.Cancel = true;
                 return;
             }
@@ -176,7 +176,7 @@ namespace Celeste_Launcher_Gui.Forms
                             }
                             if (_loginPassed)
                             {
-                                MessageBox.Show(@"You have been disconnected from the server!", @"Project Celeste",
+                                SkinHelper.ShowMessage(@"You have been disconnected from the server!", @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 _forceClose = true;
                                Application.Exit();
@@ -214,7 +214,7 @@ namespace Celeste_Launcher_Gui.Forms
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                MessageBox.Show(@"Game already runing!");
+                SkinHelper.ShowMessage(@"Game already runing!");
                 return;
             }
 
@@ -273,7 +273,7 @@ namespace Celeste_Launcher_Gui.Forms
             else
             {
                 var str = result["Message"].ToObject<string>();
-                MessageBox.Show($@"OnUserInfo(): {str}", @"Project Celeste",
+                SkinHelper.ShowMessage($@"OnUserInfo(): {str}", @"Project Celeste",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -25,22 +25,23 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (textBox1.Text != textBox2.Text)
             {
-                MessageBox.Show(@"New password value and confirm new password value don't match!",
+                SkinHelper.ShowMessage(@"New password value and confirm new password value don't match!",
                     @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
             }
 
             if (textBox1.Text.Length < 8)
             {
-                MessageBox.Show(@"Password minimum length is 8 char!", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(@"Password minimum length is 8 char!", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (textBox1.Text.Length > 32)
             {
-                MessageBox.Show(@"Password maximum length is 32 char!", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(@"Password maximum length is 32 char!", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -55,7 +56,7 @@ namespace Celeste_Launcher_Gui.Forms
             Enabled = true;
 
             if (!_changePasswordDone)
-                MessageBox.Show(@"Error: Timout!", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(@"Error: Timout!", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -78,13 +79,13 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (result["Result"].ToObject<bool>())
             {
-                MessageBox.Show(@"Password changed with success.", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(@"Password changed with success.", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 var str = result["Message"].ToObject<string>();
-                MessageBox.Show($@"Error: {str}", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             _changePasswordDone = true;
