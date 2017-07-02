@@ -27,14 +27,21 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                MessageBox.Show(@"Invalid Email!", @"Project Celeste -- Register",
+                //MessageBox.Show(@"Invalid Email!", @"Project Celeste -- Register",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
             }
 
             if (!Helpers.IsValideUserName(tb_UserName.Text))
             {
-                MessageBox.Show(
+                //MessageBox.Show(
+                //    @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 16 char!",
+                //    @"Project Celeste -- Register",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SkinHelper.ShowMessage(
                     @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 16 char!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

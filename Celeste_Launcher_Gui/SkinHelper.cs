@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Celeste_Launcher_Gui.Forms;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Celeste_Launcher_Gui
 {
@@ -18,7 +20,7 @@ namespace Celeste_Launcher_Gui
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
 
         private static PrivateFontCollection _pfc;
-        
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -28,7 +30,13 @@ namespace Celeste_Launcher_Gui
         public static extern bool ReleaseCapture();
 
         #endregion
-                
+
+
+        public static void ShowMessage(string message, string title, MessageBoxButtons buttons, MessageBoxIcon icon)
+        {
+            var frm = new MsgBox(title, message);
+            frm.ShowDialog();
+        }
 
         private static void InitFont()
         {

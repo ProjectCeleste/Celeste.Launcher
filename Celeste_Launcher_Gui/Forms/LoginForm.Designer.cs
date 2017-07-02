@@ -102,16 +102,18 @@
             // 
             // linkLbl_ForgotPwd
             // 
+            this.linkLbl_ForgotPwd.ActiveLinkColor = System.Drawing.Color.MediumBlue;
             this.linkLbl_ForgotPwd.AutoSize = true;
             this.linkLbl_ForgotPwd.BackColor = System.Drawing.Color.Transparent;
-            this.linkLbl_ForgotPwd.Enabled = false;
+            this.linkLbl_ForgotPwd.DisabledLinkColor = System.Drawing.Color.Blue;
             this.linkLbl_ForgotPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLbl_ForgotPwd.LinkColor = System.Drawing.Color.DarkBlue;
             this.linkLbl_ForgotPwd.Location = new System.Drawing.Point(32, 233);
             this.linkLbl_ForgotPwd.Name = "linkLbl_ForgotPwd";
-            this.linkLbl_ForgotPwd.Size = new System.Drawing.Size(167, 24);
+            this.linkLbl_ForgotPwd.Size = new System.Drawing.Size(162, 24);
             this.linkLbl_ForgotPwd.TabIndex = 5;
             this.linkLbl_ForgotPwd.TabStop = true;
-            this.linkLbl_ForgotPwd.Text = "Forgot Password ?";
+            this.linkLbl_ForgotPwd.Text = "Forgot Password?";
             // 
             // lb_Ver
             // 

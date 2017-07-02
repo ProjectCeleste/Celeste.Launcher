@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Windows.Forms;
 
@@ -15,6 +16,9 @@ namespace Celeste_Launcher_Gui.Forms
         public ChangePwdForm()
         {
             InitializeComponent();
+
+            //Configure Skin
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_Save });
         }
 
         private void btn_Login_Click(object sender, EventArgs e)

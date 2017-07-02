@@ -159,7 +159,7 @@
             this.lb_Register.BackColor = System.Drawing.Color.Transparent;
             this.lb_Register.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Register.ForeColor = System.Drawing.Color.White;
-            this.lb_Register.Location = new System.Drawing.Point(36, 299);
+            this.lb_Register.Location = new System.Drawing.Point(36, 298);
             this.lb_Register.Name = "lb_Register";
             this.lb_Register.Size = new System.Drawing.Size(150, 36);
             this.lb_Register.TabIndex = 14;
