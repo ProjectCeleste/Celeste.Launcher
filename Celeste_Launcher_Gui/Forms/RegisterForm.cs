@@ -1,10 +1,10 @@
 ﻿#region Using directives
 
 using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Windows.Forms;
 using Celeste_User;
-using System.Collections.Generic;
 
 #endregion
 
@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.Forms
             InitializeComponent();
 
             //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_Register });
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_Register});
         }
 
         private void btn_Register_Click(object sender, EventArgs e)

@@ -15,11 +15,6 @@ namespace Celeste_User
 {
     public class Helpers
     {
-        internal class Utf8StringWriter : StringWriter
-        {
-            public override Encoding Encoding => Encoding.UTF8;
-        }
-
         private const string MatchEmailPattern =
             @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
             + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
@@ -179,9 +174,13 @@ namespace Celeste_User
             var xmls = new XmlSerializer(typeof(T));
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
             {
-                return (T)xmls.Deserialize(ms);
+                return (T) xmls.Deserialize(ms);
             }
         }
 
+        internal class Utf8StringWriter : StringWriter
+        {
+            public override Encoding Encoding => Encoding.UTF8;
+        }
     }
 }

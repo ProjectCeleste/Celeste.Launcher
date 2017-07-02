@@ -1,37 +1,20 @@
-﻿using Celeste_Launcher_Gui.Forms;
+﻿#region Using directives
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Celeste_Launcher_Gui.Forms;
+using Celeste_Launcher_Gui.Properties;
+
+#endregion
 
 namespace Celeste_Launcher_Gui
 {
     public class SkinHelper
     {
-        #region Windows Api Calls
-
-        [DllImport("gdi32.dll")]
-        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv, [In] ref uint pcFonts);
-
-        private static PrivateFontCollection _pfc;
-
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        #endregion
-
-
         public static void ShowMessage(string message)
         {
             var frm = new MsgBox("PROJECT CELESTE", message);
@@ -55,21 +38,21 @@ namespace Celeste_Launcher_Gui
             //Create your private font collection object.
             if (_pfc != null) return;
             _pfc = new PrivateFontCollection();
-            
+
             //Select your font from the resources.            
-            int fontLength = Properties.Resources.Aclonica.Length;
+            var fontLength = Resources.Aclonica.Length;
 
             // create a buffer to read in to
-            byte[] fontdata = Properties.Resources.Aclonica;
+            var fontdata = Resources.Aclonica;
 
             // create an unsafe memory block for the font data
-            System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
+            var data = Marshal.AllocCoTaskMem(fontLength);
 
             // copy the bytes to the unsafe memory block
             Marshal.Copy(fontdata, 0, data, fontLength);
 
             uint cFonts = 0;
-            AddFontMemResourceEx(data, (uint)fontLength, IntPtr.Zero, ref cFonts);
+            AddFontMemResourceEx(data, (uint) fontLength, IntPtr.Zero, ref cFonts);
 
             //pass the font to the font collection
             _pfc.AddMemoryFont(data, fontLength);
@@ -86,13 +69,13 @@ namespace Celeste_Launcher_Gui
 
 
         /// <summary>
-        /// Configure the Skin in a form
+        ///     Configure the Skin in a form
         /// </summary>
         /// <param name="form">Form</param>
         /// <param name="lbTitle">Label control that contains the window title</param>
         /// <param name="lbClose">Label control that contains the close button</param>
         /// <param name="highlightList">List of label controls that we want to highlight when the mouse is over</param>
-        public static void ConfigureSkin(System.Windows.Forms.Form form, System.Windows.Forms.Label lbTitle, System.Windows.Forms.Label lbClose, List<System.Windows.Forms.Label> highlightList)
+        public static void ConfigureSkin(Form form, Label lbTitle, Label lbClose, List<Label> highlightList)
         {
             try
             {
@@ -109,63 +92,91 @@ namespace Celeste_Launcher_Gui
                     lb.MouseLeave += LbHover_MouseLeave;
                 }
             }
-            catch { }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
-        private static void SetFont(System.Windows.Forms.Control.ControlCollection controls)
+        private static void SetFont(Control.ControlCollection controls)
         {
-            foreach (System.Windows.Forms.Control c in controls)
+            foreach (Control c in controls)
             {
-                if (c is System.Windows.Forms.Label)
-                    ((System.Windows.Forms.Label)c).Font = GetFont(((System.Windows.Forms.Label)c).Font.Size);
+                var label = c as Label;
+                if (label != null)
+                    label.Font = GetFont(label.Font.Size);
 
-                if (c is System.Windows.Forms.TextBox)
-                    ((System.Windows.Forms.TextBox)c).Font = GetFont(((System.Windows.Forms.TextBox)c).Font.Size);
+                var box = c as TextBox;
+                if (box != null)
+                    box.Font = GetFont(box.Font.Size);
 
-                if (c is System.Windows.Forms.CheckBox)
-                    ((System.Windows.Forms.CheckBox)c).Font = GetFont(((System.Windows.Forms.CheckBox)c).Font.Size);
+                var checkBox = c as CheckBox;
+                if (checkBox != null)
+                    checkBox.Font = GetFont(checkBox.Font.Size);
 
-                if (c is ListView)
-                    ((System.Windows.Forms.ListView)c).Font = GetFont(((System.Windows.Forms.ListView)c).Font.Size);
+                var view = c as ListView;
+                if (view != null)
+                    view.Font = GetFont(view.Font.Size);
 
                 if (c.Controls.Count > 0)
                     SetFont(c.Controls);
             }
         }
 
-        private static void LbTitle_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private static void LbTitle_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
-                SendMessage(((System.Windows.Forms.Label)sender).FindForm().Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                var findForm = ((Label) sender).FindForm();
+                if (findForm != null)
+                    SendMessage(findForm.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
 
         private static void LbHover_MouseEnter(object sender, EventArgs e)
         {
-            ((System.Windows.Forms.Label)sender).ForeColor = System.Drawing.Color.Yellow;
+            ((Label) sender).ForeColor = Color.Yellow;
         }
 
         private static void LbHover_MouseLeave(object sender, EventArgs e)
         {
-            ((System.Windows.Forms.Label)sender).ForeColor = System.Drawing.Color.White;
+            ((Label) sender).ForeColor = Color.White;
         }
 
         private static void LbClose_MouseEnter(object sender, EventArgs e)
         {
-            ((System.Windows.Forms.Label)sender).ForeColor = System.Drawing.Color.Yellow;
+            ((Label) sender).ForeColor = Color.Yellow;
         }
 
         private static void LbClose_MouseLeave(object sender, EventArgs e)
         {
-            ((System.Windows.Forms.Label)sender).ForeColor = System.Drawing.Color.Black;
+            ((Label) sender).ForeColor = Color.Black;
         }
 
         private static void LbClose_Click(object sender, EventArgs e)
         {
-            ((System.Windows.Forms.Label)sender).FindForm().Close();
+            var findForm = ((Label) sender).FindForm();
+            findForm?.Close();
         }
 
+        #region Windows Api Calls
+
+        [DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pdv,
+            [In] ref uint pcFonts);
+
+        private static PrivateFontCollection _pfc;
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        #endregion
     }
 }

@@ -1,12 +1,12 @@
 ﻿#region Using directives
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Windows.Forms;
 using Celeste_User;
 using Celeste_User.Remote;
-using System.Collections.Generic;
 
 #endregion
 
@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Forms
             InitializeComponent();
 
             //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_Register, lb_Login });
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_Register, lb_Login});
 
             //Load UserConfig
             if (Program.UserConfig?.LoginInfo?.RememberMe != true) return;
@@ -113,7 +113,7 @@ namespace Celeste_Launcher_Gui.Forms
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-            loginInfo.Version = 126;
+            loginInfo.Version = 127;
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
 

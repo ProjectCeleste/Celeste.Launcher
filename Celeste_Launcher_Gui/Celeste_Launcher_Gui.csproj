@@ -123,6 +123,7 @@
     <Compile Include="SkinHelper.cs" />
     <Compile Include="WebSocketClient.cs" />
     <Compile Include="xLiveBridgeServer\Command\GetUserInfo.cs" />
+    <Compile Include="xLiveBridgeServer\Command\XUserFindUsers.cs" />
     <Compile Include="xLiveBridgeServer\PacketType.cs" />
     <Compile Include="xLiveBridgeServer\ReceiveFilter.cs" />
     <Compile Include="xLiveBridgeServer\RequestInfo.cs" />
@@ -170,8 +171,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\Aclonica.ttf" />
-    <None Include="xLiveBridgeServer\Config\log4net.config" />
-    <None Include="xLiveBridgeServer\Config\log4net.unix.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

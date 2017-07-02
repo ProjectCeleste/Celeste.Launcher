@@ -19,6 +19,7 @@ namespace Celeste_Launcher_Gui.xLiveBridgeServer.Command
                     var signinInfo = $"user name = {Program.RemoteUser.ProfileName}\r\n" +
                                      $"xuid = {Program.RemoteUser.Xuid:X}\r\n" +
                                      $"server ip = {Program.RemoteUser.ServerIp}\r\n" +
+                                     $"online ip = {Program.RemoteUser.Ip}\r\n" +
                                      $"auth token = {Program.RemoteUser.AuthToken}\r\n";
 
                     var output = Encoding.Default.GetBytes(signinInfo);

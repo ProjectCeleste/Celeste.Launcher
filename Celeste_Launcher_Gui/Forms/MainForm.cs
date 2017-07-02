@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
@@ -9,7 +10,6 @@ using System.Windows.Forms;
 using Celeste_User.Enum;
 using Celeste_User.Remote;
 using Timer = System.Timers.Timer;
-using System.Collections.Generic;
 
 #endregion
 
@@ -26,13 +26,13 @@ namespace Celeste_Launcher_Gui.Forms
             InitializeComponent();
 
             //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_ManageInvite, lb_Play });
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_ManageInvite, lb_Play});
 
             //Game Lang
             if (Program.UserConfig != null)
-                comboBox2.SelectedIndex = (int)Program.UserConfig.GameLanguage;
+                comboBox2.SelectedIndex = (int) Program.UserConfig.GameLanguage;
             else
-                comboBox2.SelectedIndex = (int)GameLanguage.enUS;
+                comboBox2.SelectedIndex = (int) GameLanguage.enUS;
 
             //OnPropertyChanged
             Program.WebSocketClient.PropertyChanged += OnPropertyChanged;
@@ -143,11 +143,6 @@ namespace Celeste_Launcher_Gui.Forms
             //TODO
         }
 
-        private void linkLbl_ReportUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            //TODO
-        }
-
         private void btn_ManageInvite_Click(object sender, EventArgs e)
         {
             using (var form = new ManageInviteForm())
@@ -176,10 +171,11 @@ namespace Celeste_Launcher_Gui.Forms
                             }
                             if (_loginPassed)
                             {
-                                SkinHelper.ShowMessage(@"You have been disconnected from the server!", @"Project Celeste",
+                                SkinHelper.ShowMessage(@"You have been disconnected from the server!",
+                                    @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 _forceClose = true;
-                               Application.Exit();
+                                Application.Exit();
                             }
                             break;
                         }
@@ -204,7 +200,7 @@ namespace Celeste_Launcher_Gui.Forms
                                 Program.WebSocketClient.State,
                                 @"OnPropertyChanged()");
                     }
-                        break;
+                    break;
                 }
             }
         }
@@ -221,14 +217,19 @@ namespace Celeste_Launcher_Gui.Forms
             //Save UserConfig
             if (Program.UserConfig != null)
             {
-                Program.UserConfig.GameLanguage = (GameLanguage)comboBox2.SelectedIndex;
+                Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
 
                 Program.UserConfig.Save(Program.UserConfigFilePath);
             }
 
-            var path =  $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
+            var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
 
             Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.xbox.com/en-us/developers/rules");
         }
 
         #region "User Info"

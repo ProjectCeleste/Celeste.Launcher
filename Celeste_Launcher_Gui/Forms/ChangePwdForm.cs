@@ -18,7 +18,7 @@ namespace Celeste_Launcher_Gui.Forms
             InitializeComponent();
 
             //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_Save });
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_Save});
         }
 
         private void btn_Login_Click(object sender, EventArgs e)

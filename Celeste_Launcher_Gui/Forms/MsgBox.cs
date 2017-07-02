@@ -1,12 +1,10 @@
-﻿using System;
+﻿#region Using directives
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+#endregion
 
 namespace Celeste_Launcher_Gui.Forms
 {
@@ -19,7 +17,7 @@ namespace Celeste_Launcher_Gui.Forms
             lb_Message.Text = message;
 
             //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_OK });
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_OK});
         }
 
         private void lb_OK_Click(object sender, EventArgs e)
