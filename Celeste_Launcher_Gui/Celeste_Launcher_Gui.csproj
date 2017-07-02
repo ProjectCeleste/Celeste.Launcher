@@ -100,6 +100,12 @@
     <Compile Include="Forms\ManageInviteForm.Designer.cs">
       <DependentUpon>ManageInviteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MsgBox.Designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\RegisterForm.cs">
@@ -114,6 +120,7 @@
     <Compile Include="Forms\UpgradeForm.Designer.cs">
       <DependentUpon>UpgradeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkinHelper.cs" />
     <Compile Include="WebSocketClient.cs" />
     <Compile Include="xLiveBridgeServer\Command\GetUserInfo.cs" />
     <Compile Include="xLiveBridgeServer\Command\XUserFindUsers.cs" />
@@ -133,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ManageInviteForm.resx">
       <DependentUpon>ManageInviteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -160,8 +170,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="xLiveBridgeServer\Config\log4net.config" />
-    <None Include="xLiveBridgeServer\Config\log4net.unix.config" />
+    <None Include="Resources\Aclonica.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -180,6 +189,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\message.png" />
+    <None Include="Resources\dialog.png" />
+    <None Include="Resources\mainform.png" />
+    <None Include="Resources\register.png" />
+    <None Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Celeste_User_Api\Celeste_User.csproj">

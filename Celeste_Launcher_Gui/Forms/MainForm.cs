@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
@@ -23,6 +24,9 @@ namespace Celeste_Launcher_Gui.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            //Configure Skin
+            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_ManageInvite, lb_Play});
 
             //Game Lang
             if (Program.UserConfig != null)
@@ -71,7 +75,7 @@ namespace Celeste_Launcher_Gui.Forms
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0 && !_forceClose)
             {
-                MessageBox.Show(@"You need to close the game first!");
+                SkinHelper.ShowMessage(@"You need to close the game first!");
                 e.Cancel = true;
                 return;
             }
@@ -139,11 +143,6 @@ namespace Celeste_Launcher_Gui.Forms
             //TODO
         }
 
-        private void linkLbl_ReportUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            //TODO
-        }
-
         private void btn_ManageInvite_Click(object sender, EventArgs e)
         {
             using (var form = new ManageInviteForm())
@@ -172,7 +171,8 @@ namespace Celeste_Launcher_Gui.Forms
                             }
                             if (_loginPassed)
                             {
-                                MessageBox.Show(@"You have been disconnected from the server!", @"Project Celeste",
+                                SkinHelper.ShowMessage(@"You have been disconnected from the server!",
+                                    @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 _forceClose = true;
                                 Application.Exit();
@@ -205,12 +205,12 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Play_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                MessageBox.Show(@"Game already runing!");
+                SkinHelper.ShowMessage(@"Game already runing!");
                 return;
             }
 
@@ -225,6 +225,11 @@ namespace Celeste_Launcher_Gui.Forms
             var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
 
             Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.xbox.com/en-us/developers/rules");
         }
 
         #region "User Info"
@@ -269,7 +274,7 @@ namespace Celeste_Launcher_Gui.Forms
             else
             {
                 var str = result["Message"].ToObject<string>();
-                MessageBox.Show($@"OnUserInfo(): {str}", @"Project Celeste",
+                SkinHelper.ShowMessage($@"OnUserInfo(): {str}", @"Project Celeste",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -314,10 +319,5 @@ namespace Celeste_Launcher_Gui.Forms
         }
 
         #endregion
-
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://www.xbox.com/en-us/developers/rules");
-        }
     }
 }

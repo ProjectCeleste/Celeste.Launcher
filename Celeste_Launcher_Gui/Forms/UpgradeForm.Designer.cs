@@ -51,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(98, 149);
+            this.label2.Location = new System.Drawing.Point(111, 149);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(347, 30);
             this.label2.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.Location = new System.Drawing.Point(19, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(529, 64);
             this.label1.TabIndex = 1;
@@ -74,7 +74,7 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.btn_subscribeCC_LG;
-            this.pictureBox1.Location = new System.Drawing.Point(195, 91);
+            this.pictureBox1.Location = new System.Drawing.Point(207, 91);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(147, 47);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

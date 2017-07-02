@@ -1,8 +1,8 @@
 ﻿#region Using directives
 
+using System.Dynamic;
 using System.IO;
 using System.Text;
-using System.Dynamic;
 using SuperSocket.SocketBase.Command;
 
 #endregion
@@ -24,25 +24,23 @@ namespace Celeste_Launcher_Gui.xLiveBridgeServer.Command
                 }
             }
 
-           if(!string.IsNullOrEmpty(userName)) DoXUserFindUsers(userName);
+            if (!string.IsNullOrEmpty(userName)) DoXUserFindUsers(userName);
         }
 
         public void DoXUserFindUsers(string userName)
         {
-            
             if (Program.WebSocketClient.State != WebSocketClientState.Logged) return;
 
             dynamic xUserFindUsersInfo = new ExpandoObject();
             xUserFindUsersInfo.UserName = userName;
 
-            Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("XUSERFINDUSERS", (object)xUserFindUsersInfo, OnXUserFindUsers);
-            
+            Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("XUSERFINDUSERS", (object) xUserFindUsersInfo,
+                OnXUserFindUsers);
         }
 
         private static void OnXUserFindUsers(dynamic result)
         {
             if (result["Result"].ToObject<bool>())
-            {
                 using (var ms = new MemoryStream())
                 {
                     using (var bw = new BinaryWriter(ms))
@@ -54,14 +52,10 @@ namespace Celeste_Launcher_Gui.xLiveBridgeServer.Command
 
                         var data = ms.ToArray();
                         foreach (var session in Program.Server.GetAllSessions())
-                        {
                             session.Send(data, 0, data.Length);
-                        }
                     }
                 }
-            }
             else
-            {
                 using (var ms = new MemoryStream())
                 {
                     using (var bw = new BinaryWriter(ms))
@@ -73,14 +67,9 @@ namespace Celeste_Launcher_Gui.xLiveBridgeServer.Command
 
                         var data = ms.ToArray();
                         foreach (var session in Program.Server.GetAllSessions())
-                        {
                             session.Send(data, 0, data.Length);
-                        }
                     }
                 }
-            }
         }
-
     }
-
 }

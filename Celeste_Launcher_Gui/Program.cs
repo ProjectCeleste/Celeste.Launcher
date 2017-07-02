@@ -17,7 +17,6 @@ namespace Celeste_Launcher_Gui
 {
     internal static class Program
     {
-
 #if DEBUG
         public static string WebSocketUri = "ws://127.0.0.1:4508/";
 #else
