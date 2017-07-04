@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MsgBox));
             this.lb_Message = new System.Windows.Forms.Label();
             this.lb_Close = new System.Windows.Forms.Label();
             this.lb_Title = new System.Windows.Forms.Label();
@@ -97,9 +98,11 @@
             this.Controls.Add(this.lb_Title);
             this.Controls.Add(this.lb_Message);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MsgBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsgBox";
+            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Magenta;
             this.ResumeLayout(false);
 

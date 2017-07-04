@@ -29,30 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.lbl_Friens_PendingReq = new System.Windows.Forms.Label();
-            this.lbl_Friens_PendingInvite = new System.Windows.Forms.Label();
+            this.p_UserInfo = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.lb_Ver = new System.Windows.Forms.Label();
+            this.lb_Close = new System.Windows.Forms.Label();
             this.lv_Friends = new System.Windows.Forms.ListView();
             this.ch_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ch_Online = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.p_UserInfo = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lb_Ver = new System.Windows.Forms.Label();
-            this.lb_Close = new System.Windows.Forms.Label();
             this.lb_Title = new System.Windows.Forms.Label();
+            this.linkLabel6 = new System.Windows.Forms.LinkLabel();
             this.label5 = new System.Windows.Forms.Label();
+            this.lbl_Friens_PendingReq = new System.Windows.Forms.Label();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.lb_Play = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lbl_Friens_PendingInvite = new System.Windows.Forms.Label();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.lb_ManageInvite = new System.Windows.Forms.Label();
             this.linkLbl_aoeo4evernet = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.linklbl_Wiki = new System.Windows.Forms.LinkLabel();
             this.linkLbl_ProjectCelesteCom = new System.Windows.Forms.LinkLabel();
-            this.lbl_Connected = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lbl_Banned = new System.Windows.Forms.Label();
             this.linklbl_ReportIssue = new System.Windows.Forms.LinkLabel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.linkLbl_Upgrade = new System.Windows.Forms.LinkLabel();
@@ -66,66 +65,106 @@
             this.lbl_UserName = new System.Windows.Forms.Label();
             this.pb_Avatar = new System.Windows.Forms.PictureBox();
             this.lbl_Mail = new System.Windows.Forms.Label();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.p_UserInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Avatar)).BeginInit();
             this.SuspendLayout();
             // 
-            // linkLabel6
+            // p_UserInfo
             // 
-            this.linkLabel6.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel6.AutoSize = true;
-            this.linkLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel6.Enabled = false;
-            this.linkLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel6.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel6.Location = new System.Drawing.Point(793, 145);
-            this.linkLabel6.Name = "linkLabel6";
-            this.linkLabel6.Size = new System.Drawing.Size(59, 17);
-            this.linkLabel6.TabIndex = 21;
-            this.linkLabel6.TabStop = true;
-            this.linkLabel6.Text = "Manage";
-            this.linkLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.p_UserInfo.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.mainform;
+            this.p_UserInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.p_UserInfo.Controls.Add(this.label6);
+            this.p_UserInfo.Controls.Add(this.linkLabel4);
+            this.p_UserInfo.Controls.Add(this.lb_Ver);
+            this.p_UserInfo.Controls.Add(this.lb_Close);
+            this.p_UserInfo.Controls.Add(this.lv_Friends);
+            this.p_UserInfo.Controls.Add(this.lb_Title);
+            this.p_UserInfo.Controls.Add(this.linkLabel6);
+            this.p_UserInfo.Controls.Add(this.label5);
+            this.p_UserInfo.Controls.Add(this.lbl_Friens_PendingReq);
+            this.p_UserInfo.Controls.Add(this.linkLabel5);
+            this.p_UserInfo.Controls.Add(this.lb_Play);
+            this.p_UserInfo.Controls.Add(this.label4);
+            this.p_UserInfo.Controls.Add(this.lbl_Friens_PendingInvite);
+            this.p_UserInfo.Controls.Add(this.linkLabel3);
+            this.p_UserInfo.Controls.Add(this.lb_ManageInvite);
+            this.p_UserInfo.Controls.Add(this.linkLbl_aoeo4evernet);
+            this.p_UserInfo.Controls.Add(this.label3);
+            this.p_UserInfo.Controls.Add(this.linklbl_Wiki);
+            this.p_UserInfo.Controls.Add(this.linkLbl_ProjectCelesteCom);
+            this.p_UserInfo.Controls.Add(this.label2);
+            this.p_UserInfo.Controls.Add(this.linklbl_ReportIssue);
+            this.p_UserInfo.Controls.Add(this.comboBox1);
+            this.p_UserInfo.Controls.Add(this.linkLbl_Upgrade);
+            this.p_UserInfo.Controls.Add(this.lbl_AllowCiv);
+            this.p_UserInfo.Controls.Add(this.linkLbl_ChangePwd);
+            this.p_UserInfo.Controls.Add(this.linkLabel2);
+            this.p_UserInfo.Controls.Add(this.label1);
+            this.p_UserInfo.Controls.Add(this.lbl_Rank);
+            this.p_UserInfo.Controls.Add(this.comboBox2);
+            this.p_UserInfo.Controls.Add(this.linkLabel1);
+            this.p_UserInfo.Controls.Add(this.lbl_UserName);
+            this.p_UserInfo.Controls.Add(this.pb_Avatar);
+            this.p_UserInfo.Controls.Add(this.lbl_Mail);
+            this.p_UserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.p_UserInfo.Location = new System.Drawing.Point(0, 0);
+            this.p_UserInfo.Name = "p_UserInfo";
+            this.p_UserInfo.Size = new System.Drawing.Size(904, 556);
+            this.p_UserInfo.TabIndex = 1;
             // 
-            // linkLabel5
+            // label6
             // 
-            this.linkLabel5.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel5.AutoSize = true;
-            this.linkLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel5.Enabled = false;
-            this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel5.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel5.Location = new System.Drawing.Point(793, 114);
-            this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(59, 17);
-            this.linkLabel5.TabIndex = 20;
-            this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "Manage";
-            this.linkLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(399, 290);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 29);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "MP Settings";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // lbl_Friens_PendingReq
+            // linkLabel4
             // 
-            this.lbl_Friens_PendingReq.AutoSize = true;
-            this.lbl_Friens_PendingReq.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Friens_PendingReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Friens_PendingReq.Location = new System.Drawing.Point(575, 146);
-            this.lbl_Friens_PendingReq.Name = "lbl_Friens_PendingReq";
-            this.lbl_Friens_PendingReq.Size = new System.Drawing.Size(178, 16);
-            this.lbl_Friens_PendingReq.TabIndex = 15;
-            this.lbl_Friens_PendingReq.Text = "Pending Friends Request (0)";
-            this.lbl_Friens_PendingReq.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel4.ActiveLinkColor = System.Drawing.Color.MediumBlue;
+            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel4.LinkColor = System.Drawing.Color.DarkBlue;
+            this.linkLabel4.Location = new System.Drawing.Point(399, 505);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(305, 16);
+            this.linkLabel4.TabIndex = 38;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "View Microsoft\'s \"Game Content Usage Rules\"";
+            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
-            // lbl_Friens_PendingInvite
+            // lb_Ver
             // 
-            this.lbl_Friens_PendingInvite.AutoSize = true;
-            this.lbl_Friens_PendingInvite.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Friens_PendingInvite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Friens_PendingInvite.Location = new System.Drawing.Point(575, 114);
-            this.lbl_Friens_PendingInvite.Name = "lbl_Friens_PendingInvite";
-            this.lbl_Friens_PendingInvite.Size = new System.Drawing.Size(158, 16);
-            this.lbl_Friens_PendingInvite.TabIndex = 7;
-            this.lbl_Friens_PendingInvite.Text = "Pending Friends Invite (0)";
-            this.lbl_Friens_PendingInvite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_Ver.AutoSize = true;
+            this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
+            this.lb_Ver.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Ver.ForeColor = System.Drawing.Color.White;
+            this.lb_Ver.Location = new System.Drawing.Point(802, 33);
+            this.lb_Ver.Name = "lb_Ver";
+            this.lb_Ver.Size = new System.Drawing.Size(39, 16);
+            this.lb_Ver.TabIndex = 36;
+            this.lb_Ver.Text = "v127";
+            // 
+            // lb_Close
+            // 
+            this.lb_Close.BackColor = System.Drawing.Color.Transparent;
+            this.lb_Close.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Close.ForeColor = System.Drawing.Color.Black;
+            this.lb_Close.Location = new System.Drawing.Point(847, 11);
+            this.lb_Close.Name = "lb_Close";
+            this.lb_Close.Size = new System.Drawing.Size(41, 38);
+            this.lb_Close.TabIndex = 13;
+            this.lb_Close.Text = "X";
+            this.lb_Close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_Close.Click += new System.EventHandler(this.lb_Close_Click);
             // 
             // lv_Friends
             // 
@@ -152,85 +191,6 @@
             this.ch_Online.Text = "Online";
             this.ch_Online.Width = 63;
             // 
-            // p_UserInfo
-            // 
-            this.p_UserInfo.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.mainform;
-            this.p_UserInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.p_UserInfo.Controls.Add(this.linkLabel4);
-            this.p_UserInfo.Controls.Add(this.label6);
-            this.p_UserInfo.Controls.Add(this.lb_Ver);
-            this.p_UserInfo.Controls.Add(this.lb_Close);
-            this.p_UserInfo.Controls.Add(this.lv_Friends);
-            this.p_UserInfo.Controls.Add(this.lb_Title);
-            this.p_UserInfo.Controls.Add(this.linkLabel6);
-            this.p_UserInfo.Controls.Add(this.label5);
-            this.p_UserInfo.Controls.Add(this.lbl_Friens_PendingReq);
-            this.p_UserInfo.Controls.Add(this.linkLabel5);
-            this.p_UserInfo.Controls.Add(this.lb_Play);
-            this.p_UserInfo.Controls.Add(this.label4);
-            this.p_UserInfo.Controls.Add(this.lbl_Friens_PendingInvite);
-            this.p_UserInfo.Controls.Add(this.linkLabel3);
-            this.p_UserInfo.Controls.Add(this.lb_ManageInvite);
-            this.p_UserInfo.Controls.Add(this.linkLbl_aoeo4evernet);
-            this.p_UserInfo.Controls.Add(this.label3);
-            this.p_UserInfo.Controls.Add(this.linklbl_Wiki);
-            this.p_UserInfo.Controls.Add(this.linkLbl_ProjectCelesteCom);
-            this.p_UserInfo.Controls.Add(this.lbl_Connected);
-            this.p_UserInfo.Controls.Add(this.label2);
-            this.p_UserInfo.Controls.Add(this.lbl_Banned);
-            this.p_UserInfo.Controls.Add(this.linklbl_ReportIssue);
-            this.p_UserInfo.Controls.Add(this.comboBox1);
-            this.p_UserInfo.Controls.Add(this.linkLbl_Upgrade);
-            this.p_UserInfo.Controls.Add(this.lbl_AllowCiv);
-            this.p_UserInfo.Controls.Add(this.linkLbl_ChangePwd);
-            this.p_UserInfo.Controls.Add(this.linkLabel2);
-            this.p_UserInfo.Controls.Add(this.label1);
-            this.p_UserInfo.Controls.Add(this.lbl_Rank);
-            this.p_UserInfo.Controls.Add(this.comboBox2);
-            this.p_UserInfo.Controls.Add(this.linkLabel1);
-            this.p_UserInfo.Controls.Add(this.lbl_UserName);
-            this.p_UserInfo.Controls.Add(this.pb_Avatar);
-            this.p_UserInfo.Controls.Add(this.lbl_Mail);
-            this.p_UserInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.p_UserInfo.Location = new System.Drawing.Point(0, 0);
-            this.p_UserInfo.Name = "p_UserInfo";
-            this.p_UserInfo.Size = new System.Drawing.Size(904, 556);
-            this.p_UserInfo.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(676, 440);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(196, 37);
-            this.label6.TabIndex = 37;
-            this.label6.Text = "Server: Celeste";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lb_Ver
-            // 
-            this.lb_Ver.AutoSize = true;
-            this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Ver.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Ver.Location = new System.Drawing.Point(27, 505);
-            this.lb_Ver.Name = "lb_Ver";
-            this.lb_Ver.Size = new System.Drawing.Size(39, 16);
-            this.lb_Ver.TabIndex = 36;
-            this.lb_Ver.Text = "v127";
-            // 
-            // lb_Close
-            // 
-            this.lb_Close.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Close.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Close.ForeColor = System.Drawing.Color.Black;
-            this.lb_Close.Location = new System.Drawing.Point(847, 11);
-            this.lb_Close.Name = "lb_Close";
-            this.lb_Close.Size = new System.Drawing.Size(41, 38);
-            this.lb_Close.TabIndex = 13;
-            this.lb_Close.Text = "X";
-            this.lb_Close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lb_Title
             // 
             this.lb_Title.BackColor = System.Drawing.Color.Transparent;
@@ -244,6 +204,22 @@
             this.lb_Title.Text = "PROJECT CELESTE - CONNECTED";
             this.lb_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // linkLabel6
+            // 
+            this.linkLabel6.ActiveLinkColor = System.Drawing.Color.MediumBlue;
+            this.linkLabel6.AutoSize = true;
+            this.linkLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel6.Enabled = false;
+            this.linkLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel6.LinkColor = System.Drawing.Color.DarkBlue;
+            this.linkLabel6.Location = new System.Drawing.Point(793, 145);
+            this.linkLabel6.Name = "linkLabel6";
+            this.linkLabel6.Size = new System.Drawing.Size(59, 17);
+            this.linkLabel6.TabIndex = 21;
+            this.linkLabel6.TabStop = true;
+            this.linkLabel6.Text = "Manage";
+            this.linkLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
@@ -255,6 +231,34 @@
             this.label5.Text = "Friends (Soon)";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lbl_Friens_PendingReq
+            // 
+            this.lbl_Friens_PendingReq.AutoSize = true;
+            this.lbl_Friens_PendingReq.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Friens_PendingReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Friens_PendingReq.Location = new System.Drawing.Point(575, 146);
+            this.lbl_Friens_PendingReq.Name = "lbl_Friens_PendingReq";
+            this.lbl_Friens_PendingReq.Size = new System.Drawing.Size(178, 16);
+            this.lbl_Friens_PendingReq.TabIndex = 15;
+            this.lbl_Friens_PendingReq.Text = "Pending Friends Request (0)";
+            this.lbl_Friens_PendingReq.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // linkLabel5
+            // 
+            this.linkLabel5.ActiveLinkColor = System.Drawing.Color.MediumBlue;
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel5.Enabled = false;
+            this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel5.LinkColor = System.Drawing.Color.DarkBlue;
+            this.linkLabel5.Location = new System.Drawing.Point(793, 114);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(59, 17);
+            this.linkLabel5.TabIndex = 20;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = "Manage";
+            this.linkLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // lb_Play
             // 
             this.lb_Play.BackColor = System.Drawing.Color.Transparent;
@@ -264,7 +268,7 @@
             this.lb_Play.Name = "lb_Play";
             this.lb_Play.Size = new System.Drawing.Size(148, 29);
             this.lb_Play.TabIndex = 34;
-            this.lb_Play.Text = "PLAY AOEO";
+            this.lb_Play.Text = "PLAY";
             this.lb_Play.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lb_Play.Click += new System.EventHandler(this.btn_Play_Click);
             // 
@@ -278,6 +282,18 @@
             this.label4.TabIndex = 33;
             this.label4.Text = "Useful Links";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_Friens_PendingInvite
+            // 
+            this.lbl_Friens_PendingInvite.AutoSize = true;
+            this.lbl_Friens_PendingInvite.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Friens_PendingInvite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Friens_PendingInvite.Location = new System.Drawing.Point(575, 114);
+            this.lbl_Friens_PendingInvite.Name = "lbl_Friens_PendingInvite";
+            this.lbl_Friens_PendingInvite.Size = new System.Drawing.Size(158, 16);
+            this.lbl_Friens_PendingInvite.TabIndex = 7;
+            this.lbl_Friens_PendingInvite.Text = "Pending Friends Invite (0)";
+            this.lbl_Friens_PendingInvite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linkLabel3
             // 
@@ -300,7 +316,7 @@
             this.lb_ManageInvite.BackColor = System.Drawing.Color.Transparent;
             this.lb_ManageInvite.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_ManageInvite.ForeColor = System.Drawing.Color.White;
-            this.lb_ManageInvite.Location = new System.Drawing.Point(399, 263);
+            this.lb_ManageInvite.Location = new System.Drawing.Point(399, 249);
             this.lb_ManageInvite.Name = "lb_ManageInvite";
             this.lb_ManageInvite.Size = new System.Drawing.Size(140, 29);
             this.lb_ManageInvite.TabIndex = 26;
@@ -367,41 +383,16 @@
             this.linkLbl_ProjectCelesteCom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLbl_ProjectCelesteCom.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLbl_ProjectCelesteCom_LinkClicked);
             // 
-            // lbl_Connected
-            // 
-            this.lbl_Connected.AutoSize = true;
-            this.lbl_Connected.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Connected.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Connected.Location = new System.Drawing.Point(247, 296);
-            this.lbl_Connected.Name = "lbl_Connected";
-            this.lbl_Connected.Size = new System.Drawing.Size(130, 17);
-            this.lbl_Connected.TabIndex = 24;
-            this.lbl_Connected.Text = "Connected: false";
-            this.lbl_Connected.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 447);
+            this.label2.Location = new System.Drawing.Point(27, 441);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(588, 48);
+            this.label2.Size = new System.Drawing.Size(678, 64);
             this.label2.TabIndex = 24;
             this.label2.Text = resources.GetString("label2.Text");
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_Banned
-            // 
-            this.lbl_Banned.AutoSize = true;
-            this.lbl_Banned.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Banned.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Banned.Location = new System.Drawing.Point(38, 296);
-            this.lbl_Banned.Name = "lbl_Banned";
-            this.lbl_Banned.Size = new System.Drawing.Size(108, 17);
-            this.lbl_Banned.TabIndex = 23;
-            this.lbl_Banned.Text = "Banned: false";
-            this.lbl_Banned.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // linklbl_ReportIssue
             // 
@@ -423,7 +414,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(210, 206);
+            this.comboBox1.Location = new System.Drawing.Point(210, 230);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(167, 23);
             this.comboBox1.TabIndex = 12;
@@ -435,7 +426,7 @@
             this.linkLbl_Upgrade.BackColor = System.Drawing.Color.Transparent;
             this.linkLbl_Upgrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLbl_Upgrade.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLbl_Upgrade.Location = new System.Drawing.Point(307, 176);
+            this.linkLbl_Upgrade.Location = new System.Drawing.Point(307, 189);
             this.linkLbl_Upgrade.Name = "linkLbl_Upgrade";
             this.linkLbl_Upgrade.Size = new System.Drawing.Size(70, 17);
             this.linkLbl_Upgrade.TabIndex = 21;
@@ -449,7 +440,7 @@
             this.lbl_AllowCiv.AutoSize = true;
             this.lbl_AllowCiv.BackColor = System.Drawing.Color.Transparent;
             this.lbl_AllowCiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AllowCiv.Location = new System.Drawing.Point(38, 208);
+            this.lbl_AllowCiv.Location = new System.Drawing.Point(38, 232);
             this.lbl_AllowCiv.Name = "lbl_AllowCiv";
             this.lbl_AllowCiv.Size = new System.Drawing.Size(151, 17);
             this.lbl_AllowCiv.TabIndex = 9;
@@ -463,13 +454,13 @@
             this.linkLbl_ChangePwd.BackColor = System.Drawing.Color.Transparent;
             this.linkLbl_ChangePwd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLbl_ChangePwd.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLbl_ChangePwd.Location = new System.Drawing.Point(381, 225);
+            this.linkLbl_ChangePwd.Location = new System.Drawing.Point(385, 213);
             this.linkLbl_ChangePwd.Name = "linkLbl_ChangePwd";
-            this.linkLbl_ChangePwd.Size = new System.Drawing.Size(158, 25);
+            this.linkLbl_ChangePwd.Size = new System.Drawing.Size(156, 25);
             this.linkLbl_ChangePwd.TabIndex = 22;
             this.linkLbl_ChangePwd.TabStop = true;
             this.linkLbl_ChangePwd.Text = "Change Password";
-            this.linkLbl_ChangePwd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.linkLbl_ChangePwd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linkLbl_ChangePwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLbl_ChangePwd_LinkClicked);
             // 
             // linkLabel2
@@ -481,7 +472,7 @@
             this.linkLabel2.Enabled = false;
             this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel2.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel2.Location = new System.Drawing.Point(341, 145);
+            this.linkLabel2.Location = new System.Drawing.Point(341, 154);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(36, 17);
             this.linkLabel2.TabIndex = 20;
@@ -495,7 +486,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 249);
+            this.label1.Location = new System.Drawing.Point(38, 276);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 16);
             this.label1.TabIndex = 14;
@@ -507,7 +498,7 @@
             this.lbl_Rank.AutoSize = true;
             this.lbl_Rank.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Rank.Location = new System.Drawing.Point(38, 176);
+            this.lbl_Rank.Location = new System.Drawing.Point(38, 185);
             this.lbl_Rank.Name = "lbl_Rank";
             this.lbl_Rank.Size = new System.Drawing.Size(50, 17);
             this.lbl_Rank.TabIndex = 8;
@@ -525,7 +516,7 @@
             "fr-FR",
             "it-IT",
             "zh-CHT"});
-            this.comboBox2.Location = new System.Drawing.Point(210, 247);
+            this.comboBox2.Location = new System.Drawing.Point(210, 274);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(167, 23);
             this.comboBox2.TabIndex = 13;
@@ -539,7 +530,7 @@
             this.linkLabel1.Enabled = false;
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel1.Location = new System.Drawing.Point(341, 113);
+            this.linkLabel1.Location = new System.Drawing.Point(341, 118);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(36, 17);
             this.linkLabel1.TabIndex = 19;
@@ -554,7 +545,7 @@
             this.lbl_UserName.AutoSize = true;
             this.lbl_UserName.BackColor = System.Drawing.Color.Transparent;
             this.lbl_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_UserName.Location = new System.Drawing.Point(38, 146);
+            this.lbl_UserName.Location = new System.Drawing.Point(38, 155);
             this.lbl_UserName.Name = "lbl_UserName";
             this.lbl_UserName.Size = new System.Drawing.Size(93, 17);
             this.lbl_UserName.TabIndex = 7;
@@ -567,9 +558,9 @@
             this.pb_Avatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pb_Avatar.Cursor = System.Windows.Forms.Cursors.Default;
             this.pb_Avatar.ErrorImage = null;
-            this.pb_Avatar.Image = global::Celeste_Launcher_Gui.Properties.Resources.no_avatar;
+            this.pb_Avatar.Image = ((System.Drawing.Image)(resources.GetObject("pb_Avatar.Image")));
             this.pb_Avatar.InitialImage = null;
-            this.pb_Avatar.Location = new System.Drawing.Point(417, 113);
+            this.pb_Avatar.Location = new System.Drawing.Point(421, 113);
             this.pb_Avatar.Name = "pb_Avatar";
             this.pb_Avatar.Size = new System.Drawing.Size(96, 96);
             this.pb_Avatar.TabIndex = 10;
@@ -581,27 +572,12 @@
             this.lbl_Mail.AutoSize = true;
             this.lbl_Mail.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Mail.Location = new System.Drawing.Point(38, 114);
+            this.lbl_Mail.Location = new System.Drawing.Point(38, 119);
             this.lbl_Mail.Name = "lbl_Mail";
             this.lbl_Mail.Size = new System.Drawing.Size(52, 17);
             this.lbl_Mail.TabIndex = 6;
             this.lbl_Mail.Text = "Email:";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel4.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel4.Location = new System.Drawing.Point(167, 505);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(448, 16);
-            this.linkLabel4.TabIndex = 38;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "View Microsoft\'s \"Game Content Usage Rules\"";
-            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainForm
             // 
@@ -647,8 +623,6 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linklbl_Wiki;
         private System.Windows.Forms.LinkLabel linklbl_ReportIssue;
-        private System.Windows.Forms.Label lbl_Connected;
-        private System.Windows.Forms.Label lbl_Banned;
         private System.Windows.Forms.LinkLabel linkLbl_ProjectCelesteCom;
         private System.Windows.Forms.LinkLabel linkLbl_aoeo4evernet;
         private System.Windows.Forms.LinkLabel linkLabel1;
@@ -664,7 +638,7 @@
         private System.Windows.Forms.Label lb_Close;
         private System.Windows.Forms.Label lb_Title;
         private System.Windows.Forms.Label lb_Ver;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Label label6;
     }
 }

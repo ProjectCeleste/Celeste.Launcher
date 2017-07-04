@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -11,7 +12,7 @@ using Celeste_Launcher_Gui.Properties;
 
 #endregion
 
-namespace Celeste_Launcher_Gui
+namespace Celeste_Launcher_Gui.Helpers
 {
     public class SkinHelper
     {
@@ -81,10 +82,17 @@ namespace Celeste_Launcher_Gui
             {
                 SetFont(form.Controls);
 
-                lbTitle.MouseDown += LbTitle_MouseDown;
-                lbClose.MouseEnter += LbClose_MouseEnter;
-                lbClose.MouseLeave += LbClose_MouseLeave;
-                lbClose.Click += LbClose_Click;
+                if (lbTitle != null)
+                    lbTitle.MouseDown += LbTitle_MouseDown;
+
+                if (lbClose != null)
+                {
+                    lbClose.MouseEnter += LbClose_MouseEnter;
+                    lbClose.MouseLeave += LbClose_MouseLeave;
+                    lbClose.Click += LbClose_Click;
+                }
+
+                if (highlightList == null || highlightList.Count <= 0) return;
 
                 foreach (var lb in highlightList)
                 {
@@ -98,7 +106,32 @@ namespace Celeste_Launcher_Gui
             }
         }
 
-        private static void SetFont(Control.ControlCollection controls)
+        /// <summary>
+        ///     Configure the Skin in a form
+        /// </summary>
+        /// <param name="ctrl">Control</param>
+        /// <param name="highlightList">List of label controls that we want to highlight when the mouse is over</param>
+        public static void ConfigureSkin(Control ctrl, List<Label> highlightList)
+        {
+            try
+            {
+                SetFont(ctrl.Controls);
+
+                if (highlightList == null || highlightList.Count <= 0) return;
+
+                foreach (var lb in highlightList)
+                {
+                    lb.MouseEnter += LbHover_MouseEnter;
+                    lb.MouseLeave += LbHover_MouseLeave;
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+        }
+
+        public static void SetFont(IEnumerable controls)
         {
             foreach (Control c in controls)
             {
@@ -113,6 +146,10 @@ namespace Celeste_Launcher_Gui
                 var checkBox = c as CheckBox;
                 if (checkBox != null)
                     checkBox.Font = GetFont(checkBox.Font.Size);
+
+                var radioButton = c as RadioButton;
+                if (radioButton != null)
+                    radioButton.Font = GetFont(radioButton.Font.Size);
 
                 var view = c as ListView;
                 if (view != null)

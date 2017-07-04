@@ -11,6 +11,8 @@ using Celeste_User.Remote;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
 
+//using Mono.Nat;
+
 #endregion
 
 namespace Celeste_Launcher_Gui
@@ -26,7 +28,7 @@ namespace Celeste_Launcher_Gui
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
         public static RemoteUser RemoteUser;
         public static readonly Server Server = new Server();
-        public static UserConfig UserConfig;
+        public static UserConfig UserConfig = new UserConfig();
         public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
 
         public static readonly ServerConfig ServerConfig = new ServerConfig

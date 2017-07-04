@@ -13,6 +13,7 @@ namespace Celeste_User.Enum
         [XmlEnum("ChampionSupporter")] ChampionSupporter = 2,
         [XmlEnum("Modo")] Modo = 3,
         [XmlEnum("SuperModo")] SuperModo = 4,
-        [XmlEnum("Admin")] Admin = 5
+        [XmlEnum("Admin")] Admin = 5,
+        [XmlEnum("Banned")] Banned = 6
     }
 }

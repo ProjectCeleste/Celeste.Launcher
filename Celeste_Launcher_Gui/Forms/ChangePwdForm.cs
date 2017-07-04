@@ -1,9 +1,9 @@
 ﻿#region Using directives
 
 using System;
-using System.Collections.Generic;
 using System.Dynamic;
 using System.Windows.Forms;
+using Celeste_Launcher_Gui.Helpers;
 
 #endregion
 
@@ -17,11 +17,42 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_Save});
+            //Configure Fonts
+            SkinHelper.SetFont(Controls);
         }
 
-        private void btn_Login_Click(object sender, EventArgs e)
+        private void DoChangePassword(string oldPwd, string newPwd)
+        {
+            _changePasswordDone = false;
+
+            if (Program.WebSocketClient.State != WebSocketClientState.Logged)
+                throw new Exception("Not logged in!");
+
+            dynamic changePwdInfo = new ExpandoObject();
+            changePwdInfo.Old = oldPwd;
+            changePwdInfo.New = newPwd;
+
+            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("CHANGEPWD", (object) changePwdInfo,
+                OnChangePassword);
+        }
+
+        private void OnChangePassword(dynamic result)
+        {
+            if (result["Result"].ToObject<bool>())
+            {
+                SkinHelper.ShowMessage(@"Password changed with success.", @"Project Celeste -- Change Password",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                var str = result["Message"].ToObject<string>();
+                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Change Password",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            _changePasswordDone = true;
+        }
+
+        private void btnSmall1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text != textBox2.Text)
             {
@@ -60,35 +91,10 @@ namespace Celeste_Launcher_Gui.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void DoChangePassword(string oldPwd, string newPwd)
+        private void ChangePwdForm_Load(object sender, EventArgs e)
         {
-            _changePasswordDone = false;
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Logged)
-                throw new Exception("Not logged in!");
-
-            dynamic changePwdInfo = new ExpandoObject();
-            changePwdInfo.Old = oldPwd;
-            changePwdInfo.New = newPwd;
-
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("CHANGEPWD", (object) changePwdInfo,
-                OnChangePassword);
-        }
-
-        private void OnChangePassword(dynamic result)
-        {
-            if (result["Result"].ToObject<bool>())
-            {
-                SkinHelper.ShowMessage(@"Password changed with success.", @"Project Celeste -- Change Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Change Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            _changePasswordDone = true;
+            if (DwmApi.DwmIsCompositionEnabled())
+                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(16, 73, 16, 31));
         }
     }
 }

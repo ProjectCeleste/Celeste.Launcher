@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug 4.5|AnyCPU' ">
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\net45\</OutputPath>
+    <IntermediateOutputPath>obj\Debug\net45\</IntermediateOutputPath>
+    <DefineConstants>TRACE;DEBUG;NET45</DefineConstants>
+    <WarningLevel>0</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Open.Nat</RootNamespace>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\net45\Open.Nat.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release 4.5|AnyCPU' ">
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\net45\</OutputPath>
+    <IntermediateOutputPath>obj\Release\net45\</IntermediateOutputPath>
+    <DefineConstants>TRACE;NET45</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Open.Nat</RootNamespace>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\net45\Open.Nat.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <ProjectGuid>{F5D74163-145F-47BF-83DC-D0E07249C6CA}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Open.Nat.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Finalizer.cs" />
+    <Compile Include="Utils\Guard.cs" />
+    <Compile Include="NatDevice.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Enums\ProtocolType.cs" />
+    <Compile Include="EventArgs\DeviceEventArgs.cs" />
+    <Compile Include="Exceptions\MappingException.cs" />
+    <Compile Include="Discovery\ISearcher.cs" />
+    <Compile Include="Mapping.cs" />
+    <Compile Include="Exceptions\NatDeviceNotFoundException.cs" />
+    <Compile Include="NatDiscoverer.cs" />
+    <Compile Include="Pmp\PmpSearcher.cs" />
+    <Compile Include="Pmp\PmpConstants.cs" />
+    <Compile Include="Pmp\PmpNatDevice.cs" />
+    <Compile Include="PortMapper.cs" />
+    <Compile Include="Discovery\Searcher.cs" />
+    <Compile Include="Upnp\UpnpSearcher.cs" />
+    <Compile Include="Upnp\DiscoveryResponseMessage.cs" />
+    <Compile Include="Upnp\Messages\DiscoverDeviceMessage.cs" />
+    <Compile Include="Upnp\Messages\Requests\CreatePortMappingMessage.cs" />
+    <Compile Include="Upnp\Messages\Requests\DeletePortMappingMessage.cs" />
+    <Compile Include="Upnp\Messages\Requests\GetExternalIPAddressMessage.cs" />
+    <Compile Include="Upnp\Messages\Requests\GetGenericPortMappingEntry.cs" />
+    <Compile Include="Upnp\Messages\Requests\GetSpecificPortMappingEntryMessage.cs" />
+    <Compile Include="Upnp\ResponseMessageBase.cs" />
+    <Compile Include="Upnp\Messages\Responses\GetExternalIPAddressResponseMessage.cs" />
+    <Compile Include="Upnp\Messages\Responses\GetGenericPortMappingEntryResponseMessage.cs" />
+    <Compile Include="Upnp\RequestMessageBase.cs" />
+    <Compile Include="Upnp\SoapClient.cs" />
+    <Compile Include="Upnp\UpnpConstants.cs" />
+    <Compile Include="Upnp\UpnpNatDeviceInfo.cs" />
+    <Compile Include="Upnp\UpnpNatDevice.cs" />
+    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="Utils\IIPAddressesProvider.cs" />
+    <Compile Include="Utils\IPAddressesProvider.cs" />
+    <Compile Include="Utils\WellKnownConstants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Open.Nat.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <Target Name="AfterBuild">
+    <!-- Load up the information from the assembly -->
+    <GetAssemblyIdentity AssemblyFiles="$(OutputPath)$(AssemblyName).dll">
+      <Output TaskParameter="Assemblies" ItemName="OutputAssemblyInfo" />
+    </GetAssemblyIdentity>
+    <Message Text="Info: %(OutputAssemblyInfo.Version)" />
+  </Target>
+  <Target Name="Package">
+    <!-- Ensure the Package directory exists for this project -->
+    <RemoveDir Directories="NuGet" />
+    <MakeDir Directories="NuGet" />
+    <!-- Package the project -->
+    <Exec WorkingDirectory="$(BuildDir)" Command="NuGet.exe pack -Verbosity detailed -Symbols -OutputDir &quot;NuGet&quot; -Version %(OutputAssemblyInfo.Version) -Properties &quot;Configuration=$(Configuration)&quot;" />
+  </Target>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+</Project>
