@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
 
@@ -34,14 +33,14 @@ namespace Celeste_Launcher_Gui.Forms
             if (rb_Manual.Checked != !mpSettings.AutoPortMapping)
                 rb_Manual.Checked = !mpSettings.AutoPortMapping;
 
-            numericUpDown2.Value = mpSettings.PublicPort;
+            //numericUpDown2.Value = mpSettings.PublicPort;
         }
 
 
         private void MpSettingBox_Load(object sender, EventArgs e)
         {
             if (DwmApi.DwmIsCompositionEnabled())
-                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(16, 73, 16, 31));
+                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
         }
 
         //private string getExternalIp()
@@ -58,24 +57,19 @@ namespace Celeste_Launcher_Gui.Forms
         //        return null;
         //    }
         //}
-        
+
         private void btnSmall1_Click(object sender, EventArgs e)
         {
             Program.UserConfig.MpSettings.IsOnline = rb_Wan.Checked;
             Program.UserConfig.MpSettings.AutoPortMapping = rb_Automatic.Checked;
-            Program.UserConfig.MpSettings.PublicPort = Convert.ToInt32(numericUpDown2.Value);
+            //Program.UserConfig.MpSettings.PublicPort = Convert.ToInt32(numericUpDown2.Value);
             Program.UserConfig.MpSettings.PublicIp = tb_remoteIp.Text;
             Program.UserConfig.Save(Program.UserConfigFilePath);
             Close();
         }
 
-        private void btnSmall1_Load(object sender, EventArgs e)
-        {
-        }
-
         private void rb_Wan_CheckedChanged(object sender, EventArgs e)
         {
-
             if (rb_Wan.Checked)
             {
                 if (rb_Lan.Checked)
@@ -93,6 +87,7 @@ namespace Celeste_Launcher_Gui.Forms
                 panel3.Enabled = false;
             }
         }
+
         private void rb_Lan_CheckedChanged(object sender, EventArgs e)
         {
             if (rb_Lan.Checked)
@@ -104,15 +99,11 @@ namespace Celeste_Launcher_Gui.Forms
                     .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
 
                 tb_remoteIp.Text = firstOrDefault?.ToString() ?? @"127.0.0.1";
-
-                panel3.Enabled = false;
             }
             else
             {
                 if (!rb_Wan.Checked)
                     rb_Wan.Checked = true;
-
-                panel3.Enabled = true;
             }
         }
 
@@ -122,15 +113,11 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 if (rb_Manual.Checked)
                     rb_Manual.Checked = false;
-
-                numericUpDown2.Enabled = false;
             }
             else
             {
                 if (!rb_Manual.Checked)
                     rb_Manual.Checked = true;
-
-                numericUpDown2.Enabled = true;
             }
         }
 
@@ -140,15 +127,11 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 if (rb_Automatic.Checked)
                     rb_Automatic.Checked = false;
-
-                numericUpDown2.Enabled = true;
             }
             else
             {
                 if (!rb_Automatic.Checked)
                     rb_Automatic.Checked = true;
-
-                numericUpDown2.Enabled = false;
             }
         }
     }

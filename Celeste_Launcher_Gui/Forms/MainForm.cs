@@ -1,7 +1,6 @@
 ﻿#region Using directives
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
@@ -27,8 +26,8 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_ManageInvite, lb_Play, label6 });
+            //Configure Fonts
+            SkinHelper.SetFont(Controls);
 
             //Game Lang
             if (Program.UserConfig != null)
@@ -83,6 +82,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             _timer.Stop();
             Program.WebSocketClient.AgentWebSocket.Close();
+            NatDiscoverer.ReleaseAll();
         }
 
         private void linklbl_ReportBug_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -221,19 +221,17 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 //MpSettings
                 if (Program.UserConfig.MpSettings != null)
-                {
                     if (Program.UserConfig.MpSettings.IsOnline)
                     {
                         Program.UserConfig.MpSettings.PublicIp = Program.RemoteUser.Ip;
 
                         if (Program.UserConfig.MpSettings.AutoPortMapping)
                         {
-                            var mapPortTask = OpenNat.MapPortTask(1000, Program.UserConfig.MpSettings.PublicPort);
+                            var mapPortTask = OpenNat.MapPortTask(1000, 1000);
                             try
                             {
                                 await mapPortTask;
                                 NatDiscoverer.TraceSource.Close();
-                                Program.UserConfig.MpSettings.PublicPort = mapPortTask.Result;
                             }
                             catch (AggregateException ex)
                             {
@@ -250,7 +248,6 @@ namespace Celeste_Launcher_Gui.Forms
                             }
                         }
                     }
-                }
 
                 //Save UserConfig
                 Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
@@ -263,14 +260,23 @@ namespace Celeste_Launcher_Gui.Forms
             Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
         }
 
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.xbox.com/en-us/developers/rules");
+            using (var form = new MpSettingForm(Program.UserConfig.MpSettings))
+            {
+                Hide();
+                form.ShowDialog();
+                Show();
+            }
         }
 
-        private void lb_Close_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
+            if (DwmApi.DwmIsCompositionEnabled())
+                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
         }
+
+
 
         #region "User Info"
 
@@ -342,14 +348,14 @@ namespace Celeste_Launcher_Gui.Forms
 
         #endregion
 
-        private void label6_Click(object sender, EventArgs e)
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using (var form = new MpSettingForm(Program.UserConfig.MpSettings))
-            {
-                Hide();
-                form.ShowDialog();
-                Show();
-            }
+            Process.Start("http://aoedb.net/");
+        }
+
+        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://discord.gg/pkM2RAm");
         }
     }
 }

@@ -24,6 +24,11 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             try
             {
+                if (!NatDiscoverer.TraceSource.Listeners.Contains(TextWriterTraceListener))
+                    NatDiscoverer.TraceSource.Listeners.Remove(TextWriterTraceListener);
+
+                TextWriterTraceListener.Close();
+
                 if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log"))
                     File.Delete($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log");
             }
@@ -31,10 +36,17 @@ namespace Celeste_Launcher_Gui.Helpers
             {
                 // ignored
             }
+            NatDiscoverer.ReleaseAll();
 
             NatDiscoverer.TraceSource.Switch.Level = SourceLevels.All;
+
+            if (TextWriterTraceListener == null)
+                TextWriterTraceListener =
+                    new TextWriterTraceListener($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log", "OpenNatTxtLog");
+
             if (!NatDiscoverer.TraceSource.Listeners.Contains(TextWriterTraceListener))
-            NatDiscoverer.TraceSource.Listeners.Add(TextWriterTraceListener);
+
+                NatDiscoverer.TraceSource.Listeners.Add(TextWriterTraceListener);
 
             var nat = new NatDiscoverer();
 
@@ -47,19 +59,21 @@ namespace Celeste_Launcher_Gui.Helpers
                 .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
 
             var enumerable = allMappings as Mapping[] ?? allMappings.ToArray();
-            if (enumerable.Any(key => Equals(key.PrivateIP, localIp) &&
-                                      key.Description == "AOEO Project Celeste"))
+            if (enumerable.Any(key => //Equals(key.PrivateIP, localIp) && key.Description == "AOEO Project Celeste" 
+                key.PublicPort == 1000))
             {
-                var r = enumerable.FirstOrDefault(key => Equals(key.PrivateIP, localIp) &&
-                                                         key.Description == "AOEO Project Celeste");
+                var r = enumerable.FirstOrDefault(
+                    key => //Equals(key.PrivateIP, localIp) && key.Description == "AOEO Project Celeste" 
+                        key.PublicPort == 1000);
+
                 if (r != null)
                     await device.DeletePortMapAsync(r);
             }
 
-            var rnd = new Random(DateTime.UtcNow.Millisecond);
+            //var rnd = new Random(DateTime.UtcNow.Millisecond);
             var newPublicPort = publicPort;
-            while (enumerable.Any(key => key.PublicPort == newPublicPort))
-                newPublicPort = rnd.Next(1000, ushort.MaxValue);
+            //while (enumerable.Any(key => key.PublicPort == newPublicPort))
+            //    newPublicPort = rnd.Next(1000, ushort.MaxValue);
 
             await device.CreatePortMapAsync(new Mapping(Protocol.Udp, privatePort, newPublicPort, int.MaxValue,
                 "AOEO Project Celeste"));

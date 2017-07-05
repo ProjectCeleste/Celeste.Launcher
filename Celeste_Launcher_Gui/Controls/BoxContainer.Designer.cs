@@ -1,6 +1,6 @@
 ﻿namespace Celeste_Launcher_Gui.Controls
 {
-    partial class MainContainer
+    partial class BoxContainer
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,14 +29,6 @@
         private void InitializeComponent()
         {
             this.tLP_Main = new System.Windows.Forms.TableLayoutPanel();
-            this.tLP_Top = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_Close = new System.Windows.Forms.PictureBox();
-            this.TopLeftFixed = new System.Windows.Forms.Panel();
-            this.TopMiddleFluid = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.TopRigthFixed = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.tLP_Middle = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.MiddleLeftFluid = new System.Windows.Forms.Panel();
@@ -45,13 +37,17 @@
             this.BottomMiddleFluid = new System.Windows.Forms.Panel();
             this.BottomLeftFixed = new System.Windows.Forms.Panel();
             this.BottomRigthFixed = new System.Windows.Forms.Panel();
+            this.tLP_Top = new System.Windows.Forms.TableLayoutPanel();
+            this.TopLeftFixed = new System.Windows.Forms.Panel();
+            this.TopMiddleFluid = new System.Windows.Forms.Panel();
+            this.btn_Close = new System.Windows.Forms.PictureBox();
+            this.TopRigthFixed = new System.Windows.Forms.Panel();
             this.tLP_Main.SuspendLayout();
-            this.tLP_Top.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
-            this.TopMiddleFluid.SuspendLayout();
             this.tLP_Middle.SuspendLayout();
             this.tLP_Bottom.SuspendLayout();
+            this.tLP_Top.SuspendLayout();
+            this.TopMiddleFluid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
             this.SuspendLayout();
             // 
             // tLP_Main
@@ -59,9 +55,9 @@
             this.tLP_Main.BackColor = System.Drawing.Color.Transparent;
             this.tLP_Main.ColumnCount = 1;
             this.tLP_Main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tLP_Main.Controls.Add(this.tLP_Top, 0, 0);
             this.tLP_Main.Controls.Add(this.tLP_Middle, 0, 1);
             this.tLP_Main.Controls.Add(this.tLP_Bottom, 0, 2);
+            this.tLP_Main.Controls.Add(this.tLP_Top, 0, 0);
             this.tLP_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tLP_Main.Location = new System.Drawing.Point(0, 0);
             this.tLP_Main.Margin = new System.Windows.Forms.Padding(0);
@@ -72,112 +68,6 @@
             this.tLP_Main.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tLP_Main.Size = new System.Drawing.Size(950, 600);
             this.tLP_Main.TabIndex = 0;
-            // 
-            // tLP_Top
-            // 
-            this.tLP_Top.ColumnCount = 5;
-            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 592F));
-            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tLP_Top.Controls.Add(this.panel2, 3, 0);
-            this.tLP_Top.Controls.Add(this.TopLeftFixed, 0, 0);
-            this.tLP_Top.Controls.Add(this.TopMiddleFluid, 2, 0);
-            this.tLP_Top.Controls.Add(this.TopRigthFixed, 4, 0);
-            this.tLP_Top.Controls.Add(this.panel1, 1, 0);
-            this.tLP_Top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tLP_Top.Location = new System.Drawing.Point(0, 0);
-            this.tLP_Top.Margin = new System.Windows.Forms.Padding(0);
-            this.tLP_Top.Name = "tLP_Top";
-            this.tLP_Top.RowCount = 1;
-            this.tLP_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tLP_Top.Size = new System.Drawing.Size(950, 75);
-            this.tLP_Top.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLRFluid;
-            this.panel2.Controls.Add(this.btn_Close);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(771, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(149, 75);
-            this.panel2.TabIndex = 6;
-            // 
-            // btn_Close
-            // 
-            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Close.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
-            this.btn_Close.Location = new System.Drawing.Point(103, 10);
-            this.btn_Close.Name = "btn_Close";
-            this.btn_Close.Size = new System.Drawing.Size(45, 44);
-            this.btn_Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btn_Close.TabIndex = 0;
-            this.btn_Close.TabStop = false;
-            this.btn_Close.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.btn_Close.MouseEnter += new System.EventHandler(this.btn_Close_MouseEnter);
-            this.btn_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            // 
-            // TopLeftFixed
-            // 
-            this.TopLeftFixed.BackColor = System.Drawing.Color.Transparent;
-            this.TopLeftFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLeftFixed;
-            this.TopLeftFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TopLeftFixed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TopLeftFixed.Location = new System.Drawing.Point(0, 0);
-            this.TopLeftFixed.Margin = new System.Windows.Forms.Padding(0);
-            this.TopLeftFixed.Name = "TopLeftFixed";
-            this.TopLeftFixed.Size = new System.Drawing.Size(30, 75);
-            this.TopLeftFixed.TabIndex = 1;
-            // 
-            // TopMiddleFluid
-            // 
-            this.TopMiddleFluid.BackColor = System.Drawing.Color.Transparent;
-            this.TopMiddleFluid.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopMiddleFluid;
-            this.TopMiddleFluid.Controls.Add(this.panel3);
-            this.TopMiddleFluid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TopMiddleFluid.Location = new System.Drawing.Point(179, 0);
-            this.TopMiddleFluid.Margin = new System.Windows.Forms.Padding(0);
-            this.TopMiddleFluid.Name = "TopMiddleFluid";
-            this.TopMiddleFluid.Size = new System.Drawing.Size(592, 75);
-            this.TopMiddleFluid.TabIndex = 4;
-            // 
-            // panel3
-            // 
-            this.panel3.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.panel3.Location = new System.Drawing.Point(37, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(518, 55);
-            this.panel3.TabIndex = 2;
-            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
-            // 
-            // TopRigthFixed
-            // 
-            this.TopRigthFixed.BackColor = System.Drawing.Color.Transparent;
-            this.TopRigthFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopRigthFixed;
-            this.TopRigthFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TopRigthFixed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TopRigthFixed.Location = new System.Drawing.Point(920, 0);
-            this.TopRigthFixed.Margin = new System.Windows.Forms.Padding(0);
-            this.TopRigthFixed.Name = "TopRigthFixed";
-            this.TopRigthFixed.Size = new System.Drawing.Size(30, 75);
-            this.TopRigthFixed.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLRFluid;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(30, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 75);
-            this.panel1.TabIndex = 5;
             // 
             // tLP_Middle
             // 
@@ -283,23 +173,93 @@
             this.BottomRigthFixed.Size = new System.Drawing.Size(30, 25);
             this.BottomRigthFixed.TabIndex = 1;
             // 
-            // MainContainer
+            // tLP_Top
+            // 
+            this.tLP_Top.ColumnCount = 3;
+            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tLP_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tLP_Top.Controls.Add(this.TopLeftFixed, 0, 0);
+            this.tLP_Top.Controls.Add(this.TopMiddleFluid, 1, 0);
+            this.tLP_Top.Controls.Add(this.TopRigthFixed, 2, 0);
+            this.tLP_Top.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tLP_Top.Location = new System.Drawing.Point(0, 0);
+            this.tLP_Top.Margin = new System.Windows.Forms.Padding(0);
+            this.tLP_Top.Name = "tLP_Top";
+            this.tLP_Top.RowCount = 1;
+            this.tLP_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tLP_Top.Size = new System.Drawing.Size(950, 75);
+            this.tLP_Top.TabIndex = 4;
+            // 
+            // TopLeftFixed
+            // 
+            this.TopLeftFixed.BackColor = System.Drawing.Color.Transparent;
+            this.TopLeftFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLeftFixed;
+            this.TopLeftFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TopLeftFixed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopLeftFixed.Location = new System.Drawing.Point(0, 0);
+            this.TopLeftFixed.Margin = new System.Windows.Forms.Padding(0);
+            this.TopLeftFixed.Name = "TopLeftFixed";
+            this.TopLeftFixed.Size = new System.Drawing.Size(30, 75);
+            this.TopLeftFixed.TabIndex = 9;
+            // 
+            // TopMiddleFluid
+            // 
+            this.TopMiddleFluid.BackColor = System.Drawing.Color.Transparent;
+            this.TopMiddleFluid.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLRFluid;
+            this.TopMiddleFluid.Controls.Add(this.btn_Close);
+            this.TopMiddleFluid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopMiddleFluid.Location = new System.Drawing.Point(30, 0);
+            this.TopMiddleFluid.Margin = new System.Windows.Forms.Padding(0);
+            this.TopMiddleFluid.Name = "TopMiddleFluid";
+            this.TopMiddleFluid.Size = new System.Drawing.Size(890, 75);
+            this.TopMiddleFluid.TabIndex = 7;
+            this.TopMiddleFluid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MoveForm);
+            // 
+            // btn_Close
+            // 
+            this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Close.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
+            this.btn_Close.Location = new System.Drawing.Point(845, 11);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(45, 44);
+            this.btn_Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btn_Close.TabIndex = 0;
+            this.btn_Close.TabStop = false;
+            this.btn_Close.Click += new System.EventHandler(this.Close);
+            this.btn_Close.MouseEnter += new System.EventHandler(this.btn_Close_MouseEnter);
+            this.btn_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            // 
+            // TopRigthFixed
+            // 
+            this.TopRigthFixed.BackColor = System.Drawing.Color.Transparent;
+            this.TopRigthFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopRigthFixed;
+            this.TopRigthFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TopRigthFixed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TopRigthFixed.Location = new System.Drawing.Point(920, 0);
+            this.TopRigthFixed.Margin = new System.Windows.Forms.Padding(0);
+            this.TopRigthFixed.Name = "TopRigthFixed";
+            this.TopRigthFixed.Size = new System.Drawing.Size(30, 75);
+            this.TopRigthFixed.TabIndex = 8;
+            // 
+            // BoxContainer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tLP_Main);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MinimumSize = new System.Drawing.Size(310, 250);
-            this.Name = "MainContainer";
+            this.Name = "BoxContainer";
             this.Size = new System.Drawing.Size(950, 600);
             this.tLP_Main.ResumeLayout(false);
-            this.tLP_Top.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).EndInit();
-            this.TopMiddleFluid.ResumeLayout(false);
             this.tLP_Middle.ResumeLayout(false);
             this.tLP_Bottom.ResumeLayout(false);
+            this.tLP_Top.ResumeLayout(false);
+            this.TopMiddleFluid.ResumeLayout(false);
+            this.TopMiddleFluid.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,9 +267,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tLP_Main;
-        private System.Windows.Forms.TableLayoutPanel tLP_Top;
-        private System.Windows.Forms.Panel TopRigthFixed;
-        private System.Windows.Forms.Panel TopLeftFixed;
         private System.Windows.Forms.TableLayoutPanel tLP_Middle;
         private System.Windows.Forms.Panel MiddleLeftFluid;
         private System.Windows.Forms.Panel MiddleRigthFluid;
@@ -319,9 +276,9 @@
         private System.Windows.Forms.Panel BottomMiddleFluid;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.PictureBox btn_Close;
+        private System.Windows.Forms.TableLayoutPanel tLP_Top;
         private System.Windows.Forms.Panel TopMiddleFluid;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel TopRigthFixed;
+        private System.Windows.Forms.Panel TopLeftFixed;
     }
 }

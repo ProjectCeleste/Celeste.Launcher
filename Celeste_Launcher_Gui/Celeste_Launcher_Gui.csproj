@@ -31,7 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Forms\icon.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -81,6 +81,12 @@
     </Compile>
     <Compile Include="Controls\BtnSmall.Designer.cs">
       <DependentUpon>BtnSmall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BoxContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BoxContainer.Designer.cs">
+      <DependentUpon>BoxContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DWM.cs" />
     <Compile Include="Forms\ChangePwdForm.cs">
@@ -152,6 +158,9 @@
     <EmbeddedResource Include="Controls\BtnSmall.resx">
       <DependentUpon>BtnSmall.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BoxContainer.resx">
+      <DependentUpon>BoxContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,19 +211,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Aclonica.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Ashley_Crawford_CG_1.otf" />
     <None Include="Resources\no-avatar.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_subscribeCC_LG.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Forms\icon.ico" />
+    <Content Include="icon.ico" />
+    <None Include="Resources\AvatarBorder.png" />
+    <None Include="Resources\BarSeparatorVertical.png" />
+    <None Include="Resources\BarSeparator.png" />
+    <None Include="Resources\XButton_Hover.png" />
+    <None Include="Resources\Icon.png" />
+    <None Include="Resources\TopLRFluid.png" />
     <None Include="Resources\BtnSmallHover.png" />
     <None Include="Resources\BtnSmallNormal.png" />
     <None Include="Resources\XButton_Normal.png" />
@@ -228,7 +243,6 @@
     <None Include="Resources\TopLeftFixed.png" />
     <None Include="Resources\TopRigthFixed.png" />
     <None Include="Resources\message.png" />
-    <None Include="Resources\mainform.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Celeste_User_Api\Celeste_User.csproj">

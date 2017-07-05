@@ -113,7 +113,7 @@ namespace Celeste_Launcher_Gui.Forms
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-            loginInfo.Version = 127;
+            loginInfo.Version = 130;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
@@ -197,7 +197,12 @@ namespace Celeste_Launcher_Gui.Forms
         private void LoginForm_Load(object sender, EventArgs e)
         {
             if (DwmApi.DwmIsCompositionEnabled())
-                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(16, 73, 16, 31));
+                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.xbox.com/en-us/developers/rules");
         }
     }
 }

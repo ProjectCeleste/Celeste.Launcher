@@ -63,10 +63,20 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
-        internal static byte[] Aclonica {
+        internal static byte[] Ashley_Crawford_CG_1 {
             get {
-                object obj = ResourceManager.GetObject("Aclonica", resourceCulture);
+                object obj = ResourceManager.GetObject("Ashley_Crawford_CG_1", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AvatarBorder {
+            get {
+                object obj = ResourceManager.GetObject("AvatarBorder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -76,6 +86,26 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap BackgroundTexture {
             get {
                 object obj = ResourceManager.GetObject("BackgroundTexture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BarSeparator {
+            get {
+                object obj = ResourceManager.GetObject("BarSeparator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BarSeparatorVertical {
+            get {
+                object obj = ResourceManager.GetObject("BarSeparatorVertical", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,19 +173,9 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mainform {
+        internal static System.Drawing.Bitmap Icon {
             get {
-                object obj = ResourceManager.GetObject("mainform", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap message {
-            get {
-                object obj = ResourceManager.GetObject("message", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,6 +223,16 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TopLRFluid {
+            get {
+                object obj = ResourceManager.GetObject("TopLRFluid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TopMiddleFluid {
             get {
                 object obj = ResourceManager.GetObject("TopMiddleFluid", resourceCulture);
@@ -216,6 +246,16 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap TopRigthFixed {
             get {
                 object obj = ResourceManager.GetObject("TopRigthFixed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap XButton_Hover {
+            get {
+                object obj = ResourceManager.GetObject("XButton_Hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

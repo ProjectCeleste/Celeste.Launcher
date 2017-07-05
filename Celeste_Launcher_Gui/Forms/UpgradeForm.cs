@@ -27,7 +27,7 @@ namespace Celeste_Launcher_Gui.Forms
         private void UpgradeForm_Load(object sender, EventArgs e)
         {
             if (DwmApi.DwmIsCompositionEnabled())
-                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(16, 73, 16, 31));
+                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
         }
     }
 }

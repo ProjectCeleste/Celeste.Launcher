@@ -20,7 +20,8 @@ namespace Celeste_Launcher_Gui.xLiveBridgeServer.Command
                                      $"xuid = {Program.RemoteUser.Xuid:X}\r\n" +
                                      $"server ip = {Program.RemoteUser.ServerIp}\r\n" +
                                      $"online ip = {Program.UserConfig.MpSettings.PublicIp}\r\n" +
-                                     $"online port = {Program.UserConfig.MpSettings.PublicPort}\r\n" +
+                                     "online port = 1000\r\n" +
+                                     //$"online port = {Program.UserConfig.MpSettings.PublicPort}\r\n" +
                                      $"auth token = {Program.RemoteUser.AuthToken}\r\n";
 
                     var output = Encoding.Default.GetBytes(signinInfo);

@@ -109,7 +109,7 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "MpSettings")]
     public class MpSettings
     {
-        private int _publicPort;
+        //private int _publicPort;
 
         [XmlElement(ElementName = "isOnline")]
         public bool IsOnline { get; set; } = true;
@@ -119,30 +119,30 @@ namespace Celeste_Launcher_Gui
 
         [XmlIgnore]
         public string PublicIp { get; set; } = "127.0.0.1";
+        //{
+        //public int PublicPort
 
-        [XmlElement(ElementName = "PublicPort")]
-        public int PublicPort
-        {
-            get
-            {
-                if (_publicPort != 0) return _publicPort;
+        //[XmlElement(ElementName = "PublicPort")]
+        //    get
+        //    {
+        //        if (_publicPort != 0) return _publicPort;
 
-                var rnd = new Random(DateTime.UtcNow.Millisecond);
-                _publicPort = rnd.Next(1001, ushort.MaxValue);
+        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //        _publicPort = rnd.Next(1001, ushort.MaxValue);
 
-                return _publicPort;
-            }
-            set
-            {
-                if (value != 0)
-                {
-                    _publicPort = value;
-                    return;
-                }
+        //        return _publicPort;
+        //    }
+        //    set
+        //    {
+        //        if (value != 0)
+        //        {
+        //            _publicPort = value;
+        //            return;
+        //        }
 
-                var rnd = new Random(DateTime.UtcNow.Millisecond);
-                _publicPort = rnd.Next(1001, ushort.MaxValue);
-            }
-        }
+        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //        _publicPort = rnd.Next(1001, ushort.MaxValue);
+        //    }
+        //}
     }
 }

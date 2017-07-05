@@ -9,7 +9,7 @@ using WebSocket4Net;
 
 #endregion
 
-namespace Celeste_Launcher_Gui
+namespace Celeste_Launcher_Gui.Helpers
 {
     public class AgentWebSocket : JsonWebSocket
     {

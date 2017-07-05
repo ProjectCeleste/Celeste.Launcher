@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Forms;
+using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.xLiveBridgeServer;
 using Celeste_User.Remote;
 using SuperSocket.SocketBase;
@@ -45,6 +46,14 @@ namespace Celeste_Launcher_Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
+            //
+            var pname = Process.GetProcessesByName("spartan");
+            if (pname.Length > 0)
+            {
+                SkinHelper.ShowMessage(@"Game already runing! Close it first.");
+                return;
+            }
 
             //Only one instance
             if (AlreadyRunning())
