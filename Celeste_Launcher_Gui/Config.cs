@@ -114,11 +114,12 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "isOnline")]
         public bool IsOnline { get; set; } = true;
 
-        [XmlElement(ElementName = "AutoPortMapping")]
-        public bool AutoPortMapping { get; set; } = true;
+        [XmlElement(ElementName = "isAutoPortMapping")]
+        public bool AutoPortMapping { get; set; }
 
         [XmlIgnore]
         public string PublicIp { get; set; } = "127.0.0.1";
+
         //{
         //public int PublicPort
 

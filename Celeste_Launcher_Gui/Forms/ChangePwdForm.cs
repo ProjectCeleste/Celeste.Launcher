@@ -93,8 +93,15 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void ChangePwdForm_Load(object sender, EventArgs e)
         {
-            if (DwmApi.DwmIsCompositionEnabled())
-                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+            }
+            catch (Exception)
+            {
+                //
+            }
         }
     }
 }

@@ -63,7 +63,7 @@ namespace Celeste_Launcher_Gui.Forms
             //Auto-Refresh User Info
             if (_timer != null) return;
 
-            _timer = new Timer(1000 * 90); //90Sec
+            _timer = new Timer(1000 * 60); //60Sec
             _timer.Elapsed += DoUserInfo;
             _timer.AutoReset = true;
             _timer.Enabled = true;
@@ -220,34 +220,46 @@ namespace Celeste_Launcher_Gui.Forms
             if (Program.UserConfig != null)
             {
                 //MpSettings
-                if (Program.UserConfig.MpSettings != null)
-                    if (Program.UserConfig.MpSettings.IsOnline)
-                    {
-                        Program.UserConfig.MpSettings.PublicIp = Program.RemoteUser.Ip;
-
-                        if (Program.UserConfig.MpSettings.AutoPortMapping)
+                try
+                {
+                    if (Program.UserConfig.MpSettings != null)
+                        if (Program.UserConfig.MpSettings.IsOnline)
                         {
-                            var mapPortTask = OpenNat.MapPortTask(1000, 1000);
-                            try
-                            {
-                                await mapPortTask;
-                                NatDiscoverer.TraceSource.Close();
-                            }
-                            catch (AggregateException ex)
-                            {
-                                NatDiscoverer.TraceSource.Close();
+                            Program.UserConfig.MpSettings.PublicIp = Program.RemoteUser.Ip;
 
-                                if (!(ex.InnerException is NatDeviceNotFoundException)) throw;
+                            if (Program.UserConfig.MpSettings.AutoPortMapping)
+                            {
+                                var mapPortTask = OpenNat.MapPortTask(1000, 1000);
+                                try
+                                {
+                                    await mapPortTask;
+                                    NatDiscoverer.TraceSource.Close();
+                                }
+                                catch (AggregateException ex)
+                                {
+                                    NatDiscoverer.TraceSource.Close();
 
-                                SkinHelper.ShowMessage(
-                                    "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
-                                    @"Project Celeste",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Enabled = true;
-                                return;
+                                    if (!(ex.InnerException is NatDeviceNotFoundException)) throw;
+
+                                    SkinHelper.ShowMessage(
+                                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                                        @"Project Celeste",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Enabled = true;
+                                    return;
+                                }
                             }
                         }
-                    }
+                }
+                catch
+                {
+                    SkinHelper.ShowMessage(
+                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                        @"Project Celeste",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Enabled = true;
+                    return;
+                }
 
                 //Save UserConfig
                 Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
@@ -272,8 +284,15 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (DwmApi.DwmIsCompositionEnabled())
-                DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+            }
+            catch (Exception)
+            {
+                //
+            }
         }
 
 
@@ -356,6 +375,11 @@ namespace Celeste_Launcher_Gui.Forms
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://discord.gg/pkM2RAm");
+        }
+
+        private void btnSmall1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

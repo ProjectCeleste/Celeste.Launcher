@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.mainContainer1 = new Celeste_Launcher_Gui.Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lb_Ver = new System.Windows.Forms.Label();
             this.btnSmall2 = new Celeste_Launcher_Gui.Controls.BtnSmall();
             this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -41,8 +43,6 @@
             this.tb_Password = new System.Windows.Forms.TextBox();
             this.lb_Password = new System.Windows.Forms.Label();
             this.lbl_Mail = new System.Windows.Forms.Label();
-            this.lb_Ver = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +80,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(758, 313);
             this.panel1.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
+            this.panel2.Location = new System.Drawing.Point(0, 165);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(758, 27);
+            this.panel2.TabIndex = 54;
+            // 
+            // lb_Ver
+            // 
+            this.lb_Ver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_Ver.AutoSize = true;
+            this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
+            this.lb_Ver.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Ver.ForeColor = System.Drawing.Color.Black;
+            this.lb_Ver.Location = new System.Drawing.Point(695, 132);
+            this.lb_Ver.Name = "lb_Ver";
+            this.lb_Ver.Size = new System.Drawing.Size(39, 16);
+            this.lb_Ver.TabIndex = 43;
+            this.lb_Ver.Text = "v131";
             // 
             // btnSmall2
             // 
@@ -207,28 +229,6 @@
             this.lbl_Mail.Size = new System.Drawing.Size(62, 24);
             this.lbl_Mail.TabIndex = 18;
             this.lbl_Mail.Text = "Email:";
-            // 
-            // lb_Ver
-            // 
-            this.lb_Ver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_Ver.AutoSize = true;
-            this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Ver.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Ver.ForeColor = System.Drawing.Color.Black;
-            this.lb_Ver.Location = new System.Drawing.Point(695, 132);
-            this.lb_Ver.Name = "lb_Ver";
-            this.lb_Ver.Size = new System.Drawing.Size(39, 16);
-            this.lb_Ver.TabIndex = 43;
-            this.lb_Ver.Text = "v130";
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
-            this.panel2.Location = new System.Drawing.Point(0, 165);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(758, 27);
-            this.panel2.TabIndex = 54;
             // 
             // LoginForm
             // 

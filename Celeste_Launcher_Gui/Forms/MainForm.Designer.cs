@@ -227,6 +227,7 @@
             this.btnSmall1.Name = "btnSmall1";
             this.btnSmall1.Size = new System.Drawing.Size(172, 42);
             this.btnSmall1.TabIndex = 52;
+            this.btnSmall1.Load += new System.EventHandler(this.btnSmall1_Load);
             this.btnSmall1.Click += new System.EventHandler(this.btn_Play_Click);
             // 
             // btnSmall3
@@ -264,7 +265,7 @@
             this.lb_Ver.Name = "lb_Ver";
             this.lb_Ver.Size = new System.Drawing.Size(39, 16);
             this.lb_Ver.TabIndex = 36;
-            this.lb_Ver.Text = "v130";
+            this.lb_Ver.Text = "v131";
             // 
             // lv_Friends
             // 

@@ -46,18 +46,32 @@ namespace Celeste_Launcher_Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            //
-            var pname = Process.GetProcessesByName("spartan");
-            if (pname.Length > 0)
+
+            try
             {
-                SkinHelper.ShowMessage(@"Game already runing! Close it first.");
-                return;
+                //
+                var pname = Process.GetProcessesByName("spartan");
+                if (pname.Length > 0)
+                {
+                    SkinHelper.ShowMessage(@"Game already runing! Close it first.");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                //
             }
 
-            //Only one instance
-            if (AlreadyRunning())
-                return;
+            try
+            {
+                //Only one instance
+                if (AlreadyRunning())
+                    return;
+            }
+            catch (Exception)
+            {
+                //
+            }
 
             //Load UserConfig
             if (File.Exists(UserConfigFilePath))
