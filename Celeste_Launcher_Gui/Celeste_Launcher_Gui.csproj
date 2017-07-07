@@ -33,6 +33,9 @@
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
@@ -60,14 +63,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WebSocket4Net, Version=0.15.0.9, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
@@ -76,6 +76,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Controls\BtnSmall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BtnSmall.Designer.cs">
+      <DependentUpon>BtnSmall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BoxContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BoxContainer.Designer.cs">
+      <DependentUpon>BoxContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DWM.cs" />
     <Compile Include="Forms\ChangePwdForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,12 +113,25 @@
     <Compile Include="Forms\ManageInviteForm.Designer.cs">
       <DependentUpon>ManageInviteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MpSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MpSettingForm.Designer.cs">
+      <DependentUpon>MpSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MsgBox.Designer.cs">
       <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MainContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MainContainer.Designer.cs">
+      <DependentUpon>MainContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\OpenNat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\RegisterForm.cs">
@@ -120,14 +146,21 @@
     <Compile Include="Forms\UpgradeForm.Designer.cs">
       <DependentUpon>UpgradeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SkinHelper.cs" />
-    <Compile Include="WebSocketClient.cs" />
+    <Compile Include="Helpers\SkinHelper.cs" />
+    <Compile Include="Helpers\WebSocketClient.cs" />
     <Compile Include="xLiveBridgeServer\Command\GetUserInfo.cs" />
+    <Compile Include="xLiveBridgeServer\Command\XUserFindUsers.cs" />
     <Compile Include="xLiveBridgeServer\PacketType.cs" />
     <Compile Include="xLiveBridgeServer\ReceiveFilter.cs" />
     <Compile Include="xLiveBridgeServer\RequestInfo.cs" />
     <Compile Include="xLiveBridgeServer\Server.cs" />
     <Compile Include="xLiveBridgeServer\Session.cs" />
+    <EmbeddedResource Include="Controls\BtnSmall.resx">
+      <DependentUpon>BtnSmall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BoxContainer.resx">
+      <DependentUpon>BoxContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,8 +173,14 @@
     <EmbeddedResource Include="Forms\ManageInviteForm.resx">
       <DependentUpon>ManageInviteForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MpSettingForm.resx">
+      <DependentUpon>MpSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MsgBox.resx">
       <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MainContainer.resx">
+      <DependentUpon>MainContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,6 +198,9 @@
     <EmbeddedResource Include="Forms\UpgradeForm.resx">
       <DependentUpon>UpgradeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -169,37 +211,47 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Aclonica.ttf" />
-    <None Include="xLiveBridgeServer\Config\log4net.config" />
-    <None Include="xLiveBridgeServer\Config\log4net.unix.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Ashley_Crawford_CG_1.otf" />
     <None Include="Resources\no-avatar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\paypal_donate_badge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_donateCC_LG.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btn_subscribeCC_LG.gif" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\AvatarBorder.png" />
+    <None Include="Resources\BarSeparatorVertical.png" />
+    <None Include="Resources\BarSeparator.png" />
+    <None Include="Resources\XButton_Hover.png" />
+    <None Include="Resources\Icon.png" />
+    <None Include="Resources\TopLRFluid.png" />
+    <None Include="Resources\BtnSmallHover.png" />
+    <None Include="Resources\BtnSmallNormal.png" />
+    <None Include="Resources\XButton_Normal.png" />
+    <None Include="Resources\BackgroundTexture.png" />
+    <None Include="Resources\BottomMiddleFluid.png" />
+    <None Include="Resources\BottomLeftFixed.png" />
+    <None Include="Resources\BottomRigthFixed.png" />
+    <None Include="Resources\MiddleRigthFluid.png" />
+    <None Include="Resources\MiddleLeftFluid.png" />
+    <None Include="Resources\TopMiddleFluid.png" />
+    <None Include="Resources\TopLeftFixed.png" />
+    <None Include="Resources\TopRigthFixed.png" />
     <None Include="Resources\message.png" />
-    <None Include="Resources\dialog.png" />
-    <None Include="Resources\mainform.png" />
-    <None Include="Resources\register.png" />
-    <None Include="Resources\login.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Celeste_User_Api\Celeste_User.csproj">
       <Project>{aecd370a-68cb-466b-b4f8-cc02cc6a9a5d}</Project>
       <Name>Celeste_User</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Open.Nat\Open.Nat.csproj">
+      <Project>{F5D74163-145F-47BF-83DC-D0E07249C6CA}</Project>
+      <Name>Open.Nat</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

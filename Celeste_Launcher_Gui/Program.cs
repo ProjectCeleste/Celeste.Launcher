@@ -6,10 +6,13 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Forms;
+using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.xLiveBridgeServer;
 using Celeste_User.Remote;
 using SuperSocket.SocketBase;
 using SuperSocket.SocketBase.Config;
+
+//using Mono.Nat;
 
 #endregion
 
@@ -17,7 +20,6 @@ namespace Celeste_Launcher_Gui
 {
     internal static class Program
     {
-
 #if DEBUG
         public static string WebSocketUri = "ws://127.0.0.1:4508/";
 #else
@@ -27,14 +29,14 @@ namespace Celeste_Launcher_Gui
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
         public static RemoteUser RemoteUser;
         public static readonly Server Server = new Server();
-        public static UserConfig UserConfig;
+        public static UserConfig UserConfig = new UserConfig();
         public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
 
         public static readonly ServerConfig ServerConfig = new ServerConfig
         {
             Name = "",
             Port = 4510,
-            Mode = SocketMode.Udp, 
+            Mode = SocketMode.Udp,
             MaxConnectionNumber = 10
         };
 
@@ -45,13 +47,43 @@ namespace Celeste_Launcher_Gui
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Only one instance
-            if (AlreadyRunning())
-                return;
+            try
+            {
+                //
+                var pname = Process.GetProcessesByName("spartan");
+                if (pname.Length > 0)
+                {
+                    SkinHelper.ShowMessage(@"Game already runing! Close it first.");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                //
+            }
+
+            try
+            {
+                //Only one instance
+                if (AlreadyRunning())
+                    return;
+            }
+            catch (Exception)
+            {
+                //
+            }
 
             //Load UserConfig
-            if (File.Exists(UserConfigFilePath))
-                UserConfig = UserConfig.Load(UserConfigFilePath);
+            try
+            {
+                if (File.Exists(UserConfigFilePath))
+                    UserConfig = UserConfig.Load(UserConfigFilePath);
+            }
+            catch (Exception)
+            {
+                //
+            }
+            
 
             //Start Gui
             Application.Run(new MainForm());

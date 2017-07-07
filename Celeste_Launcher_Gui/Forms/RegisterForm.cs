@@ -3,8 +3,7 @@
 using System;
 using System.Dynamic;
 using System.Windows.Forms;
-using Celeste_User;
-using System.Collections.Generic;
+using Celeste_Launcher_Gui.Helpers;
 
 #endregion
 
@@ -19,13 +18,13 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label>() { lb_Register });
+            //Configure Fonts
+            SkinHelper.SetFont(Controls);
         }
 
         private void btn_Register_Click(object sender, EventArgs e)
         {
-            if (!Helpers.IsValideEmailAdress(tb_Mail.Text))
+            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
                 SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -33,7 +32,7 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            if (!Helpers.IsValideUserName(tb_UserName.Text))
+            if (!Celeste_User.Helpers.IsValideUserName(tb_UserName.Text))
             {
                 SkinHelper.ShowMessage(
                     @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 16 char!",
@@ -172,6 +171,24 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.WebSocketClient.AgentWebSocket.Close();
 
             _registerUserDone = true;
+        }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+            }
+            catch (Exception)
+            {
+                //
+            }
+        }
+
+        private void btnSmall2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

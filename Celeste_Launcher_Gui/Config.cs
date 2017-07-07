@@ -2,8 +2,10 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Xml.Serialization;
-using Celeste_User;
 
 #endregion
 
@@ -29,14 +31,26 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "GameLanguage")]
         public GameLanguage GameLanguage { get; set; } = GameLanguage.enUS;
 
+        [XmlElement(ElementName = "MpSettings")]
+        public MpSettings MpSettings { get; set; } = new MpSettings();
+
         public void Save(string path)
         {
-            Helpers.SerializeToFile(this, path);
+            Celeste_User.Helpers.SerializeToFile(this, path);
         }
 
         public static UserConfig Load(string path)
         {
-            return Helpers.DeserializeFromFile<UserConfig>(path);
+            var userConfig = Celeste_User.Helpers.DeserializeFromFile<UserConfig>(path);
+
+            if (userConfig.MpSettings.IsOnline) return userConfig;
+
+            var firstOrDefault = Dns.GetHostEntry(Dns.GetHostName()).AddressList
+                .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
+
+            userConfig.MpSettings.PublicIp = firstOrDefault?.ToString() ?? @"127.0.0.1";
+
+            return userConfig;
         }
     }
 
@@ -64,7 +78,7 @@ namespace Celeste_Launcher_Gui
 
                 try
                 {
-                    _uncryptedPassword = Helpers.Decrypt(CryptedPassword, true);
+                    _uncryptedPassword = Celeste_User.Helpers.Decrypt(CryptedPassword, true);
                 }
                 catch (Exception)
                 {
@@ -80,7 +94,7 @@ namespace Celeste_Launcher_Gui
 
                 try
                 {
-                    CryptedPassword = Helpers.Encrypt(value, true);
+                    CryptedPassword = Celeste_User.Helpers.Encrypt(value, true);
                 }
                 catch (Exception)
                 {
@@ -90,5 +104,46 @@ namespace Celeste_Launcher_Gui
                 _uncryptedPassword = value;
             }
         }
+    }
+
+    [XmlRoot(ElementName = "MpSettings")]
+    public class MpSettings
+    {
+        //private int _publicPort;
+
+        [XmlElement(ElementName = "isOnline")]
+        public bool IsOnline { get; set; } = true;
+
+        [XmlElement(ElementName = "isAutoPortMapping")]
+        public bool AutoPortMapping { get; set; }
+
+        [XmlIgnore]
+        public string PublicIp { get; set; } = "127.0.0.1";
+
+        //{
+        //public int PublicPort
+
+        //[XmlElement(ElementName = "PublicPort")]
+        //    get
+        //    {
+        //        if (_publicPort != 0) return _publicPort;
+
+        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //        _publicPort = rnd.Next(1001, ushort.MaxValue);
+
+        //        return _publicPort;
+        //    }
+        //    set
+        //    {
+        //        if (value != 0)
+        //        {
+        //            _publicPort = value;
+        //            return;
+        //        }
+
+        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //        _publicPort = rnd.Next(1001, ushort.MaxValue);
+        //    }
+        //}
     }
 }
