@@ -29,73 +29,55 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePwdForm));
-            this.tb_Password = new System.Windows.Forms.TextBox();
-            this.lb_Password = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.mainContainer1 = new Celeste_Launcher_Gui.Controls.MainContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lb_Close = new System.Windows.Forms.Label();
-            this.lb_Title = new System.Windows.Forms.Label();
-            this.lb_Save = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_Password = new System.Windows.Forms.TextBox();
+            this.lb_Password = new System.Windows.Forms.Label();
+            this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tb_Password
+            // mainContainer1
             // 
-            this.tb_Password.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tb_Password.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Password.Location = new System.Drawing.Point(237, 97);
-            this.tb_Password.MaxLength = 32;
-            this.tb_Password.Name = "tb_Password";
-            this.tb_Password.PasswordChar = '*';
-            this.tb_Password.Size = new System.Drawing.Size(231, 23);
-            this.tb_Password.TabIndex = 0;
-            this.tb_Password.UseSystemPasswordChar = true;
+            this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer1.Location = new System.Drawing.Point(0, 0);
+            this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
+            this.mainContainer1.Name = "mainContainer1";
+            this.mainContainer1.Size = new System.Drawing.Size(759, 262);
+            this.mainContainer1.TabIndex = 0;
             // 
-            // lb_Password
+            // panel1
             // 
-            this.lb_Password.AutoSize = true;
-            this.lb_Password.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Password.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Password.Location = new System.Drawing.Point(34, 99);
-            this.lb_Password.Name = "lb_Password";
-            this.lb_Password.Size = new System.Drawing.Size(109, 18);
-            this.lb_Password.TabIndex = 9;
-            this.lb_Password.Text = "Old password:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(237, 166);
-            this.textBox1.MaxLength = 32;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(231, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.UseSystemPasswordChar = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(34, 168);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 18);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "New password:";
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.panel1.Controls.Add(this.btnSmall1);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.tb_Password);
+            this.panel1.Controls.Add(this.lb_Password);
+            this.panel1.Location = new System.Drawing.Point(30, 77);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(699, 158);
+            this.panel1.TabIndex = 1;
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(237, 239);
+            this.textBox2.Location = new System.Drawing.Point(243, 109);
             this.textBox2.MaxLength = 32;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(231, 23);
-            this.textBox2.TabIndex = 2;
+            this.textBox2.Size = new System.Drawing.Size(223, 23);
+            this.textBox2.TabIndex = 16;
             this.textBox2.UseSystemPasswordChar = true;
             // 
             // label2
@@ -103,92 +85,103 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 244);
+            this.label2.Location = new System.Drawing.Point(22, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(173, 18);
-            this.label2.TabIndex = 13;
+            this.label2.TabIndex = 19;
             this.label2.Text = "Confirm new password:";
             // 
-            // lb_Close
+            // textBox1
             // 
-            this.lb_Close.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Close.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Close.ForeColor = System.Drawing.Color.Black;
-            this.lb_Close.Location = new System.Drawing.Point(444, 14);
-            this.lb_Close.Name = "lb_Close";
-            this.lb_Close.Size = new System.Drawing.Size(41, 38);
-            this.lb_Close.TabIndex = 18;
-            this.lb_Close.Text = "X";
-            this.lb_Close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(243, 68);
+            this.textBox1.MaxLength = 32;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '*';
+            this.textBox1.Size = new System.Drawing.Size(223, 23);
+            this.textBox1.TabIndex = 15;
+            this.textBox1.UseSystemPasswordChar = true;
             // 
-            // lb_Title
+            // label1
             // 
-            this.lb_Title.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Title.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.lb_Title.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Title.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lb_Title.Location = new System.Drawing.Point(12, 14);
-            this.lb_Title.Name = "lb_Title";
-            this.lb_Title.Size = new System.Drawing.Size(426, 38);
-            this.lb_Title.TabIndex = 17;
-            this.lb_Title.Text = "Project Celeste - Change Password";
-            this.lb_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 18);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "New password:";
             // 
-            // lb_Save
+            // tb_Password
             // 
-            this.lb_Save.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Save.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Save.ForeColor = System.Drawing.Color.White;
-            this.lb_Save.Location = new System.Drawing.Point(168, 303);
-            this.lb_Save.Name = "lb_Save";
-            this.lb_Save.Size = new System.Drawing.Size(150, 36);
-            this.lb_Save.TabIndex = 19;
-            this.lb_Save.Text = "Save";
-            this.lb_Save.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lb_Save.Click += new System.EventHandler(this.btn_Login_Click);
+            this.tb_Password.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_Password.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Password.Location = new System.Drawing.Point(243, 23);
+            this.tb_Password.MaxLength = 32;
+            this.tb_Password.Name = "tb_Password";
+            this.tb_Password.PasswordChar = '*';
+            this.tb_Password.Size = new System.Drawing.Size(223, 23);
+            this.tb_Password.TabIndex = 14;
+            this.tb_Password.UseSystemPasswordChar = true;
+            // 
+            // lb_Password
+            // 
+            this.lb_Password.AutoSize = true;
+            this.lb_Password.BackColor = System.Drawing.Color.Transparent;
+            this.lb_Password.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Password.Location = new System.Drawing.Point(22, 27);
+            this.lb_Password.Name = "lb_Password";
+            this.lb_Password.Size = new System.Drawing.Size(109, 18);
+            this.lb_Password.TabIndex = 17;
+            this.lb_Password.Text = "Old password:";
+            // 
+            // btnSmall1
+            // 
+            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
+            this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSmall1.BtnText = "SAVE";
+            this.btnSmall1.Location = new System.Drawing.Point(504, 59);
+            this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSmall1.Name = "btnSmall1";
+            this.btnSmall1.Size = new System.Drawing.Size(172, 42);
+            this.btnSmall1.TabIndex = 20;
+            this.btnSmall1.Click += new System.EventHandler(this.btnSmall1_Click);
             // 
             // ChangePwdForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Magenta;
-            this.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.dialog;
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(503, 384);
-            this.ControlBox = false;
-            this.Controls.Add(this.lb_Save);
-            this.Controls.Add(this.lb_Close);
-            this.Controls.Add(this.lb_Title);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tb_Password);
-            this.Controls.Add(this.lb_Password);
+            this.ClientSize = new System.Drawing.Size(759, 262);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.mainContainer1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePwdForm";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project Celeste -- Change Password";
-            this.TransparencyKey = System.Drawing.Color.Magenta;
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.ChangePwdForm_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox tb_Password;
-        private System.Windows.Forms.Label lb_Password;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private Controls.MainContainer mainContainer1;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lb_Close;
-        private System.Windows.Forms.Label lb_Title;
-        private System.Windows.Forms.Label lb_Save;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_Password;
+        private System.Windows.Forms.Label lb_Password;
+        private Controls.BtnSmall btnSmall1;
     }
 }

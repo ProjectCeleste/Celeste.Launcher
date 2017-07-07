@@ -1,14 +1,15 @@
 ﻿#region Using directives
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Timers;
 using System.Windows.Forms;
+using Celeste_Launcher_Gui.Helpers;
 using Celeste_User.Enum;
 using Celeste_User.Remote;
+using Open.Nat;
 using Timer = System.Timers.Timer;
 
 #endregion
@@ -25,8 +26,8 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_ManageInvite, lb_Play});
+            //Configure Fonts
+            SkinHelper.SetFont(Controls);
 
             //Game Lang
             if (Program.UserConfig != null)
@@ -81,6 +82,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             _timer.Stop();
             Program.WebSocketClient.AgentWebSocket.Close();
+            NatDiscoverer.ReleaseAll();
         }
 
         private void linklbl_ReportBug_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -205,7 +207,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void btn_Play_Click(object sender, EventArgs e)
+        private async void btn_Play_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
@@ -214,23 +216,86 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            //Save UserConfig
+            //UserConfig
             if (Program.UserConfig != null)
             {
-                Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
+                //MpSettings
+                try
+                {
+                    if (Program.UserConfig.MpSettings != null)
+                        if (Program.UserConfig.MpSettings.IsOnline)
+                        {
+                            Program.UserConfig.MpSettings.PublicIp = Program.RemoteUser.Ip;
 
+                            if (Program.UserConfig.MpSettings.AutoPortMapping)
+                            {
+                                var mapPortTask = OpenNat.MapPortTask(1000, 1000);
+                                try
+                                {
+                                    await mapPortTask;
+                                    NatDiscoverer.TraceSource.Close();
+                                }
+                                catch (AggregateException ex)
+                                {
+                                    NatDiscoverer.TraceSource.Close();
+
+                                    if (!(ex.InnerException is NatDeviceNotFoundException)) throw;
+
+                                    SkinHelper.ShowMessage(
+                                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                                        @"Project Celeste",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Enabled = true;
+                                    return;
+                                }
+                            }
+                        }
+                }
+                catch
+                {
+                    SkinHelper.ShowMessage(
+                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                        @"Project Celeste",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Enabled = true;
+                    return;
+                }
+
+                //Save UserConfig
+                Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
                 Program.UserConfig.Save(Program.UserConfigFilePath);
             }
 
+            //Launch Game
             var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
 
             Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
         }
 
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.xbox.com/en-us/developers/rules");
+            using (var form = new MpSettingForm(Program.UserConfig.MpSettings))
+            {
+                Hide();
+                form.ShowDialog();
+                Show();
+            }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+            }
+            catch (Exception)
+            {
+                //
+            }
+        }
+
+
 
         #region "User Info"
 
@@ -285,24 +350,6 @@ namespace Celeste_Launcher_Gui.Forms
             lbl_UserName.Text = $@"User Name: {remoteUser.ProfileName}";
             lbl_Rank.Text = $@"Rank: {remoteUser.Rank}";
             //
-            if (!remoteUser.BannedGame && !remoteUser.BannedChat)
-                lbl_Banned.Text = @"Banned: false";
-            else if (remoteUser.BannedGame && remoteUser.BannedChat)
-                lbl_Banned.Text = @"Banned: Game and Chat!";
-            else if (remoteUser.BannedGame && !remoteUser.BannedChat)
-                lbl_Banned.Text = @"Banned: Game!";
-            else if (!remoteUser.BannedGame && remoteUser.BannedChat)
-                lbl_Banned.Text = @"Banned: Chat!";
-            //
-            if (!remoteUser.IsConnectedGameServer && !remoteUser.IsConnectedCustomChatServer)
-                lbl_Connected.Text = @"Connected: false";
-            else if (remoteUser.IsConnectedGameServer && remoteUser.IsConnectedCustomChatServer)
-                lbl_Connected.Text = @"Connected: Game and Chat!";
-            else if (remoteUser.IsConnectedGameServer && !remoteUser.IsConnectedCustomChatServer)
-                lbl_Connected.Text = @"Connected: Game";
-            else if (!remoteUser.IsConnectedGameServer && remoteUser.IsConnectedCustomChatServer)
-                lbl_Connected.Text = @"Connected: Chat";
-            //
             comboBox1.Items.Clear();
             if (remoteUser.AllowedCiv.Count > 0)
                 foreach (var civ in remoteUser.AllowedCiv)
@@ -319,5 +366,20 @@ namespace Celeste_Launcher_Gui.Forms
         }
 
         #endregion
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://aoedb.net/");
+        }
+
+        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://discord.gg/pkM2RAm");
+        }
+
+        private void btnSmall1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

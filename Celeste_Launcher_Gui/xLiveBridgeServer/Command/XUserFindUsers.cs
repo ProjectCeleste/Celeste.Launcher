@@ -3,6 +3,7 @@
 using System.Dynamic;
 using System.IO;
 using System.Text;
+using Celeste_Launcher_Gui.Helpers;
 using SuperSocket.SocketBase.Command;
 
 #endregion

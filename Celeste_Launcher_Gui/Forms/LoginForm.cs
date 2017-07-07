@@ -1,11 +1,10 @@
 ﻿#region Using directives
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Windows.Forms;
-using Celeste_User;
+using Celeste_Launcher_Gui.Helpers;
 using Celeste_User.Remote;
 
 #endregion
@@ -18,8 +17,8 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //Configure Skin
-            SkinHelper.ConfigureSkin(this, lb_Title, lb_Close, new List<Label> {lb_Register, lb_Login});
+            //Configure Fonts
+            SkinHelper.SetFont(Controls);
 
             //Load UserConfig
             if (Program.UserConfig?.LoginInfo?.RememberMe != true) return;
@@ -31,7 +30,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            if (!Helpers.IsValideEmailAdress(tb_Mail.Text))
+            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
                 SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -110,10 +109,12 @@ namespace Celeste_Launcher_Gui.Forms
 
             Program.WebSocketClient.State = WebSocketClientState.Logging;
 
+#pragma warning disable IDE0017 // Simplifier l'initialisation des objets
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-            loginInfo.Version = 127;
+            loginInfo.Version = 131;
+#pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
 
@@ -134,9 +135,11 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            Enabled = true;
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Logged) return;
+            if (Program.WebSocketClient.State != WebSocketClientState.Logged)
+            {
+                Enabled = true;
+                return;
+            }
 
             //Save UserConfig
             if (Program.UserConfig == null)
@@ -186,11 +189,27 @@ namespace Celeste_Launcher_Gui.Forms
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
-            if (pname.Length > 0)
+            if (pname.Length <= 0) return;
+            SkinHelper.ShowMessage(@"You need to close the game first!");
+            e.Cancel = true;
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            try
             {
-                SkinHelper.ShowMessage(@"You need to close the game first!");
-                e.Cancel = true;
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
             }
+            catch (Exception)
+            {
+                //
+            }
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://www.xbox.com/en-us/developers/rules");
         }
     }
 }

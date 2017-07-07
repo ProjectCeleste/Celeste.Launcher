@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celeste_Launcher_Gui", "Cel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celeste_User", "Celeste_User_Api\Celeste_User.csproj", "{AECD370A-68CB-466B-B4F8-CC02CC6A9A5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Open.Nat", "Open.Nat\Open.Nat.csproj", "{F5D74163-145F-47BF-83DC-D0E07249C6CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{AECD370A-68CB-466B-B4F8-CC02CC6A9A5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AECD370A-68CB-466B-B4F8-CC02CC6A9A5D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AECD370A-68CB-466B-B4F8-CC02CC6A9A5D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Debug|Any CPU.ActiveCfg = Debug 4.5|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Debug|Any CPU.Build.0 = Debug 4.5|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Debug|Mixed Platforms.ActiveCfg = Debug 4.5|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Debug|Mixed Platforms.Build.0 = Debug 4.5|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Release|Any CPU.ActiveCfg = Release 4.5|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Release|Any CPU.Build.0 = Release 4.5|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Release|Mixed Platforms.ActiveCfg = Release 4.5|Any CPU
+		{F5D74163-145F-47BF-83DC-D0E07249C6CA}.Release|Mixed Platforms.Build.0 = Release 4.5|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

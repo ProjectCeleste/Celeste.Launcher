@@ -28,88 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lb_Message = new System.Windows.Forms.Label();
-            this.lb_Close = new System.Windows.Forms.Label();
-            this.lb_Title = new System.Windows.Forms.Label();
-            this.lb_OK = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MsgBox));
+            this.boxContainer1 = new Celeste_Launcher_Gui.Controls.BoxContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lb_Message
+            // boxContainer1
             // 
-            this.lb_Message.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Message.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Message.Location = new System.Drawing.Point(36, 83);
-            this.lb_Message.Name = "lb_Message";
-            this.lb_Message.Size = new System.Drawing.Size(372, 141);
-            this.lb_Message.TabIndex = 0;
-            this.lb_Message.Text = "Message";
-            this.lb_Message.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.boxContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.boxContainer1.CloseButton = true;
+            this.boxContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boxContainer1.Location = new System.Drawing.Point(0, 0);
+            this.boxContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.boxContainer1.MinimumSize = new System.Drawing.Size(310, 250);
+            this.boxContainer1.Name = "boxContainer1";
+            this.boxContainer1.Size = new System.Drawing.Size(440, 310);
+            this.boxContainer1.TabIndex = 0;
             // 
-            // lb_Close
+            // panel1
             // 
-            this.lb_Close.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Close.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Close.ForeColor = System.Drawing.Color.Black;
-            this.lb_Close.Location = new System.Drawing.Point(379, 13);
-            this.lb_Close.Name = "lb_Close";
-            this.lb_Close.Size = new System.Drawing.Size(41, 38);
-            this.lb_Close.TabIndex = 20;
-            this.lb_Close.Text = "X";
-            this.lb_Close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.panel1.Controls.Add(this.btnSmall1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(30, 75);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(382, 211);
+            this.panel1.TabIndex = 1;
             // 
-            // lb_Title
+            // label1
             // 
-            this.lb_Title.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Title.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.lb_Title.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Title.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lb_Title.Location = new System.Drawing.Point(12, 13);
-            this.lb_Title.Name = "lb_Title";
-            this.lb_Title.Size = new System.Drawing.Size(354, 38);
-            this.lb_Title.TabIndex = 19;
-            this.lb_Title.Text = "Project Celeste - Message";
-            this.lb_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(382, 153);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "MsgBox";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lb_OK
+            // btnSmall1
             // 
-            this.lb_OK.BackColor = System.Drawing.Color.Transparent;
-            this.lb_OK.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_OK.ForeColor = System.Drawing.Color.White;
-            this.lb_OK.Location = new System.Drawing.Point(149, 243);
-            this.lb_OK.Name = "lb_OK";
-            this.lb_OK.Size = new System.Drawing.Size(150, 36);
-            this.lb_OK.TabIndex = 21;
-            this.lb_OK.Text = "OK";
-            this.lb_OK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lb_OK.Click += new System.EventHandler(this.lb_OK_Click);
+            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
+            this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSmall1.BtnText = "OK";
+            this.btnSmall1.Location = new System.Drawing.Point(105, 162);
+            this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSmall1.Name = "btnSmall1";
+            this.btnSmall1.Size = new System.Drawing.Size(172, 42);
+            this.btnSmall1.TabIndex = 1;
+            this.btnSmall1.Click += new System.EventHandler(this.lb_OK_Click);
             // 
             // MsgBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Magenta;
-            this.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.message;
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(440, 310);
-            this.ControlBox = false;
-            this.Controls.Add(this.lb_OK);
-            this.Controls.Add(this.lb_Close);
-            this.Controls.Add(this.lb_Title);
-            this.Controls.Add(this.lb_Message);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.boxContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MsgBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsgBox";
-            this.TransparencyKey = System.Drawing.Color.Magenta;
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.MsgBox_Load);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lb_Message;
-        private System.Windows.Forms.Label lb_Close;
-        private System.Windows.Forms.Label lb_Title;
-        private System.Windows.Forms.Label lb_OK;
+        private Controls.BoxContainer boxContainer1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private Controls.BtnSmall btnSmall1;
     }
 }
