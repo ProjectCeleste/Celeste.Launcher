@@ -74,8 +74,16 @@ namespace Celeste_Launcher_Gui
             }
 
             //Load UserConfig
-            if (File.Exists(UserConfigFilePath))
-                UserConfig = UserConfig.Load(UserConfigFilePath);
+            try
+            {
+                if (File.Exists(UserConfigFilePath))
+                    UserConfig = UserConfig.Load(UserConfigFilePath);
+            }
+            catch (Exception)
+            {
+                //
+            }
+            
 
             //Start Gui
             Application.Run(new MainForm());
