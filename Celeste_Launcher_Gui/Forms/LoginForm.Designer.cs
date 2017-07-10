@@ -101,7 +101,7 @@
             this.lb_Ver.Name = "lb_Ver";
             this.lb_Ver.Size = new System.Drawing.Size(39, 16);
             this.lb_Ver.TabIndex = 43;
-            this.lb_Ver.Text = "v132";
+            this.lb_Ver.Text = "v133";
             // 
             // btnSmall2
             // 
@@ -175,6 +175,7 @@
             this.linkLbl_ForgotPwd.AutoSize = true;
             this.linkLbl_ForgotPwd.BackColor = System.Drawing.Color.Transparent;
             this.linkLbl_ForgotPwd.DisabledLinkColor = System.Drawing.Color.Blue;
+            this.linkLbl_ForgotPwd.Enabled = false;
             this.linkLbl_ForgotPwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLbl_ForgotPwd.LinkColor = System.Drawing.Color.DarkBlue;
             this.linkLbl_ForgotPwd.Location = new System.Drawing.Point(26, 126);

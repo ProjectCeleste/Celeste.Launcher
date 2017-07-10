@@ -113,7 +113,7 @@ namespace Celeste_Launcher_Gui.Forms
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-            loginInfo.Version = 132;
+            loginInfo.Version = 133;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
