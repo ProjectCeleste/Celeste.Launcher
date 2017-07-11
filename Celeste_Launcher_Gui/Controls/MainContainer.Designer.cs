@@ -31,6 +31,7 @@
             this.tLP_Main = new System.Windows.Forms.TableLayoutPanel();
             this.tLP_Top = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_Close = new System.Windows.Forms.PictureBox();
             this.TopLeftFixed = new System.Windows.Forms.Panel();
             this.TopMiddleFluid = new System.Windows.Forms.Panel();
@@ -48,6 +49,7 @@
             this.tLP_Main.SuspendLayout();
             this.tLP_Top.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).BeginInit();
             this.TopMiddleFluid.SuspendLayout();
             this.tLP_Middle.SuspendLayout();
@@ -100,12 +102,29 @@
             this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLRFluid;
             this.panel2.Controls.Add(this.btn_Close);
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(771, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 75);
             this.panel2.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.MinimizeButtonNormal;
+            this.pictureBox1.Location = new System.Drawing.Point(57, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 44);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             // 
             // btn_Close
             // 
@@ -292,10 +311,12 @@
             this.MinimumSize = new System.Drawing.Size(310, 250);
             this.Name = "MainContainer";
             this.Size = new System.Drawing.Size(950, 600);
+            this.Load += new System.EventHandler(this.MainContainer_Load);
             this.tLP_Main.ResumeLayout(false);
             this.tLP_Top.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Close)).EndInit();
             this.TopMiddleFluid.ResumeLayout(false);
             this.tLP_Middle.ResumeLayout(false);
@@ -323,5 +344,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

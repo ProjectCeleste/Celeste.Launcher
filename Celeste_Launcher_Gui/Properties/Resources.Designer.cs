@@ -203,6 +203,26 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MinimizeButtonHover {
+            get {
+                object obj = ResourceManager.GetObject("MinimizeButtonHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MinimizeButtonNormal {
+            get {
+                object obj = ResourceManager.GetObject("MinimizeButtonNormal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap no_avatar {
             get {
                 object obj = ResourceManager.GetObject("no_avatar", resourceCulture);

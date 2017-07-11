@@ -224,6 +224,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\MinimizeButtonHover.png" />
+    <None Include="Resources\MinimizeButtonNormal.png" />
     <None Include="Resources\AvatarBorder.png" />
     <None Include="Resources\BarSeparatorVertical.png" />
     <None Include="Resources\BarSeparator.png" />
