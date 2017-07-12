@@ -79,6 +79,7 @@
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.mainContainer1.MinimizeBox = true;
             this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
             this.mainContainer1.Name = "mainContainer1";
             this.mainContainer1.Size = new System.Drawing.Size(925, 543);
@@ -265,7 +266,7 @@
             this.lb_Ver.Name = "lb_Ver";
             this.lb_Ver.Size = new System.Drawing.Size(39, 16);
             this.lb_Ver.TabIndex = 36;
-            this.lb_Ver.Text = "v132";
+            this.lb_Ver.Text = "v134";
             // 
             // lv_Friends
             // 

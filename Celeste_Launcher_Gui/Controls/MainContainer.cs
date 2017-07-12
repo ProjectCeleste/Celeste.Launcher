@@ -14,6 +14,8 @@ namespace Celeste_Launcher_Gui.Controls
     // [Designer(typeof(MyCustomControlDesigner1))]
     public partial class MainContainer : UserControl
     {
+        public bool MinimizeBox { get; set; }
+
         public MainContainer()
         {
             InitializeComponent();
@@ -52,6 +54,27 @@ namespace Celeste_Launcher_Gui.Controls
         private void btn_Close_MouseLeave(object sender, EventArgs e)
         {
             btn_Close.Image = Resources.XButton_Normal;
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            if(ParentForm != null)
+                ParentForm.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Resources.MinimizeButtonHover;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Resources.MinimizeButtonNormal;
+        }
+
+        private void MainContainer_Load(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = MinimizeBox;
         }
     }
 

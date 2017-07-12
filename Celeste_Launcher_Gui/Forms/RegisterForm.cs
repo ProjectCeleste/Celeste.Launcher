@@ -35,7 +35,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Celeste_User.Helpers.IsValideUserName(tb_UserName.Text))
             {
                 SkinHelper.ShowMessage(
-                    @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 16 char!",
+                    @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

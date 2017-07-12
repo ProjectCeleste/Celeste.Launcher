@@ -24,7 +24,7 @@ namespace Celeste_User
             + @"([a-zA-Z0-9]+[\w-]+\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,23})$";
 
         private const string MatchUserNamePattern =
-            @"^[A-Za-z0-9]{3,16}$";
+            @"^[A-Za-z0-9]{3,15}$";
 
         private static readonly Random Random = new Random();
 
