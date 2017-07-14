@@ -52,6 +52,7 @@
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.mainContainer1.MinimizeBox = false;
             this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
             this.mainContainer1.Name = "mainContainer1";
             this.mainContainer1.Size = new System.Drawing.Size(808, 410);

@@ -925,7 +925,7 @@
 </value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Age of Empires Online © Microsoft Corporation. Project Celeste was created under Microsoft's "Game Content Usage Rules" using assets from Age of Empires Online, and it is not endorsed by or affiliated with Microsoft.  </value>
+    <value>Age of Empires Online © Microsoft Corporation. Project Celeste was created under Microsoft's "Game Content Usage Rules" using assets from Age of Empires Online, and it is not endorsed by or affiliated with Microsoft.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
