@@ -102,7 +102,7 @@
             this.lb_Ver.Name = "lb_Ver";
             this.lb_Ver.Size = new System.Drawing.Size(39, 16);
             this.lb_Ver.TabIndex = 43;
-            this.lb_Ver.Text = "v134";
+            this.lb_Ver.Text = "v135";
             // 
             // btnSmall2
             // 

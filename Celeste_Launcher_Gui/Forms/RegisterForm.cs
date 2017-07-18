@@ -114,6 +114,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
 
             dynamic registerUserInfo = new ExpandoObject();
+            registerUserInfo.Version = 135;
             registerUserInfo.Mail = email;
             registerUserInfo.Password = password;
             registerUserInfo.UserName = username;

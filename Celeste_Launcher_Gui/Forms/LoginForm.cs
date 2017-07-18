@@ -54,6 +54,33 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 Hide();
                 form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    tb_Mail.Text = form.tb_Mail.Text;
+                    tb_Password.Text = form.tb_Password.Text;
+                    cb_RememberMe.Checked = true;
+
+                    //Save UserConfig
+                    if (Program.UserConfig == null)
+                    {
+                        Program.UserConfig = new UserConfig
+                        {
+                            LoginInfo = new LoginInfo
+                            {
+                                Email = tb_Mail.Text,
+                                Password = tb_Password.Text,
+                                RememberMe = cb_RememberMe.Checked
+                            }
+                        };
+                    }
+                    else
+                    {
+                        Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
+                        Program.UserConfig.LoginInfo.Password = tb_Password.Text;
+                        Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                    }
+                    Program.UserConfig.Save(Program.UserConfigFilePath);
+                }
                 Show();
             }
         }
@@ -113,7 +140,7 @@ namespace Celeste_Launcher_Gui.Forms
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-            loginInfo.Version = 134;
+            loginInfo.Version = 135;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
