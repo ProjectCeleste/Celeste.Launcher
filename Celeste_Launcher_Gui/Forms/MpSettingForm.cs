@@ -99,13 +99,21 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (rb_Lan.Checked)
             {
+                
+                var netDeviceSelectDialog = new NetworkDeviceSelectionDialog();
+                netDeviceSelectDialog.ShowDialog(this);
+
+                if(netDeviceSelectDialog.DialogResult == DialogResult.Cancel)
+                {
+                    rb_Lan.Checked = false;
+                    rb_Wan.Checked = true;
+                    return;
+                }
+
                 if (rb_Wan.Checked)
                     rb_Wan.Checked = false;
-
-                var firstOrDefault = Dns.GetHostEntry(Dns.GetHostName()).AddressList
-                    .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
-
-                tb_remoteIp.Text = firstOrDefault?.ToString() ?? @"127.0.0.1";
+                
+                tb_remoteIp.Text = netDeviceSelectDialog.SelectedIPAddress?.ToString() ?? @"127.0.0.1";
             }
             else
             {

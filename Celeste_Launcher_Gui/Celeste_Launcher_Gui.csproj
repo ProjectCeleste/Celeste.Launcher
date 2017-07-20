@@ -88,6 +88,12 @@
     <Compile Include="Controls\BoxContainer.Designer.cs">
       <DependentUpon>BoxContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NetworkDeviceSelectionDialog.Designer.cs">
+      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\DWM.cs" />
     <Compile Include="Forms\ChangePwdForm.cs">
       <SubType>Form</SubType>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MainContainer.resx">
       <DependentUpon>MainContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
+      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
