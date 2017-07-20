@@ -26,7 +26,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strInvalidEmail"), @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
@@ -35,31 +35,31 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Celeste_User.Helpers.IsValideUserName(tb_UserName.Text))
             {
                 SkinHelper.ShowMessage(
-                    @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!",
+                    MultiLanguage.GetString("strInvalidUserName"),
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_ConfirmPassword.Text != tb_Password.Text)
-            {
-                SkinHelper.ShowMessage(@"Password value and confirm password value don't match!",
+            {                
+                SkinHelper.ShowMessage(MultiLanguage.GetString("srtPasswordConfirmNotMatch"),
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
-            {
-                SkinHelper.ShowMessage(@"Password minimum length is 8 char,  maximum length is 32 char!",
+            {                
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strInvalidPassordLength"),
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_InviteCode.Text.Length != 128)
-            {
-                SkinHelper.ShowMessage(@"Invalid Invite Code!",
+            {                
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strInvalidInviteCode"),
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -76,8 +76,8 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
                 Program.WebSocketClient.State == WebSocketClientState.Logging)
-            {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Login",
+            {                
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strAlreadyLoged"), @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
@@ -96,7 +96,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                     if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
 
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Login",
+                    SkinHelper.ShowMessage(MultiLanguage.GetString("strServerConectionTimeot"), @"Project Celeste -- Login",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     Enabled = true;
@@ -106,7 +106,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (Program.WebSocketClient.State != WebSocketClientState.Connected)
             {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strServerOffline"), @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
@@ -129,7 +129,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
 
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strServerResponseTimeot"), @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -155,8 +155,8 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (result["Result"].ToObject<bool>())
             {
-                _registerUserFailed = false;
-                SkinHelper.ShowMessage(@"Registred with success.", @"Project Celeste -- Register",
+                _registerUserFailed = false;                
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strRegisteredSuccess"), @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else

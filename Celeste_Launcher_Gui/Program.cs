@@ -46,7 +46,7 @@ namespace Celeste_Launcher_Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
             try
             {
                 //
@@ -77,7 +77,12 @@ namespace Celeste_Launcher_Gui
             try
             {
                 if (File.Exists(UserConfigFilePath))
+                {
                     UserConfig = UserConfig.Load(UserConfigFilePath);
+                    string lang = UserConfig.GameLanguage.ToString();
+                    lang = $"{lang.Substring(0, 2)}-{lang.Substring(2)}";
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
+                }
             }
             catch (Exception)
             {

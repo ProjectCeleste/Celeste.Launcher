@@ -26,20 +26,24 @@ namespace Celeste_Launcher_Gui.Forms
             tb_Mail.Text = Program.UserConfig.LoginInfo.Email;
             tb_Password.Text = Program.UserConfig.LoginInfo.Password;
             cb_RememberMe.Checked = Program.UserConfig.LoginInfo.RememberMe;
+
+            //Launcher Version
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            lb_Ver.Text = $"v{version.Major}{version.Minor}{version.Build}";
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strInvalidEmail"), @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
             {
-                SkinHelper.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strInvalidPassordLength"),
                     @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -65,7 +69,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
                 Program.WebSocketClient.State == WebSocketClientState.Logging)
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strAlreadyLoged"), @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
@@ -84,7 +88,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                     if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
 
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Login",
+                    SkinHelper.ShowMessage(MultiLanguage.GetString("strServerConectionTimeot"), @"Project Celeste -- Login",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -97,7 +101,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (Program.WebSocketClient.State != WebSocketClientState.Connected)
             {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strServerOffline"), @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -113,7 +117,10 @@ namespace Celeste_Launcher_Gui.Forms
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-            loginInfo.Version = 134;
+
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            loginInfo.Version = Convert.ToInt32($"{version.Major}{version.Minor}{version.Build}");            
+
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
@@ -125,7 +132,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
 
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strServerResponseTimeot"), @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -190,7 +197,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length <= 0) return;
-            SkinHelper.ShowMessage(@"You need to close the game first!");
+            SkinHelper.ShowMessage(MultiLanguage.GetString("strCloseGameFirst"));
             e.Cancel = true;
         }
 
