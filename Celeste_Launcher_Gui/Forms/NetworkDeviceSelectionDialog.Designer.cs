@@ -46,7 +46,8 @@
             this.lb_netinterfaces.Location = new System.Drawing.Point(23, 39);
             this.lb_netinterfaces.Margin = new System.Windows.Forms.Padding(2);
             this.lb_netinterfaces.Name = "lb_netinterfaces";
-            this.lb_netinterfaces.Size = new System.Drawing.Size(390, 154);
+            this.lb_netinterfaces.ScrollAlwaysVisible = true;
+            this.lb_netinterfaces.Size = new System.Drawing.Size(390, 169);
             this.lb_netinterfaces.TabIndex = 0;
             // 
             // lbl_selectnatdevice
@@ -90,7 +91,7 @@
             this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "Refresh";
-            this.btnSmall1.Location = new System.Drawing.Point(467, 61);
+            this.btnSmall1.Location = new System.Drawing.Point(467, 63);
             this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall1.Name = "btnSmall1";
             this.btnSmall1.Size = new System.Drawing.Size(172, 42);
@@ -102,7 +103,7 @@
             this.btnSmall2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall2.BackgroundImage")));
             this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall2.BtnText = "Ok";
-            this.btnSmall2.Location = new System.Drawing.Point(467, 129);
+            this.btnSmall2.Location = new System.Drawing.Point(467, 131);
             this.btnSmall2.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall2.Name = "btnSmall2";
             this.btnSmall2.Size = new System.Drawing.Size(172, 42);

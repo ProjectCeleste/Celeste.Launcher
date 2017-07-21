@@ -109,7 +109,7 @@
             this.btnSmall1.Name = "btnSmall1";
             this.btnSmall1.Size = new System.Drawing.Size(172, 42);
             this.btnSmall1.TabIndex = 53;
-            this.btnSmall1.Click += new System.EventHandler(this.btnSmall1_Click);
+            this.btnSmall1.Click += new System.EventHandler(this.BtnSmall1_Click);
             // 
             // panel2
             // 
@@ -134,7 +134,7 @@
             this.rb_Lan.TabIndex = 52;
             this.rb_Lan.Text = "LAN Only";
             this.rb_Lan.UseVisualStyleBackColor = true;
-            this.rb_Lan.CheckedChanged += new System.EventHandler(this.rb_Lan_CheckedChanged);
+            this.rb_Lan.CheckedChanged += new System.EventHandler(this.Rb_Lan_CheckedChanged);
             // 
             // rb_Wan
             // 
@@ -146,7 +146,7 @@
             this.rb_Wan.TabIndex = 51;
             this.rb_Wan.Text = "WAN";
             this.rb_Wan.UseVisualStyleBackColor = true;
-            this.rb_Wan.CheckedChanged += new System.EventHandler(this.rb_Wan_CheckedChanged);
+            this.rb_Wan.CheckedChanged += new System.EventHandler(this.Rb_Wan_CheckedChanged);
             // 
             // tb_remoteIp
             // 
@@ -209,7 +209,7 @@
             this.rb_Manual.TabIndex = 51;
             this.rb_Manual.Text = "Manual";
             this.rb_Manual.UseVisualStyleBackColor = true;
-            this.rb_Manual.CheckedChanged += new System.EventHandler(this.rb_Manual_CheckedChanged);
+            this.rb_Manual.CheckedChanged += new System.EventHandler(this.Rb_Manual_CheckedChanged);
             // 
             // rb_Automatic
             // 
@@ -221,7 +221,7 @@
             this.rb_Automatic.TabIndex = 50;
             this.rb_Automatic.Text = "Automatic";
             this.rb_Automatic.UseVisualStyleBackColor = true;
-            this.rb_Automatic.CheckedChanged += new System.EventHandler(this.rb_Automatic_CheckedChanged);
+            this.rb_Automatic.CheckedChanged += new System.EventHandler(this.Rb_Automatic_CheckedChanged);
             // 
             // label7
             // 

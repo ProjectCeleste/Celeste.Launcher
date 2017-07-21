@@ -22,6 +22,8 @@ namespace Celeste_Launcher_Gui.Forms
             SkinHelper.SetFont(Controls);
         }
 
+
+        public string SelectedInterfaceName { get; private set; }
         public IPAddress SelectedIpAddress { get; private set; }
 
         private void RefreshNetDevices()
@@ -66,6 +68,7 @@ namespace Celeste_Launcher_Gui.Forms
                 if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                 {
                     SelectedIpAddress = ip.Address;
+                    SelectedInterfaceName = selectedNetInt;
                     found = true;
                     break;
                 }
@@ -78,7 +81,6 @@ namespace Celeste_Launcher_Gui.Forms
                 RefreshNetDevices();
                 return;
             }
-
             DialogResult = DialogResult.OK;
             Close();
         }
