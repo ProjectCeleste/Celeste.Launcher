@@ -1,69 +1,80 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿#region Using directives
+
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Sockets;
 using System.Windows.Forms;
+using Celeste_Launcher_Gui.Helpers;
+
+#endregion
 
 namespace Celeste_Launcher_Gui.Forms
 {
     public partial class NetworkDeviceSelectionDialog : Form
     {
-        private IPAddress selectedAddr = null;
-
         public NetworkDeviceSelectionDialog()
         {
             InitializeComponent();
+
+            //Configure Fonts
+            SkinHelper.SetFont(Controls);
         }
 
-        public IPAddress SelectedIPAddress { get => selectedAddr; }
+        public IPAddress SelectedIpAddress { get; private set; }
 
         private void RefreshNetDevices()
         {
             lb_netinterfaces.Items.Clear();
             var netInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-            foreach (NetworkInterface netInt in netInterfaces)
-            {
+            foreach (var netInt in netInterfaces)
                 lb_netinterfaces.Items.Add(netInt.Name);
-            }
         }
 
         private void NetworkDeviceSelectionDialog_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+            }
+            catch (Exception)
+            {
+                //
+            }
+
             RefreshNetDevices();
         }
 
-        private void bnt_ok_Click(object sender, EventArgs e)
+        private void Bnt_ok_Click(object sender, EventArgs e)
         {
-            var selectedNetInt = (string)lb_netinterfaces.SelectedItem;
-            var netInterface = NetworkInterface.GetAllNetworkInterfaces().FirstOrDefault(elem => elem.Name == selectedNetInt);
-            if(netInterface == null)
+            var selectedNetInt = (string) lb_netinterfaces.SelectedItem;
+            var netInterface = NetworkInterface.GetAllNetworkInterfaces()
+                .FirstOrDefault(elem => elem.Name == selectedNetInt);
+            if (netInterface == null)
             {
-                MessageBox.Show("Network interface does not exist anymore! Select another one!");
+                SkinHelper.ShowMessage(@"Network interface does not exist anymore. Select another one!",
+                    "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RefreshNetDevices();
                 return;
             }
 
             // Get IPv4 address:
-            bool found = false;
-            foreach (UnicastIPAddressInformation ip in netInterface.GetIPProperties().UnicastAddresses)
-            {
-                if (ip.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            var found = false;
+            foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
+                if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    selectedAddr = ip.Address;
+                    SelectedIpAddress = ip.Address;
                     found = true;
                     break;
                 }
-            }
 
-            if(!found)
+            if (!found)
             {
-                MessageBox.Show("Network interface does not have a local IPv4 address assigned! Select another one!");
+                SkinHelper.ShowMessage(
+                    @"Network interface does not have a local IPv4 address assigned. Select another one!",
+                    "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RefreshNetDevices();
                 return;
             }
@@ -72,14 +83,14 @@ namespace Celeste_Launcher_Gui.Forms
             Close();
         }
 
-        private void bnt_refresh_Click(object sender, EventArgs e)
+        private void Bnt_refresh_Click(object sender, EventArgs e)
         {
             RefreshNetDevices();
         }
 
         private void NetworkDeviceSelectionDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(selectedAddr == null)
+            if (SelectedIpAddress == null)
                 DialogResult = DialogResult.Cancel;
         }
     }

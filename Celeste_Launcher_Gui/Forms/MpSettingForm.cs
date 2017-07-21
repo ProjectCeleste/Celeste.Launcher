@@ -99,21 +99,22 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (rb_Lan.Checked)
             {
-                
-                var netDeviceSelectDialog = new NetworkDeviceSelectionDialog();
-                netDeviceSelectDialog.ShowDialog(this);
-
-                if(netDeviceSelectDialog.DialogResult == DialogResult.Cancel)
+                using (var netDeviceSelectDialog = new NetworkDeviceSelectionDialog())
                 {
-                    rb_Lan.Checked = false;
-                    rb_Wan.Checked = true;
-                    return;
-                }
+                    netDeviceSelectDialog.ShowDialog(this);
 
-                if (rb_Wan.Checked)
-                    rb_Wan.Checked = false;
-                
-                tb_remoteIp.Text = netDeviceSelectDialog.SelectedIPAddress?.ToString() ?? @"127.0.0.1";
+                    if (netDeviceSelectDialog.DialogResult != DialogResult.OK)
+                    {
+                        rb_Lan.Checked = false;
+                        rb_Wan.Checked = true;
+                        return;
+                    }
+
+                    if (rb_Wan.Checked)
+                        rb_Wan.Checked = false;
+
+                    tb_remoteIp.Text = netDeviceSelectDialog.SelectedIpAddress?.ToString() ?? @"127.0.0.1";
+                }
             }
             else
             {
