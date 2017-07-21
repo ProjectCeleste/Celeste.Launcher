@@ -38,28 +38,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.12, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.8.0.12\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.Common, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperSocket.1.6.6.1\lib\net45\SuperSocket.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.Facility, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperSocket.1.6.6.1\lib\net45\SuperSocket.Facility.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.SocketBase, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperSocket.1.6.6.1\lib\net45\SuperSocket.SocketBase.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.SocketEngine, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperSocket.Engine.1.6.6.1\lib\net45\SuperSocket.SocketEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="SuperSocket.SocketService, Version=1.6.6.1, Culture=neutral, PublicKeyToken=6c80000676988ebb, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperSocket.Engine.1.6.6.1\lib\net45\SuperSocket.SocketService.exe</HintPath>
+      <HintPath>$(SolutionDir)\packages\SuperSocket.ClientEngine.Core.0.8.0.12\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -154,13 +139,6 @@
     </Compile>
     <Compile Include="Helpers\SkinHelper.cs" />
     <Compile Include="Helpers\WebSocketClient.cs" />
-    <Compile Include="xLiveBridgeServer\Command\GetUserInfo.cs" />
-    <Compile Include="xLiveBridgeServer\Command\XUserFindUsers.cs" />
-    <Compile Include="xLiveBridgeServer\PacketType.cs" />
-    <Compile Include="xLiveBridgeServer\ReceiveFilter.cs" />
-    <Compile Include="xLiveBridgeServer\RequestInfo.cs" />
-    <Compile Include="xLiveBridgeServer\Server.cs" />
-    <Compile Include="xLiveBridgeServer\Session.cs" />
     <EmbeddedResource Include="Controls\BtnSmall.resx">
       <DependentUpon>BtnSmall.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,11 +234,11 @@
     <None Include="Resources\message.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Celeste_User_Api\Celeste_User.csproj">
+    <ProjectReference Include="$(SolutionDir)\Celeste_User_Api\Celeste_User.csproj">
       <Project>{aecd370a-68cb-466b-b4f8-cc02cc6a9a5d}</Project>
       <Name>Celeste_User</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Open.Nat\Open.Nat.csproj">
+    <ProjectReference Include="$(SolutionDir)\Open.Nat\Open.Nat.csproj">
       <Project>{F5D74163-145F-47BF-83DC-D0E07249C6CA}</Project>
       <Name>Open.Nat</Name>
     </ProjectReference>

@@ -56,10 +56,6 @@ namespace Celeste_Launcher_Gui.Forms
             if (Program.RemoteUser != null)
                 ExecuteUserInfoResultCommand(Program.RemoteUser);
 
-            //Start xLiveBridgeServer
-            Program.Server.Setup(Program.ServerConfig);
-            Program.Server.Start();
-
             //Auto-Refresh User Info
             if (_timer != null) return;
 
@@ -216,9 +212,6 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            //UserConfig
-            if (Program.UserConfig != null)
-            {
                 //MpSettings
                 try
                 {
@@ -264,12 +257,11 @@ namespace Celeste_Launcher_Gui.Forms
                 //Save UserConfig
                 Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
                 Program.UserConfig.Save(Program.UserConfigFilePath);
-            }
 
             //Launch Game
             var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
 
-            Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
+            Process.Start(path, $"--user-name {Program.RemoteUser.ProfileName} --xuid {Program.RemoteUser.Xuid} --server-ip {Program.RemoteUser.ServerIp} --online-ip {Program.UserConfig.MpSettings.PublicIp} --online-port 1000 --auth-token {Program.RemoteUser.AuthToken} --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033");
         }
 
         private void label6_Click(object sender, EventArgs e)

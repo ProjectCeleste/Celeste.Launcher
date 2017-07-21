@@ -40,7 +40,7 @@ namespace Celeste_User
 
         public static string RandomString(int length)
         {
-            const string chars = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%-_#@&*-+=!?.,:;<>[]{}()";
+            const string chars = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$%-_#@&*-+=!?.,:;[]{}()";
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[Random.Next(s.Length)]).ToArray());
         }
