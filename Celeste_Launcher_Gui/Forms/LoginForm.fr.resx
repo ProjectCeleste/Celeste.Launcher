@@ -524,6 +524,12 @@
   <data name="btnSmall2.BtnText" xml:space="preserve">
     <value>Se Connecter</value>
   </data>
+  <data name="btnSmall2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>553, 66</value>
+  </data>
+  <data name="btnSmall2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 56</value>
+  </data>
   <data name="btnSmall1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKwAAAAqCAYAAAAu2LAdAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -930,10 +936,16 @@
   <data name="btnSmall1.BtnText" xml:space="preserve">
     <value>S'inscrire</value>
   </data>
+  <data name="btnSmall1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>553, 12</value>
+  </data>
+  <data name="btnSmall1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 54</value>
+  </data>
   <data name="linkLabel4.Text" xml:space="preserve">
     <value>Voir les "Conditions d'utilisation du jeu" de Microsoft</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
+  <data name="lbl_MsftDisc.Text" xml:space="preserve">
     <value>Age of Empires Online © Microsoft Corporation. Project Celeste a été créé selon les « règles d’utilisation du contenu de jeu » de Microsoft en utilisant les actifs de Age of Empires Online. Il n'est pas approuvé par ni affilié à Microsoft.</value>
   </data>
   <data name="cb_RememberMe.Size" type="System.Drawing.Size, System.Drawing">

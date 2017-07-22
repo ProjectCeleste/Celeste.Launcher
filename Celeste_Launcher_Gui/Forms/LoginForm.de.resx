@@ -955,7 +955,7 @@
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
+  <data name="lbl_MsftDisc.Text" xml:space="preserve">
     <value>Age of Empires Online © Microsoft Corporation. Project Celeste wurde gemäß den "Verwendungsregeln für Spielinhalte" von Microsoft unter Verwendung von Inhalten aus Age of Empires Online erstellt, wird von Microsoft nicht unterstützt und ist mit Microsoft nicht verbunden.</value>
   </data>
   <data name="cb_RememberMe.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">

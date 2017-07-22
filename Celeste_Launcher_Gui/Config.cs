@@ -4,8 +4,11 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Windows.Forms;
 using System.Xml.Serialization;
+using Celeste_Launcher_Gui.Helpers;
 
 #endregion
 
@@ -44,7 +47,29 @@ namespace Celeste_Launcher_Gui
             var userConfig = Celeste_User.Helpers.DeserializeFromFile<UserConfig>(path);
 
             if (userConfig.MpSettings.IsOnline) return userConfig;
+            
+            if (!string.IsNullOrEmpty(userConfig.MpSettings.LanNetworkInterface))
+            {
 
+                var selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
+                var netInterface = NetworkInterface.GetAllNetworkInterfaces()
+                    .FirstOrDefault(elem => elem.Name == selectedNetInt);
+
+                if (netInterface == null)
+                {
+                    goto notfound;
+                }
+
+                // Get IPv4 address:
+                    foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
+                    if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        userConfig.MpSettings.PublicIp = ip.Address.ToString();
+                        return userConfig;
+                    }
+            }
+
+            notfound:
             var firstOrDefault = Dns.GetHostEntry(Dns.GetHostName()).AddressList
                 .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
 
@@ -113,6 +138,9 @@ namespace Celeste_Launcher_Gui
 
         [XmlElement(ElementName = "isOnline")]
         public bool IsOnline { get; set; } = true;
+
+        [XmlElement(ElementName = "LanNetworkInterface")]
+        public string LanNetworkInterface { get; set; }
 
         [XmlElement(ElementName = "isAutoPortMapping")]
         public bool AutoPortMapping { get; set; }

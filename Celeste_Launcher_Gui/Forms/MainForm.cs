@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Reflection;
 using System.Timers;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
@@ -26,6 +27,9 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
+            //Launcher Version
+            lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
+
             //Configure Fonts
             SkinHelper.SetFont(Controls);
 
@@ -34,10 +38,6 @@ namespace Celeste_Launcher_Gui.Forms
                 comboBox2.SelectedIndex = (int) Program.UserConfig.GameLanguage;
             else
                 comboBox2.SelectedIndex = (int) GameLanguage.enUS;
-
-            //Launcher Version
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            lb_Ver.Text = $"v{version.Major}{version.Minor}{version.Build}";
 
             //OnPropertyChanged
             Program.WebSocketClient.PropertyChanged += OnPropertyChanged;
@@ -59,10 +59,6 @@ namespace Celeste_Launcher_Gui.Forms
             //User Info
             if (Program.RemoteUser != null)
                 ExecuteUserInfoResultCommand(Program.RemoteUser);
-
-            //Start xLiveBridgeServer
-            Program.Server.Setup(Program.ServerConfig);
-            Program.Server.Start();
 
             //Auto-Refresh User Info
             if (_timer != null) return;
@@ -220,9 +216,6 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            //UserConfig
-            if (Program.UserConfig != null)
-            {
                 //MpSettings
                 try
                 {
@@ -268,12 +261,11 @@ namespace Celeste_Launcher_Gui.Forms
                 //Save UserConfig
                 Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
                 Program.UserConfig.Save(Program.UserConfigFilePath);
-            }
 
             //Launch Game
             var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
 
-            Process.Start(path, $"LauncherLang={comboBox2.Text} LauncherLocale=1033");
+            Process.Start(path, $"--user-name {Program.RemoteUser.ProfileName} --xuid {Program.RemoteUser.Xuid} --server-ip {Program.RemoteUser.ServerIp} --online-ip {Program.UserConfig.MpSettings.PublicIp} --online-port 1000 --auth-token {Program.RemoteUser.AuthToken} --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033");
         }
 
         private void label6_Click(object sender, EventArgs e)

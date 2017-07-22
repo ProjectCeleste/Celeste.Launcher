@@ -36,7 +36,7 @@
             this.btnSmall2 = new Celeste_Launcher_Gui.Controls.BtnSmall();
             this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_MsftDisc = new System.Windows.Forms.Label();
             this.cb_RememberMe = new System.Windows.Forms.CheckBox();
             this.linkLbl_ForgotPwd = new System.Windows.Forms.LinkLabel();
             this.tb_Mail = new System.Windows.Forms.TextBox();
@@ -63,7 +63,7 @@
             this.panel1.Controls.Add(this.btnSmall2);
             this.panel1.Controls.Add(this.btnSmall1);
             this.panel1.Controls.Add(this.linkLabel4);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lbl_MsftDisc);
             this.panel1.Controls.Add(this.cb_RememberMe);
             this.panel1.Controls.Add(this.linkLbl_ForgotPwd);
             this.panel1.Controls.Add(this.tb_Mail);
@@ -107,11 +107,11 @@
             this.linkLabel4.TabStop = true;
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
-            // label2
+            // lbl_MsftDisc
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Name = "label2";
+            resources.ApplyResources(this.lbl_MsftDisc, "lbl_MsftDisc");
+            this.lbl_MsftDisc.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_MsftDisc.Name = "lbl_MsftDisc";
             // 
             // cb_RememberMe
             // 
@@ -186,7 +186,7 @@
         private System.Windows.Forms.Label lb_Password;
         private System.Windows.Forms.Label lbl_Mail;
         private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_MsftDisc;
         private Controls.BtnSmall btnSmall2;
         private Controls.BtnSmall btnSmall1;
         private System.Windows.Forms.Label lb_Ver;

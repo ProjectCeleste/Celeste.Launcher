@@ -90,7 +90,9 @@
             // 
             resources.ApplyResources(this.btnSmall1, "btnSmall1");
             this.btnSmall1.Name = "btnSmall1";
-            this.btnSmall1.Click += new System.EventHandler(this.btnSmall1_Click);
+            this.btnSmall1.Size = new System.Drawing.Size(172, 42);
+            this.btnSmall1.TabIndex = 53;
+            this.btnSmall1.Click += new System.EventHandler(this.BtnSmall1_Click);
             // 
             // panel2
             // 
@@ -108,14 +110,14 @@
             resources.ApplyResources(this.rb_Lan, "rb_Lan");
             this.rb_Lan.Name = "rb_Lan";
             this.rb_Lan.UseVisualStyleBackColor = true;
-            this.rb_Lan.CheckedChanged += new System.EventHandler(this.rb_Lan_CheckedChanged);
+            this.rb_Lan.CheckedChanged += new System.EventHandler(this.Rb_Lan_CheckedChanged);
             // 
             // rb_Wan
             // 
             resources.ApplyResources(this.rb_Wan, "rb_Wan");
             this.rb_Wan.Name = "rb_Wan";
             this.rb_Wan.UseVisualStyleBackColor = true;
-            this.rb_Wan.CheckedChanged += new System.EventHandler(this.rb_Wan_CheckedChanged);
+            this.rb_Wan.CheckedChanged += new System.EventHandler(this.Rb_Wan_CheckedChanged);
             // 
             // tb_remoteIp
             // 
@@ -153,14 +155,14 @@
             resources.ApplyResources(this.rb_Manual, "rb_Manual");
             this.rb_Manual.Name = "rb_Manual";
             this.rb_Manual.UseVisualStyleBackColor = true;
-            this.rb_Manual.CheckedChanged += new System.EventHandler(this.rb_Manual_CheckedChanged);
+            this.rb_Manual.CheckedChanged += new System.EventHandler(this.Rb_Manual_CheckedChanged);
             // 
             // rb_Automatic
             // 
             resources.ApplyResources(this.rb_Automatic, "rb_Automatic");
             this.rb_Automatic.Name = "rb_Automatic";
             this.rb_Automatic.UseVisualStyleBackColor = true;
-            this.rb_Automatic.CheckedChanged += new System.EventHandler(this.rb_Automatic_CheckedChanged);
+            this.rb_Automatic.CheckedChanged += new System.EventHandler(this.Rb_Automatic_CheckedChanged);
             // 
             // label7
             // 

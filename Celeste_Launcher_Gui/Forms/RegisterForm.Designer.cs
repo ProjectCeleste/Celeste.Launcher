@@ -175,9 +175,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_Mail;
         private System.Windows.Forms.TextBox tb_ConfirmPassword;
-        private System.Windows.Forms.TextBox tb_Password;
+        public System.Windows.Forms.TextBox tb_Password;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tb_Mail;
+        public System.Windows.Forms.TextBox tb_Mail;
         private Controls.BtnSmall btnSmall1;
         private Controls.BtnSmall btnSmall2;
     }

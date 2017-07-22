@@ -3,8 +3,10 @@
 using System;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Properties;
 using Celeste_User.Remote;
 
 #endregion
@@ -17,6 +19,9 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
+            //Launcher Version
+            lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
+
             //Configure Fonts
             SkinHelper.SetFont(Controls);
 
@@ -26,10 +31,6 @@ namespace Celeste_Launcher_Gui.Forms
             tb_Mail.Text = Program.UserConfig.LoginInfo.Email;
             tb_Password.Text = Program.UserConfig.LoginInfo.Password;
             cb_RememberMe.Checked = Program.UserConfig.LoginInfo.RememberMe;
-
-            //Launcher Version
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            lb_Ver.Text = $"v{version.Major}{version.Minor}{version.Build}";
         }
 
         private void btn_Login_Click(object sender, EventArgs e)
@@ -58,6 +59,33 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 Hide();
                 form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    tb_Mail.Text = form.tb_Mail.Text;
+                    tb_Password.Text = form.tb_Password.Text;
+                    cb_RememberMe.Checked = true;
+
+                    //Save UserConfig
+                    if (Program.UserConfig == null)
+                    {
+                        Program.UserConfig = new UserConfig
+                        {
+                            LoginInfo = new LoginInfo
+                            {
+                                Email = tb_Mail.Text,
+                                Password = tb_Password.Text,
+                                RememberMe = cb_RememberMe.Checked
+                            }
+                        };
+                    }
+                    else
+                    {
+                        Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
+                        Program.UserConfig.LoginInfo.Password = tb_Password.Text;
+                        Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                    }
+                    Program.UserConfig.Save(Program.UserConfigFilePath);
+                }
                 Show();
             }
         }
@@ -117,10 +145,8 @@ namespace Celeste_Launcher_Gui.Forms
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            loginInfo.Version = Convert.ToInt32($"{version.Major}{version.Minor}{version.Build}");            
-
+            loginInfo.Version = Convert.ToInt32($"{version.Major}{version.Minor}{version.Build}");
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);

@@ -7,12 +7,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_Launcher_Gui.xLiveBridgeServer;
 using Celeste_User.Remote;
-using SuperSocket.SocketBase;
-using SuperSocket.SocketBase.Config;
-
-//using Mono.Nat;
 
 #endregion
 
@@ -28,18 +23,8 @@ namespace Celeste_Launcher_Gui
 
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
         public static RemoteUser RemoteUser;
-        public static readonly Server Server = new Server();
         public static UserConfig UserConfig = new UserConfig();
         public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
-
-        public static readonly ServerConfig ServerConfig = new ServerConfig
-        {
-            Name = "",
-            Port = 4510,
-            Mode = SocketMode.Udp,
-            MaxConnectionNumber = 10
-        };
-
 
         [STAThread]
         private static void Main()
@@ -53,7 +38,7 @@ namespace Celeste_Launcher_Gui
                 var pname = Process.GetProcessesByName("spartan");
                 if (pname.Length > 0)
                 {
-                    SkinHelper.ShowMessage(@"Game already runing! Close it first.");
+                    SkinHelper.ShowMessage(@"Game already runing! Close it first.", "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -66,7 +51,10 @@ namespace Celeste_Launcher_Gui
             {
                 //Only one instance
                 if (AlreadyRunning())
+                {
+                    SkinHelper.ShowMessage(@"Launcher already runing!", "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
             }
             catch (Exception)
             {
@@ -79,7 +67,7 @@ namespace Celeste_Launcher_Gui
                 if (File.Exists(UserConfigFilePath))
                 {
                     UserConfig = UserConfig.Load(UserConfigFilePath);
-                    string lang = UserConfig.GameLanguage.ToString();
+                    var lang = UserConfig.GameLanguage.ToString();
                     lang = $"{lang.Substring(0, 2)}-{lang.Substring(2)}";
                     System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
                 }
