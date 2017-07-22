@@ -262,11 +262,11 @@
             this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
             this.lb_Ver.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Ver.ForeColor = System.Drawing.Color.Black;
-            this.lb_Ver.Location = new System.Drawing.Point(821, 427);
+            this.lb_Ver.Location = new System.Drawing.Point(803, 426);
             this.lb_Ver.Name = "lb_Ver";
-            this.lb_Ver.Size = new System.Drawing.Size(39, 16);
+            this.lb_Ver.Size = new System.Drawing.Size(59, 16);
             this.lb_Ver.TabIndex = 36;
-            this.lb_Ver.Text = "v136";
+            this.lb_Ver.Text = "v0.0.0.0";
             // 
             // lv_Friends
             // 

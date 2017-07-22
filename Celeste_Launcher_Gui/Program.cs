@@ -38,7 +38,8 @@ namespace Celeste_Launcher_Gui
                 var pname = Process.GetProcessesByName("spartan");
                 if (pname.Length > 0)
                 {
-                    SkinHelper.ShowMessage(@"Game already runing! Close it first.", "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SkinHelper.ShowMessage(@"Game already runing! Close it first.", "Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -52,7 +53,8 @@ namespace Celeste_Launcher_Gui
                 //Only one instance
                 if (AlreadyRunning())
                 {
-                    SkinHelper.ShowMessage(@"Launcher already runing!", "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SkinHelper.ShowMessage(@"Launcher already runing!", "Celeste Fan Project", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -71,7 +73,6 @@ namespace Celeste_Launcher_Gui
             {
                 //
             }
-            
 
             //Start Gui
             Application.Run(new MainForm());
