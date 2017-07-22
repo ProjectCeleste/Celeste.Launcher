@@ -40,49 +40,75 @@
             // 
             // mainContainer1
             // 
-            resources.ApplyResources(this.mainContainer1, "mainContainer1");
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
-            this.mainContainer1.MinimizeBox = false;
+            this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer1.Location = new System.Drawing.Point(0, 0);
+            this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
             this.mainContainer1.Name = "mainContainer1";
+            this.mainContainer1.Size = new System.Drawing.Size(761, 322);
+            this.mainContainer1.TabIndex = 0;
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(34, 77);
             this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(695, 219);
+            this.panel1.TabIndex = 3;
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Location = new System.Drawing.Point(0, 167);
             this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(695, 52);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "* After subscribe your new rank will be available in 24/48 hours\r\n(Contact us on " +
+    "your discord channel if not)";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.btn_subscribeCC_LG;
+            this.pictureBox1.Location = new System.Drawing.Point(283, 117);
             this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(147, 47);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(695, 114);
+            this.label1.TabIndex = 1;
+            this.label1.Text = resources.GetString("label1.Text");
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // UpgradeForm
             // 
-            resources.ApplyResources(this, "$this");
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(761, 322);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mainContainer1);
+            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpgradeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Project Celeste -- Upgrade Account";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.UpgradeForm_Load);
             this.panel1.ResumeLayout(false);
