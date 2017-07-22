@@ -27,7 +27,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //
+            //Launcher Version
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
 
             //Configure Fonts
@@ -75,8 +75,8 @@ namespace Celeste_Launcher_Gui.Forms
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0 && !_forceClose)
-            {
-                SkinHelper.ShowMessage(@"You need to close the game first!");
+            {                
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strCloseGameFirst"));
                 e.Cancel = true;
                 return;
             }
@@ -173,7 +173,7 @@ namespace Celeste_Launcher_Gui.Forms
                             }
                             if (_loginPassed)
                             {
-                                SkinHelper.ShowMessage(@"You have been disconnected from the server!",
+                                SkinHelper.ShowMessage(MultiLanguage.GetString("strYouHaveBeenDisconnected"),
                                     @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 _forceClose = true;
@@ -212,7 +212,7 @@ namespace Celeste_Launcher_Gui.Forms
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                SkinHelper.ShowMessage(@"Game already runing!");
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strGameAlreadyRunning"));
                 return;
             }
 
@@ -239,7 +239,7 @@ namespace Celeste_Launcher_Gui.Forms
                                     if (!(ex.InnerException is NatDeviceNotFoundException)) throw;
 
                                     SkinHelper.ShowMessage(
-                                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                                        MultiLanguage.GetString("strUpnpDeviceNotFound"),
                                         @"Project Celeste",
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     Enabled = true;
@@ -251,7 +251,7 @@ namespace Celeste_Launcher_Gui.Forms
                 catch
                 {
                     SkinHelper.ShowMessage(
-                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                        MultiLanguage.GetString("strUpnpDeviceNotFound"),
                         @"Project Celeste",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Enabled = true;
@@ -342,9 +342,9 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void ExecuteUserInfoResultCommand(RemoteUser remoteUser)
         {
-            lbl_Mail.Text = $@"Email: {remoteUser.Mail}";
-            lbl_UserName.Text = $@"User Name: {remoteUser.ProfileName}";
-            lbl_Rank.Text = $@"Rank: {remoteUser.Rank}";
+            lbl_Mail.Text = $@"{MultiLanguage.GetString("strEMail")}: {remoteUser.Mail}";
+            lbl_UserName.Text = $@"{MultiLanguage.GetString("strUserName")}: {remoteUser.ProfileName}";
+            lbl_Rank.Text = $@"{MultiLanguage.GetString("strRank")}: {remoteUser.Rank}";
             //
             comboBox1.Items.Clear();
             if (remoteUser.AllowedCiv.Count > 0)
@@ -377,5 +377,6 @@ namespace Celeste_Launcher_Gui.Forms
         {
 
         }
+        
     }
 }

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Properties;
+using System.ComponentModel;
 
 #endregion
 
@@ -22,6 +23,7 @@ namespace Celeste_Launcher_Gui.Controls
             SkinHelper.SetFont(Controls);
         }
 
+        [Localizable(true)]
         public string BtnText
         {
             get => _text;

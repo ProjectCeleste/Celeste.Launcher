@@ -26,7 +26,7 @@ namespace Celeste_Launcher_Gui.Forms
             _changePasswordDone = false;
 
             if (Program.WebSocketClient.State != WebSocketClientState.Logged)
-                throw new Exception("Not logged in!");
+                throw new Exception(MultiLanguage.GetString("strNotLoggedIn"));
 
             dynamic changePwdInfo = new ExpandoObject();
             changePwdInfo.Old = oldPwd;
@@ -40,7 +40,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (result["Result"].ToObject<bool>())
             {
-                SkinHelper.ShowMessage(@"Password changed with success.", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strPasswordChanged"), @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -56,7 +56,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (textBox1.Text != textBox2.Text)
             {
-                SkinHelper.ShowMessage(@"New password value and confirm new password value don't match!",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strPasswordsNotMatch"),
                     @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -65,14 +65,14 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (textBox1.Text.Length < 8)
             {
-                SkinHelper.ShowMessage(@"Password minimum length is 8 char!", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strPasswordMinimunLength"), @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (textBox1.Text.Length > 32)
             {
-                SkinHelper.ShowMessage(@"Password maximum length is 32 char!", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strPasswordMaxLength"), @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -87,7 +87,7 @@ namespace Celeste_Launcher_Gui.Forms
             Enabled = true;
 
             if (!_changePasswordDone)
-                SkinHelper.ShowMessage(@"Error: Timout!", @"Project Celeste -- Change Password",
+                SkinHelper.ShowMessage(MultiLanguage.GetString("strErrorTimeout"), @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
