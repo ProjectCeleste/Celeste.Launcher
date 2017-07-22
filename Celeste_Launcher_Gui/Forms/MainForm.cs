@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Reflection;
 using System.Timers;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
@@ -25,6 +26,9 @@ namespace Celeste_Launcher_Gui.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            //
+            lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
 
             //Configure Fonts
             SkinHelper.SetFont(Controls);

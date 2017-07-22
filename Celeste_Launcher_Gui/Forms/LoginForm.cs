@@ -3,8 +3,10 @@
 using System;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Properties;
 using Celeste_User.Remote;
 
 #endregion
@@ -16,6 +18,9 @@ namespace Celeste_Launcher_Gui.Forms
         public LoginForm()
         {
             InitializeComponent();
+
+            //
+            lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
 
             //Configure Fonts
             SkinHelper.SetFont(Controls);
