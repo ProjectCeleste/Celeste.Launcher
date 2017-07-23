@@ -17,9 +17,9 @@ namespace Celeste_Launcher_Gui
     internal static class Program
     {
 #if DEBUG
-        public static string WebSocketUri = "ws://127.0.0.1:4508/";
+        public static string WebSocketUri = "ws://127.0.0.1:4512/";
 #else
-        public static string WebSocketUri = "ws://66.70.180.188:4508/";
+        public static string WebSocketUri = "ws://66.70.180.188:4512/";
 #endif
 
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
