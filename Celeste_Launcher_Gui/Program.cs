@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Forms;
@@ -31,22 +32,6 @@ namespace Celeste_Launcher_Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            try
-            {
-                //
-                var pname = Process.GetProcessesByName("spartan");
-                if (pname.Length > 0)
-                {
-                    SkinHelper.ShowMessage(@"Game already runing! Close it first.", "Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-                //
-            }
 
             try
             {
@@ -80,20 +65,18 @@ namespace Celeste_Launcher_Gui
 
         private static bool AlreadyRunning()
         {
-            var processes = Process.GetProcesses();
             var currentProc = Process.GetCurrentProcess();
-
-            foreach (var process in processes)
-                try
-                {
-                    if (process.Modules[0].FileName == Assembly.GetExecutingAssembly().Location
-                        && currentProc.Id != process.Id)
-                        return true;
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
+            try
+            {
+                if (Process.GetProcesses().Any(key => key.Id != currentProc.Id && key.Modules.Count > 0 &&
+                                                      key.Modules[0].FileName ==
+                                                      Assembly.GetExecutingAssembly().Location))
+                    return true;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
 
             return false;
         }

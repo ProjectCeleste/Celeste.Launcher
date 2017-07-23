@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Dynamic;
+using System.IO;
 using System.Reflection;
 using System.Timers;
 using System.Windows.Forms;
@@ -21,7 +22,6 @@ namespace Celeste_Launcher_Gui.Forms
     {
         private static Timer _timer;
         private static bool _loginPassed;
-        private static bool _forceClose;
 
         public MainForm()
         {
@@ -73,44 +73,44 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var pname = Process.GetProcessesByName("spartan");
-            if (pname.Length > 0 && !_forceClose)
-            {
-                SkinHelper.ShowMessage(@"You need to close the game first!");
-                e.Cancel = true;
-                return;
-            }
             _timer.Stop();
             Program.WebSocketClient.AgentWebSocket.Close();
-            NatDiscoverer.ReleaseAll();
+            try
+            {
+                NatDiscoverer.ReleaseAll();
+            }
+            catch
+            {
+                //
+            }
         }
 
-        private void linklbl_ReportBug_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Linklbl_ReportBug_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/ProjectCeleste/Celeste_Server/issues");
         }
 
-        private void linkLbl_ProjectCelesteCom_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLbl_ProjectCelesteCom_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://projectceleste.com");
         }
 
-        private void linklbl_Wiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Linklbl_Wiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://ageofempiresonline.wikia.com/wiki/Age_of_Empires_Online_Wiki");
         }
 
-        private void linkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://eso-community.net/");
         }
 
-        private void linkLbl_aoeo4evernet_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLbl_aoeo4evernet_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://aoeo4ever.net");
         }
 
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (var form = new UpgradeForm())
             {
@@ -120,7 +120,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void linkLbl_ChangePwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLbl_ChangePwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (var form = new ChangePwdForm())
             {
@@ -130,22 +130,22 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void pb_Avatar_Click(object sender, EventArgs e)
+        private void Pb_Avatar_Click(object sender, EventArgs e)
         {
             //TODO
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //TODO
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //TODO
         }
 
-        private void btn_ManageInvite_Click(object sender, EventArgs e)
+        private void Btn_ManageInvite_Click(object sender, EventArgs e)
         {
             using (var form = new ManageInviteForm())
             {
@@ -176,7 +176,6 @@ namespace Celeste_Launcher_Gui.Forms
                                 SkinHelper.ShowMessage(@"You have been disconnected from the server!",
                                     @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                _forceClose = true;
                                 Application.Exit();
                             }
                             break;
@@ -207,68 +206,86 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private async void btn_Play_Click(object sender, EventArgs e)
+        private async void Btn_Play_Click(object sender, EventArgs e)
         {
+            btnSmall1.Enabled = false;
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
                 SkinHelper.ShowMessage(@"Game already runing!");
+                btnSmall1.Enabled = true;
+                return;
+            }
+            
+            //MpSettings
+            try
+            {
+                if (Program.UserConfig.MpSettings != null)
+                    if (Program.UserConfig.MpSettings.IsOnline)
+                    {
+                        Program.UserConfig.MpSettings.PublicIp = Program.RemoteUser.Ip;
+
+                        if (Program.UserConfig.MpSettings.AutoPortMapping)
+                        {
+                            var mapPortTask = OpenNat.MapPortTask(1000, 1000);
+                            try
+                            {
+                                await mapPortTask;
+                                NatDiscoverer.TraceSource.Close();
+                            }
+                            catch (AggregateException ex)
+                            {
+                                NatDiscoverer.TraceSource.Close();
+
+                                if (!(ex.InnerException is NatDeviceNotFoundException)) throw;
+
+                                SkinHelper.ShowMessage(
+                                    "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                                    @"Project Celeste",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                btnSmall1.Enabled = true;
+                                return;
+                            }
+                        }
+                    }
+            }
+            catch
+            {
+                SkinHelper.ShowMessage(
+                    "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSmall1.Enabled = true;
                 return;
             }
 
-                //MpSettings
-                try
-                {
-                    if (Program.UserConfig.MpSettings != null)
-                        if (Program.UserConfig.MpSettings.IsOnline)
-                        {
-                            Program.UserConfig.MpSettings.PublicIp = Program.RemoteUser.Ip;
-
-                            if (Program.UserConfig.MpSettings.AutoPortMapping)
-                            {
-                                var mapPortTask = OpenNat.MapPortTask(1000, 1000);
-                                try
-                                {
-                                    await mapPortTask;
-                                    NatDiscoverer.TraceSource.Close();
-                                }
-                                catch (AggregateException ex)
-                                {
-                                    NatDiscoverer.TraceSource.Close();
-
-                                    if (!(ex.InnerException is NatDeviceNotFoundException)) throw;
-
-                                    SkinHelper.ShowMessage(
-                                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
-                                        @"Project Celeste",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    Enabled = true;
-                                    return;
-                                }
-                            }
-                        }
-                }
-                catch
-                {
-                    SkinHelper.ShowMessage(
-                        "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
-                        @"Project Celeste",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Enabled = true;
-                    return;
-                }
-
-                //Save UserConfig
-                Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
-                Program.UserConfig.Save(Program.UserConfigFilePath);
+            //Save UserConfig
+            Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
+            Program.UserConfig.Save(Program.UserConfigFilePath);
 
             //Launch Game
             var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
 
-            Process.Start(path, $"--user-name {Program.RemoteUser.ProfileName} --xuid {Program.RemoteUser.Xuid} --server-ip {Program.RemoteUser.ServerIp} --online-ip {Program.UserConfig.MpSettings.PublicIp} --online-port 1000 --auth-token {Program.RemoteUser.AuthToken} --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033");
+            if (!File.Exists(path))
+            {
+                SkinHelper.ShowMessage(
+                    "Error: Spartan.exe not found!",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnSmall1.Enabled = true;
+                return;
+            }
+
+            btnSmall1.Enabled = true;
+
+            var arg = Program.UserConfig.MpSettings.IsOnline
+                ? $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033"
+                : $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033";
+
+            Process.Start(path, arg);
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void Label6_Click(object sender, EventArgs e)
         {
             using (var form = new MpSettingForm(Program.UserConfig.MpSettings))
             {
@@ -289,6 +306,20 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 //
             }
+        }
+
+        private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://aoedb.net/");
+        }
+
+        private void LinkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://discord.gg/pkM2RAm");
+        }
+
+        private void BtnSmall1_Load(object sender, EventArgs e)
+        {
         }
 
 
@@ -362,20 +393,5 @@ namespace Celeste_Launcher_Gui.Forms
         }
 
         #endregion
-
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://aoedb.net/");
-        }
-
-        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://discord.gg/pkM2RAm");
-        }
-
-        private void btnSmall1_Load(object sender, EventArgs e)
-        {
-
-        }
- }
+    }
 }

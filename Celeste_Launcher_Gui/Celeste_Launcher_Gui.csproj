@@ -43,13 +43,16 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
+      <HintPath>..\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
+    </Reference>
     <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.12, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\SuperSocket.ClientEngine.Core.0.8.0.12\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Net" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
@@ -124,6 +127,8 @@
     <Compile Include="Controls\MainContainer.Designer.cs">
       <DependentUpon>MainContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FingerPrint.cs" />
+    <Compile Include="Helpers\Misc.cs" />
     <Compile Include="Helpers\OpenNat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,7 +245,7 @@
       <Project>{aecd370a-68cb-466b-b4f8-cc02cc6a9a5d}</Project>
       <Name>Celeste_User</Name>
     </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)\Open.Nat\Open.Nat.csproj">
+    <ProjectReference Include="C:\Users\Samsung\Documents\GitHub\Celeste_Launcher\\Open.Nat\Open.Nat.csproj">
       <Project>{F5D74163-145F-47BF-83DC-D0E07249C6CA}</Project>
       <Name>Open.Nat</Name>
     </ProjectReference>
