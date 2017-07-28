@@ -35,7 +35,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\Civilization.cs" />
     <Compile Include="Enum\Rank.cs" />
     <Compile Include="Friend.cs" />
     <Compile Include="Helpers.cs" />

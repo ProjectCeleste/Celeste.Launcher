@@ -14,9 +14,7 @@ namespace Celeste_User.Remote
         }
 
         public RemoteUser(string ip, string mail, string profileName, Rank rank,
-            bool bannedGame, bool bannedChat,
-            IEnumerable<Civilization> civilizations, List<Friend> friends,
-            List<Invite> invites)
+            bool bannedGame, bool bannedChat, List<Friend> friends)
         {
             Ip = ip;
             Mail = mail;
@@ -24,11 +22,7 @@ namespace Celeste_User.Remote
             Rank = rank;
             BannedGame = bannedGame;
             BannedChat = bannedChat;
-            AllowedCiv = new List<Civilization>();
-            foreach (var civ in civilizations)
-                AllowedCiv.Add(civ);
             Friends = friends;
-            Invites = invites;
         }
 
         public string Mail { get; set; }
@@ -43,10 +37,6 @@ namespace Celeste_User.Remote
 
         public bool BannedChat { get; set; }
 
-        public List<Civilization> AllowedCiv { get; set; } = new List<Civilization>();
-
         public List<Friend> Friends { get; set; } = new List<Friend>();
-
-        public List<Invite> Invites { get; set; } = new List<Invite>();
     }
 }

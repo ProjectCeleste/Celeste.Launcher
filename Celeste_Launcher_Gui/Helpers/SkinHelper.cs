@@ -66,17 +66,17 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             try
             {
-            foreach (Control c in controls)
-                if (c is TextBox)
-                {
-                    c.Font = new Font("Arial", c.Font.Size, FontStyle.Regular, GraphicsUnit.Point, 0);
-                }
-                else
-                {
-                    c.Font = GetFont(c.Font.Size);
-                    if (c.Controls.Count > 0)
-                        SetFont(c.Controls);
-                }
+                foreach (Control c in controls)
+                    if (c is TextBox)
+                    {
+                        c.Font = new Font("Arial", c.Font.Size, FontStyle.Regular, GraphicsUnit.Point, 0);
+                    }
+                    else
+                    {
+                        c.Font = GetFont(c.Font.Size);
+                        if (c.Controls.Count > 0)
+                            SetFont(c.Controls);
+                    }
             }
             catch (Exception)
             {

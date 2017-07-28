@@ -46,21 +46,18 @@ namespace Celeste_Launcher_Gui
             var userConfig = Misc.DeserializeFromFile<UserConfig>(path);
 
             if (userConfig.MpSettings.IsOnline) return userConfig;
-            
+
             if (!string.IsNullOrEmpty(userConfig.MpSettings.LanNetworkInterface))
             {
-
                 var selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
                 var netInterface = NetworkInterface.GetAllNetworkInterfaces()
                     .FirstOrDefault(elem => elem.Name == selectedNetInt);
 
                 if (netInterface == null)
-                {
                     goto notfound;
-                }
 
                 // Get IPv4 address:
-                    foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
+                foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
                     if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                     {
                         userConfig.MpSettings.PublicIp = ip.Address.ToString();
@@ -146,12 +143,12 @@ namespace Celeste_Launcher_Gui
 
         [XmlIgnore]
         public string PublicIp { get; set; } = "127.0.0.1";
-
-        //{
-        //public int PublicPort
+        //    get
 
         //[XmlElement(ElementName = "PublicPort")]
-        //    get
+        //public int PublicPort
+
+        //{
         //    {
         //        if (_publicPort != 0) return _publicPort;
 

@@ -84,6 +84,12 @@
     <Compile Include="Forms\NetworkDeviceSelectionDialog.Designer.cs">
       <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ResetPwdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResetPwdForm.Designer.cs">
+      <DependentUpon>ResetPwdForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\DWM.cs" />
     <Compile Include="Forms\ChangePwdForm.cs">
       <SubType>Form</SubType>
@@ -102,12 +108,6 @@
     </Compile>
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ManageInviteForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ManageInviteForm.Designer.cs">
-      <DependentUpon>ManageInviteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MpSettingForm.cs">
       <SubType>Form</SubType>
@@ -161,9 +161,6 @@
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ManageInviteForm.resx">
-      <DependentUpon>ManageInviteForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MpSettingForm.resx">
       <DependentUpon>MpSettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
       <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResetPwdForm.resx">
+      <DependentUpon>ResetPwdForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -238,7 +238,6 @@
     <None Include="Resources\TopMiddleFluid.png" />
     <None Include="Resources\TopLeftFixed.png" />
     <None Include="Resources\TopRigthFixed.png" />
-    <None Include="Resources\message.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)\Celeste_User_Api\Celeste_User.csproj">

@@ -9,7 +9,6 @@ using System.Reflection;
 using System.Timers;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_User.Enum;
 using Celeste_User.Remote;
 using Open.Nat;
 using Timer = System.Timers.Timer;
@@ -145,16 +144,6 @@ namespace Celeste_Launcher_Gui.Forms
             //TODO
         }
 
-        private void Btn_ManageInvite_Click(object sender, EventArgs e)
-        {
-            using (var form = new ManageInviteForm())
-            {
-                Hide();
-                form.ShowDialog();
-                Show();
-            }
-        }
-
         private static void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             // ReSharper disable once SwitchStatementMissingSomeCases
@@ -216,7 +205,7 @@ namespace Celeste_Launcher_Gui.Forms
                 btnSmall1.Enabled = true;
                 return;
             }
-            
+
             //MpSettings
             try
             {
@@ -300,7 +289,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 26));
             }
             catch (Exception)
             {
@@ -320,6 +309,11 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void BtnSmall1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void LinkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.reddit.com/r/projectceleste/");
         }
 
 
@@ -376,20 +370,6 @@ namespace Celeste_Launcher_Gui.Forms
             lbl_Mail.Text = $@"Email: {remoteUser.Mail}";
             lbl_UserName.Text = $@"User Name: {remoteUser.ProfileName}";
             lbl_Rank.Text = $@"Rank: {remoteUser.Rank}";
-            //
-            comboBox1.Items.Clear();
-            if (remoteUser.AllowedCiv.Count > 0)
-                foreach (var civ in remoteUser.AllowedCiv)
-                {
-                    var strCiv = Enum.GetName(typeof(Civilization), civ);
-                    if (string.IsNullOrEmpty(strCiv))
-                        strCiv = "Unknow";
-                    comboBox1.Items.Add(strCiv);
-                }
-            else
-                comboBox1.Items.Add("None");
-
-            comboBox1.SelectedIndex = 0;
         }
 
         #endregion

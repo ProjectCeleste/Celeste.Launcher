@@ -10,14 +10,14 @@ using Celeste_Launcher_Gui.Helpers;
 
 namespace Celeste_Launcher_Gui.Forms
 {
-    public partial class RegisterForm : Form
+    public partial class ResetPwdForm : Form
     {
-        private bool _registerUserDone;
-        private bool _registerUserFailed = true;
+        private bool _resetPwdDone;
+        private bool _resetPwdFailed = true;
         private bool _verifyUserDone;
         private bool _verifyUserFailed = true;
 
-        public RegisterForm()
+        public ResetPwdForm()
         {
             InitializeComponent();
 
@@ -29,11 +29,12 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
+
             DoVerifyUser(tb_Mail.Text);
         }
 
@@ -44,7 +45,8 @@ namespace Celeste_Launcher_Gui.Forms
             if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
                 Program.WebSocketClient.State == WebSocketClientState.Logging)
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!",
+                    @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
@@ -63,7 +65,8 @@ namespace Celeste_Launcher_Gui.Forms
 
                     if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
 
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Register",
+                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!",
+                        @"Project Celeste -- Reset Password",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     Enabled = true;
@@ -73,7 +76,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (Program.WebSocketClient.State != WebSocketClientState.Connected)
             {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
@@ -82,12 +85,12 @@ namespace Celeste_Launcher_Gui.Forms
             _verifyUserDone = false;
             _verifyUserFailed = true;
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-            dynamic validMailInfo = new ExpandoObject();
-            validMailInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-            validMailInfo.EMail = email;
+            dynamic forgotPwdInfo = new ExpandoObject();
+            forgotPwdInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
+            forgotPwdInfo.EMail = email;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("VALIDMAIL", (object) validMailInfo,
+            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("FORGOTPWD", (object) forgotPwdInfo,
                 OnVerifyUser);
 
             var starttime2 = DateTime.UtcNow;
@@ -97,7 +100,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
 
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -112,7 +115,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (_verifyUserFailed) return;
 
             p_Verify.Enabled = false;
-            p_Register.Enabled = true;
+            p_ResetPassword.Enabled = true;
         }
 
         private void OnVerifyUser(dynamic result)
@@ -121,14 +124,14 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 _verifyUserFailed = false;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 _verifyUserFailed = true;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -138,62 +141,37 @@ namespace Celeste_Launcher_Gui.Forms
             _verifyUserDone = true;
         }
 
-        private void Btn_Register_Click(object sender, EventArgs e)
+
+        private void Btn_ResetPassword_Click(object sender, EventArgs e)
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                return;
-            }
-
-            if (!Celeste_User.Helpers.IsValideUserName(tb_UserName.Text))
-            {
-                SkinHelper.ShowMessage(
-                    @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!",
-                    @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (tb_ConfirmPassword.Text != tb_Password.Text)
-            {
-                SkinHelper.ShowMessage(@"Password value and confirm password value don't match!",
-                    @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
-            {
-                SkinHelper.ShowMessage(@"Password minimum length is 8 char,  maximum length is 32 char!",
-                    @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_InviteCode.Text.Length != 32)
             {
                 SkinHelper.ShowMessage(@"Invalid Verify Key!",
-                    @"Project Celeste -- Register",
+                    @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            DoRegisterUser(tb_Mail.Text, tb_Password.Text, tb_UserName.Text, tb_InviteCode.Text);
+            DoResetPassword(tb_Mail.Text, tb_InviteCode.Text);
         }
 
-        private void DoRegisterUser(string email, string password, string username, string verifyKey)
+        private void DoResetPassword(string email, string verifKey)
         {
-            _registerUserDone = false;
-
             Enabled = false;
 
             if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
                 Program.WebSocketClient.State == WebSocketClientState.Logging)
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!",
+                    @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
@@ -212,7 +190,8 @@ namespace Celeste_Launcher_Gui.Forms
 
                     if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
 
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Register",
+                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!",
+                        @"Project Celeste -- Reset Password",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     Enabled = true;
@@ -222,33 +201,32 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (Program.WebSocketClient.State != WebSocketClientState.Connected)
             {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 Enabled = true;
                 return;
             }
-
+            _resetPwdDone = false;
+            _resetPwdFailed = true;
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-            dynamic registerUserInfo = new ExpandoObject();
-            registerUserInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-            registerUserInfo.Mail = email;
-            registerUserInfo.VerifyKey = verifyKey;
-            registerUserInfo.Password = password;
-            registerUserInfo.UserName = username;
+            dynamic resetPwdInfo = new ExpandoObject();
+            resetPwdInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
+            resetPwdInfo.EMail = email;
+            resetPwdInfo.VerifyKey = verifKey;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("REGISTER", (object) registerUserInfo,
-                OnRegisterUser);
+            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("RESETPWD", (object) resetPwdInfo,
+                OnResetPassword);
 
             var starttime2 = DateTime.UtcNow;
-            while (!_registerUserDone)
+            while (!_resetPwdDone)
             {
                 Application.DoEvents();
 
                 if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
 
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -260,36 +238,36 @@ namespace Celeste_Launcher_Gui.Forms
 
             Enabled = true;
 
-            if (_registerUserFailed)
-                return;
+            if (_resetPwdFailed) return;
 
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        private void OnRegisterUser(dynamic result)
+        private void OnResetPassword(dynamic result)
         {
             if (result["Result"].ToObject<bool>())
             {
-                _registerUserFailed = false;
-                SkinHelper.ShowMessage(@"Registred with success.", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _resetPwdFailed = false;
+                var str = result["Message"].ToObject<string>();
+                SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                _registerUserFailed = true;
+                _resetPwdFailed = true;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (Program.WebSocketClient.State != WebSocketClientState.Offline)
                 Program.WebSocketClient.AgentWebSocket.Close();
 
-            _registerUserDone = true;
+            _resetPwdDone = true;
         }
 
-        private void RegisterForm_Load(object sender, EventArgs e)
+        private void ResetPasswordForm_Load(object sender, EventArgs e)
         {
             try
             {

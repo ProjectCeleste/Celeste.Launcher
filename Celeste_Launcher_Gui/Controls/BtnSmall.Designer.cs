@@ -41,7 +41,7 @@
             this.lb_Btn.Location = new System.Drawing.Point(0, 0);
             this.lb_Btn.Margin = new System.Windows.Forms.Padding(0);
             this.lb_Btn.Name = "lb_Btn";
-            this.lb_Btn.Size = new System.Drawing.Size(172, 42);
+            this.lb_Btn.Size = new System.Drawing.Size(201, 42);
             this.lb_Btn.TabIndex = 13;
             this.lb_Btn.Text = "BtnSmall";
             this.lb_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,15 +51,16 @@
             // 
             // BtnSmall
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BtnSmallNormal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.lb_Btn);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BtnSmall";
-            this.Size = new System.Drawing.Size(172, 42);
+            this.Size = new System.Drawing.Size(201, 42);
             this.ResumeLayout(false);
 
         }
