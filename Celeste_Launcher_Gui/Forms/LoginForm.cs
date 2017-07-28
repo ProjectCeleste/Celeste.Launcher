@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.Dynamic;
+using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
 using Celeste_User.Remote;
@@ -16,6 +17,9 @@ namespace Celeste_Launcher_Gui.Forms
         public LoginForm()
         {
             InitializeComponent();
+
+            //
+            lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
 
             //Configure Fonts
             SkinHelper.SetFont(Controls);
@@ -140,7 +144,7 @@ namespace Celeste_Launcher_Gui.Forms
             dynamic loginInfo = new ExpandoObject();
             loginInfo.Mail = email;
             loginInfo.Password = password;
-            loginInfo.Version = 136;
+            loginInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
@@ -211,14 +215,6 @@ namespace Celeste_Launcher_Gui.Forms
                 if (Program.WebSocketClient.State != WebSocketClientState.Offline)
                     Program.WebSocketClient?.AgentWebSocket?.Close();
             }
-        }
-
-        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var pname = Process.GetProcessesByName("spartan");
-            if (pname.Length <= 0) return;
-            SkinHelper.ShowMessage(@"You need to close the game first!");
-            e.Cancel = true;
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

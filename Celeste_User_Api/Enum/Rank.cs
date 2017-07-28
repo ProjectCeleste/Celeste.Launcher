@@ -8,12 +8,12 @@ namespace Celeste_User.Enum
 {
     public enum Rank
     {
-        [XmlEnum("Member")] Member = 0,
-        [XmlEnum("Donator")] Donator = 1,
-        [XmlEnum("ChampionSupporter")] ChampionSupporter = 2,
-        [XmlEnum("Modo")] Modo = 3,
-        [XmlEnum("SuperModo")] SuperModo = 4,
-        [XmlEnum("Admin")] Admin = 5,
-        [XmlEnum("Banned")] Banned = 6
+        [XmlEnum("Banned")]Banned = 0,
+        [XmlEnum("Member")] Member = 1,
+        [XmlEnum("Donator")] Donator = 2,
+        [XmlEnum("ChampionSupporter")] ChampionSupporter = 3,
+        [XmlEnum("Modo")] Modo = 4,
+        [XmlEnum("SuperModo")] SuperModo = 5,
+        [XmlEnum("Admin")] Admin = 6
     }
 }

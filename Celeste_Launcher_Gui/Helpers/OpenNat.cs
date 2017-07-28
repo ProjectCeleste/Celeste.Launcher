@@ -50,7 +50,7 @@ namespace Celeste_Launcher_Gui.Helpers
 
             var nat = new NatDiscoverer();
 
-            var cts = new CancellationTokenSource(15 * 1000); //15 Sec
+            var cts = new CancellationTokenSource(30 * 1000); //30 Sec
             var device = await nat.DiscoverDeviceAsync(PortMapper.Upnp, cts);
             var externalIp = await device.GetExternalIPAsync();
             var allMappings = await device.GetAllMappingsAsync();

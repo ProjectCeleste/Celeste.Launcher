@@ -2,6 +2,7 @@
 
 using System;
 using System.Dynamic;
+using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
 
@@ -113,12 +114,14 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
+#pragma warning disable IDE0017 // Simplifier l'initialisation des objets
             dynamic registerUserInfo = new ExpandoObject();
-            registerUserInfo.Version = 136;
+            registerUserInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
             registerUserInfo.Mail = email;
             registerUserInfo.Password = password;
             registerUserInfo.UserName = username;
             registerUserInfo.InviteCode = inviteCode;
+#pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
             Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("REGISTER", (object) registerUserInfo,
                 OnRegisterUser);

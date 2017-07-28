@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
@@ -13,6 +14,9 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class MpSettingForm : Form
     {
+        private bool _isFirstRun = true;
+        private string _selectedInterfaceName;
+
         public MpSettingForm(MpSettings mpSettings)
         {
             InitializeComponent();
@@ -48,6 +52,8 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 //
             }
+
+            _isFirstRun = false;
         }
 
         //private string getExternalIp()
@@ -65,9 +71,10 @@ namespace Celeste_Launcher_Gui.Forms
         //    }
         //}
 
-        private void btnSmall1_Click(object sender, EventArgs e)
+        private void BtnSmall1_Click(object sender, EventArgs e)
         {
             Program.UserConfig.MpSettings.IsOnline = rb_Wan.Checked;
+            Program.UserConfig.MpSettings.LanNetworkInterface = _selectedInterfaceName;
             Program.UserConfig.MpSettings.AutoPortMapping = rb_Automatic.Checked;
             //Program.UserConfig.MpSettings.PublicPort = Convert.ToInt32(numericUpDown2.Value);
             Program.UserConfig.MpSettings.PublicIp = tb_remoteIp.Text;
@@ -75,7 +82,7 @@ namespace Celeste_Launcher_Gui.Forms
             Close();
         }
 
-        private void rb_Wan_CheckedChanged(object sender, EventArgs e)
+        private void Rb_Wan_CheckedChanged(object sender, EventArgs e)
         {
             if (rb_Wan.Checked)
             {
@@ -95,17 +102,51 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void rb_Lan_CheckedChanged(object sender, EventArgs e)
+        private void Rb_Lan_CheckedChanged(object sender, EventArgs e)
         {
             if (rb_Lan.Checked)
             {
-                if (rb_Wan.Checked)
-                    rb_Wan.Checked = false;
+                if (!_isFirstRun)
+                {
+                    using (var netDeviceSelectDialog = new NetworkDeviceSelectionDialog())
+                    {
+                        netDeviceSelectDialog.ShowDialog(this);
 
-                var firstOrDefault = Dns.GetHostEntry(Dns.GetHostName()).AddressList
-                    .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
+                        if (netDeviceSelectDialog.DialogResult != DialogResult.OK)
+                        {
+                            rb_Lan.Checked = false;
+                            rb_Wan.Checked = true;
+                            return;
+                        }
 
-                tb_remoteIp.Text = firstOrDefault?.ToString() ?? @"127.0.0.1";
+                        if (rb_Wan.Checked)
+                            rb_Wan.Checked = false;
+                        _selectedInterfaceName = netDeviceSelectDialog.SelectedInterfaceName;
+                        tb_remoteIp.Text = netDeviceSelectDialog.SelectedIpAddress?.ToString() ?? @"127.0.0.1";
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(Program.UserConfig.MpSettings.LanNetworkInterface))
+                    {
+                        var selectedNetInt = Program.UserConfig.MpSettings.LanNetworkInterface;
+                        var netInterface = NetworkInterface.GetAllNetworkInterfaces()
+                            .FirstOrDefault(elem => elem.Name == selectedNetInt);
+
+                        // Get IPv4 address:
+                        if (netInterface != null)
+                            foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
+                                if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                                {
+                                    tb_remoteIp.Text = ip.Address.ToString();
+                                    return;
+                                }
+                    }
+                    var firstOrDefault = Dns.GetHostEntry(Dns.GetHostName()).AddressList
+                        .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
+
+                    tb_remoteIp.Text = firstOrDefault?.ToString() ?? @"127.0.0.1";
+                }
             }
             else
             {
@@ -114,7 +155,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void rb_Automatic_CheckedChanged(object sender, EventArgs e)
+        private void Rb_Automatic_CheckedChanged(object sender, EventArgs e)
         {
             if (rb_Automatic.Checked)
             {
@@ -128,7 +169,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void rb_Manual_CheckedChanged(object sender, EventArgs e)
+        private void Rb_Manual_CheckedChanged(object sender, EventArgs e)
         {
             if (rb_Manual.Checked)
             {

@@ -150,7 +150,7 @@
             this.pb_Avatar.Size = new System.Drawing.Size(96, 96);
             this.pb_Avatar.TabIndex = 10;
             this.pb_Avatar.TabStop = false;
-            this.pb_Avatar.Click += new System.EventHandler(this.pb_Avatar_Click);
+            this.pb_Avatar.Click += new System.EventHandler(this.Pb_Avatar_Click);
             // 
             // linkLabel7
             // 
@@ -168,7 +168,7 @@
             this.linkLabel7.TabStop = true;
             this.linkLabel7.Text = "Join us on discord";
             this.linkLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
+            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel7_LinkClicked);
             // 
             // linkLabel4
             // 
@@ -186,7 +186,7 @@
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "AoEO DB";
             this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel4_LinkClicked);
             // 
             // panel3
             // 
@@ -228,8 +228,8 @@
             this.btnSmall1.Name = "btnSmall1";
             this.btnSmall1.Size = new System.Drawing.Size(172, 42);
             this.btnSmall1.TabIndex = 52;
-            this.btnSmall1.Load += new System.EventHandler(this.btnSmall1_Load);
-            this.btnSmall1.Click += new System.EventHandler(this.btn_Play_Click);
+            this.btnSmall1.Load += new System.EventHandler(this.BtnSmall1_Load);
+            this.btnSmall1.Click += new System.EventHandler(this.Btn_Play_Click);
             // 
             // btnSmall3
             // 
@@ -241,7 +241,7 @@
             this.btnSmall3.Name = "btnSmall3";
             this.btnSmall3.Size = new System.Drawing.Size(195, 54);
             this.btnSmall3.TabIndex = 51;
-            this.btnSmall3.Click += new System.EventHandler(this.btn_ManageInvite_Click);
+            this.btnSmall3.Click += new System.EventHandler(this.Btn_ManageInvite_Click);
             // 
             // btnSmall2
             // 
@@ -253,7 +253,7 @@
             this.btnSmall2.Name = "btnSmall2";
             this.btnSmall2.Size = new System.Drawing.Size(195, 54);
             this.btnSmall2.TabIndex = 50;
-            this.btnSmall2.Click += new System.EventHandler(this.label6_Click);
+            this.btnSmall2.Click += new System.EventHandler(this.Label6_Click);
             // 
             // lb_Ver
             // 
@@ -262,11 +262,11 @@
             this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
             this.lb_Ver.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Ver.ForeColor = System.Drawing.Color.Black;
-            this.lb_Ver.Location = new System.Drawing.Point(821, 427);
+            this.lb_Ver.Location = new System.Drawing.Point(796, 426);
             this.lb_Ver.Name = "lb_Ver";
-            this.lb_Ver.Size = new System.Drawing.Size(39, 16);
+            this.lb_Ver.Size = new System.Drawing.Size(59, 16);
             this.lb_Ver.TabIndex = 36;
-            this.lb_Ver.Text = "v136";
+            this.lb_Ver.Text = "v0.0.0.0";
             // 
             // lv_Friends
             // 
@@ -376,7 +376,7 @@
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "eso-community.net";
             this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked_1);
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked_1);
             // 
             // linkLbl_aoeo4evernet
             // 
@@ -392,7 +392,7 @@
             this.linkLbl_aoeo4evernet.TabStop = true;
             this.linkLbl_aoeo4evernet.Text = "aoeo4ever.net";
             this.linkLbl_aoeo4evernet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLbl_aoeo4evernet.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLbl_aoeo4evernet_LinkClicked);
+            this.linkLbl_aoeo4evernet.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_aoeo4evernet_LinkClicked);
             // 
             // label3
             // 
@@ -422,7 +422,7 @@
             this.linklbl_Wiki.TabStop = true;
             this.linklbl_Wiki.Text = "AoEO Wikia";
             this.linklbl_Wiki.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linklbl_Wiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbl_Wiki_LinkClicked);
+            this.linklbl_Wiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Linklbl_Wiki_LinkClicked);
             // 
             // linkLbl_ProjectCelesteCom
             // 
@@ -438,7 +438,7 @@
             this.linkLbl_ProjectCelesteCom.TabStop = true;
             this.linkLbl_ProjectCelesteCom.Text = "ProjectCeleste.com";
             this.linkLbl_ProjectCelesteCom.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLbl_ProjectCelesteCom.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLbl_ProjectCelesteCom_LinkClicked);
+            this.linkLbl_ProjectCelesteCom.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_ProjectCelesteCom_LinkClicked);
             // 
             // linklbl_ReportIssue
             // 
@@ -454,7 +454,7 @@
             this.linklbl_ReportIssue.TabStop = true;
             this.linklbl_ReportIssue.Text = "Report Issue";
             this.linklbl_ReportIssue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linklbl_ReportIssue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbl_ReportBug_LinkClicked);
+            this.linklbl_ReportIssue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Linklbl_ReportBug_LinkClicked);
             // 
             // comboBox1
             // 
@@ -481,7 +481,7 @@
             this.linkLbl_Upgrade.TabStop = true;
             this.linkLbl_Upgrade.Text = "Upgrade";
             this.linkLbl_Upgrade.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLbl_Upgrade.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            this.linkLbl_Upgrade.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
             // 
             // lbl_AllowCiv
             // 
@@ -511,7 +511,7 @@
             this.linkLbl_ChangePwd.TabStop = true;
             this.linkLbl_ChangePwd.Text = "Change Password";
             this.linkLbl_ChangePwd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLbl_ChangePwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLbl_ChangePwd_LinkClicked);
+            this.linkLbl_ChangePwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_ChangePwd_LinkClicked);
             // 
             // linkLabel2
             // 
@@ -530,7 +530,7 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Edit";
             this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel2_LinkClicked);
             // 
             // label1
             // 
@@ -591,7 +591,7 @@
             this.linkLabel1.Text = "Edit";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Sienna;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // lbl_UserName
             // 

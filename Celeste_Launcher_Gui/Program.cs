@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Forms;
@@ -16,9 +17,9 @@ namespace Celeste_Launcher_Gui
     internal static class Program
     {
 #if DEBUG
-        public static string WebSocketUri = "ws://127.0.0.1:4508/";
+        public static string WebSocketUri = "ws://127.0.0.1:4512/";
 #else
-        public static string WebSocketUri = "ws://66.70.180.188:4508/";
+        public static string WebSocketUri = "ws://66.70.180.188:4512/";
 #endif
 
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
@@ -34,25 +35,11 @@ namespace Celeste_Launcher_Gui
 
             try
             {
-                //
-                var pname = Process.GetProcessesByName("spartan");
-                if (pname.Length > 0)
-                {
-                    SkinHelper.ShowMessage(@"Game already runing! Close it first.", "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-                //
-            }
-
-            try
-            {
                 //Only one instance
                 if (AlreadyRunning())
                 {
-                    SkinHelper.ShowMessage(@"Launcher already runing!", "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SkinHelper.ShowMessage(@"Launcher already runing!", "Celeste Fan Project", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -71,7 +58,6 @@ namespace Celeste_Launcher_Gui
             {
                 //
             }
-            
 
             //Start Gui
             Application.Run(new MainForm());
@@ -79,20 +65,18 @@ namespace Celeste_Launcher_Gui
 
         private static bool AlreadyRunning()
         {
-            var processes = Process.GetProcesses();
             var currentProc = Process.GetCurrentProcess();
-
-            foreach (var process in processes)
-                try
-                {
-                    if (process.Modules[0].FileName == Assembly.GetExecutingAssembly().Location
-                        && currentProc.Id != process.Id)
-                        return true;
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
+            try
+            {
+                if (Process.GetProcesses().Any(key => key.Id != currentProc.Id && key.Modules.Count > 0 &&
+                                                      key.Modules[0].FileName ==
+                                                      Assembly.GetExecutingAssembly().Location))
+                    return true;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
 
             return false;
         }
