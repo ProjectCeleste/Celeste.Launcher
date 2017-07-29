@@ -222,7 +222,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 31));
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 26));
             }
             catch (Exception)
             {
@@ -233,6 +233,22 @@ namespace Celeste_Launcher_Gui.Forms
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://www.xbox.com/en-us/developers/rules");
+        }
+
+        private void linkLbl_ForgotPwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            using (var form = new ResetPwdForm())
+            {
+                Hide();
+                form.ShowDialog();
+                if (form.DialogResult == DialogResult.OK)
+                {
+                    tb_Mail.Text = form.tb_Mail.Text;
+                    tb_Password.Text = "";
+                    cb_RememberMe.Checked = true;
+                }
+                Show();
+            }
         }
     }
 }

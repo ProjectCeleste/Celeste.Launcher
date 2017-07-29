@@ -14,8 +14,6 @@ namespace Celeste_Launcher_Gui.Controls
     // [Designer(typeof(MyCustomControlDesigner1))]
     public partial class MainContainer : UserControl
     {
-        public bool MinimizeBox { get; set; }
-
         public MainContainer()
         {
             InitializeComponent();
@@ -28,6 +26,8 @@ namespace Celeste_Launcher_Gui.Controls
             //Configure Fonts
             SkinHelper.SetFont(Controls);
         }
+
+        public bool MinimizeBox { get; set; }
 
         // ReSharper disable once ConvertToAutoProperty
         //public Panel ContainerPanel => panel9;
@@ -58,7 +58,7 @@ namespace Celeste_Launcher_Gui.Controls
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            if(ParentForm != null)
+            if (ParentForm != null)
                 ParentForm.WindowState = FormWindowState.Minimized;
         }
 
