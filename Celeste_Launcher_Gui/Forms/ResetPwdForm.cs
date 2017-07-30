@@ -10,12 +10,19 @@ using Celeste_Launcher_Gui.Helpers;
 
 namespace Celeste_Launcher_Gui.Forms
 {
+    public enum ResetPwdState
+    {
+        TimedOut = -2,
+        Failed = -1,
+        Idle = 0,
+        InProgress = 1,
+        Success = 2
+    }
+
     public partial class ResetPwdForm : Form
     {
-        private bool _resetPwdDone;
-        private bool _resetPwdFailed = true;
-        private bool _verifyUserDone;
-        private bool _verifyUserFailed = true;
+        private ResetPwdState _resetPwdState = ResetPwdState.Idle;
+        private ResetPwdState _verifyUserState = ResetPwdState.Idle;
 
         public ResetPwdForm()
         {
@@ -42,103 +49,68 @@ namespace Celeste_Launcher_Gui.Forms
         {
             Enabled = false;
 
-            if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
-                Program.WebSocketClient.State == WebSocketClientState.Logging)
+            try
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!",
-                    @"Project Celeste -- Reset Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Program.WebSocketClient.StartConnect(true, Program.UserConfig.LoginInfo.Email,
+                    Program.UserConfig.LoginInfo.Password);
 
-                Enabled = true;
-                return;
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                Program.WebSocketClient.StartConnect();
-
-                var starttime = DateTime.UtcNow;
-                while (Program.WebSocketClient.State != WebSocketClientState.Connected &&
-                       Program.WebSocketClient.State != WebSocketClientState.Offline)
-                {
-                    Application.DoEvents();
-
-                    if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
-
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!",
-                        @"Project Celeste -- Reset Password",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    Enabled = true;
-                    return;
-                }
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Reset Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Enabled = true;
-                return;
-            }
-            _verifyUserDone = false;
-            _verifyUserFailed = true;
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-            dynamic forgotPwdInfo = new ExpandoObject();
-            forgotPwdInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-            forgotPwdInfo.EMail = email;
+                dynamic forgotPwdInfo = new ExpandoObject();
+                forgotPwdInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
+                forgotPwdInfo.EMail = email;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("FORGOTPWD", (object) forgotPwdInfo,
-                OnVerifyUser);
+                _verifyUserState = ResetPwdState.InProgress;
 
-            var starttime2 = DateTime.UtcNow;
-            while (!_verifyUserDone)
+                Program.WebSocketClient.AgentWebSocket.Query<dynamic>("FORGOTPWD", (object) forgotPwdInfo,
+                    OnVerifyUser);
+
+                var starttime = DateTime.UtcNow;
+                while (_verifyUserState == ResetPwdState.InProgress &&
+                       Program.WebSocketClient.State == WebSocketClientState.Connected)
+                {
+                    Application.DoEvents();
+                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
+                    if (diff <= WebSocketClient.TimeOut) continue;
+
+                    _verifyUserState = ResetPwdState.TimedOut;
+
+                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
+                        Program.WebSocketClient.AgentWebSocket.Close();
+
+                    throw new Exception($"Server response timeout (total time = {diff})!");
+                }
+
+                if (_verifyUserState != ResetPwdState.Success) return;
+
+                p_Verify.Enabled = false;
+                p_ResetPassword.Enabled = true;
+            }
+            catch (Exception e)
             {
-                Application.DoEvents();
-
-                if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
-
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Reset Password",
+                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                    Program.WebSocketClient?.AgentWebSocket?.Close();
-
-                Enabled = true;
-                return;
             }
 
             Enabled = true;
-
-            if (_verifyUserFailed) return;
-
-            p_Verify.Enabled = false;
-            p_ResetPassword.Enabled = true;
         }
 
         private void OnVerifyUser(dynamic result)
         {
             if (result["Result"].ToObject<bool>())
             {
-                _verifyUserFailed = false;
+                _verifyUserState = ResetPwdState.Success;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                _verifyUserFailed = true;
+                _verifyUserState = ResetPwdState.Failed;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                Program.WebSocketClient.AgentWebSocket.Close();
-
-            _verifyUserDone = true;
         }
 
 
@@ -167,104 +139,69 @@ namespace Celeste_Launcher_Gui.Forms
         {
             Enabled = false;
 
-            if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
-                Program.WebSocketClient.State == WebSocketClientState.Logging)
+            try
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!",
-                    @"Project Celeste -- Reset Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Program.WebSocketClient.StartConnect(true, Program.UserConfig.LoginInfo.Email,
+                    Program.UserConfig.LoginInfo.Password);
 
-                Enabled = true;
-                return;
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                Program.WebSocketClient.StartConnect();
-
-                var starttime = DateTime.UtcNow;
-                while (Program.WebSocketClient.State != WebSocketClientState.Connected &&
-                       Program.WebSocketClient.State != WebSocketClientState.Offline)
-                {
-                    Application.DoEvents();
-
-                    if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
-
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!",
-                        @"Project Celeste -- Reset Password",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    Enabled = true;
-                    return;
-                }
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Reset Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Enabled = true;
-                return;
-            }
-            _resetPwdDone = false;
-            _resetPwdFailed = true;
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-            dynamic resetPwdInfo = new ExpandoObject();
-            resetPwdInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-            resetPwdInfo.EMail = email;
-            resetPwdInfo.VerifyKey = verifKey;
+                dynamic resetPwdInfo = new ExpandoObject();
+                resetPwdInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
+                resetPwdInfo.EMail = email;
+                resetPwdInfo.VerifyKey = verifKey;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("RESETPWD", (object) resetPwdInfo,
-                OnResetPassword);
+                _resetPwdState = ResetPwdState.InProgress;
 
-            var starttime2 = DateTime.UtcNow;
-            while (!_resetPwdDone)
+                Program.WebSocketClient.AgentWebSocket.Query<dynamic>("RESETPWD", (object) resetPwdInfo,
+                    OnResetPassword);
+
+                var starttime = DateTime.UtcNow;
+                while (_resetPwdState == ResetPwdState.InProgress &&
+                       Program.WebSocketClient.State == WebSocketClientState.Connected)
+                {
+                    Application.DoEvents();
+                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
+                    if (diff <= WebSocketClient.TimeOut) continue;
+
+                    _resetPwdState = ResetPwdState.TimedOut;
+
+                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
+                        Program.WebSocketClient.AgentWebSocket.Close();
+
+                    throw new Exception($"Server response timeout (total time = {diff})!");
+                }
+
+                if (_resetPwdState != ResetPwdState.Success) return;
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (Exception e)
             {
-                Application.DoEvents();
-
-                if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
-
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Reset Password",
+                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                    Program.WebSocketClient?.AgentWebSocket?.Close();
-
-                Enabled = true;
-                return;
             }
 
             Enabled = true;
-
-            if (_resetPwdFailed) return;
-
-            DialogResult = DialogResult.OK;
-            Close();
         }
 
         private void OnResetPassword(dynamic result)
         {
             if (result["Result"].ToObject<bool>())
             {
-                _resetPwdFailed = false;
+                _resetPwdState = ResetPwdState.Success;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                _resetPwdFailed = true;
+                _resetPwdState = ResetPwdState.Failed;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                Program.WebSocketClient.AgentWebSocket.Close();
-
-            _resetPwdDone = true;
         }
 
         private void ResetPasswordForm_Load(object sender, EventArgs e)

@@ -122,9 +122,9 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
-            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
-            this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click_1);
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.PictureBox1_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.PictureBox1_MouseLeave);
             // 
             // btn_Close
             // 
@@ -138,9 +138,9 @@
             this.btn_Close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btn_Close.TabIndex = 0;
             this.btn_Close.TabStop = false;
-            this.btn_Close.Click += new System.EventHandler(this.pictureBox1_Click);
-            this.btn_Close.MouseEnter += new System.EventHandler(this.btn_Close_MouseEnter);
-            this.btn_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            this.btn_Close.Click += new System.EventHandler(this.PictureBox1_Click);
+            this.btn_Close.MouseEnter += new System.EventHandler(this.Btn_Close_MouseEnter);
+            this.btn_Close.MouseLeave += new System.EventHandler(this.Btn_Close_MouseLeave);
             // 
             // TopLeftFixed
             // 

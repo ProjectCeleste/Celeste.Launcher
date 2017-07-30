@@ -89,7 +89,12 @@ namespace Celeste_Launcher_Gui.Forms
                 if (rb_Lan.Checked)
                     rb_Lan.Checked = false;
 
-                tb_remoteIp.Text = Program.RemoteUser?.Ip ?? @"127.0.0.1";
+                if (Program.WebSocketClient?.UserInformation != null &&
+                    !string.IsNullOrEmpty(Program.WebSocketClient.UserInformation.Ip))
+                    tb_remoteIp.Text = Program.WebSocketClient.UserInformation.Ip;
+                else
+                    tb_remoteIp.Text = @"127.0.0.1";
+
 
                 panel3.Enabled = true;
             }

@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Controls
         // ReSharper disable once ConvertToAutoProperty
         //public Panel ContainerPanel => panel9;
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void PictureBox1_Click(object sender, EventArgs e)
         {
             ParentForm?.Close();
         }
@@ -46,28 +46,28 @@ namespace Celeste_Launcher_Gui.Controls
                 SkinHelper.SendMessage(findForm.Handle, SkinHelper.WM_NCLBUTTONDOWN, SkinHelper.HT_CAPTION, 0);
         }
 
-        private void btn_Close_MouseEnter(object sender, EventArgs e)
+        private void Btn_Close_MouseEnter(object sender, EventArgs e)
         {
             btn_Close.Image = Resources.XButton_Hover;
         }
 
-        private void btn_Close_MouseLeave(object sender, EventArgs e)
+        private void Btn_Close_MouseLeave(object sender, EventArgs e)
         {
             btn_Close.Image = Resources.XButton_Normal;
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
+        private void PictureBox1_Click_1(object sender, EventArgs e)
         {
             if (ParentForm != null)
                 ParentForm.WindowState = FormWindowState.Minimized;
         }
 
-        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        private void PictureBox1_MouseEnter(object sender, EventArgs e)
         {
             pictureBox1.Image = Resources.MinimizeButtonHover;
         }
 
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        private void PictureBox1_MouseLeave(object sender, EventArgs e)
         {
             pictureBox1.Image = Resources.MinimizeButtonNormal;
         }

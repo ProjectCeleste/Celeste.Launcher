@@ -210,7 +210,7 @@
             this.linkLbl_ForgotPwd.TabStop = true;
             this.linkLbl_ForgotPwd.Text = "Forgot Password?";
             this.linkLbl_ForgotPwd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLbl_ForgotPwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLbl_ForgotPwd_LinkClicked);
+            this.linkLbl_ForgotPwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_ForgotPwd_LinkClicked);
             // 
             // tableLayoutPanel2
             // 
@@ -256,7 +256,7 @@
             this.btnSmall2.Name = "btnSmall2";
             this.btnSmall2.Size = new System.Drawing.Size(168, 49);
             this.btnSmall2.TabIndex = 42;
-            this.btnSmall2.Click += new System.EventHandler(this.btn_Login_Click);
+            this.btnSmall2.Click += new System.EventHandler(this.Btn_Login_Click);
             // 
             // btnSmall1
             // 
@@ -270,7 +270,7 @@
             this.btnSmall1.Name = "btnSmall1";
             this.btnSmall1.Size = new System.Drawing.Size(168, 49);
             this.btnSmall1.TabIndex = 41;
-            this.btnSmall1.Click += new System.EventHandler(this.btn_Register_Click);
+            this.btnSmall1.Click += new System.EventHandler(this.Btn_Register_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -318,7 +318,7 @@
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "View Microsoft\'s \"Game Content Usage Rules\"";
             this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel4_LinkClicked);
             // 
             // LoginForm
             // 

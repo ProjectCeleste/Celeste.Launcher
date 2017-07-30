@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_User.Remote;
 
 #endregion
 
@@ -23,7 +22,6 @@ namespace Celeste_Launcher_Gui
 #endif
 
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
-        public static RemoteUser RemoteUser;
         public static UserConfig UserConfig = new UserConfig();
         public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
 
@@ -33,19 +31,12 @@ namespace Celeste_Launcher_Gui
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            try
+            //Only one instance
+            if (AlreadyRunning())
             {
-                //Only one instance
-                if (AlreadyRunning())
-                {
-                    SkinHelper.ShowMessage(@"Launcher already runing!", "Celeste Fan Project", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-                //
+                SkinHelper.ShowMessage(@"Launcher already runing!", "Celeste Fan Project", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
             }
 
             //Load UserConfig
@@ -65,15 +56,17 @@ namespace Celeste_Launcher_Gui
 
         private static bool AlreadyRunning()
         {
-            var currentProc = Process.GetCurrentProcess();
             try
             {
-                if (Process.GetProcesses().Any(key => key.Id != currentProc.Id && key.Modules.Count > 0 &&
-                                                      key.Modules[0].FileName ==
-                                                      Assembly.GetExecutingAssembly().Location))
+                var currentProc = Process.GetCurrentProcess();
+
+                if (Process.GetProcesses().Any(key => key.Id != currentProc.Id &&
+                                                      string.Equals(key.Modules[0].FileName,
+                                                          Assembly.GetExecutingAssembly().Location,
+                                                          StringComparison.CurrentCultureIgnoreCase)))
                     return true;
             }
-            catch (Exception)
+            catch
             {
                 // ignored
             }

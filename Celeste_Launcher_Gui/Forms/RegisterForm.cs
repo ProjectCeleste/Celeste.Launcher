@@ -10,12 +10,19 @@ using Celeste_Launcher_Gui.Helpers;
 
 namespace Celeste_Launcher_Gui.Forms
 {
+    public enum RegisterUserState
+    {
+        TimedOut = -2,
+        Failed = -1,
+        Idle = 0,
+        InProgress = 1,
+        Success = 2
+    }
+
     public partial class RegisterForm : Form
     {
-        private bool _registerUserDone;
-        private bool _registerUserFailed = true;
-        private bool _verifyUserDone;
-        private bool _verifyUserFailed = true;
+        private RegisterUserState _validMailState = RegisterUserState.Idle;
+        private RegisterUserState _registerUserState = RegisterUserState.Idle;
 
         public RegisterForm()
         {
@@ -41,101 +48,67 @@ namespace Celeste_Launcher_Gui.Forms
         {
             Enabled = false;
 
-            if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
-                Program.WebSocketClient.State == WebSocketClientState.Logging)
+            try
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Program.WebSocketClient.StartConnect(false);
 
-                Enabled = true;
-                return;
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                Program.WebSocketClient.StartConnect();
-
-                var starttime = DateTime.UtcNow;
-                while (Program.WebSocketClient.State != WebSocketClientState.Connected &&
-                       Program.WebSocketClient.State != WebSocketClientState.Offline)
-                {
-                    Application.DoEvents();
-
-                    if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
-
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Register",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    Enabled = true;
-                    return;
-                }
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Enabled = true;
-                return;
-            }
-            _verifyUserDone = false;
-            _verifyUserFailed = true;
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-            dynamic validMailInfo = new ExpandoObject();
-            validMailInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-            validMailInfo.EMail = email;
+                dynamic validMailInfo = new ExpandoObject();
+                validMailInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
+                validMailInfo.EMail = email;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("VALIDMAIL", (object) validMailInfo,
-                OnVerifyUser);
+                _validMailState = RegisterUserState.InProgress;
 
-            var starttime2 = DateTime.UtcNow;
-            while (!_verifyUserDone)
+                Program.WebSocketClient.AgentWebSocket.Query<dynamic>("VALIDMAIL", (object) validMailInfo,
+                    OnVerifyUser);
+
+                var starttime = DateTime.UtcNow;
+                while (_validMailState == RegisterUserState.InProgress && Program.WebSocketClient.State != WebSocketClientState.Offline)
+                {
+                    Application.DoEvents();
+                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
+                    if (diff <= WebSocketClient.TimeOut) continue;
+
+                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
+                        Program.WebSocketClient.AgentWebSocket.Close();
+
+                    _validMailState = RegisterUserState.TimedOut;
+
+                    throw new Exception($"DoVerifyUser() Server connection timeout (total send time = {diff})!");
+                }
+
+                if (_validMailState == RegisterUserState.Success)
+                {
+                    p_Verify.Enabled = false;
+                    p_Register.Enabled = true;
+                }
+            }
+            catch (Exception e)
             {
-                Application.DoEvents();
-
-                if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
-
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Register",
+                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                    Program.WebSocketClient?.AgentWebSocket?.Close();
-
-                Enabled = true;
-                return;
             }
 
             Enabled = true;
-
-            if (_verifyUserFailed) return;
-
-            p_Verify.Enabled = false;
-            p_Register.Enabled = true;
         }
 
         private void OnVerifyUser(dynamic result)
         {
             if (result["Result"].ToObject<bool>())
             {
-                _verifyUserFailed = false;
+                _validMailState = RegisterUserState.Success;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                _verifyUserFailed = true;
+                _validMailState = RegisterUserState.Failed;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                Program.WebSocketClient.AgentWebSocket.Close();
-
-            _verifyUserDone = true;
         }
 
         private void Btn_Register_Click(object sender, EventArgs e)
@@ -186,107 +159,69 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void DoRegisterUser(string email, string password, string username, string verifyKey)
         {
-            _registerUserDone = false;
-
-            Enabled = false;
-
-            if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
-                Program.WebSocketClient.State == WebSocketClientState.Logging)
+            try
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Enabled = true;
-                return;
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                Program.WebSocketClient.StartConnect();
-
-                var starttime = DateTime.UtcNow;
-                while (Program.WebSocketClient.State != WebSocketClientState.Connected &&
-                       Program.WebSocketClient.State != WebSocketClientState.Offline)
-                {
-                    Application.DoEvents();
-
-                    if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
-
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Register",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    Enabled = true;
-                    return;
-                }
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Enabled = true;
-                return;
-            }
+                Program.WebSocketClient.StartConnect(false);
 
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-            dynamic registerUserInfo = new ExpandoObject();
-            registerUserInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-            registerUserInfo.Mail = email;
-            registerUserInfo.VerifyKey = verifyKey;
-            registerUserInfo.Password = password;
-            registerUserInfo.UserName = username;
+                dynamic registerUserInfo = new ExpandoObject();
+                registerUserInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
+                registerUserInfo.Mail = email;
+                registerUserInfo.VerifyKey = verifyKey;
+                registerUserInfo.Password = password;
+                registerUserInfo.UserName = username;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("REGISTER", (object) registerUserInfo,
-                OnRegisterUser);
+                _registerUserState = RegisterUserState.InProgress;
 
-            var starttime2 = DateTime.UtcNow;
-            while (!_registerUserDone)
-            {
-                Application.DoEvents();
+                Program.WebSocketClient.AgentWebSocket.Query<dynamic>("REGISTER", (object) registerUserInfo,
+                    OnRegisterUser);
 
-                if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
+                var starttime = DateTime.UtcNow;
+                while (_registerUserState == RegisterUserState.InProgress && Program.WebSocketClient.State != WebSocketClientState.Offline)
+                {
+                    Application.DoEvents();
+                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
+                    if (diff <= WebSocketClient.TimeOut) continue;
 
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
+                        Program.WebSocketClient.AgentWebSocket.Close();
 
-                if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                    Program.WebSocketClient?.AgentWebSocket?.Close();
+                    _registerUserState = RegisterUserState.TimedOut;
 
-                Enabled = true;
-                return;
+                    throw new Exception($"DoRegisterUser() Server connection timeout (total send time = {diff})!");
+                }
+
+                if (_registerUserState == RegisterUserState.Success)
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
             }
-
+            catch (Exception e)
+            {
+                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
             Enabled = true;
-
-            if (_registerUserFailed)
-                return;
-
-            DialogResult = DialogResult.OK;
-            Close();
         }
 
         private void OnRegisterUser(dynamic result)
         {
             if (result["Result"].ToObject<bool>())
             {
-                _registerUserFailed = false;
+                _registerUserState = RegisterUserState.Success;
                 SkinHelper.ShowMessage(@"Registred with success.", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                _registerUserFailed = true;
+                _registerUserState = RegisterUserState.Failed;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                Program.WebSocketClient.AgentWebSocket.Close();
-
-            _registerUserDone = true;
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)

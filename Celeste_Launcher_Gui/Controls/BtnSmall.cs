@@ -32,19 +32,19 @@ namespace Celeste_Launcher_Gui.Controls
             }
         }
 
-        private void lb_Btn_MouseEnter(object sender, EventArgs e)
+        private void Lb_Btn_MouseEnter(object sender, EventArgs e)
         {
             lb_Btn.ForeColor = Color.Yellow;
             BackgroundImage = Resources.BtnSmallHover;
         }
 
-        private void lb_Btn_MouseLeave(object sender, EventArgs e)
+        private void Lb_Btn_MouseLeave(object sender, EventArgs e)
         {
             lb_Btn.ForeColor = Color.White;
             BackgroundImage = Resources.BtnSmallNormal;
         }
 
-        private void lb_Btn_Click(object sender, EventArgs e)
+        private void Lb_Btn_Click(object sender, EventArgs e)
         {
             OnClick(e);
         }

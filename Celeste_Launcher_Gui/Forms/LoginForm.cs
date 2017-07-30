@@ -2,11 +2,9 @@
 
 using System;
 using System.Diagnostics;
-using System.Dynamic;
 using System.Reflection;
 using System.Windows.Forms;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_User.Remote;
 
 #endregion
 
@@ -32,7 +30,7 @@ namespace Celeste_Launcher_Gui.Forms
             cb_RememberMe.Checked = Program.UserConfig.LoginInfo.RememberMe;
         }
 
-        private void btn_Login_Click(object sender, EventArgs e)
+        private void Btn_Login_Click(object sender, EventArgs e)
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
@@ -52,7 +50,7 @@ namespace Celeste_Launcher_Gui.Forms
             DoLoggedIn(tb_Mail.Text, tb_Password.Text);
         }
 
-        private void btn_Register_Click(object sender, EventArgs e)
+        private void Btn_Register_Click(object sender, EventArgs e)
         {
             using (var form = new RegisterForm())
             {
@@ -92,131 +90,44 @@ namespace Celeste_Launcher_Gui.Forms
         public void DoLoggedIn(string email, string password)
         {
             Enabled = false;
-
-            if (Program.WebSocketClient.State == WebSocketClientState.Logged ||
-                Program.WebSocketClient.State == WebSocketClientState.Logging)
+            try
             {
-                SkinHelper.ShowMessage(@"Already logged-in or logged-in in progress!", @"Project Celeste -- Login",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Program.WebSocketClient.StartConnect(true, email, password);
 
-                Enabled = true;
-                return;
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                Program.WebSocketClient.StartConnect();
-
-                var starttime = DateTime.UtcNow;
-                while (Program.WebSocketClient.State != WebSocketClientState.Connected &&
-                       Program.WebSocketClient.State != WebSocketClientState.Offline)
+                //Save UserConfig
+                if (Program.UserConfig == null)
                 {
-                    Application.DoEvents();
-
-                    if (DateTime.UtcNow.Subtract(starttime).TotalSeconds <= 20) continue;
-
-                    SkinHelper.ShowMessage(@"Server connection timeout (> 20sec)!", @"Project Celeste -- Login",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                        Program.WebSocketClient?.AgentWebSocket?.Close();
-
-                    Enabled = true;
-                    return;
-                }
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
-                SkinHelper.ShowMessage(@"Server Offline", @"Project Celeste -- Login",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                    Program.WebSocketClient?.AgentWebSocket?.Close();
-
-                Enabled = true;
-                return;
-            }
-
-            Program.WebSocketClient.State = WebSocketClientState.Logging;
-
-#pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-            dynamic loginInfo = new ExpandoObject();
-            loginInfo.Mail = email;
-            loginInfo.Password = password;
-            loginInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-#pragma warning restore IDE0017 // Simplifier l'initialisation des objets
-
-            Program.WebSocketClient.AgentWebSocket?.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
-
-            var starttime2 = DateTime.UtcNow;
-            while (Program.WebSocketClient.State == WebSocketClientState.Logging)
-            {
-                Application.DoEvents();
-
-                if (DateTime.UtcNow.Subtract(starttime2).TotalSeconds <= 20) continue;
-
-                SkinHelper.ShowMessage(@"Server response timeout (> 20sec)!", @"Project Celeste -- Login",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                    Program.WebSocketClient?.AgentWebSocket?.Close();
-
-                Enabled = true;
-                return;
-            }
-
-            if (Program.WebSocketClient.State != WebSocketClientState.Logged)
-            {
-                Enabled = true;
-                return;
-            }
-
-            //Save UserConfig
-            if (Program.UserConfig == null)
-            {
-                Program.UserConfig = new UserConfig
-                {
-                    LoginInfo = new LoginInfo
+                    Program.UserConfig = new UserConfig
                     {
-                        Email = tb_Mail.Text,
-                        Password = tb_Password.Text,
-                        RememberMe = cb_RememberMe.Checked
-                    }
-                };
-            }
-            else
-            {
-                Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
-                Program.UserConfig.LoginInfo.Password = tb_Password.Text;
-                Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
-            }
-            Program.UserConfig.Save(Program.UserConfigFilePath);
+                        LoginInfo = new LoginInfo
+                        {
+                            Email = tb_Mail.Text,
+                            Password = tb_Password.Text,
+                            RememberMe = cb_RememberMe.Checked
+                        }
+                    };
+                }
+                else
+                {
+                    Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
+                    Program.UserConfig.LoginInfo.Password = tb_Password.Text;
+                    Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                }
 
-            DialogResult = DialogResult.OK;
-            Close();
-        }
+                Program.UserConfig.Save(Program.UserConfigFilePath);
 
-        private static void OnLoggedIn(dynamic result)
-        {
-            if (result["Result"].ToObject<bool>())
-            {
-                Program.RemoteUser = result["RemoteUser"].ToObject<RemoteUser>();
-                Program.WebSocketClient.State = WebSocketClientState.Logged;
+                DialogResult = DialogResult.OK;
+                Close();
             }
-            else
+            catch (Exception e)
             {
-                Program.WebSocketClient.State = WebSocketClientState.Connected;
-
-                Program.WebSocketClient.ErrorMessage = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"{Program.WebSocketClient.ErrorMessage}", @"Project Celeste -- Login",
+                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                    Program.WebSocketClient?.AgentWebSocket?.Close();
             }
-        }
 
+            Enabled = true;
+        }
+        
         private void LoginForm_Load(object sender, EventArgs e)
         {
             try
@@ -230,12 +141,12 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://www.xbox.com/en-us/developers/rules");
         }
 
-        private void linkLbl_ForgotPwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLbl_ForgotPwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (var form = new ResetPwdForm())
             {

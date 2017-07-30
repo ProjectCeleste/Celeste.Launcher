@@ -244,10 +244,6 @@
       <Project>{aecd370a-68cb-466b-b4f8-cc02cc6a9a5d}</Project>
       <Name>Celeste_User</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Samsung\Documents\GitHub\Celeste_Launcher\\Open.Nat\Open.Nat.csproj">
-      <Project>{F5D74163-145F-47BF-83DC-D0E07249C6CA}</Project>
-      <Name>Open.Nat</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

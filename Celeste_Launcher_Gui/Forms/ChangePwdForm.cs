@@ -9,9 +9,18 @@ using Celeste_Launcher_Gui.Helpers;
 
 namespace Celeste_Launcher_Gui.Forms
 {
+    public enum ChangePwdState
+    {
+        TimedOut = -2,
+        Failed = -1,
+        Idle = 0,
+        InProgress = 1,
+        Success = 2
+    }
+
     public partial class ChangePwdForm : Form
     {
-        private bool _changePasswordDone;
+        private ChangePwdState _changePwdState = ChangePwdState.Idle;
 
         public ChangePwdForm()
         {
@@ -23,36 +32,67 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void DoChangePassword(string oldPwd, string newPwd)
         {
-            _changePasswordDone = false;
+            Enabled = false;
+            try
+            {
+                Program.WebSocketClient.StartConnect(true, Program.UserConfig.LoginInfo.Email,
+                    Program.UserConfig.LoginInfo.Password);
 
-            if (Program.WebSocketClient.State != WebSocketClientState.Logged)
-                throw new Exception("Not logged in!");
+#pragma warning disable IDE0017 // Simplifier l'initialisation des objets
+                dynamic changePwdInfo = new ExpandoObject();
+                changePwdInfo.Old = oldPwd;
+                changePwdInfo.New = newPwd;
+#pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            dynamic changePwdInfo = new ExpandoObject();
-            changePwdInfo.Old = oldPwd;
-            changePwdInfo.New = newPwd;
+                _changePwdState = ChangePwdState.InProgress;
 
-            Program.WebSocketClient?.AgentWebSocket?.Query<dynamic>("CHANGEPWD", (object) changePwdInfo,
-                OnChangePassword);
+                Program.WebSocketClient.AgentWebSocket.Query<dynamic>("CHANGEPWD", (object) changePwdInfo,
+                    OnChangePassword);
+
+                var starttime = DateTime.UtcNow;
+
+                while (_changePwdState == ChangePwdState.InProgress &&
+                       Program.WebSocketClient.State == WebSocketClientState.Connected)
+                {
+                    Application.DoEvents();
+                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
+                    if (diff <= WebSocketClient.TimeOut) continue;
+
+                    _changePwdState = ChangePwdState.TimedOut;
+
+                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
+                        Program.WebSocketClient.AgentWebSocket.Close();
+
+                    throw new Exception($"Server response timeout (total time = {diff})!");
+                }
+            }
+            catch (Exception e)
+            {
+                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Change Password",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Enabled = true;
         }
 
         private void OnChangePassword(dynamic result)
         {
             if (result["Result"].ToObject<bool>())
             {
+                _changePwdState = ChangePwdState.Success;
                 SkinHelper.ShowMessage(@"Password changed with success.", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                _changePwdState = ChangePwdState.Failed;
                 var str = result["Message"].ToObject<string>();
                 SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            _changePasswordDone = true;
         }
 
-        private void btnSmall1_Click(object sender, EventArgs e)
+        private void BtnSmall1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text != textBox2.Text)
             {
@@ -77,18 +117,7 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            Enabled = false;
             DoChangePassword(tb_Password.Text, textBox2.Text);
-
-            var starttime = DateTime.UtcNow;
-            while (!_changePasswordDone && DateTime.UtcNow.Subtract(starttime).TotalSeconds < 20) //Timeout 20sec
-                Application.DoEvents();
-
-            Enabled = true;
-
-            if (!_changePasswordDone)
-                SkinHelper.ShowMessage(@"Error: Timout!", @"Project Celeste -- Change Password",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void ChangePwdForm_Load(object sender, EventArgs e)
