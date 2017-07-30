@@ -45,9 +45,9 @@
             this.lb_Btn.TabIndex = 13;
             this.lb_Btn.Text = "BtnSmall";
             this.lb_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lb_Btn.Click += new System.EventHandler(this.lb_Btn_Click);
-            this.lb_Btn.MouseEnter += new System.EventHandler(this.lb_Btn_MouseEnter);
-            this.lb_Btn.MouseLeave += new System.EventHandler(this.lb_Btn_MouseLeave);
+            this.lb_Btn.Click += new System.EventHandler(this.Lb_Btn_Click);
+            this.lb_Btn.MouseEnter += new System.EventHandler(this.Lb_Btn_MouseEnter);
+            this.lb_Btn.MouseLeave += new System.EventHandler(this.Lb_Btn_MouseLeave);
             // 
             // BtnSmall
             // 

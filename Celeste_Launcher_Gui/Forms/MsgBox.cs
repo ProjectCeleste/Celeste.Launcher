@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Forms
             SkinHelper.SetFont(Controls);
         }
 
-        private void lb_OK_Click(object sender, EventArgs e)
+        private void Lb_OK_Click(object sender, EventArgs e)
         {
             Close();
         }

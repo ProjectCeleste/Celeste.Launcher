@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Forms
             SkinHelper.SetFont(Controls);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void PictureBox1_Click(object sender, EventArgs e)
         {
             Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4694RNE7CLNE8");
         }

@@ -2,7 +2,11 @@
 
 using System;
 using System.ComponentModel;
+using System.Dynamic;
 using System.Net.Sockets;
+using System.Reflection;
+using System.Windows.Forms;
+using Celeste_User.Remote;
 using Newtonsoft.Json;
 using SuperSocket.ClientEngine;
 using WebSocket4Net;
@@ -33,15 +37,37 @@ namespace Celeste_Launcher_Gui.Helpers
     {
         Offline,
         Connecting,
-        Connected,
-        Logging,
-        Logged
+        Connected
+    }
+
+    public enum LoginState
+    {
+        TimedOut = -2,
+        Failed = -1,
+        Idle = 0,
+        InProgress = 1,
+        Success = 2
+    }
+
+
+    public enum LoginInformation
+    {
+        TimedOut = -2,
+        Failed = -1,
+        Idle = 0,
+        InProgress = 1,
+        Success = 2
     }
 
     public class WebSocketClient
     {
+        public static int TimeOut = 30;
+        private RemoteUser _userInformation;
         private string _errorMessage;
         private WebSocketClientState _state = WebSocketClientState.Offline;
+        private LoginState _loginState = LoginState.Idle;
+        private string _loginErrorMsg;
+
 
         private string _uri;
 
@@ -53,6 +79,16 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public AgentWebSocket AgentWebSocket { get; private set; }
 
+
+        public RemoteUser UserInformation
+        {
+            get => _userInformation;
+            set
+            {
+                _userInformation = value;
+                RaisePropertyChanged("UserInformation");
+            }
+        }
 
         public string ErrorMessage
         {
@@ -70,6 +106,7 @@ namespace Celeste_Launcher_Gui.Helpers
             set
             {
                 _state = value;
+                _loginState = LoginState.Idle;
                 RaisePropertyChanged("State");
             }
         }
@@ -83,9 +120,9 @@ namespace Celeste_Launcher_Gui.Helpers
             }
             catch (Exception)
             {
-                ErrorMessage = $"Invalid server URI ({_uri})!";
                 State = WebSocketClientState.Offline;
-                return;
+                ErrorMessage = $"Invalid server URI ({_uri})!";
+                throw new Exception($"Invalid server URI ({_uri})!");
             }
 
             AgentWebSocket.Security.AllowUnstrustedCertificate = true;
@@ -99,17 +136,114 @@ namespace Celeste_Launcher_Gui.Helpers
             State = WebSocketClientState.Connected;
         }
 
-        public void StartConnect()
+        public void StartConnect(bool requireLogin, string email = null, string password = null)
         {
-            if (AgentWebSocket == null)
+            if (_state  == WebSocketClientState.Connected && !requireLogin)
+            {
                 return;
+            }
 
-            if (AgentWebSocket.State == WebSocketState.Closed)
-                InitializeWebSocket(_uri);
+            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
+            {
+                if (AgentWebSocket == null)
+                    throw new Exception("StartConnect() AgentWebSocket == null");
 
-            State = WebSocketClientState.Connecting;
+                if (AgentWebSocket.State == WebSocketState.Closed)
+                    InitializeWebSocket(_uri);
 
-            AgentWebSocket.Open();
+                State = WebSocketClientState.Connecting;
+
+                AgentWebSocket.Open();
+
+                var starttime = DateTime.UtcNow;
+                while (State != WebSocketClientState.Connected &&
+                       State != WebSocketClientState.Offline)
+                {
+                    Application.DoEvents();
+                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
+                    if (diff < TimeOut) continue;
+
+                    if (State != WebSocketClientState.Offline)
+                        AgentWebSocket.Close();
+
+                    throw new Exception($"StartConnect() Server connection timeout (total send time = {diff})!");
+                }
+            }
+
+            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
+            {
+                throw new Exception($"StartConnect() Server Offline! (client state = {Program.WebSocketClient.State})");
+            }
+
+            if(requireLogin)
+            {
+                StartLogin(email, password);
+            }
+
+        }
+
+        public void StartLogin(string email, string password)
+        {
+
+            switch (_loginState)
+            {
+                case LoginState.Success:
+                    return;
+                case LoginState.InProgress:
+                    throw new Exception(@"Logged-in already in progress!");
+                case LoginState.TimedOut:
+                case LoginState.Failed:
+                case LoginState.Idle:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            _loginState = LoginState.InProgress;
+
+#pragma warning disable IDE0017 // Simplifier l'initialisation des objets
+            dynamic loginInfo = new ExpandoObject();
+            loginInfo.Mail = email;
+            loginInfo.Password = password;
+            loginInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
+#pragma warning restore IDE0017 // Simplifier l'initialisation des objets
+
+            AgentWebSocket.Query<dynamic>("LOGIN", (object)loginInfo, OnLoggedIn);
+
+            var starttime = DateTime.UtcNow;
+            while (_loginState == LoginState.InProgress && State == WebSocketClientState.Connected)
+            {
+                Application.DoEvents();
+                var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
+                if (diff < TimeOut) continue;
+
+                if (State != WebSocketClientState.Offline)
+                    AgentWebSocket.Close();
+
+                throw new Exception($"StartLogin() Server response timeout (total send time = {diff})!");
+            }
+
+            if (_loginState == LoginState.Success) return;
+
+            var msg = !string.IsNullOrEmpty(_loginErrorMsg) ? _loginErrorMsg : ErrorMessage;
+            throw new Exception(msg);
+        }
+
+
+        private void OnLoggedIn(dynamic result)
+        {
+            if (result["Result"].ToObject<bool>())
+            {
+                UserInformation = result["RemoteUser"].ToObject<RemoteUser>();
+                _loginState = LoginState.Success;
+            }
+            else
+            {
+
+                _loginErrorMsg = result["Message"].ToObject<string>();
+                ErrorMessage = _loginErrorMsg;
+                _loginState = LoginState.Failed;
+            }
         }
 
         private void WebSocket_Closed(object sender, EventArgs e)
@@ -123,16 +257,15 @@ namespace Celeste_Launcher_Gui.Helpers
         private void WebSocket_Error(object sender, ErrorEventArgs e)
         {
             if (e.Exception == null) return;
-            var exception = e.Exception as SocketException;
 
-            if (exception != null && exception.ErrorCode == (int) SocketError.AccessDenied)
-                ErrorMessage = new SocketException((int) SocketError.ConnectionRefused).Message;
+            if (e.Exception is SocketException exception && exception.ErrorCode == (int)SocketError.AccessDenied)
+                ErrorMessage = new SocketException((int)SocketError.ConnectionRefused).Message;
             else
                 ErrorMessage = e.Exception.StackTrace;
 
             if (AgentWebSocket.State != WebSocketState.None ||
                 State != WebSocketClientState.Connecting) return;
-
+            
             State = WebSocketClientState.Offline;
         }
 

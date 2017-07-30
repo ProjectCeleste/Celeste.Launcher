@@ -3,6 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+// ReSharper disable InconsistentNaming
 
 #endregion
 

@@ -74,7 +74,7 @@
             this.btnSmall1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.btnSmall1.Size = new System.Drawing.Size(362, 40);
             this.btnSmall1.TabIndex = 1;
-            this.btnSmall1.Click += new System.EventHandler(this.lb_OK_Click);
+            this.btnSmall1.Click += new System.EventHandler(this.Lb_OK_Click);
             // 
             // label1
             // 
