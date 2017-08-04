@@ -1,8 +1,13 @@
 ﻿#region Using directives
 
+#region Using directives
+
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+
+#endregion
+
 // ReSharper disable InconsistentNaming
 
 #endregion

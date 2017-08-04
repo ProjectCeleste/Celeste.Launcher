@@ -127,7 +127,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             Enabled = true;
         }
-        
+
         private void LoginForm_Load(object sender, EventArgs e)
         {
             try

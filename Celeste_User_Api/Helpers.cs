@@ -28,5 +28,10 @@ namespace Celeste_User
         {
             return !string.IsNullOrEmpty(userName) && Regex.IsMatch(userName, MatchUserNamePattern);
         }
+
+        public static bool IsValidePassword(string password)
+        {
+            return !password.Contains("'") && !password.Contains("\"");
+        }
     }
 }

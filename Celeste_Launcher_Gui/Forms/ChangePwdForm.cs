@@ -117,6 +117,14 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
+            if (!Celeste_User.Helpers.IsValidePassword(textBox1.Text))
+            {
+                SkinHelper.ShowMessage("Invalid password, character ' and \" are not allowed!",
+                    @"Project Celeste -- Change Password",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DoChangePassword(tb_Password.Text, textBox2.Text);
         }
 

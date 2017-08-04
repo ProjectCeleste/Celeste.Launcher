@@ -95,7 +95,6 @@ namespace Celeste_Launcher_Gui.Forms
                 else
                     tb_remoteIp.Text = @"127.0.0.1";
 
-
                 panel3.Enabled = true;
             }
             else

@@ -91,9 +91,10 @@ namespace Celeste_Launcher_Gui.Helpers
             [In] ref uint pcFonts);
 
         private static PrivateFontCollection _pfc;
-        
+
         // ReSharper disable InconsistentNaming
         public const int WM_NCLBUTTONDOWN = 0xA1;
+
         public const int HT_CAPTION = 0x2;
         // ReSharper restore InconsistentNaming
 

@@ -21,8 +21,9 @@ namespace Celeste_Launcher_Gui.Forms
 
     public partial class RegisterForm : Form
     {
-        private RegisterUserState _validMailState = RegisterUserState.Idle;
+        private DateTime _lastVerifyTime = DateTime.UtcNow.AddMinutes(-1);
         private RegisterUserState _registerUserState = RegisterUserState.Idle;
+        private RegisterUserState _validMailState = RegisterUserState.Idle;
 
         public RegisterForm()
         {
@@ -41,6 +42,19 @@ namespace Celeste_Launcher_Gui.Forms
 
                 return;
             }
+
+            var lastSendTime = (DateTime.UtcNow - _lastVerifyTime).TotalSeconds;
+            if (lastSendTime <= 45)
+            {
+                SkinHelper.ShowMessage(
+                    $"You need to wait at least 45 seconds before asking to resend an confirmation key! Last request was {lastSendTime} seconds ago.",
+                    @"Project Celeste -- Register",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+            _lastVerifyTime = DateTime.UtcNow;
+
             DoVerifyUser(tb_Mail.Text);
         }
 
@@ -64,7 +78,8 @@ namespace Celeste_Launcher_Gui.Forms
                     OnVerifyUser);
 
                 var starttime = DateTime.UtcNow;
-                while (_validMailState == RegisterUserState.InProgress && Program.WebSocketClient.State != WebSocketClientState.Offline)
+                while (_validMailState == RegisterUserState.InProgress &&
+                       Program.WebSocketClient.State != WebSocketClientState.Offline)
                 {
                     Application.DoEvents();
                     var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
@@ -146,6 +161,14 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
+            if (!Celeste_User.Helpers.IsValidePassword(tb_Password.Text))
+            {
+                SkinHelper.ShowMessage("Invalid password, character ' and \" are not allowed!",
+                    @"Project Celeste -- Register",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (tb_InviteCode.Text.Length != 32)
             {
                 SkinHelper.ShowMessage(@"Invalid Verify Key!",
@@ -178,7 +201,8 @@ namespace Celeste_Launcher_Gui.Forms
                     OnRegisterUser);
 
                 var starttime = DateTime.UtcNow;
-                while (_registerUserState == RegisterUserState.InProgress && Program.WebSocketClient.State != WebSocketClientState.Offline)
+                while (_registerUserState == RegisterUserState.InProgress &&
+                       Program.WebSocketClient.State != WebSocketClientState.Offline)
                 {
                     Application.DoEvents();
                     var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
@@ -203,7 +227,7 @@ namespace Celeste_Launcher_Gui.Forms
                 SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             Enabled = true;
         }
 
