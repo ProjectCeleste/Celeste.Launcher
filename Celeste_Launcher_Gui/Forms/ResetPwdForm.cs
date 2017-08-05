@@ -64,8 +64,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                Program.WebSocketClient.StartConnect(true, Program.UserConfig.LoginInfo.Email,
-                    Program.UserConfig.LoginInfo.Password);
+                Program.WebSocketClient.StartConnect(false);
 
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
                 dynamic forgotPwdInfo = new ExpandoObject();

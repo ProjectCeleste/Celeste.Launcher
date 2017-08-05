@@ -30,14 +30,13 @@ namespace Celeste_Launcher_Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            // ReSharper disable once UnusedVariable
+            
             var mutex = new Mutex(true, AppName, out bool createdNew);
 
             //Only one instance
             if (!createdNew)
             {
-                SkinHelper.ShowMessage(@"Celeste Fan Project launcher already runing!", "Celeste Fan Project",
+                SkinHelper.ShowMessage(@"Celeste Fan Project launcher already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
@@ -56,6 +55,8 @@ namespace Celeste_Launcher_Gui
 
             //Start Gui
             Application.Run(new MainForm());
+
+            GC.KeepAlive(mutex);
         }
     }
 }
