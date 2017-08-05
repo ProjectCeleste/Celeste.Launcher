@@ -62,14 +62,14 @@ namespace Celeste_Launcher_Gui.Helpers
     public class WebSocketClient
     {
         public static int TimeOut = 30;
-        private RemoteUser _userInformation;
         private string _errorMessage;
-        private WebSocketClientState _state = WebSocketClientState.Offline;
-        private LoginState _loginState = LoginState.Idle;
         private string _loginErrorMsg;
+        private LoginState _loginState = LoginState.Idle;
+        private WebSocketClientState _state = WebSocketClientState.Offline;
 
 
         private string _uri;
+        private RemoteUser _userInformation;
 
         public WebSocketClient(string uri)
         {
@@ -138,10 +138,8 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public void StartConnect(bool requireLogin, string email = null, string password = null)
         {
-            if (_state  == WebSocketClientState.Connected && !requireLogin)
-            {
+            if (_state == WebSocketClientState.Connected && !requireLogin)
                 return;
-            }
 
             if (Program.WebSocketClient.State != WebSocketClientState.Connected)
             {
@@ -171,20 +169,14 @@ namespace Celeste_Launcher_Gui.Helpers
             }
 
             if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-            {
                 throw new Exception($"StartConnect() Server Offline! (client state = {Program.WebSocketClient.State})");
-            }
 
-            if(requireLogin)
-            {
+            if (requireLogin)
                 StartLogin(email, password);
-            }
-
         }
 
         public void StartLogin(string email, string password)
         {
-
             switch (_loginState)
             {
                 case LoginState.Success:
@@ -208,7 +200,7 @@ namespace Celeste_Launcher_Gui.Helpers
             loginInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            AgentWebSocket.Query<dynamic>("LOGIN", (object)loginInfo, OnLoggedIn);
+            AgentWebSocket.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
 
             var starttime = DateTime.UtcNow;
             while (_loginState == LoginState.InProgress && State == WebSocketClientState.Connected)
@@ -239,7 +231,6 @@ namespace Celeste_Launcher_Gui.Helpers
             }
             else
             {
-
                 _loginErrorMsg = result["Message"].ToObject<string>();
                 ErrorMessage = _loginErrorMsg;
                 _loginState = LoginState.Failed;
@@ -258,14 +249,14 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             if (e.Exception == null) return;
 
-            if (e.Exception is SocketException exception && exception.ErrorCode == (int)SocketError.AccessDenied)
-                ErrorMessage = new SocketException((int)SocketError.ConnectionRefused).Message;
+            if (e.Exception is SocketException exception && exception.ErrorCode == (int) SocketError.AccessDenied)
+                ErrorMessage = new SocketException((int) SocketError.ConnectionRefused).Message;
             else
                 ErrorMessage = e.Exception.StackTrace;
 
             if (AgentWebSocket.State != WebSocketState.None ||
                 State != WebSocketClientState.Connecting) return;
-            
+
             State = WebSocketClientState.Offline;
         }
 

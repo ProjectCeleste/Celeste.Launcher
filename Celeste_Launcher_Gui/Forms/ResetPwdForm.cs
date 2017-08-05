@@ -21,6 +21,7 @@ namespace Celeste_Launcher_Gui.Forms
 
     public partial class ResetPwdForm : Form
     {
+        private DateTime _lastVerifyTime = DateTime.UtcNow.AddMinutes(-1);
         private ResetPwdState _resetPwdState = ResetPwdState.Idle;
         private ResetPwdState _verifyUserState = ResetPwdState.Idle;
 
@@ -42,6 +43,18 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
+            var lastSendTime = (DateTime.UtcNow - _lastVerifyTime).TotalSeconds;
+            if (lastSendTime <= 45)
+            {
+                SkinHelper.ShowMessage(
+                    $"You need to wait at least 45 seconds before asking to resend an confirmation key! Last request was {lastSendTime} seconds ago.",
+                    @"Project Celeste -- Reset Password",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+            _lastVerifyTime = DateTime.UtcNow;
+
             DoVerifyUser(tb_Mail.Text);
         }
 
@@ -51,8 +64,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                Program.WebSocketClient.StartConnect(true, Program.UserConfig.LoginInfo.Email,
-                    Program.UserConfig.LoginInfo.Password);
+                Program.WebSocketClient.StartConnect(false);
 
 #pragma warning disable IDE0017 // Simplifier l'initialisation des objets
                 dynamic forgotPwdInfo = new ExpandoObject();
