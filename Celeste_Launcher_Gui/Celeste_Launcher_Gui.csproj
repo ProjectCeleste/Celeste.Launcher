@@ -66,18 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
-    <Compile Include="Controls\BtnSmall.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\BtnSmall.Designer.cs">
-      <DependentUpon>BtnSmall.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\BoxContainer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\BoxContainer.Designer.cs">
-      <DependentUpon>BoxContainer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,12 +109,6 @@
     <Compile Include="Forms\MsgBox.Designer.cs">
       <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MainContainer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\MainContainer.Designer.cs">
-      <DependentUpon>MainContainer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\FingerPrint.cs" />
     <Compile Include="Helpers\Misc.cs" />
     <Compile Include="Helpers\OpenNat.cs" />
@@ -146,12 +128,6 @@
     </Compile>
     <Compile Include="Helpers\SkinHelper.cs" />
     <Compile Include="Helpers\WebSocketClient.cs" />
-    <EmbeddedResource Include="Controls\BtnSmall.resx">
-      <DependentUpon>BtnSmall.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\BoxContainer.resx">
-      <DependentUpon>BoxContainer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,9 +142,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MsgBox.resx">
       <DependentUpon>MsgBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\MainContainer.resx">
-      <DependentUpon>MainContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
       <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
@@ -218,31 +191,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\MinimizeButtonHover.png" />
-    <None Include="Resources\MinimizeButtonNormal.png" />
     <None Include="Resources\AvatarBorder.png" />
     <None Include="Resources\BarSeparatorVertical.png" />
     <None Include="Resources\BarSeparator.png" />
-    <None Include="Resources\XButton_Hover.png" />
-    <None Include="Resources\Icon.png" />
-    <None Include="Resources\TopLRFluid.png" />
-    <None Include="Resources\BtnSmallHover.png" />
-    <None Include="Resources\BtnSmallNormal.png" />
-    <None Include="Resources\XButton_Normal.png" />
     <None Include="Resources\BackgroundTexture.png" />
-    <None Include="Resources\BottomMiddleFluid.png" />
-    <None Include="Resources\BottomLeftFixed.png" />
-    <None Include="Resources\BottomRigthFixed.png" />
-    <None Include="Resources\MiddleRigthFluid.png" />
-    <None Include="Resources\MiddleLeftFluid.png" />
-    <None Include="Resources\TopMiddleFluid.png" />
-    <None Include="Resources\TopLeftFixed.png" />
-    <None Include="Resources\TopRigthFixed.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(SolutionDir)\Celeste_User_Api\Celeste_User.csproj">
       <Project>{aecd370a-68cb-466b-b4f8-cc02cc6a9a5d}</Project>
       <Name>Celeste_User</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
+      <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
+      <Name>Celeste_AOEO_Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

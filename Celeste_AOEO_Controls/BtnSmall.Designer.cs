@@ -1,4 +1,4 @@
-﻿namespace Celeste_Launcher_Gui.Controls
+﻿namespace Celeste_AOEO_Controls
 {
     partial class BtnSmall
     {
@@ -53,7 +53,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BtnSmallNormal;
+            this.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.BtnSmallNormal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.lb_Btn);
             this.DoubleBuffered = true;

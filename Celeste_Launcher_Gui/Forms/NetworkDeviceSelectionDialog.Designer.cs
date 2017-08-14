@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetworkDeviceSelectionDialog));
             this.lb_netinterfaces = new System.Windows.Forms.ListBox();
             this.lbl_selectnatdevice = new System.Windows.Forms.Label();
-            this.mainContainer1 = new Celeste_Launcher_Gui.Controls.MainContainer();
+            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSmall2 = new Celeste_Launcher_Gui.Controls.BtnSmall();
-            this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -175,10 +175,10 @@
 
         private System.Windows.Forms.ListBox lb_netinterfaces;
         private System.Windows.Forms.Label lbl_selectnatdevice;
-        private Controls.MainContainer mainContainer1;
+        private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Panel panel1;
-        private Controls.BtnSmall btnSmall2;
-        private Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall2;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
     }

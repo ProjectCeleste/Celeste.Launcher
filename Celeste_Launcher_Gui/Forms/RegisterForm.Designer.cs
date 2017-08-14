@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
-            this.mainContainer1 = new Celeste_Launcher_Gui.Controls.MainContainer();
+            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.p_Verify = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall3 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.btnSmall3 = new Celeste_AOEO_Controls.BtnSmall();
             this.lbl_Mail = new System.Windows.Forms.Label();
             this.tb_Mail = new System.Windows.Forms.TextBox();
             this.p_Register = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall4 = new Celeste_Launcher_Gui.Controls.BtnSmall();
-            this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.btnSmall4 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tb_InviteCode = new System.Windows.Forms.TextBox();
@@ -360,7 +360,7 @@
 
         #endregion
 
-        private Controls.MainContainer mainContainer1;
+        private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox tb_UserName;
         private System.Windows.Forms.Label label3;
@@ -372,10 +372,10 @@
         public System.Windows.Forms.TextBox tb_Password;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox tb_Mail;
-        private Controls.BtnSmall btnSmall1;
-        private Controls.BtnSmall btnSmall3;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall3;
         private System.Windows.Forms.Panel p_Register;
-        private Controls.BtnSmall btnSmall4;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel p_Verify;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

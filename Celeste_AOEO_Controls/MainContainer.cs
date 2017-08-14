@@ -4,12 +4,11 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Celeste_Launcher_Gui.Helpers;
-using Celeste_Launcher_Gui.Properties;
+using Celeste_AOEO_Controls.Properties;
 
 #endregion
 
-namespace Celeste_Launcher_Gui.Controls
+namespace Celeste_AOEO_Controls
 {
     // [Designer(typeof(MyCustomControlDesigner1))]
     public partial class MainContainer : UserControl

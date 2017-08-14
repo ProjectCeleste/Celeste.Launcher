@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.mainContainer1 = new Celeste_Launcher_Gui.Controls.MainContainer();
+            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -42,8 +42,8 @@
             this.linkLbl_ForgotPwd = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lb_Ver = new System.Windows.Forms.Label();
-            this.btnSmall2 = new Celeste_Launcher_Gui.Controls.BtnSmall();
-            this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -351,7 +351,7 @@
         }
 
         #endregion
-        private Controls.MainContainer mainContainer1;
+        private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox cb_RememberMe;
         private System.Windows.Forms.LinkLabel linkLbl_ForgotPwd;
@@ -360,8 +360,8 @@
         private System.Windows.Forms.Label lbl_Mail;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Label label2;
-        private Controls.BtnSmall btnSmall2;
-        private Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall2;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
         private System.Windows.Forms.Label lb_Ver;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

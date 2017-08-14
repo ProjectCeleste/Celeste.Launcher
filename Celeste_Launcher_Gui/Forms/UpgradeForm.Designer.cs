@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpgradeForm));
-            this.mainContainer1 = new Celeste_Launcher_Gui.Controls.MainContainer();
+            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -148,7 +148,7 @@
 
         #endregion
 
-        private Controls.MainContainer mainContainer1;
+        private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;

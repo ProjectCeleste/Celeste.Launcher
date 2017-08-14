@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.mainContainer1 = new Celeste_Launcher_Gui.Controls.MainContainer();
+            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.p_UserInfo = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall3 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.btnSmall3 = new Celeste_AOEO_Controls.BtnSmall();
             this.linkLbl_ChangePwd = new System.Windows.Forms.LinkLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pb_Avatar = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.btnSmall2 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_Mail = new System.Windows.Forms.Label();
             this.lbl_UserName = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLbl_Upgrade = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall1 = new Celeste_Launcher_Gui.Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
             this.lb_Ver = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -684,9 +684,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lb_Ver;
-        private Controls.MainContainer mainContainer1;
-        private Controls.BtnSmall btnSmall1;
-        private Controls.BtnSmall btnSmall2;
+        private Celeste_AOEO_Controls.MainContainer mainContainer1;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel7;
@@ -698,7 +698,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private Controls.BtnSmall btnSmall3;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
     }
 }

@@ -2,12 +2,11 @@
 
 using System;
 using System.Windows.Forms;
-using Celeste_Launcher_Gui.Helpers;
-using Celeste_Launcher_Gui.Properties;
+using Celeste_AOEO_Controls.Properties;
 
 #endregion
 
-namespace Celeste_Launcher_Gui.Controls
+namespace Celeste_AOEO_Controls
 {
     public partial class BoxContainer : UserControl
     {
@@ -46,12 +45,12 @@ namespace Celeste_Launcher_Gui.Controls
                 SkinHelper.SendMessage(findForm.Handle, SkinHelper.WM_NCLBUTTONDOWN, SkinHelper.HT_CAPTION, 0);
         }
 
-        private void btn_Close_MouseEnter(object sender, EventArgs e)
+        private void Btn_Close_MouseEnter(object sender, EventArgs e)
         {
             btn_Close.Image = Resources.XButton_Hover;
         }
 
-        private void btn_Close_MouseLeave(object sender, EventArgs e)
+        private void Btn_Close_MouseLeave(object sender, EventArgs e)
         {
             btn_Close.Image = Resources.XButton_Normal;
         }

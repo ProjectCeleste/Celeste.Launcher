@@ -1,4 +1,4 @@
-﻿namespace Celeste_Launcher_Gui.Controls
+﻿namespace Celeste_AOEO_Controls
 {
     partial class MainContainer
     {
@@ -100,7 +100,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLRFluid;
+            this.panel2.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.TopLRFluid;
             this.panel2.Controls.Add(this.btn_Close);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -115,7 +115,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.MinimizeButtonNormal;
+            this.pictureBox1.Image = global::Celeste_AOEO_Controls.Properties.Resources.MinimizeButtonNormal;
             this.pictureBox1.Location = new System.Drawing.Point(57, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(45, 44);
@@ -131,7 +131,7 @@
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Close.BackColor = System.Drawing.Color.Transparent;
             this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Close.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
+            this.btn_Close.Image = global::Celeste_AOEO_Controls.Properties.Resources.XButton_Normal;
             this.btn_Close.Location = new System.Drawing.Point(103, 10);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(45, 44);
@@ -145,7 +145,7 @@
             // TopLeftFixed
             // 
             this.TopLeftFixed.BackColor = System.Drawing.Color.Transparent;
-            this.TopLeftFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLeftFixed;
+            this.TopLeftFixed.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.TopLeftFixed;
             this.TopLeftFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.TopLeftFixed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TopLeftFixed.Location = new System.Drawing.Point(0, 0);
@@ -157,7 +157,7 @@
             // TopMiddleFluid
             // 
             this.TopMiddleFluid.BackColor = System.Drawing.Color.Transparent;
-            this.TopMiddleFluid.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopMiddleFluid;
+            this.TopMiddleFluid.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.TopMiddleFluid;
             this.TopMiddleFluid.Controls.Add(this.panel3);
             this.TopMiddleFluid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TopMiddleFluid.Location = new System.Drawing.Point(179, 0);
@@ -178,7 +178,7 @@
             // TopRigthFixed
             // 
             this.TopRigthFixed.BackColor = System.Drawing.Color.Transparent;
-            this.TopRigthFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopRigthFixed;
+            this.TopRigthFixed.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.TopRigthFixed;
             this.TopRigthFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.TopRigthFixed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TopRigthFixed.Location = new System.Drawing.Point(920, 0);
@@ -190,7 +190,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.TopLRFluid;
+            this.panel1.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.TopLRFluid;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(30, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -219,7 +219,7 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.panel9.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.BackgroundTexture;
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(30, 0);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
@@ -230,7 +230,7 @@
             // MiddleLeftFluid
             // 
             this.MiddleLeftFluid.BackColor = System.Drawing.Color.Transparent;
-            this.MiddleLeftFluid.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.MiddleLeftFluid;
+            this.MiddleLeftFluid.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.MiddleLeftFluid;
             this.MiddleLeftFluid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MiddleLeftFluid.Location = new System.Drawing.Point(0, 0);
             this.MiddleLeftFluid.Margin = new System.Windows.Forms.Padding(0);
@@ -241,7 +241,7 @@
             // MiddleRigthFluid
             // 
             this.MiddleRigthFluid.BackColor = System.Drawing.Color.Transparent;
-            this.MiddleRigthFluid.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.MiddleRigthFluid;
+            this.MiddleRigthFluid.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.MiddleRigthFluid;
             this.MiddleRigthFluid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MiddleRigthFluid.Location = new System.Drawing.Point(920, 0);
             this.MiddleRigthFluid.Margin = new System.Windows.Forms.Padding(0);
@@ -270,7 +270,7 @@
             // BottomMiddleFluid
             // 
             this.BottomMiddleFluid.BackColor = System.Drawing.Color.Transparent;
-            this.BottomMiddleFluid.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BottomMiddleFluid;
+            this.BottomMiddleFluid.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.BottomMiddleFluid;
             this.BottomMiddleFluid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomMiddleFluid.Location = new System.Drawing.Point(30, 0);
             this.BottomMiddleFluid.Margin = new System.Windows.Forms.Padding(0);
@@ -281,7 +281,7 @@
             // BottomLeftFixed
             // 
             this.BottomLeftFixed.BackColor = System.Drawing.Color.Transparent;
-            this.BottomLeftFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BottomLeftFixed;
+            this.BottomLeftFixed.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.BottomLeftFixed;
             this.BottomLeftFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BottomLeftFixed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomLeftFixed.Location = new System.Drawing.Point(0, 0);
@@ -293,7 +293,7 @@
             // BottomRigthFixed
             // 
             this.BottomRigthFixed.BackColor = System.Drawing.Color.Transparent;
-            this.BottomRigthFixed.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BottomRigthFixed;
+            this.BottomRigthFixed.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.BottomRigthFixed;
             this.BottomRigthFixed.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.BottomRigthFixed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomRigthFixed.Location = new System.Drawing.Point(920, 0);
