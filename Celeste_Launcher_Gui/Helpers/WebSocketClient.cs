@@ -141,7 +141,7 @@ namespace Celeste_Launcher_Gui.Helpers
             if (_state == WebSocketClientState.Connected && !requireLogin)
                 return;
 
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
+            if (State != WebSocketClientState.Connected)
             {
                 if (AgentWebSocket == null)
                     throw new Exception("StartConnect() AgentWebSocket == null");
@@ -168,8 +168,8 @@ namespace Celeste_Launcher_Gui.Helpers
                 }
             }
 
-            if (Program.WebSocketClient.State != WebSocketClientState.Connected)
-                throw new Exception($"StartConnect() Server Offline! (client state = {Program.WebSocketClient.State})");
+            if (State != WebSocketClientState.Connected)
+                throw new Exception($"StartConnect() Server Offline! (client state = {State})");
 
             if (requireLogin)
                 StartLogin(email, password);
@@ -200,7 +200,7 @@ namespace Celeste_Launcher_Gui.Helpers
             loginInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            AgentWebSocket.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
+            AgentWebSocket.Query<dynamic>("LOGIN", (object)loginInfo, OnLoggedIn);
 
             var starttime = DateTime.UtcNow;
             while (_loginState == LoginState.InProgress && State == WebSocketClientState.Connected)
@@ -249,8 +249,8 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             if (e.Exception == null) return;
 
-            if (e.Exception is SocketException exception && exception.ErrorCode == (int) SocketError.AccessDenied)
-                ErrorMessage = new SocketException((int) SocketError.ConnectionRefused).Message;
+            if (e.Exception is SocketException exception && exception.ErrorCode == (int)SocketError.AccessDenied)
+                ErrorMessage = new SocketException((int)SocketError.ConnectionRefused).Message;
             else
                 ErrorMessage = e.Exception.StackTrace;
 
