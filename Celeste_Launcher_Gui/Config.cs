@@ -94,12 +94,14 @@ namespace Celeste_Launcher_Gui
         {
             get
             {
-                if (string.IsNullOrEmpty(CryptedPassword))
-                    _uncryptedPassword = "";
+                if (!string.IsNullOrEmpty(_uncryptedPassword))
+                    return _uncryptedPassword;
 
                 try
                 {
-                    _uncryptedPassword = Misc.Decrypt(CryptedPassword, true);
+                    _uncryptedPassword = string.IsNullOrEmpty(CryptedPassword)
+                        ? string.Empty
+                        : Misc.Decrypt(CryptedPassword, true);
                 }
                 catch (Exception)
                 {
@@ -115,7 +117,7 @@ namespace Celeste_Launcher_Gui
 
                 try
                 {
-                    CryptedPassword = Misc.Encrypt(value, true);
+                    CryptedPassword = string.IsNullOrEmpty(value) ? string.Empty : Misc.Encrypt(value, true);
                 }
                 catch (Exception)
                 {
