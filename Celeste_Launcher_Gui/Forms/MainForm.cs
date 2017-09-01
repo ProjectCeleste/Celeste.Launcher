@@ -93,11 +93,6 @@ namespace Celeste_Launcher_Gui.Forms
             Process.Start("http://eso-community.net/");
         }
 
-        private void LinkLbl_aoeo4evernet_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://aoeo4ever.net");
-        }
-
         private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (var form = new UpgradeForm())

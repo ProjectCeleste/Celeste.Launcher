@@ -59,7 +59,6 @@
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.linklbl_Wiki = new System.Windows.Forms.LinkLabel();
-            this.linkLbl_aoeo4evernet = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -446,8 +445,7 @@
             this.tableLayoutPanel2.Controls.Add(this.linkLabel4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.linkLabel7, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.linklbl_Wiki, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.linkLbl_aoeo4evernet, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.linkLabel3, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.linkLabel3, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 31);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -560,23 +558,6 @@
             this.linklbl_Wiki.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.linklbl_Wiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Linklbl_Wiki_LinkClicked);
             // 
-            // linkLbl_aoeo4evernet
-            // 
-            this.linkLbl_aoeo4evernet.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLbl_aoeo4evernet.AutoSize = true;
-            this.linkLbl_aoeo4evernet.BackColor = System.Drawing.Color.Transparent;
-            this.linkLbl_aoeo4evernet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLbl_aoeo4evernet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLbl_aoeo4evernet.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLbl_aoeo4evernet.Location = new System.Drawing.Point(494, 0);
-            this.linkLbl_aoeo4evernet.Name = "linkLbl_aoeo4evernet";
-            this.linkLbl_aoeo4evernet.Size = new System.Drawing.Size(99, 41);
-            this.linkLbl_aoeo4evernet.TabIndex = 31;
-            this.linkLbl_aoeo4evernet.TabStop = true;
-            this.linkLbl_aoeo4evernet.Text = "AoEO For Ever";
-            this.linkLbl_aoeo4evernet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLbl_aoeo4evernet.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_aoeo4evernet_LinkClicked);
-            // 
             // linkLabel3
             // 
             this.linkLabel3.ActiveLinkColor = System.Drawing.Color.MediumBlue;
@@ -585,9 +566,9 @@
             this.linkLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel3.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel3.Location = new System.Drawing.Point(494, 41);
+            this.linkLabel3.Location = new System.Drawing.Point(494, 0);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(99, 42);
+            this.linkLabel3.Size = new System.Drawing.Size(99, 41);
             this.linkLabel3.TabIndex = 32;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "ESO-Community";
@@ -676,7 +657,6 @@
         private System.Windows.Forms.LinkLabel linklbl_Wiki;
         private System.Windows.Forms.LinkLabel linklbl_ReportIssue;
         private System.Windows.Forms.LinkLabel linkLbl_ProjectCelesteCom;
-        private System.Windows.Forms.LinkLabel linkLbl_aoeo4evernet;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.Label label1;
