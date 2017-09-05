@@ -213,7 +213,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 Process.Start(path, arg);
 
-                Close();
+                WindowState = FormWindowState.Minimized;
             }
             catch (Exception exception)
             {
