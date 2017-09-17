@@ -56,11 +56,20 @@ namespace Celeste_Launcher_Gui.Forms
             lbl_Mail.Text += $@" {Program.WebSocketClient.UserInformation.Mail}";
             lbl_UserName.Text += $@" {Program.WebSocketClient.UserInformation.ProfileName}";
             lbl_Rank.Text += $@" {Program.WebSocketClient.UserInformation.Rank}";
+
+            //AutoDisconnect
+            try
+            {
+                Program.WebSocketClient.AgentWebSocket.Close();
+            }
+            catch
+            {
+                //
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //_timer.Stop();
             Program.WebSocketClient.AgentWebSocket.Close();
             try
             {
@@ -80,7 +89,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void LinkLbl_ProjectCelesteCom_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://projectceleste.com");
+            Process.Start("https://projectceleste.com");
         }
 
         private void Linklbl_Wiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -91,16 +100,6 @@ namespace Celeste_Launcher_Gui.Forms
         private void LinkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://eso-community.net/");
-        }
-
-        private void LinkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            using (var form = new UpgradeForm())
-            {
-                Hide();
-                form.ShowDialog();
-                Show();
-            }
         }
 
         private void LinkLbl_ChangePwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -266,6 +265,11 @@ namespace Celeste_Launcher_Gui.Forms
         private void LinkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://www.reddit.com/r/projectceleste/");
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EZ3SSAJRRUYFY");
         }
     }
 }

@@ -46,7 +46,6 @@
             this.lbl_Rank = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLbl_Upgrade = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
             this.lb_Ver = new System.Windows.Forms.Label();
@@ -60,6 +59,8 @@
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.linklbl_Wiki = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -72,6 +73,8 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainContainer1
@@ -255,7 +258,6 @@
             this.tableLayoutPanel4.Controls.Add(this.lbl_Rank, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.linkLabel1, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.linkLabel2, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.linkLbl_Upgrade, 1, 2);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 50);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -345,23 +347,6 @@
             this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel2_LinkClicked);
             // 
-            // linkLbl_Upgrade
-            // 
-            this.linkLbl_Upgrade.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLbl_Upgrade.AutoSize = true;
-            this.linkLbl_Upgrade.BackColor = System.Drawing.Color.Transparent;
-            this.linkLbl_Upgrade.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLbl_Upgrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLbl_Upgrade.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLbl_Upgrade.Location = new System.Drawing.Point(122, 102);
-            this.linkLbl_Upgrade.Name = "linkLbl_Upgrade";
-            this.linkLbl_Upgrade.Size = new System.Drawing.Size(451, 50);
-            this.linkLbl_Upgrade.TabIndex = 21;
-            this.linkLbl_Upgrade.TabStop = true;
-            this.linkLbl_Upgrade.Text = "Upgrade";
-            this.linkLbl_Upgrade.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLbl_Upgrade.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked);
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
@@ -446,6 +431,7 @@
             this.tableLayoutPanel2.Controls.Add(this.linkLabel7, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.linklbl_Wiki, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.linkLabel3, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 3, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 31);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -464,9 +450,9 @@
             this.linkLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel5.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel5.Location = new System.Drawing.Point(308, 41);
+            this.linkLabel5.Location = new System.Drawing.Point(306, 41);
             this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(180, 42);
+            this.linkLabel5.Size = new System.Drawing.Size(178, 42);
             this.linkLabel5.TabIndex = 58;
             this.linkLabel5.TabStop = true;
             this.linkLabel5.Text = "Join us on Reddit";
@@ -515,9 +501,9 @@
             this.linkLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel4.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel4.Location = new System.Drawing.Point(308, 0);
+            this.linkLabel4.Location = new System.Drawing.Point(306, 0);
             this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(180, 41);
+            this.linkLabel4.Size = new System.Drawing.Size(178, 41);
             this.linkLabel4.TabIndex = 56;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "AoEO DB";
@@ -534,7 +520,7 @@
             this.linkLabel7.LinkColor = System.Drawing.Color.DarkBlue;
             this.linkLabel7.Location = new System.Drawing.Point(122, 41);
             this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(180, 42);
+            this.linkLabel7.Size = new System.Drawing.Size(178, 42);
             this.linkLabel7.TabIndex = 57;
             this.linkLabel7.TabStop = true;
             this.linkLabel7.Text = "Join us on Discord";
@@ -551,7 +537,7 @@
             this.linklbl_Wiki.LinkColor = System.Drawing.Color.DarkBlue;
             this.linklbl_Wiki.Location = new System.Drawing.Point(122, 0);
             this.linklbl_Wiki.Name = "linklbl_Wiki";
-            this.linklbl_Wiki.Size = new System.Drawing.Size(180, 41);
+            this.linklbl_Wiki.Size = new System.Drawing.Size(178, 41);
             this.linklbl_Wiki.TabIndex = 26;
             this.linklbl_Wiki.TabStop = true;
             this.linklbl_Wiki.Text = "AoEO Wikia";
@@ -566,14 +552,39 @@
             this.linkLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel3.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel3.Location = new System.Drawing.Point(494, 0);
+            this.linkLabel3.Location = new System.Drawing.Point(490, 0);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(99, 41);
+            this.linkLabel3.Size = new System.Drawing.Size(103, 41);
             this.linkLabel3.TabIndex = 32;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "ESO-Community";
             this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked_1);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(487, 41);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(5);
+            this.panel3.Size = new System.Drawing.Size(109, 42);
+            this.panel3.TabIndex = 59;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.btn_donate_SM;
+            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(99, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // label4
             // 
@@ -641,6 +652,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -652,7 +665,6 @@
         private System.Windows.Forms.Label lbl_UserName;
         private System.Windows.Forms.PictureBox pb_Avatar;
         private System.Windows.Forms.LinkLabel linkLbl_ChangePwd;
-        private System.Windows.Forms.LinkLabel linkLbl_Upgrade;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linklbl_Wiki;
         private System.Windows.Forms.LinkLabel linklbl_ReportIssue;
@@ -680,5 +692,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private Celeste_AOEO_Controls.BtnSmall btnSmall3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
