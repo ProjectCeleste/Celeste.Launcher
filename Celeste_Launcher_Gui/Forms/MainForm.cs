@@ -70,7 +70,6 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.WebSocketClient.AgentWebSocket.Close();
             try
             {
                 Program.WebSocketClient.AgentWebSocket.Close();
