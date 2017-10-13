@@ -28,196 +28,186 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
-            this.p_UserInfo = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall3 = new Celeste_AOEO_Controls.BtnSmall();
+            this.panelMainContainer = new System.Windows.Forms.Panel();
+            this.btnCloseX = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnMinimizX = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panelSettings = new System.Windows.Forms.Panel();
+            this.btnCloseSettings = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.lb_Ver = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
+            this.panelAccountInfo = new System.Windows.Forms.Panel();
+            this.lbl_Rank = new System.Windows.Forms.Label();
+            this.lbl_UserName = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.lbl_Mail = new System.Windows.Forms.Label();
             this.linkLbl_ChangePwd = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pb_Avatar = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbl_Mail = new System.Windows.Forms.Label();
-            this.lbl_UserName = new System.Windows.Forms.Label();
-            this.lbl_Rank = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonCloseAccountInfo = new System.Windows.Forms.Button();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnAoeoDb = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnFriends = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnPvpPatch = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnProfileView = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnPatch = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnDonate = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.panelRightButtonsContainer = new System.Windows.Forms.Panel();
+            this.btnSettings = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnBugReport = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnEsoCom = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnDiscord = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnReddit = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnCeleFanProject = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
-            this.lb_Ver = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
-            this.linklbl_ReportIssue = new System.Windows.Forms.LinkLabel();
-            this.linkLbl_ProjectCelesteCom = new System.Windows.Forms.LinkLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
-            this.linklbl_Wiki = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.p_UserInfo.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
+            this.panelNewsBg = new System.Windows.Forms.Panel();
+            this.btnNewsLeft = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btnNewsRight = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxNews = new System.Windows.Forms.PictureBox();
+            this.timerSlideShow = new System.Windows.Forms.Timer(this.components);
+            this.panelMainContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettings)).BeginInit();
+            this.panelAccountInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Avatar)).BeginInit();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAoeoDb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFriends)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPvpPatch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProfileView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPatch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDonate)).BeginInit();
+            this.panelRightButtonsContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBugReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEsoCom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDiscord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnReddit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCeleFanProject)).BeginInit();
+            this.panelNewsBg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNewsLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNewsRight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNews)).BeginInit();
             this.SuspendLayout();
             // 
-            // mainContainer1
+            // panelMainContainer
             // 
-            this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
-            this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer1.Location = new System.Drawing.Point(0, 0);
-            this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.mainContainer1.MinimizeBox = true;
-            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
-            this.mainContainer1.Name = "mainContainer1";
-            this.mainContainer1.Size = new System.Drawing.Size(899, 514);
-            this.mainContainer1.TabIndex = 2;
+            this.panelMainContainer.BackColor = System.Drawing.Color.Wheat;
+            this.panelMainContainer.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.bg1;
+            this.panelMainContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelMainContainer.Controls.Add(this.btnCloseX);
+            this.panelMainContainer.Controls.Add(this.btnMinimizX);
+            this.panelMainContainer.Controls.Add(this.pictureBox2);
+            this.panelMainContainer.Controls.Add(this.panelSettings);
+            this.panelMainContainer.Controls.Add(this.panelAccountInfo);
+            this.panelMainContainer.Controls.Add(this.panel6);
+            this.panelMainContainer.Controls.Add(this.panelRightButtonsContainer);
+            this.panelMainContainer.Controls.Add(this.btnSmall1);
+            this.panelMainContainer.Controls.Add(this.panelNewsBg);
+            this.panelMainContainer.Location = new System.Drawing.Point(-2, 1);
+            this.panelMainContainer.Name = "panelMainContainer";
+            this.panelMainContainer.Size = new System.Drawing.Size(1019, 799);
+            this.panelMainContainer.TabIndex = 3;
             // 
-            // p_UserInfo
+            // btnCloseX
             // 
-            this.p_UserInfo.BackColor = System.Drawing.Color.Transparent;
-            this.p_UserInfo.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.p_UserInfo.Controls.Add(this.tableLayoutPanel6);
-            this.p_UserInfo.Controls.Add(this.tableLayoutPanel5);
-            this.p_UserInfo.Controls.Add(this.tableLayoutPanel4);
-            this.p_UserInfo.Controls.Add(this.tableLayoutPanel3);
-            this.p_UserInfo.Controls.Add(this.panel2);
-            this.p_UserInfo.Controls.Add(this.tableLayoutPanel1);
-            this.p_UserInfo.Controls.Add(this.panel1);
-            this.p_UserInfo.Controls.Add(this.label3);
-            this.p_UserInfo.Location = new System.Drawing.Point(26, 71);
-            this.p_UserInfo.Name = "p_UserInfo";
-            this.p_UserInfo.Size = new System.Drawing.Size(847, 421);
-            this.p_UserInfo.TabIndex = 1;
+            this.btnCloseX.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseX.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
+            this.btnCloseX.Location = new System.Drawing.Point(966, 4);
+            this.btnCloseX.Name = "btnCloseX";
+            this.btnCloseX.Size = new System.Drawing.Size(45, 44);
+            this.btnCloseX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnCloseX.TabIndex = 65;
+            this.btnCloseX.TabStop = false;
+            this.btnCloseX.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Hover;
+            this.btnCloseX.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
+            this.btnCloseX.zPressedImage = null;
+            this.btnCloseX.Click += new System.EventHandler(this.btnCloseX_Click);
             // 
-            // tableLayoutPanel6
+            // btnMinimizX
             // 
-            this.tableLayoutPanel6.ColumnCount = 1;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.btnSmall3, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.linkLbl_ChangePwd, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.panel4, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(623, 12);
-            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
-            this.tableLayoutPanel6.RowCount = 3;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(224, 268);
-            this.tableLayoutPanel6.TabIndex = 65;
+            this.btnMinimizX.BackColor = System.Drawing.Color.Transparent;
+            this.btnMinimizX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizX.Image = global::Celeste_Launcher_Gui.Properties.Resources.MinimizeButtonNormal;
+            this.btnMinimizX.Location = new System.Drawing.Point(917, 4);
+            this.btnMinimizX.Name = "btnMinimizX";
+            this.btnMinimizX.Size = new System.Drawing.Size(45, 44);
+            this.btnMinimizX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnMinimizX.TabIndex = 66;
+            this.btnMinimizX.TabStop = false;
+            this.btnMinimizX.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.MinimizeButtonHover;
+            this.btnMinimizX.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.MinimizeButtonNormal;
+            this.btnMinimizX.zPressedImage = null;
+            this.btnMinimizX.Click += new System.EventHandler(this.btnMinimizX_Click);
             // 
-            // btnSmall3
+            // pictureBox2
             // 
-            this.btnSmall3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall3.BackgroundImage")));
-            this.btnSmall3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSmall3.BtnText = "FRIENDS";
-            this.btnSmall3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall3.Enabled = false;
-            this.btnSmall3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmall3.Location = new System.Drawing.Point(10, 206);
-            this.btnSmall3.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSmall3.Name = "btnSmall3";
-            this.btnSmall3.Size = new System.Drawing.Size(204, 60);
-            this.btnSmall3.TabIndex = 59;
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::Celeste_Launcher_Gui.Properties.Resources.Celeste_Logo;
+            this.pictureBox2.Location = new System.Drawing.Point(712, 41);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(272, 201);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 63;
+            this.pictureBox2.TabStop = false;
             // 
-            // linkLbl_ChangePwd
+            // panelSettings
             // 
-            this.linkLbl_ChangePwd.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLbl_ChangePwd.AutoSize = true;
-            this.linkLbl_ChangePwd.BackColor = System.Drawing.Color.Transparent;
-            this.linkLbl_ChangePwd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLbl_ChangePwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.linkLbl_ChangePwd.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLbl_ChangePwd.Location = new System.Drawing.Point(13, 145);
-            this.linkLbl_ChangePwd.Name = "linkLbl_ChangePwd";
-            this.linkLbl_ChangePwd.Size = new System.Drawing.Size(198, 61);
-            this.linkLbl_ChangePwd.TabIndex = 22;
-            this.linkLbl_ChangePwd.TabStop = true;
-            this.linkLbl_ChangePwd.Text = "Change Password";
-            this.linkLbl_ChangePwd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLbl_ChangePwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_ChangePwd_LinkClicked);
+            this.panelSettings.BackColor = System.Drawing.Color.Transparent;
+            this.panelSettings.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Settings;
+            this.panelSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelSettings.Controls.Add(this.btnCloseSettings);
+            this.panelSettings.Controls.Add(this.lb_Ver);
+            this.panelSettings.Controls.Add(this.comboBox2);
+            this.panelSettings.Controls.Add(this.label1);
+            this.panelSettings.Controls.Add(this.btnSmall2);
+            this.panelSettings.Location = new System.Drawing.Point(440, 323);
+            this.panelSettings.Name = "panelSettings";
+            this.panelSettings.Size = new System.Drawing.Size(469, 324);
+            this.panelSettings.TabIndex = 62;
+            this.panelSettings.Visible = false;
             // 
-            // panel4
+            // btnCloseSettings
             // 
-            this.panel4.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.AvatarBorder;
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel4.Controls.Add(this.pb_Avatar);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(10, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(204, 143);
-            this.panel4.TabIndex = 58;
+            this.btnCloseSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseSettings.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
+            this.btnCloseSettings.Location = new System.Drawing.Point(419, 3);
+            this.btnCloseSettings.Name = "btnCloseSettings";
+            this.btnCloseSettings.Size = new System.Drawing.Size(45, 44);
+            this.btnCloseSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnCloseSettings.TabIndex = 64;
+            this.btnCloseSettings.TabStop = false;
+            this.btnCloseSettings.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Hover;
+            this.btnCloseSettings.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
+            this.btnCloseSettings.zPressedImage = null;
+            this.btnCloseSettings.Click += new System.EventHandler(this.btnCloseSettings_Click);
             // 
-            // pb_Avatar
+            // lb_Ver
             // 
-            this.pb_Avatar.BackColor = System.Drawing.Color.Transparent;
-            this.pb_Avatar.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pb_Avatar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb_Avatar.ErrorImage = null;
-            this.pb_Avatar.Image = ((System.Drawing.Image)(resources.GetObject("pb_Avatar.Image")));
-            this.pb_Avatar.InitialImage = null;
-            this.pb_Avatar.Location = new System.Drawing.Point(0, 0);
-            this.pb_Avatar.Margin = new System.Windows.Forms.Padding(0);
-            this.pb_Avatar.Name = "pb_Avatar";
-            this.pb_Avatar.Size = new System.Drawing.Size(204, 143);
-            this.pb_Avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pb_Avatar.TabIndex = 10;
-            this.pb_Avatar.TabStop = false;
-            this.pb_Avatar.Click += new System.EventHandler(this.Pb_Avatar_Click);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 318F));
-            this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.comboBox2, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.btnSmall2, 2, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 220);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(616, 60);
-            this.tableLayoutPanel5.TabIndex = 64;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 56);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Game Language:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
+            this.lb_Ver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Ver.ForeColor = System.Drawing.Color.Black;
+            this.lb_Ver.Location = new System.Drawing.Point(40, 274);
+            this.lb_Ver.Margin = new System.Windows.Forms.Padding(3);
+            this.lb_Ver.Name = "lb_Ver";
+            this.lb_Ver.Size = new System.Drawing.Size(381, 29);
+            this.lb_Ver.TabIndex = 36;
+            this.lb_Ver.Text = "v0.0.0.0";
+            this.lb_Ver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBox2
             // 
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
@@ -228,105 +218,84 @@
             "fr-FR",
             "it-IT",
             "zh-CHT"});
-            this.comboBox2.Location = new System.Drawing.Point(173, 12);
+            this.comboBox2.Location = new System.Drawing.Point(234, 64);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(105, 28);
-            this.comboBox2.TabIndex = 13;
+            this.comboBox2.Size = new System.Drawing.Size(163, 37);
+            this.comboBox2.TabIndex = 68;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(27, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(211, 29);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Game Language:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnSmall2
             // 
-            this.btnSmall2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall2.BackgroundImage")));
+            this.btnSmall2.AutoSize = true;
+            this.btnSmall2.BackColor = System.Drawing.Color.Transparent;
+            this.btnSmall2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Play_Button___Normal;
             this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall2.BtnText = "MP Settings";
-            this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSmall2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmall2.Location = new System.Drawing.Point(288, 4);
+            this.btnSmall2.Location = new System.Drawing.Point(165, 173);
             this.btnSmall2.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.btnSmall2.Name = "btnSmall2";
-            this.btnSmall2.Size = new System.Drawing.Size(318, 52);
-            this.btnSmall2.TabIndex = 50;
-            this.btnSmall2.Click += new System.EventHandler(this.Label6_Click);
+            this.btnSmall2.Size = new System.Drawing.Size(273, 72);
+            this.btnSmall2.TabIndex = 66;
+            this.btnSmall2.Click += new System.EventHandler(this.btnSmall2_Click_1);
             // 
-            // tableLayoutPanel4
+            // panelAccountInfo
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.lbl_Mail, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.lbl_UserName, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.lbl_Rank, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.linkLabel1, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.linkLabel2, 1, 1);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 50);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(586, 154);
-            this.tableLayoutPanel4.TabIndex = 62;
-            // 
-            // lbl_Mail
-            // 
-            this.lbl_Mail.AutoSize = true;
-            this.lbl_Mail.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Mail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Mail.Location = new System.Drawing.Point(13, 2);
-            this.lbl_Mail.Name = "lbl_Mail";
-            this.lbl_Mail.Size = new System.Drawing.Size(103, 50);
-            this.lbl_Mail.TabIndex = 6;
-            this.lbl_Mail.Text = "Email:";
-            this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_UserName
-            // 
-            this.lbl_UserName.AutoSize = true;
-            this.lbl_UserName.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_UserName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_UserName.Location = new System.Drawing.Point(13, 52);
-            this.lbl_UserName.Name = "lbl_UserName";
-            this.lbl_UserName.Size = new System.Drawing.Size(103, 50);
-            this.lbl_UserName.TabIndex = 7;
-            this.lbl_UserName.Text = "User Name:";
-            this.lbl_UserName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panelAccountInfo.BackColor = System.Drawing.Color.Transparent;
+            this.panelAccountInfo.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Account_Info_Light;
+            this.panelAccountInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelAccountInfo.Controls.Add(this.lbl_Rank);
+            this.panelAccountInfo.Controls.Add(this.lbl_UserName);
+            this.panelAccountInfo.Controls.Add(this.linkLabel2);
+            this.panelAccountInfo.Controls.Add(this.lbl_Mail);
+            this.panelAccountInfo.Controls.Add(this.linkLbl_ChangePwd);
+            this.panelAccountInfo.Controls.Add(this.linkLabel1);
+            this.panelAccountInfo.Controls.Add(this.panel4);
+            this.panelAccountInfo.Controls.Add(this.buttonCloseAccountInfo);
+            this.panelAccountInfo.Location = new System.Drawing.Point(119, 34);
+            this.panelAccountInfo.Name = "panelAccountInfo";
+            this.panelAccountInfo.Size = new System.Drawing.Size(470, 283);
+            this.panelAccountInfo.TabIndex = 2;
+            this.panelAccountInfo.Visible = false;
             // 
             // lbl_Rank
             // 
             this.lbl_Rank.AutoSize = true;
             this.lbl_Rank.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Rank.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Rank.Location = new System.Drawing.Point(13, 102);
+            this.lbl_Rank.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Rank.Location = new System.Drawing.Point(27, 219);
             this.lbl_Rank.Name = "lbl_Rank";
-            this.lbl_Rank.Size = new System.Drawing.Size(103, 50);
+            this.lbl_Rank.Size = new System.Drawing.Size(79, 29);
             this.lbl_Rank.TabIndex = 8;
             this.lbl_Rank.Text = "Rank:";
             this.lbl_Rank.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // linkLabel1
+            // lbl_UserName
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel1.Enabled = false;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel1.Location = new System.Drawing.Point(122, 2);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(451, 50);
-            this.linkLabel1.TabIndex = 19;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Edit";
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Sienna;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
+            this.lbl_UserName.AutoSize = true;
+            this.lbl_UserName.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_UserName.ForeColor = System.Drawing.Color.Black;
+            this.lbl_UserName.Location = new System.Drawing.Point(27, 182);
+            this.lbl_UserName.Name = "lbl_UserName";
+            this.lbl_UserName.Size = new System.Drawing.Size(151, 29);
+            this.lbl_UserName.TabIndex = 7;
+            this.lbl_UserName.Text = "User Name:";
+            this.lbl_UserName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // linkLabel2
             // 
@@ -334,299 +303,418 @@
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel2.DisabledLinkColor = System.Drawing.Color.Gray;
-            this.linkLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkLabel2.Enabled = false;
             this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel2.Location = new System.Drawing.Point(122, 52);
+            this.linkLabel2.LinkColor = System.Drawing.Color.Blue;
+            this.linkLabel2.Location = new System.Drawing.Point(382, 185);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(451, 50);
+            this.linkLabel2.Size = new System.Drawing.Size(49, 25);
             this.linkLabel2.TabIndex = 20;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Edit";
             this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel2_LinkClicked);
             // 
-            // tableLayoutPanel3
+            // lbl_Mail
             // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.btnSmall1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.lb_Ver, 0, 1);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(623, 307);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(224, 114);
-            this.tableLayoutPanel3.TabIndex = 61;
+            this.lbl_Mail.AutoSize = true;
+            this.lbl_Mail.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Mail.ForeColor = System.Drawing.Color.Black;
+            this.lbl_Mail.Location = new System.Drawing.Point(27, 148);
+            this.lbl_Mail.Name = "lbl_Mail";
+            this.lbl_Mail.Size = new System.Drawing.Size(86, 29);
+            this.lbl_Mail.TabIndex = 6;
+            this.lbl_Mail.Text = "Email:";
+            this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // linkLbl_ChangePwd
+            // 
+            this.linkLbl_ChangePwd.ActiveLinkColor = System.Drawing.Color.MediumBlue;
+            this.linkLbl_ChangePwd.AutoSize = true;
+            this.linkLbl_ChangePwd.BackColor = System.Drawing.Color.Transparent;
+            this.linkLbl_ChangePwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.linkLbl_ChangePwd.LinkColor = System.Drawing.Color.DarkBlue;
+            this.linkLbl_ChangePwd.Location = new System.Drawing.Point(116, 113);
+            this.linkLbl_ChangePwd.Name = "linkLbl_ChangePwd";
+            this.linkLbl_ChangePwd.Size = new System.Drawing.Size(188, 25);
+            this.linkLbl_ChangePwd.TabIndex = 22;
+            this.linkLbl_ChangePwd.TabStop = true;
+            this.linkLbl_ChangePwd.Text = "Change Password";
+            this.linkLbl_ChangePwd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLbl_ChangePwd.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_ChangePwd_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.MediumBlue;
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.linkLabel1.Enabled = false;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.Blue;
+            this.linkLabel1.Location = new System.Drawing.Point(382, 152);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(49, 25);
+            this.linkLabel1.TabIndex = 19;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Edit";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Sienna;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
+            // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.AvatarBorder;
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Controls.Add(this.pb_Avatar);
+            this.panel4.Location = new System.Drawing.Point(26, 65);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(74, 73);
+            this.panel4.TabIndex = 58;
+            // 
+            // pb_Avatar
+            // 
+            this.pb_Avatar.BackColor = System.Drawing.Color.Transparent;
+            this.pb_Avatar.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pb_Avatar.ErrorImage = null;
+            this.pb_Avatar.Image = ((System.Drawing.Image)(resources.GetObject("pb_Avatar.Image")));
+            this.pb_Avatar.InitialImage = null;
+            this.pb_Avatar.Location = new System.Drawing.Point(6, 5);
+            this.pb_Avatar.Margin = new System.Windows.Forms.Padding(0);
+            this.pb_Avatar.Name = "pb_Avatar";
+            this.pb_Avatar.Size = new System.Drawing.Size(63, 57);
+            this.pb_Avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Avatar.TabIndex = 10;
+            this.pb_Avatar.TabStop = false;
+            this.pb_Avatar.Click += new System.EventHandler(this.Pb_Avatar_Click);
+            // 
+            // buttonCloseAccountInfo
+            // 
+            this.buttonCloseAccountInfo.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
+            this.buttonCloseAccountInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonCloseAccountInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCloseAccountInfo.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonCloseAccountInfo.FlatAppearance.BorderSize = 0;
+            this.buttonCloseAccountInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonCloseAccountInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.buttonCloseAccountInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCloseAccountInfo.Location = new System.Drawing.Point(420, 3);
+            this.buttonCloseAccountInfo.Name = "buttonCloseAccountInfo";
+            this.buttonCloseAccountInfo.Size = new System.Drawing.Size(49, 41);
+            this.buttonCloseAccountInfo.TabIndex = 65;
+            this.buttonCloseAccountInfo.UseVisualStyleBackColor = true;
+            this.buttonCloseAccountInfo.Click += new System.EventHandler(this.buttonCloseAccountInfo_Click);
+            this.buttonCloseAccountInfo.MouseLeave += new System.EventHandler(this.buttonCloseAccountInfo_MouseLeave);
+            this.buttonCloseAccountInfo.MouseHover += new System.EventHandler(this.buttonCloseAccountInfo_MouseHover);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
+            this.panel6.Controls.Add(this.btnAoeoDb);
+            this.panel6.Controls.Add(this.btnFriends);
+            this.panel6.Controls.Add(this.btnPvpPatch);
+            this.panel6.Controls.Add(this.btnProfileView);
+            this.panel6.Controls.Add(this.btnPatch);
+            this.panel6.Controls.Add(this.btnDonate);
+            this.panel6.Location = new System.Drawing.Point(32, 28);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(81, 453);
+            this.panel6.TabIndex = 1;
+            // 
+            // btnAoeoDb
+            // 
+            this.btnAoeoDb.BackColor = System.Drawing.Color.Transparent;
+            this.btnAoeoDb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAoeoDb.Image = global::Celeste_Launcher_Gui.Properties.Resources.AOEDB___Normal;
+            this.btnAoeoDb.Location = new System.Drawing.Point(3, 374);
+            this.btnAoeoDb.Name = "btnAoeoDb";
+            this.btnAoeoDb.Size = new System.Drawing.Size(63, 64);
+            this.btnAoeoDb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnAoeoDb.TabIndex = 66;
+            this.btnAoeoDb.TabStop = false;
+            this.btnAoeoDb.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDB___Hover;
+            this.btnAoeoDb.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDB___Normal;
+            this.btnAoeoDb.zPressedImage = null;
+            this.btnAoeoDb.Click += new System.EventHandler(this.btnAoeoDb_Click);
+            // 
+            // btnFriends
+            // 
+            this.btnFriends.BackColor = System.Drawing.Color.Transparent;
+            this.btnFriends.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFriends.Image = global::Celeste_Launcher_Gui.Properties.Resources.Friends__Disabled____Normal;
+            this.btnFriends.Location = new System.Drawing.Point(3, 86);
+            this.btnFriends.Name = "btnFriends";
+            this.btnFriends.Size = new System.Drawing.Size(63, 64);
+            this.btnFriends.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnFriends.TabIndex = 63;
+            this.btnFriends.TabStop = false;
+            this.btnFriends.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Friends__Disabled____Hover;
+            this.btnFriends.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Friends__Disabled____Normal;
+            this.btnFriends.zPressedImage = null;
+            this.btnFriends.Click += new System.EventHandler(this.btnFriends_Click);
+            // 
+            // btnPvpPatch
+            // 
+            this.btnPvpPatch.BackColor = System.Drawing.Color.Transparent;
+            this.btnPvpPatch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPvpPatch.Image = global::Celeste_Launcher_Gui.Properties.Resources.PvP_Patch_Notes___Normal;
+            this.btnPvpPatch.Location = new System.Drawing.Point(3, 304);
+            this.btnPvpPatch.Name = "btnPvpPatch";
+            this.btnPvpPatch.Size = new System.Drawing.Size(63, 64);
+            this.btnPvpPatch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnPvpPatch.TabIndex = 65;
+            this.btnPvpPatch.TabStop = false;
+            this.btnPvpPatch.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.PvP_Patch_Notes___Hover;
+            this.btnPvpPatch.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.PvP_Patch_Notes___Normal;
+            this.btnPvpPatch.zPressedImage = null;
+            this.btnPvpPatch.Click += new System.EventHandler(this.btnPvpPatch_Click);
+            // 
+            // btnProfileView
+            // 
+            this.btnProfileView.BackColor = System.Drawing.Color.Transparent;
+            this.btnProfileView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProfileView.Image = global::Celeste_Launcher_Gui.Properties.Resources.Account___Normal;
+            this.btnProfileView.InitialImage = null;
+            this.btnProfileView.Location = new System.Drawing.Point(3, 15);
+            this.btnProfileView.Name = "btnProfileView";
+            this.btnProfileView.Size = new System.Drawing.Size(63, 64);
+            this.btnProfileView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnProfileView.TabIndex = 63;
+            this.btnProfileView.TabStop = false;
+            this.btnProfileView.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Account___Hover;
+            this.btnProfileView.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Account___Normal;
+            this.btnProfileView.zPressedImage = null;
+            this.btnProfileView.Click += new System.EventHandler(this.btnProfileView_Click);
+            // 
+            // btnPatch
+            // 
+            this.btnPatch.BackColor = System.Drawing.Color.Transparent;
+            this.btnPatch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPatch.Image = global::Celeste_Launcher_Gui.Properties.Resources.Patch_Notes___Normal;
+            this.btnPatch.Location = new System.Drawing.Point(3, 226);
+            this.btnPatch.Name = "btnPatch";
+            this.btnPatch.Size = new System.Drawing.Size(63, 64);
+            this.btnPatch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnPatch.TabIndex = 64;
+            this.btnPatch.TabStop = false;
+            this.btnPatch.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Patch_Notes___Hover;
+            this.btnPatch.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Patch_Notes___Normal;
+            this.btnPatch.zPressedImage = null;
+            this.btnPatch.Click += new System.EventHandler(this.btnPatch_Click);
+            // 
+            // btnDonate
+            // 
+            this.btnDonate.BackColor = System.Drawing.Color.Transparent;
+            this.btnDonate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDonate.Image = global::Celeste_Launcher_Gui.Properties.Resources.Donate___Normal;
+            this.btnDonate.Location = new System.Drawing.Point(3, 156);
+            this.btnDonate.Name = "btnDonate";
+            this.btnDonate.Size = new System.Drawing.Size(63, 64);
+            this.btnDonate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnDonate.TabIndex = 63;
+            this.btnDonate.TabStop = false;
+            this.btnDonate.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Donate___Hover;
+            this.btnDonate.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Donate___Normal;
+            this.btnDonate.zPressedImage = null;
+            this.btnDonate.Click += new System.EventHandler(this.btnDonate_Click);
+            // 
+            // panelRightButtonsContainer
+            // 
+            this.panelRightButtonsContainer.BackColor = System.Drawing.Color.Transparent;
+            this.panelRightButtonsContainer.Controls.Add(this.btnSettings);
+            this.panelRightButtonsContainer.Controls.Add(this.btnBugReport);
+            this.panelRightButtonsContainer.Controls.Add(this.btnEsoCom);
+            this.panelRightButtonsContainer.Controls.Add(this.btnDiscord);
+            this.panelRightButtonsContainer.Controls.Add(this.btnReddit);
+            this.panelRightButtonsContainer.Controls.Add(this.btnCeleFanProject);
+            this.panelRightButtonsContainer.Location = new System.Drawing.Point(898, 241);
+            this.panelRightButtonsContainer.Name = "panelRightButtonsContainer";
+            this.panelRightButtonsContainer.Size = new System.Drawing.Size(86, 432);
+            this.panelRightButtonsContainer.TabIndex = 0;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSettings.Image = global::Celeste_Launcher_Gui.Properties.Resources.MP_Settings___Normal;
+            this.btnSettings.Location = new System.Drawing.Point(17, 362);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(63, 64);
+            this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnSettings.TabIndex = 72;
+            this.btnSettings.TabStop = false;
+            this.btnSettings.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.MP_Settings___Hover;
+            this.btnSettings.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.MP_Settings___Normal;
+            this.btnSettings.zPressedImage = null;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnBugReport
+            // 
+            this.btnBugReport.BackColor = System.Drawing.Color.Transparent;
+            this.btnBugReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBugReport.Image = global::Celeste_Launcher_Gui.Properties.Resources.Bug_Report___Normal;
+            this.btnBugReport.Location = new System.Drawing.Point(17, 292);
+            this.btnBugReport.Name = "btnBugReport";
+            this.btnBugReport.Size = new System.Drawing.Size(63, 64);
+            this.btnBugReport.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnBugReport.TabIndex = 71;
+            this.btnBugReport.TabStop = false;
+            this.btnBugReport.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Bug_Report___Hover;
+            this.btnBugReport.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Bug_Report___Normal;
+            this.btnBugReport.zPressedImage = null;
+            this.btnBugReport.Click += new System.EventHandler(this.btnBugReport_Click);
+            // 
+            // btnEsoCom
+            // 
+            this.btnEsoCom.BackColor = System.Drawing.Color.Transparent;
+            this.btnEsoCom.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEsoCom.Image = global::Celeste_Launcher_Gui.Properties.Resources.ESOCommunity___Normal;
+            this.btnEsoCom.Location = new System.Drawing.Point(17, 222);
+            this.btnEsoCom.Name = "btnEsoCom";
+            this.btnEsoCom.Size = new System.Drawing.Size(63, 64);
+            this.btnEsoCom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnEsoCom.TabIndex = 70;
+            this.btnEsoCom.TabStop = false;
+            this.btnEsoCom.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.ESOCommunity___Hover;
+            this.btnEsoCom.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.ESOCommunity___Normal;
+            this.btnEsoCom.zPressedImage = null;
+            this.btnEsoCom.Click += new System.EventHandler(this.btnEsoCom_Click);
+            // 
+            // btnDiscord
+            // 
+            this.btnDiscord.BackColor = System.Drawing.Color.Transparent;
+            this.btnDiscord.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDiscord.Image = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Discord___Normal;
+            this.btnDiscord.Location = new System.Drawing.Point(17, 152);
+            this.btnDiscord.Name = "btnDiscord";
+            this.btnDiscord.Size = new System.Drawing.Size(63, 64);
+            this.btnDiscord.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnDiscord.TabIndex = 69;
+            this.btnDiscord.TabStop = false;
+            this.btnDiscord.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Discord___Hover;
+            this.btnDiscord.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Discord___Normal;
+            this.btnDiscord.zPressedImage = null;
+            this.btnDiscord.Click += new System.EventHandler(this.btnDiscord_Click);
+            // 
+            // btnReddit
+            // 
+            this.btnReddit.BackColor = System.Drawing.Color.Transparent;
+            this.btnReddit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReddit.Image = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Reddit___Normal;
+            this.btnReddit.Location = new System.Drawing.Point(17, 82);
+            this.btnReddit.Name = "btnReddit";
+            this.btnReddit.Size = new System.Drawing.Size(63, 64);
+            this.btnReddit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnReddit.TabIndex = 68;
+            this.btnReddit.TabStop = false;
+            this.btnReddit.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Reddit___Hover;
+            this.btnReddit.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Reddit___Normal;
+            this.btnReddit.zPressedImage = null;
+            this.btnReddit.Click += new System.EventHandler(this.btnReddit_Click);
+            // 
+            // btnCeleFanProject
+            // 
+            this.btnCeleFanProject.BackColor = System.Drawing.Color.Transparent;
+            this.btnCeleFanProject.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCeleFanProject.Image = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Website___Normal;
+            this.btnCeleFanProject.Location = new System.Drawing.Point(17, 12);
+            this.btnCeleFanProject.Name = "btnCeleFanProject";
+            this.btnCeleFanProject.Size = new System.Drawing.Size(63, 64);
+            this.btnCeleFanProject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnCeleFanProject.TabIndex = 67;
+            this.btnCeleFanProject.TabStop = false;
+            this.btnCeleFanProject.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Website___Hover;
+            this.btnCeleFanProject.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.Project_Celeste_Website___Normal;
+            this.btnCeleFanProject.zPressedImage = null;
+            this.btnCeleFanProject.Click += new System.EventHandler(this.btnCeleFanProject_Click);
             // 
             // btnSmall1
             // 
-            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
+            this.btnSmall1.BackColor = System.Drawing.Color.Transparent;
+            this.btnSmall1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Play_Button___Normal;
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "PLAY";
-            this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmall1.Location = new System.Drawing.Point(10, 2);
+            this.btnSmall1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmall1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSmall1.Location = new System.Drawing.Point(695, 688);
             this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall1.Name = "btnSmall1";
-            this.btnSmall1.Size = new System.Drawing.Size(204, 84);
+            this.btnSmall1.Size = new System.Drawing.Size(289, 83);
             this.btnSmall1.TabIndex = 52;
             this.btnSmall1.Load += new System.EventHandler(this.BtnSmall1_Load);
             this.btnSmall1.Click += new System.EventHandler(this.Btn_Play_Click);
             // 
-            // lb_Ver
+            // panelNewsBg
             // 
-            this.lb_Ver.AutoSize = true;
-            this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
-            this.lb_Ver.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_Ver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Ver.ForeColor = System.Drawing.Color.Black;
-            this.lb_Ver.Location = new System.Drawing.Point(13, 89);
-            this.lb_Ver.Margin = new System.Windows.Forms.Padding(3);
-            this.lb_Ver.Name = "lb_Ver";
-            this.lb_Ver.Size = new System.Drawing.Size(198, 20);
-            this.lb_Ver.TabIndex = 36;
-            this.lb_Ver.Text = "v0.0.0.0";
-            this.lb_Ver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panelNewsBg.BackColor = System.Drawing.Color.Transparent;
+            this.panelNewsBg.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Latest_News_Box;
+            this.panelNewsBg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelNewsBg.Controls.Add(this.btnNewsLeft);
+            this.panelNewsBg.Controls.Add(this.btnNewsRight);
+            this.panelNewsBg.Controls.Add(this.pictureBoxNews);
+            this.panelNewsBg.Location = new System.Drawing.Point(32, 519);
+            this.panelNewsBg.Name = "panelNewsBg";
+            this.panelNewsBg.Size = new System.Drawing.Size(434, 252);
+            this.panelNewsBg.TabIndex = 67;
             // 
-            // panel2
+            // btnNewsLeft
             // 
-            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparatorVertical;
-            this.panel2.Location = new System.Drawing.Point(596, 307);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(27, 114);
-            this.panel2.TabIndex = 60;
+            this.btnNewsLeft.BackColor = System.Drawing.Color.Transparent;
+            this.btnNewsLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNewsLeft.Image = global::Celeste_Launcher_Gui.Properties.Resources.News_Left___Normal;
+            this.btnNewsLeft.Location = new System.Drawing.Point(3, 119);
+            this.btnNewsLeft.Name = "btnNewsLeft";
+            this.btnNewsLeft.Size = new System.Drawing.Size(41, 38);
+            this.btnNewsLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnNewsLeft.TabIndex = 69;
+            this.btnNewsLeft.TabStop = false;
+            this.btnNewsLeft.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.News_Left___Hover;
+            this.btnNewsLeft.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.News_Left___Normal;
+            this.btnNewsLeft.zPressedImage = null;
+            this.btnNewsLeft.Click += new System.EventHandler(this.btnNewsLeft_Click);
             // 
-            // tableLayoutPanel1
+            // btnNewsRight
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 307);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(596, 114);
-            this.tableLayoutPanel1.TabIndex = 59;
+            this.btnNewsRight.BackColor = System.Drawing.Color.Transparent;
+            this.btnNewsRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNewsRight.Image = global::Celeste_Launcher_Gui.Properties.Resources.News_Right___Normal;
+            this.btnNewsRight.Location = new System.Drawing.Point(386, 119);
+            this.btnNewsRight.Name = "btnNewsRight";
+            this.btnNewsRight.Size = new System.Drawing.Size(41, 38);
+            this.btnNewsRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnNewsRight.TabIndex = 68;
+            this.btnNewsRight.TabStop = false;
+            this.btnNewsRight.zHoverImage = global::Celeste_Launcher_Gui.Properties.Resources.News_Right___Hover;
+            this.btnNewsRight.zNormalImage = global::Celeste_Launcher_Gui.Properties.Resources.News_Right___Normal;
+            this.btnNewsRight.zPressedImage = null;
+            this.btnNewsRight.Click += new System.EventHandler(this.btnNewsRight_Click);
             // 
-            // tableLayoutPanel2
+            // pictureBoxNews
             // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.linkLabel5, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.linklbl_ReportIssue, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.linkLbl_ProjectCelesteCom, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.linkLabel4, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.linkLabel7, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.linklbl_Wiki, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.linkLabel3, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.panel3, 3, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 31);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(596, 83);
-            this.tableLayoutPanel2.TabIndex = 60;
+            this.pictureBoxNews.Image = global::Celeste_Launcher_Gui.Properties.Resources.news_advisors2;
+            this.pictureBoxNews.Location = new System.Drawing.Point(12, 34);
+            this.pictureBoxNews.Name = "pictureBoxNews";
+            this.pictureBoxNews.Size = new System.Drawing.Size(408, 203);
+            this.pictureBoxNews.TabIndex = 0;
+            this.pictureBoxNews.TabStop = false;
             // 
-            // linkLabel5
+            // timerSlideShow
             // 
-            this.linkLabel5.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel5.AutoSize = true;
-            this.linkLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel5.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel5.Location = new System.Drawing.Point(306, 41);
-            this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(178, 42);
-            this.linkLabel5.TabIndex = 58;
-            this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "Join us on Reddit";
-            this.linkLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel5_LinkClicked);
-            // 
-            // linklbl_ReportIssue
-            // 
-            this.linklbl_ReportIssue.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linklbl_ReportIssue.AutoSize = true;
-            this.linklbl_ReportIssue.BackColor = System.Drawing.Color.Transparent;
-            this.linklbl_ReportIssue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linklbl_ReportIssue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linklbl_ReportIssue.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linklbl_ReportIssue.Location = new System.Drawing.Point(3, 0);
-            this.linklbl_ReportIssue.Name = "linklbl_ReportIssue";
-            this.linklbl_ReportIssue.Size = new System.Drawing.Size(113, 41);
-            this.linklbl_ReportIssue.TabIndex = 25;
-            this.linklbl_ReportIssue.TabStop = true;
-            this.linklbl_ReportIssue.Text = "Report Issue";
-            this.linklbl_ReportIssue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linklbl_ReportIssue.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Linklbl_ReportBug_LinkClicked);
-            // 
-            // linkLbl_ProjectCelesteCom
-            // 
-            this.linkLbl_ProjectCelesteCom.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLbl_ProjectCelesteCom.AutoSize = true;
-            this.linkLbl_ProjectCelesteCom.BackColor = System.Drawing.Color.Transparent;
-            this.linkLbl_ProjectCelesteCom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLbl_ProjectCelesteCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLbl_ProjectCelesteCom.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLbl_ProjectCelesteCom.Location = new System.Drawing.Point(3, 41);
-            this.linkLbl_ProjectCelesteCom.Name = "linkLbl_ProjectCelesteCom";
-            this.linkLbl_ProjectCelesteCom.Size = new System.Drawing.Size(113, 42);
-            this.linkLbl_ProjectCelesteCom.TabIndex = 29;
-            this.linkLbl_ProjectCelesteCom.TabStop = true;
-            this.linkLbl_ProjectCelesteCom.Text = "ProjectCeleste.com";
-            this.linkLbl_ProjectCelesteCom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.linkLbl_ProjectCelesteCom.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLbl_ProjectCelesteCom_LinkClicked);
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel4.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel4.Location = new System.Drawing.Point(306, 0);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(178, 41);
-            this.linkLabel4.TabIndex = 56;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "AoEO DB";
-            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel4_LinkClicked);
-            // 
-            // linkLabel7
-            // 
-            this.linkLabel7.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel7.AutoSize = true;
-            this.linkLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel7.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel7.Location = new System.Drawing.Point(122, 41);
-            this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(178, 42);
-            this.linkLabel7.TabIndex = 57;
-            this.linkLabel7.TabStop = true;
-            this.linkLabel7.Text = "Join us on Discord";
-            this.linkLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel7_LinkClicked);
-            // 
-            // linklbl_Wiki
-            // 
-            this.linklbl_Wiki.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linklbl_Wiki.AutoSize = true;
-            this.linklbl_Wiki.BackColor = System.Drawing.Color.Transparent;
-            this.linklbl_Wiki.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linklbl_Wiki.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linklbl_Wiki.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linklbl_Wiki.Location = new System.Drawing.Point(122, 0);
-            this.linklbl_Wiki.Name = "linklbl_Wiki";
-            this.linklbl_Wiki.Size = new System.Drawing.Size(178, 41);
-            this.linklbl_Wiki.TabIndex = 26;
-            this.linklbl_Wiki.TabStop = true;
-            this.linklbl_Wiki.Text = "AoEO Wikia";
-            this.linklbl_Wiki.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linklbl_Wiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Linklbl_Wiki_LinkClicked);
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel3.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel3.Location = new System.Drawing.Point(490, 0);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(103, 41);
-            this.linkLabel3.TabIndex = 32;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "ESO-Community";
-            this.linkLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel3_LinkClicked_1);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(487, 41);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(109, 42);
-            this.panel3.TabIndex = 59;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.btn_donate_SM;
-            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(99, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.PictureBox1_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 24);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Useful Links";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
-            this.panel1.Location = new System.Drawing.Point(0, 280);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(847, 27);
-            this.panel1.TabIndex = 53;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 24);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "My Account";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timerSlideShow.Enabled = true;
+            this.timerSlideShow.Interval = 10000;
+            this.timerSlideShow.Tick += new System.EventHandler(this.timerSlideShow_Tick);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(899, 514);
-            this.Controls.Add(this.p_UserInfo);
-            this.Controls.Add(this.mainContainer1);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1016, 799);
+            this.Controls.Add(this.panelMainContainer);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -636,63 +724,83 @@
             this.Text = "Project Celeste -- Connected";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.p_UserInfo.ResumeLayout(false);
-            this.p_UserInfo.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
+            this.panelMainContainer.ResumeLayout(false);
+            this.panelMainContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panelSettings.ResumeLayout(false);
+            this.panelSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseSettings)).EndInit();
+            this.panelAccountInfo.ResumeLayout(false);
+            this.panelAccountInfo.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_Avatar)).EndInit();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAoeoDb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFriends)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPvpPatch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnProfileView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPatch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDonate)).EndInit();
+            this.panelRightButtonsContainer.ResumeLayout(false);
+            this.panelRightButtonsContainer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBugReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEsoCom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDiscord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnReddit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCeleFanProject)).EndInit();
+            this.panelNewsBg.ResumeLayout(false);
+            this.panelNewsBg.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNewsLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNewsRight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNews)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel p_UserInfo;
         private System.Windows.Forms.Label lbl_Mail;
         private System.Windows.Forms.Label lbl_Rank;
         private System.Windows.Forms.Label lbl_UserName;
         private System.Windows.Forms.PictureBox pb_Avatar;
         private System.Windows.Forms.LinkLabel linkLbl_ChangePwd;
         private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linklbl_Wiki;
-        private System.Windows.Forms.LinkLabel linklbl_ReportIssue;
-        private System.Windows.Forms.LinkLabel linkLbl_ProjectCelesteCom;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lb_Ver;
-        private Celeste_AOEO_Controls.MainContainer mainContainer1;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall2;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.LinkLabel linkLabel5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelMainContainer;
+        private System.Windows.Forms.Panel panelRightButtonsContainer;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panelAccountInfo;
+        private System.Windows.Forms.Button buttonCloseAccountInfo;
+        private System.Windows.Forms.Panel panelSettings;
+        private System.Windows.Forms.Label lb_Ver;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label1;
+        private Celeste_AOEO_Controls.BtnSmall btnSmall2;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnProfileView;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnFriends;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnAoeoDb;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnPvpPatch;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnPatch;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnDonate;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnSettings;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnBugReport;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnEsoCom;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnDiscord;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnReddit;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnCeleFanProject;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnCloseSettings;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnMinimizX;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnCloseX;
+        private System.Windows.Forms.Panel panelNewsBg;
+        private System.Windows.Forms.PictureBox pictureBoxNews;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnNewsLeft;
+        private Celeste_AOEO_Controls.PictureBoxButtonCustom btnNewsRight;
+        private System.Windows.Forms.Timer timerSlideShow;
     }
 }

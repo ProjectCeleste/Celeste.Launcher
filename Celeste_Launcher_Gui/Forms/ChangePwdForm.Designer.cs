@@ -46,6 +46,8 @@
             // mainContainer1
             // 
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.mainContainer1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mainContainer1.BackgroundImage")));
+            this.mainContainer1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
@@ -92,7 +94,7 @@
             // 
             // btnSmall1
             // 
-            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
+            this.btnSmall1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Play_Button___Normal;
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "SAVE";
             this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -112,7 +114,7 @@
             this.label2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(13, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 49);
+            this.label2.Size = new System.Drawing.Size(258, 49);
             this.label2.TabIndex = 19;
             this.label2.Text = "Confirm new password:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -122,12 +124,12 @@
             this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(189, 114);
+            this.textBox2.Location = new System.Drawing.Point(274, 114);
             this.textBox2.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.textBox2.MaxLength = 32;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(325, 23);
+            this.textBox2.Size = new System.Drawing.Size(240, 30);
             this.textBox2.TabIndex = 16;
             this.textBox2.UseSystemPasswordChar = true;
             // 
@@ -139,7 +141,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 47);
+            this.label1.Size = new System.Drawing.Size(258, 47);
             this.label1.TabIndex = 18;
             this.label1.Text = "New password:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -149,12 +151,12 @@
             this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(189, 67);
+            this.textBox1.Location = new System.Drawing.Point(274, 67);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.textBox1.MaxLength = 32;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(325, 23);
+            this.textBox1.Size = new System.Drawing.Size(240, 30);
             this.textBox1.TabIndex = 15;
             this.textBox1.UseSystemPasswordChar = true;
             // 
@@ -166,7 +168,7 @@
             this.lb_Password.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Password.Location = new System.Drawing.Point(13, 10);
             this.lb_Password.Name = "lb_Password";
-            this.lb_Password.Size = new System.Drawing.Size(173, 47);
+            this.lb_Password.Size = new System.Drawing.Size(258, 47);
             this.lb_Password.TabIndex = 17;
             this.lb_Password.Text = "Old password:";
             this.lb_Password.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -176,18 +178,18 @@
             this.tb_Password.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tb_Password.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_Password.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Password.Location = new System.Drawing.Point(189, 20);
+            this.tb_Password.Location = new System.Drawing.Point(274, 20);
             this.tb_Password.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.tb_Password.MaxLength = 32;
             this.tb_Password.Name = "tb_Password";
             this.tb_Password.PasswordChar = '*';
-            this.tb_Password.Size = new System.Drawing.Size(325, 23);
+            this.tb_Password.Size = new System.Drawing.Size(240, 30);
             this.tb_Password.TabIndex = 14;
             this.tb_Password.UseSystemPasswordChar = true;
             // 
             // ChangePwdForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;

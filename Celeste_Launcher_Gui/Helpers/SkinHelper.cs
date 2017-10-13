@@ -64,6 +64,7 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public static void SetFont(IEnumerable controls)
         {
+            
             try
             {
                 foreach (Control c in controls)

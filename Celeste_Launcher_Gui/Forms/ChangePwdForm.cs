@@ -140,5 +140,7 @@ namespace Celeste_Launcher_Gui.Forms
                 //
             }
         }
+
+       
     }
 }
