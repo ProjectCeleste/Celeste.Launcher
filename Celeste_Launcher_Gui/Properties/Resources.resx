@@ -118,25 +118,214 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AvatarBorder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AvatarBorder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ESOCommunity - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\ESOCommunity - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="XButton_Hover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="XButton_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Friends (Disabled) - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Friends (Disabled) - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ESOCommunity - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\ESOCommunity - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="no_avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\no-avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="News Left - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\News Left - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BarSeparatorVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparatorVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PvP Patch Notes - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\PvP Patch Notes - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopRigthFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopRigthFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Project Celeste Website - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Project Celeste Website - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AvatarBorder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AvatarBorder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="btn_donate_SM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_donate_SM.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Project Celeste Website - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Project Celeste Website - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MP Settings - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\MP Settings - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Project Celeste Reddit - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Project Celeste Reddit - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Project Celeste Reddit - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Project Celeste Reddit - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Friends (Disabled) - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Friends (Disabled) - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MinimizeButtonHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MinimizeButtonHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Account_Information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Account_Information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Account_Info_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Account_Info_Light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Project Celeste Discord - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Project Celeste Discord - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="XButton_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\XButton_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Donate - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Donate - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bug Report - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Bug Report - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Play Button - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Play Button - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bug Report - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Bug Report - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Latest_News_Box" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\promo\Latest_News_Box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="News Left - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\News Left - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BottomMiddleFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BottomMiddleFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PvP Patch Notes - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\PvP Patch Notes - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Account - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Account - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Full Border" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Borders\Full Border.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="News Right - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\News Right - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopLRFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopLRFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ashley_Crawford_CG_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ashley_Crawford_CG_1.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btn_donate_SM" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\btn_donate_SM.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="News Right - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\News Right - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MP Settings - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\MP Settings - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MiddleLeftFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MiddleLeftFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Play Button - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Play Button - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Patch Notes - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Patch Notes - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="no_avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\no-avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Patch Notes - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Patch Notes - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopLeftFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopLeftFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Donate - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Donate - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BarSeparatorVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BarSeparatorVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AOEDB - Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\AOEDB - Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MinimizeButtonNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MinimizeButtonNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgrounds\bg8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Project Celeste Discord - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Project Celeste Discord - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg_main1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg_main1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MiddleRigthFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MiddleRigthFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BottomRigthFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BottomRigthFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AOEDB - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\AOEDB - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BottomLeftFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BottomLeftFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Celeste Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Celeste Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Account - Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buttons\Account - Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="XButton_Normal1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\XButton_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="news_advisors2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\promo\news_advisors2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="news_athens2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\promo\news_athens2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="news_sparta2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\promo\news_sparta2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -34,13 +34,13 @@ namespace Celeste_AOEO_Controls
         private void Lb_Btn_MouseEnter(object sender, EventArgs e)
         {
             lb_Btn.ForeColor = Color.Yellow;
-            BackgroundImage = Resources.BtnSmallHover;
+            BackgroundImage = Resources.Play_Button___Hover;
         }
 
         private void Lb_Btn_MouseLeave(object sender, EventArgs e)
         {
             lb_Btn.ForeColor = Color.White;
-            BackgroundImage = Resources.BtnSmallNormal;
+            BackgroundImage = Resources.Play_Button___Normal;
         }
 
         private void Lb_Btn_Click(object sender, EventArgs e)

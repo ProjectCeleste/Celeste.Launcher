@@ -41,13 +41,13 @@
       <HintPath>$(SolutionDir)\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
-      <HintPath>..\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
+      <HintPath>..\Open.Nat.dll</HintPath>
     </Reference>
     <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.12, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\SuperSocket.ClientEngine.Core.0.8.0.12\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+      <HintPath>..\SuperSocket.ClientEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -61,7 +61,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WebSocket4Net, Version=0.15.0.9, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebSocket4Net.0.15.0-beta9\lib\net45\WebSocket4Net.dll</HintPath>
+      <HintPath>..\WebSocket4Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +182,67 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\promo\news_sparta2.png" />
+    <None Include="Resources\promo\news_athens2.png" />
+    <None Include="Resources\promo\news_advisors2.png" />
+    <None Include="Resources\promo\Latest_News_Box.png" />
+    <None Include="Resources\backgrounds\bg9.png" />
+    <None Include="Resources\backgrounds\bg8.png" />
+    <None Include="Resources\backgrounds\bg7.png" />
+    <None Include="Resources\backgrounds\bg6.png" />
+    <None Include="Resources\backgrounds\bg5.png" />
+    <None Include="Resources\backgrounds\bg4.png" />
+    <None Include="Resources\backgrounds\bg3.png" />
+    <None Include="Resources\backgrounds\bg2.png" />
+    <None Include="Resources\backgrounds\bg1.png" />
+    <None Include="Resources\News Right - Normal.png" />
+    <None Include="Resources\News Right - Hover.png" />
+    <None Include="Resources\News Left - Normal.png" />
+    <None Include="Resources\News Left - Hover.png" />
+    <None Include="Resources\MinimizeButtonNormal.png" />
+    <None Include="Resources\MinimizeButtonHover.png" />
+    <None Include="Resources\Celeste Logo.png" />
+    <None Include="Resources\Buttons\Play Button - Normal.png" />
+    <None Include="Resources\Buttons\Play Button - Hover.png" />
+    <None Include="Resources\Settings.png" />
+    <None Include="Resources\Account_Info_Light.png" />
+    <None Include="Resources\Account_Information.png" />
+    <None Include="Resources\Borders\Full Border.png" />
+    <None Include="Resources\Buttons\PvP Patch Notes - Normal.png" />
+    <None Include="Resources\Buttons\PvP Patch Notes - Hover.png" />
+    <None Include="Resources\Buttons\Project Celeste Website - Normal.png" />
+    <None Include="Resources\Buttons\Project Celeste Website - Hover.png" />
+    <None Include="Resources\Buttons\Project Celeste Reddit - Normal.png" />
+    <None Include="Resources\Buttons\Project Celeste Reddit - Hover.png" />
+    <None Include="Resources\Buttons\Project Celeste Discord - Normal.png" />
+    <None Include="Resources\Buttons\Project Celeste Discord - Hover.png" />
+    <None Include="Resources\Buttons\Patch Notes - Normal.png" />
+    <None Include="Resources\Buttons\Patch Notes - Hover.png" />
+    <None Include="Resources\Buttons\MP Settings - Normal.png" />
+    <None Include="Resources\Buttons\MP Settings - Hover.png" />
+    <None Include="Resources\Buttons\Friends %28Disabled%29 - Normal.png" />
+    <None Include="Resources\Buttons\Friends %28Disabled%29 - Hover.png" />
+    <None Include="Resources\Buttons\ESOCommunity - Normal.png" />
+    <None Include="Resources\Buttons\ESOCommunity - Hover.png" />
+    <None Include="Resources\Buttons\Donate - Normal.png" />
+    <None Include="Resources\Buttons\Donate - Hover.png" />
+    <None Include="Resources\Buttons\Bug Report - Normal.png" />
+    <None Include="Resources\Buttons\Bug Report - Hover.png" />
+    <None Include="Resources\Buttons\AOEDB - Normal.png" />
+    <None Include="Resources\Buttons\AOEDB - Hover.png" />
+    <None Include="Resources\Buttons\Account - Normal.png" />
+    <None Include="Resources\Buttons\Account - Hover.png" />
+    <None Include="Resources\TopRigthFixed.png" />
+    <None Include="Resources\TopLRFluid.png" />
+    <None Include="Resources\TopLeftFixed.png" />
+    <None Include="Resources\MiddleRigthFluid.png" />
+    <None Include="Resources\MiddleLeftFluid.png" />
+    <None Include="Resources\BottomRigthFixed.png" />
+    <None Include="Resources\BottomMiddleFluid.png" />
+    <None Include="Resources\BottomLeftFixed.png" />
+    <None Include="Resources\XButton_Normal.png" />
+    <None Include="Resources\XButton_Hover.png" />
+    <None Include="Resources\bg_main1.png" />
     <None Include="Resources\btn_donate_SM.gif" />
     <None Include="Resources\AvatarBorder.png" />
     <None Include="Resources\BarSeparatorVertical.png" />

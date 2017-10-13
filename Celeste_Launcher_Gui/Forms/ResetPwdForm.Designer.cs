@@ -59,9 +59,9 @@
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.mainContainer1.MinimizeBox = false;
-            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
+            this.mainContainer1.MinimumSize = new System.Drawing.Size(465, 385);
             this.mainContainer1.Name = "mainContainer1";
-            this.mainContainer1.Size = new System.Drawing.Size(756, 322);
+            this.mainContainer1.Size = new System.Drawing.Size(1134, 495);
             this.mainContainer1.TabIndex = 0;
             // 
             // panel1
@@ -70,9 +70,10 @@
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.panel1.Controls.Add(this.p_Verify);
             this.panel1.Controls.Add(this.p_ResetPassword);
-            this.panel1.Location = new System.Drawing.Point(26, 72);
+            this.panel1.Location = new System.Drawing.Point(39, 111);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(705, 226);
+            this.panel1.Size = new System.Drawing.Size(1058, 348);
             this.panel1.TabIndex = 1;
             // 
             // p_Verify
@@ -83,17 +84,17 @@
             this.p_Verify.Location = new System.Drawing.Point(0, 0);
             this.p_Verify.Margin = new System.Windows.Forms.Padding(0);
             this.p_Verify.Name = "p_Verify";
-            this.p_Verify.Size = new System.Drawing.Size(705, 103);
+            this.p_Verify.Size = new System.Drawing.Size(1058, 158);
             this.p_Verify.TabIndex = 28;
             // 
             // panel3
             // 
             this.panel3.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 76);
+            this.panel3.Location = new System.Drawing.Point(0, 116);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(705, 27);
+            this.panel3.Size = new System.Drawing.Size(1058, 42);
             this.panel3.TabIndex = 54;
             // 
             // tableLayoutPanel2
@@ -101,7 +102,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 278F));
             this.tableLayoutPanel2.Controls.Add(this.btnSmall3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.lbl_Mail, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tb_Mail, 1, 0);
@@ -109,10 +110,10 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(10, 10, 0, 5);
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(15, 15, 0, 8);
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(705, 76);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 117);
             this.tableLayoutPanel2.TabIndex = 55;
             // 
             // btnSmall3
@@ -122,10 +123,10 @@
             this.btnSmall3.BtnText = "VERIFY";
             this.btnSmall3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSmall3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmall3.Location = new System.Drawing.Point(530, 10);
-            this.btnSmall3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnSmall3.Location = new System.Drawing.Point(795, 15);
+            this.btnSmall3.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
             this.btnSmall3.Name = "btnSmall3";
-            this.btnSmall3.Size = new System.Drawing.Size(165, 61);
+            this.btnSmall3.Size = new System.Drawing.Size(248, 94);
             this.btnSmall3.TabIndex = 26;
             this.btnSmall3.Click += new System.EventHandler(this.Btn_Verify_Click);
             // 
@@ -135,9 +136,10 @@
             this.lbl_Mail.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Mail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Mail.Location = new System.Drawing.Point(13, 10);
+            this.lbl_Mail.Location = new System.Drawing.Point(19, 15);
+            this.lbl_Mail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Mail.Name = "lbl_Mail";
-            this.lbl_Mail.Size = new System.Drawing.Size(58, 61);
+            this.lbl_Mail.Size = new System.Drawing.Size(86, 94);
             this.lbl_Mail.TabIndex = 19;
             this.lbl_Mail.Text = "Email:";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,11 +149,11 @@
             this.tb_Mail.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_Mail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Mail.Location = new System.Drawing.Point(74, 28);
-            this.tb_Mail.Margin = new System.Windows.Forms.Padding(0, 18, 0, 0);
+            this.tb_Mail.Location = new System.Drawing.Point(109, 43);
+            this.tb_Mail.Margin = new System.Windows.Forms.Padding(0, 28, 0, 0);
             this.tb_Mail.MaxLength = 128;
             this.tb_Mail.Name = "tb_Mail";
-            this.tb_Mail.Size = new System.Drawing.Size(446, 26);
+            this.tb_Mail.Size = new System.Drawing.Size(671, 35);
             this.tb_Mail.TabIndex = 14;
             // 
             // p_ResetPassword
@@ -159,10 +161,10 @@
             this.p_ResetPassword.Controls.Add(this.tableLayoutPanel3);
             this.p_ResetPassword.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.p_ResetPassword.Enabled = false;
-            this.p_ResetPassword.Location = new System.Drawing.Point(0, 7);
+            this.p_ResetPassword.Location = new System.Drawing.Point(0, 11);
             this.p_ResetPassword.Margin = new System.Windows.Forms.Padding(0);
             this.p_ResetPassword.Name = "p_ResetPassword";
-            this.p_ResetPassword.Size = new System.Drawing.Size(705, 219);
+            this.p_ResetPassword.Size = new System.Drawing.Size(1058, 337);
             this.p_ResetPassword.TabIndex = 27;
             // 
             // tableLayoutPanel3
@@ -172,26 +174,26 @@
             this.tableLayoutPanel3.Controls.Add(this.btnSmall1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 96);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 148);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(705, 123);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1058, 189);
             this.tableLayoutPanel3.TabIndex = 29;
             // 
             // btnSmall1
             // 
-            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
+            this.btnSmall1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Play_Button___Normal;
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "RESET PASSWORD";
             this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSmall1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmall1.Location = new System.Drawing.Point(0, 63);
+            this.btnSmall1.Location = new System.Drawing.Point(0, 97);
             this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall1.Name = "btnSmall1";
-            this.btnSmall1.Size = new System.Drawing.Size(705, 60);
+            this.btnSmall1.Size = new System.Drawing.Size(1058, 92);
             this.btnSmall1.TabIndex = 29;
             this.btnSmall1.Click += new System.EventHandler(this.Btn_ResetPassword_Click);
             // 
@@ -200,7 +202,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 278F));
             this.tableLayoutPanel1.Controls.Add(this.btnSmall4, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tb_InviteCode, 1, 0);
@@ -208,10 +210,10 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10, 10, 0, 5);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(15, 15, 0, 8);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(705, 63);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1058, 97);
             this.tableLayoutPanel1.TabIndex = 28;
             // 
             // btnSmall4
@@ -221,10 +223,10 @@
             this.btnSmall4.BtnText = "RESEND";
             this.btnSmall4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSmall4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmall4.Location = new System.Drawing.Point(530, 10);
-            this.btnSmall4.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnSmall4.Location = new System.Drawing.Point(795, 15);
+            this.btnSmall4.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
             this.btnSmall4.Name = "btnSmall4";
-            this.btnSmall4.Size = new System.Drawing.Size(165, 48);
+            this.btnSmall4.Size = new System.Drawing.Size(248, 74);
             this.btnSmall4.TabIndex = 27;
             this.btnSmall4.Click += new System.EventHandler(this.Btn_Verify_Click);
             // 
@@ -234,9 +236,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 10);
+            this.label2.Location = new System.Drawing.Point(19, 15);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 48);
+            this.label2.Size = new System.Drawing.Size(202, 74);
             this.label2.TabIndex = 22;
             this.label2.Text = "Email verify key:";
             // 
@@ -245,26 +248,27 @@
             this.tb_InviteCode.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_InviteCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_InviteCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_InviteCode.Location = new System.Drawing.Point(153, 10);
-            this.tb_InviteCode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.tb_InviteCode.Location = new System.Drawing.Point(225, 15);
+            this.tb_InviteCode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 8);
             this.tb_InviteCode.MaxLength = 32;
             this.tb_InviteCode.Multiline = true;
             this.tb_InviteCode.Name = "tb_InviteCode";
             this.tb_InviteCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_InviteCode.Size = new System.Drawing.Size(367, 43);
+            this.tb_InviteCode.Size = new System.Drawing.Size(555, 66);
             this.tb_InviteCode.TabIndex = 18;
             // 
             // ResetPwdForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(756, 322);
+            this.ClientSize = new System.Drawing.Size(1134, 495);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mainContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "ResetPwdForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

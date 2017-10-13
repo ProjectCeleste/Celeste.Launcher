@@ -131,12 +131,12 @@
             this.tb_Password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb_Password.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Password.Location = new System.Drawing.Point(170, 68);
+            this.tb_Password.Location = new System.Drawing.Point(241, 68);
             this.tb_Password.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.tb_Password.MaxLength = 32;
             this.tb_Password.Name = "tb_Password";
             this.tb_Password.PasswordChar = '*';
-            this.tb_Password.Size = new System.Drawing.Size(394, 26);
+            this.tb_Password.Size = new System.Drawing.Size(323, 35);
             this.tb_Password.TabIndex = 20;
             this.tb_Password.UseSystemPasswordChar = true;
             // 
@@ -146,11 +146,11 @@
             this.tb_Mail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb_Mail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tb_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Mail.Location = new System.Drawing.Point(170, 20);
+            this.tb_Mail.Location = new System.Drawing.Point(241, 20);
             this.tb_Mail.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.tb_Mail.MaxLength = 128;
             this.tb_Mail.Name = "tb_Mail";
-            this.tb_Mail.Size = new System.Drawing.Size(394, 26);
+            this.tb_Mail.Size = new System.Drawing.Size(323, 35);
             this.tb_Mail.TabIndex = 14;
             // 
             // lbl_Mail
@@ -161,7 +161,7 @@
             this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Mail.Location = new System.Drawing.Point(13, 10);
             this.lbl_Mail.Name = "lbl_Mail";
-            this.lbl_Mail.Size = new System.Drawing.Size(154, 48);
+            this.lbl_Mail.Size = new System.Drawing.Size(225, 48);
             this.lbl_Mail.TabIndex = 18;
             this.lbl_Mail.Text = "Email:";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -174,7 +174,7 @@
             this.lb_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Password.Location = new System.Drawing.Point(13, 58);
             this.lb_Password.Name = "lb_Password";
-            this.lb_Password.Size = new System.Drawing.Size(154, 49);
+            this.lb_Password.Size = new System.Drawing.Size(225, 49);
             this.lb_Password.TabIndex = 19;
             this.lb_Password.Text = "Password:";
             this.lb_Password.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -185,11 +185,11 @@
             this.cb_RememberMe.BackColor = System.Drawing.Color.Transparent;
             this.cb_RememberMe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cb_RememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_RememberMe.Location = new System.Drawing.Point(173, 107);
+            this.cb_RememberMe.Location = new System.Drawing.Point(244, 107);
             this.cb_RememberMe.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.cb_RememberMe.Name = "cb_RememberMe";
             this.cb_RememberMe.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.cb_RememberMe.Size = new System.Drawing.Size(388, 50);
+            this.cb_RememberMe.Size = new System.Drawing.Size(317, 50);
             this.cb_RememberMe.TabIndex = 16;
             this.cb_RememberMe.Text = "Remember Me";
             this.cb_RememberMe.UseVisualStyleBackColor = false;
@@ -205,7 +205,7 @@
             this.linkLbl_ForgotPwd.LinkColor = System.Drawing.Color.DarkBlue;
             this.linkLbl_ForgotPwd.Location = new System.Drawing.Point(13, 107);
             this.linkLbl_ForgotPwd.Name = "linkLbl_ForgotPwd";
-            this.linkLbl_ForgotPwd.Size = new System.Drawing.Size(154, 50);
+            this.linkLbl_ForgotPwd.Size = new System.Drawing.Size(225, 50);
             this.linkLbl_ForgotPwd.TabIndex = 17;
             this.linkLbl_ForgotPwd.TabStop = true;
             this.linkLbl_ForgotPwd.Text = "Forgot Password?";
@@ -246,7 +246,7 @@
             // 
             // btnSmall2
             // 
-            this.btnSmall2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall2.BackgroundImage")));
+            this.btnSmall2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Play_Button___Normal;
             this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall2.BtnText = "LOGIN";
             this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -260,7 +260,7 @@
             // 
             // btnSmall1
             // 
-            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
+            this.btnSmall1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.Play_Button___Normal;
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "REGISTER";
             this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -322,7 +322,7 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;

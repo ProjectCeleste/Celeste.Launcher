@@ -50,6 +50,7 @@ namespace Celeste_AOEO_Controls
 
         public static void SetFont(IEnumerable controls)
         {
+            
             try
             {
                 foreach (Control c in controls)

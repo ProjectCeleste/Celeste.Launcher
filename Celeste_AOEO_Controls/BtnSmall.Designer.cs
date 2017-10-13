@@ -51,9 +51,9 @@
             // 
             // BtnSmall
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.BtnSmallNormal;
+            this.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.Play_Button___Normal;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.lb_Btn);
             this.DoubleBuffered = true;

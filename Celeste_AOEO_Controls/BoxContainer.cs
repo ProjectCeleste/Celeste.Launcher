@@ -2,6 +2,7 @@
 
 using System;
 using System.Windows.Forms;
+using System.Linq;
 using Celeste_AOEO_Controls.Properties;
 
 #endregion
@@ -20,8 +21,8 @@ namespace Celeste_AOEO_Controls
 
         public bool CloseButton
         {
-            get => btn_Close.Visible;
-            set => btn_Close.Visible = value;
+            get { return btn_Close.Visible; }
+            set { btn_Close.Visible = value; }
         }
 
         // ReSharper disable once ConvertToAutoProperty

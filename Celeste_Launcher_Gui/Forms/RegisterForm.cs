@@ -75,8 +75,7 @@ namespace Celeste_Launcher_Gui.Forms
                 _validMailState = RegisterUserState.InProgress;
 
                 Program.WebSocketClient.AgentWebSocket.Query<dynamic>("VALIDMAIL", (object) validMailInfo,
-                    OnVerifyUser);
-
+                    OnVerifyUser); 
                 var starttime = DateTime.UtcNow;
                 while (_validMailState == RegisterUserState.InProgress &&
                        Program.WebSocketClient.State != WebSocketClientState.Offline)
@@ -259,6 +258,11 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 //
             }
+        }
+
+        private void btnSmall4_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
