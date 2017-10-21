@@ -54,11 +54,18 @@
     <Compile Include="BtnSmall.Designer.cs">
       <DependentUpon>BtnSmall.cs</DependentUpon>
     </Compile>
+    <Compile Include="DWM.cs" />
     <Compile Include="MainContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MainContainer.Designer.cs">
       <DependentUpon>MainContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MsgBox.Designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -78,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainContainer.resx">
       <DependentUpon>MainContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

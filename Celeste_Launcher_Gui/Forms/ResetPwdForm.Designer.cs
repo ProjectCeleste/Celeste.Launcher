@@ -55,7 +55,9 @@
             // mainContainer1
             // 
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.mainContainer1.CloseButton = true;
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.mainContainer1.MinimizeBox = false;
@@ -70,6 +72,7 @@
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.panel1.Controls.Add(this.p_Verify);
             this.panel1.Controls.Add(this.p_ResetPassword);
+            this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel1.Location = new System.Drawing.Point(26, 72);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(705, 226);
@@ -80,6 +83,7 @@
             this.p_Verify.Controls.Add(this.panel3);
             this.p_Verify.Controls.Add(this.tableLayoutPanel2);
             this.p_Verify.Dock = System.Windows.Forms.DockStyle.Top;
+            this.p_Verify.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.p_Verify.Location = new System.Drawing.Point(0, 0);
             this.p_Verify.Margin = new System.Windows.Forms.Padding(0);
             this.p_Verify.Name = "p_Verify";
@@ -90,6 +94,7 @@
             // 
             this.panel3.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel3.Location = new System.Drawing.Point(0, 76);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
@@ -106,6 +111,7 @@
             this.tableLayoutPanel2.Controls.Add(this.lbl_Mail, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tb_Mail, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -121,7 +127,7 @@
             this.btnSmall3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall3.BtnText = "VERIFY";
             this.btnSmall3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmall3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.btnSmall3.Location = new System.Drawing.Point(530, 10);
             this.btnSmall3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnSmall3.Name = "btnSmall3";
@@ -134,10 +140,10 @@
             this.lbl_Mail.AutoSize = true;
             this.lbl_Mail.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Mail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Mail.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.lbl_Mail.Location = new System.Drawing.Point(13, 10);
             this.lbl_Mail.Name = "lbl_Mail";
-            this.lbl_Mail.Size = new System.Drawing.Size(58, 61);
+            this.lbl_Mail.Size = new System.Drawing.Size(70, 61);
             this.lbl_Mail.TabIndex = 19;
             this.lbl_Mail.Text = "Email:";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,12 +152,12 @@
             // 
             this.tb_Mail.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_Mail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Mail.Location = new System.Drawing.Point(74, 28);
+            this.tb_Mail.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Mail.Location = new System.Drawing.Point(86, 28);
             this.tb_Mail.Margin = new System.Windows.Forms.Padding(0, 18, 0, 0);
             this.tb_Mail.MaxLength = 128;
             this.tb_Mail.Name = "tb_Mail";
-            this.tb_Mail.Size = new System.Drawing.Size(446, 26);
+            this.tb_Mail.Size = new System.Drawing.Size(434, 26);
             this.tb_Mail.TabIndex = 14;
             // 
             // p_ResetPassword
@@ -159,6 +165,7 @@
             this.p_ResetPassword.Controls.Add(this.tableLayoutPanel3);
             this.p_ResetPassword.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.p_ResetPassword.Enabled = false;
+            this.p_ResetPassword.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.p_ResetPassword.Location = new System.Drawing.Point(0, 7);
             this.p_ResetPassword.Margin = new System.Windows.Forms.Padding(0);
             this.p_ResetPassword.Name = "p_ResetPassword";
@@ -172,6 +179,7 @@
             this.tableLayoutPanel3.Controls.Add(this.btnSmall1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 96);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -187,7 +195,7 @@
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "RESET PASSWORD";
             this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmall1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.btnSmall1.Location = new System.Drawing.Point(0, 63);
             this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall1.Name = "btnSmall1";
@@ -205,6 +213,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tb_InviteCode, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -220,7 +229,7 @@
             this.btnSmall4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall4.BtnText = "RESEND";
             this.btnSmall4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmall4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.btnSmall4.Location = new System.Drawing.Point(530, 10);
             this.btnSmall4.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnSmall4.Name = "btnSmall4";
@@ -233,10 +242,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.label2.Location = new System.Drawing.Point(13, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(137, 48);
+            this.label2.Size = new System.Drawing.Size(175, 48);
             this.label2.TabIndex = 22;
             this.label2.Text = "Email verify key:";
             // 
@@ -244,14 +253,14 @@
             // 
             this.tb_InviteCode.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_InviteCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_InviteCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_InviteCode.Location = new System.Drawing.Point(153, 10);
+            this.tb_InviteCode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_InviteCode.Location = new System.Drawing.Point(191, 10);
             this.tb_InviteCode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.tb_InviteCode.MaxLength = 32;
             this.tb_InviteCode.Multiline = true;
             this.tb_InviteCode.Name = "tb_InviteCode";
             this.tb_InviteCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_InviteCode.Size = new System.Drawing.Size(367, 43);
+            this.tb_InviteCode.Size = new System.Drawing.Size(329, 43);
             this.tb_InviteCode.TabIndex = 18;
             // 
             // ResetPwdForm
@@ -269,7 +278,6 @@
             this.Name = "ResetPwdForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project Celeste -- Reset Password";
-            this.Load += new System.EventHandler(this.ResetPasswordForm_Load);
             this.panel1.ResumeLayout(false);
             this.p_Verify.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

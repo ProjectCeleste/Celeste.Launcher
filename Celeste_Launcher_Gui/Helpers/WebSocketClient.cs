@@ -200,7 +200,7 @@ namespace Celeste_Launcher_Gui.Helpers
             loginInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
 #pragma warning restore IDE0017 // Simplifier l'initialisation des objets
 
-            AgentWebSocket.Query<dynamic>("LOGIN", (object)loginInfo, OnLoggedIn);
+            AgentWebSocket.Query<dynamic>("LOGIN", (object) loginInfo, OnLoggedIn);
 
             var starttime = DateTime.UtcNow;
             while (_loginState == LoginState.InProgress && State == WebSocketClientState.Connected)
@@ -249,8 +249,8 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             if (e.Exception == null) return;
 
-            if (e.Exception is SocketException exception && exception.ErrorCode == (int)SocketError.AccessDenied)
-                ErrorMessage = new SocketException((int)SocketError.ConnectionRefused).Message;
+            if (e.Exception is SocketException exception && exception.ErrorCode == (int) SocketError.AccessDenied)
+                ErrorMessage = new SocketException((int) SocketError.ConnectionRefused).Message;
             else
                 ErrorMessage = e.Exception.StackTrace;
 

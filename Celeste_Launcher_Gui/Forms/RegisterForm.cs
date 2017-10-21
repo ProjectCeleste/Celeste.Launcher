@@ -4,6 +4,7 @@ using System;
 using System.Dynamic;
 using System.Reflection;
 using System.Windows.Forms;
+using Celeste_AOEO_Controls;
 using Celeste_Launcher_Gui.Helpers;
 
 #endregion
@@ -28,16 +29,13 @@ namespace Celeste_Launcher_Gui.Forms
         public RegisterForm()
         {
             InitializeComponent();
-
-            //Configure Fonts
-            SkinHelper.SetFont(Controls);
         }
 
         private void Btn_Verify_Click(object sender, EventArgs e)
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
@@ -46,7 +44,7 @@ namespace Celeste_Launcher_Gui.Forms
             var lastSendTime = (DateTime.UtcNow - _lastVerifyTime).TotalSeconds;
             if (lastSendTime <= 45)
             {
-                SkinHelper.ShowMessage(
+                CustomMsgBox.ShowMessage(
                     $"You need to wait at least 45 seconds before asking to resend an confirmation key! Last request was {lastSendTime} seconds ago.",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -101,7 +99,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception e)
             {
-                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -114,14 +112,14 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 _validMailState = RegisterUserState.Success;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage($@"{str}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 _validMailState = RegisterUserState.Failed;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -130,7 +128,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
@@ -138,7 +136,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (!Celeste_User.Helpers.IsValideUserName(tb_UserName.Text))
             {
-                SkinHelper.ShowMessage(
+                CustomMsgBox.ShowMessage(
                     @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -147,7 +145,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (tb_ConfirmPassword.Text != tb_Password.Text)
             {
-                SkinHelper.ShowMessage(@"Password value and confirm password value don't match!",
+                CustomMsgBox.ShowMessage(@"Password value and confirm password value don't match!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -155,7 +153,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
             {
-                SkinHelper.ShowMessage(@"Password minimum length is 8 char,  maximum length is 32 char!",
+                CustomMsgBox.ShowMessage(@"Password minimum length is 8 char,  maximum length is 32 char!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -163,7 +161,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (!Celeste_User.Helpers.IsValidePassword(tb_Password.Text))
             {
-                SkinHelper.ShowMessage("Invalid password, character ' and \" are not allowed!",
+                CustomMsgBox.ShowMessage("Invalid password, character ' and \" are not allowed!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -171,7 +169,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (tb_InviteCode.Text.Length != 32)
             {
-                SkinHelper.ShowMessage(@"Invalid Verify Key!",
+                CustomMsgBox.ShowMessage(@"Invalid Verify Key!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -224,7 +222,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception e)
             {
-                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -236,28 +234,15 @@ namespace Celeste_Launcher_Gui.Forms
             if (result["Result"].ToObject<bool>())
             {
                 _registerUserState = RegisterUserState.Success;
-                SkinHelper.ShowMessage(@"Registred with success.", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage(@"Registred with success.", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 _registerUserState = RegisterUserState.Failed;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
+                CustomMsgBox.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void RegisterForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 26));
-            }
-            catch (Exception)
-            {
-                //
             }
         }
     }

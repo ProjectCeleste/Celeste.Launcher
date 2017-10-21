@@ -34,15 +34,14 @@ namespace Celeste_Updater_Gui
 
     public class DownloadManager
     {
+        private readonly string _tempFileName = Path.GetTempFileName();
+
+        private readonly Stopwatch _stopwatch = new Stopwatch();
+
+        private string _httpLink;
         public DownloadState DownloadState { get; private set; } = DownloadState.Idle;
 
         public DownloadProgress DownloadProgress { get; } = new DownloadProgress();
-
-        private readonly Stopwatch Stopwatch = new Stopwatch();
-
-        private readonly string _tempFileName = Path.GetTempFileName();
-
-        private string _httpLink;
 
         public string FileName { get; set; }
 
@@ -71,7 +70,7 @@ namespace Celeste_Updater_Gui
                     webClient.DownloadFileCompleted += Completed;
                     webClient.DownloadProgressChanged += ProgressChanged;
                     DownloadState = DownloadState.InProgress;
-                    Stopwatch.Start();
+                    _stopwatch.Start();
                     webClient.DownloadFileAsync(new Uri(HttpLink), _tempFileName);
                 }
                 catch (Exception ex)
@@ -86,13 +85,12 @@ namespace Celeste_Updater_Gui
             DownloadProgress.ProgressPercentage = e.ProgressPercentage;
             DownloadProgress.BytesReceived = e.BytesReceived;
             DownloadProgress.TotalBytesToReceive = e.TotalBytesToReceive;
-            DownloadProgress.TotalMilliseconds = Stopwatch.Elapsed.TotalMilliseconds;
-
+            DownloadProgress.TotalMilliseconds = _stopwatch.Elapsed.TotalMilliseconds;
         }
 
         private void Completed(object sender, AsyncCompletedEventArgs e)
         {
-            Stopwatch.Stop();
+            _stopwatch.Stop();
             DownloadState = e.Cancelled ? DownloadState.Cancelled : DownloadState.Completed;
         }
 

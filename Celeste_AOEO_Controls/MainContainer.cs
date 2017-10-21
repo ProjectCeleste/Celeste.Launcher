@@ -21,9 +21,14 @@ namespace Celeste_AOEO_Controls
             //TopLeftFixed.BackgroundImage = CustomSkinMainContainer.TopLeftFixed;
             //TopRigthFixed.BackgroundImage = CustomSkinMainContainer.TopRigthFixed;
             //TopMiddleFluid.BackgroundImage = CustomSkinMainContainer.TopMiddleFluid;
+            
+        }
+       
 
-            //Configure Fonts
-            SkinHelper.SetFont(Controls);
+        public bool CloseButton
+        {
+            get => btn_Close.Visible;
+            set => btn_Close.Visible = value;
         }
 
         public bool MinimizeBox { get; set; }
@@ -74,6 +79,26 @@ namespace Celeste_AOEO_Controls
         private void MainContainer_Load(object sender, EventArgs e)
         {
             pictureBox1.Visible = MinimizeBox;
+
+            var parentForm = ParentForm;
+            if (parentForm != null)
+            {
+                SkinHelper.SetFont(parentForm.Controls);
+                try
+                {
+                    if (DwmApi.DwmIsCompositionEnabled())
+                        DwmApi.DwmExtendFrameIntoClientArea(parentForm.Handle, new DwmApi.MARGINS(31, 75, 31, 26));
+                }
+                catch (Exception)
+                {
+                    //
+                }
+            }
+            else
+            {
+                //Configure Fonts
+                SkinHelper.SetFont(Controls);
+            }
         }
     }
 

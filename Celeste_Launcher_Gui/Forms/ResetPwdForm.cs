@@ -4,6 +4,7 @@ using System;
 using System.Dynamic;
 using System.Reflection;
 using System.Windows.Forms;
+using Celeste_AOEO_Controls;
 using Celeste_Launcher_Gui.Helpers;
 
 #endregion
@@ -28,16 +29,13 @@ namespace Celeste_Launcher_Gui.Forms
         public ResetPwdForm()
         {
             InitializeComponent();
-
-            //Configure Fonts
-            SkinHelper.SetFont(Controls);
         }
 
         private void Btn_Verify_Click(object sender, EventArgs e)
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
@@ -46,7 +44,7 @@ namespace Celeste_Launcher_Gui.Forms
             var lastSendTime = (DateTime.UtcNow - _lastVerifyTime).TotalSeconds;
             if (lastSendTime <= 45)
             {
-                SkinHelper.ShowMessage(
+                CustomMsgBox.ShowMessage(
                     $"You need to wait at least 45 seconds before asking to resend an confirmation key! Last request was {lastSendTime} seconds ago.",
                     @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,7 +98,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception e)
             {
-                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -113,14 +111,14 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 _verifyUserState = ResetPwdState.Success;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 _verifyUserState = ResetPwdState.Failed;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -130,7 +128,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
@@ -138,7 +136,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (tb_InviteCode.Text.Length != 32)
             {
-                SkinHelper.ShowMessage(@"Invalid Verify Key!",
+                CustomMsgBox.ShowMessage(@"Invalid Verify Key!",
                     @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -190,7 +188,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception e)
             {
-                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -203,28 +201,15 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 _resetPwdState = ResetPwdState.Success;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage($@"{str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 _resetPwdState = ResetPwdState.Failed;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
+                CustomMsgBox.ShowMessage($@"Error: {str}", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ResetPasswordForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 26));
-            }
-            catch (Exception)
-            {
-                //
             }
         }
     }

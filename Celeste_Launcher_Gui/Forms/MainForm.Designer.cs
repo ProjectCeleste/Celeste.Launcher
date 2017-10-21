@@ -80,7 +80,9 @@
             // mainContainer1
             // 
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.mainContainer1.CloseButton = true;
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.mainContainer1.MinimizeBox = true;
@@ -101,6 +103,7 @@
             this.p_UserInfo.Controls.Add(this.tableLayoutPanel1);
             this.p_UserInfo.Controls.Add(this.panel1);
             this.p_UserInfo.Controls.Add(this.label3);
+            this.p_UserInfo.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.p_UserInfo.Location = new System.Drawing.Point(26, 71);
             this.p_UserInfo.Name = "p_UserInfo";
             this.p_UserInfo.Size = new System.Drawing.Size(847, 421);
@@ -113,6 +116,7 @@
             this.tableLayoutPanel6.Controls.Add(this.btnSmall3, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.linkLbl_ChangePwd, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.panel4, 0, 0);
+            this.tableLayoutPanel6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(623, 12);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -131,7 +135,7 @@
             this.btnSmall3.BtnText = "FRIENDS";
             this.btnSmall3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSmall3.Enabled = false;
-            this.btnSmall3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmall3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.btnSmall3.Location = new System.Drawing.Point(10, 206);
             this.btnSmall3.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall3.Name = "btnSmall3";
@@ -144,7 +148,7 @@
             this.linkLbl_ChangePwd.AutoSize = true;
             this.linkLbl_ChangePwd.BackColor = System.Drawing.Color.Transparent;
             this.linkLbl_ChangePwd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLbl_ChangePwd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.linkLbl_ChangePwd.Font = new System.Drawing.Font("Ashley Crawford CG", 10F);
             this.linkLbl_ChangePwd.LinkColor = System.Drawing.Color.DarkBlue;
             this.linkLbl_ChangePwd.Location = new System.Drawing.Point(13, 145);
             this.linkLbl_ChangePwd.Name = "linkLbl_ChangePwd";
@@ -161,6 +165,7 @@
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel4.Controls.Add(this.pb_Avatar);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel4.Location = new System.Drawing.Point(10, 2);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
@@ -173,6 +178,7 @@
             this.pb_Avatar.Cursor = System.Windows.Forms.Cursors.Default;
             this.pb_Avatar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb_Avatar.ErrorImage = null;
+            this.pb_Avatar.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pb_Avatar.Image = ((System.Drawing.Image)(resources.GetObject("pb_Avatar.Image")));
             this.pb_Avatar.InitialImage = null;
             this.pb_Avatar.Location = new System.Drawing.Point(0, 0);
@@ -193,6 +199,7 @@
             this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.comboBox2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnSmall2, 2, 0);
+            this.tableLayoutPanel5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 220);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -207,10 +214,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.label1.Location = new System.Drawing.Point(13, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 56);
+            this.label1.Size = new System.Drawing.Size(163, 56);
             this.label1.TabIndex = 14;
             this.label1.Text = "Game Language:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -219,7 +226,7 @@
             // 
             this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "de-DE",
@@ -228,10 +235,10 @@
             "fr-FR",
             "it-IT",
             "zh-CHT"});
-            this.comboBox2.Location = new System.Drawing.Point(173, 12);
+            this.comboBox2.Location = new System.Drawing.Point(189, 12);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(105, 28);
+            this.comboBox2.Size = new System.Drawing.Size(105, 33);
             this.comboBox2.TabIndex = 13;
             // 
             // btnSmall2
@@ -240,8 +247,8 @@
             this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall2.BtnText = "MP Settings";
             this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSmall2.Location = new System.Drawing.Point(288, 4);
+            this.btnSmall2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btnSmall2.Location = new System.Drawing.Point(304, 4);
             this.btnSmall2.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.btnSmall2.Name = "btnSmall2";
             this.btnSmall2.Size = new System.Drawing.Size(318, 52);
@@ -258,6 +265,7 @@
             this.tableLayoutPanel4.Controls.Add(this.lbl_Rank, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.linkLabel1, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.linkLabel2, 1, 1);
+            this.tableLayoutPanel4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(7, 50);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -274,10 +282,10 @@
             this.lbl_Mail.AutoSize = true;
             this.lbl_Mail.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Mail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Mail.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.lbl_Mail.Location = new System.Drawing.Point(13, 2);
             this.lbl_Mail.Name = "lbl_Mail";
-            this.lbl_Mail.Size = new System.Drawing.Size(103, 50);
+            this.lbl_Mail.Size = new System.Drawing.Size(116, 50);
             this.lbl_Mail.TabIndex = 6;
             this.lbl_Mail.Text = "Email:";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -287,10 +295,10 @@
             this.lbl_UserName.AutoSize = true;
             this.lbl_UserName.BackColor = System.Drawing.Color.Transparent;
             this.lbl_UserName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_UserName.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.lbl_UserName.Location = new System.Drawing.Point(13, 52);
             this.lbl_UserName.Name = "lbl_UserName";
-            this.lbl_UserName.Size = new System.Drawing.Size(103, 50);
+            this.lbl_UserName.Size = new System.Drawing.Size(116, 50);
             this.lbl_UserName.TabIndex = 7;
             this.lbl_UserName.Text = "User Name:";
             this.lbl_UserName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -300,10 +308,10 @@
             this.lbl_Rank.AutoSize = true;
             this.lbl_Rank.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Rank.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_Rank.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Rank.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.lbl_Rank.Location = new System.Drawing.Point(13, 102);
             this.lbl_Rank.Name = "lbl_Rank";
-            this.lbl_Rank.Size = new System.Drawing.Size(103, 50);
+            this.lbl_Rank.Size = new System.Drawing.Size(116, 50);
             this.lbl_Rank.TabIndex = 8;
             this.lbl_Rank.Text = "Rank:";
             this.lbl_Rank.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -316,11 +324,11 @@
             this.linkLabel1.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkLabel1.Enabled = false;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
             this.linkLabel1.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel1.Location = new System.Drawing.Point(122, 2);
+            this.linkLabel1.Location = new System.Drawing.Point(135, 2);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(451, 50);
+            this.linkLabel1.Size = new System.Drawing.Size(438, 50);
             this.linkLabel1.TabIndex = 19;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Edit";
@@ -336,11 +344,11 @@
             this.linkLabel2.DisabledLinkColor = System.Drawing.Color.Gray;
             this.linkLabel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.linkLabel2.Enabled = false;
-            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
             this.linkLabel2.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel2.Location = new System.Drawing.Point(122, 52);
+            this.linkLabel2.Location = new System.Drawing.Point(135, 52);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(451, 50);
+            this.linkLabel2.Size = new System.Drawing.Size(438, 50);
             this.linkLabel2.TabIndex = 20;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Edit";
@@ -353,6 +361,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.btnSmall1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.lb_Ver, 0, 1);
+            this.tableLayoutPanel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(623, 307);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -369,11 +378,11 @@
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "PLAY";
             this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmall1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.btnSmall1.Location = new System.Drawing.Point(10, 2);
             this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall1.Name = "btnSmall1";
-            this.btnSmall1.Size = new System.Drawing.Size(204, 84);
+            this.btnSmall1.Size = new System.Drawing.Size(204, 79);
             this.btnSmall1.TabIndex = 52;
             this.btnSmall1.Load += new System.EventHandler(this.BtnSmall1_Load);
             this.btnSmall1.Click += new System.EventHandler(this.Btn_Play_Click);
@@ -383,12 +392,12 @@
             this.lb_Ver.AutoSize = true;
             this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
             this.lb_Ver.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_Ver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Ver.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
             this.lb_Ver.ForeColor = System.Drawing.Color.Black;
-            this.lb_Ver.Location = new System.Drawing.Point(13, 89);
+            this.lb_Ver.Location = new System.Drawing.Point(13, 84);
             this.lb_Ver.Margin = new System.Windows.Forms.Padding(3);
             this.lb_Ver.Name = "lb_Ver";
-            this.lb_Ver.Size = new System.Drawing.Size(198, 20);
+            this.lb_Ver.Size = new System.Drawing.Size(198, 25);
             this.lb_Ver.TabIndex = 36;
             this.lb_Ver.Text = "v0.0.0.0";
             this.lb_Ver.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -396,6 +405,7 @@
             // panel2
             // 
             this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparatorVertical;
+            this.panel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel2.Location = new System.Drawing.Point(596, 307);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
@@ -408,6 +418,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 307);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -433,6 +444,7 @@
             this.tableLayoutPanel2.Controls.Add(this.linkLabel3, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel3, 3, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 31);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -448,11 +460,11 @@
             this.linkLabel5.AutoSize = true;
             this.linkLabel5.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel5.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.linkLabel5.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel5.Location = new System.Drawing.Point(306, 41);
+            this.linkLabel5.Location = new System.Drawing.Point(315, 41);
             this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(178, 42);
+            this.linkLabel5.Size = new System.Drawing.Size(152, 42);
             this.linkLabel5.TabIndex = 58;
             this.linkLabel5.TabStop = true;
             this.linkLabel5.Text = "Join us on Reddit";
@@ -465,11 +477,11 @@
             this.linklbl_ReportIssue.AutoSize = true;
             this.linklbl_ReportIssue.BackColor = System.Drawing.Color.Transparent;
             this.linklbl_ReportIssue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linklbl_ReportIssue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linklbl_ReportIssue.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.linklbl_ReportIssue.LinkColor = System.Drawing.Color.DarkBlue;
             this.linklbl_ReportIssue.Location = new System.Drawing.Point(3, 0);
             this.linklbl_ReportIssue.Name = "linklbl_ReportIssue";
-            this.linklbl_ReportIssue.Size = new System.Drawing.Size(113, 41);
+            this.linklbl_ReportIssue.Size = new System.Drawing.Size(148, 41);
             this.linklbl_ReportIssue.TabIndex = 25;
             this.linklbl_ReportIssue.TabStop = true;
             this.linklbl_ReportIssue.Text = "Report Issue";
@@ -482,11 +494,11 @@
             this.linkLbl_ProjectCelesteCom.AutoSize = true;
             this.linkLbl_ProjectCelesteCom.BackColor = System.Drawing.Color.Transparent;
             this.linkLbl_ProjectCelesteCom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLbl_ProjectCelesteCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLbl_ProjectCelesteCom.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.linkLbl_ProjectCelesteCom.LinkColor = System.Drawing.Color.DarkBlue;
             this.linkLbl_ProjectCelesteCom.Location = new System.Drawing.Point(3, 41);
             this.linkLbl_ProjectCelesteCom.Name = "linkLbl_ProjectCelesteCom";
-            this.linkLbl_ProjectCelesteCom.Size = new System.Drawing.Size(113, 42);
+            this.linkLbl_ProjectCelesteCom.Size = new System.Drawing.Size(148, 42);
             this.linkLbl_ProjectCelesteCom.TabIndex = 29;
             this.linkLbl_ProjectCelesteCom.TabStop = true;
             this.linkLbl_ProjectCelesteCom.Text = "ProjectCeleste.com";
@@ -499,11 +511,11 @@
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel4.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.linkLabel4.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel4.Location = new System.Drawing.Point(306, 0);
+            this.linkLabel4.Location = new System.Drawing.Point(315, 0);
             this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(178, 41);
+            this.linkLabel4.Size = new System.Drawing.Size(152, 41);
             this.linkLabel4.TabIndex = 56;
             this.linkLabel4.TabStop = true;
             this.linkLabel4.Text = "AoEO DB";
@@ -516,11 +528,11 @@
             this.linkLabel7.AutoSize = true;
             this.linkLabel7.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel7.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.linkLabel7.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel7.Location = new System.Drawing.Point(122, 41);
+            this.linkLabel7.Location = new System.Drawing.Point(157, 41);
             this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(178, 42);
+            this.linkLabel7.Size = new System.Drawing.Size(152, 42);
             this.linkLabel7.TabIndex = 57;
             this.linkLabel7.TabStop = true;
             this.linkLabel7.Text = "Join us on Discord";
@@ -533,11 +545,11 @@
             this.linklbl_Wiki.AutoSize = true;
             this.linklbl_Wiki.BackColor = System.Drawing.Color.Transparent;
             this.linklbl_Wiki.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linklbl_Wiki.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linklbl_Wiki.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.linklbl_Wiki.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linklbl_Wiki.Location = new System.Drawing.Point(122, 0);
+            this.linklbl_Wiki.Location = new System.Drawing.Point(157, 0);
             this.linklbl_Wiki.Name = "linklbl_Wiki";
-            this.linklbl_Wiki.Size = new System.Drawing.Size(178, 41);
+            this.linklbl_Wiki.Size = new System.Drawing.Size(152, 41);
             this.linklbl_Wiki.TabIndex = 26;
             this.linklbl_Wiki.TabStop = true;
             this.linklbl_Wiki.Text = "AoEO Wikia";
@@ -550,11 +562,11 @@
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel3.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.linkLabel3.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel3.Location = new System.Drawing.Point(490, 0);
+            this.linkLabel3.Location = new System.Drawing.Point(473, 0);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(103, 41);
+            this.linkLabel3.Size = new System.Drawing.Size(120, 41);
             this.linkLabel3.TabIndex = 32;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "ESO-Community";
@@ -565,22 +577,24 @@
             // 
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(487, 41);
+            this.panel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel3.Location = new System.Drawing.Point(470, 41);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(109, 42);
+            this.panel3.Size = new System.Drawing.Size(126, 42);
             this.panel3.TabIndex = 59;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.btn_donate_SM;
             this.pictureBox1.Location = new System.Drawing.Point(5, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(99, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(116, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -590,10 +604,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Ashley Crawford CG", 14.25F);
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 24);
+            this.label4.Size = new System.Drawing.Size(156, 30);
             this.label4.TabIndex = 33;
             this.label4.Text = "Useful Links";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -601,6 +615,7 @@
             // panel1
             // 
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
+            this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel1.Location = new System.Drawing.Point(0, 280);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
@@ -611,10 +626,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Ashley Crawford CG", 14.25F);
             this.label3.Location = new System.Drawing.Point(3, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 24);
+            this.label3.Size = new System.Drawing.Size(155, 30);
             this.label3.TabIndex = 25;
             this.label3.Text = "My Account";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -635,7 +650,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project Celeste -- Connected";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.p_UserInfo.ResumeLayout(false);
             this.p_UserInfo.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);

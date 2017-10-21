@@ -3,6 +3,7 @@
 using System;
 using System.Dynamic;
 using System.Windows.Forms;
+using Celeste_AOEO_Controls;
 using Celeste_Launcher_Gui.Helpers;
 
 #endregion
@@ -25,9 +26,6 @@ namespace Celeste_Launcher_Gui.Forms
         public ChangePwdForm()
         {
             InitializeComponent();
-
-            //Configure Fonts
-            SkinHelper.SetFont(Controls);
         }
 
         private void DoChangePassword(string oldPwd, string newPwd)
@@ -68,7 +66,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception e)
             {
-                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Change Password",
+                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -80,14 +78,14 @@ namespace Celeste_Launcher_Gui.Forms
             if (result["Result"].ToObject<bool>())
             {
                 _changePwdState = ChangePwdState.Success;
-                SkinHelper.ShowMessage(@"Password changed with success.", @"Project Celeste -- Change Password",
+                CustomMsgBox.ShowMessage(@"Password changed with success.", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 _changePwdState = ChangePwdState.Failed;
                 var str = result["Message"].ToObject<string>();
-                SkinHelper.ShowMessage($@"Error: {str}", @"Project Celeste -- Change Password",
+                CustomMsgBox.ShowMessage($@"Error: {str}", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -96,7 +94,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (textBox1.Text != textBox2.Text)
             {
-                SkinHelper.ShowMessage(@"New password value and confirm new password value don't match!",
+                CustomMsgBox.ShowMessage(@"New password value and confirm new password value don't match!",
                     @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -105,40 +103,27 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (textBox1.Text.Length < 8)
             {
-                SkinHelper.ShowMessage(@"Password minimum length is 8 char!", @"Project Celeste -- Change Password",
+                CustomMsgBox.ShowMessage(@"Password minimum length is 8 char!", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (textBox1.Text.Length > 32)
             {
-                SkinHelper.ShowMessage(@"Password maximum length is 32 char!", @"Project Celeste -- Change Password",
+                CustomMsgBox.ShowMessage(@"Password maximum length is 32 char!", @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (!Celeste_User.Helpers.IsValidePassword(textBox1.Text))
             {
-                SkinHelper.ShowMessage("Invalid password, character ' and \" are not allowed!",
+                CustomMsgBox.ShowMessage("Invalid password, character ' and \" are not allowed!",
                     @"Project Celeste -- Change Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             DoChangePassword(tb_Password.Text, textBox2.Text);
-        }
-
-        private void ChangePwdForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 26));
-            }
-            catch (Exception)
-            {
-                //
-            }
         }
     }
 }

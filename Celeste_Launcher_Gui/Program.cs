@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using Celeste_AOEO_Controls;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Launcher_Gui.Helpers;
 
@@ -30,13 +31,13 @@ namespace Celeste_Launcher_Gui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
             var mutex = new Mutex(true, AppName, out bool createdNew);
 
             //Only one instance
             if (!createdNew)
             {
-                SkinHelper.ShowMessage(@"Celeste Fan Project launcher already running!", "Celeste Fan Project",
+                CustomMsgBox.ShowMessage(@"Celeste Fan Project launcher already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;

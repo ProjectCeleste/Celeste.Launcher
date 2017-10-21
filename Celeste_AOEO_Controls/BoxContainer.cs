@@ -13,9 +13,6 @@ namespace Celeste_AOEO_Controls
         public BoxContainer()
         {
             InitializeComponent();
-
-            //Configure Fonts
-            SkinHelper.SetFont(Controls);
         }
 
         public bool CloseButton
@@ -23,7 +20,7 @@ namespace Celeste_AOEO_Controls
             get => btn_Close.Visible;
             set => btn_Close.Visible = value;
         }
-
+        
         // ReSharper disable once ConvertToAutoProperty
         //public Panel ContainerPanel => panel9;
 
@@ -53,6 +50,29 @@ namespace Celeste_AOEO_Controls
         private void Btn_Close_MouseLeave(object sender, EventArgs e)
         {
             btn_Close.Image = Resources.XButton_Normal;
+        }
+
+        private void BoxContainer_Load(object sender, EventArgs e)
+        {
+            var parentForm = ParentForm;
+            if (parentForm != null)
+            {
+                SkinHelper.SetFont(parentForm.Controls);
+                try
+                {
+                    if (DwmApi.DwmIsCompositionEnabled())
+                        DwmApi.DwmExtendFrameIntoClientArea(parentForm.Handle, new DwmApi.MARGINS(31, 75, 31, 26));
+                }
+                catch (Exception)
+                {
+                    //
+                }
+            }
+            else
+            {
+                //Configure Fonts
+                SkinHelper.SetFont(Controls);
+            }
         }
     }
 }

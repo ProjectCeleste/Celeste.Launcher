@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows.Forms;
-using Celeste_Launcher_Gui.Helpers;
+using Celeste_AOEO_Controls;
 
 #endregion
 
@@ -17,9 +17,6 @@ namespace Celeste_Launcher_Gui.Forms
         public NetworkDeviceSelectionDialog()
         {
             InitializeComponent();
-
-            //Configure Fonts
-            SkinHelper.SetFont(Controls);
         }
 
 
@@ -36,16 +33,6 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void NetworkDeviceSelectionDialog_Load(object sender, EventArgs e)
         {
-            try
-            {
-                if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 26));
-            }
-            catch (Exception)
-            {
-                //
-            }
-
             RefreshNetDevices();
         }
 
@@ -56,7 +43,7 @@ namespace Celeste_Launcher_Gui.Forms
                 .FirstOrDefault(elem => elem.Name == selectedNetInt);
             if (netInterface == null)
             {
-                SkinHelper.ShowMessage(@"Network interface does not exist anymore. Select another one!",
+                CustomMsgBox.ShowMessage(@"Network interface does not exist anymore. Select another one!",
                     "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RefreshNetDevices();
                 return;
@@ -75,7 +62,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (!found)
             {
-                SkinHelper.ShowMessage(
+                CustomMsgBox.ShowMessage(
                     @"Network interface does not have a local IPv4 address assigned. Select another one!",
                     "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RefreshNetDevices();

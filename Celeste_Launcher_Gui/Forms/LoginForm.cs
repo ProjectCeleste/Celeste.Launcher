@@ -4,7 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
-using Celeste_Launcher_Gui.Helpers;
+using Celeste_AOEO_Controls;
 
 #endregion
 
@@ -19,9 +19,6 @@ namespace Celeste_Launcher_Gui.Forms
             //
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
 
-            //Configure Fonts
-            SkinHelper.SetFont(Controls);
-
             //Load UserConfig
             if (Program.UserConfig?.LoginInfo?.RememberMe != true) return;
 
@@ -34,14 +31,14 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                SkinHelper.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
+                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
             {
-                SkinHelper.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
+                CustomMsgBox.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
                     @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -121,24 +118,11 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception e)
             {
-                SkinHelper.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Login",
+                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Enabled = true;
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(31, 75, 31, 26));
-            }
-            catch (Exception)
-            {
-                //
-            }
         }
 
         private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

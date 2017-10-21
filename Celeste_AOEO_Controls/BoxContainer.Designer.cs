@@ -253,6 +253,7 @@
             this.MinimumSize = new System.Drawing.Size(310, 250);
             this.Name = "BoxContainer";
             this.Size = new System.Drawing.Size(950, 600);
+            this.Load += new System.EventHandler(this.BoxContainer_Load);
             this.tLP_Main.ResumeLayout(false);
             this.tLP_Middle.ResumeLayout(false);
             this.tLP_Bottom.ResumeLayout(false);
