@@ -38,7 +38,7 @@ namespace Celeste_Public_Api.GameFileInfo
         public uint Crc32 { get; set; }
 
         [XmlAttribute(AttributeName = "Size")]
-        public ulong Size { get; set; }
+        public long Size { get; set; }
 
         [XmlAttribute(AttributeName = "HttpLink")]
         public string HttpLink { get; set; }
@@ -47,7 +47,7 @@ namespace Celeste_Public_Api.GameFileInfo
         public uint BinCrc32 { get; set; }
 
         [XmlAttribute(AttributeName = "BinSize")]
-        public ulong BinSize { get; set; }
+        public long BinSize { get; set; }
 
         [XmlIgnore]
         public IProgress<ExProgressGameFile> Progress { get;} = new Progress<ExProgressGameFile>();
@@ -78,23 +78,35 @@ namespace Celeste_Public_Api.GameFileInfo
                 {
                     Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckFile,
                         new ExLog(LogLevel.Debug, $"File '{gameFilePath}{FileName}' found.")));
-
-                    //CRC Check
-                    Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckFileCrc,
-                        new ExLog(LogLevel.Info, "Check file crc32...")));
-
-                    //CRC Check Result
-                    if (Crc32Check(filePath, Crc32))
+                    
+                    //File Size Check
+                    if (new FileInfo(filePath).Length == Size)
                     {
-                        Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.End,
-                            new ExLog(LogLevel.Debug, "File crc32 is valid.")));
+                        Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckFile,
+                            new ExLog(LogLevel.Debug, "File size is valid.")));
 
-                        //Exit
-                        return;
+                        //CRC Check
+                        Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckFileCrc,
+                            new ExLog(LogLevel.Info, "Check file crc32...")));
+
+                        //CRC Check Result
+                        if (Crc32Check(filePath, Crc32))
+                        {
+                            Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.End,
+                                new ExLog(LogLevel.Debug, "File crc32 is valid.")));
+
+                            //Exit
+                            return;
+                        }
+
+                        Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckFileCrcDone,
+                            new ExLog(LogLevel.Warn, "File crc32 is invalid.")));
                     }
-
-                    Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckFileCrcDone,
-                        new ExLog(LogLevel.Warn, "File crc32 is invalid.")));
+                    else
+                    {
+                        Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckFile,
+                            new ExLog(LogLevel.Warn, "File size is invalid.")));
+                    }
                 }
                 else
                 {

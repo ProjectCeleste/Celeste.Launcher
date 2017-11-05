@@ -66,6 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Forms\QuickGameScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickGameScan.Designer.cs">
+      <DependentUpon>QuickGameScan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GameScan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     <Compile Include="Helpers\WebSocketClient.cs" />
     <EmbeddedResource Include="Forms\ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickGameScan.resx">
+      <DependentUpon>QuickGameScan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameScan.resx">
       <DependentUpon>GameScan.cs</DependentUpon>
