@@ -52,19 +52,18 @@ namespace Celeste_Public_Api.GameFileInfo
         [XmlIgnore]
         public IProgress<ExProgressGameFile> Progress { get;} = new Progress<ExProgressGameFile>();
 
-        public void Scan(string gameFilePath, EventHandler<ExProgressGameFile> eventHandler, CancellationTokenSource cts)
+        public void Scan(string gameFilePath, EventHandler<ExProgressGameFile> eventHandler, CancellationToken ct)
         {
-            ScanFile(gameFilePath, true, eventHandler, cts);
+            ScanFile(gameFilePath, true, eventHandler, ct);
         }
 
-        public void ScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFile> eventHandler, CancellationTokenSource cts)
+        public void ScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFile> eventHandler, CancellationToken ct)
         {
-            ScanFile(gameFilePath, false, eventHandler, cts);
+            ScanFile(gameFilePath, false, eventHandler, ct);
         }
 
-        private void ScanFile(string gameFilePath, bool ignoreDownload, EventHandler<ExProgressGameFile> eventHandler, CancellationTokenSource cts)
+        private void ScanFile(string gameFilePath, bool ignoreDownload, EventHandler<ExProgressGameFile> eventHandler, CancellationToken ct)
         {
-            var ct = cts.Token;
             var filePath = $"{gameFilePath}{FileName}";
             try
             {
@@ -142,23 +141,34 @@ namespace Celeste_Public_Api.GameFileInfo
                     {
                         Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.DownloadFileDone,
                             new ExLog(LogLevel.Debug, "Download completed.")));
-
-                        //Download File crc check
-                        Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckDownloadFileCrc,
-                            new ExLog(LogLevel.Info, "Check downloaded file crc32...")));
-
-                        //Download File crc check result
-                        if (Crc32Check(tempFileName, BinCrc32))
+                        
+                        //File Size Check
+                        if (new FileInfo(tempFileName).Length == BinSize)
                         {
+                            Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.DownloadFileDone,
+                                new ExLog(LogLevel.Debug, "Downloaded file size is valid.")));
+
+                            //Download File crc check
                             Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckDownloadFileCrc,
-                                new ExLog(LogLevel.Debug, "Downloaded file is valid.")));
+                                new ExLog(LogLevel.Info, "Check downloaded file crc32...")));
+
+                            //Download File crc check result
+                            if (Crc32Check(tempFileName, BinCrc32))
+                            {
+                                Progress.Report(new ExProgressGameFile(FileName, StepProgressGameFile.CheckDownloadFileCrc,
+                                    new ExLog(LogLevel.Debug, "Downloaded file crc32 is valid.")));
+                            }
+                            else
+                            {
+                                if (File.Exists(tempFileName))
+                                    File.Delete(tempFileName);
+
+                                throw new Exception("Downloaded file crc32 is invalid!");
+                            }
                         }
                         else
                         {
-                            if (File.Exists(tempFileName))
-                                File.Delete(tempFileName);
-
-                            throw new Exception("Downloaded file is invalid!");
+                            throw new Exception("Downloaded file size is invalid!");
                         }
 
                         //IsL33TFile
@@ -174,19 +184,37 @@ namespace Celeste_Public_Api.GameFileInfo
                             tmpFilePath = tempFileName2;
                             Progress.Report(new ExProgressGameFile(FileName,
                                 StepProgressGameFile.ExtractDownloadFileDone,
-                                new ExLog(LogLevel.Debug, "File decompressed.")));
+                                new ExLog(LogLevel.Debug, "Downloaded File extracted.")));
 
-                            //Download File crc check
-                            Progress.Report(new ExProgressGameFile(FileName,
-                                StepProgressGameFile.CheckExtractDownloadFileCrc,
-                                new ExLog(LogLevel.Info, "Check extracted downloaded file crc32...")));
-
-                            //Uncompressed download File crc check result
-                            if (Crc32Check(tmpFilePath, Crc32))
+                            //File Size Check
+                            if (new FileInfo(tempFileName2).Length == Size)
                             {
                                 Progress.Report(new ExProgressGameFile(FileName,
-                                    StepProgressGameFile.CheckExtractDownloadFileCrcDone,
-                                    new ExLog(LogLevel.Debug, "Extracted downloaded file is valid.")));
+                                    StepProgressGameFile.ExtractDownloadFileDone,
+                                    new ExLog(LogLevel.Debug, "Extracted Downloaded file is valid.")));
+
+                                //Download File crc check
+                                Progress.Report(new ExProgressGameFile(FileName,
+                                    StepProgressGameFile.CheckExtractDownloadFileCrc,
+                                    new ExLog(LogLevel.Info, "Check extracted downloaded file crc32...")));
+
+                                //Uncompressed download File crc check result
+                                if (Crc32Check(tmpFilePath, Crc32))
+                                {
+                                    Progress.Report(new ExProgressGameFile(FileName,
+                                        StepProgressGameFile.CheckExtractDownloadFileCrcDone,
+                                        new ExLog(LogLevel.Debug, "Extracted downloaded file is valid.")));
+                                }
+                                else
+                                {
+                                    if (File.Exists(tempFileName))
+                                        File.Delete(tempFileName);
+
+                                    if (File.Exists(tempFileName2))
+                                        File.Delete(tempFileName2);
+
+                                    throw new Exception("Extracted downloaded file is invalid!");
+                                }
                             }
                             else
                             {
@@ -196,7 +224,7 @@ namespace Celeste_Public_Api.GameFileInfo
                                 if (File.Exists(tempFileName2))
                                     File.Delete(tempFileName2);
 
-                                throw new Exception("Extracted downloaded file is invalid!");
+                                throw new Exception("Extracted downloaded file size is invalid!");
                             }
                         }
                         else
@@ -303,10 +331,7 @@ namespace Celeste_Public_Api.GameFileInfo
                     webClient.DownloadProgressChanged += ProgressChanged;
                     _stopwatch.Start();
                     DownloadState = DownloadState.InProgress;
-                    using (var registration = ct.Register(() => webClient.CancelAsync()))
-                    {
-                        webClient.DownloadFileAsync(new Uri(HttpLink), tempFileName, ct);
-                    }
+                    webClient.DownloadFileAsync(new Uri(HttpLink), tempFileName, ct);
                 }
                 catch (WebException ex) when (ex.Status == WebExceptionStatus.RequestCanceled)
                 {

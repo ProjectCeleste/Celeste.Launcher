@@ -15,8 +15,6 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScan : Form
     {
-        private readonly CancellationTokenSource _cts = new CancellationTokenSource();
-
         private bool _scanRunning;
 
         public GameScan()
@@ -83,7 +81,6 @@ namespace Celeste_Launcher_Gui.Forms
                     lbl_ProgressDetail.Text = string.Empty;
                 }
 
-
                 if (e.ProgressGameFile.ProgressLog != null)
                 {
                     switch (e.ProgressGameFile.ProgressLog.LogLevel)
@@ -122,6 +119,8 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
+        private  CancellationTokenSource _cts = new CancellationTokenSource();
+
         private async void BtnRunScan_Click(object sender, EventArgs e)
         {
             if (_scanRunning)
@@ -130,6 +129,7 @@ namespace Celeste_Launcher_Gui.Forms
                     return;
 
                 _cts.Cancel();
+
                 btnRunScan.BtnText = @"...";
                 btnRunScan.Enabled = false;
 
@@ -143,6 +143,7 @@ namespace Celeste_Launcher_Gui.Forms
                 panel9.Enabled = false;
                 panel10.Enabled = false;
                 btnRunScan.BtnText = @"Cancel";
+                _cts = new CancellationTokenSource();
                 if (await Api.GameFiles.FullScanAndRepair(tb_GamePath.Text, ProgressChanged, _cts))
                 {
                     //
@@ -166,10 +167,23 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Btn_Browse_Click(object sender, EventArgs e)
         {
-            using (var fbd = new FolderBrowserDialog(){ShowNewFolderButton = true})
+            using (var fbd = new FolderBrowserDialog {ShowNewFolderButton = true})
             {
+                fbd.ShowDialog();
                 tb_GamePath.Text = fbd.SelectedPath;
             }
+        }
+
+        private void GameScan_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_scanRunning)
+                return;
+
+            CustomMsgBox.ShowMessage(@"Error: You need to cancel the ""Game Scan"" first!",
+                @"Project Celeste -- Game Scan",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            e.Cancel = true;
         }
     }
 }

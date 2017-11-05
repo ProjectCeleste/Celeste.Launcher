@@ -18,6 +18,9 @@ namespace Celeste_Public_Api.GameFileInfo
     [XmlRoot(ElementName = "GameFiles")]
     public class GameFiles
     {
+        public readonly object SyncLockCancel = new object();
+        public readonly object SyncLockScan = new object();
+
         [XmlIgnore]
         private Dictionary<string, GameFile> GameFile { get; set; } = new Dictionary<string, GameFile>();
 
@@ -45,10 +48,16 @@ namespace Celeste_Public_Api.GameFileInfo
         public IProgress<ExProgressGameFiles> Progress { get; } = new Progress<ExProgressGameFiles>();
 
         [XmlIgnore]
+        public bool IsScanRunning { get; private set; }
+
+        [XmlIgnore]
         public int TotalCount { get; private set; }
 
         [XmlIgnore]
         public int CurrentIndex { get; private set; }
+
+        [XmlIgnore]
+        private CancellationTokenSource Cts { get; set; } = new CancellationTokenSource();
 
         public static GameFiles GetGameFiles()
         {
@@ -100,10 +109,10 @@ namespace Celeste_Public_Api.GameFileInfo
                 {
                     FileName = lineSplit[0].Substring(1, lineSplit[0].Length - 1),
                     Crc32 = Convert.ToUInt32(lineSplit[1]),
-                    Size = Convert.ToUInt64(lineSplit[2]),
+                    Size = Convert.ToInt64(lineSplit[2]),
                     HttpLink = $"http://spartan.msgamestudios.com/content/spartan/{type}/{build}/{lineSplit[3]}",
                     BinCrc32 = Convert.ToUInt32(lineSplit[4]),
-                    BinSize = Convert.ToUInt64(lineSplit[5])
+                    BinSize = Convert.ToInt64(lineSplit[5])
                 };
 
             if (File.Exists(tempFileName))
@@ -142,42 +151,75 @@ namespace Celeste_Public_Api.GameFileInfo
             Progress.Report(new ExProgressGameFiles(TotalCount, CurrentIndex, e));
         }
 
-        public readonly object SyncLock = new  object();
-
-        public async Task<bool> FullScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler,
-            CancellationTokenSource cts)
+        public void CancelScan()
         {
-            if (!Monitor.TryEnter(SyncLock))
-                return false;
+            if (!Monitor.TryEnter(SyncLockCancel))
+                throw new Exception("CancelScan() already running!");
 
-            var ct = cts.Token;
+            try
+            {
+                if (IsScanRunning && !Cts.IsCancellationRequested)
+                    Cts.Cancel();
+            }
+            finally
+            {
+                Monitor.Exit(SyncLockCancel);
+            }
+        }
+
+        public async Task<bool> FullScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler)
+        {
+           return await DoScanAndRepair(gameFilePath, eventHandler, false);
+        }
+
+        public async Task<bool> QuickScan(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler)
+        {
+            return await DoScanAndRepair(gameFilePath, eventHandler, true);
+        }
+        
+        private async Task<bool> DoScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler, bool isQuickScan)
+        {
+            if (!Monitor.TryEnter(SyncLockScan) || IsScanRunning)
+                throw new Exception("Scan already running!");
 
             var retVal = false;
-            var t = Task.Run(() =>
+            IsScanRunning = true;
+            try
             {
-                try
+                Cts = new CancellationTokenSource();
+                var t = Task.Run(() =>
                 {
-                    ((Progress<ExProgressGameFiles>) Progress).ProgressChanged += eventHandler;
-                    var gameFileArray = GameFile.Values.ToArray();
-                    TotalCount = gameFileArray.Length;
-                    for (var index = 0; index < TotalCount; index++)
+                    try
                     {
-                        ct.ThrowIfCancellationRequested();
-                        CurrentIndex = index;
-                        var gameFile = gameFileArray[CurrentIndex];
-                        gameFile.ScanAndRepair(gameFilePath, ProgressChanged, cts);
+                        ((Progress<ExProgressGameFiles>)Progress).ProgressChanged += eventHandler;
+                        var gameFileArray = GameFile.Values.ToArray();
+                        TotalCount = gameFileArray.Length;
+                        for (var index = 0; index < TotalCount; index++)
+                        {
+                            Cts.Token.ThrowIfCancellationRequested();
+                            CurrentIndex = index;
+                            var gameFile = gameFileArray[CurrentIndex];
+
+                            if (isQuickScan)
+                                gameFile.ScanAndRepair(gameFilePath, ProgressChanged, Cts.Token);
+                            else
+                                gameFile.ScanAndRepair(gameFilePath, ProgressChanged, Cts.Token);
+                        }
+                        retVal = true;
                     }
-                    retVal = true;
-                }
-                finally
-                {
-                    ((Progress<ExProgressGameFiles>) Progress).ProgressChanged -= eventHandler;
-                }
-            }, ct);
+                    finally
+                    {
+                        ((Progress<ExProgressGameFiles>)Progress).ProgressChanged -= eventHandler;
+                    }
+                }, Cts.Token);
 
-            await t;
-
-            Monitor.Exit(SyncLock);
+                await t;
+            }
+            finally
+            {
+                Monitor.Exit(SyncLockScan);
+                IsScanRunning = false;
+            }
 
             return retVal;
         }
