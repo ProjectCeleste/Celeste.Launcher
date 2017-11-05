@@ -1,18 +1,15 @@
-﻿#region Using directives
-
-using System.Reflection;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-
-#endregion
 
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("Celeste_Updater_Gui")]
+[assembly: AssemblyTitle("Celeste_Public_Api")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Celeste_Updater_Gui")]
+[assembly: AssemblyProduct("Celeste_Public_Api")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -23,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("8ecdc0a6-d0f2-4887-aceb-68f2aaaab159")]
+[assembly: Guid("11e428ad-8fb2-4ae1-b922-fe363f3c6a63")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

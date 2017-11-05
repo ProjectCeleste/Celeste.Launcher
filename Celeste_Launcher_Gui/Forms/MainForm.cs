@@ -19,6 +19,12 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
+            //GameScan
+            using (var form = new GameScan())
+            {
+                var dr = form.ShowDialog();
+            }
+
             //
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
 

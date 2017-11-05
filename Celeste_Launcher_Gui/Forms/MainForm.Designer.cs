@@ -195,7 +195,7 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 318F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332F));
             this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.comboBox2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnSmall2, 2, 0);
@@ -251,7 +251,7 @@
             this.btnSmall2.Location = new System.Drawing.Point(304, 4);
             this.btnSmall2.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.btnSmall2.Name = "btnSmall2";
-            this.btnSmall2.Size = new System.Drawing.Size(318, 52);
+            this.btnSmall2.Size = new System.Drawing.Size(332, 52);
             this.btnSmall2.TabIndex = 50;
             this.btnSmall2.Click += new System.EventHandler(this.Label6_Click);
             // 
