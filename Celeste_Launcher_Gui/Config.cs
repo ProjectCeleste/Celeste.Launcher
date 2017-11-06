@@ -33,6 +33,9 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "GameLanguage")]
         public GameLanguage GameLanguage { get; set; } = GameLanguage.enUS;
 
+        [XmlElement(ElementName = "GameFilesPath")]
+        public string GameFilesPath { get; set; } = string.Empty;
+
         [XmlElement(ElementName = "MpSettings")]
         public MpSettings MpSettings { get; set; } = new MpSettings();
 
@@ -84,7 +87,7 @@ namespace Celeste_Launcher_Gui
         public string Email { get; set; }
 
         [XmlElement(ElementName = "Password")]
-        public string CryptedPassword { get; set; } = "";
+        public string CryptedPassword { get; set; } = string.Empty;
 
         [XmlElement(ElementName = "RememberMe")]
         public bool RememberMe { get; set; }
@@ -113,7 +116,7 @@ namespace Celeste_Launcher_Gui
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    CryptedPassword = "";
+                    CryptedPassword = string.Empty;
 
                 try
                 {
@@ -145,7 +148,6 @@ namespace Celeste_Launcher_Gui
 
         [XmlIgnore]
         public string PublicIp { get; set; } = "127.0.0.1";
-        //    get
 
         //[XmlElement(ElementName = "PublicPort")]
         //public int PublicPort

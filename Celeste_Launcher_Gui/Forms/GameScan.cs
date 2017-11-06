@@ -2,6 +2,7 @@
 
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
@@ -20,6 +21,17 @@ namespace Celeste_Launcher_Gui.Forms
         public GameScan()
         {
             InitializeComponent();
+
+            if (Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath))
+            {
+                tb_GamePath.Text = Program.UserConfig.GameFilesPath;
+            }
+            //Check for spartan.exe
+            else
+            {
+                tb_GamePath.Text = Api.FindGameFileDirectory();
+            }
+
         }
 
         private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -118,20 +130,33 @@ namespace Celeste_Launcher_Gui.Forms
                 pB_SubProgress.Value = 0;
             }
         }
-
-        private  CancellationTokenSource _cts = new CancellationTokenSource();
-
+        
         private async void BtnRunScan_Click(object sender, EventArgs e)
         {
             if (_scanRunning)
             {
-                if (_cts.IsCancellationRequested)
-                    return;
-
-                _cts.Cancel();
+                Api.GameFiles.CancelScan();
 
                 btnRunScan.BtnText = @"...";
                 btnRunScan.Enabled = false;
+
+                return;
+            }
+
+            if(string.IsNullOrEmpty(tb_GamePath.Text))
+            {
+                CustomMsgBox.ShowMessage(@"Error: Game files path is empty!",
+                    @"Project Celeste -- Game Scan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            if (!Directory.Exists(tb_GamePath.Text))
+            {
+                CustomMsgBox.ShowMessage(@"Error: Game files path don't exist!",
+                    @"Project Celeste -- Game Scan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
@@ -143,8 +168,7 @@ namespace Celeste_Launcher_Gui.Forms
                 panel9.Enabled = false;
                 panel10.Enabled = false;
                 btnRunScan.BtnText = @"Cancel";
-                _cts = new CancellationTokenSource();
-                if (await Api.GameFiles.FullScanAndRepair(tb_GamePath.Text, ProgressChanged, _cts))
+                if (await Api.GameFiles.FullScanAndRepair(tb_GamePath.Text, ProgressChanged))
                 {
                     //
                 }

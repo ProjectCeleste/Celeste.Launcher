@@ -169,15 +169,16 @@ namespace Celeste_Public_Api.GameFileInfo
 
         public async Task<bool> FullScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler)
         {
-           return await DoScanAndRepair(gameFilePath, eventHandler, false);
+            return await DoScanAndRepair(gameFilePath, eventHandler, false);
         }
 
         public async Task<bool> QuickScan(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler)
         {
             return await DoScanAndRepair(gameFilePath, eventHandler, true);
         }
-        
-        private async Task<bool> DoScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler, bool isQuickScan)
+
+        private async Task<bool> DoScanAndRepair(string gameFilePath, EventHandler<ExProgressGameFiles> eventHandler,
+            bool isQuickScan)
         {
             if (!Monitor.TryEnter(SyncLockScan) || IsScanRunning)
                 throw new Exception("Scan already running!");
@@ -186,12 +187,23 @@ namespace Celeste_Public_Api.GameFileInfo
             IsScanRunning = true;
             try
             {
+                if (string.IsNullOrEmpty(gameFilePath))
+                    throw new ArgumentException("gameFilePath IsNullOrEmpty!");
+                
+                if (!Directory.Exists(gameFilePath))
+                    Directory.CreateDirectory(gameFilePath);
+
+                if (!gameFilePath.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                    gameFilePath += Path.DirectorySeparatorChar;
+
+                Cts.Cancel();
                 Cts = new CancellationTokenSource();
+
                 var t = Task.Run(() =>
                 {
                     try
                     {
-                        ((Progress<ExProgressGameFiles>)Progress).ProgressChanged += eventHandler;
+                        ((Progress<ExProgressGameFiles>) Progress).ProgressChanged += eventHandler;
                         var gameFileArray = GameFile.Values.ToArray();
                         TotalCount = gameFileArray.Length;
                         for (var index = 0; index < TotalCount; index++)
@@ -209,7 +221,7 @@ namespace Celeste_Public_Api.GameFileInfo
                     }
                     finally
                     {
-                        ((Progress<ExProgressGameFiles>)Progress).ProgressChanged -= eventHandler;
+                        ((Progress<ExProgressGameFiles>) Progress).ProgressChanged -= eventHandler;
                     }
                 }, Cts.Token);
 
