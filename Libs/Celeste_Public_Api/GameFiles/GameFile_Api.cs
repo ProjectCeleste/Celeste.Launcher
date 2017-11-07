@@ -2,15 +2,14 @@
 
 using System;
 using System.IO;
-using Celeste_Public_Api.GameFileInfo;
 
 #endregion
 
-namespace Celeste_Public_Api
+namespace Celeste_Public_Api.GameFiles
 {
-    public static class Api
+    public class GameFileApi
     {
-        public static GameFiles GameFiles = GameFiles.GetGameFiles();
+        public static GameFilesManager GameFiles = GameFilesManager.GetGameFiles();
 
         public static string FindGameFileDirectory()
         {

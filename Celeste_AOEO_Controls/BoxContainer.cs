@@ -20,14 +20,14 @@ namespace Celeste_AOEO_Controls
             get => btn_Close.Visible;
             set => btn_Close.Visible = value;
         }
-        
-        // ReSharper disable once ConvertToAutoProperty
-        //public Panel ContainerPanel => panel9;
 
         private void Close(object sender, EventArgs e)
         {
-            if (CloseButton)
-                ParentForm?.Close();
+            if (!CloseButton || ParentForm == null)
+                return;
+
+            ParentForm.DialogResult = DialogResult.Cancel;
+            ParentForm?.Close();
         }
 
         private void MoveForm(object sender, MouseEventArgs e)

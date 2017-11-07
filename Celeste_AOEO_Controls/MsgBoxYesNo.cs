@@ -7,17 +7,20 @@ using System.Windows.Forms;
 
 namespace Celeste_AOEO_Controls
 {
-    public partial class MsgBox : Form
+    public partial class MsgBoxYesNo : Form
     {
-        public MsgBox(string message)
+        public MsgBoxYesNo(string message)
         {
             InitializeComponent();
             label1.Text = message;
+
+            //Configure Fonts
+            SkinHelper.SetFont(Controls);
         }
 
         public static void ShowMessage(string message)
         {
-            using (var frm = new MsgBox(message))
+            using (var frm = new MsgBoxYesNo(message))
             {
                 frm.ShowDialog();
             }
@@ -28,8 +31,15 @@ namespace Celeste_AOEO_Controls
             ShowMessage(message);
         }
 
-        private void Lb_OK_Click(object sender, EventArgs e)
+        private void BtnSmall1_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void BtnSmall2_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.No;
             Close();
         }
     }

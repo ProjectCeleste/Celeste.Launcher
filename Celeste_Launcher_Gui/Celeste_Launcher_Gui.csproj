@@ -90,7 +90,6 @@
     <Compile Include="Forms\ResetPwdForm.Designer.cs">
       <DependentUpon>ResetPwdForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\DWM.cs" />
     <Compile Include="Forms\ChangePwdForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,12 +113,6 @@
     </Compile>
     <Compile Include="Forms\MpSettingForm.Designer.cs">
       <DependentUpon>MpSettingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MsgBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MsgBox.Designer.cs">
-      <DependentUpon>MsgBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FingerPrint.cs" />
     <Compile Include="Helpers\Misc.cs" />
@@ -150,9 +143,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MpSettingForm.resx">
       <DependentUpon>MpSettingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MsgBox.resx">
-      <DependentUpon>MsgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
       <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>

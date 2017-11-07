@@ -43,7 +43,7 @@ namespace Celeste_Launcher_Gui.Forms
                 .FirstOrDefault(elem => elem.Name == selectedNetInt);
             if (netInterface == null)
             {
-                CustomMsgBox.ShowMessage(@"Network interface does not exist anymore. Select another one!",
+                MsgBox.ShowMessage(@"Network interface does not exist anymore. Select another one!",
                     "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RefreshNetDevices();
                 return;
@@ -62,7 +62,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (!found)
             {
-                CustomMsgBox.ShowMessage(
+                MsgBox.ShowMessage(
                     @"Network interface does not have a local IPv4 address assigned. Select another one!",
                     "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 RefreshNetDevices();

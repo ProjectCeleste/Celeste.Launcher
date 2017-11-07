@@ -1,6 +1,6 @@
 ﻿namespace Celeste_AOEO_Controls
 {
-    partial class CustomMsgBox
+    partial class MsgBox
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomMsgBox));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MsgBox));
             this.boxContainer1 = new Celeste_AOEO_Controls.BoxContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,6 +43,7 @@
             this.boxContainer1.BackColor = System.Drawing.Color.Transparent;
             this.boxContainer1.CloseButton = true;
             this.boxContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boxContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.boxContainer1.Location = new System.Drawing.Point(0, 0);
             this.boxContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.boxContainer1.MinimumSize = new System.Drawing.Size(310, 250);
@@ -54,6 +55,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel1.Location = new System.Drawing.Point(30, 75);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
@@ -68,6 +70,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnSmall1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -84,7 +87,7 @@
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "OK";
             this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSmall1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.btnSmall1.Location = new System.Drawing.Point(10, 161);
             this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall1.Name = "btnSmall1";
@@ -97,7 +100,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
             this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
@@ -118,16 +121,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "CustomMsgBox";
+            this.Name = "MsgBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MsgBox";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.MsgBox_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion

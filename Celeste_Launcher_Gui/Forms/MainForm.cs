@@ -19,10 +19,17 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //GameScan
-            using (var form = new GameScan())
+            //QuickGameScan
+            using (var form = new QuickGameScan())
             {
+                retry:
                 var dr = form.ShowDialog();
+
+                if (dr == DialogResult.Retry)
+                    goto retry;
+
+                if (dr != DialogResult.OK)
+                    Environment.Exit(0);
             }
 
             //
@@ -136,7 +143,7 @@ namespace Celeste_Launcher_Gui.Forms
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                CustomMsgBox.ShowMessage(@"Game already runing!");
+                MsgBox.ShowMessage(@"Game already runing!");
                 btnSmall1.Enabled = true;
                 return;
             }
@@ -163,7 +170,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                                 if (!(ex.InnerException is NatDeviceNotFoundException)) throw;
 
-                                CustomMsgBox.ShowMessage(
+                                MsgBox.ShowMessage(
                                     "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
                                     @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -175,7 +182,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch
             {
-                CustomMsgBox.ShowMessage(
+                MsgBox.ShowMessage(
                     "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
                     @"Project Celeste",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -201,7 +208,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (!File.Exists(path))
                 {
-                    CustomMsgBox.ShowMessage(
+                    MsgBox.ShowMessage(
                         "Error: Spartan.exe not found!",
                         @"Project Celeste",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -219,7 +226,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception exception)
             {
-                CustomMsgBox.ShowMessage(
+                MsgBox.ShowMessage(
                     $"Error: {exception.Message}",
                     @"Project Celeste",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

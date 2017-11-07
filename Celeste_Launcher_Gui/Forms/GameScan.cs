@@ -3,11 +3,11 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
-using Celeste_Public_Api;
-using Celeste_Public_Api.GameFileInfo.Progress;
+using Celeste_Public_Api.GameFiles;
+using Celeste_Public_Api.GameFiles.Progress;
+using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logger;
 
 #endregion
@@ -16,8 +16,6 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScan : Form
     {
-        private bool _scanRunning;
-
         public GameScan()
         {
             InitializeComponent();
@@ -26,10 +24,9 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 tb_GamePath.Text = Program.UserConfig.GameFilesPath;
             }
-            //Check for spartan.exe
             else
             {
-                tb_GamePath.Text = Api.FindGameFileDirectory();
+                tb_GamePath.Text = GameFileApi.FindGameFileDirectory();
             }
 
         }
@@ -39,53 +36,37 @@ namespace Celeste_Launcher_Gui.Forms
             Process.Start("http://www.xbox.com/en-us/developers/rules");
         }
 
-        public static string ToFileSize(double value)
-        {
-            string[] suffixes =
-            {
-                "bytes", "KB", "MB", "GB",
-                "TB", "PB", "EB", "ZB", "YB"
-            };
-            for (var i = 0; i < suffixes.Length; i++)
-                if (value <= Math.Pow(1024, i + 1))
-                    return ThreeNonZeroDigits(value /
-                                              Math.Pow(1024, i)) +
-                           " " + suffixes[i];
-
-            return ThreeNonZeroDigits(value /
-                                      Math.Pow(1024, suffixes.Length - 1)) +
-                   " " + suffixes[suffixes.Length - 1];
-        }
-
-        private static string ThreeNonZeroDigits(double value)
-        {
-            if (value >= 100)
-                return value.ToString("0,0");
-            if (value >= 10)
-                return value.ToString("0.0");
-            return value.ToString("0.00");
-        }
-
         public void ProgressChanged(object sender, ExProgressGameFiles e)
         {
             pB_GlobalProgress.Value = e.ProgressPercentage;
             lbl_GlobalProgress.Text =
                 $@"{e.CurrentIndex}/{e.TotalFile}";
-            if (e.ProgressGameFile != null)
+            if (e.ScanAndRepairFileProgress != null)
             {
-                lbl_ProgressTitle.Text = e.ProgressGameFile.FileName;
+                lbl_ProgressTitle.Text = e.ScanAndRepairFileProgress.FileName;
 
-                pB_SubProgress.Value = e.ProgressGameFile.TotalProgressPercentage;
+                pB_SubProgress.Value = e.ScanAndRepairFileProgress.TotalProgressPercentage;
 
-                if (e.ProgressGameFile.DownloadProgress != null)
+                if (e.ScanAndRepairFileProgress.DownloadFileProgress != null)
                 {
-                    var speed = e.ProgressGameFile.DownloadProgress.BytesReceived /
-                                (e.ProgressGameFile.DownloadProgress.TotalMilliseconds / 1000);
+                    var speed = e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived /
+                                (e.ScanAndRepairFileProgress.DownloadFileProgress.TotalMilliseconds / 1000);
 
                     lbl_ProgressDetail.Text =
-                        $@"Download Speed: {ToFileSize(speed)}/s{Environment.NewLine}" +
-                        $@"Progress: {ToFileSize(e.ProgressGameFile.DownloadProgress.BytesReceived)}/{
-                                ToFileSize(e.ProgressGameFile.DownloadProgress.TotalBytesToReceive)
+                        $@"Download Speed: {Files.ToFileSize(speed)}/s{Environment.NewLine}" +
+                        $@"Progress: {Files.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived)}/{
+                                Files.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.TotalBytesToReceive)
+                            }";
+                }
+                else if (e.ScanAndRepairFileProgress.L33TZipExtractProgress != null)
+                {
+                    var speed = e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesExtracted /
+                                (e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalMilliseconds / 1000);
+
+                    lbl_ProgressDetail.Text =
+                        $@"Extract Speed: {Files.ToFileSize(speed)}/s{Environment.NewLine}" +
+                        $@"Progress: {Files.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesExtracted)}/{
+                                Files.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalBytesToExtract)
                             }";
                 }
                 else
@@ -93,27 +74,27 @@ namespace Celeste_Launcher_Gui.Forms
                     lbl_ProgressDetail.Text = string.Empty;
                 }
 
-                if (e.ProgressGameFile.ProgressLog != null)
+                if (e.ScanAndRepairFileProgress.ProgressLog != null)
                 {
-                    switch (e.ProgressGameFile.ProgressLog.LogLevel)
+                    switch (e.ScanAndRepairFileProgress.ProgressLog.LogLevel)
                     {
                         case LogLevel.Info:
-                            tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
+                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
                             break;
                         case LogLevel.Warn:
-                            tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
+                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
                             break;
                         case LogLevel.Error:
-                            tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
+                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
                             break;
                         case LogLevel.Fatal:
-                            tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
+                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
                             break;
                         case LogLevel.Debug:
                             //tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
                             break;
                         case LogLevel.All:
-                            tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
+                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();
@@ -126,16 +107,16 @@ namespace Celeste_Launcher_Gui.Forms
             else
             {
                 lbl_ProgressTitle.Text = string.Empty;
-
+                lbl_ProgressDetail.Text = string.Empty;
                 pB_SubProgress.Value = 0;
             }
         }
         
         private async void BtnRunScan_Click(object sender, EventArgs e)
         {
-            if (_scanRunning)
+            if (GameFileApi.GameFiles.IsScanRunning)
             {
-                Api.GameFiles.CancelScan();
+                GameFileApi.GameFiles.CancelScan();
 
                 btnRunScan.BtnText = @"...";
                 btnRunScan.Enabled = false;
@@ -145,7 +126,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if(string.IsNullOrEmpty(tb_GamePath.Text))
             {
-                CustomMsgBox.ShowMessage(@"Error: Game files path is empty!",
+                MsgBox.ShowMessage(@"Error: Game files path is empty!",
                     @"Project Celeste -- Game Scan",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -154,7 +135,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (!Directory.Exists(tb_GamePath.Text))
             {
-                CustomMsgBox.ShowMessage(@"Error: Game files path don't exist!",
+                MsgBox.ShowMessage(@"Error: Game files path don't exist!",
                     @"Project Celeste -- Game Scan",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -163,25 +144,25 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                _scanRunning = true;
                 tB_Report.Text = string.Empty;
                 panel9.Enabled = false;
                 panel10.Enabled = false;
                 btnRunScan.BtnText = @"Cancel";
-                if (await Api.GameFiles.FullScanAndRepair(tb_GamePath.Text, ProgressChanged))
+                var progress = new Progress<ExProgressGameFiles>();
+                progress.ProgressChanged += ProgressChanged;
+                if (await GameFileApi.GameFiles.FullScanAndRepair(tb_GamePath.Text, progress))
                 {
                     //
                 }
             }
             catch (Exception ex)
             {
-                CustomMsgBox.ShowMessage($@"Error: {ex.Message}",
+                MsgBox.ShowMessage($@"Error: {ex.Message}",
                     @"Project Celeste -- Game Scan",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                _scanRunning = false;
                 btnRunScan.BtnText = @"Run Game Scan";
                 panel9.Enabled = true;
                 panel10.Enabled = true;
@@ -200,10 +181,10 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void GameScan_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_scanRunning)
+            if (!GameFileApi.GameFiles.IsScanRunning)
                 return;
 
-            CustomMsgBox.ShowMessage(@"Error: You need to cancel the ""Game Scan"" first!",
+            MsgBox.ShowMessage(@"Error: You need to cancel the ""Game Scan"" first!",
                 @"Project Celeste -- Game Scan",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
 

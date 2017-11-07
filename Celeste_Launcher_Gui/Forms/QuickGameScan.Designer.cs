@@ -51,9 +51,8 @@
             this.mainContainer1.MinimizeBox = false;
             this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
             this.mainContainer1.Name = "mainContainer1";
-            this.mainContainer1.Size = new System.Drawing.Size(808, 250);
+            this.mainContainer1.Size = new System.Drawing.Size(685, 250);
             this.mainContainer1.TabIndex = 12;
-            this.mainContainer1.Load += new System.EventHandler(this.MainContainer1_Load);
             // 
             // panel1
             // 
@@ -68,7 +67,7 @@
             this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel1.Location = new System.Drawing.Point(25, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(757, 155);
+            this.panel1.Size = new System.Drawing.Size(634, 155);
             this.panel1.TabIndex = 13;
             // 
             // label1
@@ -78,7 +77,7 @@
             this.label1.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(757, 93);
+            this.label1.Size = new System.Drawing.Size(634, 93);
             this.label1.TabIndex = 73;
             this.label1.Text = "Run a \"Game Scan\" to install/update/repair Age Of Empires Online Celeste Fan Proj" +
     "ect";
@@ -92,7 +91,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 93);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(757, 27);
+            this.panel2.Size = new System.Drawing.Size(634, 27);
             this.panel2.TabIndex = 54;
             // 
             // panel15
@@ -103,7 +102,7 @@
             this.panel15.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel15.Location = new System.Drawing.Point(0, 120);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(757, 35);
+            this.panel15.Size = new System.Drawing.Size(634, 35);
             this.panel15.TabIndex = 72;
             // 
             // lbl_GlobalProgress
@@ -111,7 +110,7 @@
             this.lbl_GlobalProgress.BackColor = System.Drawing.Color.Transparent;
             this.lbl_GlobalProgress.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbl_GlobalProgress.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
-            this.lbl_GlobalProgress.Location = new System.Drawing.Point(659, 0);
+            this.lbl_GlobalProgress.Location = new System.Drawing.Point(536, 0);
             this.lbl_GlobalProgress.Name = "lbl_GlobalProgress";
             this.lbl_GlobalProgress.Size = new System.Drawing.Size(98, 35);
             this.lbl_GlobalProgress.TabIndex = 70;
@@ -123,9 +122,9 @@
             this.pB_Progress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(198)))), ((int)(((byte)(170)))));
             this.pB_Progress.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pB_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.pB_Progress.Location = new System.Drawing.Point(13, 6);
+            this.pB_Progress.Location = new System.Drawing.Point(7, 6);
             this.pB_Progress.Name = "pB_Progress";
-            this.pB_Progress.Size = new System.Drawing.Size(640, 23);
+            this.pB_Progress.Size = new System.Drawing.Size(525, 23);
             this.pB_Progress.TabIndex = 1;
             // 
             // QuickGameScan
@@ -134,7 +133,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(808, 249);
+            this.ClientSize = new System.Drawing.Size(685, 249);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mainContainer1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

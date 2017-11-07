@@ -38,25 +38,26 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api.cs" />
-    <Compile Include="GameFileInfo\GameFile.cs" />
-    <Compile Include="GameFileInfo\Progress\GameFilesProgress.cs" />
-    <Compile Include="GameFileInfo\GameFiles.cs" />
+    <Compile Include="GameFiles\Def\GameFileInfo.cs" />
+    <Compile Include="GameFiles\GameFile_Api.cs" />
+    <Compile Include="GameFiles\GameScan.cs" />
+    <Compile Include="GameFiles\Progress\GameFilesProgress.cs" />
+    <Compile Include="GameFiles\GameFilesManager.cs" />
+    <Compile Include="Helpers\DownloadFile.cs" />
+    <Compile Include="Helpers\Files.cs" />
+    <Compile Include="Helpers\L33TZip.cs" />
     <Compile Include="Helpers\XmlUtils.cs" />
     <Compile Include="Logger\Log.cs" />
-    <Compile Include="GameFileInfo\Progress\GameFileProgress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GameFiles\Updater\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

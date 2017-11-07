@@ -10,7 +10,6 @@ using Celeste_AOEO_Controls.Properties;
 
 namespace Celeste_AOEO_Controls
 {
-    // [Designer(typeof(MyCustomControlDesigner1))]
     public partial class MainContainer : UserControl
     {
         public MainContainer()
@@ -32,10 +31,7 @@ namespace Celeste_AOEO_Controls
         }
 
         public bool MinimizeBox { get; set; }
-
-        // ReSharper disable once ConvertToAutoProperty
-        //public Panel ContainerPanel => panel9;
-
+        
         private void PictureBox1_Click(object sender, EventArgs e)
         {
             ParentForm?.Close();
@@ -155,16 +151,4 @@ namespace Celeste_AOEO_Controls
             set => _topMiddleFluid = value;
         }
     }
-
-    //public class MyCustomControlDesigner1 : ParentControlDesigner
-    //{
-    //    public override void Initialize(IComponent component)
-    //    {
-    //        base.Initialize(component);
-
-    //        var control = Control as MainContainer;
-    //        if (control != null)
-    //            EnableDesignMode(control.ContainerPanel, "WorkingArea");
-    //    }
-    //}
 }

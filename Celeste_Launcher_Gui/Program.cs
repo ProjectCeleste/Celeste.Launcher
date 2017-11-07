@@ -37,7 +37,7 @@ namespace Celeste_Launcher_Gui
             //Only one instance
             if (!createdNew)
             {
-                CustomMsgBox.ShowMessage(@"Celeste Fan Project launcher already running!", "Celeste Fan Project",
+                MsgBox.ShowMessage(@"Celeste Fan Project launcher already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;

@@ -31,14 +31,14 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
             {
-                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
+                MsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
             {
-                CustomMsgBox.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
+                MsgBox.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
                     @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -118,7 +118,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception e)
             {
-                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Login",
+                MsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Login",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
