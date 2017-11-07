@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
 using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.GameScanner;
 using Open.Nat;
 
 #endregion
@@ -18,6 +19,17 @@ namespace Celeste_Launcher_Gui.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            //Version Check
+            if (UpdaterForm.IsLatestVersion())
+            {
+                using (var form = new UpdaterForm())
+                {
+                    form.ShowDialog();
+                }
+
+                Environment.Exit(0);
+            }
 
             //QuickGameScan
             using (var form = new QuickGameScan())
@@ -204,9 +216,16 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 //Launch Game
-                var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
+                var path = !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath)
+                    ? Program.UserConfig.GameFilesPath
+                    : GameScannnerApi.GetGameFilesRootPath();
 
-                if (!File.Exists(path))
+                if (!path.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                    path += Path.DirectorySeparatorChar;
+
+                var spartanPath = $"{path}Spartan.exe";
+
+                if (!File.Exists(spartanPath))
                 {
                     MsgBox.ShowMessage(
                         "Error: Spartan.exe not found!",

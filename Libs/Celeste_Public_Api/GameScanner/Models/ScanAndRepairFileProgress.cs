@@ -27,7 +27,7 @@ namespace Celeste_Public_Api.GameScanner.Models
         }
 
         public ScanAndRepairFileProgress(string fileName, int totalProgressPercentage,
-            L33TZipExtractProgress extractProgress)
+            ZipFileProgress extractProgress)
         {
             FileName = fileName;
             TotalProgressPercentage = totalProgressPercentage;
@@ -42,6 +42,6 @@ namespace Celeste_Public_Api.GameScanner.Models
 
         public DownloadFileProgress DownloadFileProgress { get; }
 
-        public L33TZipExtractProgress L33TZipExtractProgress { get; }
+        public ZipFileProgress L33TZipExtractProgress { get; }
     }
 }

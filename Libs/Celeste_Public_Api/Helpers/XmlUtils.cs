@@ -23,6 +23,7 @@ namespace Celeste_Public_Api.Helpers
             {
                 if (backup)
                     File.Copy(xmlFilePath, $"{xmlFilePath}.bak", true);
+
                 File.Delete(xmlFilePath);
             }
             File.WriteAllText(xmlFilePath, xml, Encoding.UTF8);

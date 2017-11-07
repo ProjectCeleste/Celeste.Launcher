@@ -98,18 +98,18 @@ namespace Celeste_Public_Api.GameScanner
                 //#70 Extract downloaded file
                 var tmpFilePath = tempFileName;
                 var tempFileName2 = Path.GetTempFileName();
-                if (L33TZip.IsL33TZipFile(tempFileName))
+                if (Zip.IsL33TZipFile(tempFileName))
                 {
                     progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 70,
                         new ExLog(LogLevel.Info, "      - Extract downloaded file...")));
 
-                    var extractProgress = new Progress<L33TZipExtractProgress>();
+                    var extractProgress = new Progress<ZipFileProgress>();
                     extractProgress.ProgressChanged += (o, ea) =>
                     {
                         progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
                             70 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (90 - 70))), ea));
                     };
-                    await L33TZip.DoExtractL33TZipFile(tempFileName, tempFileName2, extractProgress, ct);
+                    await Zip.DoExtractL33TZipFile(tempFileName, tempFileName2, extractProgress, ct);
 
                     //#90 Check Downloaded File
                     if (!FileCheck.RunFileCheck(tempFileName2, fileInfo.Size, fileInfo.Crc32))
@@ -270,7 +270,7 @@ namespace Celeste_Public_Api.GameScanner
                                 progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
                                     new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
 
-                                Thread.Sleep(10);
+                                await Task.Delay(10).ConfigureAwait(false);
 
                                 var fileProgress = new Progress<ScanAndRepairFileProgress>();
                                 var ci = currentIndex;
@@ -280,7 +280,7 @@ namespace Celeste_Public_Api.GameScanner
                                 };
                                 retVal = await ScanAndRepairFile(fileInfo, FilesRootPath, fileProgress, Cts.Token);
 
-                                Thread.Sleep(10);
+                                await Task.Delay(10).ConfigureAwait(false);
 
                                 if (!retVal)
                                     break;
@@ -324,45 +324,27 @@ namespace Celeste_Public_Api.GameScanner
                     Cts = new CancellationTokenSource();
                     IsCancellationRequested = false;
 
-                    var t = Task.Run(() =>
+                    var totalCount = FilesInfo.Count();
+                    var currentIndex = 0;
+                    foreach (var fileInfo in FilesInfo)
                     {
-                        try
-                        {
-                            var totalCount = FilesInfo.Count();
-                            var currentIndex = 0;
-                            foreach (var fileInfo in FilesInfo)
-                            {
-                                currentIndex += 1;
+                        currentIndex += 1;
 
-                                Cts.Token.ThrowIfCancellationRequested();
+                        Cts.Token.ThrowIfCancellationRequested();
 
-                                progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
-                                    new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
+                        progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
+                            new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
 
-                                Thread.Sleep(10);
+                        await Task.Delay(10).ConfigureAwait(false);
 
-                                retVal = FileCheck.RunFileQuickCheck($"{FilesRootPath}{fileInfo.FileName}",
-                                    fileInfo.Size);
+                        retVal = FileCheck.RunFileQuickCheck($"{FilesRootPath}{fileInfo.FileName}",
+                            fileInfo.Size);
 
-                                Thread.Sleep(10);
+                        await Task.Delay(10).ConfigureAwait(false);
 
-                                if (!retVal)
-                                    break;
-                            }
-                        }
-                        catch (AggregateException)
-                        {
-                            retVal = false;
-                            throw;
-                        }
-                    }, Cts.Token);
-
-                    await t;
-                }
-                catch (AggregateException)
-                {
-                    retVal = false;
-                    throw;
+                        if (!retVal)
+                            break;
+                    }
                 }
                 finally
                 {
