@@ -8,6 +8,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Xml.Serialization;
 using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.Helpers;
 
 #endregion
 
@@ -41,12 +42,12 @@ namespace Celeste_Launcher_Gui
 
         public void Save(string path)
         {
-            Misc.SerializeToFile(this, path);
+            XmlUtils.SerializeToFile(this, path);
         }
 
         public static UserConfig Load(string path)
         {
-            var userConfig = Misc.DeserializeFromFile<UserConfig>(path);
+            var userConfig = XmlUtils.DeserializeFromFile<UserConfig>(path);
 
             if (userConfig.MpSettings.IsOnline) return userConfig;
 
@@ -104,7 +105,7 @@ namespace Celeste_Launcher_Gui
                 {
                     _uncryptedPassword = string.IsNullOrEmpty(CryptedPassword)
                         ? string.Empty
-                        : Misc.Decrypt(CryptedPassword, true);
+                        : EncryptDecrypt.Decrypt(CryptedPassword, true);
                 }
                 catch (Exception)
                 {
@@ -120,7 +121,7 @@ namespace Celeste_Launcher_Gui
 
                 try
                 {
-                    CryptedPassword = string.IsNullOrEmpty(value) ? string.Empty : Misc.Encrypt(value, true);
+                    CryptedPassword = string.IsNullOrEmpty(value) ? string.Empty : EncryptDecrypt.Encrypt(value, true);
                 }
                 catch (Exception)
                 {

@@ -153,7 +153,7 @@ namespace Celeste_Launcher_Gui.Forms
                 btnRunScan.BtnText = @"Cancel";
                 var progress = new Progress<ScanAndRepairProgress>();
                 progress.ProgressChanged += ProgressChanged;
-                if (await GameScannner.FullScanAndRepair(progress))
+                if (await GameScannner.ScanAndRepair(progress))
                 {
                     //
                 }

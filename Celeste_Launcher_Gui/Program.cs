@@ -21,7 +21,9 @@ namespace Celeste_Launcher_Gui
 #endif
 
         public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
+
         public static UserConfig UserConfig = new UserConfig();
+
         public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
 
         private const string AppName = "CelesteFanProject";

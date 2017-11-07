@@ -61,7 +61,7 @@ namespace Celeste_Public_Api.GameScanner
                                              "-------------------------\r\n" +
                                              "      - Checking file...")));
 
-                if (FileCheck.DoFileCheck(filePath, fileInfo.Size, fileInfo.Crc32))
+                if (FileCheck.RunFileCheck(filePath, fileInfo.Size, fileInfo.Crc32))
                     goto end;
 
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 5,
@@ -87,7 +87,7 @@ namespace Celeste_Public_Api.GameScanner
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 65,
                     new ExLog(LogLevel.Info, "      - Checking downloaded file...")));
 
-                if (!FileCheck.DoFileCheck(tempFileName, fileInfo.BinSize, fileInfo.BinCrc32))
+                if (!FileCheck.RunFileCheck(tempFileName, fileInfo.BinSize, fileInfo.BinCrc32))
                 {
                     if (File.Exists(tempFileName))
                         File.Delete(tempFileName);
@@ -109,10 +109,10 @@ namespace Celeste_Public_Api.GameScanner
                         progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
                             70 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (90 - 70))), ea));
                     };
-                    await L33TZip.ExtractL33TZipFile(tempFileName, tempFileName2, extractProgress, ct);
+                    await L33TZip.DoExtractL33TZipFile(tempFileName, tempFileName2, extractProgress, ct);
 
                     //#90 Check Downloaded File
-                    if (!FileCheck.DoFileCheck(tempFileName2, fileInfo.Size, fileInfo.Crc32))
+                    if (!FileCheck.RunFileCheck(tempFileName2, fileInfo.Size, fileInfo.Crc32))
                     {
                         if (File.Exists(tempFileName))
                             File.Delete(tempFileName);
@@ -241,7 +241,7 @@ namespace Celeste_Public_Api.GameScanner
             }
         }
 
-        public async Task<bool> FullScanAndRepair(IProgress<ScanAndRepairProgress> progress)
+        public async Task<bool> ScanAndRepair(IProgress<ScanAndRepairProgress> progress)
         {
             {
                 if (!Monitor.TryEnter(_syncLockScan) || IsScanRunning)
@@ -341,7 +341,7 @@ namespace Celeste_Public_Api.GameScanner
 
                                 Thread.Sleep(10);
 
-                                retVal = FileCheck.DoFileQuickCheck($"{FilesRootPath}{fileInfo.FileName}",
+                                retVal = FileCheck.RunFileQuickCheck($"{FilesRootPath}{fileInfo.FileName}",
                                     fileInfo.Size);
 
                                 Thread.Sleep(10);

@@ -115,7 +115,7 @@
       <DependentUpon>MpSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FingerPrint.cs" />
-    <Compile Include="Helpers\Misc.cs" />
+    <Compile Include="Helpers\EncryptDecrypt.cs" />
     <Compile Include="Helpers\OpenNat.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

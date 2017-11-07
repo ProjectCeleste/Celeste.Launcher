@@ -55,7 +55,7 @@ namespace Celeste_Public_Api.Helpers
             return result;
         }
 
-        public static async Task ExtractL33TZipFile(string fileName, string outputFileName,
+        public static async Task DoExtractL33TZipFile(string fileName, string outputFileName,
             IProgress<L33TZipExtractProgress> progress, CancellationToken ct)
         {
             await Task.Run(() =>

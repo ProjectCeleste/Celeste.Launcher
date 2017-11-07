@@ -10,7 +10,7 @@ namespace Celeste_Public_Api.Helpers
 {
     public class FileCheck
     {
-        public static bool DoCrc32Check(string fileName, uint crc32)
+        public static bool RunCrc32Check(string fileName, uint crc32)
         {
             if (!File.Exists(fileName))
                 throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
@@ -36,13 +36,13 @@ namespace Celeste_Public_Api.Helpers
             return retVal;
         }
 
-        public static bool DoFileCheck(string filePath, long fileSize, uint fileCrc32)
+        public static bool RunFileCheck(string filePath, long fileSize, uint fileCrc32)
         {
             return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize &&
-                   DoCrc32Check(filePath, fileCrc32);
+                   RunCrc32Check(filePath, fileCrc32);
         }
 
-        public static bool DoFileQuickCheck(string filePath, long fileSize)
+        public static bool RunFileQuickCheck(string filePath, long fileSize)
         {
             return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize;
         }
