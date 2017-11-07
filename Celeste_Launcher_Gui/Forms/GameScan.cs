@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
 using Celeste_Public_Api.GameScanner;
@@ -16,23 +17,27 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScan : Form
     {
-        private GameScannnerApi GameScannner { get; set; }
-
         public GameScan()
         {
             InitializeComponent();
 
             if (Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath))
-            {
                 tb_GamePath.Text = Program.UserConfig.GameFilesPath;
-            }
             else
-            {
                 tb_GamePath.Text = GameScannnerApi.GetGameFilesRootPath();
-            }
-            GameScannner = new GameScannnerApi(null, tb_GamePath.Text);
 
+            GameScannner = Program.UserConfig != null
+                ? new GameScannnerApi(Program.UserConfig.BetaUpdate, tb_GamePath.Text)
+                : new GameScannnerApi(false, tb_GamePath.Text);
+
+            lbl_ProgressTitle.Text = string.Empty;
+            lbl_ProgressDetail.Text = string.Empty;
+            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
+            pB_GlobalProgress.Value = 0;
+            pB_SubProgress.Value = 0;
         }
+
+        private GameScannnerApi GameScannner { get; }
 
         private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -68,7 +73,9 @@ namespace Celeste_Launcher_Gui.Forms
 
                     lbl_ProgressDetail.Text =
                         $@"Extract Speed: {Misc.ToFileSize(speed)}/s{Environment.NewLine}" +
-                        $@"Progress: {Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesExtracted)}/{
+                        $@"Progress: {
+                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesExtracted)
+                            }/{
                                 Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalBytesToExtract)
                             }";
                 }
@@ -114,7 +121,7 @@ namespace Celeste_Launcher_Gui.Forms
                 pB_SubProgress.Value = 0;
             }
         }
-        
+
         private async void BtnRunScan_Click(object sender, EventArgs e)
         {
             if (GameScannner.IsScanRunning)
@@ -127,7 +134,7 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            if(string.IsNullOrEmpty(tb_GamePath.Text))
+            if (string.IsNullOrEmpty(tb_GamePath.Text))
             {
                 MsgBox.ShowMessage(@"Error: Game files path is empty!",
                     @"Project Celeste -- Game Scan",
@@ -147,6 +154,11 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
+                lbl_ProgressTitle.Text = string.Empty;
+                lbl_ProgressDetail.Text = string.Empty;
+                lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
+                pB_GlobalProgress.Value = 0;
+                pB_SubProgress.Value = 0;
                 tB_Report.Text = string.Empty;
                 panel9.Enabled = false;
                 panel10.Enabled = false;

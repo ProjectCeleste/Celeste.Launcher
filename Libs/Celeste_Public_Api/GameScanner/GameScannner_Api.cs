@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.GameScanner.Models;
@@ -17,11 +18,7 @@ namespace Celeste_Public_Api.GameScanner
 {
     public class GameScannnerApi
     {
-        private readonly object _syncLockCancel = new object();
-
-        private readonly object _syncLockScan = new object();
-
-        public GameScannnerApi(IEnumerable<FileInfo> filesInfo, string filesRootPath)
+        public GameScannnerApi(bool betaUpdate, string filesRootPath)
         {
             if (string.IsNullOrEmpty(filesRootPath))
                 throw new ArgumentException("Game files path is null or empty!", nameof(filesRootPath));
@@ -32,7 +29,7 @@ namespace Celeste_Public_Api.GameScanner
             if (!filesRootPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
                 filesRootPath += Path.DirectorySeparatorChar;
 
-            FilesInfo = filesInfo;
+            FilesInfo = GetGameFilesInfo(betaUpdate);
             FilesRootPath = filesRootPath;
         }
 
@@ -224,27 +221,22 @@ namespace Celeste_Public_Api.GameScanner
 
         public void CancelScan()
         {
-            if (IsCancellationRequested || !Monitor.TryEnter(_syncLockCancel))
+            if (IsCancellationRequested)
                 return;
 
-            try
-            {
-                if (!IsScanRunning || IsCancellationRequested || Cts.IsCancellationRequested)
-                    return;
+            if (!IsScanRunning)
+                return;
 
-                IsCancellationRequested = true;
+            IsCancellationRequested = true;
+
+            if (!Cts.IsCancellationRequested)
                 Cts.Cancel();
-            }
-            finally
-            {
-                Monitor.Exit(_syncLockCancel);
-            }
         }
 
         public async Task<bool> ScanAndRepair(IProgress<ScanAndRepairProgress> progress)
         {
             {
-                if (!Monitor.TryEnter(_syncLockScan) || IsScanRunning)
+                if (IsScanRunning)
                     throw new Exception("Scan already running!");
 
                 var retVal = false;
@@ -297,14 +289,11 @@ namespace Celeste_Public_Api.GameScanner
                 }
                 catch (AggregateException)
                 {
-                    retVal = false;
+                    IsScanRunning = false;
                     throw;
                 }
-                finally
-                {
-                    Monitor.Exit(_syncLockScan);
-                    IsScanRunning = false;
-                }
+
+                IsScanRunning = false;
 
                 return retVal;
             }
@@ -313,7 +302,7 @@ namespace Celeste_Public_Api.GameScanner
         public async Task<bool> QuickScan(IProgress<ScanAndRepairProgress> progress)
         {
             {
-                if (!Monitor.TryEnter(_syncLockScan) || IsScanRunning)
+                if (IsScanRunning)
                     throw new Exception("Scan already running!");
 
                 var retVal = false;
@@ -346,14 +335,100 @@ namespace Celeste_Public_Api.GameScanner
                             break;
                     }
                 }
-                finally
+                catch (AggregateException)
                 {
-                    Monitor.Exit(_syncLockScan);
                     IsScanRunning = false;
+                    throw;
                 }
 
+                IsScanRunning = false;
                 return retVal;
             }
+        }
+
+
+        public static IEnumerable<FileInfo> GetGameFilesInfo(bool betaUpdate, string type = "production",
+            int build = 6148)
+        {
+            var filesInfo = new FilesInfo();
+
+            //Load default manifest
+            foreach (var fileInfo in FileInfoFromGameManifest(type, build))
+                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+                else
+                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+
+            //Override for celeste file
+            //foreach (var fileInfo in FileInfoOverrideFromCelesteXml(betaUpdate))
+            //    {
+            //        if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+            //            filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+            //        else
+            //            filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+            //    }
+
+            return filesInfo.FileInfo.Values;
+        }
+
+        private static IEnumerable<FileInfo> FileInfoFromGameManifest(string type, int build)
+        {
+            var tempFileName = Path.GetTempFileName();
+
+            using (var client = new WebClient())
+            {
+                client.DownloadFile($"http://spartan.msgamestudios.com/content/spartan/{type}/{build}/manifest.txt",
+                    tempFileName);
+            }
+
+            var retVal = from line in File.ReadAllLines(tempFileName)
+                where line.StartsWith("+")
+                where !line.StartsWith("+AoeOnlineDlg.dll") && !line.StartsWith("+AoeOnlinePatch.dll") &&
+                      !line.StartsWith("+expapply.dll") && !line.StartsWith("+LauncherLocList.txt") &&
+                      !line.StartsWith("+LauncherStrings-de-DE.xml") &&
+                      !line.StartsWith("+LauncherStrings-en-US.xml") &&
+                      !line.StartsWith("+LauncherStrings-es-ES.xml") &&
+                      !line.StartsWith("+LauncherStrings-fr-FR.xml") &&
+                      !line.StartsWith("+LauncherStrings-it-IT.xml") &&
+                      !line.StartsWith("+LauncherStrings-zh-CHT.xml") && !line.StartsWith("+AOEOnline.exe.cfg") &&
+                      !line.StartsWith("+steam_api.dll") && !line.StartsWith("+t3656t4234.tmp")
+                select line.Split('|')
+                into lineSplit
+                select new FileInfo
+                {
+                    FileName = lineSplit[0].Substring(1, lineSplit[0].Length - 1),
+                    Crc32 = Convert.ToUInt32(lineSplit[1]),
+                    Size = Convert.ToInt64(lineSplit[2]),
+                    HttpLink = $"http://spartan.msgamestudios.com/content/spartan/{type}/{build}/{lineSplit[3]}",
+                    BinCrc32 = Convert.ToUInt32(lineSplit[4]),
+                    BinSize = Convert.ToInt64(lineSplit[5])
+                };
+
+            if (File.Exists(tempFileName))
+                File.Delete(tempFileName);
+
+            return retVal;
+        }
+
+        private static IEnumerable<FileInfo> FileInfoOverrideFromCelesteXml(bool betaUpdate)
+        {
+            var tempFileName = Path.GetTempFileName();
+
+            using (var client = new WebClient())
+            {
+                client.DownloadFile(
+                    betaUpdate
+                        ? "https://projectceleste.com/static/celeste_gamefile/manifest_override_b.xml"
+                        : "https://projectceleste.com/static/celeste_gamefile/manifest_override.xml",
+                    tempFileName);
+            }
+
+            var retVal = XmlUtils.DeserializeFromFile<FilesInfo>(tempFileName).FileInfo.Values;
+
+            if (File.Exists(tempFileName))
+                File.Delete(tempFileName);
+
+            return retVal;
         }
     }
 }

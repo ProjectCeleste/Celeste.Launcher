@@ -16,7 +16,7 @@ namespace Celeste_Public_Api.GameScanner.Models
     public class FilesInfo
     {
         [XmlIgnore]
-        private Dictionary<string, FileInfo> FileInfo { get; set; } = new Dictionary<string, FileInfo>();
+        public Dictionary<string, FileInfo> FileInfo { get; set; } = new Dictionary<string, FileInfo>();
 
         [XmlElement(ElementName = "FilesInfo")]
         public FileInfo[] FilesInfoArray

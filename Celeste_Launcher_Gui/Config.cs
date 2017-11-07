@@ -28,14 +28,17 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "Celeste_Launcher_Gui_Config")]
     public class UserConfig
     {
+        [XmlElement(ElementName = "GameFilesPath")]
+        public string GameFilesPath { get; set; } = string.Empty;
+
+        [XmlElement(ElementName = "BetaUpdate")]
+        public bool BetaUpdate { get; set; }
+
         [XmlElement(ElementName = "LoginInfo")]
         public LoginInfo LoginInfo { get; set; } = new LoginInfo();
 
         [XmlElement(ElementName = "GameLanguage")]
         public GameLanguage GameLanguage { get; set; } = GameLanguage.enUS;
-
-        [XmlElement(ElementName = "GameFilesPath")]
-        public string GameFilesPath { get; set; } = string.Empty;
 
         [XmlElement(ElementName = "MpSettings")]
         public MpSettings MpSettings { get; set; } = new MpSettings();

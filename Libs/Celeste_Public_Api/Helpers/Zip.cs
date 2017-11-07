@@ -32,7 +32,7 @@ namespace Celeste_Public_Api.Helpers
         public double TotalMilliseconds { get; }
 
         public int ProgressPercentage => Convert.ToInt32(
-            Math.Floor((double)BytesExtracted / TotalBytesToExtract * 100));
+            Math.Floor((double) BytesExtracted / TotalBytesToExtract * 100));
 
         public long BytesExtracted { get; }
 
@@ -100,78 +100,86 @@ namespace Celeste_Public_Api.Helpers
             }
         }
 
-        public static async Task DoExtractZipFile(string archiveFileName, string outFolder, IProgress<ZipFileProgress>progress, CancellationToken ct,
+        public static async Task DoExtractZipFile(string archiveFileName, string outFolder,
+            IProgress<ZipFileProgress>progress, CancellationToken ct,
             string password = null)
         {
-                using (var zip = new ZipFile(archiveFileName))
+            using (var zip = new ZipFile(archiveFileName))
+            {
+                if (!string.IsNullOrEmpty(password))
+                    zip.Password = password;
+                foreach (var zipEntry in zip)
                 {
-                    if (!string.IsNullOrEmpty(password))
-                        zip.Password = password;
-                    foreach (var zipEntry in zip)
+                    if (zipEntry.IsDirectory)
+                        continue;
+
+                    var length = zipEntry.UncompressedSize;
+
+                    var filePath = Path.Combine(outFolder, zipEntry.FileName);
+                    var directoryName = Path.GetDirectoryName(filePath);
+
+                    if (!string.IsNullOrEmpty(directoryName))
+                        Directory.CreateDirectory(directoryName);
+
+                    using (var a = new MemoryStream())
                     {
-                        if (zipEntry.IsDirectory)
-                            continue;
+                        if (!string.IsNullOrEmpty(password))
+                            zipEntry.ExtractWithPassword(a, password);
+                        else
+                            zipEntry.Extract(a);
 
-                        var length = zipEntry.UncompressedSize;
+                        a.Position = 0;
 
-                        var filePath = Path.Combine(outFolder, zipEntry.FileName);
-                        var directoryName = Path.GetDirectoryName(filePath);
-
-                        if (!string.IsNullOrEmpty(directoryName))
-                            Directory.CreateDirectory(directoryName);
-
-                        using (var a = new DeflateStream(zipEntry.InputStream, CompressionMode.Decompress))
+                        using (var fileStreamFinal =
+                            File.Open(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
                         {
-                            using (var fileStreamFinal =
-                                File.Open(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+                            using (var final = new BinaryWriter(fileStreamFinal))
                             {
-                                using (var final = new BinaryWriter(fileStreamFinal))
+                                var buffer = new byte[4096];
+                                int read;
+                                var totalread = 0L;
+                                var stopwatch = new Stopwatch();
+                                stopwatch.Start();
+                                while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
                                 {
-                                    var buffer = new byte[4096];
-                                    int read;
-                                    var totalread = 0L;
-                                    var stopwatch = new Stopwatch();
-                                    stopwatch.Start();
-                                    while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
+                                    //
+                                    if (ct.IsCancellationRequested)
                                     {
-                                        //
-                                        if (ct.IsCancellationRequested)
-                                        {
-                                            stopwatch.Stop();
-                                            ct.ThrowIfCancellationRequested();
-                                        }
-
-                                        //
-                                        if (read > zipEntry.UncompressedSize)
-                                        {
-                                            totalread += length;
-                                            final.Write(buffer, 0, Convert.ToInt32(length));
-                                        }
-                                        else if (totalread + read <= length)
-                                        {
-                                            totalread += read;
-                                            final.Write(buffer, 0, read);
-                                        }
-                                        else if (totalread + read > length)
-                                        {
-                                            totalread += length - totalread;
-                                            final.Write(buffer, 0, Convert.ToInt32(length -totalread));
-                                        }
-
-                                        //
-                                        progress?.Report(new ZipFileProgress(archiveFileName, filePath,
-                                            stopwatch.Elapsed.TotalMilliseconds, totalread,
-                                            length));
-
-                                        //
-                                        if (totalread >= length)
-                                            break;
+                                        stopwatch.Stop();
+                                        ct.ThrowIfCancellationRequested();
                                     }
-                                    stopwatch.Stop();
+
+                                    //
+                                    if (read > zipEntry.UncompressedSize)
+                                    {
+                                        totalread += length;
+                                        final.Write(buffer, 0, Convert.ToInt32(length));
+                                    }
+                                    else if (totalread + read <= length)
+                                    {
+                                        totalread += read;
+                                        final.Write(buffer, 0, read);
+                                    }
+                                    else if (totalread + read > length)
+                                    {
+                                        totalread += length - totalread;
+                                        final.Write(buffer, 0, Convert.ToInt32(length - totalread));
+                                    }
+
+                                    //
+                                    progress?.Report(new ZipFileProgress(archiveFileName, filePath,
+                                        stopwatch.Elapsed.TotalMilliseconds, totalread,
+                                        length));
+
+                                    //
+                                    if (totalread >= length)
+                                        break;
                                 }
+                                stopwatch.Stop();
                             }
                         }
                     }
+                }
             }
             await Task.Delay(200, ct).ConfigureAwait(false);
         }
@@ -194,95 +202,95 @@ namespace Celeste_Public_Api.Helpers
         public static async Task DoExtractL33TZipFile(string fileName, string outputFileName,
             IProgress<ZipFileProgress> progress, CancellationToken ct)
         {
-                try
+            try
+            {
+                if (!File.Exists(fileName))
+                    throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
+
+                if (File.Exists(outputFileName))
+                    File.Delete(outputFileName);
+
+                using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None))
                 {
-                    if (!File.Exists(fileName))
-                        throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
-
-                    if (File.Exists(outputFileName))
-                        File.Delete(outputFileName);
-
-                    using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None))
+                    using (var reader = new BinaryReader(fileStream))
                     {
-                        using (var reader = new BinaryReader(fileStream))
+                        reader.BaseStream.Position = 0L;
+
+                        //Header
+                        var head = new string(reader.ReadChars(4));
+                        if (head.ToLower() != "l33t")
+                            throw new FileLoadException($"'l33t' header not found, file: '{fileName}'");
+
+                        //Length
+                        var length = reader.ReadInt32();
+
+                        //Skip deflate specification (2 Byte)
+                        reader.BaseStream.Position = 10L;
+
+                        //
+                        using (var a = new DeflateStream(reader.BaseStream, CompressionMode.Decompress))
                         {
-                            reader.BaseStream.Position = 0L;
-
-                            //Header
-                            var head = new string(reader.ReadChars(4));
-                            if (head.ToLower() != "l33t")
-                                throw new FileLoadException($"'l33t' header not found, file: '{fileName}'");
-
-                            //Length
-                            var length = reader.ReadInt32();
-
-                            //Skip deflate specification (2 Byte)
-                            reader.BaseStream.Position = 10L;
-
-                            //
-                            using (var a = new DeflateStream(reader.BaseStream, CompressionMode.Decompress))
+                            using (var fileStreamFinal =
+                                File.Open(outputFileName, FileMode.Create, FileAccess.Write, FileShare.None))
                             {
-                                using (var fileStreamFinal = File.Open(outputFileName, FileMode.Create, FileAccess.Write, FileShare.None))
+                                using (var final = new BinaryWriter(fileStreamFinal))
                                 {
-                                    using (var final = new BinaryWriter(fileStreamFinal))
+                                    var buffer = new byte[4096];
+                                    int read;
+                                    var totalread = 0;
+                                    var stopwatch = new Stopwatch();
+                                    stopwatch.Start();
+                                    while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
                                     {
-                                        var buffer = new byte[4096];
-                                        int read;
-                                        var totalread = 0;
-                                        var stopwatch = new Stopwatch();
-                                        stopwatch.Start();
-                                        while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
+                                        //
+                                        if (ct.IsCancellationRequested)
                                         {
-                                            //
-                                            if (ct.IsCancellationRequested)
-                                            {
-                                                stopwatch.Stop();
-                                                ct.ThrowIfCancellationRequested();
-                                            }
-
-                                            //
-                                            if (read > length)
-                                            {
-                                                totalread += length;
-                                                final.Write(buffer, 0, length);
-                                            }
-                                            else if (totalread + read <= length)
-                                            {
-                                                totalread += read;
-                                                final.Write(buffer, 0, read);
-                                            }
-                                            else if (totalread + read > length)
-                                            {
-                                                totalread += length - totalread;
-                                                final.Write(buffer, 0, length - totalread);
-                                            }
-
-                                            //
-                                            progress?.Report(new ZipFileProgress(fileName, outputFileName,
-                                                stopwatch.Elapsed.TotalMilliseconds, totalread,
-                                                length));
-
-                                            //
-                                            if (totalread >= length)
-                                                break;
+                                            stopwatch.Stop();
+                                            ct.ThrowIfCancellationRequested();
                                         }
-                                        stopwatch.Stop();
+
+                                        //
+                                        if (read > length)
+                                        {
+                                            totalread += length;
+                                            final.Write(buffer, 0, length);
+                                        }
+                                        else if (totalread + read <= length)
+                                        {
+                                            totalread += read;
+                                            final.Write(buffer, 0, read);
+                                        }
+                                        else if (totalread + read > length)
+                                        {
+                                            totalread += length - totalread;
+                                            final.Write(buffer, 0, length - totalread);
+                                        }
+
+                                        //
+                                        progress?.Report(new ZipFileProgress(fileName, outputFileName,
+                                            stopwatch.Elapsed.TotalMilliseconds, totalread,
+                                            length));
+
+                                        //
+                                        if (totalread >= length)
+                                            break;
                                     }
+                                    stopwatch.Stop();
                                 }
                             }
                         }
                     }
                 }
-                catch (AggregateException)
-                {
-                    if (File.Exists(outputFileName))
-                        File.Delete(outputFileName);
+            }
+            catch (AggregateException)
+            {
+                if (File.Exists(outputFileName))
+                    File.Delete(outputFileName);
 
-                    throw;
+                throw;
             }
 
             await Task.Delay(200, ct).ConfigureAwait(false);
         }
-
     }
 }

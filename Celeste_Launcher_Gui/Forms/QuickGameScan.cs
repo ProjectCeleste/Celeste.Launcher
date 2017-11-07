@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
 using Celeste_Public_Api.GameScanner;
@@ -12,9 +13,25 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class QuickGameScan : Form
     {
+        private string GameFilePath { get; }
+
+        private GameScannnerApi GameScannner { get; }
+
         public QuickGameScan()
         {
             InitializeComponent();
+            
+            GameFilePath = Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath)
+                ? Program.UserConfig.GameFilesPath
+                : GameScannnerApi.GetGameFilesRootPath();
+
+            GameScannner = Program.UserConfig != null
+                ? new GameScannnerApi(Program.UserConfig.BetaUpdate, GameFilePath)
+                : new GameScannnerApi(false, GameFilePath);
+
+            pB_Progress.Value = 0;
+            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
+
             Shown += MainContainer1_Shown;
         }
 
@@ -22,11 +39,8 @@ namespace Celeste_Launcher_Gui.Forms
         {
             try
             {
-                var gameFilePath = Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath)
-                    ? Program.UserConfig.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
-
-                var gameScannner = new GameScannnerApi(null, gameFilePath);
+                pB_Progress.Value = 0;
+                lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
 
                 var progress = new Progress<ScanAndRepairProgress>();
                 progress.ProgressChanged += (o, ea) =>
@@ -35,7 +49,7 @@ namespace Celeste_Launcher_Gui.Forms
                     lbl_GlobalProgress.Text = $@"{ea.CurrentIndex}/{ea.TotalFile}";
                 };
 
-                if (await gameScannner.QuickScan(progress))
+                if (await GameScannner.QuickScan(progress))
                 {
                     DialogResult = DialogResult.OK;
                 }

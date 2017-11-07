@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -21,14 +22,14 @@ namespace Celeste_Launcher_Gui.Forms
     public partial class UpdaterForm : Form
     {
         private const string AssemblyInfoUrl =
-                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs"
+                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/dev_v2/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs"
             ;
 
         private const string ChangelogUrl =
-            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/CHANGELOG.md";
+            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/dev_v2/CHANGELOG.md";
 
         private const string ReleaseZipUrl =
-            "https://github.com/ProjectCeleste/Celeste_Launcher/download/v";
+            "https://github.com/ProjectCeleste/Celeste_Launcher/releases/download/v";
 
         private CancellationTokenSource _cts = new CancellationTokenSource();
 
@@ -142,7 +143,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private static async Task DoDownloadAndInstallUpdate(IProgress<int> progress, CancellationToken ct)
         {
-            await CleanUpFiles(Directory.GetCurrentDirectory(), "*.old").ConfigureAwait(false);
+            CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
 
             var gitVersion = await GetGitHubVersion().ConfigureAwait(false);
 
@@ -186,7 +187,7 @@ namespace Celeste_Launcher_Gui.Forms
             var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 
             if (Directory.Exists(tempDir))
-                await CleanUpFiles(tempDir, "*").ConfigureAwait(false);
+                CleanUpFiles(tempDir, "*");
 
             try
             {
@@ -194,7 +195,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (AggregateException)
             {
-                await CleanUpFiles(tempDir, "*").ConfigureAwait(false);
+                CleanUpFiles(tempDir, "*");
                 throw;
             }
             finally
@@ -211,14 +212,14 @@ namespace Celeste_Launcher_Gui.Forms
             }
             finally
             {
-                await CleanUpFiles(tempDir, "*").ConfigureAwait(false);
+                CleanUpFiles(tempDir, "*");
             }
 
             //Clean Old File
-            await CleanUpFiles(Directory.GetCurrentDirectory(), "*.old").ConfigureAwait(false);
+            CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
         }
 
-        private static async Task CleanUpFiles(string path, string pattern)
+        public static void CleanUpFiles(string path, string pattern)
         {
             var files = new DirectoryInfo(path).GetFiles(pattern, SearchOption.AllDirectories);
 
@@ -231,8 +232,6 @@ namespace Celeste_Launcher_Gui.Forms
                 {
                     //
                 }
-
-            await Task.Delay(200).ConfigureAwait(false);
         }
 
         private static void MoveFiles(string originalPath, string destPath)
@@ -283,20 +282,24 @@ namespace Celeste_Launcher_Gui.Forms
                 await DoDownloadAndInstallUpdate(progress, _cts.Token);
 
                 MsgBox.ShowMessage(
-                    @"""Celeste Launcher"" has been updated. It will now be closed, re-start it to use the new version.",
+                    @"""Celeste Launcher"" has been updated, it will now re-start.",
                     @"Project Celeste -- Updater",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Process.Start(Assembly.GetEntryAssembly().Location);
+
+                Environment.Exit(0);
 
             }
             catch (Exception exception)
             {
                 MsgBox.ShowMessage(
-                    $@"Error: {exception}",
+                    $@"Error: {exception.Message}",
                     @"Project Celeste -- Updater",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
 
-            Environment.Exit(0);
+                Environment.Exit(0);
+            }
         }
     }
 }

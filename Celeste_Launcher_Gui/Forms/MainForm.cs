@@ -20,9 +20,21 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //Version Check
-            if (UpdaterForm.IsLatestVersion())
+            //CleanUpFiles
+            UpdaterForm.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+
+            //Update Check
+            if (!UpdaterForm.IsLatestVersion())
             {
+                using (var form =
+                    new MsgBoxYesNo(
+                        @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to close the launcher."))
+                {
+                    var dr = form.ShowDialog();
+                    if (dr != DialogResult.OK)
+                        Environment.Exit(0);
+                }
+
                 using (var form = new UpdaterForm())
                 {
                     form.ShowDialog();

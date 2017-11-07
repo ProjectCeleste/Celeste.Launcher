@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
@@ -26,7 +27,7 @@ namespace Celeste_Launcher_Gui
 
         public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
 
-        private const string AppName = "CelesteFanProject";
+        private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
         [STAThread]
         private static void Main()
@@ -39,7 +40,7 @@ namespace Celeste_Launcher_Gui
             //Only one instance
             if (!createdNew)
             {
-                MsgBox.ShowMessage(@"""Celeste Fan Project Launcher"" already running!", "Celeste Fan Project",
+                MsgBox.ShowMessage($@"""Celeste Fan Project Launcher"" v{Assembly.GetEntryAssembly().GetName().Version} already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
