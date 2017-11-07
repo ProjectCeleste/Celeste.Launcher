@@ -47,10 +47,10 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void UpdaterForm_Load(object sender, EventArgs e)
         {
-            lbl_CurrentV.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
+            lbl_CurrentV.Text = $@"Current Version: v{Assembly.GetEntryAssembly().GetName().Version}";
 
             var gitVersion = await GetGitHubVersion();
-            lbl_LatestV.Text = $@"v{gitVersion}";
+            lbl_LatestV.Text = $@"Latest Version: v{gitVersion}";
 
             //richTextBox1.SetInnerMargins(25, 25, 25, 25);
             richTextBox1.Text = await GetChangeLog();

@@ -57,6 +57,10 @@ namespace Celeste_AOEO_Controls
                     {
                         c.Font = new Font("Arial", c.Font.Size, FontStyle.Regular, GraphicsUnit.Point, 0);
                     }
+                    else if (c is RichTextBox)
+                    {
+                        c.Font = new Font("Arial", c.Font.Size, FontStyle.Regular, GraphicsUnit.Point, 0);
+                    }
                     else
                     {
                         c.Font = GetFont(c.Font.Size);
