@@ -41,14 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameFiles\Def\GameFileInfo.cs" />
-    <Compile Include="GameFiles\GameFile_Api.cs" />
-    <Compile Include="GameFiles\GameScan.cs" />
-    <Compile Include="GameFiles\Progress\GameFilesProgress.cs" />
-    <Compile Include="GameFiles\GameFilesManager.cs" />
-    <Compile Include="Helpers\DownloadFile.cs" />
-    <Compile Include="Helpers\Files.cs" />
+    <Compile Include="GameScanner\Models\FileInfo.cs" />
+    <Compile Include="GameScanner\GameScannner_Api.cs" />
+    <Compile Include="GameScanner\Models\FilesInfo.cs" />
+    <Compile Include="GameScanner\Models\ScanAndRepairFileProgress.cs" />
+    <Compile Include="GameScanner\Models\ScanAndRepairProgress.cs" />
+    <Compile Include="Helpers\DownloadFileAsync.cs" />
+    <Compile Include="Helpers\FileCheck.cs" />
     <Compile Include="Helpers\L33TZip.cs" />
+    <Compile Include="Helpers\Misc.cs" />
     <Compile Include="Helpers\XmlUtils.cs" />
     <Compile Include="Logger\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,8 +57,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GameFiles\Updater\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

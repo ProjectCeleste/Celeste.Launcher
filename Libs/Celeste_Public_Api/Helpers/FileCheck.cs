@@ -8,30 +8,9 @@ using Crc32;
 
 namespace Celeste_Public_Api.Helpers
 {
-    public class Files
+    public class FileCheck
     {
-        public static string ToFileSize(double value)
-        {
-            string[] suffixes =
-            {
-                "bytes", "KB", "MB", "GB",
-                "TB", "PB", "EB", "ZB", "YB"
-            };
-
-            for (var i = 0; i < suffixes.Length; i++)
-                if (value <= Math.Pow(1024, i + 1))
-                    return ThreeNonZeroDigits(value / Math.Pow(1024, i)) + " " + suffixes[i];
-
-            return ThreeNonZeroDigits(value / Math.Pow(1024, suffixes.Length - 1)) + " " +
-                   suffixes[suffixes.Length - 1];
-        }
-
-        private static string ThreeNonZeroDigits(double value)
-        {
-            return value >= 100 ? value.ToString("0,0") : value.ToString(value >= 10 ? "0.0" : "0.00");
-        }
-
-        public static bool Crc32Check(string fileName, uint crc32)
+        public static bool DoCrc32Check(string fileName, uint crc32)
         {
             if (!File.Exists(fileName))
                 throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
@@ -57,13 +36,13 @@ namespace Celeste_Public_Api.Helpers
             return retVal;
         }
 
-        public static bool FileCheck(string filePath, long fileSize, uint fileCrc32)
+        public static bool DoFileCheck(string filePath, long fileSize, uint fileCrc32)
         {
             return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize &&
-                   Crc32Check(filePath, fileCrc32);
+                   DoCrc32Check(filePath, fileCrc32);
         }
 
-        public static bool QuickFileCheck(string filePath, long fileSize)
+        public static bool DoFileQuickCheck(string filePath, long fileSize)
         {
             return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize;
         }

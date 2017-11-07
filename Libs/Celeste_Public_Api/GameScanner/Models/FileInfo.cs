@@ -4,10 +4,10 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace Celeste_Public_Api.GameFiles.Def
+namespace Celeste_Public_Api.GameScanner.Models
 {
-    [XmlRoot(ElementName = "GameFile")]
-    public class GameFile
+    [XmlRoot(ElementName = "FileInfo")]
+    public class FileInfo
     {
         [XmlAttribute(AttributeName = "FileName")]
         public string FileName { get; set; }
