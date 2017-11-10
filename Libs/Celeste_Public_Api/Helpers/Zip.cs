@@ -15,28 +15,28 @@ namespace Celeste_Public_Api.Helpers
 {
     public class ZipFileProgress
     {
-        public ZipFileProgress(string fileName, string outputFileName, double totalMilliseconds,
+        public ZipFileProgress(string inputFileName, string outputFileName, double totalMilliseconds,
             long bytesExtracted, long totalBytesToExtract)
         {
-            FileName = fileName;
+            InputFileName = inputFileName;
             OutputFileName = outputFileName;
             TotalMilliseconds = totalMilliseconds;
-            BytesExtracted = bytesExtracted;
-            TotalBytesToExtract = totalBytesToExtract;
+            BytesProcessed = bytesExtracted;
+            TotalBytesToProcess = totalBytesToExtract;
         }
 
-        public string FileName { get; }
+        public string InputFileName { get; }
 
         public string OutputFileName { get; }
 
         public double TotalMilliseconds { get; }
 
         public int ProgressPercentage => Convert.ToInt32(
-            Math.Floor((double) BytesExtracted / TotalBytesToExtract * 100));
+            Math.Floor((double) BytesProcessed / TotalBytesToProcess * 100));
 
-        public long BytesExtracted { get; }
+        public long BytesProcessed { get; }
 
-        public long TotalBytesToExtract { get; }
+        public long TotalBytesToProcess { get; }
     }
 
     public static class Zip
@@ -76,13 +76,8 @@ namespace Celeste_Public_Api.Helpers
             }
             return output;
         }
-
-        public static void ZipDirectory(string directory, string outFileName)
-        {
-            ZipDirectory(directory, outFileName, CompressionLevel.BestCompression);
-        }
-
-        public static void ZipDirectory(string directory, string outFileName, CompressionLevel compressionLevel)
+        
+        public static void ZipDirectory(string directory, string outFileName, CompressionLevel compressionLevel = CompressionLevel.BestCompression)
         {
             if (directory.EndsWith($"{Path.DirectorySeparatorChar}"))
                 directory = directory.Substring(0, directory.Length - 1);
@@ -184,6 +179,8 @@ namespace Celeste_Public_Api.Helpers
             await Task.Delay(200, ct).ConfigureAwait(false);
         }
 
+        #region L33T Zip
+
         public static bool IsL33TZipFile(string fileName)
         {
             bool result;
@@ -202,10 +199,13 @@ namespace Celeste_Public_Api.Helpers
         public static async Task DoExtractL33TZipFile(string fileName, string outputFileName,
             IProgress<ZipFileProgress> progress, CancellationToken ct)
         {
+            if (!File.Exists(fileName))
+                throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
+
+            var stopwatch = new Stopwatch();
             try
             {
-                if (!File.Exists(fileName))
-                    throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
+                stopwatch.Start();
 
                 if (File.Exists(outputFileName))
                     File.Delete(outputFileName);
@@ -238,8 +238,6 @@ namespace Celeste_Public_Api.Helpers
                                     var buffer = new byte[4096];
                                     int read;
                                     var totalread = 0;
-                                    var stopwatch = new Stopwatch();
-                                    stopwatch.Start();
                                     while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
                                     {
                                         //
@@ -275,7 +273,6 @@ namespace Celeste_Public_Api.Helpers
                                         if (totalread >= length)
                                             break;
                                     }
-                                    stopwatch.Stop();
                                 }
                             }
                         }
@@ -289,8 +286,106 @@ namespace Celeste_Public_Api.Helpers
 
                 throw;
             }
+            finally
+            {
+                stopwatch.Stop();
+            }
 
             await Task.Delay(200, ct).ConfigureAwait(false);
         }
+
+        public static async Task DoCreateL33TZipFile(string inputFileName, string outputFileName,
+            IProgress<ZipFileProgress> progress, CancellationToken ct,
+            CompressionLevel compressionLevel = CompressionLevel.BestCompression)
+        {
+            if (!File.Exists(inputFileName))
+                throw new FileNotFoundException($"File '{inputFileName}' not found!", inputFileName);
+
+            var stopwatch = new Stopwatch();
+            try
+            {
+                stopwatch.Start();
+
+                if (File.Exists(outputFileName))
+                    File.Delete(outputFileName);
+
+                var length = Convert.ToInt32(new FileInfo(inputFileName).Length);
+
+                using (var fileStream = File.Open(inputFileName, FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    using (var reader = new BinaryReader(fileStream))
+                    {
+                        reader.BaseStream.Position = 0L;
+
+                        //
+                        using (var a = new DeflateStream(reader.BaseStream, CompressionMode.Compress, compressionLevel))
+                        {
+                            using (var fileStreamFinal =
+                                File.Open(outputFileName, FileMode.Create, FileAccess.Write, FileShare.None))
+                            {
+                                using (var final = new BinaryWriter(fileStreamFinal))
+                                {
+                                    var buffer = new byte[4096];
+                                    int read;
+                                    var totalread = 0;
+
+                                    //
+                                    final.BaseStream.Position = 0L;
+
+                                    //Write L33T Header
+                                    char[] l33T = {'l', '3', '3', 't'};
+                                    final.Write(l33T);
+
+                                    //Write File Length
+                                    final.Write(length);
+
+                                    //Write Deflate specification (2 Byte)
+                                    final.Write(new byte[] {0x78, 0x9C});
+
+                                    //
+                                    reader.BaseStream.Position = 10L;
+
+                                    //
+                                    while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
+                                    {
+                                        //
+                                        if (ct.IsCancellationRequested)
+                                        {
+                                            stopwatch.Stop();
+                                            ct.ThrowIfCancellationRequested();
+                                        }
+
+                                        //
+                                        totalread += read;
+                                        final.Write(buffer, 0, read);
+
+                                        //
+                                        progress?.Report(new ZipFileProgress(inputFileName, outputFileName,
+                                            stopwatch.Elapsed.TotalMilliseconds, totalread,
+                                            length));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (AggregateException)
+            {
+                if (File.Exists(outputFileName))
+                    File.Delete(outputFileName);
+
+                throw;
+            }
+            finally
+            {
+                if(stopwatch.IsRunning)
+                    stopwatch.Stop();
+            }
+
+            await Task.Delay(200, ct).ConfigureAwait(false);
+        }
+
+        #endregion
     }
 }

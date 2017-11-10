@@ -10,29 +10,43 @@ namespace Celeste_Public_Api.Helpers
 {
     public class FileCheck
     {
+        public static uint GetCrc32(string fileName)
+        {
+            if (!File.Exists(fileName))
+                throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
+
+            uint retVal;
+
+            var crc32Algo = new Crc32Algorithm();
+            using (var fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                var result = crc32Algo.ComputeHash(fs);
+                Array.Reverse(result);
+
+                retVal = BitConverter.ToUInt32(result, 0);
+            }
+
+            return retVal;
+        }
+
         public static bool RunCrc32Check(string fileName, uint crc32)
         {
             if (!File.Exists(fileName))
                 throw new FileNotFoundException($"File '{fileName}' not found!", fileName);
 
             bool retVal;
+
             try
             {
-                var crc32Algo = new Crc32Algorithm();
-                using (var fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None))
-                {
-                    var result = crc32Algo.ComputeHash(fs);
-                    Array.Reverse(result);
+                var realCrc32 = GetCrc32(fileName);
 
-                    var realCrc32 = BitConverter.ToUInt32(result, 0);
-
-                    retVal = realCrc32 == crc32;
-                }
+                retVal = realCrc32 == crc32;
             }
             catch (Exception)
             {
                 retVal = false;
             }
+
             return retVal;
         }
 

@@ -68,15 +68,15 @@ namespace Celeste_Launcher_Gui.Forms
                 }
                 else if (e.ScanAndRepairFileProgress.L33TZipExtractProgress != null)
                 {
-                    var speed = e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesExtracted /
+                    var speed = e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesProcessed /
                                 (e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalMilliseconds / 1000);
 
                     lbl_ProgressDetail.Text =
                         $@"Extract Speed: {Misc.ToFileSize(speed)}/s{Environment.NewLine}" +
                         $@"Progress: {
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesExtracted)
+                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesProcessed)
                             }/{
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalBytesToExtract)
+                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalBytesToProcess)
                             }";
                 }
                 else
