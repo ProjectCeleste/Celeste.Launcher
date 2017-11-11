@@ -8,8 +8,6 @@ using System.Windows.Forms;
 using Celeste_AOEO_Controls;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.GameScanner;
-using Celeste_Public_Api.Helpers;
 
 #endregion
 
@@ -42,7 +40,10 @@ namespace Celeste_Launcher_Gui
             //Only one instance
             if (!createdNew)
             {
-                MsgBox.ShowMessage($@"""Celeste Fan Project Launcher"" v{Assembly.GetEntryAssembly().GetName().Version} already running!", "Celeste Fan Project",
+                MsgBox.ShowMessage(
+                    $@"""Celeste Fan Project Launcher"" v{
+                            Assembly.GetEntryAssembly().GetName().Version
+                        } already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
@@ -59,12 +60,6 @@ namespace Celeste_Launcher_Gui
                 //
             }
 
-            var x= GameScannnerApi.NewOverrideFilesInfo("d:\\a", "d:\\b", "https://downloads.projectceleste.com/",
-                new Progress<ZipFileProgress>(), new CancellationToken()).GetAwaiter();
-            while (!x.IsCompleted)
-            {
-                //
-            }
             //Start Gui
             Application.Run(new MainForm());
 

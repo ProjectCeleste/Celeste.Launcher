@@ -45,7 +45,7 @@
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
             this.mainContainer1.CloseButton = false;
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.mainContainer1.MinimizeBox = false;
@@ -64,7 +64,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel15);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel1.Location = new System.Drawing.Point(25, 72);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(634, 155);
@@ -74,7 +74,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label1.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(634, 93);
@@ -86,7 +86,7 @@
             // 
             this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.panel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel2.Location = new System.Drawing.Point(0, 93);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
@@ -98,7 +98,7 @@
             this.panel15.Controls.Add(this.lbl_GlobalProgress);
             this.panel15.Controls.Add(this.pB_Progress);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.panel15.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel15.Location = new System.Drawing.Point(0, 120);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(634, 35);
@@ -108,7 +108,7 @@
             // 
             this.lbl_GlobalProgress.BackColor = System.Drawing.Color.Transparent;
             this.lbl_GlobalProgress.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbl_GlobalProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lbl_GlobalProgress.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
             this.lbl_GlobalProgress.Location = new System.Drawing.Point(536, 0);
             this.lbl_GlobalProgress.Name = "lbl_GlobalProgress";
             this.lbl_GlobalProgress.Size = new System.Drawing.Size(98, 35);
@@ -119,7 +119,7 @@
             // pB_Progress
             // 
             this.pB_Progress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(198)))), ((int)(((byte)(170)))));
-            this.pB_Progress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.pB_Progress.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pB_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.pB_Progress.Location = new System.Drawing.Point(7, 6);
             this.pB_Progress.Name = "pB_Progress";

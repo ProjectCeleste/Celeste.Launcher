@@ -13,14 +13,10 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class QuickGameScan : Form
     {
-        private string GameFilePath { get; }
-
-        private GameScannnerApi GameScannner { get; }
-
         public QuickGameScan()
         {
             InitializeComponent();
-            
+
             GameFilePath = Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath)
                 ? Program.UserConfig.GameFilesPath
                 : GameScannnerApi.GetGameFilesRootPath();
@@ -34,6 +30,10 @@ namespace Celeste_Launcher_Gui.Forms
 
             Shown += MainContainer1_Shown;
         }
+
+        private string GameFilePath { get; }
+
+        private GameScannnerApi GameScannner { get; }
 
         private async void MainContainer1_Shown(object sender, EventArgs e)
         {

@@ -47,13 +47,13 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.lbl_Mail = new System.Windows.Forms.Label();
             this.tb_GamePath = new System.Windows.Forms.TextBox();
-            this.btn_Browse = new Celeste_AOEO_Controls.BtnSmall();
+            this.btn_Browse = new Celeste_AOEO_Controls.CustomBtn();
             this.panel10 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.btnRunScan = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnRunScan = new Celeste_AOEO_Controls.CustomBtn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
@@ -291,7 +291,7 @@
             this.tb_GamePath.BackColor = System.Drawing.Color.Gainsboro;
             this.tb_GamePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tb_GamePath.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_GamePath.Location = new System.Drawing.Point(4, 48);
+            this.tb_GamePath.Location = new System.Drawing.Point(6, 48);
             this.tb_GamePath.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.tb_GamePath.MaxLength = 128;
             this.tb_GamePath.Name = "tb_GamePath";
@@ -532,7 +532,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private Celeste_AOEO_Controls.BtnSmall btnRunScan;
+        private Celeste_AOEO_Controls.CustomBtn btnRunScan;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel7;
@@ -541,7 +541,7 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.TextBox tb_GamePath;
         private System.Windows.Forms.Panel panel9;
-        private Celeste_AOEO_Controls.BtnSmall btn_Browse;
+        private Celeste_AOEO_Controls.CustomBtn btn_Browse;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.ProgressBar pB_GlobalProgress;

@@ -1,6 +1,6 @@
 ﻿namespace Celeste_AOEO_Controls
 {
-    partial class BtnSmall
+    partial class CustomBtn
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -41,7 +41,7 @@
             this.lb_Btn.Location = new System.Drawing.Point(0, 0);
             this.lb_Btn.Margin = new System.Windows.Forms.Padding(0);
             this.lb_Btn.Name = "lb_Btn";
-            this.lb_Btn.Size = new System.Drawing.Size(201, 42);
+            this.lb_Btn.Size = new System.Drawing.Size(172, 42);
             this.lb_Btn.TabIndex = 13;
             this.lb_Btn.Text = "BtnSmall";
             this.lb_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -49,7 +49,7 @@
             this.lb_Btn.MouseEnter += new System.EventHandler(this.Lb_Btn_MouseEnter);
             this.lb_Btn.MouseLeave += new System.EventHandler(this.Lb_Btn_MouseLeave);
             // 
-            // BtnSmall
+            // CustomBtn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -59,8 +59,9 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "BtnSmall";
-            this.Size = new System.Drawing.Size(201, 42);
+            this.Name = "CustomBtn";
+            this.Size = new System.Drawing.Size(172, 42);
+            this.Load += new System.EventHandler(this.CustomBtn_Load);
             this.ResumeLayout(false);
 
         }

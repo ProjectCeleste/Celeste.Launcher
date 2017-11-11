@@ -9,11 +9,11 @@ using Celeste_AOEO_Controls.Properties;
 
 namespace Celeste_AOEO_Controls
 {
-    public partial class BtnSmall : UserControl
+    public partial class CustomBtn : UserControl
     {
         private string _text;
 
-        public BtnSmall()
+        public CustomBtn()
         {
             InitializeComponent();
 
@@ -34,18 +34,34 @@ namespace Celeste_AOEO_Controls
         private void Lb_Btn_MouseEnter(object sender, EventArgs e)
         {
             lb_Btn.ForeColor = Color.Yellow;
-            BackgroundImage = Resources.BtnSmallHover;
+
+            if (Size.Width > 180 || Size.Height > 45)
+                BackgroundImage = Resources.BtnBigHover;
+            else
+                BackgroundImage = Resources.BtnSmallHover;
         }
 
         private void Lb_Btn_MouseLeave(object sender, EventArgs e)
         {
             lb_Btn.ForeColor = Color.White;
-            BackgroundImage = Resources.BtnSmallNormal;
+
+            if (Size.Width > 180 || Size.Height > 45)
+                BackgroundImage = Resources.BtnBigNormal;
+            else
+                BackgroundImage = Resources.BtnSmallNormal;
         }
 
         private void Lb_Btn_Click(object sender, EventArgs e)
         {
             OnClick(e);
+        }
+
+        private void CustomBtn_Load(object sender, EventArgs e)
+        {
+            if (Size.Width > 180 || Size.Height > 45)
+                BackgroundImage = Resources.BtnBigNormal;
+            else
+                BackgroundImage = Resources.BtnSmallNormal;
         }
     }
 }

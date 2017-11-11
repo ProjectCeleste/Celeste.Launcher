@@ -32,7 +32,7 @@
             this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -222,7 +222,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_Password;
         private System.Windows.Forms.Label lb_Password;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

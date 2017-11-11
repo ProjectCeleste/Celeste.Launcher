@@ -36,7 +36,6 @@
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
@@ -47,17 +46,16 @@
     <Compile Include="GameScanner\Models\FilesInfo.cs" />
     <Compile Include="GameScanner\Models\ScanAndRepairFileProgress.cs" />
     <Compile Include="GameScanner\Models\ScanAndRepairProgress.cs" />
-    <Compile Include="Helpers\DownloadFileAsync.cs" />
-    <Compile Include="Helpers\FileCheck.cs" />
+    <Compile Include="Helpers\DownloadFileUtils.cs" />
+    <Compile Include="Helpers\Crc32Utils.cs" />
     <Compile Include="Helpers\Misc.cs" />
     <Compile Include="Helpers\XmlUtils.cs" />
-    <Compile Include="Helpers\Zip.cs" />
+    <Compile Include="Helpers\ZipUtils.cs" />
     <Compile Include="Logger\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

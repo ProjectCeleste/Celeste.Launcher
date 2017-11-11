@@ -33,7 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.rb_Wan = new System.Windows.Forms.RadioButton();
@@ -449,7 +449,7 @@
         private System.Windows.Forms.TextBox tb_remoteIp;
         private System.Windows.Forms.RadioButton rb_Wan;
         private System.Windows.Forms.RadioButton rb_Lan;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel3;

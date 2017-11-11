@@ -34,8 +34,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
-            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall2 = new Celeste_AOEO_Controls.CustomBtn();
+            this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -168,7 +168,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
-        private BtnSmall btnSmall2;
-        private BtnSmall btnSmall1;
+        private CustomBtn btnSmall2;
+        private CustomBtn btnSmall1;
     }
 }

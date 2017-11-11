@@ -20,9 +20,8 @@ namespace Celeste_AOEO_Controls
             //TopLeftFixed.BackgroundImage = CustomSkinMainContainer.TopLeftFixed;
             //TopRigthFixed.BackgroundImage = CustomSkinMainContainer.TopRigthFixed;
             //TopMiddleFluid.BackgroundImage = CustomSkinMainContainer.TopMiddleFluid;
-            
         }
-       
+
 
         public bool CloseButton
         {
@@ -31,7 +30,7 @@ namespace Celeste_AOEO_Controls
         }
 
         public bool MinimizeBox { get; set; }
-        
+
         private void PictureBox1_Click(object sender, EventArgs e)
         {
             ParentForm?.Close();

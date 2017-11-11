@@ -29,47 +29,38 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NetworkDeviceSelectionDialog));
-            this.lb_netinterfaces = new System.Windows.Forms.ListBox();
             this.lbl_selectnatdevice = new System.Windows.Forms.Label();
             this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
-            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
+            this.btnSmall2 = new Celeste_AOEO_Controls.CustomBtn();
+            this.lv_NetInterface = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lb_netinterfaces
-            // 
-            this.lb_netinterfaces.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_netinterfaces.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_netinterfaces.FormattingEnabled = true;
-            this.lb_netinterfaces.ItemHeight = 18;
-            this.lb_netinterfaces.Location = new System.Drawing.Point(10, 40);
-            this.lb_netinterfaces.Margin = new System.Windows.Forms.Padding(0);
-            this.lb_netinterfaces.Name = "lb_netinterfaces";
-            this.lb_netinterfaces.ScrollAlwaysVisible = true;
-            this.lb_netinterfaces.Size = new System.Drawing.Size(515, 174);
-            this.lb_netinterfaces.TabIndex = 0;
-            // 
             // lbl_selectnatdevice
             // 
             this.lbl_selectnatdevice.AutoSize = true;
-            this.lbl_selectnatdevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_selectnatdevice.Font = new System.Drawing.Font("Ashley Crawford CG", 14.25F);
             this.lbl_selectnatdevice.Location = new System.Drawing.Point(12, 5);
             this.lbl_selectnatdevice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_selectnatdevice.Name = "lbl_selectnatdevice";
-            this.lbl_selectnatdevice.Size = new System.Drawing.Size(226, 24);
+            this.lbl_selectnatdevice.Size = new System.Drawing.Size(274, 30);
             this.lbl_selectnatdevice.TabIndex = 1;
             this.lbl_selectnatdevice.Text = "Select Network Device:";
             // 
             // mainContainer1
             // 
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.mainContainer1.CloseButton = true;
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.mainContainer1.MinimizeBox = false;
@@ -83,36 +74,11 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel1.Location = new System.Drawing.Point(31, 77);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(685, 219);
             this.panel1.TabIndex = 5;
-            // 
-            // btnSmall2
-            // 
-            this.btnSmall2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall2.BackgroundImage")));
-            this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSmall2.BtnText = "Ok";
-            this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSmall2.Location = new System.Drawing.Point(5, 92);
-            this.btnSmall2.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSmall2.Name = "btnSmall2";
-            this.btnSmall2.Size = new System.Drawing.Size(140, 82);
-            this.btnSmall2.TabIndex = 5;
-            this.btnSmall2.Click += new System.EventHandler(this.Bnt_ok_Click);
-            // 
-            // btnSmall1
-            // 
-            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
-            this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSmall1.BtnText = "Refresh";
-            this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSmall1.Location = new System.Drawing.Point(5, 0);
-            this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSmall1.Name = "btnSmall1";
-            this.btnSmall1.Size = new System.Drawing.Size(140, 82);
-            this.btnSmall1.TabIndex = 4;
-            this.btnSmall1.Click += new System.EventHandler(this.Bnt_refresh_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -120,9 +86,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.Controls.Add(this.lbl_selectnatdevice, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lb_netinterfaces, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lv_NetInterface, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -138,12 +105,67 @@
             this.panel2.Controls.Add(this.btnSmall1);
             this.panel2.Controls.Add(this.btnSmall2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel2.Location = new System.Drawing.Point(525, 40);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.panel2.Size = new System.Drawing.Size(150, 174);
             this.panel2.TabIndex = 2;
+            // 
+            // btnSmall1
+            // 
+            this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
+            this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSmall1.BtnText = "Refresh";
+            this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSmall1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btnSmall1.Location = new System.Drawing.Point(5, 0);
+            this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSmall1.Name = "btnSmall1";
+            this.btnSmall1.Size = new System.Drawing.Size(140, 82);
+            this.btnSmall1.TabIndex = 4;
+            this.btnSmall1.Click += new System.EventHandler(this.Bnt_refresh_Click);
+            // 
+            // btnSmall2
+            // 
+            this.btnSmall2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall2.BackgroundImage")));
+            this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSmall2.BtnText = "Ok";
+            this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSmall2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btnSmall2.Location = new System.Drawing.Point(5, 92);
+            this.btnSmall2.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSmall2.Name = "btnSmall2";
+            this.btnSmall2.Size = new System.Drawing.Size(140, 82);
+            this.btnSmall2.TabIndex = 5;
+            this.btnSmall2.Click += new System.EventHandler(this.Bnt_ok_Click);
+            // 
+            // lv_NetInterface
+            // 
+            this.lv_NetInterface.CheckBoxes = true;
+            this.lv_NetInterface.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lv_NetInterface.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_NetInterface.Location = new System.Drawing.Point(13, 43);
+            this.lv_NetInterface.MultiSelect = false;
+            this.lv_NetInterface.Name = "lv_NetInterface";
+            this.lv_NetInterface.Size = new System.Drawing.Size(509, 168);
+            this.lv_NetInterface.TabIndex = 3;
+            this.lv_NetInterface.UseCompatibleStateImageBehavior = false;
+            this.lv_NetInterface.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 294;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Ip";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 169;
             // 
             // NetworkDeviceSelectionDialog
             // 
@@ -172,14 +194,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lb_netinterfaces;
         private System.Windows.Forms.Label lbl_selectnatdevice;
         private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Panel panel1;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall2;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall2;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ListView lv_NetInterface;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

@@ -152,12 +152,12 @@ namespace Celeste_Launcher_Gui
 
         [XmlIgnore]
         public string PublicIp { get; set; } = "127.0.0.1";
-
-        //[XmlElement(ElementName = "PublicPort")]
-        //public int PublicPort
+        //    {
 
         //{
-        //    {
+        //public int PublicPort
+
+        //[XmlElement(ElementName = "PublicPort")]
         //        if (_publicPort != 0) return _publicPort;
 
         //        var rnd = new Random(DateTime.UtcNow.Millisecond);

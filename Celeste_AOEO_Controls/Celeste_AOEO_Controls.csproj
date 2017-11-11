@@ -32,12 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -48,11 +43,11 @@
     <Compile Include="BoxContainer.Designer.cs">
       <DependentUpon>BoxContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="BtnSmall.cs">
+    <Compile Include="CustomBtn.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BtnSmall.Designer.cs">
-      <DependentUpon>BtnSmall.cs</DependentUpon>
+    <Compile Include="CustomBtn.Designer.cs">
+      <DependentUpon>CustomBtn.cs</DependentUpon>
     </Compile>
     <Compile Include="DWM.cs" />
     <Compile Include="MainContainer.cs">
@@ -86,8 +81,8 @@
     <EmbeddedResource Include="BoxContainer.resx">
       <DependentUpon>BoxContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BtnSmall.resx">
-      <DependentUpon>BtnSmall.cs</DependentUpon>
+    <EmbeddedResource Include="CustomBtn.resx">
+      <DependentUpon>CustomBtn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainContainer.resx">
       <DependentUpon>MainContainer.cs</DependentUpon>
@@ -159,6 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\XButton_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtnBigNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtnBigHover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,8 +42,8 @@
             this.linkLbl_ForgotPwd = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lb_Ver = new System.Windows.Forms.Label();
-            this.btnSmall2 = new Celeste_AOEO_Controls.BtnSmall();
-            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall2 = new Celeste_AOEO_Controls.CustomBtn();
+            this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -367,8 +367,8 @@
         private System.Windows.Forms.Label lbl_Mail;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.Label label2;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall2;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall2;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall1;
         private System.Windows.Forms.Label lb_Ver;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

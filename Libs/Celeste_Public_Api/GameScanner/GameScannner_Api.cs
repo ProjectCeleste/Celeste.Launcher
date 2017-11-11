@@ -21,7 +21,7 @@ namespace Celeste_Public_Api.GameScanner
         public GameScannnerApi(bool betaUpdate, string filesRootPath)
         {
             if (string.IsNullOrEmpty(filesRootPath))
-                throw new ArgumentException("Game files path is null or empty!", nameof(filesRootPath));
+                throw new ArgumentException(@"Game files path is null or empty!", nameof(filesRootPath));
 
             if (!Directory.Exists(filesRootPath))
                 Directory.CreateDirectory(filesRootPath);
@@ -43,6 +43,17 @@ namespace Celeste_Public_Api.GameScanner
 
         private CancellationTokenSource Cts { get; set; } = new CancellationTokenSource();
 
+        public static bool RunFileCheck(string filePath, long fileSize, uint fileCrc32)
+        {
+            return File.Exists(filePath) && new System.IO.FileInfo(filePath).Length == fileSize &&
+                   Crc32Utils.RunCrc32FileCheck(filePath, fileCrc32);
+        }
+
+        public static bool RunFileQuickCheck(string filePath, long fileSize)
+        {
+            return File.Exists(filePath) && new System.IO.FileInfo(filePath).Length == fileSize;
+        }
+
         public static async Task<bool> ScanAndRepairFile(FileInfo fileInfo, string gameFilePath,
             IProgress<ScanAndRepairFileProgress> progress,
             CancellationToken ct)
@@ -58,7 +69,7 @@ namespace Celeste_Public_Api.GameScanner
                                              "-------------------------\r\n" +
                                              "      - Checking file...")));
 
-                if (FileCheck.RunFileCheck(filePath, fileInfo.Size, fileInfo.Crc32))
+                if (RunFileCheck(filePath, fileInfo.Size, fileInfo.Crc32))
                     goto end;
 
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 5,
@@ -77,14 +88,14 @@ namespace Celeste_Public_Api.GameScanner
                         6 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (65 - 6))), ea));
                 };
                 var tempFileName = Path.GetTempFileName();
-                var x = new DownloadFileAsync(new Uri(fileInfo.HttpLink), tempFileName, dowloadProgress);
+                var x = new DownloadFileUtils(new Uri(fileInfo.HttpLink), tempFileName, dowloadProgress);
                 await x.DoDownload(ct);
 
                 //#65 Check Downloaded File
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 65,
                     new ExLog(LogLevel.Info, "      - Checking downloaded file...")));
 
-                if (!FileCheck.RunFileCheck(tempFileName, fileInfo.BinSize, fileInfo.BinCrc32))
+                if (!RunFileCheck(tempFileName, fileInfo.BinSize, fileInfo.BinCrc32))
                 {
                     if (File.Exists(tempFileName))
                         File.Delete(tempFileName);
@@ -95,7 +106,7 @@ namespace Celeste_Public_Api.GameScanner
                 //#70 Extract downloaded file
                 var tmpFilePath = tempFileName;
                 var tempFileName2 = Path.GetTempFileName();
-                if (Zip.IsL33TZipFile(tempFileName))
+                if (ZipUtils.IsL33TZipFile(tempFileName))
                 {
                     progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 70,
                         new ExLog(LogLevel.Info, "      - Extract downloaded file...")));
@@ -106,10 +117,10 @@ namespace Celeste_Public_Api.GameScanner
                         progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
                             70 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (90 - 70))), ea));
                     };
-                    await Zip.DoExtractL33TZipFile(tempFileName, tempFileName2, extractProgress, ct);
+                    await ZipUtils.DoExtractL33TZipFile(tempFileName, tempFileName2, extractProgress, ct);
 
                     //#90 Check Downloaded File
-                    if (!FileCheck.RunFileCheck(tempFileName2, fileInfo.Size, fileInfo.Crc32))
+                    if (!RunFileCheck(tempFileName2, fileInfo.Size, fileInfo.Crc32))
                     {
                         if (File.Exists(tempFileName))
                             File.Delete(tempFileName);
@@ -283,17 +294,18 @@ namespace Celeste_Public_Api.GameScanner
                             retVal = false;
                             throw;
                         }
+                        finally
+                        {
+                            IsScanRunning = false;
+                        }
                     }, Cts.Token);
 
                     await t;
                 }
-                catch (AggregateException)
+                finally
                 {
                     IsScanRunning = false;
-                    throw;
                 }
-
-                IsScanRunning = false;
 
                 return retVal;
             }
@@ -326,7 +338,7 @@ namespace Celeste_Public_Api.GameScanner
 
                         await Task.Delay(10).ConfigureAwait(false);
 
-                        retVal = FileCheck.RunFileQuickCheck($"{FilesRootPath}{fileInfo.FileName}",
+                        retVal = RunFileQuickCheck($"{FilesRootPath}{fileInfo.FileName}",
                             fileInfo.Size);
 
                         await Task.Delay(10).ConfigureAwait(false);
@@ -335,17 +347,14 @@ namespace Celeste_Public_Api.GameScanner
                             break;
                     }
                 }
-                catch (AggregateException)
+                finally
                 {
                     IsScanRunning = false;
-                    throw;
                 }
-
-                IsScanRunning = false;
+                
                 return retVal;
             }
         }
-
 
         public static IEnumerable<FileInfo> GetGameFilesInfo(bool betaUpdate, string type = "production",
             int build = 6148)
@@ -433,8 +442,8 @@ namespace Celeste_Public_Api.GameScanner
             {
                 client.DownloadFile(
                     betaUpdate
-                        ? "https://projectceleste.com/static/celeste_gamefile/manifest_override_b.xml"
-                        : "https://projectceleste.com/static/celeste_gamefile/manifest_override.xml",
+                        ? "https://downloads.projectceleste.com/game_files/manifest_override_b.xml"
+                        : "https://downloads.projectceleste.com/game_files/manifest_override.xml",
                     tempFileName);
             }
 
@@ -446,7 +455,8 @@ namespace Celeste_Public_Api.GameScanner
             return retVal;
         }
 
-        public static async Task NewOverrideFilesInfo(string inputFolder, string inputFolderB, string outputFolder, string baseHttpLink,
+        public static async Task NewOverrideFilesInfo(string inputFolder, string inputFolderB, string outputFolder,
+            string baseHttpLink,
             IProgress<ZipFileProgress> progress,
             CancellationToken ct)
         {
@@ -465,15 +475,13 @@ namespace Celeste_Public_Api.GameScanner
 
             //
             var newFilesInfo = await GenerateOverrideFilesInfo(defaultFilesInfo, inputFolder,
-                $"{outputFolder}game_file_override", baseHttpLink + "game_file_override/", progress, ct);
+                $"{outputFolder}bin_override", baseHttpLink + "bin_override/", progress, ct);
 
-            newFilesInfo.ToXml($"{outputFolder}game_file_override.xml");
+            newFilesInfo.ToXml($"{outputFolder}manifest_override.xml");
 
             //
             if (string.IsNullOrEmpty(inputFolderB))
-            {
                 return;
-            }
 
             //Update default manifest with override
             foreach (var fileInfo in newFilesInfo.FileInfo.Values)
@@ -484,9 +492,9 @@ namespace Celeste_Public_Api.GameScanner
 
             //
             var newFilesInfo2 = await GenerateOverrideFilesInfo(defaultFilesInfo, inputFolderB,
-                $"{outputFolder}game_file_override_b", baseHttpLink + "game_file_override_b/", progress, ct);
+                $"{outputFolder}bin_override_b", baseHttpLink + "bin_override_b/", progress, ct);
 
-            newFilesInfo2.ToXml($"{outputFolder}game_file_override_b.xml");
+            newFilesInfo2.ToXml($"{outputFolder}manifest_override_b.xml");
         }
 
         private static async Task<FilesInfo> GenerateOverrideFilesInfo(FilesInfo defaultFilesInfo, string inputFolder,
@@ -513,34 +521,26 @@ namespace Celeste_Public_Api.GameScanner
                 //Ignore unchanged file
                 if (defaultFilesInfo.FileInfo.ContainsKey(fileName.ToLower()))
                 {
-                    var crc32 = FileCheck.GetCrc32(file);
+                    var crc32 = Crc32Utils.GetCrc32File(file);
                     if (defaultFilesInfo.FileInfo[fileName.ToLower()].Crc32 == crc32)
                         continue;
                 }
 
                 //
-                var binFileName = string.Empty;
-                if (defaultFilesInfo.FileInfo.ContainsKey(fileName.ToLower()))
-                {
-                    var binFileNameArray = defaultFilesInfo.FileInfo[fileName.ToLower()].HttpLink.Split('/');
-                    binFileName = binFileNameArray.LastOrDefault();
-                }
-
-                if (string.IsNullOrEmpty(binFileName))
-                    binFileName = $"{Path.GetFileName(fileName)}.bin";
+                var binFileName = $"{Crc32Utils.GetCrc32FromString(fileName.ToLower()):X4}.bin";
 
                 //
                 var outFileName = $"{outputFolder}{binFileName}";
-                await Zip.DoCreateL33TZipFile(file, outFileName, progress, ct);
+                await ZipUtils.DoCreateL33TZipFile(file, outFileName, progress, ct);
 
                 //
                 var fileInfo = new FileInfo
                 {
                     FileName = fileName,
-                    Crc32 = FileCheck.GetCrc32(file),
+                    Crc32 = Crc32Utils.GetCrc32File(file),
                     Size = new System.IO.FileInfo(file).Length,
                     HttpLink = $"{baseHttpLink}{binFileName}",
-                    BinCrc32 = FileCheck.GetCrc32(outFileName),
+                    BinCrc32 = Crc32Utils.GetCrc32File(outFileName),
                     BinSize = new System.IO.FileInfo(outFileName).Length
                 };
 

@@ -21,39 +21,69 @@ namespace Celeste_Launcher_Gui.Forms
             InitializeComponent();
 
             //CleanUpFiles
-            UpdaterForm.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+            try
+            {
+                UpdaterForm.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+            }
+            catch (Exception e)
+            {
+                MsgBox.ShowMessage(
+                    $"Warning: Error during files clean-up. Error message: {e.Message}",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             //Update Check
-            if (!UpdaterForm.IsLatestVersion())
+            try
             {
-                using (var form =
-                    new MsgBoxYesNo(
-                        @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to close the launcher."))
+                if (!UpdaterForm.IsLatestVersion())
                 {
-                    var dr = form.ShowDialog();
-                    if (dr != DialogResult.OK)
-                        Environment.Exit(0);
-                }
+                    using (var form =
+                        new MsgBoxYesNo(
+                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to close the launcher."))
+                    {
+                        var dr = form.ShowDialog();
+                        if (dr != DialogResult.OK)
+                            Environment.Exit(0);
+                    }
 
-                using (var form = new UpdaterForm())
-                {
-                    form.ShowDialog();
-                }
+                    using (var form = new UpdaterForm())
+                    {
+                        form.ShowDialog();
+                    }
 
-                Environment.Exit(0);
+                    Environment.Exit(0);
+                }
+            }
+            catch (Exception e)
+            {
+                MsgBox.ShowMessage(
+                    $"Warning: Error during update check. Error message: {e.Message}",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             //QuickGameScan
-            using (var form = new QuickGameScan())
+            try
             {
-                retry:
-                var dr = form.ShowDialog();
+                using (var form = new QuickGameScan())
+                {
+                    retry:
+                    var dr = form.ShowDialog();
 
-                if (dr == DialogResult.Retry)
-                    goto retry;
+                    if (dr == DialogResult.Retry)
+                        goto retry;
 
-                if (dr != DialogResult.OK)
-                    Environment.Exit(0);
+                    if (dr != DialogResult.OK)
+                        Environment.Exit(0);
+                }
+            }
+            catch (Exception e)
+            {
+                MsgBox.ShowMessage(
+                    $"Warning: Error during quick scan. Error message: {e.Message}",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             //

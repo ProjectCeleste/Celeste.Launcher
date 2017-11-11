@@ -84,6 +84,36 @@ namespace Celeste_Launcher_Gui.Forms
                     lbl_ProgressDetail.Text = string.Empty;
                 }
 
+                if (e.ProgressLog != null)
+                {
+                    switch (e.ProgressLog.LogLevel)
+                    {
+                        case LogLevel.Info:
+                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
+                            break;
+                        case LogLevel.Warn:
+                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
+                            break;
+                        case LogLevel.Error:
+                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
+                            break;
+                        case LogLevel.Fatal:
+                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
+                            break;
+                        case LogLevel.Debug:
+                            //tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
+                            break;
+                        case LogLevel.All:
+                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
+                    tB_Report.SelectionStart = tB_Report.TextLength;
+                    tB_Report.ScrollToCaret();
+                }
+
                 if (e.ScanAndRepairFileProgress.ProgressLog != null)
                 {
                     switch (e.ScanAndRepairFileProgress.ProgressLog.LogLevel)
@@ -154,6 +184,10 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
+                Program.UserConfig.GameFilesPath = tb_GamePath.Text;
+                Program.UserConfig.BetaUpdate = checkBox1.Checked;
+                Program.UserConfig.Save(Program.UserConfigFilePath);
+
                 lbl_ProgressTitle.Text = string.Empty;
                 lbl_ProgressDetail.Text = string.Empty;
                 lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
@@ -167,7 +201,19 @@ namespace Celeste_Launcher_Gui.Forms
                 progress.ProgressChanged += ProgressChanged;
                 if (await GameScannner.ScanAndRepair(progress))
                 {
-                    //
+                    MsgBox.ShowMessage(@"Game scan completed with success.",
+                        @"Project Celeste -- Game Scan",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Close();
+                }
+                else
+                {
+                    MsgBox.ShowMessage(@"Game scan failed!",
+                        @"Project Celeste -- Game Scan",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    GameScannner.CancelScan();
                 }
             }
             catch (Exception ex)
@@ -175,6 +221,8 @@ namespace Celeste_Launcher_Gui.Forms
                 MsgBox.ShowMessage($@"Error: {ex.Message}",
                     @"Project Celeste -- Game Scan",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                GameScannner.CancelScan();
             }
             finally
             {

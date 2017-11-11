@@ -41,11 +41,11 @@ namespace Celeste_Public_Api.Helpers
         public long TotalBytesToReceive { get; }
     }
 
-    public class DownloadFileAsync
+    public class DownloadFileUtils
     {
         private readonly Stopwatch _stopwatch;
 
-        public DownloadFileAsync(Uri httpLink, string outputFileName, IProgress<DownloadFileProgress> progress)
+        public DownloadFileUtils(Uri httpLink, string outputFileName, IProgress<DownloadFileProgress> progress)
         {
             HttpLink = httpLink;
             OutputFileName = outputFileName;

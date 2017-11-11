@@ -32,7 +32,7 @@
             this.boxContainer1 = new Celeste_AOEO_Controls.BoxContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -136,7 +136,7 @@
         private Celeste_AOEO_Controls.BoxContainer boxContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

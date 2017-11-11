@@ -34,14 +34,14 @@
             this.p_Verify = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall3 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall3 = new Celeste_AOEO_Controls.CustomBtn();
             this.lbl_Mail = new System.Windows.Forms.Label();
             this.tb_Mail = new System.Windows.Forms.TextBox();
             this.p_ResetPassword = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall1 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSmall4 = new Celeste_AOEO_Controls.BtnSmall();
+            this.btnSmall4 = new Celeste_AOEO_Controls.CustomBtn();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_InviteCode = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -298,14 +298,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_Mail;
         public System.Windows.Forms.TextBox tb_Mail;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall3;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall3;
         private System.Windows.Forms.Panel p_ResetPassword;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall4;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel p_Verify;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private Celeste_AOEO_Controls.BtnSmall btnSmall1;
+        private Celeste_AOEO_Controls.CustomBtn btnSmall1;
     }
 }

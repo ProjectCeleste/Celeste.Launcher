@@ -3,7 +3,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Ionic.Zip;
@@ -39,62 +38,8 @@ namespace Celeste_Public_Api.Helpers
         public long TotalBytesToProcess { get; }
     }
 
-    public static class Zip
+    public static class ZipUtils
     {
-        public static byte[] Compress(byte[] input,
-            CompressionLevel compressionLevel = CompressionLevel.BestCompression)
-        {
-            byte[] output;
-            using (var final = new MemoryStream())
-            {
-                using (var a = new DeflateStream(final, CompressionMode.Compress, compressionLevel))
-                {
-                    a.Write(input, 0, input.Length);
-                }
-                output = final.ToArray();
-            }
-            return output;
-        }
-
-        public static byte[] Decompress(byte[] input)
-        {
-            byte[] output;
-            using (var f = new MemoryStream(input))
-            {
-                using (var a = new DeflateStream(f, CompressionMode.Decompress))
-                {
-                    using (var final = new MemoryStream())
-                    {
-                        var buffer = new byte[1024 * 1024];
-                        int read;
-                        while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
-                            final.Write(buffer, 0, read);
-
-                        output = final.ToArray();
-                    }
-                }
-            }
-            return output;
-        }
-        
-        public static void ZipDirectory(string directory, string outFileName, CompressionLevel compressionLevel = CompressionLevel.BestCompression)
-        {
-            if (directory.EndsWith($"{Path.DirectorySeparatorChar}"))
-                directory = directory.Substring(0, directory.Length - 1);
-
-            using (var zip = new ZipFile {CompressionLevel = compressionLevel})
-            {
-                foreach (var f in Directory.GetFiles(directory, "*",
-                    SearchOption.AllDirectories).ToArray())
-                {
-                    var directoryName = Path.GetDirectoryName(f);
-                    if (directoryName == null) continue;
-                    zip.AddFile(f, directoryName.Replace(directory, string.Empty));
-                }
-                zip.Save(outFileName);
-            }
-        }
-
         public static async Task DoExtractZipFile(string archiveFileName, string outFolder,
             IProgress<ZipFileProgress>progress, CancellationToken ct,
             string password = null)
@@ -294,6 +239,7 @@ namespace Celeste_Public_Api.Helpers
             await Task.Delay(200, ct).ConfigureAwait(false);
         }
 
+
         public static async Task DoCreateL33TZipFile(string inputFileName, string outputFileName,
             IProgress<ZipFileProgress> progress, CancellationToken ct,
             CompressionLevel compressionLevel = CompressionLevel.BestCompression)
@@ -313,57 +259,66 @@ namespace Celeste_Public_Api.Helpers
 
                 using (var fileStream = File.Open(inputFileName, FileMode.Open, FileAccess.Read, FileShare.None))
                 {
-                    using (var reader = new BinaryReader(fileStream))
+                    using (var fileStreamFinal =
+                        File.Open(outputFileName, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
-                        reader.BaseStream.Position = 0L;
-
-                        //
-                        using (var a = new DeflateStream(reader.BaseStream, CompressionMode.Compress, compressionLevel))
+                        using (var final = new BinaryWriter(fileStreamFinal))
                         {
-                            using (var fileStreamFinal =
-                                File.Open(outputFileName, FileMode.Create, FileAccess.Write, FileShare.None))
+                            //
+                            final.BaseStream.Position = 0L;
+
+                            //Write L33T Header
+                            char[] l33T = {'l', '3', '3', 't'};
+                            final.Write(l33T);
+
+                            //Write File Length
+                            final.Write(length);
+
+                            //Write Deflate specification (2 Byte)
+                            final.Write(new byte[] {0x78, 0x9C});
+
+                            //
+                            using (var a = new DeflateStream(fileStreamFinal, CompressionMode.Compress,
+                                compressionLevel))
                             {
-                                using (var final = new BinaryWriter(fileStreamFinal))
+                                var buffer = new byte[4096];
+                                var totalread = 0;
+                                int read;
+                                while ((read = fileStream.Read(buffer, 0, buffer.Length)) > 0)
                                 {
-                                    var buffer = new byte[4096];
-                                    int read;
-                                    var totalread = 0;
-
                                     //
-                                    final.BaseStream.Position = 0L;
-
-                                    //Write L33T Header
-                                    char[] l33T = {'l', '3', '3', 't'};
-                                    final.Write(l33T);
-
-                                    //Write File Length
-                                    final.Write(length);
-
-                                    //Write Deflate specification (2 Byte)
-                                    final.Write(new byte[] {0x78, 0x9C});
-
-                                    //
-                                    reader.BaseStream.Position = 10L;
-
-                                    //
-                                    while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
+                                    if (ct.IsCancellationRequested)
                                     {
-                                        //
-                                        if (ct.IsCancellationRequested)
-                                        {
+                                        if (stopwatch.IsRunning)
                                             stopwatch.Stop();
-                                            ct.ThrowIfCancellationRequested();
-                                        }
-
-                                        //
-                                        totalread += read;
-                                        final.Write(buffer, 0, read);
-
-                                        //
-                                        progress?.Report(new ZipFileProgress(inputFileName, outputFileName,
-                                            stopwatch.Elapsed.TotalMilliseconds, totalread,
-                                            length));
+                                        ct.ThrowIfCancellationRequested();
                                     }
+
+                                    //
+                                    if (read > length)
+                                    {
+                                        totalread += length;
+                                        a.Write(buffer, 0, length);
+                                    }
+                                    else if (totalread + read <= length)
+                                    {
+                                        totalread += read;
+                                        a.Write(buffer, 0, read);
+                                    }
+                                    else if (totalread + read > length)
+                                    {
+                                        totalread += length - totalread;
+                                        a.Write(buffer, 0, length - totalread);
+                                    }
+
+                                    //
+                                    progress?.Report(new ZipFileProgress(inputFileName, outputFileName,
+                                        stopwatch.Elapsed.TotalMilliseconds, totalread,
+                                        length));
+
+                                    //
+                                    if (totalread >= length)
+                                        break;
                                 }
                             }
                         }
@@ -379,7 +334,7 @@ namespace Celeste_Public_Api.Helpers
             }
             finally
             {
-                if(stopwatch.IsRunning)
+                if (stopwatch.IsRunning)
                     stopwatch.Stop();
             }
 

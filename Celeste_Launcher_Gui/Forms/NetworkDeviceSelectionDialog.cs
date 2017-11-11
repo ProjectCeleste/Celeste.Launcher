@@ -25,10 +25,26 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void RefreshNetDevices()
         {
-            lb_netinterfaces.Items.Clear();
+            lv_NetInterface.Items.Clear();
             var netInterfaces = NetworkInterface.GetAllNetworkInterfaces();
             foreach (var netInt in netInterfaces)
-                lb_netinterfaces.Items.Add(netInt.Name);
+            {
+                var ips = netInt.GetIPProperties().UnicastAddresses
+                    .Where(key => key.Address.AddressFamily == AddressFamily.InterNetwork);
+
+                foreach (var ip in ips)
+                {
+                    var lvi = new ListViewItem
+                    {
+                        Text = netInt.Name,
+                        Tag = ip.Address
+                    };
+
+                    lvi.SubItems.Add(ip.Address.ToString());
+
+                    lv_NetInterface.Items.Add(lvi);
+                }
+            }
         }
 
         private void NetworkDeviceSelectionDialog_Load(object sender, EventArgs e)
@@ -38,36 +54,18 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Bnt_ok_Click(object sender, EventArgs e)
         {
-            var selectedNetInt = (string) lb_netinterfaces.SelectedItem;
-            var netInterface = NetworkInterface.GetAllNetworkInterfaces()
-                .FirstOrDefault(elem => elem.Name == selectedNetInt);
-            if (netInterface == null)
+            if (lv_NetInterface.CheckedItems.Count < 0)
             {
-                MsgBox.ShowMessage(@"Network interface does not exist anymore. Select another one!",
-                    "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                RefreshNetDevices();
+                MsgBox.ShowMessage($@"Error: You need to select an network interface first!",
+                    @"Project Celeste -- MP Settings",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
             }
 
-            // Get IPv4 address:
-            var found = false;
-            foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
-                if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    SelectedIpAddress = ip.Address;
-                    SelectedInterfaceName = selectedNetInt;
-                    found = true;
-                    break;
-                }
+            SelectedIpAddress = (IPAddress)lv_NetInterface.CheckedItems[0].Tag;
+            SelectedInterfaceName = lv_NetInterface.CheckedItems[0].Text;
 
-            if (!found)
-            {
-                MsgBox.ShowMessage(
-                    @"Network interface does not have a local IPv4 address assigned. Select another one!",
-                    "Celeste Fan Project", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                RefreshNetDevices();
-                return;
-            }
             DialogResult = DialogResult.OK;
             Close();
         }

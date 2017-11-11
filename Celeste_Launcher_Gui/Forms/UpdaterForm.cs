@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
+using Celeste_Launcher_Gui.Helpers;
 using Celeste_Public_Api.Helpers;
 using Markdig;
 
@@ -36,6 +37,8 @@ namespace Celeste_Launcher_Gui.Forms
         public UpdaterForm()
         {
             InitializeComponent();
+
+            richTextBox1.SetInnerMargins(25, 25, 25, 25);
         }
 
         private static string StripHtml(string htmlText, bool decode = true)
@@ -52,7 +55,6 @@ namespace Celeste_Launcher_Gui.Forms
             var gitVersion = await GetGitHubVersion();
             lbl_LatestV.Text = $@"Latest Version: v{gitVersion}";
 
-            //richTextBox1.SetInnerMargins(25, 25, 25, 25);
             richTextBox1.Text = await GetChangeLog();
         }
 
@@ -97,19 +99,10 @@ namespace Celeste_Launcher_Gui.Forms
             return gitVersion;
         }
 
-        public static  bool IsLatestVersion()
+        public static bool IsLatestVersion()
         {
-            try
-            {
-                var gitVersion = AltGetGitHubVersion();
-                if (gitVersion > Assembly.GetExecutingAssembly().GetName().Version)
-                    return false;
-            }
-            catch (Exception)
-            {
-                //Ignored better than just doing nothing when git server down
-            }
-            return true;
+            var gitVersion = AltGetGitHubVersion();
+            return gitVersion <= Assembly.GetExecutingAssembly().GetName().Version;
         }
 
         private static async Task<string> GetChangeLog()
@@ -165,7 +158,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             var tempFileName = Path.GetTempFileName();
 
-            var downloadFileAsync = new DownloadFileAsync(new Uri(downloadLink), tempFileName, dowloadProgress);
+            var downloadFileAsync = new DownloadFileUtils(new Uri(downloadLink), tempFileName, dowloadProgress);
             try
             {
                 await downloadFileAsync.DoDownload(ct);
@@ -191,7 +184,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                await Zip.DoExtractZipFile(tempFileName, tempDir, extractProgress, ct);
+                await ZipUtils.DoExtractZipFile(tempFileName, tempDir, extractProgress, ct);
             }
             catch (AggregateException)
             {
@@ -289,7 +282,6 @@ namespace Celeste_Launcher_Gui.Forms
                 Process.Start(Assembly.GetEntryAssembly().Location);
 
                 Environment.Exit(0);
-
             }
             catch (Exception exception)
             {
