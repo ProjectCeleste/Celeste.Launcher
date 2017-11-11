@@ -281,7 +281,7 @@ namespace Celeste_Launcher_Gui.Forms
                     ? $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033"
                     : $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033";
 
-                Process.Start(path, arg);
+                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
 
                 WindowState = FormWindowState.Minimized;
             }

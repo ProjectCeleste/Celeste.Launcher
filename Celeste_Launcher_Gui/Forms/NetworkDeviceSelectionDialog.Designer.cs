@@ -143,11 +143,12 @@
             // 
             // lv_NetInterface
             // 
-            this.lv_NetInterface.CheckBoxes = true;
+            this.lv_NetInterface.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lv_NetInterface.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
             this.lv_NetInterface.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_NetInterface.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.lv_NetInterface.Location = new System.Drawing.Point(13, 43);
             this.lv_NetInterface.MultiSelect = false;
             this.lv_NetInterface.Name = "lv_NetInterface";

@@ -18,9 +18,9 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
         }
-
-
+        
         public string SelectedInterfaceName { get; private set; }
+
         public IPAddress SelectedIpAddress { get; private set; }
 
         private void RefreshNetDevices()
@@ -54,19 +54,20 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Bnt_ok_Click(object sender, EventArgs e)
         {
-            if (lv_NetInterface.CheckedItems.Count < 0)
+            if (lv_NetInterface.SelectedItems.Count <= 0)
             {
-                MsgBox.ShowMessage($@"Error: You need to select an network interface first!",
+                MsgBox.ShowMessage(@"Error: You need to select an network interface first!",
                     @"Project Celeste -- MP Settings",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
 
-            SelectedIpAddress = (IPAddress)lv_NetInterface.CheckedItems[0].Tag;
-            SelectedInterfaceName = lv_NetInterface.CheckedItems[0].Text;
+            SelectedIpAddress = (IPAddress) lv_NetInterface.SelectedItems[0].Tag;
+            SelectedInterfaceName = lv_NetInterface.SelectedItems[0].Text;
 
             DialogResult = DialogResult.OK;
+
             Close();
         }
 
