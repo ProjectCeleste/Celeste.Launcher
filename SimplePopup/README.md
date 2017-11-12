@@ -1,1 +1,0 @@
-http://lukesw.net/articles/SimplePopup.aspx
