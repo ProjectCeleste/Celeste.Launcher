@@ -118,67 +118,100 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Ashley_Crawford_CG_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ashley_Crawford_CG_1.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="NewBoxBody" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewBoxBody.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NewsNextHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewsNextHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BarSeparatorVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparatorVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BottomLeftFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BottomLeftFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BottomMiddleFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BottomMiddleFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BottomRigthFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BottomRigthFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BtnSmallHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BtnSmallHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BtnSmallNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BtnSmallNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MiddleLeftFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MiddleLeftFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MiddleRigthFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MiddleRigthFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MinimizeButtonHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MinimizeButtonHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MinimizeButtonNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MinimizeButtonNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TopLeftFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TopLeftFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TopLRFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TopLRFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TopMiddleFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TopMiddleFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TopRigthFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TopRigthFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="XButton_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ForumsNews" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ForumsNews.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="XButton_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XButton_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BottomLeftFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BottomLeftFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LatestNewsBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LatestNewsBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MinimizeButtonHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MinimizeButtonHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BottomMiddleFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BottomMiddleFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BarSeparatorVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BarSeparatorVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopLeftFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopLeftFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MinimizeButtonNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MinimizeButtonNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopMiddleFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopMiddleFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewsPrevNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewsPrevNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BottomRigthFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BottomRigthFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewsBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewsBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DialogBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DialogBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewsPrevHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewsPrevHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopRigthFixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopRigthFixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BtnSmallNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BtnSmallNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopLRFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopLRFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Advisors3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Advisors3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BtnBigHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BtnBigHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="XButton_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MiddleRigthFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MiddleRigthFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewsNextNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewsNextNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BtnBigNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BtnBigNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BtnSmallHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BtnSmallHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ashley_Crawford_CG_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ashley_Crawford_CG_1.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MiddleLeftFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MiddleLeftFluid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NewBoxHeader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewBoxHeader.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

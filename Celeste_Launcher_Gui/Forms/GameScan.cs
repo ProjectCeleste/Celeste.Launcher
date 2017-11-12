@@ -1,13 +1,12 @@
 ﻿#region Using directives
 
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
-using Celeste_Public_Api.GameScanner;
-using Celeste_Public_Api.GameScanner.Models;
+using Celeste_AOEO_Controls.MsgBox;
+using Celeste_Public_Api.GameScanner_Api;
+using Celeste_Public_Api.GameScanner_Api.Models;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logger;
 
@@ -38,11 +37,6 @@ namespace Celeste_Launcher_Gui.Forms
         }
 
         private GameScannnerApi GameScannner { get; }
-
-        private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://www.xbox.com/en-us/developers/rules");
-        }
 
         public void ProgressChanged(object sender, ScanAndRepairProgress e)
         {
@@ -114,35 +108,35 @@ namespace Celeste_Launcher_Gui.Forms
                     tB_Report.ScrollToCaret();
                 }
 
-                if (e.ScanAndRepairFileProgress.ProgressLog != null)
-                {
-                    switch (e.ScanAndRepairFileProgress.ProgressLog.LogLevel)
-                    {
-                        case LogLevel.Info:
-                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Warn:
-                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Error:
-                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Fatal:
-                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Debug:
-                            //tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.All:
-                            tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
+                if (e.ScanAndRepairFileProgress.ProgressLog == null)
+                    return;
 
-                    tB_Report.SelectionStart = tB_Report.TextLength;
-                    tB_Report.ScrollToCaret();
+                switch (e.ScanAndRepairFileProgress.ProgressLog.LogLevel)
+                {
+                    case LogLevel.Info:
+                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
+                        break;
+                    case LogLevel.Warn:
+                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
+                        break;
+                    case LogLevel.Error:
+                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
+                        break;
+                    case LogLevel.Fatal:
+                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
+                        break;
+                    case LogLevel.Debug:
+                        //tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
+                        break;
+                    case LogLevel.All:
+                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
+
+                tB_Report.SelectionStart = tB_Report.TextLength;
+                tB_Report.ScrollToCaret();
             }
             else
             {

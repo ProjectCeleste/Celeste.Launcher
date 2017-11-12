@@ -247,7 +247,7 @@
             this.MaximizeBox = false;
             this.Name = "UpdaterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Project Celeste -- Login";
+            this.Text = "Celeste Fan Project";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.UpdaterForm_Load);
             this.panel1.ResumeLayout(false);

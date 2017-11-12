@@ -36,16 +36,26 @@
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.14, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SuperSocket.ClientEngine.Core.0.8.0.14\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebSocket4Net, Version=0.15.0.9, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebSocket4Net.0.15.0\lib\net45\WebSocket4Net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameScanner\Models\FileInfo.cs" />
-    <Compile Include="GameScanner\GameScannner_Api.cs" />
-    <Compile Include="GameScanner\Models\FilesInfo.cs" />
-    <Compile Include="GameScanner\Models\ScanAndRepairFileProgress.cs" />
-    <Compile Include="GameScanner\Models\ScanAndRepairProgress.cs" />
+    <Compile Include="GameScanner_Api\Models\FileInfo.cs" />
+    <Compile Include="GameScanner_Api\GameScannner.cs" />
+    <Compile Include="GameScanner_Api\Models\FilesInfo.cs" />
+    <Compile Include="GameScanner_Api\Models\ScanAndRepairFileProgress.cs" />
+    <Compile Include="GameScanner_Api\Models\ScanAndRepairProgress.cs" />
     <Compile Include="Helpers\DownloadFileUtils.cs" />
     <Compile Include="Helpers\Crc32Utils.cs" />
     <Compile Include="Helpers\Misc.cs" />
@@ -53,9 +63,22 @@
     <Compile Include="Helpers\ZipUtils.cs" />
     <Compile Include="Logger\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server_Api\Models\User\Friend.cs" />
+    <Compile Include="Server_Api\Models\User\ExUser.cs" />
+    <Compile Include="Server_Api\Models\User\Enum\Rank.cs" />
+    <Compile Include="Server_Api\WebSocket\Packet\Request\LoginRequest.cs" />
+    <Compile Include="Server_Api\WebSocket\Packet\Response\LoginResponse.cs" />
+    <Compile Include="Server_Api\WebSocket\Enum\ClientState.cs" />
+    <Compile Include="Server_Api\WebSocket\Enum\RequestState.cs" />
+    <Compile Include="Server_Api\WebSocket\Agent.cs" />
+    <Compile Include="Server_Api\WebSocket\Command\Login.cs" />
+    <Compile Include="Server_Api\WebSocket\Client.cs" />
+    <Compile Include="Server_Api\Server.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

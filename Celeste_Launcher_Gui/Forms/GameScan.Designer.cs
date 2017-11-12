@@ -58,10 +58,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -73,7 +69,6 @@
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainContainer1
@@ -87,7 +82,7 @@
             this.mainContainer1.MinimizeBox = false;
             this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
             this.mainContainer1.Name = "mainContainer1";
-            this.mainContainer1.Size = new System.Drawing.Size(808, 654);
+            this.mainContainer1.Size = new System.Drawing.Size(808, 504);
             this.mainContainer1.TabIndex = 12;
             // 
             // panel1
@@ -100,12 +95,10 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel13);
             this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.tableLayoutPanel3);
             this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel1.Location = new System.Drawing.Point(24, 72);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(758, 557);
+            this.panel1.Size = new System.Drawing.Size(758, 408);
             this.panel1.TabIndex = 13;
             // 
             // panel5
@@ -118,7 +111,7 @@
             this.panel5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel5.Location = new System.Drawing.Point(360, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(398, 289);
+            this.panel5.Size = new System.Drawing.Size(398, 285);
             this.panel5.TabIndex = 67;
             // 
             // lbl_GlobalProgress
@@ -137,7 +130,7 @@
             this.panel14.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel14.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel14.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel14.Location = new System.Drawing.Point(0, 262);
+            this.panel14.Location = new System.Drawing.Point(0, 258);
             this.panel14.Margin = new System.Windows.Forms.Padding(0);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(398, 27);
@@ -170,7 +163,7 @@
             this.panel13.Controls.Add(this.tableLayoutPanel1);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel13.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel13.Location = new System.Drawing.Point(360, 289);
+            this.panel13.Location = new System.Drawing.Point(360, 285);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(398, 123);
             this.panel13.TabIndex = 66;
@@ -198,7 +191,7 @@
             // 
             this.lbl_ProgressDetail.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ProgressDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_ProgressDetail.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
+            this.lbl_ProgressDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ProgressDetail.Location = new System.Drawing.Point(3, 82);
             this.lbl_ProgressDetail.Name = "lbl_ProgressDetail";
             this.lbl_ProgressDetail.Size = new System.Drawing.Size(392, 41);
@@ -210,7 +203,7 @@
             // 
             this.lbl_ProgressTitle.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ProgressTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_ProgressTitle.Font = new System.Drawing.Font("Ashley Crawford CG", 9.75F);
+            this.lbl_ProgressTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ProgressTitle.Location = new System.Drawing.Point(3, 0);
             this.lbl_ProgressTitle.Name = "lbl_ProgressTitle";
             this.lbl_ProgressTitle.Size = new System.Drawing.Size(392, 41);
@@ -248,7 +241,7 @@
             this.panel4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(360, 412);
+            this.panel4.Size = new System.Drawing.Size(360, 408);
             this.panel4.TabIndex = 65;
             // 
             // panel8
@@ -259,7 +252,7 @@
             this.panel8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.panel8.Location = new System.Drawing.Point(0, 108);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(333, 230);
+            this.panel8.Size = new System.Drawing.Size(333, 226);
             this.panel8.TabIndex = 64;
             // 
             // panel9
@@ -319,7 +312,7 @@
             this.panel10.Controls.Add(this.panel11);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel10.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel10.Location = new System.Drawing.Point(0, 129);
+            this.panel10.Location = new System.Drawing.Point(0, 125);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(333, 101);
             this.panel10.TabIndex = 0;
@@ -363,7 +356,7 @@
             this.panel7.Controls.Add(this.btnRunScan);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel7.Location = new System.Drawing.Point(0, 338);
+            this.panel7.Location = new System.Drawing.Point(0, 334);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(333, 74);
             this.panel7.TabIndex = 63;
@@ -424,68 +417,8 @@
             this.panel3.Location = new System.Drawing.Point(333, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(27, 412);
+            this.panel3.Size = new System.Drawing.Size(27, 408);
             this.panel3.TabIndex = 61;
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel2.Location = new System.Drawing.Point(0, 412);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(758, 27);
-            this.panel2.TabIndex = 54;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.linkLabel4, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 439);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(758, 118);
-            this.tableLayoutPanel3.TabIndex = 57;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(3);
-            this.label2.Size = new System.Drawing.Size(752, 88);
-            this.label2.TabIndex = 39;
-            this.label2.Text = resources.GetString("label2.Text");
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.ActiveLinkColor = System.Drawing.Color.MediumBlue;
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel4.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
-            this.linkLabel4.LinkColor = System.Drawing.Color.DarkBlue;
-            this.linkLabel4.Location = new System.Drawing.Point(3, 88);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Padding = new System.Windows.Forms.Padding(3);
-            this.linkLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel4.Size = new System.Drawing.Size(752, 30);
-            this.linkLabel4.TabIndex = 40;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "View Microsoft\'s \"Game Content Usage Rules\"";
-            this.linkLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel4_LinkClicked);
             // 
             // GameScan
             // 
@@ -493,7 +426,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(808, 654);
+            this.ClientSize = new System.Drawing.Size(808, 504);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mainContainer1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -502,7 +435,7 @@
             this.MaximizeBox = false;
             this.Name = "GameScan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Project Celeste -- Login";
+            this.Text = "Celeste Fan Project";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameScan_FormClosing);
             this.panel1.ResumeLayout(false);
@@ -519,8 +452,6 @@
             this.panel10.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -528,10 +459,6 @@
         #endregion
         private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Celeste_AOEO_Controls.CustomBtn btnRunScan;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;

@@ -4,8 +4,9 @@ using System;
 using System.Dynamic;
 using System.Reflection;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.Helpers;
 
 #endregion
 
@@ -33,7 +34,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Btn_Verify_Click(object sender, EventArgs e)
         {
-            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
+            if (!Misc.IsValideEmailAdress(tb_Mail.Text))
             {
                 MsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,7 +127,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Btn_ResetPassword_Click(object sender, EventArgs e)
         {
-            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
+            if (!Misc.IsValideEmailAdress(tb_Mail.Text))
             {
                 MsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Reset Password",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

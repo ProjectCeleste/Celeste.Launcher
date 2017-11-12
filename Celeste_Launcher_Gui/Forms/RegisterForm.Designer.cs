@@ -353,7 +353,7 @@
             this.MaximizeBox = false;
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Project Celeste -- Register";
+            this.Text = "Celeste Fan Project";
             this.panel1.ResumeLayout(false);
             this.p_Verify.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

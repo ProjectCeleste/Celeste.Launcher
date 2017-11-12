@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
 using Celeste_Public_Api.Helpers;
 using Markdig;
@@ -56,6 +56,11 @@ namespace Celeste_Launcher_Gui.Forms
             lbl_LatestV.Text = $@"Latest Version: v{gitVersion}";
 
             richTextBox1.Text = await GetChangeLog();
+
+            if (gitVersion > Assembly.GetExecutingAssembly().GetName().Version)
+                return;
+
+            btnSmall1.Enabled = false;
         }
 
         private static async Task<Version> GetGitHubVersion()

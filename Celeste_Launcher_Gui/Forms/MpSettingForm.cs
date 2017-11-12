@@ -72,76 +72,77 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (rb_Wan.Checked)
             {
-                if (rb_Lan.Checked)
-                    rb_Lan.Checked = false;
-
                 if (Program.WebSocketClient?.UserInformation != null &&
                     !string.IsNullOrEmpty(Program.WebSocketClient.UserInformation.Ip))
                     tb_remoteIp.Text = Program.WebSocketClient.UserInformation.Ip;
                 else
+                {
+                    //FallBack to Other
                     tb_remoteIp.Text = @"127.0.0.1";
+                    rb_Other.Checked = true;
+                    return;
+                }
+
+                _selectedInterfaceName = string.Empty;
 
                 panel3.Enabled = true;
             }
             else
             {
-                if (!rb_Lan.Checked)
-                    rb_Lan.Checked = true;
-
                 panel3.Enabled = false;
             }
         }
 
         private void Rb_Lan_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb_Lan.Checked)
+            if (!rb_Lan.Checked)
+                return;
+
+            if (!_isFirstRun)
             {
-                if (!_isFirstRun)
+                using (var netDeviceSelectDialog = new NetworkDeviceSelectionDialog())
                 {
-                    using (var netDeviceSelectDialog = new NetworkDeviceSelectionDialog())
+                    netDeviceSelectDialog.ShowDialog();
+
+                    if (netDeviceSelectDialog.DialogResult != DialogResult.OK)
                     {
-                        netDeviceSelectDialog.ShowDialog(this);
-
-                        if (netDeviceSelectDialog.DialogResult != DialogResult.OK)
-                        {
-                            rb_Lan.Checked = false;
-                            rb_Wan.Checked = true;
-                            return;
-                        }
-
-                        if (rb_Wan.Checked)
-                            rb_Wan.Checked = false;
-                        _selectedInterfaceName = netDeviceSelectDialog.SelectedInterfaceName;
-                        tb_remoteIp.Text = netDeviceSelectDialog.SelectedIpAddress?.ToString() ?? @"127.0.0.1";
+                        //FallBack to Wan
+                        rb_Wan.Checked = true;
+                        return;
                     }
-                }
-                else
-                {
-                    if (!string.IsNullOrEmpty(Program.UserConfig.MpSettings.LanNetworkInterface))
+                    
+                    _selectedInterfaceName = netDeviceSelectDialog.SelectedInterfaceName;
+                    if (string.IsNullOrEmpty(netDeviceSelectDialog.SelectedIpAddress?.ToString()))
                     {
-                        var selectedNetInt = Program.UserConfig.MpSettings.LanNetworkInterface;
-                        var netInterface = NetworkInterface.GetAllNetworkInterfaces()
-                            .FirstOrDefault(elem => elem.Name == selectedNetInt);
-
-                        // Get IPv4 address:
-                        if (netInterface != null)
-                            foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
-                                if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                                {
-                                    tb_remoteIp.Text = ip.Address.ToString();
-                                    return;
-                                }
+                        //FallBack to Wan
+                        rb_Wan.Checked = true;
                     }
-                    var firstOrDefault = Dns.GetHostEntry(Dns.GetHostName()).AddressList
-                        .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
-
-                    tb_remoteIp.Text = firstOrDefault?.ToString() ?? @"127.0.0.1";
+                    else
+                    {
+                        tb_remoteIp.Text = netDeviceSelectDialog.SelectedIpAddress?.ToString();
+                    }
                 }
             }
             else
             {
-                if (!rb_Wan.Checked)
-                    rb_Wan.Checked = true;
+                if (!string.IsNullOrEmpty(Program.UserConfig?.MpSettings?.LanNetworkInterface))
+                {
+                    _selectedInterfaceName = Program.UserConfig.MpSettings.LanNetworkInterface;
+                    var netInterface = NetworkInterface.GetAllNetworkInterfaces()
+                        .FirstOrDefault(elem => elem.Name == _selectedInterfaceName);
+
+                    // Get IPv4 address:
+                    if (netInterface != null)
+                        foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
+                            if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                            {
+                                tb_remoteIp.Text = ip.Address.ToString();
+                                return;
+                            }
+                }
+
+                //FallBack to Wan
+                rb_Wan.Checked = true;
             }
         }
 
@@ -170,6 +171,20 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 if (!rb_Automatic.Checked)
                     rb_Automatic.Checked = true;
+            }
+        }
+
+        private void Rb_Other_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_Other.Checked)
+            {
+                _selectedInterfaceName = "Other";
+                tb_remoteIp.ReadOnly = false;
+            }
+            else
+            {
+                _selectedInterfaceName = string.Empty;
+                tb_remoteIp.ReadOnly = true;
             }
         }
     }

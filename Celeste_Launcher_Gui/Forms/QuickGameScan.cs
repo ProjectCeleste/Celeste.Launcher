@@ -4,8 +4,10 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
-using Celeste_Public_Api.GameScanner;
-using Celeste_Public_Api.GameScanner.Models;
+using Celeste_AOEO_Controls.Helpers;
+using Celeste_AOEO_Controls.MsgBox;
+using Celeste_Public_Api.GameScanner_Api;
+using Celeste_Public_Api.GameScanner_Api.Models;
 
 #endregion
 
@@ -16,6 +18,8 @@ namespace Celeste_Launcher_Gui.Forms
         public QuickGameScan()
         {
             InitializeComponent();
+
+            SkinHelper.SetFont(Controls);
 
             GameFilePath = Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath)
                 ? Program.UserConfig.GameFilesPath
@@ -81,6 +85,19 @@ namespace Celeste_Launcher_Gui.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             Close();
+        }
+
+        private void QuickGameScan_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 10, 10, 10));
+            }
+            catch (Exception)
+            {
+                //
+            }
         }
     }
 }

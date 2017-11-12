@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Launcher_Gui.Helpers;
 

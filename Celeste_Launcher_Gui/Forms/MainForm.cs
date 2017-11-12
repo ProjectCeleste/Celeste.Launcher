@@ -2,12 +2,14 @@
 
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.GameScanner;
+using Celeste_Public_Api.GameScanner_Api;
 using Open.Nat;
 
 #endregion
@@ -63,74 +65,8 @@ namespace Celeste_Launcher_Gui.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            //QuickGameScan
-            try
-            {
-                using (var form = new QuickGameScan())
-                {
-                    retry:
-                    var dr = form.ShowDialog();
-
-                    if (dr == DialogResult.Retry)
-                        goto retry;
-
-                    if (dr != DialogResult.OK)
-                        Environment.Exit(0);
-                }
-            }
-            catch (Exception e)
-            {
-                MsgBox.ShowMessage(
-                    $"Warning: Error during quick scan. Error message: {e.Message}",
-                    @"Project Celeste",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
             //
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
-
-            //Game Lang
-            if (Program.UserConfig != null)
-                comboBox2.SelectedIndex = (int) Program.UserConfig.GameLanguage;
-            else
-                comboBox2.SelectedIndex = (int) GameLanguage.enUS;
-
-            //Login
-            using (var form = new LoginForm())
-            {
-                var dr = form.ShowDialog();
-
-                if (dr != DialogResult.OK)
-                {
-                    try
-                    {
-                        Program.WebSocketClient.AgentWebSocket.Close();
-                        NatDiscoverer.ReleaseAll();
-                    }
-                    catch
-                    {
-                        //
-                    }
-                    Environment.Exit(0);
-                }
-            }
-
-            //User Info
-            if (Program.WebSocketClient.UserInformation == null) return;
-
-            lbl_Mail.Text += $@" {Program.WebSocketClient.UserInformation.Mail}";
-            lbl_UserName.Text += $@" {Program.WebSocketClient.UserInformation.ProfileName}";
-            lbl_Rank.Text += $@" {Program.WebSocketClient.UserInformation.Rank}";
-
-            //AutoDisconnect
-            try
-            {
-                Program.WebSocketClient.AgentWebSocket.Close();
-            }
-            catch
-            {
-                //
-            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -146,60 +82,38 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void Linklbl_ReportBug_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://github.com/ProjectCeleste/Celeste_Server/issues");
-        }
-
-        private void LinkLbl_ProjectCelesteCom_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://projectceleste.com");
-        }
-
-        private void Linklbl_Wiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://ageofempiresonline.wikia.com/wiki/Age_of_Empires_Online_Wiki");
-        }
-
-        private void LinkLabel3_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://eso-community.net/");
-        }
-
-        private void LinkLbl_ChangePwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            using (var form = new ChangePwdForm())
-            {
-                Hide();
-                form.ShowDialog();
-                Show();
-            }
-        }
-
-        private void Pb_Avatar_Click(object sender, EventArgs e)
-        {
-            //TODO
-        }
-
-        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            //TODO
-        }
-
-        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            //TODO
-        }
-
         private async void Btn_Play_Click(object sender, EventArgs e)
         {
-            btnSmall1.Enabled = false;
+            btn_Play.Enabled = false;
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                MsgBox.ShowMessage(@"Game already runing!");
-                btnSmall1.Enabled = true;
+                MsgBox.ShowMessage(@"Game already running!");
+                btn_Play.Enabled = true;
                 return;
+            }
+
+            //QuickGameScan
+            try
+            {
+                using (var form = new QuickGameScan())
+                {
+                    retry:
+                    var dr = form.ShowDialog();
+
+                    if (dr == DialogResult.Retry)
+                        goto retry;
+
+                    if (dr != DialogResult.OK)
+                        Environment.Exit(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.ShowMessage(
+                    $"Warning: Error during quick scan. Error message: {ex.Message}",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             //MpSettings
@@ -228,7 +142,9 @@ namespace Celeste_Launcher_Gui.Forms
                                     "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
                                     @"Project Celeste",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                btnSmall1.Enabled = true;
+
+                                btn_Play.Enabled = true;
+
                                 return;
                             }
                         }
@@ -240,14 +156,14 @@ namespace Celeste_Launcher_Gui.Forms
                     "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
                     @"Project Celeste",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnSmall1.Enabled = true;
+
+                btn_Play.Enabled = true;
+
                 return;
             }
-
             try
             {
                 //Save UserConfig
-                Program.UserConfig.GameLanguage = (GameLanguage) comboBox2.SelectedIndex;
                 Program.UserConfig.Save(Program.UserConfigFilePath);
             }
             catch
@@ -273,13 +189,38 @@ namespace Celeste_Launcher_Gui.Forms
                         "Error: Spartan.exe not found!",
                         @"Project Celeste",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    btnSmall1.Enabled = true;
+
+                    btn_Play.Enabled = true;
                     return;
                 }
 
+                string lang;
+                switch (Program.UserConfig.GameLanguage)
+                {
+                    case GameLanguage.deDE:
+                        lang = "de-DE";
+                        break;
+                    case GameLanguage.enUS:
+                        lang = "en-US";
+                        break;
+                    case GameLanguage.esES:
+                        lang = "es-ES";
+                        break;
+                    case GameLanguage.frFR:
+                        lang = "fr-FR";
+                        break;
+                    case GameLanguage.itIT:
+                        lang = "it-IT";
+                        break;
+                    case GameLanguage.zhCHT:
+                        lang = "zh-CHT";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 var arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
-                    ? $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033"
-                    : $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={comboBox2.Text} LauncherLocale=1033";
+                    ? $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                    : $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
                 Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
 
@@ -293,41 +234,192 @@ namespace Celeste_Launcher_Gui.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            btnSmall1.Enabled = true;
+            btn_Play.Enabled = true;
         }
 
-        private void Label6_Click(object sender, EventArgs e)
+        private void PictureBoxButtonCustom3_Click(object sender, EventArgs e)
         {
-            using (var form = new MpSettingForm(Program.UserConfig.MpSettings))
+            Process.Start("https://projectceleste.com");
+        }
+
+        private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://discord.gg/pkM2RAm");
+        }
+
+        private void PictureBoxButtonCustom2_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.reddit.com/r/projectceleste/");
+        }
+
+        private void PictureBoxButtonCustom4_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://aoedb.net/");
+        }
+
+        private void PictureBoxButtonCustom5_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EZ3SSAJRRUYFY");
+        }
+
+        private void CustomBtn1_Click(object sender, EventArgs e)
+        {
+            //Login
+            using (var form = new LoginForm())
             {
-                Hide();
-                form.ShowDialog();
-                Show();
+                var dr = form.ShowDialog();
+
+                if (dr == DialogResult.OK)
+                {
+                    //User Info
+                    if (Program.WebSocketClient.UserInformation == null) return;
+
+                    lbl_UserName.Text = $@"{Program.WebSocketClient.UserInformation.ProfileName}";
+                    lbl_Rank.Text = $@"{Program.WebSocketClient.UserInformation.Rank}";
+
+                    panelManager1.SelectedPanel = managedPanel1;
+                }
+                else
+                {
+                    panelManager1.SelectedPanel = managedPanel2;
+                }
+            }
+            //AutoDisconnect
+            try
+            {
+                Program.WebSocketClient.AgentWebSocket.Close();
+            }
+            catch
+            {
+                //
             }
         }
 
         private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://aoedb.net/");
+            Process.Start("http://www.xbox.com/en-us/developers/rules");
         }
 
-        private void LinkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void PictureBoxButtonCustom8_Click(object sender, EventArgs e)
         {
-            Process.Start("https://discord.gg/pkM2RAm");
+            var btnSender = (PictureBoxButtonCustom) sender;
+            var pt = new Point(btnSender.Bounds.Width + 1, btnSender.Bounds.Top);
+            cMS_Tools.Show(btnSender, pt);
         }
 
-        private void BtnSmall1_Load(object sender, EventArgs e)
+        private void CustomBtn2_Click(object sender, EventArgs e)
         {
+            using (var form = new RegisterForm())
+            {
+                form.ShowDialog();
+                if (form.DialogResult != DialogResult.OK)
+                    return;
+
+                //Save UserConfig
+                if (Program.UserConfig == null)
+                {
+                    Program.UserConfig = new UserConfig
+                    {
+                        LoginInfo = new LoginInfo
+                        {
+                            Email = form.tb_Mail.Text,
+                            Password = form.tb_Password.Text,
+                            RememberMe = true
+                        }
+                    };
+                }
+                else
+                {
+                    Program.UserConfig.LoginInfo.Email = form.tb_Mail.Text;
+                    Program.UserConfig.LoginInfo.Password = form.tb_Password.Text;
+                    Program.UserConfig.LoginInfo.RememberMe = true;
+                }
+                Program.UserConfig.Save(Program.UserConfigFilePath);
+            }
         }
 
-        private void LinkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void UpdaterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.reddit.com/r/projectceleste/");
+            var pname = Process.GetProcessesByName("spartan");
+            if (pname.Length > 0)
+            {
+                MsgBox.ShowMessage(@"Game is running, you need to close it first!");
+                return;
+            }
+
+            using (var form = new UpdaterForm())
+            {
+                form.ShowDialog();
+            }
         }
 
-        private void PictureBox1_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EZ3SSAJRRUYFY");
+            var pname = Process.GetProcessesByName("spartan");
+            if (pname.Length > 0)
+            {
+                MsgBox.ShowMessage(@"Game is running, you need to close it first!");
+                return;
+            }
+
+            using (var form = new GameScan())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void PictureBoxButtonCustom9_Click(object sender, EventArgs e)
+        {
+            var btnSender = (PictureBoxButtonCustom) sender;
+            var pt = new Point(btnSender.Bounds.Width + 1, btnSender.Bounds.Top);
+            cMS_Settings.Show(btnSender, pt);
+        }
+
+        private void PictureBoxButtonCustom7_Click(object sender, EventArgs e)
+        {
+            var btnSender = (PictureBoxButtonCustom) sender;
+            var pt = new Point(btnSender.Bounds.Width + 1, btnSender.Bounds.Top);
+            cMS_Account.Show(btnSender, pt);
+        }
+
+        private void ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            using (var form = new LanguageChooser())
+            {
+                var dr = form.ShowDialog();
+
+                if (dr != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    if (Program.UserConfig != null)
+                        Program.UserConfig.GameLanguage = form.SelectedLang;
+                    else
+                        Program.UserConfig = new UserConfig {GameLanguage = form.SelectedLang};
+                    Program.UserConfig.Save(Program.UserConfigFilePath);
+                }
+                catch (Exception)
+                {
+                    //
+                }
+            }
+        }
+
+        private void ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            using (var form = new MpSettingForm(Program.UserConfig.MpSettings))
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void ToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            using (var form = new ChangePwdForm())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

@@ -6,7 +6,8 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.Helpers;
+using Celeste_AOEO_Controls.MsgBox;
 
 #endregion
 
@@ -17,8 +18,10 @@ namespace Celeste_Launcher_Gui.Forms
         public NetworkDeviceSelectionDialog()
         {
             InitializeComponent();
+
+            SkinHelper.SetFont(Controls);
         }
-        
+
         public string SelectedInterfaceName { get; private set; }
 
         public IPAddress SelectedIpAddress { get; private set; }
@@ -49,6 +52,16 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void NetworkDeviceSelectionDialog_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 10, 10, 10));
+            }
+            catch (Exception)
+            {
+                //
+            }
+
             RefreshNetDevices();
         }
 
@@ -80,6 +93,12 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (SelectedIpAddress == null)
                 DialogResult = DialogResult.Cancel;
+        }
+
+        private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

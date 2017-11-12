@@ -4,8 +4,9 @@ using System;
 using System.Dynamic;
 using System.Reflection;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.Helpers;
 
 #endregion
 
@@ -33,7 +34,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Btn_Verify_Click(object sender, EventArgs e)
         {
-            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
+            if (!Misc.IsValideEmailAdress(tb_Mail.Text))
             {
                 MsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,7 +127,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Btn_Register_Click(object sender, EventArgs e)
         {
-            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
+            if (!Misc.IsValideEmailAdress(tb_Mail.Text))
             {
                 MsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -134,7 +135,7 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            if (!Celeste_User.Helpers.IsValideUserName(tb_UserName.Text))
+            if (!Misc.IsValideUserName(tb_UserName.Text))
             {
                 MsgBox.ShowMessage(
                     @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!",
@@ -159,7 +160,7 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
             }
 
-            if (!Celeste_User.Helpers.IsValidePassword(tb_Password.Text))
+            if (!Misc.IsValidePassword(tb_Password.Text))
             {
                 MsgBox.ShowMessage("Invalid password, character ' and \" are not allowed!",
                     @"Project Celeste -- Register",

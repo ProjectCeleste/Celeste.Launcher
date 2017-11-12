@@ -52,7 +52,8 @@ namespace Celeste_Launcher_Gui
         {
             var userConfig = XmlUtils.DeserializeFromFile<UserConfig>(path);
 
-            if (userConfig.MpSettings.IsOnline) return userConfig;
+            if (userConfig.MpSettings.IsOnline)
+                return userConfig;
 
             if (!string.IsNullOrEmpty(userConfig.MpSettings.LanNetworkInterface))
             {
@@ -73,10 +74,8 @@ namespace Celeste_Launcher_Gui
             }
 
             notfound:
-            var firstOrDefault = Dns.GetHostEntry(Dns.GetHostName()).AddressList
-                .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
-
-            userConfig.MpSettings.PublicIp = firstOrDefault?.ToString() ?? @"127.0.0.1";
+            //Fall back to wan
+            userConfig.MpSettings.IsOnline = true;
 
             return userConfig;
         }
@@ -85,16 +84,41 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "LoginInfo")]
     public class LoginInfo
     {
-        private string _uncryptedPassword;
+        private string _cryptedPassword = string.Empty;
+        private string _uncryptedPassword = string.Empty;
 
         [XmlElement(ElementName = "Email")]
         public string Email { get; set; }
 
         [XmlElement(ElementName = "Password")]
-        public string CryptedPassword { get; set; } = string.Empty;
+        public string CryptedPassword
+        {
+            get => _cryptedPassword;
+            set
+            {
+                _cryptedPassword = value;
+
+                if (!string.IsNullOrEmpty(_uncryptedPassword))
+                    return;
+
+                try
+                {
+                    _uncryptedPassword = string.IsNullOrEmpty(value)
+                        ? string.Empty
+                        : EncryptDecrypt.Decrypt(value, true);
+                }
+                catch (Exception)
+                {
+                    //
+                }
+            }
+        }
 
         [XmlElement(ElementName = "RememberMe")]
         public bool RememberMe { get; set; }
+
+        [XmlElement(ElementName = "AutoLogin")]
+        public bool AutoLogin { get; set; }
 
         [XmlIgnore]
         public string Password
@@ -139,6 +163,9 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "MpSettings")]
     public class MpSettings
     {
+        private string _publicIp;
+        private bool _autoPortMapping;
+
         //private int _publicPort;
 
         [XmlElement(ElementName = "isOnline")]
@@ -148,16 +175,24 @@ namespace Celeste_Launcher_Gui
         public string LanNetworkInterface { get; set; }
 
         [XmlElement(ElementName = "isAutoPortMapping")]
-        public bool AutoPortMapping { get; set; }
+        public bool AutoPortMapping
+        {
+            get => IsOnline && _autoPortMapping;
+            set => _autoPortMapping = value;
+        }
 
         [XmlIgnore]
-        public string PublicIp { get; set; } = "127.0.0.1";
-        //    {
-
-        //{
-        //public int PublicPort
+        public string PublicIp
+        {
+            get => string.IsNullOrEmpty(_publicIp) ? "127.0.0.1" : _publicIp;
+            set => _publicIp = value;
+        }
 
         //[XmlElement(ElementName = "PublicPort")]
+        //public int PublicPort
+
+        //{
+        //    {
         //        if (_publicPort != 0) return _publicPort;
 
         //        var rnd = new Random(DateTime.UtcNow.Millisecond);

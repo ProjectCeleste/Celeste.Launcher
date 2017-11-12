@@ -277,7 +277,7 @@
             this.MaximizeBox = false;
             this.Name = "ResetPwdForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Project Celeste -- Reset Password";
+            this.Text = "Celeste Fan Project";
             this.panel1.ResumeLayout(false);
             this.p_Verify.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
