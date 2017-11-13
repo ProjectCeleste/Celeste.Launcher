@@ -130,9 +130,6 @@
   <data name="FlagCNNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlagCNNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="no_avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\no-avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="DialogBoxSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DialogBoxSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,6 +157,9 @@
   <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BigOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BigOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="XButton_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XButton_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,11 +172,17 @@
   <data name="SettingsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SettingsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SmallOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SmallOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="RedditHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RedditHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FlagITNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlagITNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DialogBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DialogBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FlagUSNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlagUSNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,8 +193,8 @@
   <data name="FlagUSHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlagUSHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AvatarBorder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AvatarBorder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FlagDEHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlagDEHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DonateHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DonateHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,8 +217,8 @@
   <data name="AccountNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AccountNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FlagDEHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagDEHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MiddleOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MiddleOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CelesteWebsiteHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CelesteWebsiteHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,7 +244,7 @@
   <data name="FriendsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FriendsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DialogBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DialogBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LongOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LongOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

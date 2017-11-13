@@ -103,16 +103,6 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AvatarBorder {
-            get {
-                object obj = ResourceManager.GetObject("AvatarBorder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap BackgroundTexture {
             get {
                 object obj = ResourceManager.GetObject("BackgroundTexture", resourceCulture);
@@ -136,6 +126,16 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap BarSeparatorVertical {
             get {
                 object obj = ResourceManager.GetObject("BarSeparatorVertical", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BigOne {
+            get {
+                object obj = ResourceManager.GetObject("BigOne", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,9 +373,19 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap no_avatar {
+        internal static System.Drawing.Bitmap LongOne {
             get {
-                object obj = ResourceManager.GetObject("no_avatar", resourceCulture);
+                object obj = ResourceManager.GetObject("LongOne", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MiddleOne {
+            get {
+                object obj = ResourceManager.GetObject("MiddleOne", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -416,6 +426,16 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap SettingsNormal {
             get {
                 object obj = ResourceManager.GetObject("SettingsNormal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SmallOne {
+            get {
+                object obj = ResourceManager.GetObject("SmallOne", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

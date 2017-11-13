@@ -193,6 +193,16 @@ namespace Celeste_AOEO_Controls.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GamerCard {
+            get {
+                object obj = ResourceManager.GetObject("GamerCard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MiddleLeftFluid {
             get {
                 object obj = ResourceManager.GetObject("MiddleLeftFluid", resourceCulture);
@@ -286,6 +296,16 @@ namespace Celeste_AOEO_Controls.Properties {
         internal static System.Drawing.Bitmap NewsPrevNormal {
             get {
                 object obj = ResourceManager.GetObject("NewsPrevNormal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noAvatar {
+            get {
+                object obj = ResourceManager.GetObject("noAvatar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

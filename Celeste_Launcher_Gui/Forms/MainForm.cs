@@ -24,6 +24,9 @@ namespace Celeste_Launcher_Gui.Forms
 
             //
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
+
+            //
+            panelManager1.SelectedPanel = managedPanel2;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -196,7 +199,9 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void PictureBoxButtonCustom3_Click(object sender, EventArgs e)
         {
-            Process.Start("https://projectceleste.com");
+            var btnSender = (PictureBoxButtonCustom) sender;
+            var pt = new Point(btnSender.Bounds.Width + 1, btnSender.Bounds.Top);
+            cMS_ProjectCelesteCom.Show(btnSender, pt);
         }
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
@@ -216,7 +221,9 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void PictureBoxButtonCustom5_Click(object sender, EventArgs e)
         {
-            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EZ3SSAJRRUYFY");
+            var btnSender = (PictureBoxButtonCustom) sender;
+            var pt = new Point(btnSender.Bounds.Width + 1, btnSender.Bounds.Top);
+            cMS_Donate.Show(btnSender, pt);
         }
 
         private void CustomBtn1_Click(object sender, EventArgs e)
@@ -233,8 +240,8 @@ namespace Celeste_Launcher_Gui.Forms
 
                     Program.CurrentUser = form.CurrentUser;
 
-                    lbl_UserName.Text = $@"{Program.CurrentUser.ProfileName}";
-                    lbl_Rank.Text = $@"{Program.CurrentUser.Rank}";
+                    gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
+                    gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
 
                     panelManager1.SelectedPanel = managedPanel1;
                 }
@@ -372,7 +379,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
             //CleanUpFiles
             try
@@ -419,7 +426,84 @@ namespace Celeste_Launcher_Gui.Forms
 
             //Auto Login
 
+            if (Program.UserConfig?.LoginInfo == null)
+                return;
 
+            if (!Program.UserConfig.LoginInfo.AutoLogin)
+                return;
+
+            try
+            {
+                var response = await Program.WebSocketApi.DoLogin(Program.UserConfig.LoginInfo.Email,
+                    Program.UserConfig.LoginInfo.Password);
+
+                if (!response.Result)
+                    return;
+
+                //
+                Program.CurrentUser = response.RemoteUser;
+
+                gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
+                gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
+
+                panelManager1.SelectedPanel = managedPanel1;
+            }
+            catch (Exception)
+            {
+                //
+            }
+        }
+
+        private void DonateWithPayPalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EZ3SSAJRRUYFY");
+        }
+
+        private void MoreDonateOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://forums.projectceleste.com/donations/");
+        }
+
+        private void HomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://projectceleste.com");
+        }
+
+        private void ForumsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://forums.projectceleste.com");
+        }
+
+        private void LogOffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+            try
+            {
+                Program.WebSocketApi?.Disconnect();
+            }
+            catch
+            {
+                //
+            }
+            //
+
+            //Save UserConfig
+            if (Program.UserConfig?.LoginInfo != null)
+            {
+                Program.UserConfig.LoginInfo.AutoLogin = false;
+
+                try
+                {
+                    Program.UserConfig.Save(Program.UserConfigFilePath);
+                }
+                catch (Exception)
+                {
+                    //
+                }
+            }
+
+            //
+            panelManager1.SelectedPanel = managedPanel2;
         }
     }
 }

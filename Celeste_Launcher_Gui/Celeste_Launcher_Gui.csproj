@@ -199,10 +199,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\no-avatar.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\LongOne.png" />
+    <None Include="Resources\BigOne.png" />
+    <None Include="Resources\SmallOne.png" />
+    <None Include="Resources\MiddleOne.png" />
     <None Include="Resources\DialogBox.png" />
     <None Include="Resources\VersionNumberPlate.png" />
     <None Include="Resources\XButton_Hover.png" />
@@ -239,7 +240,6 @@
     <None Include="Resources\DiscordNormal.png" />
     <None Include="Resources\SettingsHover.png" />
     <None Include="Resources\SettingsNormal.png" />
-    <None Include="Resources\AvatarBorder.png" />
     <None Include="Resources\BarSeparatorVertical.png" />
     <None Include="Resources\BarSeparator.png" />
     <None Include="Resources\BackgroundTexture.png" />

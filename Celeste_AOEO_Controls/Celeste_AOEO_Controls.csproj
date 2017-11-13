@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -48,6 +49,12 @@
     </Compile>
     <Compile Include="CustomBtn.Designer.cs">
       <DependentUpon>CustomBtn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GamerCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GamerCard.Designer.cs">
+      <DependentUpon>GamerCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DWM.cs" />
     <Compile Include="MainContainer.cs">
@@ -92,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomBtn.resx">
       <DependentUpon>CustomBtn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GamerCard.resx">
+      <DependentUpon>GamerCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainContainer.resx">
       <DependentUpon>MainContainer.cs</DependentUpon>
@@ -177,9 +187,6 @@
     <None Include="Resources\BtnBigHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NewsBox.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\NewsPrevNormal.png" />
   </ItemGroup>
   <ItemGroup>
@@ -192,13 +199,7 @@
     <None Include="Resources\NewsNextHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\LatestNewsBox.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DialogBox.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Advisors3.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ForumsNews.png" />
@@ -208,6 +209,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NewBoxHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GamerCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-avatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
