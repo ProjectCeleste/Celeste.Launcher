@@ -72,12 +72,10 @@ namespace Celeste_Launcher_Gui.Forms
 
                     DialogResult = DialogResult.OK;
                     Close();
+                    return;
                 }
-                else
-                {
-                    MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

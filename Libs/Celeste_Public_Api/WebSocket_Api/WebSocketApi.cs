@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.WebSocket_Api.WebSocket;
@@ -13,48 +14,64 @@ namespace Celeste_Public_Api.WebSocket_Api
 {
     public class WebSocketApi
     {
+        private readonly ChangePwd _changePwd;
+
+        private readonly Client _client;
+
+        private readonly ForgotPwd _forgotPwd;
+
+        private readonly Login _login;
+
+        private readonly Register _register;
+
+        private readonly ResetPwd _resetPwd;
+
+        private readonly ValidMail _validMail;
+
         private readonly Version _version = new Version(2, 0, 0, 0);
+
+        private DateTime _lastActivity = DateTime.UtcNow.AddSeconds(120);
 
         private bool _loggedIn;
 
+        private LoginRequest _loginRequest;
+
         public WebSocketApi(string uri)
         {
-            Client = new Client(uri);
-            Login = new Login(Client);
-            ChangePwd = new ChangePwd(Client);
-            ForgotPwd = new ForgotPwd(Client);
-            ResetPwd = new ResetPwd(Client);
-            ValidMail = new ValidMail(Client);
-            Register = new Register(Client);
+            _client = new Client(uri);
+            _login = new Login(_client);
+            _changePwd = new ChangePwd(_client);
+            _forgotPwd = new ForgotPwd(_client);
+            _resetPwd = new ResetPwd(_client);
+            _validMail = new ValidMail(_client);
+            _register = new Register(_client);
         }
 
-        private Client Client { get; }
-
-        private Login Login { get; }
-
-        private LoginRequest LoginRequest { get; set; }
-
-        private ChangePwd ChangePwd { get; }
-
-        private ForgotPwd ForgotPwd { get; }
-
-        private ResetPwd ResetPwd { get; }
-
-        private ValidMail ValidMail { get; }
-
-        private Register Register { get; }
+        public bool Connected => _client?.State == ClientState.Connected;
 
         public bool LoggedIn
         {
-            get => Client?.State == ClientState.Connected && _loggedIn;
+            get => Connected && _loggedIn;
             private set => _loggedIn = value;
+        }
+
+        public async Task Connect()
+        {
+            if (_client.State != ClientState.Connected || _client.State != ClientState.Connecting)
+            {
+                await _client.DoConnect();
+                _lastActivity = DateTime.UtcNow;
+                StartDisconnectIdleSessionTimer();
+            }
         }
 
         public void Disconnect()
         {
             try
             {
-                Client?.Agent?.Close();
+                _loggedIn = false;
+                StopDisconnectIdleSessionTimer();
+                _client.Disconnect();
             }
             catch
             {
@@ -64,8 +81,10 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         public async Task<LoginResponse> DoLogin(string eMail, string password)
         {
-            if (Client.State != ClientState.Connected)
-                await Client.DoConnect();
+            if (_client.State != ClientState.Connected)
+                await _client.DoConnect();
+
+            _lastActivity = DateTime.UtcNow;
 
             var request = new LoginRequest
             {
@@ -75,17 +94,17 @@ namespace Celeste_Public_Api.WebSocket_Api
                 FingerPrint = FingerPrint.Value()
             };
 
-            var response = await Login.DoLogin(request);
+            var response = await _login.DoLogin(request);
 
             if (response.Result)
             {
                 LoggedIn = true;
-                LoginRequest = request;
+                _loginRequest = request;
             }
             else
             {
                 LoggedIn = false;
-                LoginRequest = null;
+                _loginRequest = null;
             }
 
             return response;
@@ -93,13 +112,15 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private async Task<LoginResponse> DoReLogin()
         {
-            if (LoginRequest == null)
-                return new LoginResponse {Result = false, Message = "Invalid login information!"};
+            if (_loginRequest == null)
+                return new LoginResponse {Result = false, Message = "Invalid stored login information!"};
 
-            if (Client.State != ClientState.Connected)
-                await Client.DoConnect();
+            if (_client.State != ClientState.Connected)
+                await _client.DoConnect();
 
-            var response = await Login.DoLogin(LoginRequest);
+            _lastActivity = DateTime.UtcNow;
+
+            var response = await _login.DoLogin(_loginRequest);
 
             if (response.Result)
             {
@@ -108,7 +129,7 @@ namespace Celeste_Public_Api.WebSocket_Api
             else
             {
                 LoggedIn = false;
-                LoginRequest = null;
+                _loginRequest = null;
             }
 
             return response;
@@ -116,6 +137,8 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         public async Task<ChangePwdResponse> DoChangePassword(string oldPwd, string newPwd)
         {
+            _lastActivity = DateTime.UtcNow;
+
             var request = new ChangePwdRequest
             {
                 Old = oldPwd,
@@ -123,19 +146,21 @@ namespace Celeste_Public_Api.WebSocket_Api
             };
 
             if (LoggedIn)
-                return await ChangePwd.DoChangePwd(request);
+                return await _changePwd.DoChangePwd(request);
 
             var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
                 return new ChangePwdResponse {Result = false, Message = loginResponse.Message};
 
-            return await ChangePwd.DoChangePwd(request);
+            return await _changePwd.DoChangePwd(request);
         }
 
         public async Task<ForgotPwdResponse> DoForgotPwd(string eMail)
         {
-            if (Client.State != ClientState.Connected)
-                await Client.DoConnect();
+            if (_client.State != ClientState.Connected)
+                await _client.DoConnect();
+
+            _lastActivity = DateTime.UtcNow;
 
             var request = new ForgotPwdRequest
             {
@@ -143,15 +168,17 @@ namespace Celeste_Public_Api.WebSocket_Api
                 EMail = eMail
             };
 
-            var response = await ForgotPwd.DoForgotPwd(request);
+            var response = await _forgotPwd.DoForgotPwd(request);
 
             return response;
         }
 
         public async Task<ResetPwdResponse> DoResetPwd(string eMail, string verifyKey)
         {
-            if (Client.State != ClientState.Connected)
-                await Client.DoConnect();
+            if (_client.State != ClientState.Connected)
+                await _client.DoConnect();
+
+            _lastActivity = DateTime.UtcNow;
 
             var request = new ResetPwdRequest
             {
@@ -160,15 +187,17 @@ namespace Celeste_Public_Api.WebSocket_Api
                 VerifyKey = verifyKey
             };
 
-            var response = await ResetPwd.DoResetPwd(request);
+            var response = await _resetPwd.DoResetPwd(request);
 
             return response;
         }
 
         public async Task<ValidMailResponse> DoValidMail(string eMail)
         {
-            if (Client.State != ClientState.Connected)
-                await Client.DoConnect();
+            if (_client.State != ClientState.Connected)
+                await _client.DoConnect();
+
+            _lastActivity = DateTime.UtcNow;
 
             var request = new ValidMailRequest
             {
@@ -176,15 +205,17 @@ namespace Celeste_Public_Api.WebSocket_Api
                 EMail = eMail
             };
 
-            var response = await ValidMail.DoValidMail(request);
+            var response = await _validMail.DoValidMail(request);
 
             return response;
         }
 
         public async Task<RegisterResponse> DoRegister(string eMail, string verifyKey, string username, string password)
         {
-            if (Client.State != ClientState.Connected)
-                await Client.DoConnect();
+            if (_client.State != ClientState.Connected)
+                await _client.DoConnect();
+
+            _lastActivity = DateTime.UtcNow;
 
             var request = new RegisterRequest
             {
@@ -196,9 +227,66 @@ namespace Celeste_Public_Api.WebSocket_Api
                 FingerPrint = FingerPrint.Value()
             };
 
-            var response = await Register.DoRegister(request);
+            var response = await _register.DoRegister(request);
 
             return response;
         }
+
+        #region Disconnect Idle Session
+
+        private const int TimerInterval = 5 * 60 * 1000; // Every 5 min
+
+        private const int TimeOutMs = 3 * 60 * 1000; // 3 min
+
+        private Timer _disconnectIdleSession;
+
+        private readonly object _disconnectIdleSessionSyncLock = new object();
+
+        private void StartDisconnectIdleSessionTimer()
+        {
+            if (!Monitor.TryEnter(_disconnectIdleSessionSyncLock))
+                return;
+
+            if (_disconnectIdleSession == null)
+            {
+                _disconnectIdleSession = new Timer(DisconnectIdleSession, new object(), TimerInterval, TimerInterval);
+            }
+
+            Monitor.Exit(_disconnectIdleSessionSyncLock);
+        }
+
+        private void StopDisconnectIdleSessionTimer()
+        {
+            if (_disconnectIdleSession == null)
+                return;
+
+            _disconnectIdleSession.Change(Timeout.Infinite, Timeout.Infinite);
+            _disconnectIdleSession.Dispose();
+            _disconnectIdleSession = null;
+        }
+
+        private void DisconnectIdleSession(object state)
+        {
+            if (!Monitor.TryEnter(state))
+                return;
+
+            try
+            {
+                var timeOut = DateTime.UtcNow.AddMilliseconds(TimeOutMs);
+
+                if (_lastActivity <= timeOut)
+                    Disconnect();
+            }
+            catch
+            {
+                //
+            }
+            finally
+            {
+                Monitor.Exit(state);
+            }
+        }
+
+        #endregion
     }
 }

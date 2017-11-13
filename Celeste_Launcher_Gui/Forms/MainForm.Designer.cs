@@ -31,27 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.p_UserInfo = new System.Windows.Forms.Panel();
-            this.newsSideShow1 = new Celeste_AOEO_Controls.NewsSideShow();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxButtonCustom3 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
-            this.pictureBoxButtonCustom2 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
-            this.pictureBoxButtonCustom4 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
-            this.pictureBoxButtonCustom5 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
-            this.pictureBoxButtonCustom1 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxButtonCustom8 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lb_Ver = new System.Windows.Forms.Label();
             this.panelManager1 = new Controls.PanelManager();
             this.managedPanel2 = new Controls.ManagedPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
-            this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.managedPanel1 = new Controls.ManagedPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -62,11 +53,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.pb_Avatar = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxButtonCustom7 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
-            this.pictureBoxButtonCustom9 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
-            this.pictureBoxButtonCustom6 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_Play = new Celeste_AOEO_Controls.CustomBtn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -80,19 +67,26 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.cMS_Account = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newsSideShow1 = new Celeste_AOEO_Controls.NewsSideShow();
+            this.pictureBoxButtonCustom3 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxButtonCustom2 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxButtonCustom4 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxButtonCustom5 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxButtonCustom1 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxButtonCustom8 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
+            this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
+            this.pictureBoxButtonCustom7 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxButtonCustom9 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.pictureBoxButtonCustom6 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.btn_Play = new Celeste_AOEO_Controls.CustomBtn();
             this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.p_UserInfo.SuspendLayout();
             this.panel8.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom8)).BeginInit();
             this.panel7.SuspendLayout();
             this.panelManager1.SuspendLayout();
             this.managedPanel2.SuspendLayout();
@@ -105,15 +99,21 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Avatar)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel9.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.cMS_Tools.SuspendLayout();
             this.cMS_Settings.SuspendLayout();
             this.cMS_Account.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).BeginInit();
             this.SuspendLayout();
             // 
             // p_UserInfo
@@ -132,26 +132,15 @@
             this.p_UserInfo.Size = new System.Drawing.Size(919, 509);
             this.p_UserInfo.TabIndex = 1;
             // 
-            // newsSideShow1
-            // 
-            this.newsSideShow1.BackColor = System.Drawing.Color.Transparent;
-            this.newsSideShow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.newsSideShow1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.newsSideShow1.Location = new System.Drawing.Point(33, 4);
-            this.newsSideShow1.Margin = new System.Windows.Forms.Padding(0);
-            this.newsSideShow1.Name = "newsSideShow1";
-            this.newsSideShow1.Size = new System.Drawing.Size(480, 255);
-            this.newsSideShow1.TabIndex = 3;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.tableLayoutPanel2);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel8.Location = new System.Drawing.Point(0, 262);
+            this.panel8.Location = new System.Drawing.Point(0, 281);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(546, 84);
+            this.panel8.Size = new System.Drawing.Size(546, 65);
             this.panel8.TabIndex = 68;
             // 
             // tableLayoutPanel2
@@ -176,103 +165,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(546, 84);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(546, 65);
             this.tableLayoutPanel2.TabIndex = 61;
-            // 
-            // pictureBoxButtonCustom3
-            // 
-            this.pictureBoxButtonCustom3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom3.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteHover;
-            this.pictureBoxButtonCustom3.Image = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteNormal;
-            this.pictureBoxButtonCustom3.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxButtonCustom3.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxButtonCustom3.Name = "pictureBoxButtonCustom3";
-            this.pictureBoxButtonCustom3.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteNormal;
-            this.pictureBoxButtonCustom3.ShowToolTip = true;
-            this.pictureBoxButtonCustom3.Size = new System.Drawing.Size(109, 84);
-            this.pictureBoxButtonCustom3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxButtonCustom3.TabIndex = 2;
-            this.pictureBoxButtonCustom3.TabStop = false;
-            this.pictureBoxButtonCustom3.ToolTipText = "ProjectCeleste.com";
-            this.pictureBoxButtonCustom3.Click += new System.EventHandler(this.PictureBoxButtonCustom3_Click);
-            // 
-            // pictureBoxButtonCustom2
-            // 
-            this.pictureBoxButtonCustom2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom2.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.RedditHover;
-            this.pictureBoxButtonCustom2.Image = global::Celeste_Launcher_Gui.Properties.Resources.RedditNormal;
-            this.pictureBoxButtonCustom2.Location = new System.Drawing.Point(218, 0);
-            this.pictureBoxButtonCustom2.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxButtonCustom2.Name = "pictureBoxButtonCustom2";
-            this.pictureBoxButtonCustom2.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.RedditNormal;
-            this.pictureBoxButtonCustom2.ShowToolTip = true;
-            this.pictureBoxButtonCustom2.Size = new System.Drawing.Size(109, 84);
-            this.pictureBoxButtonCustom2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxButtonCustom2.TabIndex = 1;
-            this.pictureBoxButtonCustom2.TabStop = false;
-            this.pictureBoxButtonCustom2.ToolTipText = "Join us on Reddit";
-            this.pictureBoxButtonCustom2.Click += new System.EventHandler(this.PictureBoxButtonCustom2_Click);
-            // 
-            // pictureBoxButtonCustom4
-            // 
-            this.pictureBoxButtonCustom4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom4.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBHover;
-            this.pictureBoxButtonCustom4.Image = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBNormal;
-            this.pictureBoxButtonCustom4.Location = new System.Drawing.Point(327, 0);
-            this.pictureBoxButtonCustom4.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxButtonCustom4.Name = "pictureBoxButtonCustom4";
-            this.pictureBoxButtonCustom4.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBNormal;
-            this.pictureBoxButtonCustom4.ShowToolTip = true;
-            this.pictureBoxButtonCustom4.Size = new System.Drawing.Size(109, 84);
-            this.pictureBoxButtonCustom4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxButtonCustom4.TabIndex = 3;
-            this.pictureBoxButtonCustom4.TabStop = false;
-            this.pictureBoxButtonCustom4.ToolTipText = "Aoeodb.net";
-            this.pictureBoxButtonCustom4.Click += new System.EventHandler(this.PictureBoxButtonCustom4_Click);
-            // 
-            // pictureBoxButtonCustom5
-            // 
-            this.pictureBoxButtonCustom5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom5.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DonateHover;
-            this.pictureBoxButtonCustom5.Image = global::Celeste_Launcher_Gui.Properties.Resources.DonateNormal;
-            this.pictureBoxButtonCustom5.Location = new System.Drawing.Point(436, 0);
-            this.pictureBoxButtonCustom5.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxButtonCustom5.Name = "pictureBoxButtonCustom5";
-            this.pictureBoxButtonCustom5.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.DonateNormal;
-            this.pictureBoxButtonCustom5.ShowToolTip = true;
-            this.pictureBoxButtonCustom5.Size = new System.Drawing.Size(110, 84);
-            this.pictureBoxButtonCustom5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxButtonCustom5.TabIndex = 4;
-            this.pictureBoxButtonCustom5.TabStop = false;
-            this.pictureBoxButtonCustom5.ToolTipText = "Donate";
-            this.pictureBoxButtonCustom5.Click += new System.EventHandler(this.PictureBoxButtonCustom5_Click);
-            // 
-            // pictureBoxButtonCustom1
-            // 
-            this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DiscordHover;
-            this.pictureBoxButtonCustom1.Image = global::Celeste_Launcher_Gui.Properties.Resources.DiscordNormal;
-            this.pictureBoxButtonCustom1.Location = new System.Drawing.Point(109, 0);
-            this.pictureBoxButtonCustom1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxButtonCustom1.Name = "pictureBoxButtonCustom1";
-            this.pictureBoxButtonCustom1.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.DiscordNormal;
-            this.pictureBoxButtonCustom1.ShowToolTip = true;
-            this.pictureBoxButtonCustom1.Size = new System.Drawing.Size(109, 84);
-            this.pictureBoxButtonCustom1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxButtonCustom1.TabIndex = 0;
-            this.pictureBoxButtonCustom1.TabStop = false;
-            this.pictureBoxButtonCustom1.ToolTipText = "Join us on Discord";
-            this.pictureBoxButtonCustom1.Click += new System.EventHandler(this.PictureBoxButtonCustom1_Click);
             // 
             // panel5
             // 
@@ -338,25 +232,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(346, 47);
             this.tableLayoutPanel3.TabIndex = 61;
-            // 
-            // pictureBoxButtonCustom8
-            // 
-            this.pictureBoxButtonCustom8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom8.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.ToolsHover;
-            this.pictureBoxButtonCustom8.Image = global::Celeste_Launcher_Gui.Properties.Resources.ToolsNormal;
-            this.pictureBoxButtonCustom8.Location = new System.Drawing.Point(266, 0);
-            this.pictureBoxButtonCustom8.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxButtonCustom8.Name = "pictureBoxButtonCustom8";
-            this.pictureBoxButtonCustom8.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.ToolsNormal;
-            this.pictureBoxButtonCustom8.ShowToolTip = true;
-            this.pictureBoxButtonCustom8.Size = new System.Drawing.Size(80, 47);
-            this.pictureBoxButtonCustom8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxButtonCustom8.TabIndex = 3;
-            this.pictureBoxButtonCustom8.TabStop = false;
-            this.pictureBoxButtonCustom8.ToolTipText = "Tools";
-            this.pictureBoxButtonCustom8.Click += new System.EventHandler(this.PictureBoxButtonCustom8_Click);
             // 
             // panel7
             // 
@@ -430,34 +305,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 270);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // customBtn1
-            // 
-            this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
-            this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn1.BtnText = "LOGIN";
-            this.customBtn1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn1.Location = new System.Drawing.Point(0, 155);
-            this.customBtn1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(346, 50);
-            this.customBtn1.TabIndex = 1;
-            this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
-            // 
-            // customBtn2
-            // 
-            this.customBtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn2.BackgroundImage")));
-            this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn2.BtnText = "REGISTER";
-            this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn2.Location = new System.Drawing.Point(0, 215);
-            this.customBtn2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.customBtn2.Name = "customBtn2";
-            this.customBtn2.Size = new System.Drawing.Size(346, 50);
-            this.customBtn2.TabIndex = 2;
-            this.customBtn2.Click += new System.EventHandler(this.CustomBtn2_Click);
             // 
             // pictureBox1
             // 
@@ -605,62 +452,6 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(1, 75);
             this.tableLayoutPanel8.TabIndex = 73;
             // 
-            // pictureBoxButtonCustom7
-            // 
-            this.pictureBoxButtonCustom7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom7.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom7.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AccountHover;
-            this.pictureBoxButtonCustom7.Image = global::Celeste_Launcher_Gui.Properties.Resources.AccountNormal;
-            this.pictureBoxButtonCustom7.Location = new System.Drawing.Point(-54, 5);
-            this.pictureBoxButtonCustom7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pictureBoxButtonCustom7.Name = "pictureBoxButtonCustom7";
-            this.pictureBoxButtonCustom7.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.AccountNormal;
-            this.pictureBoxButtonCustom7.ShowToolTip = true;
-            this.pictureBoxButtonCustom7.Size = new System.Drawing.Size(1, 65);
-            this.pictureBoxButtonCustom7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxButtonCustom7.TabIndex = 75;
-            this.pictureBoxButtonCustom7.TabStop = false;
-            this.pictureBoxButtonCustom7.ToolTipText = "Manage Account";
-            this.pictureBoxButtonCustom7.Click += new System.EventHandler(this.PictureBoxButtonCustom7_Click);
-            // 
-            // pictureBoxButtonCustom9
-            // 
-            this.pictureBoxButtonCustom9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom9.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.SettingsHover;
-            this.pictureBoxButtonCustom9.Image = global::Celeste_Launcher_Gui.Properties.Resources.SettingsNormal;
-            this.pictureBoxButtonCustom9.Location = new System.Drawing.Point(0, 5);
-            this.pictureBoxButtonCustom9.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pictureBoxButtonCustom9.Name = "pictureBoxButtonCustom9";
-            this.pictureBoxButtonCustom9.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.SettingsNormal;
-            this.pictureBoxButtonCustom9.ShowToolTip = true;
-            this.pictureBoxButtonCustom9.Size = new System.Drawing.Size(1, 65);
-            this.pictureBoxButtonCustom9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxButtonCustom9.TabIndex = 74;
-            this.pictureBoxButtonCustom9.TabStop = false;
-            this.pictureBoxButtonCustom9.ToolTipText = "Settings";
-            this.pictureBoxButtonCustom9.Click += new System.EventHandler(this.PictureBoxButtonCustom9_Click);
-            // 
-            // pictureBoxButtonCustom6
-            // 
-            this.pictureBoxButtonCustom6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBoxButtonCustom6.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.FriendsHover;
-            this.pictureBoxButtonCustom6.Image = global::Celeste_Launcher_Gui.Properties.Resources.FriendsNormal;
-            this.pictureBoxButtonCustom6.Location = new System.Drawing.Point(-108, 5);
-            this.pictureBoxButtonCustom6.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pictureBoxButtonCustom6.Name = "pictureBoxButtonCustom6";
-            this.pictureBoxButtonCustom6.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.FriendsNormal;
-            this.pictureBoxButtonCustom6.ShowToolTip = true;
-            this.pictureBoxButtonCustom6.Size = new System.Drawing.Size(110, 65);
-            this.pictureBoxButtonCustom6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxButtonCustom6.TabIndex = 73;
-            this.pictureBoxButtonCustom6.TabStop = false;
-            this.pictureBoxButtonCustom6.ToolTipText = "Friends (Soon)";
-            // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btn_Play);
@@ -671,19 +462,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1, 1);
             this.panel6.TabIndex = 74;
-            // 
-            // btn_Play
-            // 
-            this.btn_Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Play.BackgroundImage")));
-            this.btn_Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Play.BtnText = "PLAY";
-            this.btn_Play.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.btn_Play.Location = new System.Drawing.Point(60, 13);
-            this.btn_Play.Margin = new System.Windows.Forms.Padding(20);
-            this.btn_Play.Name = "btn_Play";
-            this.btn_Play.Size = new System.Drawing.Size(194, 47);
-            this.btn_Play.TabIndex = 0;
-            this.btn_Play.Click += new System.EventHandler(this.Btn_Play_Click);
             // 
             // panel1
             // 
@@ -823,6 +601,228 @@
             this.toolStripMenuItem4.Text = "Edit Password";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.ToolStripMenuItem4_Click);
             // 
+            // newsSideShow1
+            // 
+            this.newsSideShow1.BackColor = System.Drawing.Color.Transparent;
+            this.newsSideShow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.newsSideShow1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.newsSideShow1.Location = new System.Drawing.Point(60, 6);
+            this.newsSideShow1.Margin = new System.Windows.Forms.Padding(0);
+            this.newsSideShow1.Name = "newsSideShow1";
+            this.newsSideShow1.Size = new System.Drawing.Size(426, 269);
+            this.newsSideShow1.TabIndex = 72;
+            // 
+            // pictureBoxButtonCustom3
+            // 
+            this.pictureBoxButtonCustom3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom3.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteHover;
+            this.pictureBoxButtonCustom3.Image = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteNormal;
+            this.pictureBoxButtonCustom3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxButtonCustom3.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxButtonCustom3.Name = "pictureBoxButtonCustom3";
+            this.pictureBoxButtonCustom3.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteNormal;
+            this.pictureBoxButtonCustom3.ShowToolTip = true;
+            this.pictureBoxButtonCustom3.Size = new System.Drawing.Size(109, 65);
+            this.pictureBoxButtonCustom3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxButtonCustom3.TabIndex = 2;
+            this.pictureBoxButtonCustom3.TabStop = false;
+            this.pictureBoxButtonCustom3.ToolTipText = "ProjectCeleste.com";
+            this.pictureBoxButtonCustom3.Click += new System.EventHandler(this.PictureBoxButtonCustom3_Click);
+            // 
+            // pictureBoxButtonCustom2
+            // 
+            this.pictureBoxButtonCustom2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom2.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.RedditHover;
+            this.pictureBoxButtonCustom2.Image = global::Celeste_Launcher_Gui.Properties.Resources.RedditNormal;
+            this.pictureBoxButtonCustom2.Location = new System.Drawing.Point(218, 0);
+            this.pictureBoxButtonCustom2.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxButtonCustom2.Name = "pictureBoxButtonCustom2";
+            this.pictureBoxButtonCustom2.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.RedditNormal;
+            this.pictureBoxButtonCustom2.ShowToolTip = true;
+            this.pictureBoxButtonCustom2.Size = new System.Drawing.Size(109, 65);
+            this.pictureBoxButtonCustom2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxButtonCustom2.TabIndex = 1;
+            this.pictureBoxButtonCustom2.TabStop = false;
+            this.pictureBoxButtonCustom2.ToolTipText = "Join us on Reddit";
+            this.pictureBoxButtonCustom2.Click += new System.EventHandler(this.PictureBoxButtonCustom2_Click);
+            // 
+            // pictureBoxButtonCustom4
+            // 
+            this.pictureBoxButtonCustom4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom4.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBHover;
+            this.pictureBoxButtonCustom4.Image = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBNormal;
+            this.pictureBoxButtonCustom4.Location = new System.Drawing.Point(327, 0);
+            this.pictureBoxButtonCustom4.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxButtonCustom4.Name = "pictureBoxButtonCustom4";
+            this.pictureBoxButtonCustom4.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBNormal;
+            this.pictureBoxButtonCustom4.ShowToolTip = true;
+            this.pictureBoxButtonCustom4.Size = new System.Drawing.Size(109, 65);
+            this.pictureBoxButtonCustom4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxButtonCustom4.TabIndex = 3;
+            this.pictureBoxButtonCustom4.TabStop = false;
+            this.pictureBoxButtonCustom4.ToolTipText = "Aoeodb.net";
+            this.pictureBoxButtonCustom4.Click += new System.EventHandler(this.PictureBoxButtonCustom4_Click);
+            // 
+            // pictureBoxButtonCustom5
+            // 
+            this.pictureBoxButtonCustom5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom5.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DonateHover;
+            this.pictureBoxButtonCustom5.Image = global::Celeste_Launcher_Gui.Properties.Resources.DonateNormal;
+            this.pictureBoxButtonCustom5.Location = new System.Drawing.Point(436, 0);
+            this.pictureBoxButtonCustom5.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxButtonCustom5.Name = "pictureBoxButtonCustom5";
+            this.pictureBoxButtonCustom5.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.DonateNormal;
+            this.pictureBoxButtonCustom5.ShowToolTip = true;
+            this.pictureBoxButtonCustom5.Size = new System.Drawing.Size(110, 65);
+            this.pictureBoxButtonCustom5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxButtonCustom5.TabIndex = 4;
+            this.pictureBoxButtonCustom5.TabStop = false;
+            this.pictureBoxButtonCustom5.ToolTipText = "Donate";
+            this.pictureBoxButtonCustom5.Click += new System.EventHandler(this.PictureBoxButtonCustom5_Click);
+            // 
+            // pictureBoxButtonCustom1
+            // 
+            this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DiscordHover;
+            this.pictureBoxButtonCustom1.Image = global::Celeste_Launcher_Gui.Properties.Resources.DiscordNormal;
+            this.pictureBoxButtonCustom1.Location = new System.Drawing.Point(109, 0);
+            this.pictureBoxButtonCustom1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxButtonCustom1.Name = "pictureBoxButtonCustom1";
+            this.pictureBoxButtonCustom1.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.DiscordNormal;
+            this.pictureBoxButtonCustom1.ShowToolTip = true;
+            this.pictureBoxButtonCustom1.Size = new System.Drawing.Size(109, 65);
+            this.pictureBoxButtonCustom1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxButtonCustom1.TabIndex = 0;
+            this.pictureBoxButtonCustom1.TabStop = false;
+            this.pictureBoxButtonCustom1.ToolTipText = "Join us on Discord";
+            this.pictureBoxButtonCustom1.Click += new System.EventHandler(this.PictureBoxButtonCustom1_Click);
+            // 
+            // pictureBoxButtonCustom8
+            // 
+            this.pictureBoxButtonCustom8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom8.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.ToolsHover;
+            this.pictureBoxButtonCustom8.Image = global::Celeste_Launcher_Gui.Properties.Resources.ToolsNormal;
+            this.pictureBoxButtonCustom8.Location = new System.Drawing.Point(266, 0);
+            this.pictureBoxButtonCustom8.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxButtonCustom8.Name = "pictureBoxButtonCustom8";
+            this.pictureBoxButtonCustom8.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.ToolsNormal;
+            this.pictureBoxButtonCustom8.ShowToolTip = true;
+            this.pictureBoxButtonCustom8.Size = new System.Drawing.Size(80, 47);
+            this.pictureBoxButtonCustom8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxButtonCustom8.TabIndex = 3;
+            this.pictureBoxButtonCustom8.TabStop = false;
+            this.pictureBoxButtonCustom8.ToolTipText = "Tools";
+            this.pictureBoxButtonCustom8.Click += new System.EventHandler(this.PictureBoxButtonCustom8_Click);
+            // 
+            // customBtn1
+            // 
+            this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
+            this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customBtn1.BtnText = "LOGIN";
+            this.customBtn1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customBtn1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.customBtn1.Location = new System.Drawing.Point(0, 155);
+            this.customBtn1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.customBtn1.Name = "customBtn1";
+            this.customBtn1.Size = new System.Drawing.Size(346, 50);
+            this.customBtn1.TabIndex = 1;
+            this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
+            // 
+            // customBtn2
+            // 
+            this.customBtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn2.BackgroundImage")));
+            this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customBtn2.BtnText = "REGISTER";
+            this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customBtn2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.customBtn2.Location = new System.Drawing.Point(0, 215);
+            this.customBtn2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.customBtn2.Name = "customBtn2";
+            this.customBtn2.Size = new System.Drawing.Size(346, 50);
+            this.customBtn2.TabIndex = 2;
+            this.customBtn2.Click += new System.EventHandler(this.CustomBtn2_Click);
+            // 
+            // pictureBoxButtonCustom7
+            // 
+            this.pictureBoxButtonCustom7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom7.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom7.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AccountHover;
+            this.pictureBoxButtonCustom7.Image = global::Celeste_Launcher_Gui.Properties.Resources.AccountNormal;
+            this.pictureBoxButtonCustom7.Location = new System.Drawing.Point(-54, 5);
+            this.pictureBoxButtonCustom7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pictureBoxButtonCustom7.Name = "pictureBoxButtonCustom7";
+            this.pictureBoxButtonCustom7.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.AccountNormal;
+            this.pictureBoxButtonCustom7.ShowToolTip = true;
+            this.pictureBoxButtonCustom7.Size = new System.Drawing.Size(1, 65);
+            this.pictureBoxButtonCustom7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxButtonCustom7.TabIndex = 75;
+            this.pictureBoxButtonCustom7.TabStop = false;
+            this.pictureBoxButtonCustom7.ToolTipText = "Manage Account";
+            this.pictureBoxButtonCustom7.Click += new System.EventHandler(this.PictureBoxButtonCustom7_Click);
+            // 
+            // pictureBoxButtonCustom9
+            // 
+            this.pictureBoxButtonCustom9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom9.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.SettingsHover;
+            this.pictureBoxButtonCustom9.Image = global::Celeste_Launcher_Gui.Properties.Resources.SettingsNormal;
+            this.pictureBoxButtonCustom9.Location = new System.Drawing.Point(0, 5);
+            this.pictureBoxButtonCustom9.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pictureBoxButtonCustom9.Name = "pictureBoxButtonCustom9";
+            this.pictureBoxButtonCustom9.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.SettingsNormal;
+            this.pictureBoxButtonCustom9.ShowToolTip = true;
+            this.pictureBoxButtonCustom9.Size = new System.Drawing.Size(1, 65);
+            this.pictureBoxButtonCustom9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxButtonCustom9.TabIndex = 74;
+            this.pictureBoxButtonCustom9.TabStop = false;
+            this.pictureBoxButtonCustom9.ToolTipText = "Settings";
+            this.pictureBoxButtonCustom9.Click += new System.EventHandler(this.PictureBoxButtonCustom9_Click);
+            // 
+            // pictureBoxButtonCustom6
+            // 
+            this.pictureBoxButtonCustom6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxButtonCustom6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom6.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.FriendsHover;
+            this.pictureBoxButtonCustom6.Image = global::Celeste_Launcher_Gui.Properties.Resources.FriendsNormal;
+            this.pictureBoxButtonCustom6.Location = new System.Drawing.Point(-108, 5);
+            this.pictureBoxButtonCustom6.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pictureBoxButtonCustom6.Name = "pictureBoxButtonCustom6";
+            this.pictureBoxButtonCustom6.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.FriendsNormal;
+            this.pictureBoxButtonCustom6.ShowToolTip = true;
+            this.pictureBoxButtonCustom6.Size = new System.Drawing.Size(110, 65);
+            this.pictureBoxButtonCustom6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxButtonCustom6.TabIndex = 73;
+            this.pictureBoxButtonCustom6.TabStop = false;
+            this.pictureBoxButtonCustom6.ToolTipText = "Friends (Soon)";
+            // 
+            // btn_Play
+            // 
+            this.btn_Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Play.BackgroundImage")));
+            this.btn_Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Play.BtnText = "PLAY";
+            this.btn_Play.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btn_Play.Location = new System.Drawing.Point(60, 13);
+            this.btn_Play.Margin = new System.Windows.Forms.Padding(20);
+            this.btn_Play.Name = "btn_Play";
+            this.btn_Play.Size = new System.Drawing.Size(194, 47);
+            this.btn_Play.TabIndex = 0;
+            this.btn_Play.Click += new System.EventHandler(this.Btn_Play_Click);
+            // 
             // mainContainer1
             // 
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
@@ -853,18 +853,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Celeste Fan Project";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.p_UserInfo.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom8)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panelManager1.ResumeLayout(false);
             this.managedPanel2.ResumeLayout(false);
@@ -877,9 +872,6 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_Avatar)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -887,6 +879,15 @@
             this.cMS_Tools.ResumeLayout(false);
             this.cMS_Settings.ResumeLayout(false);
             this.cMS_Account.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).EndInit();
             this.ResumeLayout(false);
 
         }

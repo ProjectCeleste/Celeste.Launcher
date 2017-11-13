@@ -22,49 +22,6 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //CleanUpFiles
-            try
-            {
-                UpdaterForm.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
-            }
-            catch (Exception e)
-            {
-                MsgBox.ShowMessage(
-                    $"Warning: Error during files clean-up. Error message: {e.Message}",
-                    @"Project Celeste",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            //Update Check
-            try
-            {
-                if (!UpdaterForm.IsLatestVersion())
-                {
-                    using (var form =
-                        new MsgBoxYesNo(
-                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to close the launcher."))
-                    {
-                        var dr = form.ShowDialog();
-                        if (dr != DialogResult.OK)
-                            Environment.Exit(0);
-                    }
-
-                    using (var form = new UpdaterForm())
-                    {
-                        form.ShowDialog();
-                    }
-
-                    Environment.Exit(0);
-                }
-            }
-            catch (Exception e)
-            {
-                MsgBox.ShowMessage(
-                    $"Warning: Error during update check. Error message: {e.Message}",
-                    @"Project Celeste",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
             //
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
         }
@@ -413,6 +370,56 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 form.ShowDialog();
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //CleanUpFiles
+            try
+            {
+                UpdaterForm.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+            }
+            catch (Exception ex)
+            {
+                MsgBox.ShowMessage(
+                    $"Warning: Error during files clean-up. Error message: {ex.Message}",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //Update Check
+            try
+            {
+                if (!UpdaterForm.IsLatestVersion())
+                {
+                    using (var form =
+                        new MsgBoxYesNo(
+                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to close the launcher."))
+                    {
+                        var dr = form.ShowDialog();
+                        if (dr != DialogResult.OK)
+                            Environment.Exit(0);
+                    }
+
+                    using (var form = new UpdaterForm())
+                    {
+                        form.ShowDialog();
+                    }
+
+                    Environment.Exit(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                MsgBox.ShowMessage(
+                    $"Warning: Error during update check. Error message: {ex.Message}",
+                    @"Project Celeste",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //Auto Login
+
+
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 
             RequestState = RequestState.InProgress;
 
-            WebSocketClient.Agent.Query<dynamic>(CmdName, (object) content, OnDataExchange);
+            WebSocketClient.Query<dynamic>(CmdName, (object) content, OnDataExchange);
 
             var starttime = DateTime.UtcNow;
             while (RequestState == RequestState.InProgress && WebSocketClient.State == ClientState.Connected)

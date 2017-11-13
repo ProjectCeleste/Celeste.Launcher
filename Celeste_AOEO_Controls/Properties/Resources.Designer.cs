@@ -61,16 +61,6 @@ namespace Celeste_AOEO_Controls.Properties {
         }
         
         /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Advisors3 {
-            get {
-                object obj = ResourceManager.GetObject("Advisors3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
         internal static byte[] Ashley_Crawford_CG_1 {
@@ -203,16 +193,6 @@ namespace Celeste_AOEO_Controls.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LatestNewsBox {
-            get {
-                object obj = ResourceManager.GetObject("LatestNewsBox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap MiddleLeftFluid {
             get {
                 object obj = ResourceManager.GetObject("MiddleLeftFluid", resourceCulture);
@@ -266,16 +246,6 @@ namespace Celeste_AOEO_Controls.Properties {
         internal static System.Drawing.Bitmap NewBoxHeader {
             get {
                 object obj = ResourceManager.GetObject("NewBoxHeader", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap NewsBox {
-            get {
-                object obj = ResourceManager.GetObject("NewsBox", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

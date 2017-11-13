@@ -49,7 +49,8 @@ namespace Celeste_Launcher_Gui.Forms
                             {
                                 Email = tb_Mail.Text,
                                 Password = tb_Password.Text,
-                                RememberMe = cb_RememberMe.Checked
+                                RememberMe = cb_RememberMe.Checked,
+                                AutoLogin = cB_AutoLogin.Checked
                             }
                         };
                     }
@@ -58,18 +59,25 @@ namespace Celeste_Launcher_Gui.Forms
                         Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
                         Program.UserConfig.LoginInfo.Password = tb_Password.Text;
                         Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                        Program.UserConfig.LoginInfo.AutoLogin = cB_AutoLogin.Checked;
                     }
-                    Program.UserConfig.Save(Program.UserConfigFilePath);
+
+                    try
+                    {
+                        Program.UserConfig.Save(Program.UserConfigFilePath);
+                    }
+                    catch (Exception)
+                    {
+                        //
+                    }
 
                     //
                     DialogResult = DialogResult.OK;
                     Close();
+                    return;
                 }
-                else
-                {
-                    MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
@@ -111,6 +119,13 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 //
             }
+        }
+
+        private void Cb_RememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            cB_AutoLogin.Enabled = cb_RememberMe.Checked;
+            if (!cb_RememberMe.Checked)
+                cB_AutoLogin.Checked = false;
         }
     }
 }

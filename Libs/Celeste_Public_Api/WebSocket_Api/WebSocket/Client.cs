@@ -14,22 +14,20 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 {
     public class Client
     {
-        public const int TimeOut = 30;
+        public const int TimeOut = 30; //30 Seconds
+
+        private readonly string _uri;
+
+        private Agent _agent;
 
         private string _errorMessage;
 
         private ClientState _state = ClientState.Offline;
 
-        private string _uri;
-
-        internal Client(string uri)
+        public Client(string uri)
         {
             _uri = uri;
-            State = ClientState.Connecting;
-            InitializeWebSocket();
         }
-
-        public Agent Agent { get; private set; }
 
         public string ErrorMessage
         {
@@ -57,18 +55,35 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
         {
             try
             {
-                Agent = new Agent(_uri);
+                _agent = new Agent(_uri);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Invalid server URI ({_uri}).Exception: {ex.Message}");
+            }
+
+            _agent.Security.AllowUnstrustedCertificate = true;
+
+            _agent.Closed += WebSocket_Closed;
+            _agent.Error += WebSocket_Error;
+            _agent.Opened += WebSocket_Opened;
+        }
+
+        public string Query<T>(string name, object content, Action<T> executor)
+        {
+            return _agent.Query(name, content, executor);
+        }
+
+        public void Disconnect()
+        {
+            try
+            {
+                _agent.Close();
             }
             catch (Exception)
             {
-                throw new Exception($"Invalid server URI ({_uri})!");
+                //
             }
-
-            Agent.Security.AllowUnstrustedCertificate = true;
-
-            Agent.Closed += WebSocket_Closed;
-            Agent.Error += WebSocket_Error;
-            Agent.Opened += WebSocket_Opened;
         }
 
         public async Task DoConnect()
@@ -76,12 +91,11 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
             if (_state == ClientState.Connected)
                 return;
 
-            if (Agent == null || Agent.State == WebSocketState.Closed)
-                InitializeWebSocket();
+            InitializeWebSocket();
 
             State = ClientState.Connecting;
 
-            Agent.Open();
+            _agent.Open();
 
             var starttime = DateTime.UtcNow;
             while (State == ClientState.Connecting)
@@ -123,7 +137,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
             else
                 ErrorMessage = e.Exception.StackTrace;
 
-            if (Agent.State != WebSocketState.None ||
+            if (_agent.State != WebSocketState.None ||
                 State != ClientState.Connecting) return;
 
             State = ClientState.Offline;
