@@ -192,7 +192,8 @@ namespace Celeste_Public_Api.WebSocket_Api
                 Mail = eMail,
                 VerifyKey = verifyKey,
                 UserName = username,
-                Password = password
+                Password = password,
+                FingerPrint = FingerPrint.Value()
             };
 
             var response = await Register.DoRegister(request);
