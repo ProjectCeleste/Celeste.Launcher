@@ -1,11 +1,12 @@
 ﻿#region Using directives
 
 using System.Collections.Generic;
-using Celeste_Public_Api.Server_Api.Models.User.Enum;
+using Celeste_Public_Api.WebSocket_Api.Models.UserExt;
+using Celeste_Public_Api.WebSocket_Api.Models.UserExt.Enum;
 
 #endregion
 
-namespace Celeste_Public_Api.Server_Api.Models.User
+namespace Celeste_Public_Api.WebSocket_Api.Models
 {
     public class RemoteUser
     {

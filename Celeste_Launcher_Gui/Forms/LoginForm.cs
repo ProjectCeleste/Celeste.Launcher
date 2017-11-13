@@ -4,7 +4,7 @@ using System;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
-using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.WebSocket_Api.Models;
 
 #endregion
 
@@ -26,101 +26,58 @@ namespace Celeste_Launcher_Gui.Forms
             cb_RememberMe.Checked = Program.UserConfig.LoginInfo.RememberMe;
         }
 
-        private void Btn_Login_Click(object sender, EventArgs e)
-        {
-            if (!Misc.IsValideEmailAdress(tb_Mail.Text))
-            {
-                MsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+        public RemoteUser CurrentUser { get; private set; }
 
-            if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
-            {
-                MsgBox.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
-                    @"Project Celeste -- Login",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DoLoggedIn(tb_Mail.Text, tb_Password.Text);
-        }
-
-        public void DoLoggedIn(string email, string password)
+        private async void Btn_Login_Click(object sender, EventArgs e)
         {
             Enabled = false;
             try
             {
-                Program.WebSocketClient.StartConnect(true, email, password);
+                var response = await Program.WebSocketApi.DoLogin(tb_Mail.Text, tb_Password.Text);
 
-                //Save UserConfig
-                if (Program.UserConfig == null)
+                if (response.Result)
                 {
-                    Program.UserConfig = new UserConfig
+                    //
+                    CurrentUser = response.RemoteUser;
+
+                    //Save UserConfig
+                    if (Program.UserConfig == null)
                     {
-                        LoginInfo = new LoginInfo
+                        Program.UserConfig = new UserConfig
                         {
-                            Email = tb_Mail.Text,
-                            Password = tb_Password.Text,
-                            RememberMe = cb_RememberMe.Checked
-                        }
-                    };
+                            LoginInfo = new LoginInfo
+                            {
+                                Email = tb_Mail.Text,
+                                Password = tb_Password.Text,
+                                RememberMe = cb_RememberMe.Checked
+                            }
+                        };
+                    }
+                    else
+                    {
+                        Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
+                        Program.UserConfig.LoginInfo.Password = tb_Password.Text;
+                        Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                    }
+                    Program.UserConfig.Save(Program.UserConfigFilePath);
+
+                    //
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
                 else
                 {
-                    Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
-                    Program.UserConfig.LoginInfo.Password = tb_Password.Text;
-                    Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                    MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                Program.UserConfig.Save(Program.UserConfigFilePath);
-
-                DialogResult = DialogResult.OK;
-                Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Login",
+                MsgBox.ShowMessage($"Error: {ex.Message}", @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Enabled = true;
-        }
-
-        private void UpdaterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var form = new UpdaterForm())
-                {
-                    form.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.ShowMessage(
-                    $"Warning: Error with updater. Error message: {ex.Message}",
-                    @"Project Celeste",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var form = new GameScan())
-                {
-                    form.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.ShowMessage(
-                    $"Warning: Error with Game Scan. Error message: {ex.Message}",
-                    @"Project Celeste",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void LinkLbl_ForgotPwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml" />
     <Reference Include="WebSocket4Net, Version=0.15.0.9, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\WebSocket4Net.0.15.0\lib\net45\WebSocket4Net.dll</HintPath>
@@ -52,28 +53,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameScanner_Api\Models\FileInfo.cs" />
-    <Compile Include="GameScanner_Api\GameScannner.cs" />
+    <Compile Include="GameScanner_Api\GameScannnerApi.cs" />
     <Compile Include="GameScanner_Api\Models\FilesInfo.cs" />
     <Compile Include="GameScanner_Api\Models\ScanAndRepairFileProgress.cs" />
     <Compile Include="GameScanner_Api\Models\ScanAndRepairProgress.cs" />
     <Compile Include="Helpers\DownloadFileUtils.cs" />
     <Compile Include="Helpers\Crc32Utils.cs" />
+    <Compile Include="Helpers\FingerPrint.cs" />
     <Compile Include="Helpers\Misc.cs" />
     <Compile Include="Helpers\XmlUtils.cs" />
     <Compile Include="Helpers\ZipUtils.cs" />
-    <Compile Include="Logger\Log.cs" />
+    <Compile Include="GameScanner_Api\Models\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Server_Api\Models\User\Friend.cs" />
-    <Compile Include="Server_Api\Models\User\ExUser.cs" />
-    <Compile Include="Server_Api\Models\User\Enum\Rank.cs" />
-    <Compile Include="Server_Api\WebSocket\Packet\Request\LoginRequest.cs" />
-    <Compile Include="Server_Api\WebSocket\Packet\Response\LoginResponse.cs" />
-    <Compile Include="Server_Api\WebSocket\Enum\ClientState.cs" />
-    <Compile Include="Server_Api\WebSocket\Enum\RequestState.cs" />
-    <Compile Include="Server_Api\WebSocket\Agent.cs" />
-    <Compile Include="Server_Api\WebSocket\Command\Login.cs" />
-    <Compile Include="Server_Api\WebSocket\Client.cs" />
-    <Compile Include="Server_Api\Server.cs" />
+    <Compile Include="WebSocket_Api\Models\UserExt\Friend.cs" />
+    <Compile Include="WebSocket_Api\Models\User.cs" />
+    <Compile Include="WebSocket_Api\Models\UserExt\Enum\Rank.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\Register.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\ValidMail.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\ForgotPwd.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\ResetPwd.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\ChangePwd.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\DataExchange.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Enum\ClientState.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Enum\RequestState.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Agent.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\Login.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Client.cs" />
+    <Compile Include="WebSocket_Api\WebSocketApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

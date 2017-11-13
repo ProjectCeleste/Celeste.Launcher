@@ -2,7 +2,6 @@
 
 using System;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
 using Celeste_AOEO_Controls.Helpers;
 
 #endregion

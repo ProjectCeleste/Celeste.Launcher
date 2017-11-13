@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.GameScanner_Api.Models;
 using Celeste_Public_Api.Helpers;
-using Celeste_Public_Api.Logger;
 using FileInfo = Celeste_Public_Api.GameScanner_Api.Models.FileInfo;
 
 #endregion

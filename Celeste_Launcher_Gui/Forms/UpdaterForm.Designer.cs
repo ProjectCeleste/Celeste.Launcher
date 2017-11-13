@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdaterForm));
-            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSmall1 = new Celeste_AOEO_Controls.CustomBtn();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -43,6 +42,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_LatestV = new System.Windows.Forms.Label();
             this.lbl_CurrentV = new System.Windows.Forms.Label();
+            this.boxContainer1 = new Celeste_AOEO_Controls.BoxContainer();
             this.panel1.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -50,20 +50,6 @@
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mainContainer1
-            // 
-            this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
-            this.mainContainer1.CloseButton = true;
-            this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.mainContainer1.Location = new System.Drawing.Point(0, 0);
-            this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.mainContainer1.MinimizeBox = false;
-            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
-            this.mainContainer1.Name = "mainContainer1";
-            this.mainContainer1.Size = new System.Drawing.Size(758, 572);
-            this.mainContainer1.TabIndex = 12;
             // 
             // panel1
             // 
@@ -107,7 +93,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Ashley Crawford CG", 15.75F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(700, 75);
@@ -232,6 +218,19 @@
             this.lbl_CurrentV.Text = "Current Version: v0.0.0.0";
             this.lbl_CurrentV.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // boxContainer1
+            // 
+            this.boxContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.boxContainer1.CloseButton = true;
+            this.boxContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boxContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
+            this.boxContainer1.Location = new System.Drawing.Point(0, 0);
+            this.boxContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.boxContainer1.MinimumSize = new System.Drawing.Size(310, 250);
+            this.boxContainer1.Name = "boxContainer1";
+            this.boxContainer1.Size = new System.Drawing.Size(758, 572);
+            this.boxContainer1.TabIndex = 15;
+            // 
             // UpdaterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -240,7 +239,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(758, 572);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.mainContainer1);
+            this.Controls.Add(this.boxContainer1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -261,7 +260,6 @@
         }
 
         #endregion
-        private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel15;
@@ -275,5 +273,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lbl_LatestV;
         private System.Windows.Forms.Label lbl_CurrentV;
+        private Celeste_AOEO_Controls.BoxContainer boxContainer1;
     }
 }

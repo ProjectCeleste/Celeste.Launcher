@@ -3,6 +3,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using Celeste_Public_Api.Helpers;
 
 #endregion
 

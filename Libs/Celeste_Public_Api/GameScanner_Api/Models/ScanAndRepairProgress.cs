@@ -1,7 +1,6 @@
 #region Using directives
 
 using System;
-using Celeste_Public_Api.Logger;
 
 #endregion
 

@@ -8,7 +8,6 @@ using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.GameScanner_Api.Models;
 using Celeste_Public_Api.Helpers;
-using Celeste_Public_Api.Logger;
 
 #endregion
 

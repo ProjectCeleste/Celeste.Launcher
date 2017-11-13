@@ -4,13 +4,13 @@ using System;
 using System.ComponentModel;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using Celeste_Public_Api.Server_Api.WebSocket.Enum;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
 using SuperSocket.ClientEngine;
 using WebSocket4Net;
 
 #endregion
 
-namespace Celeste_Public_Api.Server_Api.WebSocket
+namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 {
     public class Client
     {
@@ -18,14 +18,15 @@ namespace Celeste_Public_Api.Server_Api.WebSocket
 
         private string _errorMessage;
 
-        private ClientState _state  = ClientState.Offline;
+        private ClientState _state = ClientState.Offline;
 
         private string _uri;
 
         internal Client(string uri)
         {
+            _uri = uri;
             State = ClientState.Connecting;
-            InitializeWebSocket(uri);
+            InitializeWebSocket();
         }
 
         public Agent Agent { get; private set; }
@@ -52,9 +53,8 @@ namespace Celeste_Public_Api.Server_Api.WebSocket
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void InitializeWebSocket(string uri)
+        private void InitializeWebSocket()
         {
-            _uri = uri;
             try
             {
                 Agent = new Agent(_uri);
@@ -77,7 +77,7 @@ namespace Celeste_Public_Api.Server_Api.WebSocket
                 return;
 
             if (Agent == null || Agent.State == WebSocketState.Closed)
-                InitializeWebSocket(_uri);
+                InitializeWebSocket();
 
             State = ClientState.Connecting;
 
@@ -96,7 +96,7 @@ namespace Celeste_Public_Api.Server_Api.WebSocket
             }
 
             if (State != ClientState.Connected)
-                throw new Exception($"Server Offline!");
+                throw new Exception("Server Offline!");
 
             await Task.Delay(200).ConfigureAwait(false);
         }

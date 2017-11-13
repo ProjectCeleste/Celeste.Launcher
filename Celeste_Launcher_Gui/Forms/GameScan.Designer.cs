@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameScan));
-            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbl_GlobalProgress = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.boxContainer1 = new Celeste_AOEO_Controls.BoxContainer();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -70,20 +70,6 @@
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mainContainer1
-            // 
-            this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
-            this.mainContainer1.CloseButton = true;
-            this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.mainContainer1.Location = new System.Drawing.Point(0, 0);
-            this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.mainContainer1.MinimizeBox = false;
-            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
-            this.mainContainer1.Name = "mainContainer1";
-            this.mainContainer1.Size = new System.Drawing.Size(808, 504);
-            this.mainContainer1.TabIndex = 12;
             // 
             // panel1
             // 
@@ -191,7 +177,7 @@
             // 
             this.lbl_ProgressDetail.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ProgressDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_ProgressDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ProgressDetail.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.lbl_ProgressDetail.Location = new System.Drawing.Point(3, 82);
             this.lbl_ProgressDetail.Name = "lbl_ProgressDetail";
             this.lbl_ProgressDetail.Size = new System.Drawing.Size(392, 41);
@@ -203,7 +189,7 @@
             // 
             this.lbl_ProgressTitle.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ProgressTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_ProgressTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ProgressTitle.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
             this.lbl_ProgressTitle.Location = new System.Drawing.Point(3, 0);
             this.lbl_ProgressTitle.Name = "lbl_ProgressTitle";
             this.lbl_ProgressTitle.Size = new System.Drawing.Size(392, 41);
@@ -420,6 +406,19 @@
             this.panel3.Size = new System.Drawing.Size(27, 408);
             this.panel3.TabIndex = 61;
             // 
+            // boxContainer1
+            // 
+            this.boxContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.boxContainer1.CloseButton = true;
+            this.boxContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.boxContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 9F);
+            this.boxContainer1.Location = new System.Drawing.Point(0, 0);
+            this.boxContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.boxContainer1.MinimumSize = new System.Drawing.Size(310, 250);
+            this.boxContainer1.Name = "boxContainer1";
+            this.boxContainer1.Size = new System.Drawing.Size(808, 504);
+            this.boxContainer1.TabIndex = 14;
+            // 
             // GameScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -428,7 +427,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(808, 504);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.mainContainer1);
+            this.Controls.Add(this.boxContainer1);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -457,7 +456,6 @@
         }
 
         #endregion
-        private Celeste_AOEO_Controls.MainContainer mainContainer1;
         private System.Windows.Forms.Panel panel1;
         private Celeste_AOEO_Controls.CustomBtn btnRunScan;
         private System.Windows.Forms.Panel panel3;
@@ -486,5 +484,6 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel11;
+        private Celeste_AOEO_Controls.BoxContainer boxContainer1;
     }
 }

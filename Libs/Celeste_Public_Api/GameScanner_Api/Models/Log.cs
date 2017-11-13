@@ -1,4 +1,4 @@
-﻿namespace Celeste_Public_Api.Logger
+﻿namespace Celeste_Public_Api.GameScanner_Api.Models
 {
     public enum LogLevel
     {

@@ -173,6 +173,16 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DialogBox {
+            get {
+                object obj = ResourceManager.GetObject("DialogBox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DialogBoxSmall {
             get {
                 object obj = ResourceManager.GetObject("DialogBoxSmall", resourceCulture);

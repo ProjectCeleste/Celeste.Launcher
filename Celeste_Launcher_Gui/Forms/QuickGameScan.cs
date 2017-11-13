@@ -3,7 +3,6 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Public_Api.GameScanner_Api;

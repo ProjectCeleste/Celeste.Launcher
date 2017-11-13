@@ -1,9 +1,4 @@
-﻿#region Using directives
-
-
-#endregion
-
-namespace Celeste_Public_Api.Server_Api.WebSocket.Enum
+﻿namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Enum
 {
     public enum ClientState
     {

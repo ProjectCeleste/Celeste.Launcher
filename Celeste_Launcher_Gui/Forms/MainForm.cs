@@ -73,7 +73,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             try
             {
-                Program.WebSocketClient.AgentWebSocket.Close();
+                Program.WebSocketApi?.Disconnect();
                 NatDiscoverer.ReleaseAll();
             }
             catch
@@ -122,7 +122,7 @@ namespace Celeste_Launcher_Gui.Forms
                 if (Program.UserConfig.MpSettings != null)
                     if (Program.UserConfig.MpSettings.IsOnline)
                     {
-                        Program.UserConfig.MpSettings.PublicIp = Program.WebSocketClient.UserInformation.Ip;
+                        Program.UserConfig.MpSettings.PublicIp = Program.CurrentUser.Ip;
 
                         if (Program.UserConfig.MpSettings.AutoPortMapping)
                         {
@@ -271,11 +271,13 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (dr == DialogResult.OK)
                 {
-                    //User Info
-                    if (Program.WebSocketClient.UserInformation == null) return;
+                    if (form.CurrentUser == null)
+                        return;
 
-                    lbl_UserName.Text = $@"{Program.WebSocketClient.UserInformation.ProfileName}";
-                    lbl_Rank.Text = $@"{Program.WebSocketClient.UserInformation.Rank}";
+                    Program.CurrentUser = form.CurrentUser;
+
+                    lbl_UserName.Text = $@"{Program.CurrentUser.ProfileName}";
+                    lbl_Rank.Text = $@"{Program.CurrentUser.Rank}";
 
                     panelManager1.SelectedPanel = managedPanel1;
                 }
@@ -283,15 +285,6 @@ namespace Celeste_Launcher_Gui.Forms
                 {
                     panelManager1.SelectedPanel = managedPanel2;
                 }
-            }
-            //AutoDisconnect
-            try
-            {
-                Program.WebSocketClient.AgentWebSocket.Close();
-            }
-            catch
-            {
-                //
             }
         }
 

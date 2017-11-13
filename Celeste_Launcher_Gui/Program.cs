@@ -7,7 +7,8 @@ using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Forms;
-using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.WebSocket_Api;
+using Celeste_Public_Api.WebSocket_Api.Models;
 
 #endregion
 
@@ -15,13 +16,16 @@ namespace Celeste_Launcher_Gui
 {
     internal static class Program
     {
-#if DEBUG
-        public static string WebSocketUri = "ws://127.0.0.1:4512/";
+#if DEBUG 
+        //public static string WebSocketUri = "ws://127.0.0.1:4512/";
+        public static string WebSocketUri = "ws://66.70.180.188:4512/";
 #else
         public static string WebSocketUri = "ws://66.70.180.188:4512/";
 #endif
 
-        public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
+        public static WebSocketApi WebSocketApi { get; } = new WebSocketApi(WebSocketUri);
+
+        public static RemoteUser CurrentUser { get; set; }
 
         public static UserConfig UserConfig = new UserConfig();
 

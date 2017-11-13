@@ -62,7 +62,7 @@ namespace Celeste_AOEO_Controls
                 try
                 {
                     if (DwmApi.DwmIsCompositionEnabled())
-                        DwmApi.DwmExtendFrameIntoClientArea(parentForm.Handle, new DwmApi.MARGINS(31, 75, 31, 26));
+                        DwmApi.DwmExtendFrameIntoClientArea(parentForm.Handle, new DwmApi.MARGINS(26, 75, 26, 26));
                 }
                 catch (Exception)
                 {

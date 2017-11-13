@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace Celeste_Public_Api.Server_Api.Models.User.Enum
+namespace Celeste_Public_Api.WebSocket_Api.Models.UserExt.Enum
 {
     public enum Rank
     {

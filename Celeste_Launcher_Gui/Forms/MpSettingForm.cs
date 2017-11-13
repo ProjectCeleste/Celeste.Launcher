@@ -2,10 +2,10 @@
 
 using System;
 using System.Linq;
-using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using Celeste_AOEO_Controls.Helpers;
 
 #endregion
 
@@ -20,18 +20,18 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
+            SkinHelper.SetFont(Controls);
+
             //MpSettings
-            if (rb_Wan.Checked != mpSettings.IsOnline)
-                rb_Wan.Checked = mpSettings.IsOnline;
+            if (mpSettings.IsOnline)
+                rb_Wan.Checked = true;
+            else
+                rb_Lan.Checked = true;
 
-            if (rb_Lan.Checked != !mpSettings.IsOnline)
-                rb_Lan.Checked = !mpSettings.IsOnline;
-
-            if (rb_Automatic.Checked != mpSettings.AutoPortMapping)
-                rb_Automatic.Checked = mpSettings.AutoPortMapping;
-
-            if (rb_Manual.Checked != !mpSettings.AutoPortMapping)
-                rb_Manual.Checked = !mpSettings.AutoPortMapping;
+            if (mpSettings.AutoPortMapping)
+                rb_Automatic.Checked = true;
+            else
+                rb_Manual.Checked = true;
 
             //numericUpDown2.Value = mpSettings.PublicPort;
         }
@@ -39,6 +39,16 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void MpSettingBox_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(18, 10, 18, 10));
+            }
+            catch (Exception)
+            {
+                //
+            }
+
             _isFirstRun = false;
         }
 
@@ -72,9 +82,11 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (rb_Wan.Checked)
             {
-                if (Program.WebSocketClient?.UserInformation != null &&
-                    !string.IsNullOrEmpty(Program.WebSocketClient.UserInformation.Ip))
-                    tb_remoteIp.Text = Program.WebSocketClient.UserInformation.Ip;
+                if (Program.CurrentUser != null &&
+                    !string.IsNullOrEmpty(Program.CurrentUser.Ip))
+                {
+                    tb_remoteIp.Text = Program.CurrentUser.Ip;
+                }
                 else
                 {
                     //FallBack to Other
@@ -110,17 +122,12 @@ namespace Celeste_Launcher_Gui.Forms
                         rb_Wan.Checked = true;
                         return;
                     }
-                    
+
                     _selectedInterfaceName = netDeviceSelectDialog.SelectedInterfaceName;
                     if (string.IsNullOrEmpty(netDeviceSelectDialog.SelectedIpAddress?.ToString()))
-                    {
-                        //FallBack to Wan
                         rb_Wan.Checked = true;
-                    }
                     else
-                    {
                         tb_remoteIp.Text = netDeviceSelectDialog.SelectedIpAddress?.ToString();
-                    }
                 }
             }
             else
@@ -186,6 +193,12 @@ namespace Celeste_Launcher_Gui.Forms
                 _selectedInterfaceName = string.Empty;
                 tb_remoteIp.ReadOnly = true;
             }
+        }
+
+        private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

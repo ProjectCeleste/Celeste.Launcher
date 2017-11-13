@@ -1,8 +1,12 @@
-﻿using System;
+﻿#region Using directives
+
+using System;
 using Newtonsoft.Json;
 using WebSocket4Net;
 
-namespace Celeste_Public_Api.Server_Api.WebSocket
+#endregion
+
+namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 {
     public class Agent : JsonWebSocket
     {

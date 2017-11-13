@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace Celeste_Public_Api.Server_Api.Models.User
+namespace Celeste_Public_Api.WebSocket_Api.Models.UserExt
 {
     [XmlRoot(ElementName = "Friend")]
     public class Friend

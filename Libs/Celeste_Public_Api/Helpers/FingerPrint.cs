@@ -8,7 +8,7 @@ using System.Text;
 
 #endregion
 
-namespace Celeste_Launcher_Gui.Helpers
+namespace Celeste_Public_Api.Helpers
 {
     /// <summary>
     ///     Generates a 16 byte Unique Identification code of a computer
