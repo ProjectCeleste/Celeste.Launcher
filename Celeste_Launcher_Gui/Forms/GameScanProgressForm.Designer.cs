@@ -91,12 +91,13 @@
             this.tB_Report.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(198)))), ((int)(((byte)(170)))));
             this.tB_Report.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tB_Report.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tB_Report.Location = new System.Drawing.Point(3, 3);
+            this.tB_Report.Location = new System.Drawing.Point(0, 0);
+            this.tB_Report.Margin = new System.Windows.Forms.Padding(0);
             this.tB_Report.Multiline = true;
             this.tB_Report.Name = "tB_Report";
             this.tB_Report.ReadOnly = true;
             this.tB_Report.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tB_Report.Size = new System.Drawing.Size(497, 120);
+            this.tB_Report.Size = new System.Drawing.Size(503, 132);
             this.tB_Report.TabIndex = 64;
             // 
             // pB_GlobalProgress
@@ -105,9 +106,10 @@
             this.pB_GlobalProgress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pB_GlobalProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pB_GlobalProgress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.pB_GlobalProgress.Location = new System.Drawing.Point(3, 129);
+            this.pB_GlobalProgress.Location = new System.Drawing.Point(0, 132);
+            this.pB_GlobalProgress.Margin = new System.Windows.Forms.Padding(0);
             this.pB_GlobalProgress.Name = "pB_GlobalProgress";
-            this.pB_GlobalProgress.Size = new System.Drawing.Size(497, 25);
+            this.pB_GlobalProgress.Size = new System.Drawing.Size(503, 25);
             this.pB_GlobalProgress.TabIndex = 0;
             // 
             // lbl_GlobalProgress
@@ -116,9 +118,10 @@
             this.lbl_GlobalProgress.BackColor = System.Drawing.Color.Transparent;
             this.lbl_GlobalProgress.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_GlobalProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lbl_GlobalProgress.Location = new System.Drawing.Point(506, 126);
+            this.lbl_GlobalProgress.Location = new System.Drawing.Point(503, 132);
+            this.lbl_GlobalProgress.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_GlobalProgress.Name = "lbl_GlobalProgress";
-            this.lbl_GlobalProgress.Size = new System.Drawing.Size(134, 31);
+            this.lbl_GlobalProgress.Size = new System.Drawing.Size(140, 25);
             this.lbl_GlobalProgress.TabIndex = 69;
             this.lbl_GlobalProgress.Text = "000/999";
             this.lbl_GlobalProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -127,9 +130,10 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteNormal;
-            this.pictureBox1.Location = new System.Drawing.Point(506, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(503, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(134, 120);
+            this.pictureBox1.Size = new System.Drawing.Size(140, 132);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 70;
             this.pictureBox1.TabStop = false;
@@ -207,9 +211,10 @@
             this.panel15.Controls.Add(this.pB_SubProgress);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.panel15.Location = new System.Drawing.Point(3, 64);
+            this.panel15.Location = new System.Drawing.Point(0, 61);
+            this.panel15.Margin = new System.Windows.Forms.Padding(0);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(623, 25);
+            this.panel15.Size = new System.Drawing.Size(629, 31);
             this.panel15.TabIndex = 71;
             // 
             // pB_SubProgress
@@ -221,7 +226,7 @@
             this.pB_SubProgress.Location = new System.Drawing.Point(0, 0);
             this.pB_SubProgress.Margin = new System.Windows.Forms.Padding(0);
             this.pB_SubProgress.Name = "pB_SubProgress";
-            this.pB_SubProgress.Size = new System.Drawing.Size(623, 25);
+            this.pB_SubProgress.Size = new System.Drawing.Size(629, 31);
             this.pB_SubProgress.TabIndex = 1;
             // 
             // panel2

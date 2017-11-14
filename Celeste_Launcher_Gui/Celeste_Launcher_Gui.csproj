@@ -10,6 +10,8 @@
     <AssemblyName>Celeste_Launcher_Gui</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -20,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +50,9 @@
     <Reference Include="Markdig, Version=0.14.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Markdig.0.14.3\lib\net40\Markdig.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Dism, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Dism.1.6.372\lib\net40\Microsoft.Dism.dll</HintPath>
+    </Reference>
     <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
       <HintPath>..\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
     </Reference>
@@ -64,9 +70,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsFirewallHelper, Version=1.0.6403.13182, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsFirewallHelper.1.0.6403.13182\lib\net20\WindowsFirewallHelper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Forms\WindowsFeaturesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
+      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\GameScanProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +143,7 @@
       <DependentUpon>MpSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EncryptDecrypt.cs" />
+    <Compile Include="Helpers\Dism.cs" />
     <Compile Include="Helpers\OpenNat.cs" />
     <Compile Include="Helpers\RichTextBoxExtensions.cs" />
     <Compile Include="Program.cs" />
@@ -146,6 +162,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
+      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GameScanProgressForm.resx">
       <DependentUpon>GameScanProgressForm.cs</DependentUpon>
@@ -264,4 +283,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets" Condition="Exists('..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets'))" />
+  </Target>
 </Project>

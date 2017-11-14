@@ -266,6 +266,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void CustomBtn2_Click(object sender, EventArgs e)
         {
+            //Register
             using (var form = new RegisterForm())
             {
                 form.ShowDialog();
@@ -291,7 +292,37 @@ namespace Celeste_Launcher_Gui.Forms
                     Program.UserConfig.LoginInfo.Password = form.tb_Password.Text;
                     Program.UserConfig.LoginInfo.RememberMe = true;
                 }
-                Program.UserConfig.Save(Program.UserConfigFilePath);
+                try
+                {
+                    Program.UserConfig.Save(Program.UserConfigFilePath);
+                }
+                catch (Exception)
+                {
+                    //
+                }
+            }
+
+            //Login
+            using (var form = new LoginForm())
+            {
+                var dr = form.ShowDialog();
+
+                if (dr == DialogResult.OK)
+                {
+                    if (form.CurrentUser == null)
+                        return;
+
+                    Program.CurrentUser = form.CurrentUser;
+
+                    gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
+                    gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
+
+                    panelManager1.SelectedPanel = managedPanel1;
+                }
+                else
+                {
+                    panelManager1.SelectedPanel = managedPanel2;
+                }
             }
         }
 
@@ -431,6 +462,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Program.UserConfig.LoginInfo.AutoLogin)
                 return;
 
+            panelManager1.Enabled = false;
             try
             {
                 var response = await Program.WebSocketApi.DoLogin(Program.UserConfig.LoginInfo.Email,
@@ -451,6 +483,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 //
             }
+            panelManager1.Enabled = true;
         }
 
         private void DonateWithPayPalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -475,6 +508,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void LogOffToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            panelManager1.Enabled = false;
             //
             try
             {
@@ -503,6 +537,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             //
             panelManager1.SelectedPanel = managedPanel2;
+            panelManager1.Enabled = true;
         }
     }
 }

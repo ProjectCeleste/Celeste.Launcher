@@ -3,7 +3,6 @@
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -24,11 +23,11 @@ namespace Celeste_Launcher_Gui.Forms
     public partial class UpdaterForm : Form
     {
         private const string AssemblyInfoUrl =
-                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/dev_v2/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs"
+                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs"
             ;
 
         private const string ChangelogUrl =
-            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/dev_v2/CHANGELOG.md";
+            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/CHANGELOG.md";
 
         private const string ReleaseZipUrl =
             "https://github.com/ProjectCeleste/Celeste_Launcher/releases/download/v";
@@ -38,7 +37,7 @@ namespace Celeste_Launcher_Gui.Forms
         public UpdaterForm()
         {
             InitializeComponent();
-            
+
             SkinHelper.SetFont(Controls);
 
             richTextBox1.SetInnerMargins(20, 15, 20, 15);
@@ -96,7 +95,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             return gitVersion;
         }
-        
+
         private static async Task<string> GetChangeLog()
         {
             try
@@ -146,10 +145,7 @@ namespace Celeste_Launcher_Gui.Forms
             progress.Report(5);
 
             var dowloadProgress = new Progress<DownloadFileProgress>();
-            dowloadProgress.ProgressChanged += (o, ea) =>
-            {
-                progress.Report(5 + ea.ProgressPercentage * (65 - 5));
-            };
+            dowloadProgress.ProgressChanged += (o, ea) => { progress.Report(5 + ea.ProgressPercentage * (65 - 5)); };
 
             var tempFileName = Path.GetTempFileName();
 
@@ -170,10 +166,7 @@ namespace Celeste_Launcher_Gui.Forms
             progress.Report(65);
 
             var extractProgress = new Progress<ZipFileProgress>();
-            extractProgress.ProgressChanged += (o, ea) =>
-            {
-                progress.Report(65 + ea.ProgressPercentage * (90 - 65));
-            };
+            extractProgress.ProgressChanged += (o, ea) => { progress.Report(65 + ea.ProgressPercentage * (90 - 65)); };
 
             var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 
@@ -194,7 +187,7 @@ namespace Celeste_Launcher_Gui.Forms
                 if (File.Exists(tempFileName))
                     File.Delete(tempFileName);
             }
-            
+
             //Move File
             progress.Report(90);
 

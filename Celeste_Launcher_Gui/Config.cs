@@ -3,7 +3,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Xml.Serialization;
@@ -163,8 +162,8 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "MpSettings")]
     public class MpSettings
     {
-        private string _publicIp;
         private bool _autoPortMapping;
+        private string _publicIp;
 
         //private int _publicPort;
 
@@ -188,14 +187,14 @@ namespace Celeste_Launcher_Gui
             set => _publicIp = value;
         }
 
-        //[XmlElement(ElementName = "PublicPort")]
-        //public int PublicPort
+        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //        if (_publicPort != 0) return _publicPort;
+        //    {
 
         //{
-        //    {
-        //        if (_publicPort != 0) return _publicPort;
+        //public int PublicPort
 
-        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //[XmlElement(ElementName = "PublicPort")]
         //        _publicPort = rnd.Next(1001, ushort.MaxValue);
 
         //        return _publicPort;
