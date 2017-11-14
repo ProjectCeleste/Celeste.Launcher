@@ -76,7 +76,7 @@ namespace Celeste_Launcher_Gui.Forms
             btnSmall1.Enabled = false;
         }
 
-        private static async Task<Version> GetGitHubVersion()
+        public static async Task<Version> GetGitHubVersion()
         {
             string version;
 
@@ -96,33 +96,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             return gitVersion;
         }
-
-        private static Version AltGetGitHubVersion()
-        {
-            string version;
-
-            using (var client = new WebClient())
-            {
-                version = client.DownloadString(AssemblyInfoUrl);
-            }
-
-            var regex = new Regex(@"\[assembly\: AssemblyVersion\(""(\d{1,})\.(\d{1,})\.(\d{1,})\.(\d{1,})""\)\]");
-            var match = regex.Match(version);
-
-            if (!match.Success)
-                throw new Exception("GetLatestVersion() match.Success != true");
-
-            var gitVersion = new Version($"{match.Groups[1]}.{match.Groups[2]}.{match.Groups[3]}.{match.Groups[4]}");
-
-            return gitVersion;
-        }
-
-        public static bool IsLatestVersion()
-        {
-            var gitVersion = AltGetGitHubVersion();
-            return gitVersion <= Assembly.GetExecutingAssembly().GetName().Version;
-        }
-
+        
         private static async Task<string> GetChangeLog()
         {
             try

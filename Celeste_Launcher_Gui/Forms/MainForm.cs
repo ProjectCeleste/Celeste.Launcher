@@ -397,7 +397,7 @@ namespace Celeste_Launcher_Gui.Forms
             //Update Check
             try
             {
-                if (!UpdaterForm.IsLatestVersion())
+                if (await UpdaterForm.GetGitHubVersion() > Assembly.GetExecutingAssembly().GetName().Version)
                 {
                     using (var form =
                         new MsgBoxYesNo(
@@ -425,7 +425,6 @@ namespace Celeste_Launcher_Gui.Forms
             }
 
             //Auto Login
-
             if (Program.UserConfig?.LoginInfo == null)
                 return;
 
