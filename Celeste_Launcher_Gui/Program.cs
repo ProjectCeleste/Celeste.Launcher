@@ -17,8 +17,7 @@ namespace Celeste_Launcher_Gui
     internal static class Program
     {
 #if DEBUG 
-        //public static string WebSocketUri = "ws://127.0.0.1:4512/";
-        public static string WebSocketUri = "ws://66.70.180.188:4512/";
+        public static string WebSocketUri = "ws://127.0.0.1:4512/";
 #else
         public static string WebSocketUri = "ws://66.70.180.188:4512/";
 #endif
@@ -29,7 +28,7 @@ namespace Celeste_Launcher_Gui
 
         public static UserConfig UserConfig = new UserConfig();
 
-        public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
+        public static string UserConfigFilePath { get; } = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
 
         private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
