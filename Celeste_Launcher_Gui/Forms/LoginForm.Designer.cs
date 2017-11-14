@@ -39,18 +39,18 @@
             this.lb_Password = new System.Windows.Forms.Label();
             this.linkLbl_ForgotPwd = new System.Windows.Forms.LinkLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSmall2 = new Celeste_AOEO_Controls.CustomBtn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cB_AutoLogin = new System.Windows.Forms.CheckBox();
             this.cb_RememberMe = new System.Windows.Forms.CheckBox();
-            this.btnSmall2 = new Celeste_AOEO_Controls.CustomBtn();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -203,6 +203,35 @@
             this.panel1.Size = new System.Drawing.Size(428, 89);
             this.panel1.TabIndex = 44;
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel3.Controls.Add(this.btnSmall2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(428, 89);
+            this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // btnSmall2
+            // 
+            this.btnSmall2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall2.BackgroundImage")));
+            this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSmall2.BtnText = "LOGIN";
+            this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSmall2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnSmall2.Location = new System.Drawing.Point(258, 5);
+            this.btnSmall2.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSmall2.Name = "btnSmall2";
+            this.btnSmall2.Size = new System.Drawing.Size(165, 79);
+            this.btnSmall2.TabIndex = 1;
+            this.btnSmall2.Click += new System.EventHandler(this.Btn_Login_Click);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -250,35 +279,6 @@
             this.cb_RememberMe.UseVisualStyleBackColor = false;
             this.cb_RememberMe.CheckedChanged += new System.EventHandler(this.Cb_RememberMe_CheckedChanged);
             // 
-            // btnSmall2
-            // 
-            this.btnSmall2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall2.BackgroundImage")));
-            this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSmall2.BtnText = "LOGIN";
-            this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSmall2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnSmall2.Location = new System.Drawing.Point(258, 5);
-            this.btnSmall2.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSmall2.Name = "btnSmall2";
-            this.btnSmall2.Size = new System.Drawing.Size(165, 79);
-            this.btnSmall2.TabIndex = 1;
-            this.btnSmall2.Click += new System.EventHandler(this.Btn_Login_Click);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel3.Controls.Add(this.btnSmall2, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(428, 89);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -286,13 +286,15 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(617, 233);
+            this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Celeste Fan Project";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel2.ResumeLayout(false);
@@ -301,8 +303,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

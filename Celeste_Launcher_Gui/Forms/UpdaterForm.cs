@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
 using Celeste_Public_Api.Helpers;
@@ -37,8 +38,10 @@ namespace Celeste_Launcher_Gui.Forms
         public UpdaterForm()
         {
             InitializeComponent();
+            
+            SkinHelper.SetFont(Controls);
 
-            richTextBox1.SetInnerMargins(25, 25, 25, 25);
+            richTextBox1.SetInnerMargins(20, 15, 20, 15);
         }
 
         private static string StripHtml(string htmlText, bool decode = true)
@@ -50,6 +53,16 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void UpdaterForm_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 12, 10, 12));
+            }
+            catch (Exception)
+            {
+                //
+            }
+
             lbl_CurrentV.Text = $@"Current Version: v{Assembly.GetEntryAssembly().GetName().Version}";
 
             var gitVersion = await GetGitHubVersion();
@@ -145,7 +158,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             var gitVersion = await GetGitHubVersion().ConfigureAwait(false);
 
-            progress.Report(5);
+            progress.Report(3);
 
             if (gitVersion <= Assembly.GetExecutingAssembly().GetName().Version)
                 return;
@@ -156,10 +169,13 @@ namespace Celeste_Launcher_Gui.Forms
             var downloadLink = $"{ReleaseZipUrl}{gitVersion}/{zipName}";
 
             //Download File
-            progress.Report(10);
+            progress.Report(5);
 
             var dowloadProgress = new Progress<DownloadFileProgress>();
-            dowloadProgress.ProgressChanged += (o, ea) => { progress.Report(50); };
+            dowloadProgress.ProgressChanged += (o, ea) =>
+            {
+                progress.Report(5 + ea.ProgressPercentage * (65 - 5));
+            };
 
             var tempFileName = Path.GetTempFileName();
 
@@ -177,10 +193,13 @@ namespace Celeste_Launcher_Gui.Forms
             }
 
             //Extract File
-            progress.Report(75);
+            progress.Report(65);
 
             var extractProgress = new Progress<ZipFileProgress>();
-            extractProgress.ProgressChanged += (o, ea) => { progress.Report(50); };
+            extractProgress.ProgressChanged += (o, ea) =>
+            {
+                progress.Report(65 + ea.ProgressPercentage * (90 - 65));
+            };
 
             var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 
@@ -201,8 +220,10 @@ namespace Celeste_Launcher_Gui.Forms
                 if (File.Exists(tempFileName))
                     File.Delete(tempFileName);
             }
-
+            
             //Move File
+            progress.Report(90);
+
             var destinationDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
             try
             {
@@ -214,7 +235,11 @@ namespace Celeste_Launcher_Gui.Forms
             }
 
             //Clean Old File
+            progress.Report(97);
             CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+
+            //
+            progress.Report(100);
         }
 
         public static void CleanUpFiles(string path, string pattern)
@@ -269,6 +294,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 btnSmall1.Enabled = false;
+                pictureBoxButtonCustom1.Enabled = false;
                 btnSmall1.BtnText = "...";
 
                 _cts.Cancel();
@@ -297,6 +323,12 @@ namespace Celeste_Launcher_Gui.Forms
 
                 Environment.Exit(0);
             }
+        }
+
+        private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

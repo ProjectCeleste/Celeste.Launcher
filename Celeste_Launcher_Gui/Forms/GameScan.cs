@@ -1,13 +1,10 @@
 ﻿#region Using directives
 
 using System;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
+using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Public_Api.GameScanner_Api;
-using Celeste_Public_Api.GameScanner_Api.Models;
-using Celeste_Public_Api.Helpers;
 
 #endregion
 
@@ -19,210 +16,37 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
+            SkinHelper.SetFont(Controls);
+
             if (Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath))
                 tb_GamePath.Text = Program.UserConfig.GameFilesPath;
             else
                 tb_GamePath.Text = GameScannnerApi.GetGameFilesRootPath();
-
-            GameScannner = Program.UserConfig != null
-                ? new GameScannnerApi(Program.UserConfig.BetaUpdate, tb_GamePath.Text)
-                : new GameScannnerApi(false, tb_GamePath.Text);
-
-            lbl_ProgressTitle.Text = string.Empty;
-            lbl_ProgressDetail.Text = string.Empty;
-            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
-            pB_GlobalProgress.Value = 0;
-            pB_SubProgress.Value = 0;
         }
-
-        private GameScannnerApi GameScannner { get; }
-
-        public void ProgressChanged(object sender, ScanAndRepairProgress e)
+        
+        private void BtnRunScan_Click(object sender, EventArgs e)
         {
-            pB_GlobalProgress.Value = e.ProgressPercentage;
-            lbl_GlobalProgress.Text =
-                $@"{e.CurrentIndex}/{e.TotalFile}";
-            if (e.ScanAndRepairFileProgress != null)
-            {
-                lbl_ProgressTitle.Text = e.ScanAndRepairFileProgress.FileName;
-
-                pB_SubProgress.Value = e.ScanAndRepairFileProgress.TotalProgressPercentage;
-
-                if (e.ScanAndRepairFileProgress.DownloadFileProgress != null)
-                {
-                    var speed = e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived /
-                                (e.ScanAndRepairFileProgress.DownloadFileProgress.TotalMilliseconds / 1000);
-
-                    lbl_ProgressDetail.Text =
-                        $@"Download Speed: {Misc.ToFileSize(speed)}/s{Environment.NewLine}" +
-                        $@"Progress: {Misc.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived)}/{
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.TotalBytesToReceive)
-                            }";
-                }
-                else if (e.ScanAndRepairFileProgress.L33TZipExtractProgress != null)
-                {
-                    var speed = e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesProcessed /
-                                (e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalMilliseconds / 1000);
-
-                    lbl_ProgressDetail.Text =
-                        $@"Extract Speed: {Misc.ToFileSize(speed)}/s{Environment.NewLine}" +
-                        $@"Progress: {
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesProcessed)
-                            }/{
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalBytesToProcess)
-                            }";
-                }
-                else
-                {
-                    lbl_ProgressDetail.Text = string.Empty;
-                }
-
-                if (e.ProgressLog != null)
-                {
-                    switch (e.ProgressLog.LogLevel)
-                    {
-                        case LogLevel.Info:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Warn:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Error:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Fatal:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Debug:
-                            //tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.All:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-
-                    tB_Report.SelectionStart = tB_Report.TextLength;
-                    tB_Report.ScrollToCaret();
-                }
-
-                if (e.ScanAndRepairFileProgress.ProgressLog == null)
-                    return;
-
-                switch (e.ScanAndRepairFileProgress.ProgressLog.LogLevel)
-                {
-                    case LogLevel.Info:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Warn:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Error:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Fatal:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Debug:
-                        //tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.All:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                tB_Report.SelectionStart = tB_Report.TextLength;
-                tB_Report.ScrollToCaret();
-            }
-            else
-            {
-                lbl_ProgressTitle.Text = string.Empty;
-                lbl_ProgressDetail.Text = string.Empty;
-                pB_SubProgress.Value = 0;
-            }
-        }
-
-        private async void BtnRunScan_Click(object sender, EventArgs e)
-        {
-            if (GameScannner.IsScanRunning)
-            {
-                GameScannner.CancelScan();
-
-                btnRunScan.BtnText = @"...";
-                btnRunScan.Enabled = false;
-
-                return;
-            }
-
-            if (string.IsNullOrEmpty(tb_GamePath.Text))
-            {
-                MsgBox.ShowMessage(@"Error: Game files path is empty!",
-                    @"Project Celeste -- Game Scan",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
-            }
-
-            if (!Directory.Exists(tb_GamePath.Text))
-            {
-                MsgBox.ShowMessage(@"Error: Game files path don't exist!",
-                    @"Project Celeste -- Game Scan",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
-            }
-
             try
             {
                 Program.UserConfig.GameFilesPath = tb_GamePath.Text;
                 Program.UserConfig.BetaUpdate = checkBox1.Checked;
                 Program.UserConfig.Save(Program.UserConfigFilePath);
 
-                lbl_ProgressTitle.Text = string.Empty;
-                lbl_ProgressDetail.Text = string.Empty;
-                lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
-                pB_GlobalProgress.Value = 0;
-                pB_SubProgress.Value = 0;
-                tB_Report.Text = string.Empty;
-                panel9.Enabled = false;
-                panel10.Enabled = false;
-                btnRunScan.BtnText = @"Cancel";
-                var progress = new Progress<ScanAndRepairProgress>();
-                progress.ProgressChanged += ProgressChanged;
-                if (await GameScannner.ScanAndRepair(progress))
+                using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath, Program.UserConfig.BetaUpdate))
                 {
-                    MsgBox.ShowMessage(@"Game scan completed with success.",
-                        @"Project Celeste -- Game Scan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var dr = form.ShowDialog();
 
-                    Close();
-                }
-                else
-                {
-                    MsgBox.ShowMessage(@"Game scan failed!",
-                        @"Project Celeste -- Game Scan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    GameScannner.CancelScan();
+                    if (dr == DialogResult.OK)
+                    {
+                        Close();
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MsgBox.ShowMessage($@"Error: {ex.Message}",
-                    @"Project Celeste -- Game Scan",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                GameScannner.CancelScan();
-            }
-            finally
-            {
-                btnRunScan.BtnText = @"Run Game Scan";
-                panel9.Enabled = true;
-                panel10.Enabled = true;
-                btnRunScan.Enabled = true;
             }
         }
 
@@ -235,16 +59,23 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void GameScan_FormClosing(object sender, FormClosingEventArgs e)
+        private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
-            if (!GameScannner.IsScanRunning)
-                return;
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
-            MsgBox.ShowMessage(@"Error: You need to cancel the ""Game Scan"" first!",
-                @"Project Celeste -- Game Scan",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            e.Cancel = true;
+        private void GameScan_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 10, 10, 10));
+            }
+            catch (Exception)
+            {
+                //
+            }
         }
     }
 }
