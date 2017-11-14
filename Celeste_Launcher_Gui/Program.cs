@@ -2,11 +2,13 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Forms;
-using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.WebSocket_Api;
+using Celeste_Public_Api.WebSocket_Api.Models;
 
 #endregion
 
@@ -14,17 +16,21 @@ namespace Celeste_Launcher_Gui
 {
     internal static class Program
     {
-#if DEBUG
+#if DEBUG 
         public static string WebSocketUri = "ws://127.0.0.1:4512/";
 #else
         public static string WebSocketUri = "ws://66.70.180.188:4512/";
 #endif
 
-        public static WebSocketClient WebSocketClient = new WebSocketClient(WebSocketUri);
-        public static UserConfig UserConfig = new UserConfig();
-        public static string UserConfigFilePath = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
+        public static WebSocketApi WebSocketApi { get; } = new WebSocketApi(WebSocketUri);
 
-        private const string AppName = "CelesteFanProject";
+        public static RemoteUser CurrentUser { get; set; }
+
+        public static UserConfig UserConfig = new UserConfig();
+
+        public static string UserConfigFilePath { get; } = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
+
+        private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
         [STAThread]
         private static void Main()
@@ -37,7 +43,10 @@ namespace Celeste_Launcher_Gui
             //Only one instance
             if (!createdNew)
             {
-                CustomMsgBox.ShowMessage(@"Celeste Fan Project launcher already running!", "Celeste Fan Project",
+                MsgBox.ShowMessage(
+                    $@"""Celeste Fan Project Launcher"" v{
+                            Assembly.GetEntryAssembly().GetName().Version
+                        } already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;

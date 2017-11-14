@@ -10,6 +10,8 @@
     <AssemblyName>Celeste_Launcher_Gui</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -20,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,39 +36,76 @@
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Markdig, Version=0.14.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Markdig.0.14.3\lib\net40\Markdig.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dism, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Dism.1.6.372\lib\net40\Microsoft.Dism.dll</HintPath>
     </Reference>
     <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
       <HintPath>..\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
     </Reference>
-    <Reference Include="SuperSocket.ClientEngine, Version=0.8.0.14, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.8.0.14\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+    <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Net" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebSocket4Net, Version=0.15.0.9, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebSocket4Net.0.15.0\lib\net45\WebSocket4Net.dll</HintPath>
+    <Reference Include="WindowsFirewallHelper, Version=1.0.6403.13182, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsFirewallHelper.1.0.6403.13182\lib\net20\WindowsFirewallHelper.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Forms\WindowsFeaturesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
+      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GameScanProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameScanProgressForm.Designer.cs">
+      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LanguageChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LanguageChooser.Designer.cs">
+      <DependentUpon>LanguageChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuickGameScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickGameScan.Designer.cs">
+      <DependentUpon>QuickGameScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GameScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameScan.Designer.cs">
+      <DependentUpon>GameScan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,7 +118,6 @@
     <Compile Include="Forms\ResetPwdForm.Designer.cs">
       <DependentUpon>ResetPwdForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\DWM.cs" />
     <Compile Include="Forms\ChangePwdForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,15 +142,10 @@
     <Compile Include="Forms\MpSettingForm.Designer.cs">
       <DependentUpon>MpSettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MsgBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MsgBox.Designer.cs">
-      <DependentUpon>MsgBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\FingerPrint.cs" />
-    <Compile Include="Helpers\Misc.cs" />
+    <Compile Include="Helpers\EncryptDecrypt.cs" />
+    <Compile Include="Helpers\Dism.cs" />
     <Compile Include="Helpers\OpenNat.cs" />
+    <Compile Include="Helpers\RichTextBoxExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\RegisterForm.cs">
@@ -120,9 +154,29 @@
     <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\WebSocketClient.cs" />
+    <Compile Include="Forms\UpdaterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdaterForm.Designer.cs">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
+      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameScanProgressForm.resx">
+      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LanguageChooser.resx">
+      <DependentUpon>LanguageChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickGameScan.resx">
+      <DependentUpon>QuickGameScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameScan.resx">
+      <DependentUpon>GameScan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -132,9 +186,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MpSettingForm.resx">
       <DependentUpon>MpSettingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MsgBox.resx">
-      <DependentUpon>MsgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
       <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
@@ -155,6 +206,9 @@
     <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdaterForm.resx">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -173,28 +227,67 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\no-avatar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\btn_subscribeCC_LG.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icon.ico" />
-    <None Include="Resources\btn_donate_SM.gif" />
-    <None Include="Resources\AvatarBorder.png" />
+    <None Include="Resources\LongOne.png" />
+    <None Include="Resources\BigOne.png" />
+    <None Include="Resources\SmallOne.png" />
+    <None Include="Resources\MiddleOne.png" />
+    <None Include="Resources\DialogBox.png" />
+    <None Include="Resources\VersionNumberPlate.png" />
+    <None Include="Resources\XButton_Hover.png" />
+    <None Include="Resources\XButton_Normal.png" />
+    <None Include="Resources\FriendsHover.png" />
+    <None Include="Resources\FriendsNormal.png" />
+    <None Include="Resources\AccountHover.png" />
+    <None Include="Resources\AccountNormal.png" />
+    <None Include="Resources\FlagCNHover.png" />
+    <None Include="Resources\FlagCNNormal.png" />
+    <None Include="Resources\FlagITHover.png" />
+    <None Include="Resources\FlagITNormal.png" />
+    <None Include="Resources\FlagFRHover.png" />
+    <None Include="Resources\FlagFRNormal.png" />
+    <None Include="Resources\FlagESHover.png" />
+    <None Include="Resources\FlagESNormal.png" />
+    <None Include="Resources\FlagUSHover.png" />
+    <None Include="Resources\FlagUSNormal.png" />
+    <None Include="Resources\FlagDEHover.png" />
+    <None Include="Resources\FlagDENormal.png" />
+    <None Include="Resources\DialogBoxSmall.png" />
+    <None Include="Resources\ToolsHover.png" />
+    <None Include="Resources\ToolsNormal.png" />
+    <None Include="Resources\CelesteLogo.png" />
+    <None Include="Resources\DonateHover.png" />
+    <None Include="Resources\DonateNormal.png" />
+    <None Include="Resources\AOEDBHover.png" />
+    <None Include="Resources\AOEDBNormal.png" />
+    <None Include="Resources\CelesteWebsiteHover.png" />
+    <None Include="Resources\CelesteWebsiteNormal.png" />
+    <None Include="Resources\RedditHover.png" />
+    <None Include="Resources\RedditNormal.png" />
+    <None Include="Resources\DiscordHover.png" />
+    <None Include="Resources\DiscordNormal.png" />
+    <None Include="Resources\SettingsHover.png" />
+    <None Include="Resources\SettingsNormal.png" />
     <None Include="Resources\BarSeparatorVertical.png" />
     <None Include="Resources\BarSeparator.png" />
     <None Include="Resources\BackgroundTexture.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)\Celeste_User_Api\Celeste_User.csproj">
-      <Project>{aecd370a-68cb-466b-b4f8-cc02cc6a9a5d}</Project>
-      <Name>Celeste_User</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
       <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
       <Name>Celeste_AOEO_Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
+      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
+      <Name>Celeste_Public_Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets" Condition="Exists('..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets'))" />
+  </Target>
 </Project>

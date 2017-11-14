@@ -32,12 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -48,31 +44,52 @@
     <Compile Include="BoxContainer.Designer.cs">
       <DependentUpon>BoxContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="BtnSmall.cs">
+    <Compile Include="CustomBtn.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BtnSmall.Designer.cs">
-      <DependentUpon>BtnSmall.cs</DependentUpon>
+    <Compile Include="CustomBtn.Designer.cs">
+      <DependentUpon>CustomBtn.cs</DependentUpon>
     </Compile>
-    <Compile Include="DWM.cs" />
+    <Compile Include="GamerCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GamerCard.Designer.cs">
+      <DependentUpon>GamerCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DWM.cs" />
     <Compile Include="MainContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MainContainer.Designer.cs">
       <DependentUpon>MainContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="MsgBox.cs">
+    <Compile Include="MsgBox\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MsgBox.Designer.cs">
+    <Compile Include="MsgBox\MsgBox.Designer.cs">
       <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MsgBox\MsgBoxYesNo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MsgBox\MsgBoxYesNo.Designer.cs">
+      <DependentUpon>MsgBoxYesNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsSideShow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewsSideShow.Designer.cs">
+      <DependentUpon>NewsSideShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PictureBoxButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SkinHelper.cs" />
+    <Compile Include="Helpers\SkinHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -80,14 +97,26 @@
     <EmbeddedResource Include="BoxContainer.resx">
       <DependentUpon>BoxContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BtnSmall.resx">
-      <DependentUpon>BtnSmall.cs</DependentUpon>
+    <EmbeddedResource Include="CustomBtn.resx">
+      <DependentUpon>CustomBtn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GamerCard.resx">
+      <DependentUpon>GamerCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainContainer.resx">
       <DependentUpon>MainContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MsgBox.resx">
+    <EmbeddedResource Include="MsgBox\MsgBox.resx">
       <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MsgBox\MsgBoxYesNo.resx">
+      <DependentUpon>MsgBoxYesNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewsSideShow.resx">
+      <DependentUpon>NewsSideShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PictureBoxButton.resx">
+      <DependentUpon>PictureBoxButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +179,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\XButton_Normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtnBigNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtnBigHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewsPrevNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewsPrevHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewsNextNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewsNextHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DialogBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ForumsNews.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewBoxBody.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewBoxHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GamerCard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-avatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

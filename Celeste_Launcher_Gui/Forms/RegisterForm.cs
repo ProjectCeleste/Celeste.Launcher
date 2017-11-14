@@ -1,248 +1,107 @@
 ﻿#region Using directives
 
 using System;
-using System.Dynamic;
-using System.Reflection;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
-using Celeste_Launcher_Gui.Helpers;
+using Celeste_AOEO_Controls.Helpers;
+using Celeste_AOEO_Controls.MsgBox;
 
 #endregion
 
 namespace Celeste_Launcher_Gui.Forms
 {
-    public enum RegisterUserState
-    {
-        TimedOut = -2,
-        Failed = -1,
-        Idle = 0,
-        InProgress = 1,
-        Success = 2
-    }
-
     public partial class RegisterForm : Form
     {
-        private DateTime _lastVerifyTime = DateTime.UtcNow.AddMinutes(-1);
-        private RegisterUserState _registerUserState = RegisterUserState.Idle;
-        private RegisterUserState _validMailState = RegisterUserState.Idle;
-
         public RegisterForm()
         {
             InitializeComponent();
+
+            SkinHelper.SetFont(Controls);
         }
 
-        private void Btn_Verify_Click(object sender, EventArgs e)
-        {
-            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
-            {
-                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
-            }
-
-            var lastSendTime = (DateTime.UtcNow - _lastVerifyTime).TotalSeconds;
-            if (lastSendTime <= 45)
-            {
-                CustomMsgBox.ShowMessage(
-                    $"You need to wait at least 45 seconds before asking to resend an confirmation key! Last request was {lastSendTime} seconds ago.",
-                    @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
-            }
-            _lastVerifyTime = DateTime.UtcNow;
-
-            DoVerifyUser(tb_Mail.Text);
-        }
-
-        private void DoVerifyUser(string email)
+        private async void Btn_Verify_Click(object sender, EventArgs e)
         {
             Enabled = false;
 
             try
             {
-                Program.WebSocketClient.StartConnect(false);
+                var response = await Program.WebSocketApi.DoValidMail(tb_Mail.Text);
 
-#pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-                dynamic validMailInfo = new ExpandoObject();
-                validMailInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-                validMailInfo.EMail = email;
-#pragma warning restore IDE0017 // Simplifier l'initialisation des objets
-
-                _validMailState = RegisterUserState.InProgress;
-
-                Program.WebSocketClient.AgentWebSocket.Query<dynamic>("VALIDMAIL", (object) validMailInfo,
-                    OnVerifyUser);
-
-                var starttime = DateTime.UtcNow;
-                while (_validMailState == RegisterUserState.InProgress &&
-                       Program.WebSocketClient.State != WebSocketClientState.Offline)
-                {
-                    Application.DoEvents();
-                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
-                    if (diff <= WebSocketClient.TimeOut) continue;
-
-                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                        Program.WebSocketClient.AgentWebSocket.Close();
-
-                    _validMailState = RegisterUserState.TimedOut;
-
-                    throw new Exception($"DoVerifyUser() Server connection timeout (total send time = {diff})!");
-                }
-
-                if (_validMailState == RegisterUserState.Success)
+                if (response.Result)
                 {
                     p_Verify.Enabled = false;
                     p_Register.Enabled = true;
+
+                    MsgBox.ShowMessage($@"{response.Message}", @"Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
+                MsgBox.ShowMessage($"Error: {ex.Message}", @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Enabled = true;
         }
 
-        private void OnVerifyUser(dynamic result)
+        private async void Btn_Register_Click(object sender, EventArgs e)
         {
-            if (result["Result"].ToObject<bool>())
-            {
-                _validMailState = RegisterUserState.Success;
-                var str = result["Message"].ToObject<string>();
-                CustomMsgBox.ShowMessage($@"{str}", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                _validMailState = RegisterUserState.Failed;
-                var str = result["Message"].ToObject<string>();
-                CustomMsgBox.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Btn_Register_Click(object sender, EventArgs e)
-        {
-            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
-            {
-                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
-            }
-
-            if (!Celeste_User.Helpers.IsValideUserName(tb_UserName.Text))
-            {
-                CustomMsgBox.ShowMessage(
-                    @"Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!",
-                    @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if (tb_ConfirmPassword.Text != tb_Password.Text)
             {
-                CustomMsgBox.ShowMessage(@"Password value and confirm password value don't match!",
+                MsgBox.ShowMessage(@"Password value and confirm password value don't match!",
                     @"Project Celeste -- Register",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
+            Enabled = false;
+
+            try
             {
-                CustomMsgBox.ShowMessage(@"Password minimum length is 8 char,  maximum length is 32 char!",
-                    @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                var response = await Program.WebSocketApi.DoResetPwd(tb_Mail.Text, tb_InviteCode.Text);
 
-            if (!Celeste_User.Helpers.IsValidePassword(tb_Password.Text))
+                if (response.Result)
+                {
+                    MsgBox.ShowMessage($@"{response.Message}", @"Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    DialogResult = DialogResult.OK;
+                    Close();
+                    return;
+                }
+                MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
             {
-                CustomMsgBox.ShowMessage("Invalid password, character ' and \" are not allowed!",
-                    @"Project Celeste -- Register",
+                MsgBox.ShowMessage($"Error: {ex.Message}", @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
 
-            if (tb_InviteCode.Text.Length != 32)
-            {
-                CustomMsgBox.ShowMessage(@"Invalid Verify Key!",
-                    @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DoRegisterUser(tb_Mail.Text, tb_Password.Text, tb_UserName.Text, tb_InviteCode.Text);
+            Enabled = true;
         }
 
-        private void DoRegisterUser(string email, string password, string username, string verifyKey)
+        private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
         {
             try
             {
-                Program.WebSocketClient.StartConnect(false);
-
-#pragma warning disable IDE0017 // Simplifier l'initialisation des objets
-                dynamic registerUserInfo = new ExpandoObject();
-                registerUserInfo.Version = Assembly.GetEntryAssembly().GetName().Version;
-                registerUserInfo.Mail = email;
-                registerUserInfo.VerifyKey = verifyKey;
-                registerUserInfo.Password = password;
-                registerUserInfo.UserName = username;
-#pragma warning restore IDE0017 // Simplifier l'initialisation des objets
-
-                _registerUserState = RegisterUserState.InProgress;
-
-                Program.WebSocketClient.AgentWebSocket.Query<dynamic>("REGISTER", (object) registerUserInfo,
-                    OnRegisterUser);
-
-                var starttime = DateTime.UtcNow;
-                while (_registerUserState == RegisterUserState.InProgress &&
-                       Program.WebSocketClient.State != WebSocketClientState.Offline)
-                {
-                    Application.DoEvents();
-                    var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
-                    if (diff <= WebSocketClient.TimeOut) continue;
-
-                    if (Program.WebSocketClient.State != WebSocketClientState.Offline)
-                        Program.WebSocketClient.AgentWebSocket.Close();
-
-                    _registerUserState = RegisterUserState.TimedOut;
-
-                    throw new Exception($"DoRegisterUser() Server connection timeout (total send time = {diff})!");
-                }
-
-                if (_registerUserState == RegisterUserState.Success)
-                {
-                    DialogResult = DialogResult.OK;
-                    Close();
-                }
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(33, 10, 33, 10));
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            Enabled = true;
-        }
-
-        private void OnRegisterUser(dynamic result)
-        {
-            if (result["Result"].ToObject<bool>())
-            {
-                _registerUserState = RegisterUserState.Success;
-                CustomMsgBox.ShowMessage(@"Registred with success.", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                _registerUserState = RegisterUserState.Failed;
-                var str = result["Message"].ToObject<string>();
-                CustomMsgBox.ShowMessage($@"Error: {str}", @"Project Celeste -- Register",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //
             }
         }
     }

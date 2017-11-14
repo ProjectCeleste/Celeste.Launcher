@@ -1,10 +1,10 @@
 ﻿#region Using directives
 
 using System;
-using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls;
+using Celeste_AOEO_Controls.Helpers;
+using Celeste_AOEO_Controls.MsgBox;
+using Celeste_Public_Api.WebSocket_Api.Models;
 
 #endregion
 
@@ -16,8 +16,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            //
-            lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
+            SkinHelper.SetFont(Controls);
 
             //Load UserConfig
             if (Program.UserConfig?.LoginInfo?.RememberMe != true) return;
@@ -27,37 +26,19 @@ namespace Celeste_Launcher_Gui.Forms
             cb_RememberMe.Checked = Program.UserConfig.LoginInfo.RememberMe;
         }
 
-        private void Btn_Login_Click(object sender, EventArgs e)
+        public RemoteUser CurrentUser { get; private set; }
+
+        private async void Btn_Login_Click(object sender, EventArgs e)
         {
-            if (!Celeste_User.Helpers.IsValideEmailAdress(tb_Mail.Text))
+            Enabled = false;
+            try
             {
-                CustomMsgBox.ShowMessage(@"Invalid Email!", @"Project Celeste -- Login",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                var response = await Program.WebSocketApi.DoLogin(tb_Mail.Text, tb_Password.Text);
 
-            if (tb_Password.Text.Length < 8 || tb_Password.Text.Length > 32)
-            {
-                CustomMsgBox.ShowMessage(@"Password minimum length is 8 char, maximum length is 32 char!",
-                    @"Project Celeste -- Login",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            DoLoggedIn(tb_Mail.Text, tb_Password.Text);
-        }
-
-        private void Btn_Register_Click(object sender, EventArgs e)
-        {
-            using (var form = new RegisterForm())
-            {
-                Hide();
-                form.ShowDialog();
-                if (form.DialogResult == DialogResult.OK)
+                if (response.Result)
                 {
-                    tb_Mail.Text = form.tb_Mail.Text;
-                    tb_Password.Text = form.tb_Password.Text;
-                    cb_RememberMe.Checked = true;
+                    //
+                    CurrentUser = response.RemoteUser;
 
                     //Save UserConfig
                     if (Program.UserConfig == null)
@@ -68,7 +49,8 @@ namespace Celeste_Launcher_Gui.Forms
                             {
                                 Email = tb_Mail.Text,
                                 Password = tb_Password.Text,
-                                RememberMe = cb_RememberMe.Checked
+                                RememberMe = cb_RememberMe.Checked,
+                                AutoLogin = cB_AutoLogin.Checked
                             }
                         };
                     }
@@ -77,73 +59,73 @@ namespace Celeste_Launcher_Gui.Forms
                         Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
                         Program.UserConfig.LoginInfo.Password = tb_Password.Text;
                         Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                        Program.UserConfig.LoginInfo.AutoLogin = cB_AutoLogin.Checked;
                     }
-                    Program.UserConfig.Save(Program.UserConfigFilePath);
-                }
-                Show();
-            }
-        }
 
-        public void DoLoggedIn(string email, string password)
-        {
-            Enabled = false;
-            try
-            {
-                Program.WebSocketClient.StartConnect(true, email, password);
-
-                //Save UserConfig
-                if (Program.UserConfig == null)
-                {
-                    Program.UserConfig = new UserConfig
+                    try
                     {
-                        LoginInfo = new LoginInfo
-                        {
-                            Email = tb_Mail.Text,
-                            Password = tb_Password.Text,
-                            RememberMe = cb_RememberMe.Checked
-                        }
-                    };
-                }
-                else
-                {
-                    Program.UserConfig.LoginInfo.Email = tb_Mail.Text;
-                    Program.UserConfig.LoginInfo.Password = tb_Password.Text;
-                    Program.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
-                }
+                        Program.UserConfig.Save(Program.UserConfigFilePath);
+                    }
+                    catch (Exception)
+                    {
+                        //
+                    }
 
-                Program.UserConfig.Save(Program.UserConfigFilePath);
-
-                DialogResult = DialogResult.OK;
-                Close();
+                    //
+                    DialogResult = DialogResult.OK;
+                    Close();
+                    return;
+                }
+                MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                CustomMsgBox.ShowMessage($"Error: {e.Message}", @"Project Celeste -- Login",
+                MsgBox.ShowMessage($"Error: {ex.Message}", @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Enabled = true;
         }
 
-        private void LinkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("http://www.xbox.com/en-us/developers/rules");
-        }
-
         private void LinkLbl_ForgotPwd_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             using (var form = new ResetPwdForm())
             {
-                Hide();
                 form.ShowDialog();
-                if (form.DialogResult == DialogResult.OK)
-                {
-                    tb_Mail.Text = form.tb_Mail.Text;
-                    tb_Password.Text = "";
-                    cb_RememberMe.Checked = true;
-                }
-                Show();
+
+                if (form.DialogResult != DialogResult.OK)
+                    return;
+
+                tb_Mail.Text = form.tb_Mail.Text;
+                tb_Password.Text = "";
             }
+        }
+
+        private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 10, 10, 10));
+            }
+            catch (Exception)
+            {
+                //
+            }
+        }
+
+        private void Cb_RememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+            cB_AutoLogin.Enabled = cb_RememberMe.Checked;
+            if (!cb_RememberMe.Checked)
+                cB_AutoLogin.Checked = false;
         }
     }
 }
