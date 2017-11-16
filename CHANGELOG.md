@@ -8,6 +8,7 @@
 
 - Beta update setting will now be remembered.
 - Fix issue with registration.
+- Fix issue with auto-updater.
 
 
 ## [v2.0.0.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.0.0) (2017-11-14)
