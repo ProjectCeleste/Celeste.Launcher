@@ -145,7 +145,10 @@ namespace Celeste_Launcher_Gui.Forms
             progress.Report(5);
 
             var dowloadProgress = new Progress<DownloadFileProgress>();
-            dowloadProgress.ProgressChanged += (o, ea) => { progress.Report(5 + ea.ProgressPercentage * (65 - 5)); };
+            dowloadProgress.ProgressChanged += (o, ea) =>
+                {
+                    progress.Report(5 +  Convert.ToInt32(Math.Floor((65 - 5) * ((double) ea.ProgressPercentage / 100))));
+                };
 
             var tempFileName = Path.GetTempFileName();
 
@@ -166,9 +169,11 @@ namespace Celeste_Launcher_Gui.Forms
             progress.Report(65);
 
             var extractProgress = new Progress<ZipFileProgress>();
-            extractProgress.ProgressChanged += (o, ea) => { progress.Report(65 + ea.ProgressPercentage * (90 - 65)); };
-
-            var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
+            extractProgress.ProgressChanged += (o, ea) =>
+            {
+                progress.Report(65 + Convert.ToInt32(Math.Floor((90 - 65) * ((double) ea.ProgressPercentage / 100))));
+            };
+                var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 
             if (Directory.Exists(tempDir))
                 CleanUpFiles(tempDir, "*");
