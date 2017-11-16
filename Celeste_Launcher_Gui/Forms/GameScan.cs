@@ -22,6 +22,9 @@ namespace Celeste_Launcher_Gui.Forms
                 tb_GamePath.Text = Program.UserConfig.GameFilesPath;
             else
                 tb_GamePath.Text = GameScannnerApi.GetGameFilesRootPath();
+
+            if (Program.UserConfig != null && Program.UserConfig.BetaUpdate)
+                checkBox1.Checked = true;
         }
         
         private void BtnRunScan_Click(object sender, EventArgs e)
