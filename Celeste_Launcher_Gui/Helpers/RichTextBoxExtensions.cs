@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
+    //https://stackoverflow.com/questions/2914004/rich-text-box-padding-between-text-and-border/33542937
     public static class RichTextBoxExtensions
     {
         private const int EmGetrect = 0xB2;
