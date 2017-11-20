@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void BtnSmall1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != textBox2.Text)
+            if (tb_ConfirmPassword.Text != tb_Password.Text)
             {
                 MsgBox.ShowMessage(@"New password value and confirm new password value don't match!",
                     @"Celeste Fan Project",
@@ -33,7 +33,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var response = await Program.WebSocketApi.DoChangePassword(tb_Password.Text, textBox1.Text);
+                var response = await Program.WebSocketApi.DoChangePassword(tb_Password.Text, tb_ConfirmPassword.Text);
 
                 if (response.Result)
                 {

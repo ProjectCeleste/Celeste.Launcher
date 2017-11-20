@@ -35,9 +35,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_NewPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_ConfirmPassword = new System.Windows.Forms.TextBox();
             this.lb_Password = new System.Windows.Forms.Label();
             this.tb_Password = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
@@ -110,9 +110,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tb_NewPassword, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tb_ConfirmPassword, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lb_Password, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tb_Password, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -141,19 +141,19 @@
             this.label2.Text = "Confirm new password:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox2
+            // tb_NewPassword
             // 
-            this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(191, 96);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.textBox2.MaxLength = 32;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(384, 23);
-            this.textBox2.TabIndex = 16;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.tb_NewPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_NewPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_NewPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_NewPassword.Location = new System.Drawing.Point(191, 96);
+            this.tb_NewPassword.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.tb_NewPassword.MaxLength = 32;
+            this.tb_NewPassword.Name = "tb_NewPassword";
+            this.tb_NewPassword.PasswordChar = '*';
+            this.tb_NewPassword.Size = new System.Drawing.Size(384, 23);
+            this.tb_NewPassword.TabIndex = 16;
+            this.tb_NewPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -168,19 +168,19 @@
             this.label1.Text = "New password:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // tb_ConfirmPassword
             // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(191, 58);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.textBox1.MaxLength = 32;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(384, 23);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.UseSystemPasswordChar = true;
+            this.tb_ConfirmPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tb_ConfirmPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tb_ConfirmPassword.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_ConfirmPassword.Location = new System.Drawing.Point(191, 58);
+            this.tb_ConfirmPassword.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.tb_ConfirmPassword.MaxLength = 32;
+            this.tb_ConfirmPassword.Name = "tb_ConfirmPassword";
+            this.tb_ConfirmPassword.PasswordChar = '*';
+            this.tb_ConfirmPassword.Size = new System.Drawing.Size(384, 23);
+            this.tb_ConfirmPassword.TabIndex = 15;
+            this.tb_ConfirmPassword.UseSystemPasswordChar = true;
             // 
             // lb_Password
             // 
@@ -239,9 +239,9 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_NewPassword;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_ConfirmPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tb_Password;
         private System.Windows.Forms.Label lb_Password;
