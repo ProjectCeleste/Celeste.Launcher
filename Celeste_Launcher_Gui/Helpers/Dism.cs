@@ -41,20 +41,16 @@ namespace Celeste_Launcher_Gui.Helpers
             return retVal;
         }
 
-        public static async Task EnableWindowsFeatures(string featureName,
-            DismProgressCallback dismProgressCallback)
+        public static async Task<DismFeatureInfo> GetWindowsFeatureInfo(string featureName)
         {
-            if (string.IsNullOrEmpty(featureName))
-                throw new ArgumentException();
-
             DismApi.Initialize(DismLogLevel.LogErrors);
 
+            DismFeatureInfo retVal;
             try
             {
                 using (var session = DismApi.OpenOnlineSession())
                 {
-                    DismApi.EnableFeatureByPackageName(session, featureName, null, false, true, new List<string>(),
-                        dismProgressCallback);
+                    retVal =  DismApi.GetFeatureInfo(session, featureName);
                 }
             }
             finally
@@ -63,6 +59,37 @@ namespace Celeste_Launcher_Gui.Helpers
             }
 
             await Task.Delay(200).ConfigureAwait(false);
+
+            return retVal;
+        }
+
+        public static async Task<DismFeatureInfo> EnableWindowsFeatures(string featureName,
+            DismProgressCallback dismProgressCallback)
+        {
+            if (string.IsNullOrEmpty(featureName))
+                throw new ArgumentException();
+
+            DismApi.Initialize(DismLogLevel.LogErrors);
+
+            DismFeatureInfo retVal;
+            try
+            {
+                using (var session = DismApi.OpenOnlineSession())
+                {
+                    DismApi.EnableFeatureByPackageName(session, featureName, null, false, true, new List<string>(),
+                        dismProgressCallback);
+
+                    retVal = DismApi.GetFeatureInfo(session, featureName);
+                }
+            }
+            finally
+            {
+                DismApi.Shutdown();
+            }
+
+            await Task.Delay(200).ConfigureAwait(false);
+
+            return retVal;
         }
     }
 }

@@ -72,7 +72,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 MsgBox.ShowMessage(
                     $"Warning: Error during quick scan. Error message: {ex.Message}",
-                    @"Project Celeste",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
@@ -100,7 +100,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                                 MsgBox.ShowMessage(
                                     "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
-                                    @"Project Celeste",
+                                    @"Celeste Fan Project",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                                 btn_Play.Enabled = true;
@@ -114,7 +114,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 MsgBox.ShowMessage(
                     "Error: Upnp device not found! Set \"Port mapping\" to manual in \"Mp Settings\" and configure your router.",
-                    @"Project Celeste",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 btn_Play.Enabled = true;
@@ -147,7 +147,7 @@ namespace Celeste_Launcher_Gui.Forms
                 {
                     MsgBox.ShowMessage(
                         "Error: Spartan.exe not found!",
-                        @"Project Celeste",
+                        @"Celeste Fan Project",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     btn_Play.Enabled = true;
@@ -190,7 +190,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 MsgBox.ShowMessage(
                     $"Error: {exception.Message}",
-                    @"Project Celeste",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -421,7 +421,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 MsgBox.ShowMessage(
                     $"Warning: Error during files clean-up. Error message: {ex.Message}",
-                    @"Project Celeste",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
@@ -451,7 +451,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 MsgBox.ShowMessage(
                     $"Warning: Error during update check. Error message: {ex.Message}",
-                    @"Project Celeste",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
@@ -468,16 +468,15 @@ namespace Celeste_Launcher_Gui.Forms
                 var response = await Program.WebSocketApi.DoLogin(Program.UserConfig.LoginInfo.Email,
                     Program.UserConfig.LoginInfo.Password);
 
-                if (!response.Result)
-                    return;
+                if (response.Result)
+                {
+                    Program.CurrentUser = response.RemoteUser;
 
-                //
-                Program.CurrentUser = response.RemoteUser;
+                    gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
+                    gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
 
-                gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
-                gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
-
-                panelManager1.SelectedPanel = managedPanel1;
+                    panelManager1.SelectedPanel = managedPanel1;
+                }
             }
             catch (Exception)
             {
@@ -538,6 +537,14 @@ namespace Celeste_Launcher_Gui.Forms
             //
             panelManager1.SelectedPanel = managedPanel2;
             panelManager1.Enabled = true;
+        }
+
+        private void WindowsFeaturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new WindowsFeaturesForm())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }
