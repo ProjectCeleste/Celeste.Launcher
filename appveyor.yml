@@ -3,7 +3,7 @@
 #---------------------------------#
 
 # version format
-version: 0.0.0.{build}
+version: 2.0.0.{build}
 
 # branches to build
 #branches:
@@ -39,12 +39,10 @@ init:
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
         $env:CelesteLauncher_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
-        $env:CelesteLauncher_InfVersion = "$($env:APPVEYOR_REPO_TAG_NAME)";
     }
     else
     {
         $env:CelesteLauncher_Version = "$($env:APPVEYOR_BUILD_VERSION)";
-        $env:CelesteLauncher_InfVersion = 'appveyor build $($env:APPVEYOR_BUILD_VERSION)';
     }
 
 # clone directory
@@ -82,7 +80,7 @@ assembly_info:
   file: 'Celeste_Launcher_Gui\Properties\AssemblyInfo.cs'
   assembly_version: '$(CelesteLauncher_Version)'
   assembly_file_version: "1.0.0.0"
-  assembly_informational_version: '$(CelesteLauncher_InfVersion)'
+  assembly_informational_version: '$(APPVEYOR_REPO_TAG_NAME)'
 
 #---------------------------------#
 #       build configuration       #
@@ -121,7 +119,19 @@ after_build:
     Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)" -Recurse -ErrorAction Ignore;
     New-Item -ItemType Directory -Force -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)";
     New-Item -ItemType Directory -Force -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)";
-    Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
+    if ($env:PLATFORM -eq "x86")
+    {
+        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
+    }  
+    elseif ($env:PLATFORM -eq "x64")
+    {
+        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
+    
+    }
+    elseif ($env:PLATFORM -eq "Any CPU")
+    {
+        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
+    }
         
 
 # to run your custom scripts instead of automatic MSBuild
@@ -140,7 +150,7 @@ test: off
 
 artifacts:
   - path: '\$(PLATFORM)\$(CONFIGURATION)\celeste_launcher'
-    name: 'Celeste_Launcher_$(APPVEYOR_REPO_TAG_NAME)'
+    name: Celeste_Launcher_$(APPVEYOR_REPO_TAG_NAME)
 
 #---------------------------------#
 #     deployment configuration    #
@@ -153,10 +163,10 @@ deploy:
   # Deploy to GitHub Releases
   - provider: GitHub
     tag: $(APPVEYOR_REPO_TAG_NAME)
-    description: '[CHANGELOG.md](https://github.com/ProjectCeleste/Celeste_Launcher/blob/master/CHANGELOG.md)'
-    release: 'Celeste Launcher $(APPVEYOR_REPO_TAG_NAME)'
+    description: '[View CHANGELOG.md](https://github.com/ProjectCeleste/Celeste_Launcher/blob/master/CHANGELOG.md)'
+    release: Celeste Launcher $(APPVEYOR_REPO_TAG_NAME)
     auth_token: $(access_token)
-    artifact: 'Celeste_Launcher_$(APPVEYOR_REPO_TAG_NAME)'
+    artifact: Celeste_Launcher_$(APPVEYOR_REPO_TAG_NAME)
     draft: false
     prerelease: false
     force_update: true

@@ -48,16 +48,16 @@
       <HintPath>..\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Markdig, Version=0.14.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Markdig.0.14.3\lib\net40\Markdig.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Markdig.0.14.3\lib\net40\Markdig.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Dism, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Dism.1.6.372\lib\net40\Microsoft.Dism.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Microsoft.Dism.1.6.372\lib\net40\Microsoft.Dism.dll</HintPath>
     </Reference>
     <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
-      <HintPath>..\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
     </Reference>
     <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -71,7 +71,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsFirewallHelper, Version=1.0.6403.13182, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsFirewallHelper.1.0.6403.13182\lib\net20\WindowsFirewallHelper.dll</HintPath>
+      <HintPath>$(SolutionDir)\packages\WindowsFirewallHelper.1.0.6403.13182\lib\net20\WindowsFirewallHelper.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -273,21 +273,21 @@
     <None Include="Resources\BackgroundTexture.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
+    <ProjectReference Include="..\Libs\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
       <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
       <Name>Celeste_AOEO_Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
+    <ProjectReference Include="$(SolutionDir)\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
       <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
       <Name>Celeste_Public_Api</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets" Condition="Exists('..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" />
+  <Import Project="$(SolutionDir)\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets" Condition="Exists('$(SolutionDir)\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\packages\WindowsFirewallHelper.1.0.6403.13182\build\WindowsFirewallHelper.targets'))" />
   </Target>
 </Project>
