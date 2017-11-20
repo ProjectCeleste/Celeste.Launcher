@@ -138,7 +138,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             ct.ThrowIfCancellationRequested();
 
-            var zipName = $"Celeste_Launcher_v{gitVersion}.zip";
+            const string zipName = "Celeste_Launcher.zip";
             var downloadLink = $"{ReleaseZipUrl}{gitVersion}/{zipName}";
 
             //Download File
