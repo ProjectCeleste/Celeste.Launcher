@@ -60,18 +60,22 @@ namespace Celeste_Launcher_Gui.Forms
                 {
                     using (var form =
                         new MsgBoxYesNo(
-                            @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to close the launcher.")
+                            @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).")
                     )
                     {
                         var dr = form.ShowDialog();
-                        if (dr != DialogResult.OK)
-                            Environment.Exit(0);
-                    }
-
-                    using (var form = new GameScan())
-                    {
-                        form.ShowDialog();
-                        DialogResult = DialogResult.Retry;
+                        if (dr == DialogResult.OK)
+                        {
+                            using (var form2 = new GameScan())
+                            {
+                                form2.ShowDialog();
+                                DialogResult = DialogResult.Retry;
+                            }
+                        }
+                        else
+                        {
+                            DialogResult = dr;
+                        }
                     }
                 }
             }

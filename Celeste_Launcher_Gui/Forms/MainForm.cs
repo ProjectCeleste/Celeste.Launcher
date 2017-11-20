@@ -63,9 +63,6 @@ namespace Celeste_Launcher_Gui.Forms
 
                     if (dr == DialogResult.Retry)
                         goto retry;
-
-                    if (dr != DialogResult.OK)
-                        Environment.Exit(0);
                 }
             }
             catch (Exception ex)
@@ -121,6 +118,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 return;
             }
+
             try
             {
                 //Save UserConfig
@@ -432,19 +430,17 @@ namespace Celeste_Launcher_Gui.Forms
                 {
                     using (var form =
                         new MsgBoxYesNo(
-                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to close the launcher."))
+                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to ignore it (not recommended)."))
                     {
                         var dr = form.ShowDialog();
-                        if (dr != DialogResult.OK)
-                            Environment.Exit(0);
+                        if (dr == DialogResult.OK)
+                        {
+                            using (var form2 = new UpdaterForm())
+                            {
+                                form2.ShowDialog();
+                            }
+                        }
                     }
-
-                    using (var form = new UpdaterForm())
-                    {
-                        form.ShowDialog();
-                    }
-
-                    Environment.Exit(0);
                 }
             }
             catch (Exception ex)
