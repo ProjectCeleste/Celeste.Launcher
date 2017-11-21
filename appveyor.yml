@@ -189,7 +189,7 @@ before_deploy:
 - git config --global user.email "%github_email%"
 - git config --global user.name "%github_user%"
 - git checkout -b Appveyor "%APPVEYOR_REPO_BRANCH%"
-- git add "Celeste_Launcher_Gui/Properties/AssemblyInfo.cs"
+- git add "Celeste_Launcher_Gui\Properties\AssemblyInfo.cs"
 - git commit -m "%APPVEYOR_REPO_TAG_NAME%"
 - git checkout "%APPVEYOR_REPO_BRANCH%"
 - git merge Appveyor
