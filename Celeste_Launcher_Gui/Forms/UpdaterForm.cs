@@ -138,7 +138,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             ct.ThrowIfCancellationRequested();
 
-            var zipName = $"Celeste_Launcher_v{gitVersion}.zip";
+            const string zipName = "Celeste_Launcher.zip";
             var downloadLink = $"{ReleaseZipUrl}{gitVersion}/{zipName}";
 
             //Download File
@@ -176,7 +176,7 @@ namespace Celeste_Launcher_Gui.Forms
                 var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 
             if (Directory.Exists(tempDir))
-                CleanUpFiles(tempDir, "*");
+                CleanUpFiles(tempDir, "*.*");
 
             try
             {
@@ -184,7 +184,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (AggregateException)
             {
-                CleanUpFiles(tempDir, "*");
+                CleanUpFiles(tempDir, "*.*");
                 throw;
             }
             finally
@@ -203,7 +203,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             finally
             {
-                CleanUpFiles(tempDir, "*");
+                CleanUpFiles(tempDir, "*.*");
             }
 
             //Clean Old File

@@ -74,7 +74,14 @@ namespace Celeste_Launcher_Gui.Forms
             Program.UserConfig.MpSettings.AutoPortMapping = rb_Automatic.Checked;
             //Program.UserConfig.MpSettings.PublicPort = Convert.ToInt32(numericUpDown2.Value);
             Program.UserConfig.MpSettings.PublicIp = tb_remoteIp.Text;
-            Program.UserConfig.Save(Program.UserConfigFilePath);
+            try
+            {
+                Program.UserConfig.Save(Program.UserConfigFilePath);
+            }
+            catch (Exception)
+            {
+                //
+            }
             Close();
         }
 

@@ -39,7 +39,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         {
             try
             {
-                if (request.Old != request.New)
+                if (request.Old == request.New)
                     throw new Exception("Old password = New password!");
 
                 if (request.New.Length < 8)
