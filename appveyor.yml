@@ -79,8 +79,7 @@ assembly_info:
   patch: true
   file: 'Celeste_Launcher_Gui\Properties\AssemblyInfo.cs'
   assembly_version: '$(CelesteLauncher_Version)'
-  assembly_file_version: "1.0.0.0"
-  assembly_informational_version: '$(APPVEYOR_REPO_TAG_NAME)'
+  assembly_informational_version: '$(CelesteLauncher_Version)'
 
 #---------------------------------#
 #       build configuration       #

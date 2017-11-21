@@ -298,7 +298,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Celeste Fan Project";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.GameScan_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).EndInit();

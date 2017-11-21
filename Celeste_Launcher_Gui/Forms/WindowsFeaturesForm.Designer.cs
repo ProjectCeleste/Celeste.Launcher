@@ -34,6 +34,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBoxButtonCustom1 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.l_DirectPlayState = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -133,6 +133,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(560, 324);
             this.tableLayoutPanel1.TabIndex = 66;
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.panel1.Location = new System.Drawing.Point(0, 277);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(560, 27);
+            this.panel1.TabIndex = 70;
             // 
             // tableLayoutPanel3
             // 
@@ -280,17 +291,6 @@
             this.progressBar1.Size = new System.Drawing.Size(554, 20);
             this.progressBar1.TabIndex = 69;
             // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.panel1.Location = new System.Drawing.Point(0, 277);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(560, 27);
-            this.panel1.TabIndex = 70;
-            // 
             // WindowsFeaturesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -309,7 +309,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Celeste Fan Project";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.GameScan_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).EndInit();
