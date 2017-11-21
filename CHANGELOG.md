@@ -1,5 +1,22 @@
 # Change Log
 
+## [v2.0.0.2](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.0.2) (2017-11-21)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.0.2...v2.0.0.1)
+
+**New Features:**
+
+- Windows Features Helper: Enable and install in one click "Direct Play" and ".Net 3.5" on Windows 8 and more (can be found in "Tools" menu).
+
+**Bug Fix:**
+
+- Fix issue with "change password".
+- Fix issue where login and register button can be disabled when application start.
+
+**Enhancements:**
+
+- Launcher and "Game File" update can now be ignored (not recommended, and you can maybe not connect if its an forced update).
+
 ## [v2.0.0.1](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.0.1) (2017-11-16)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.0.1...v2.0.0.0)
