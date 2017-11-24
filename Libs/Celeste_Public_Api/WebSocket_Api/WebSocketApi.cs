@@ -28,7 +28,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private readonly ValidMail _validMail;
 
-        private readonly Version _version = new Version(2, 0, 0, 0);
+        private readonly Version _version = new Version(2, 0, 1, 0);
 
         private DateTime _lastActivity = DateTime.UtcNow.AddSeconds(120);
 

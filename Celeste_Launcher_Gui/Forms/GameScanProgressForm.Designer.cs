@@ -295,7 +295,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Celeste Fan Project";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameScan_FormClosing);
             this.Load += new System.EventHandler(this.GameScanProgressForm_Load);
             this.Shown += new System.EventHandler(this.GameScanProgressForm_Shown);
