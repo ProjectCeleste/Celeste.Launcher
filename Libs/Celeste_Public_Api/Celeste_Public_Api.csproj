@@ -53,9 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameScanner_Api\Models\FileInfo.cs" />
     <Compile Include="GameScanner_Api\GameScannnerApi.cs" />
-    <Compile Include="GameScanner_Api\Models\FilesInfo.cs" />
+    <Compile Include="GameScanner_Api\Models\GameFilesInfo.cs" />
     <Compile Include="GameScanner_Api\Models\ScanAndRepairFileProgress.cs" />
     <Compile Include="GameScanner_Api\Models\ScanAndRepairProgress.cs" />
     <Compile Include="Helpers\DownloadFileUtils.cs" />
