@@ -28,9 +28,9 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private readonly ValidMail _validMail;
 
-        private readonly Version _version = new Version(2, 0, 1, 0);
+        private readonly Version _apiVersion = new Version(2, 0, 1, 1);
 
-        private DateTime _lastActivity = DateTime.UtcNow.AddSeconds(120);
+        private DateTime _lastActivity = DateTime.UtcNow.AddSeconds(180);
 
         private bool _loggedIn;
 
@@ -69,8 +69,8 @@ namespace Celeste_Public_Api.WebSocket_Api
         {
             try
             {
-                _loggedIn = false;
                 StopDisconnectIdleSessionTimer();
+                _loggedIn = false;
                 _client.Disconnect();
             }
             catch
@@ -90,7 +90,7 @@ namespace Celeste_Public_Api.WebSocket_Api
             {
                 Mail = eMail,
                 Password = password,
-                Version = _version,
+                Version = _apiVersion,
                 FingerPrint = FingerPrint.Value()
             };
 
@@ -164,7 +164,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             var request = new ForgotPwdRequest
             {
-                Version = _version,
+                Version = _apiVersion,
                 EMail = eMail
             };
 
@@ -182,7 +182,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             var request = new ResetPwdRequest
             {
-                Version = _version,
+                Version = _apiVersion,
                 EMail = eMail,
                 VerifyKey = verifyKey
             };
@@ -201,7 +201,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             var request = new ValidMailRequest
             {
-                Version = _version,
+                Version = _apiVersion,
                 EMail = eMail
             };
 
@@ -219,7 +219,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             var request = new RegisterRequest
             {
-                Version = _version,
+                Version = _apiVersion,
                 Mail = eMail,
                 VerifyKey = verifyKey,
                 UserName = username,
@@ -247,12 +247,20 @@ namespace Celeste_Public_Api.WebSocket_Api
             if (!Monitor.TryEnter(_disconnectIdleSessionSyncLock))
                 return;
 
-            if (_disconnectIdleSession == null)
+            try
             {
-                _disconnectIdleSession = new Timer(DisconnectIdleSession, new object(), TimerInterval, TimerInterval);
-            }
+                if (_disconnectIdleSession == null)
+                    _disconnectIdleSession = new Timer(DisconnectIdleSession, new object(), TimerInterval, TimerInterval);
 
-            Monitor.Exit(_disconnectIdleSessionSyncLock);
+            }
+            catch
+            {
+                //
+            }
+            finally
+            {
+                Monitor.Exit(_disconnectIdleSessionSyncLock);
+            }
         }
 
         private void StopDisconnectIdleSessionTimer()
@@ -272,7 +280,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             try
             {
-                var timeOut = DateTime.UtcNow.AddMilliseconds(TimeOutMs);
+                var timeOut = DateTime.UtcNow.AddMilliseconds(-TimeOutMs);
 
                 if (_lastActivity <= timeOut)
                     Disconnect();

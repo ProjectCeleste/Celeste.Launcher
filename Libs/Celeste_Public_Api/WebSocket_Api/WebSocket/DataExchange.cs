@@ -61,9 +61,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
                 }
 
                 if (!string.IsNullOrEmpty(WebSocketClient.ErrorMessage))
-                {
                     throw new Exception(WebSocketClient.ErrorMessage);
-                }
 
                 throw new Exception("Unknow error!");
             }

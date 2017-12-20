@@ -10,25 +10,17 @@ using Celeste_Public_Api.Helpers;
 namespace Celeste_Public_Api.GameScanner_Api.Models
 {
     [XmlRoot(ElementName = "FilesInfo")]
-    public class FilesInfo
+    public class GameFilesInfo
     {
         [XmlIgnore]
-        public Dictionary<string, FileInfo> FileInfo { get; set; } = new Dictionary<string, FileInfo>();
+        public Dictionary<string, GameFileInfo> FileInfo { get; } = new Dictionary<string, GameFileInfo>();
 
         [XmlElement(ElementName = "FilesInfo")]
-        public FileInfo[] FilesInfoArray
+        public GameFileInfo[] FilesInfoArray
         {
-            get
-            {
-                var list = new List<FileInfo>();
-                if (FileInfo != null)
-                    list.AddRange(FileInfo.Keys.Select(key => FileInfo[key]));
-
-                return list.ToArray();
-            }
+            get => FileInfo.Values.ToArray();
             set
             {
-                FileInfo = new Dictionary<string, FileInfo>();
                 if (value == null) return;
                 foreach (var item in value)
                     FileInfo.Add(item.FileName.ToLower(), item);

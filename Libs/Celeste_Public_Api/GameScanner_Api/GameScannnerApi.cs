@@ -9,7 +9,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.GameScanner_Api.Models;
 using Celeste_Public_Api.Helpers;
-using FileInfo = Celeste_Public_Api.GameScanner_Api.Models.FileInfo;
 
 #endregion
 
@@ -32,7 +31,22 @@ namespace Celeste_Public_Api.GameScanner_Api
             FilesRootPath = filesRootPath;
         }
 
-        public IEnumerable<FileInfo> FilesInfo { get; }
+        public GameScannnerApi(IEnumerable<GameFileInfo> filesInfo, string filesRootPath)
+        {
+            if (string.IsNullOrEmpty(filesRootPath))
+                throw new ArgumentException(@"Game files path is null or empty!", nameof(filesRootPath));
+
+            if (!Directory.Exists(filesRootPath))
+                Directory.CreateDirectory(filesRootPath);
+
+            if (!filesRootPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                filesRootPath += Path.DirectorySeparatorChar;
+
+            FilesInfo = filesInfo;
+            FilesRootPath = filesRootPath;
+        }
+
+        public IEnumerable<GameFileInfo> FilesInfo { get; }
 
         public string FilesRootPath { get; }
 
@@ -44,27 +58,33 @@ namespace Celeste_Public_Api.GameScanner_Api
 
         public static bool RunFileCheck(string filePath, long fileSize, uint fileCrc32)
         {
-            return File.Exists(filePath) && new System.IO.FileInfo(filePath).Length == fileSize &&
+            return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize &&
                    Crc32Utils.RunCrc32FileCheck(filePath, fileCrc32);
         }
 
         public static bool RunFileQuickCheck(string filePath, long fileSize)
         {
-            return File.Exists(filePath) && new System.IO.FileInfo(filePath).Length == fileSize;
+            return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize;
         }
 
-        public static async Task<bool> ScanAndRepairFile(FileInfo fileInfo, string gameFilePath,
+        public static async Task<bool> ScanAndRepairFile(GameFileInfo fileInfo, string gameFilePath,
             IProgress<ScanAndRepairFileProgress> progress,
             CancellationToken ct)
         {
             try
             {
-                var filePath = $"{gameFilePath}{fileInfo.FileName}";
+                var filePath = !string.IsNullOrEmpty(fileInfo.OverrideFileName)
+                    ? $"{gameFilePath}{fileInfo.OverrideFileName}"
+                    : $"{gameFilePath}{fileInfo.FileName}";
 
                 //#1 File Check
+                var filenameui = !string.IsNullOrEmpty(fileInfo.OverrideFileName)
+                    ? fileInfo.OverrideFileName
+                    : fileInfo.FileName;
+
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 1,
                     new ExLog(LogLevel.Info, "-------------------------\r\n" +
-                                             $"[{fileInfo.FileName}]\r\n" +
+                                             $"[{filenameui}]\r\n" +
                                              "-------------------------\r\n" +
                                              "      - Checking file...")));
 
@@ -135,7 +155,7 @@ namespace Celeste_Public_Api.GameScanner_Api
 
                 //#95 Move new file to game folder
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 95,
-                    new ExLog(LogLevel.Info, "      - Moving new extracted file...")));
+                    new ExLog(LogLevel.Info, "      - Moving new file...")));
 
                 if (File.Exists(filePath))
                     File.Delete(filePath);
@@ -149,6 +169,9 @@ namespace Celeste_Public_Api.GameScanner_Api
                 //#99 Removing temporary file
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 99,
                     new ExLog(LogLevel.Info, "      - Clean-up temporary files...")));
+
+                if (File.Exists(tmpFilePath))
+                    File.Delete(tmpFilePath);
 
                 if (File.Exists(tempFileName))
                     File.Delete(tempFileName);
@@ -355,10 +378,10 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public static IEnumerable<FileInfo> GetGameFilesInfo(bool betaUpdate, string type = "production",
+        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool betaUpdate, string type = "production",
             int build = 6148)
         {
-            var filesInfo = new FilesInfo();
+            var filesInfo = new GameFilesInfo();
 
             //Load default manifest
             foreach (var fileInfo in FilesInfoFromGameManifest(type, build))
@@ -393,8 +416,8 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             return filesInfo.FileInfo.Values;
         }
-
-        private static IEnumerable<FileInfo> FilesInfoFromGameManifest(string type, int build)
+        
+        private static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build)
         {
             var tempFileName = Path.GetTempFileName();
 
@@ -414,12 +437,19 @@ namespace Celeste_Public_Api.GameScanner_Api
                       !line.StartsWith("+LauncherStrings-fr-FR.xml") &&
                       !line.StartsWith("+LauncherStrings-it-IT.xml") &&
                       !line.StartsWith("+LauncherStrings-zh-CHT.xml") && !line.StartsWith("+AOEOnline.exe.cfg") &&
+                      //Beta Launcher
+                      !line.StartsWith("+Launcher.exe") &&
+                      !line.StartsWith("+LauncherLocList.txt") &&
+                      !line.StartsWith("+AOEO_Privacy.rtf") &&
+                      !line.StartsWith("+pw32b.dll") &&
+                      //
                       !line.StartsWith("+steam_api.dll") && !line.StartsWith("+t3656t4234.tmp")
                 select line.Split('|')
                 into lineSplit
-                select new FileInfo
+                select new GameFileInfo
                 {
                     FileName = lineSplit[0].Substring(1, lineSplit[0].Length - 1),
+                    OverrideFileName = null,
                     Crc32 = Convert.ToUInt32(lineSplit[1]),
                     Size = Convert.ToInt64(lineSplit[2]),
                     HttpLink = $"http://spartan.msgamestudios.com/content/spartan/{type}/{build}/{lineSplit[3]}",
@@ -433,7 +463,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return retVal;
         }
 
-        private static IEnumerable<FileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
+        private static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
         {
             var tempFileName = Path.GetTempFileName();
 
@@ -446,108 +476,12 @@ namespace Celeste_Public_Api.GameScanner_Api
                     tempFileName);
             }
 
-            var retVal = XmlUtils.DeserializeFromFile<FilesInfo>(tempFileName).FileInfo.Values;
+            var retVal = XmlUtils.DeserializeFromFile<GameFilesInfo>(tempFileName).FileInfo.Values;
 
             if (File.Exists(tempFileName))
                 File.Delete(tempFileName);
 
             return retVal;
         }
-
-        public static async Task NewOverrideFilesInfo(string inputFolder, string inputFolderB, string outputFolder,
-            string baseHttpLink,
-            IProgress<ZipFileProgress> progress,
-            CancellationToken ct)
-        {
-            if (!Directory.Exists(outputFolder))
-                Directory.CreateDirectory(outputFolder);
-
-            //
-            if (!outputFolder.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                outputFolder += Path.DirectorySeparatorChar;
-
-            //Load default manifest
-            var defaultFilesInfo = new FilesInfo();
-            foreach (var fileInfo in FilesInfoFromGameManifest("production", 6148))
-                if (!defaultFilesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                    defaultFilesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
-
-            //
-            var newFilesInfo = await GenerateOverrideFilesInfo(defaultFilesInfo, inputFolder,
-                $"{outputFolder}bin_override", baseHttpLink + "bin_override/", progress, ct);
-
-            newFilesInfo.ToXml($"{outputFolder}manifest_override.xml");
-
-            //
-            if (string.IsNullOrEmpty(inputFolderB))
-                return;
-
-            //Update default manifest with override
-            foreach (var fileInfo in newFilesInfo.FileInfo.Values)
-                if (defaultFilesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                    defaultFilesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
-                else
-                    defaultFilesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
-
-            //
-            var newFilesInfo2 = await GenerateOverrideFilesInfo(defaultFilesInfo, inputFolderB,
-                $"{outputFolder}bin_override_b", baseHttpLink + "bin_override_b/", progress, ct);
-
-            newFilesInfo2.ToXml($"{outputFolder}manifest_override_b.xml");
-        }
-
-        private static async Task<FilesInfo> GenerateOverrideFilesInfo(FilesInfo defaultFilesInfo, string inputFolder,
-            string outputFolder, string baseHttpLink, IProgress<ZipFileProgress> progress,
-            CancellationToken ct)
-        {
-            if (!Directory.Exists(outputFolder))
-                Directory.CreateDirectory(outputFolder);
-
-            //
-            if (!outputFolder.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                outputFolder += Path.DirectorySeparatorChar;
-
-            var newFilesInfo = new FilesInfo();
-            foreach (var file in Directory.GetFiles(inputFolder, "*", SearchOption.AllDirectories))
-            {
-                //
-                var rootPath = inputFolder;
-                if (!rootPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                    rootPath += Path.DirectorySeparatorChar;
-
-                var fileName = file.Replace(rootPath, string.Empty);
-
-                //Ignore unchanged file
-                if (defaultFilesInfo.FileInfo.ContainsKey(fileName.ToLower()))
-                {
-                    var crc32 = Crc32Utils.GetCrc32File(file);
-                    if (defaultFilesInfo.FileInfo[fileName.ToLower()].Crc32 == crc32)
-                        continue;
-                }
-
-                //
-                var binFileName = $"{Crc32Utils.GetCrc32FromString(fileName.ToLower()):X4}.bin";
-
-                //
-                var outFileName = $"{outputFolder}{binFileName}";
-                await ZipUtils.DoCreateL33TZipFile(file, outFileName, progress, ct);
-
-                //
-                var fileInfo = new FileInfo
-                {
-                    FileName = fileName,
-                    Crc32 = Crc32Utils.GetCrc32File(file),
-                    Size = new System.IO.FileInfo(file).Length,
-                    HttpLink = $"{baseHttpLink}{binFileName}",
-                    BinCrc32 = Crc32Utils.GetCrc32File(outFileName),
-                    BinSize = new System.IO.FileInfo(outFileName).Length
-                };
-
-                //
-                newFilesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
-            }
-
-            return newFilesInfo;
-        }
-    }
+}
 }

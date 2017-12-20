@@ -47,6 +47,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebSocket4Net, Version=0.15.0.9, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\WebSocket4Net.0.15.0\lib\net45\WebSocket4Net.dll</HintPath>
     </Reference>
