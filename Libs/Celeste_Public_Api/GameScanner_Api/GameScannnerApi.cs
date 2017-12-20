@@ -50,11 +50,11 @@ namespace Celeste_Public_Api.GameScanner_Api
 
         public string FilesRootPath { get; }
 
-        public bool IsScanRunning { get; private set; }
+        public bool IsScanRunning { get; protected set; }
 
-        public bool IsCancellationRequested { get; private set; }
+        public bool IsCancellationRequested { get; protected set; }
 
-        private CancellationTokenSource Cts { get; set; } = new CancellationTokenSource();
+        public CancellationTokenSource Cts { get; protected set; } = new CancellationTokenSource();
 
         public static bool RunFileCheck(string filePath, long fileSize, uint fileCrc32)
         {
@@ -416,8 +416,8 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             return filesInfo.FileInfo.Values;
         }
-        
-        private static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build)
+
+        public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build)
         {
             var tempFileName = Path.GetTempFileName();
 
@@ -463,7 +463,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return retVal;
         }
 
-        private static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
+        public static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
         {
             var tempFileName = Path.GetTempFileName();
 
