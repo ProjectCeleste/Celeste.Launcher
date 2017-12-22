@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.IO;
 using System.Text.RegularExpressions;
 
 #endregion
@@ -34,6 +35,51 @@ namespace Celeste_Public_Api.Helpers
 
             return ThreeNonZeroDigits(value / Math.Pow(1024, suffixes.Length - 1)) + " " +
                    suffixes[suffixes.Length - 1];
+        }
+
+        public static void CleanUpFiles(string path, string pattern = "*")
+        {
+            var files = new DirectoryInfo(path).GetFiles(pattern, SearchOption.AllDirectories);
+
+            foreach (var file in files)
+                try
+                {
+                    File.Delete(file.FullName);
+                }
+                catch (Exception)
+                {
+                    //
+                }
+        }
+
+        public static void MoveFiles(string originalPath, string destPath, bool doBackup = true)
+        {
+            if (!Directory.Exists(destPath))
+                Directory.CreateDirectory(destPath);
+
+            foreach (var file in Directory.GetFiles(originalPath))
+            {
+                var name = Path.GetFileName(file);
+                var dest = Path.Combine(destPath, name);
+
+                if (File.Exists(dest))
+                    if (doBackup)
+                        File.Move(dest, dest + ".old");
+                    else
+                        File.Delete(dest);
+
+                File.Move(file, dest);
+            }
+
+            var folders = Directory.GetDirectories(originalPath);
+
+            foreach (var folder in folders)
+            {
+                var name = Path.GetFileName(folder);
+                if (name == null) continue;
+                var dest = Path.Combine(destPath, name);
+                MoveFiles(folder, dest, doBackup);
+            }
         }
 
         public static string ThreeNonZeroDigits(double value)

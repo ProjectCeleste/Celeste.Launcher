@@ -3,7 +3,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
@@ -22,16 +21,12 @@ namespace Celeste_Launcher_Gui.Forms
             InitializeComponent();
 
             if (string.IsNullOrEmpty(gameFilesPath))
-            {
-                throw  new Exception(@"Game files path is empty!");
-            }
+                throw new Exception(@"Game files path is empty!");
 
             SkinHelper.SetFont(Controls);
-            
+
             if (!Directory.Exists(gameFilesPath))
-            {
                 Directory.CreateDirectory(gameFilesPath);
-            }
 
             GameScannner = new GameScannnerApi(isBetaUpdate, gameFilesPath);
             lbl_ProgressTitle.Text = string.Empty;
@@ -151,7 +146,7 @@ namespace Celeste_Launcher_Gui.Forms
                 pB_SubProgress.Value = 0;
             }
         }
-               
+
         private void GameScan_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!GameScannner.IsScanRunning)
@@ -203,7 +198,7 @@ namespace Celeste_Launcher_Gui.Forms
                 DialogResult = DialogResult.Abort;
             }
         }
-        
+
         private void GameScanProgressForm_Load(object sender, EventArgs e)
         {
             try

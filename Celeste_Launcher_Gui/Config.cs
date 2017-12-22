@@ -33,6 +33,9 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "BetaUpdate")]
         public bool BetaUpdate { get; set; }
 
+        [XmlElement(ElementName = "IsSteam")]
+        public bool IsSteam { get; set; }
+
         [XmlElement(ElementName = "LoginInfo")]
         public LoginInfo LoginInfo { get; set; } = new LoginInfo();
 

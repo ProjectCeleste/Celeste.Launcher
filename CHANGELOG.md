@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.0.1.2](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.2) (2017-12-22)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.2...v2.0.1.1)
+
+**Bug Fix:**
+
+- Various minor fix.
+
 ## [v2.0.1.1](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.1) (2017-11-24)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.1...v2.0.1.0)

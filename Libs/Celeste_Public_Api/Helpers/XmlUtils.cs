@@ -3,6 +3,7 @@
 using System.IO;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 #endregion
@@ -16,6 +17,27 @@ namespace Celeste_Public_Api.Helpers
 
     public static class XmlUtils
     {
+        public static string PrettyXml(string xml)
+        {
+            string output;
+            var xmlDoc = XDocument.Parse(xml);
+            using (var stringWriter = new Utf8StringWriter())
+            {
+                using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings
+                {
+                    Encoding = Encoding.UTF8,
+                    Indent = true,
+                    OmitXmlDeclaration = false,
+                    NewLineHandling = NewLineHandling.None
+                }))
+                {
+                    xmlDoc.Save(xmlWriter);
+                }
+                output = stringWriter.ToString();
+            }
+            return output;
+        }
+
         public static void SerializeToFile(object serializableObject, string xmlFilePath, bool backup = true)
         {
             var xml = SerializeToString(serializableObject);

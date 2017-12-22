@@ -16,6 +16,8 @@ namespace Celeste_Public_Api.GameScanner_Api
 {
     public class GameScannnerApi
     {
+        private CancellationTokenSource _cts;
+
         public GameScannnerApi(bool betaUpdate, string filesRootPath)
         {
             if (string.IsNullOrEmpty(filesRootPath))
@@ -29,6 +31,7 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             FilesInfo = GetGameFilesInfo(betaUpdate);
             FilesRootPath = filesRootPath;
+            _cts = new CancellationTokenSource();
         }
 
         public GameScannnerApi(IEnumerable<GameFileInfo> filesInfo, string filesRootPath)
@@ -44,19 +47,18 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             FilesInfo = filesInfo;
             FilesRootPath = filesRootPath;
+            _cts = new CancellationTokenSource();
         }
-
+          
         public IEnumerable<GameFileInfo> FilesInfo { get; }
 
         public string FilesRootPath { get; }
 
-        public bool IsScanRunning { get; protected set; }
+        public bool IsScanRunning { get; private set; }
 
-        public bool IsCancellationRequested { get; protected set; }
+        public bool IsCancellationRequested { get; private set; }
 
-        public CancellationTokenSource Cts { get; protected set; } = new CancellationTokenSource();
-
-        public static bool RunFileCheck(string filePath, long fileSize, uint fileCrc32)
+        private static bool RunFileCheck(string filePath, long fileSize, uint fileCrc32)
         {
             return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize &&
                    Crc32Utils.RunCrc32FileCheck(filePath, fileCrc32);
@@ -67,7 +69,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize;
         }
 
-        public static async Task<bool> ScanAndRepairFile(GameFileInfo fileInfo, string gameFilePath,
+        private static async Task<bool> ScanAndRepairFile(GameFileInfo fileInfo, string gameFilePath,
             IProgress<ScanAndRepairFileProgress> progress,
             CancellationToken ct)
         {
@@ -262,8 +264,8 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             IsCancellationRequested = true;
 
-            if (!Cts.IsCancellationRequested)
-                Cts.Cancel();
+            if (!_cts.IsCancellationRequested)
+                _cts.Cancel();
         }
 
         public async Task<bool> ScanAndRepair(IProgress<ScanAndRepairProgress> progress)
@@ -276,8 +278,8 @@ namespace Celeste_Public_Api.GameScanner_Api
                 IsScanRunning = true;
                 try
                 {
-                    Cts.Cancel();
-                    Cts = new CancellationTokenSource();
+                    _cts.Cancel();
+                    _cts = new CancellationTokenSource();
                     IsCancellationRequested = false;
 
                     var t = Task.Run(async () =>
@@ -290,7 +292,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                             {
                                 currentIndex += 1;
 
-                                Cts.Token.ThrowIfCancellationRequested();
+                                _cts.Token.ThrowIfCancellationRequested();
 
                                 progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
                                     new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
@@ -303,7 +305,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                                 {
                                     progress.Report(new ScanAndRepairProgress(totalCount, ci, ea));
                                 };
-                                retVal = await ScanAndRepairFile(fileInfo, FilesRootPath, fileProgress, Cts.Token);
+                                retVal = await ScanAndRepairFile(fileInfo, FilesRootPath, fileProgress, _cts.Token);
 
                                 await Task.Delay(10).ConfigureAwait(false);
 
@@ -320,7 +322,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                         {
                             IsScanRunning = false;
                         }
-                    }, Cts.Token);
+                    }, _cts.Token);
 
                     await t;
                 }
@@ -343,8 +345,8 @@ namespace Celeste_Public_Api.GameScanner_Api
                 IsScanRunning = true;
                 try
                 {
-                    Cts.Cancel();
-                    Cts = new CancellationTokenSource();
+                    _cts.Cancel();
+                    _cts = new CancellationTokenSource();
                     IsCancellationRequested = false;
 
                     var totalCount = FilesInfo.Count();
@@ -353,7 +355,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                     {
                         currentIndex += 1;
 
-                        Cts.Token.ThrowIfCancellationRequested();
+                        _cts.Token.ThrowIfCancellationRequested();
 
                         progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
                             new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
@@ -378,13 +380,12 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool betaUpdate, string type = "production",
-            int build = 6148)
+        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool betaUpdate = false)
         {
             var filesInfo = new GameFilesInfo();
 
             //Load default manifest
-            foreach (var fileInfo in FilesInfoFromGameManifest(type, build))
+            foreach (var fileInfo in FilesInfoFromGameManifest("production", 6148))
                 if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
                     filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
                 else
@@ -417,7 +418,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return filesInfo.FileInfo.Values;
         }
 
-        public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build)
+        public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build, bool isSteam = false)
         {
             var tempFileName = Path.GetTempFileName();
 
@@ -429,7 +430,9 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             var retVal = from line in File.ReadAllLines(tempFileName)
                 where line.StartsWith("+")
-                where !line.StartsWith("+AoeOnlineDlg.dll") && !line.StartsWith("+AoeOnlinePatch.dll") &&
+                where
+                      // Launcher
+                      !line.StartsWith("+AoeOnlineDlg.dll") && !line.StartsWith("+AoeOnlinePatch.dll") &&
                       !line.StartsWith("+expapply.dll") && !line.StartsWith("+LauncherLocList.txt") &&
                       !line.StartsWith("+LauncherStrings-de-DE.xml") &&
                       !line.StartsWith("+LauncherStrings-en-US.xml") &&
@@ -439,11 +442,14 @@ namespace Celeste_Public_Api.GameScanner_Api
                       !line.StartsWith("+LauncherStrings-zh-CHT.xml") && !line.StartsWith("+AOEOnline.exe.cfg") &&
                       //Beta Launcher
                       !line.StartsWith("+Launcher.exe") &&
+                      !line.StartsWith("+LauncherReplace.exe") &&
                       !line.StartsWith("+LauncherLocList.txt") &&
                       !line.StartsWith("+AOEO_Privacy.rtf") &&
                       !line.StartsWith("+pw32b.dll") &&
-                      //
-                      !line.StartsWith("+steam_api.dll") && !line.StartsWith("+t3656t4234.tmp")
+                      //Steam
+                      (!line.StartsWith("+steam_api.dll") || isSteam && line.StartsWith("+steam_api.dll")) &&
+                      //Junk
+                      !line.StartsWith("+t3656t4234.tmp")
                 select line.Split('|')
                 into lineSplit
                 select new GameFileInfo
@@ -463,7 +469,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return retVal;
         }
 
-        public static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
+        private static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
         {
             var tempFileName = Path.GetTempFileName();
 
@@ -483,5 +489,5 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             return retVal;
         }
-}
+    }
 }

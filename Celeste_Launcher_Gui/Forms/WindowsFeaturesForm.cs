@@ -44,6 +44,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 foreach (var feature in await Dism.GetWindowsFeatureInfo(new[] {"DirectPlay", "NetFx3"}))
                     if (string.Equals(feature.Key, "DirectPlay", StringComparison.CurrentCultureIgnoreCase))
+                        // ReSharper disable once SwitchStatementMissingSomeCases
                         switch (feature.Value.FeatureState)
                         {
                             case DismPackageFeatureState.Staged:
