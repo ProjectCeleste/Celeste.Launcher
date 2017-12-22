@@ -2,7 +2,7 @@
 
 ## [v2.0.1.2](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.2) (2017-12-22)
 
-[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.2...v2.0.1.1)
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.1...v2.0.1.2)
 
 **Bug Fix:**
 
@@ -10,7 +10,7 @@
 
 ## [v2.0.1.1](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.1) (2017-11-24)
 
-[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.1...v2.0.1.0)
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.0...v2.0.1.1)
 
 **Bug Fix:**
 
@@ -18,7 +18,7 @@
 
 ## [v2.0.1.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.0) (2017-11-21)
 
-[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.0...v2.0.0.1)
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.0.1...v2.0.1.0)
 
 **New Features:**
 
@@ -35,7 +35,7 @@
 
 ## [v2.0.0.1](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.0.1) (2017-11-16)
 
-[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.0.1...v2.0.0.0)
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.0.0...v2.0.0.1)
 
 **Bug Fix:**
 
@@ -46,7 +46,7 @@
 
 ## [v2.0.0.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.0.0) (2017-11-14)
 
-[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.0.0...v1.x.x.x)
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v1.x.x.x...v2.0.0.0)
 
 **New Features:**
 
