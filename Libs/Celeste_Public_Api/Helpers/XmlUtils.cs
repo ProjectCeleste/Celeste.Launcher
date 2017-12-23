@@ -17,6 +17,11 @@ namespace Celeste_Public_Api.Helpers
 
     public static class XmlUtils
     {
+        public static string ToXml(this object serializableObject)
+        {
+            return SerializeToString(serializableObject);
+        }
+
         public static string PrettyXml(string xml)
         {
             string output;

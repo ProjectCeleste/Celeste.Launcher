@@ -1,5 +1,6 @@
 ﻿#region Using directives
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace Celeste_Public_Api.GameScanner_Api.Models
     public class GameFilesInfo
     {
         [XmlIgnore]
-        public Dictionary<string, GameFileInfo> FileInfo { get; } = new Dictionary<string, GameFileInfo>();
+        public Dictionary<string, GameFileInfo> FileInfo { get; } = new Dictionary<string, GameFileInfo>(StringComparer.OrdinalIgnoreCase);
 
         [XmlElement(ElementName = "FilesInfo")]
         public GameFileInfo[] FilesInfoArray
