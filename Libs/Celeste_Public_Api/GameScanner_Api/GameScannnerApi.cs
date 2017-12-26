@@ -454,7 +454,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                 into lineSplit
                 select new GameFileInfo
                 {
-                    FileName = lineSplit[0].Substring(1, lineSplit[0].Length - 1),
+                    FileName = lineSplit[0].Substring(1, lineSplit[0].Length - 1).ToLower(),
                     OverrideFileName = null,
                     Crc32 = Convert.ToUInt32(lineSplit[1]),
                     Size = Convert.ToInt64(lineSplit[2]),
