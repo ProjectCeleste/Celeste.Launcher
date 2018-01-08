@@ -75,6 +75,8 @@
             this.cMS_Tools = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.updaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMS_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,8 +89,7 @@
             this.cMS_ProjectCelesteCom = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -801,6 +802,24 @@
             this.toolStripMenuItem1.Text = "Game Scan";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
             // 
+            // helpersToolStripMenuItem
+            // 
+            this.helpersToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.helpersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.windowsFeaturesToolStripMenuItem,
+            this.steamToolStripMenuItem});
+            this.helpersToolStripMenuItem.Name = "helpersToolStripMenuItem";
+            this.helpersToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.helpersToolStripMenuItem.Text = "Helpers";
+            // 
+            // windowsFeaturesToolStripMenuItem
+            // 
+            this.windowsFeaturesToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.windowsFeaturesToolStripMenuItem.Name = "windowsFeaturesToolStripMenuItem";
+            this.windowsFeaturesToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.windowsFeaturesToolStripMenuItem.Text = "Windows Features";
+            this.windowsFeaturesToolStripMenuItem.Click += new System.EventHandler(this.WindowsFeaturesToolStripMenuItem_Click);
+            // 
             // cMS_Settings
             // 
             this.cMS_Settings.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
@@ -903,22 +922,13 @@
             this.forumsToolStripMenuItem.Text = "Forums";
             this.forumsToolStripMenuItem.Click += new System.EventHandler(this.ForumsToolStripMenuItem_Click);
             // 
-            // helpersToolStripMenuItem
+            // steamToolStripMenuItem
             // 
-            this.helpersToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.helpersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.windowsFeaturesToolStripMenuItem});
-            this.helpersToolStripMenuItem.Name = "helpersToolStripMenuItem";
-            this.helpersToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
-            this.helpersToolStripMenuItem.Text = "Helpers";
-            // 
-            // windowsFeaturesToolStripMenuItem
-            // 
-            this.windowsFeaturesToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.windowsFeaturesToolStripMenuItem.Name = "windowsFeaturesToolStripMenuItem";
-            this.windowsFeaturesToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
-            this.windowsFeaturesToolStripMenuItem.Text = "Windows Features";
-            this.windowsFeaturesToolStripMenuItem.Click += new System.EventHandler(this.WindowsFeaturesToolStripMenuItem_Click);
+            this.steamToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.steamToolStripMenuItem.Name = "steamToolStripMenuItem";
+            this.steamToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.steamToolStripMenuItem.Text = "Steam";
+            this.steamToolStripMenuItem.Click += new System.EventHandler(this.SteamToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1038,5 +1048,6 @@
         private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsFeaturesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem steamToolStripMenuItem;
     }
 }

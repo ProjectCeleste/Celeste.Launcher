@@ -1,5 +1,15 @@
 # Change Log
 
+## [v2.0.1.4](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.4) (2018-01-08)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.3...v2.0.1.4)
+
+**New Features:**
+
+- Steam Helper: Allow to easily make "Celeste Fan Project" compatible with "Steam" (can be found in "Tools/Helpers" menu).
+
+Note: Now steam_api.dll will be auto removed if your game installation is not "Steam" compatible.
+
 ## [v2.0.1.3](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.3) (2017-12-23)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.2...v2.0.1.3)

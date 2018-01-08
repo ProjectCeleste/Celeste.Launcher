@@ -10,6 +10,7 @@ using Celeste_AOEO_Controls;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
 using Celeste_Public_Api.GameScanner_Api;
+using Celeste_Public_Api.Helpers;
 using Open.Nat;
 
 #endregion
@@ -71,6 +72,16 @@ namespace Celeste_Launcher_Gui.Forms
                     $"Warning: Error during quick scan. Error message: {ex.Message}",
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //isSteam
+            if (!Program.UserConfig.IsSteamVersion)
+            {
+                var steamApiDll = $"{Program.UserConfig.GameFilesPath}\\steam_api.dll";
+                if (File.Exists(steamApiDll))
+                {
+                    File.Delete(steamApiDll);
+                }
             }
 
             //MpSettings
@@ -413,7 +424,7 @@ namespace Celeste_Launcher_Gui.Forms
             //CleanUpFiles
             try
             {
-                UpdaterForm.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+                Misc.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
             }
             catch (Exception ex)
             {
@@ -538,6 +549,14 @@ namespace Celeste_Launcher_Gui.Forms
         private void WindowsFeaturesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var form = new WindowsFeaturesForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void SteamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new SteamForm())
             {
                 form.ShowDialog();
             }

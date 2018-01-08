@@ -18,7 +18,7 @@ namespace Celeste_Public_Api.GameScanner_Api
     {
         private CancellationTokenSource _cts;
 
-        public GameScannnerApi(bool betaUpdate, string filesRootPath)
+        public GameScannnerApi(string filesRootPath, bool isSteam, bool betaUpdate)
         {
             if (string.IsNullOrEmpty(filesRootPath))
                 throw new ArgumentException(@"Game files path is null or empty!", nameof(filesRootPath));
@@ -29,7 +29,8 @@ namespace Celeste_Public_Api.GameScanner_Api
             if (!filesRootPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
                 filesRootPath += Path.DirectorySeparatorChar;
 
-            FilesInfo = GetGameFilesInfo(betaUpdate);
+            FilesInfo = GetGameFilesInfo(betaUpdate, isSteam);
+            FilesInfo = GetGameFilesInfo(isSteam, betaUpdate);
             FilesRootPath = filesRootPath;
             _cts = new CancellationTokenSource();
         }
@@ -380,12 +381,12 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool betaUpdate = false)
+        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool isSteam, bool betaUpdate)
         {
             var filesInfo = new GameFilesInfo();
 
             //Load default manifest
-            foreach (var fileInfo in FilesInfoFromGameManifest("production", 6148))
+            foreach (var fileInfo in FilesInfoFromGameManifest("production", 6148, isSteam))
                 if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
                     filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
                 else
@@ -418,7 +419,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return filesInfo.FileInfo.Values;
         }
 
-        public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build, bool isSteam = false)
+        public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build, bool isSteam)
         {
             var tempFileName = Path.GetTempFileName();
 

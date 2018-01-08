@@ -52,6 +52,26 @@ namespace Celeste_Public_Api.Helpers
                 }
         }
 
+        public static void MoveFile(string originalFilePath, string destFilePath, bool doBackup = true)
+        {
+            if (!File.Exists(originalFilePath))
+                throw new FileNotFoundException(string.Empty, originalFilePath);
+
+            if (File.Exists(destFilePath))
+                if (doBackup)
+                {
+                    if (File.Exists(destFilePath + ".old"))
+                        File.Delete(destFilePath + ".old");
+
+                    File.Move(destFilePath, destFilePath + ".old");
+                }
+
+            if (File.Exists(destFilePath))
+                File.Delete(destFilePath);
+
+            File.Move(originalFilePath, destFilePath);
+        }
+
         public static void MoveFiles(string originalPath, string destPath, bool doBackup = true)
         {
             if (!Directory.Exists(destPath))
@@ -64,9 +84,15 @@ namespace Celeste_Public_Api.Helpers
 
                 if (File.Exists(dest))
                     if (doBackup)
+                    {
+                        if (File.Exists(dest + ".old"))
+                            File.Delete(dest + ".old");
+
                         File.Move(dest, dest + ".old");
-                    else
-                        File.Delete(dest);
+                    }
+
+                if (File.Exists(dest))
+                    File.Delete(dest);
 
                 File.Move(file, dest);
             }

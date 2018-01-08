@@ -125,9 +125,10 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private static async Task DoDownloadAndInstallUpdate(IProgress<int> progress, CancellationToken ct)
+        private static async Task DoDownloadAndInstallUpdate(bool isSteam, IProgress<int> progress,
+            CancellationToken ct)
         {
-            CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+            Misc.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
 
             var gitVersion = await GetGitHubVersion().ConfigureAwait(false);
 
@@ -146,9 +147,9 @@ namespace Celeste_Launcher_Gui.Forms
 
             var dowloadProgress = new Progress<DownloadFileProgress>();
             dowloadProgress.ProgressChanged += (o, ea) =>
-                {
-                    progress.Report(5 +  Convert.ToInt32(Math.Floor((65 - 5) * ((double) ea.ProgressPercentage / 100))));
-                };
+            {
+                progress.Report(5 + Convert.ToInt32(Math.Floor((65 - 5) * ((double) ea.ProgressPercentage / 100))));
+            };
 
             var tempFileName = Path.GetTempFileName();
 
@@ -171,12 +172,13 @@ namespace Celeste_Launcher_Gui.Forms
             var extractProgress = new Progress<ZipFileProgress>();
             extractProgress.ProgressChanged += (o, ea) =>
             {
-                progress.Report(65 + Convert.ToInt32(Math.Floor((90 - 65) * ((double) ea.ProgressPercentage / 100))));
+                progress.Report(
+                    65 + Convert.ToInt32(Math.Floor((90 - 65) * ((double) ea.ProgressPercentage / 100))));
             };
-                var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
+            var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 
             if (Directory.Exists(tempDir))
-                CleanUpFiles(tempDir, "*.*");
+                Misc.CleanUpFiles(tempDir, "*.*");
 
             try
             {
@@ -184,7 +186,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (AggregateException)
             {
-                CleanUpFiles(tempDir, "*.*");
+                Misc.CleanUpFiles(tempDir, "*.*");
                 throw;
             }
             finally
@@ -199,61 +201,26 @@ namespace Celeste_Launcher_Gui.Forms
             var destinationDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
             try
             {
-                MoveFiles(tempDir, destinationDir);
+                Misc.MoveFiles(tempDir, destinationDir);
             }
             finally
             {
-                CleanUpFiles(tempDir, "*.*");
+                Misc.CleanUpFiles(tempDir, "*.*");
+            }
+
+            //isSteam Version
+            if (isSteam)
+            {
+                progress.Report(95);
+                Steam.ConvertToSteam(destinationDir);
             }
 
             //Clean Old File
             progress.Report(97);
-            CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
+            Misc.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
 
             //
             progress.Report(100);
-        }
-
-        public static void CleanUpFiles(string path, string pattern)
-        {
-            var files = new DirectoryInfo(path).GetFiles(pattern, SearchOption.AllDirectories);
-
-            foreach (var file in files)
-                try
-                {
-                    File.Delete(file.FullName);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-        }
-
-        private static void MoveFiles(string originalPath, string destPath)
-        {
-            if (!Directory.Exists(destPath))
-                Directory.CreateDirectory(destPath);
-
-            foreach (var file in Directory.GetFiles(originalPath))
-            {
-                var name = Path.GetFileName(file);
-                var dest = Path.Combine(destPath, name);
-
-                if (File.Exists(dest))
-                    File.Move(dest, dest + ".old");
-
-                File.Copy(file, dest, true);
-            }
-
-            var folders = Directory.GetDirectories(originalPath);
-
-            foreach (var folder in folders)
-            {
-                var name = Path.GetFileName(folder);
-                if (name == null) continue;
-                var dest = Path.Combine(destPath, name);
-                MoveFiles(folder, dest);
-            }
         }
 
         public void ProgressChanged(object sender, int e)
@@ -275,11 +242,11 @@ namespace Celeste_Launcher_Gui.Forms
                 var progress = new Progress<int>();
                 progress.ProgressChanged += ProgressChanged;
 
-                await DoDownloadAndInstallUpdate(progress, _cts.Token);
+                await DoDownloadAndInstallUpdate(Program.UserConfig.IsSteamVersion, progress, _cts.Token);
 
                 MsgBox.ShowMessage(
-                    @"""Celeste Launcher"" has been updated, it will now re-start.",
-                    @"Project Celeste -- Updater",
+                    @"""Celeste Fan Project Launcher"" has been updated, it will now re-start.",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Process.Start(Assembly.GetEntryAssembly().Location);
@@ -290,7 +257,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 MsgBox.ShowMessage(
                     $@"Error: {exception.Message}",
-                    @"Project Celeste -- Updater",
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Environment.Exit(0);

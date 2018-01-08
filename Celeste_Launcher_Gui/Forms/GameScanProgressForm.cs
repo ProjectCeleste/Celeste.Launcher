@@ -16,7 +16,7 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScanProgressForm : Form
     {
-        public GameScanProgressForm(string gameFilesPath, bool isBetaUpdate)
+        public GameScanProgressForm(string gameFilesPath,bool isSteam, bool isBetaUpdate)
         {
             InitializeComponent();
 
@@ -28,7 +28,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScannner = new GameScannnerApi(isBetaUpdate, gameFilesPath);
+            GameScannner = new GameScannnerApi(gameFilesPath, isSteam, isBetaUpdate);
             lbl_ProgressTitle.Text = string.Empty;
             lbl_ProgressDetail.Text = string.Empty;
             lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";

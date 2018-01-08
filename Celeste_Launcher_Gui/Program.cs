@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Forms;
+using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.WebSocket_Api;
 using Celeste_Public_Api.WebSocket_Api.Models;
 
@@ -16,6 +17,7 @@ namespace Celeste_Launcher_Gui
 {
     internal static class Program
     {
+
 #if DEBUG 
         public static string WebSocketUri = "ws://127.0.0.1:4512/";
 #else
@@ -57,6 +59,26 @@ namespace Celeste_Launcher_Gui
             {
                 if (File.Exists(UserConfigFilePath))
                     UserConfig = UserConfig.Load(UserConfigFilePath);
+            }
+            catch (Exception)
+            {
+                //
+            }
+
+            try
+            {
+                if (string.IsNullOrEmpty(UserConfig.GameFilesPath))
+                    UserConfig.GameFilesPath = GameScannnerApi.GetGameFilesRootPath();
+            }
+            catch (Exception)
+            {
+                //
+            }
+
+            //Check if Steam Version
+            try
+            {
+                UserConfig.IsSteamVersion = Assembly.GetEntryAssembly().Location.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase);
             }
             catch (Exception)
             {

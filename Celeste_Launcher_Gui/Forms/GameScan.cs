@@ -35,7 +35,7 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.UserConfig.BetaUpdate = checkBox1.Checked;
                 Program.UserConfig.Save(Program.UserConfigFilePath);
 
-                using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath, Program.UserConfig.BetaUpdate))
+                using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath, Program.UserConfig.IsSteamVersion, Program.UserConfig.BetaUpdate))
                 {
                     var dr = form.ShowDialog();
 

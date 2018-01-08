@@ -25,8 +25,8 @@ namespace Celeste_Launcher_Gui.Forms
                 : GameScannnerApi.GetGameFilesRootPath();
 
             GameScannner = Program.UserConfig != null
-                ? new GameScannnerApi(Program.UserConfig.BetaUpdate, GameFilePath)
-                : new GameScannnerApi(false, GameFilePath);
+                ? new GameScannnerApi(GameFilePath, Program.UserConfig.IsSteamVersion, Program.UserConfig.BetaUpdate)
+                : new GameScannnerApi(GameFilePath, false, false);
 
             pB_Progress.Value = 0;
             lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";

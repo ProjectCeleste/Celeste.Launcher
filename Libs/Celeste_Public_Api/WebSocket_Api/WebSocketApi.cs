@@ -28,7 +28,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private readonly ValidMail _validMail;
 
-        private readonly Version _apiVersion = new Version(2, 0, 1, 1);
+        private readonly Version _apiVersion = new Version(2, 0, 1, 4);
 
         private DateTime _lastActivity = DateTime.UtcNow.AddSeconds(180);
 
@@ -82,7 +82,7 @@ namespace Celeste_Public_Api.WebSocket_Api
         public async Task<LoginResponse> DoLogin(string eMail, string password)
         {
             if (_client.State != ClientState.Connected)
-                await _client.DoConnect();
+                await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
@@ -116,7 +116,7 @@ namespace Celeste_Public_Api.WebSocket_Api
                 return new LoginResponse {Result = false, Message = "Invalid stored login information!"};
 
             if (_client.State != ClientState.Connected)
-                await _client.DoConnect();
+                await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
@@ -158,7 +158,7 @@ namespace Celeste_Public_Api.WebSocket_Api
         public async Task<ForgotPwdResponse> DoForgotPwd(string eMail)
         {
             if (_client.State != ClientState.Connected)
-                await _client.DoConnect();
+                await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
@@ -176,7 +176,7 @@ namespace Celeste_Public_Api.WebSocket_Api
         public async Task<ResetPwdResponse> DoResetPwd(string eMail, string verifyKey)
         {
             if (_client.State != ClientState.Connected)
-                await _client.DoConnect();
+                await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
@@ -195,7 +195,7 @@ namespace Celeste_Public_Api.WebSocket_Api
         public async Task<ValidMailResponse> DoValidMail(string eMail)
         {
             if (_client.State != ClientState.Connected)
-                await _client.DoConnect();
+                await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
@@ -213,7 +213,7 @@ namespace Celeste_Public_Api.WebSocket_Api
         public async Task<RegisterResponse> DoRegister(string eMail, string verifyKey, string username, string password)
         {
             if (_client.State != ClientState.Connected)
-                await _client.DoConnect();
+                await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
