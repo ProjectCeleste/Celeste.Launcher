@@ -57,12 +57,33 @@ namespace Celeste_Launcher_Gui.Forms
             //QuickGameScan
             try
             {
-                using (var form = new QuickGameScan())
-                {
-                    retry:
-                    var dr = form.ShowDialog();
+                var gameFilePath = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
+                    ? Program.UserConfig.GameFilesPath
+                    : GameScannnerApi.GetGameFilesRootPath();
 
-                    if (dr == DialogResult.Retry)
+                var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion,
+                    Program.UserConfig.IsLegacyXLive);
+
+                retry:
+                if (!await gameScannner.QuickScan())
+                {
+                    bool success;
+                    using (var form =
+                        new MsgBoxYesNo(
+                            @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).")
+                    )
+                    {
+                        var dr = form.ShowDialog();
+                        if (dr == DialogResult.OK)
+                            using (var form2 = new GameScan())
+                            {
+                                form2.ShowDialog();
+                                success = false;
+                            }
+                        else
+                            success = true;
+                    }
+                    if (!success)
                         goto retry;
                 }
             }
@@ -79,9 +100,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 var steamApiDll = $"{Program.UserConfig.GameFilesPath}\\steam_api.dll";
                 if (File.Exists(steamApiDll))
-                {
                     File.Delete(steamApiDll);
-                }
             }
 
             //MpSettings
@@ -438,21 +457,18 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 if (await UpdaterForm.GetGitHubVersion() > Assembly.GetExecutingAssembly().GetName().Version)
-                {
                     using (var form =
                         new MsgBoxYesNo(
-                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to ignore it (not recommended)."))
+                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to ignore it (not recommended).")
+                    )
                     {
                         var dr = form.ShowDialog();
                         if (dr == DialogResult.OK)
-                        {
                             using (var form2 = new UpdaterForm())
                             {
                                 form2.ShowDialog();
                             }
-                        }
                     }
-                }
             }
             catch (Exception ex)
             {

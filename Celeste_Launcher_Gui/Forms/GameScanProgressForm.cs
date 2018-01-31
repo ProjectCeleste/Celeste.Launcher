@@ -3,6 +3,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
@@ -16,7 +17,7 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScanProgressForm : Form
     {
-        public GameScanProgressForm(string gameFilesPath,bool isSteam, bool isBetaUpdate)
+        public GameScanProgressForm(string gameFilesPath,bool isSteam, bool isLegacyXLive)
         {
             InitializeComponent();
 
@@ -28,7 +29,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScannner = new GameScannnerApi(gameFilesPath, isSteam, isBetaUpdate);
+            GameScannner = new GameScannnerApi(gameFilesPath, isSteam, isLegacyXLive);
             lbl_ProgressTitle.Text = string.Empty;
             lbl_ProgressDetail.Text = string.Empty;
             lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
@@ -152,17 +153,27 @@ namespace Celeste_Launcher_Gui.Forms
             if (!GameScannner.IsScanRunning)
                 return;
 
-            pictureBoxButtonCustom1.Enabled = false;
             GameScannner.CancelScan();
             while (GameScannner.IsScanRunning)
             {
-                //
+                 //
             }
         }
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
             pictureBoxButtonCustom1.Enabled = false;
+
+            if (GameScannner.IsScanRunning)
+            {
+                pictureBoxButtonCustom1.Enabled = false;
+                GameScannner.CancelScan();
+                while (GameScannner.IsScanRunning)
+                {
+                   //
+                }
+            }
+            
             Close();
         }
 
@@ -185,8 +196,6 @@ namespace Celeste_Launcher_Gui.Forms
                     MsgBox.ShowMessage(@"Game scan failed!",
                         @"Project Celeste -- Game Scan",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    DialogResult = DialogResult.Abort;
                 }
             }
             catch (Exception ex)
@@ -194,8 +203,6 @@ namespace Celeste_Launcher_Gui.Forms
                 MsgBox.ShowMessage($@"Error: {ex.Message}",
                     @"Project Celeste -- Game Scan",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                DialogResult = DialogResult.Abort;
             }
         }
 

@@ -28,9 +28,9 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private readonly ValidMail _validMail;
 
-        private readonly Version _apiVersion = new Version(2, 0, 1, 4);
+        private readonly Version _apiVersion = new Version(2, 0, 1, 5);
 
-        private DateTime _lastActivity = DateTime.UtcNow.AddSeconds(180);
+        private DateTime _lastActivity = DateTime.UtcNow;
 
         private bool _loggedIn;
 
@@ -105,6 +105,15 @@ namespace Celeste_Public_Api.WebSocket_Api
             {
                 LoggedIn = false;
                 _loginRequest = null;
+
+                try
+                {
+                    Disconnect();
+                }
+                catch (Exception)
+                {
+                    //
+                }
             }
 
             return response;
@@ -114,25 +123,8 @@ namespace Celeste_Public_Api.WebSocket_Api
         {
             if (_loginRequest == null)
                 return new LoginResponse {Result = false, Message = "Invalid stored login information!"};
-
-            if (_client.State != ClientState.Connected)
-                await Connect();
-
-            _lastActivity = DateTime.UtcNow;
-
-            var response = await _login.DoLogin(_loginRequest);
-
-            if (response.Result)
-            {
-                LoggedIn = true;
-            }
-            else
-            {
-                LoggedIn = false;
-                _loginRequest = null;
-            }
-
-            return response;
+            
+            return await DoLogin(_loginRequest.Mail, _loginRequest.Password);
         }
 
         public async Task<ChangePwdResponse> DoChangePassword(string oldPwd, string newPwd)

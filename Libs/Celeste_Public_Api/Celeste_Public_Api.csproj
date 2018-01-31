@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebSocket4Net, Version=0.15.1.10, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
@@ -67,7 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebSocket_Api\Models\UserExt\Friend.cs" />
     <Compile Include="WebSocket_Api\Models\User.cs" />
-    <Compile Include="WebSocket_Api\Models\UserExt\Enum\Rank.cs" />
     <Compile Include="WebSocket_Api\WebSocket\Command\Register.cs" />
     <Compile Include="WebSocket_Api\WebSocket\Command\ValidMail.cs" />
     <Compile Include="WebSocket_Api\WebSocket\Command\ForgotPwd.cs" />

@@ -18,21 +18,20 @@ namespace Celeste_Public_Api.GameScanner_Api
     {
         private CancellationTokenSource _cts;
 
-        public GameScannnerApi(string filesRootPath, bool isSteam, bool betaUpdate)
+        public GameScannnerApi(string filesRootPath, bool isSteam, bool isLegacyXLive)
         {
-            if (string.IsNullOrEmpty(filesRootPath))
+            if (string.IsNullOrWhiteSpace(filesRootPath))
                 throw new ArgumentException(@"Game files path is null or empty!", nameof(filesRootPath));
 
             if (!Directory.Exists(filesRootPath))
                 Directory.CreateDirectory(filesRootPath);
 
-            if (!filesRootPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                filesRootPath += Path.DirectorySeparatorChar;
-
-            FilesInfo = GetGameFilesInfo(betaUpdate, isSteam);
-            FilesInfo = GetGameFilesInfo(isSteam, betaUpdate);
+            FilesInfo = GetGameFilesInfo(isSteam, isLegacyXLive);
             FilesRootPath = filesRootPath;
+
             _cts = new CancellationTokenSource();
+
+            CleanTmpFolder();
         }
 
         public GameScannnerApi(IEnumerable<GameFileInfo> filesInfo, string filesRootPath)
@@ -43,14 +42,14 @@ namespace Celeste_Public_Api.GameScanner_Api
             if (!Directory.Exists(filesRootPath))
                 Directory.CreateDirectory(filesRootPath);
 
-            if (!filesRootPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                filesRootPath += Path.DirectorySeparatorChar;
-
             FilesInfo = filesInfo;
             FilesRootPath = filesRootPath;
+
             _cts = new CancellationTokenSource();
+
+            CleanTmpFolder();
         }
-          
+
         public IEnumerable<GameFileInfo> FilesInfo { get; }
 
         public string FilesRootPath { get; }
@@ -61,7 +60,7 @@ namespace Celeste_Public_Api.GameScanner_Api
 
         private static bool RunFileCheck(string filePath, long fileSize, uint fileCrc32)
         {
-            return File.Exists(filePath) && new FileInfo(filePath).Length == fileSize &&
+            return RunFileQuickCheck(filePath, fileSize) &&
                    Crc32Utils.RunCrc32FileCheck(filePath, fileCrc32);
         }
 
@@ -76,18 +75,14 @@ namespace Celeste_Public_Api.GameScanner_Api
         {
             try
             {
-                var filePath = !string.IsNullOrEmpty(fileInfo.OverrideFileName)
-                    ? $"{gameFilePath}{fileInfo.OverrideFileName}"
-                    : $"{gameFilePath}{fileInfo.FileName}";
+                var filePath = !string.IsNullOrWhiteSpace(fileInfo.OverrideFileName)
+                    ? Path.Combine(gameFilePath, fileInfo.OverrideFileName)
+                    : Path.Combine(gameFilePath, fileInfo.FileName);
 
                 //#1 File Check
-                var filenameui = !string.IsNullOrEmpty(fileInfo.OverrideFileName)
-                    ? fileInfo.OverrideFileName
-                    : fileInfo.FileName;
-
                 progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 1,
                     new ExLog(LogLevel.Info, "-------------------------\r\n" +
-                                             $"[{filenameui}]\r\n" +
+                                             $"[{fileInfo.FileName}]\r\n" +
                                              "-------------------------\r\n" +
                                              "      - Checking file...")));
 
@@ -109,7 +104,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                     progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
                         6 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (65 - 6))), ea));
                 };
-                var tempFileName = Path.GetTempFileName();
+                var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
                 var x = new DownloadFileUtils(new Uri(fileInfo.HttpLink), tempFileName, dowloadProgress);
                 await x.DoDownload(ct);
 
@@ -127,7 +122,7 @@ namespace Celeste_Public_Api.GameScanner_Api
 
                 //#70 Extract downloaded file
                 var tmpFilePath = tempFileName;
-                var tempFileName2 = Path.GetTempFileName();
+                var tempFileName2 = Path.Combine(GetTempPath(), Path.GetRandomFileName());
                 if (ZipUtils.IsL33TZipFile(tempFileName))
                 {
                     progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 70,
@@ -203,56 +198,60 @@ namespace Celeste_Public_Api.GameScanner_Api
         {
             {
                 //Custom Path 1
-                var path = $"{AppDomain.CurrentDomain.BaseDirectory}Spartan.exe";
+                var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Spartan.exe");
                 if (File.Exists(path))
-                    goto spartanFound;
+                    return Path.GetDirectoryName(path);
 
                 //Custom Path 2
-                path = $"{AppDomain.CurrentDomain.BaseDirectory}\\AOEO\\Spartan.exe";
+                path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AOEO", "Spartan.exe");
                 if (File.Exists(path))
-                    goto spartanFound;
+                    return Path.GetDirectoryName(path);
 
                 //Custom Path 3
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    path =
-                        $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)}\\Age Of Empires Online\\Spartan.exe";
+                    path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+                        "Age Of Empires Online", "Spartan.exe");
                     if (File.Exists(path))
-                        goto spartanFound;
+                        return Path.GetDirectoryName(path);
                 }
 
                 //Custom Path 4
-                path =
-                    $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\Age Of Empires Online\\Spartan.exe";
+                path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+                    "Age Of Empires Online", "Spartan.exe");
                 if (File.Exists(path))
-                    goto spartanFound;
+                    return Path.GetDirectoryName(path);
 
                 //Steam 1
                 if (Environment.Is64BitOperatingSystem)
                 {
-                    path =
-                        $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86)}\\Steam\\steamapps\\common\\Age Of Empires Online\\Spartan.exe";
+                    path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Steam",
+                        "steamapps", "common", "Age Of Empires Online", "Spartan.exe");
                     if (File.Exists(path))
-                        goto spartanFound;
+                        return Path.GetDirectoryName(path);
                 }
 
                 //Steam 2
-                path =
-                    $"{Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)}\\Steam\\steamapps\\common\\Age Of Empires Online\\Spartan.exe";
+                path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Steam",
+                    "steamapps", "common", "Age Of Empires Online", "Spartan.exe");
                 if (File.Exists(path))
-                    goto spartanFound;
+                    return Path.GetDirectoryName(path);
 
                 //Original Game Path
-                path =
-                    $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Local\\Microsoft\\Age of Empires Online\\Spartan.exe";
-                if (File.Exists(path))
-                    goto spartanFound;
-
-                return $"{AppDomain.CurrentDomain.BaseDirectory}\\AOEO";
-
-                spartanFound:
-                return Path.GetDirectoryName(path);
+                path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Local",
+                    "Microsoft", "Age Of Empires Online", "Spartan.exe");
+                return File.Exists(path)
+                    ? Path.GetDirectoryName(path)
+                    : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AOEO");
             }
+        }
+
+        private static string GetTempPath()
+        {
+            var tmp = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmp");
+            if (!Directory.Exists(tmp))
+                Directory.CreateDirectory(tmp);
+            return tmp;
         }
 
         public void CancelScan()
@@ -283,6 +282,8 @@ namespace Celeste_Public_Api.GameScanner_Api
                     _cts = new CancellationTokenSource();
                     IsCancellationRequested = false;
 
+                    CleanTmpFolder();
+
                     var t = Task.Run(async () =>
                     {
                         try
@@ -298,7 +299,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                                 progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
                                     new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
 
-                                await Task.Delay(10).ConfigureAwait(false);
+                                await Task.Delay(25, _cts.Token).ConfigureAwait(false);
 
                                 var fileProgress = new Progress<ScanAndRepairFileProgress>();
                                 var ci = currentIndex;
@@ -308,7 +309,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                                 };
                                 retVal = await ScanAndRepairFile(fileInfo, FilesRootPath, fileProgress, _cts.Token);
 
-                                await Task.Delay(10).ConfigureAwait(false);
+                                await Task.Delay(25, _cts.Token).ConfigureAwait(false);
 
                                 if (!retVal)
                                     break;
@@ -336,13 +337,13 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public async Task<bool> QuickScan(IProgress<ScanAndRepairProgress> progress)
+        public async Task<bool> QuickScan(IProgress<ScanAndRepairProgress> progress = null)
         {
             {
                 if (IsScanRunning)
                     throw new Exception("Scan already running!");
 
-                var retVal = false;
+                var retVal = true;
                 IsScanRunning = true;
                 try
                 {
@@ -352,25 +353,25 @@ namespace Celeste_Public_Api.GameScanner_Api
 
                     var totalCount = FilesInfo.Count();
                     var currentIndex = 0;
-                    foreach (var fileInfo in FilesInfo)
+                    Parallel.ForEach(FilesInfo, (fileInfo, state) =>
                     {
-                        currentIndex += 1;
+                        var index = Interlocked.Increment(ref currentIndex);
 
                         _cts.Token.ThrowIfCancellationRequested();
 
-                        progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
+                        progress?.Report(new ScanAndRepairProgress(totalCount, index,
                             new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
 
-                        await Task.Delay(10).ConfigureAwait(false);
+                        RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size);
 
-                        retVal = RunFileQuickCheck($"{FilesRootPath}{fileInfo.FileName}",
-                            fileInfo.Size);
+                        if (RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size))
+                            return;
 
-                        await Task.Delay(10).ConfigureAwait(false);
+                        retVal = false;
+                        state.Break();
+                    });
 
-                        if (!retVal)
-                            break;
-                    }
+                    await Task.Delay(25, _cts.Token).ConfigureAwait(false);
                 }
                 finally
                 {
@@ -381,7 +382,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool isSteam, bool betaUpdate)
+        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool isSteam, bool isLegacyXLive)
         {
             var filesInfo = new GameFilesInfo();
 
@@ -399,7 +400,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                 else
                     filesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
 
-            if (!betaUpdate)
+            if (isLegacyXLive)
                 return filesInfo.FileInfo.Values;
 
             //Override for celeste file (beta)
@@ -421,7 +422,7 @@ namespace Celeste_Public_Api.GameScanner_Api
 
         public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build, bool isSteam)
         {
-            var tempFileName = Path.GetTempFileName();
+            var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
 
             using (var client = new WebClient())
             {
@@ -432,25 +433,25 @@ namespace Celeste_Public_Api.GameScanner_Api
             var retVal = from line in File.ReadAllLines(tempFileName)
                 where line.StartsWith("+")
                 where
-                      // Launcher
-                      !line.StartsWith("+AoeOnlineDlg.dll") && !line.StartsWith("+AoeOnlinePatch.dll") &&
-                      !line.StartsWith("+expapply.dll") && !line.StartsWith("+LauncherLocList.txt") &&
-                      !line.StartsWith("+LauncherStrings-de-DE.xml") &&
-                      !line.StartsWith("+LauncherStrings-en-US.xml") &&
-                      !line.StartsWith("+LauncherStrings-es-ES.xml") &&
-                      !line.StartsWith("+LauncherStrings-fr-FR.xml") &&
-                      !line.StartsWith("+LauncherStrings-it-IT.xml") &&
-                      !line.StartsWith("+LauncherStrings-zh-CHT.xml") && !line.StartsWith("+AOEOnline.exe.cfg") &&
-                      //Beta Launcher
-                      !line.StartsWith("+Launcher.exe") &&
-                      !line.StartsWith("+LauncherReplace.exe") &&
-                      !line.StartsWith("+LauncherLocList.txt") &&
-                      !line.StartsWith("+AOEO_Privacy.rtf") &&
-                      !line.StartsWith("+pw32b.dll") &&
-                      //Steam
-                      (!line.StartsWith("+steam_api.dll") || isSteam && line.StartsWith("+steam_api.dll")) &&
-                      //Junk
-                      !line.StartsWith("+t3656t4234.tmp")
+                // Launcher
+                !line.StartsWith("+AoeOnlineDlg.dll") && !line.StartsWith("+AoeOnlinePatch.dll") &&
+                !line.StartsWith("+expapply.dll") && !line.StartsWith("+LauncherLocList.txt") &&
+                !line.StartsWith("+LauncherStrings-de-DE.xml") &&
+                !line.StartsWith("+LauncherStrings-en-US.xml") &&
+                !line.StartsWith("+LauncherStrings-es-ES.xml") &&
+                !line.StartsWith("+LauncherStrings-fr-FR.xml") &&
+                !line.StartsWith("+LauncherStrings-it-IT.xml") &&
+                !line.StartsWith("+LauncherStrings-zh-CHT.xml") && !line.StartsWith("+AOEOnline.exe.cfg") &&
+                //Beta Launcher
+                !line.StartsWith("+Launcher.exe") &&
+                !line.StartsWith("+LauncherReplace.exe") &&
+                !line.StartsWith("+LauncherLocList.txt") &&
+                !line.StartsWith("+AOEO_Privacy.rtf") &&
+                !line.StartsWith("+pw32b.dll") &&
+                //Steam
+                (!line.StartsWith("+steam_api.dll") || isSteam && line.StartsWith("+steam_api.dll")) &&
+                //Junk
+                !line.StartsWith("+t3656t4234.tmp")
                 select line.Split('|')
                 into lineSplit
                 select new GameFileInfo
@@ -472,7 +473,7 @@ namespace Celeste_Public_Api.GameScanner_Api
 
         private static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
         {
-            var tempFileName = Path.GetTempFileName();
+            var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
 
             using (var client = new WebClient())
             {
@@ -489,6 +490,38 @@ namespace Celeste_Public_Api.GameScanner_Api
                 File.Delete(tempFileName);
 
             return retVal;
+        }
+
+        private static void CleanTmpFolder()
+        {
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmp");
+
+            if (!Directory.Exists(path))
+                return;
+
+            var files = new DirectoryInfo(path).GetFiles("*", SearchOption.AllDirectories);
+
+            if (files.Length > 0)
+                Parallel.ForEach(files, file =>
+                {
+                    try
+                    {
+                        File.Delete(file.FullName);
+                    }
+                    catch (Exception)
+                    {
+                        //
+                    }
+                });
+
+            try
+            {
+                Directory.Delete(path, true);
+            }
+            catch (Exception)
+            {
+                //
+            }
         }
     }
 }

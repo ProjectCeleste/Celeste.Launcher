@@ -1,5 +1,18 @@
 # Change Log
 
+## [v2.0.2.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.2.0) (2018-01-31)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.4...v2.0.2.0)
+
+**Enhancements:**
+
+- "GameScan" will now use as temporary folder an folder who will be create at the same location has the launcher instead of using windows temporary folder.
+- "Quick GameScan" who was running before the game start has been improved its now a lot faster than before (and will no more display an UI).
+- "GameScan" will no more close if an error occur in order to be able to read the "progress log".
+- "Beta Update" in "GameScan" has been removed and replaced by two radio box in order to select the xLive version you want to use.
+
+Note: "Sparta XLive" is now the default xLive version, if you have issue with it use "Legacy XLive" version.
+
 ## [v2.0.1.4](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.1.4) (2018-01-08)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.1.3...v2.0.1.4)

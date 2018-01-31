@@ -30,8 +30,8 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "GameFilesPath")]
         public string GameFilesPath { get; set; } = string.Empty;
 
-        [XmlElement(ElementName = "BetaUpdate")]
-        public bool BetaUpdate { get; set; }
+        [XmlElement(ElementName = "IsLegacyXLive")]
+        public bool IsLegacyXLive { get; set; }
 
         [XmlIgnore]
         public bool IsSteamVersion { get; set; } = false;
