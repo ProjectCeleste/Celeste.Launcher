@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void BtnSmall1_Click(object sender, EventArgs e)
         {
-            if (tb_ConfirmPassword.Text != tb_Password.Text)
+            if (tb_ConfirmPassword.Text != tb_NewPassword.Text)
             {
                 MsgBox.ShowMessage(@"New password value and confirm new password value don't match!",
                     @"Celeste Fan Project",
