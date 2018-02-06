@@ -212,8 +212,8 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (Program.UserConfig.IsDiagnosticMode)
                 {
-                    // TODO: Cleanup mechanism for old crash dumps
                     var procdumpFileName = "procdump.exe";
+                    const int maxNumOfCrashDumps = 30;
                     if (!File.Exists(procdumpFileName))
                         throw new FileNotFoundException("Diagonstic Mode requires procdump.exe (File not Found)");
 
@@ -221,6 +221,13 @@ namespace Celeste_Launcher_Gui.Forms
                     var pathToCrashDumpFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                         @"Spartan\MiniDumps");
                     Directory.CreateDirectory(pathToCrashDumpFolder);
+
+                    // Check for cleanup
+                    Directory.GetFiles(pathToCrashDumpFolder)
+                        .OrderByDescending(File.GetLastWriteTime) // Sort by age --> old one last
+                        .Skip(maxNumOfCrashDumps) // Skip max num crash dumps
+                        .ToList()
+                        .ForEach(File.Delete); // Remove the rest
 
                     var excludeExceptions = new string[]
                     {
