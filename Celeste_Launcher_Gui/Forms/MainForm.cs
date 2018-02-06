@@ -4,7 +4,9 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
 using Celeste_AOEO_Controls.MsgBox;
@@ -25,6 +27,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             //
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
+            UpdateDiagModeToolStripFromConfig();
 
             //
             panelManager1.SelectedPanel = managedPanel2;
@@ -206,6 +209,45 @@ namespace Celeste_Launcher_Gui.Forms
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+
+                if (Program.UserConfig.IsDiagnosticMode)
+                {
+                    // TODO: Cleanup mechanism for old crash dumps
+                    var procdumpFileName = "procdump.exe";
+                    if (!File.Exists(procdumpFileName))
+                        throw new FileNotFoundException("Diagonstic Mode requires procdump.exe (File not Found)");
+
+                    // First ensure that all directories are set
+                    var pathToCrashDumpFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                        @"Spartan\MiniDumps");
+                    Directory.CreateDirectory(pathToCrashDumpFolder);
+
+                    var excludeExceptions = new string[]
+                    {
+                        "E0434F4D.COM", // .NET native exception
+                        "E06D7363.msc",
+                        "E06D7363.PAVEEFileLoadException@@",
+                        "E0434F4D.System.IO.FileNotFoundException" // .NET managed exception
+                    };
+
+                    var excludeExcpetionsCmd = string.Join(" ", excludeExceptions.Select(elem => "-fx " + elem));
+
+                    var fullCmdArgs = "-accepteula -mm -e 1 -n 10 " + excludeExcpetionsCmd +
+                                  " -g -w Spartan.exe \"" + pathToCrashDumpFolder + "\"";
+
+                    // MsgBox.ShowMessage(fullCmd);
+                    var startInfo = new ProcessStartInfo(procdumpFileName, fullCmdArgs)
+                    {
+                        WorkingDirectory = path,
+                        CreateNoWindow = true,
+                        UseShellExecute = false,
+                        RedirectStandardError = true,
+                        RedirectStandardOutput = true
+                    };
+
+                    Process.Start(startInfo);
+                }
+
                 var arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
                     ? $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
                     : $"--email \"{Program.UserConfig.LoginInfo.Email}\"  --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
@@ -576,6 +618,25 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 form.ShowDialog();
             }
+        }
+
+        private void UpdateDiagModeToolStripFromConfig()
+        {
+            if (Program.UserConfig.IsDiagnosticMode)
+            {
+                enableDiagnosticModeToolStripMenuItem.Text = @"Disable Diagnostic Mode";
+            }
+            else
+            {
+                enableDiagnosticModeToolStripMenuItem.Text = @"Enable Diagnostic Mode";
+            }
+        }
+
+        private void EnableDiagnosticModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.UserConfig.IsDiagnosticMode = !Program.UserConfig.IsDiagnosticMode;
+
+            UpdateDiagModeToolStripFromConfig();   
         }
     }
 }
