@@ -493,7 +493,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 if (response.Result)
                 {
-                    Program.CurrentUser = response.RemoteUser;
+                    Program.CurrentUser = response.User;
 
                     gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
                     gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
@@ -575,6 +575,14 @@ namespace Celeste_Launcher_Gui.Forms
             using (var form = new SteamForm())
             {
                 form.ShowDialog();
+            }
+        }
+
+        private void PictureBoxButtonCustom6_Click(object sender, EventArgs e)
+        {
+            using (var x = new FriendsForm())
+            {
+                x.ShowDialog();
             }
         }
     }

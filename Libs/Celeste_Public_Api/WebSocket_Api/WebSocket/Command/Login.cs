@@ -3,32 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
-using Celeste_Public_Api.WebSocket_Api.Models;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 
 #endregion
 
 namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 {
-    public class LoginRequest
-    {
-        public string Mail { get; set; }
-
-        public string Password { get; set; }
-
-        public Version Version { get; set; }
-
-        public string FingerPrint { get; set; }
-    }
-
-    public class LoginResponse
-    {
-        public bool Result { get; set; }
-
-        public string Message { get; set; }
-
-        public RemoteUser RemoteUser { get; set; }
-    }
-
     public class Login
     {
         public const string CmdName = "LOGIN";
@@ -40,7 +20,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
         private DataExchange DataExchange { get; }
 
-        public async Task<LoginResponse> DoLogin(LoginRequest request)
+        public async Task<LoginResult> DoLogin(LoginInfo request)
         {
             try
             {
@@ -57,11 +37,11 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
-                return result.ToObject<LoginResponse>();
+                return result.ToObject<LoginResult>();
             }
             catch (Exception e)
             {
-                return new LoginResponse {Result = false, Message = e.Message, RemoteUser = null};
+                return new LoginResult(false, e.Message);
             }
         }
     }

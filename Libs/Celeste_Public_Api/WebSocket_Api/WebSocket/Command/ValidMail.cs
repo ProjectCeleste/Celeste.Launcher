@@ -3,25 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 
 #endregion
 
 namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 {
-    public class ValidMailRequest
-    {
-        public Version Version { get; set; }
-
-        public string EMail { get; set; }
-    }
-
-    public class ValidMailResponse
-    {
-        public bool Result { get; set; }
-
-        public string Message { get; set; }
-    }
-
     public class ValidMail
     {
         public const string CmdName = "VALIDMAIL";
@@ -35,7 +22,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
         private DataExchange DataExchange { get; }
 
-        public async Task<ValidMailResponse> DoValidMail(ValidMailRequest request)
+        public async Task<ValidMailResult> DoValidMail(ValidMailInfo request)
         {
             try
             {
@@ -51,7 +38,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
-                ValidMailResponse retVal = result.ToObject<ValidMailResponse>();
+                ValidMailResult retVal = result.ToObject<ValidMailResult>();
 
                 if (retVal.Result)
                     _lastTime = DateTime.UtcNow;
@@ -60,7 +47,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
             }
             catch (Exception e)
             {
-                return new ValidMailResponse {Result = false, Message = e.Message};
+                return new ValidMailResult (false, e.Message);
             }
         }
     }

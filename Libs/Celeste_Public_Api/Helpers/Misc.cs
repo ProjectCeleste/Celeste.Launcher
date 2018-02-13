@@ -115,17 +115,17 @@ namespace Celeste_Public_Api.Helpers
 
         public static bool IsValideEmailAdress(string emailAdress)
         {
-            return !string.IsNullOrEmpty(emailAdress) && Regex.IsMatch(emailAdress, MatchEmailPattern);
+            return !string.IsNullOrWhiteSpace(emailAdress) && Regex.IsMatch(emailAdress, MatchEmailPattern);
         }
 
         public static bool IsValideUserName(string userName)
         {
-            return !string.IsNullOrEmpty(userName) && Regex.IsMatch(userName, MatchUserNamePattern);
+            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, MatchUserNamePattern);
         }
 
         public static bool IsValidePassword(string password)
         {
-            return !password.Contains("'") && !password.Contains("\"");
+            return !string.IsNullOrWhiteSpace(password)  && !password.Contains("'") && !password.Contains("\"");
         }
     }
 }

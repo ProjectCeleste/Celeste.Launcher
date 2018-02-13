@@ -3,6 +3,7 @@
 using System;
 using System.ComponentModel;
 using System.Net.Sockets;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
 using SuperSocket.ClientEngine;
@@ -62,7 +63,14 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
                 throw new Exception($"Invalid server URI ({_uri}).Exception: {ex.Message}");
             }
 
-            _agent.Security.AllowUnstrustedCertificate = true;
+            if (_uri.StartsWith("wss://", StringComparison.OrdinalIgnoreCase))
+            {
+                _agent.Security.EnabledSslProtocols = SslProtocols.Tls;
+
+                _agent.Security.AllowUnstrustedCertificate = true;
+                _agent.Security.AllowNameMismatchCertificate = true;
+                //_agent.Security.AllowCertificateChainErrors = true;
+            }
 
             _agent.Closed += WebSocket_Closed;
             _agent.Error += WebSocket_Error;

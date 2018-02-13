@@ -3,27 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 
 #endregion
 
 namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 {
-    public class ResetPwdRequest
-    {
-        public Version Version { get; set; }
-
-        public string EMail { get; set; }
-
-        public string VerifyKey { get; set; }
-    }
-
-    public class ResetPwdResponse
-    {
-        public bool Result { get; set; }
-
-        public string Message { get; set; }
-    }
-
     public class ResetPwd
     {
         public const string CmdName = "RESETPWD";
@@ -37,7 +22,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
         private DataExchange DataExchange { get; }
 
-        public async Task<ResetPwdResponse> DoResetPwd(ResetPwdRequest request)
+        public async Task<ResetPwdResult> DoResetPwd(ResetPwdInfo request)
         {
             try
             {
@@ -56,7 +41,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
-                ResetPwdResponse retVal = result.ToObject<ResetPwdResponse>();
+                ResetPwdResult retVal = result.ToObject<ResetPwdResult>();
 
                 if (retVal.Result)
                     _lastTime = DateTime.UtcNow;
@@ -65,7 +50,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
             }
             catch (Exception e)
             {
-                return new ResetPwdResponse {Result = false, Message = e.Message};
+                return new ResetPwdResult (false, e.Message);
             }
         }
     }

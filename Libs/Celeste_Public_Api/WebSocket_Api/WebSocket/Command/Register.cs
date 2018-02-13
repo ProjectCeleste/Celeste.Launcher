@@ -3,32 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 
 #endregion
 
 namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 {
-    public class RegisterRequest
-    {
-        public Version Version { get; set; }
-
-        public string Mail { get; set; }
-
-        public string VerifyKey { get; set; }
-
-        public string UserName { get; set; }
-
-        public string Password { get; set; }
-
-        public string FingerPrint { get; set; }
-    }
-
-    public class RegisterResponse
-    {
-        public bool Result { get; set; }
-
-        public string Message { get; set; }
-    }
 
     public class Register
     {
@@ -43,7 +23,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
         private DataExchange DataExchange { get; }
 
-        public async Task<RegisterResponse> DoRegister(RegisterRequest request)
+        public async Task<RegisterUserResult> DoRegister(RegisterUserInfo request)
         {
             try
             {
@@ -72,7 +52,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
-                RegisterResponse retVal = result.ToObject<RegisterResponse>();
+                RegisterUserResult retVal = result.ToObject<RegisterUserResult>();
 
                 if (retVal.Result)
                     _lastTime = DateTime.UtcNow;
@@ -81,7 +61,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
             }
             catch (Exception e)
             {
-                return new RegisterResponse {Result = false, Message = e.Message};
+                return new RegisterUserResult (false,  e.Message);
             }
         }
     }
