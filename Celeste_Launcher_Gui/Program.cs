@@ -9,7 +9,7 @@ using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.WebSocket_Api;
-using Celeste_Public_Api.WebSocket_Api.Models;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 
 #endregion
 
@@ -17,16 +17,9 @@ namespace Celeste_Launcher_Gui
 {
     internal static class Program
     {
+        public static WebSocketApi WebSocketApi { get; private set; }
 
-#if DEBUG 
-        public static string WebSocketUri = "ws://127.0.0.1:4512/";
-#else
-        public static string WebSocketUri = "ws://66.70.180.188:4512/";
-#endif
-
-        public static WebSocketApi WebSocketApi { get; } = new WebSocketApi(WebSocketUri);
-
-        public static RemoteUser CurrentUser { get; set; }
+        public static User CurrentUser { get; set; }
 
         public static UserConfig UserConfig = new UserConfig();
 
@@ -78,15 +71,19 @@ namespace Celeste_Launcher_Gui
             //Check if Steam Version
             try
             {
-                UserConfig.IsSteamVersion = Assembly.GetEntryAssembly().Location.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase);
+                UserConfig.IsSteamVersion = Assembly.GetEntryAssembly().Location
+                    .EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase);
             }
             catch (Exception)
             {
                 //
             }
 
-            //Start Gui
-            Application.Run(new MainForm());
+            //Init WebSocketApi
+            WebSocketApi  = new WebSocketApi(UserConfig.ServerUri);
+
+    //Start Gui
+    Application.Run(new MainForm());
 
             GC.KeepAlive(mutex);
         }

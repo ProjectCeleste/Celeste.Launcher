@@ -3,25 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 
 #endregion
 
 namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 {
-    public class ChangePwdRequest
-    {
-        public string Old { get; set; }
-
-        public string New { get; set; }
-    }
-
-    public class ChangePwdResponse
-    {
-        public bool Result { get; set; }
-
-        public string Message { get; set; }
-    }
-
     public class ChangePwd
     {
         public const string CmdName = "CHANGEPWD";
@@ -35,7 +22,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
         private DataExchange DataExchange { get; }
 
-        public async Task<ChangePwdResponse> DoChangePwd(ChangePwdRequest request)
+        public async Task<ChangePwdResult> DoChangePwd(ChangePwdInfo request)
         {
             try
             {
@@ -60,7 +47,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
-                ChangePwdResponse retVal = result.ToObject<ChangePwdResponse>();
+                ChangePwdResult retVal = result.ToObject<ChangePwdResult>();
 
                 if (retVal.Result)
                     _lastTime = DateTime.UtcNow;
@@ -69,7 +56,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
             }
             catch (Exception e)
             {
-                return new ChangePwdResponse {Result = false, Message = e.Message};
+                return new ChangePwdResult(false, e.Message);
             }
         }
     }

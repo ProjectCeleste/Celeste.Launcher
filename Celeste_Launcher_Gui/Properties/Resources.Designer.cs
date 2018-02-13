@@ -83,6 +83,16 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AddFriends_Normal {
+            get {
+                object obj = ResourceManager.GetObject("AddFriends_Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AOEDBHover {
             get {
                 object obj = ResourceManager.GetObject("AOEDBHover", resourceCulture);
@@ -353,6 +363,16 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FriendRequests_Normal {
+            get {
+                object obj = ResourceManager.GetObject("FriendRequests_Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FriendsHover {
             get {
                 object obj = ResourceManager.GetObject("FriendsHover", resourceCulture);
@@ -406,6 +426,26 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap RedditNormal {
             get {
                 object obj = ResourceManager.GetObject("RedditNormal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RefreshHover {
+            get {
+                object obj = ResourceManager.GetObject("RefreshHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RefreshNormal {
+            get {
+                object obj = ResourceManager.GetObject("RefreshNormal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

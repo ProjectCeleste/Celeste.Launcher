@@ -4,7 +4,7 @@ using System;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
-using Celeste_Public_Api.WebSocket_Api.Models;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 
 #endregion
 
@@ -26,7 +26,7 @@ namespace Celeste_Launcher_Gui.Forms
             cb_RememberMe.Checked = Program.UserConfig.LoginInfo.RememberMe;
         }
 
-        public RemoteUser CurrentUser { get; private set; }
+        public User CurrentUser { get; private set; }
 
         private async void Btn_Login_Click(object sender, EventArgs e)
         {
@@ -38,7 +38,7 @@ namespace Celeste_Launcher_Gui.Forms
                 if (response.Result)
                 {
                     //
-                    CurrentUser = response.RemoteUser;
+                    CurrentUser = response.User;
 
                     //Save UserConfig
                     if (Program.UserConfig == null)
@@ -84,7 +84,6 @@ namespace Celeste_Launcher_Gui.Forms
                 MsgBox.ShowMessage($"Error: {ex.Message}", @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
             Enabled = true;
         }
 

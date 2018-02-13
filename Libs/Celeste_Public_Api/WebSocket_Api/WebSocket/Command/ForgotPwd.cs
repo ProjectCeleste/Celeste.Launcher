@@ -3,25 +3,12 @@
 using System;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 
 #endregion
 
 namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 {
-    public class ForgotPwdRequest
-    {
-        public Version Version { get; set; }
-
-        public string EMail { get; set; }
-    }
-
-    public class ForgotPwdResponse
-    {
-        public bool Result { get; set; }
-
-        public string Message { get; set; }
-    }
-
     public class ForgotPwd
     {
         public const string CmdName = "FORGOTPWD";
@@ -35,7 +22,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
         private DataExchange DataExchange { get; }
 
-        public async Task<ForgotPwdResponse> DoForgotPwd(ForgotPwdRequest request)
+        public async Task<ForgotPwdResult> DoForgotPwd(ForgotPwdInfo request)
         {
             try
             {
@@ -51,7 +38,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
-                ForgotPwdResponse retVal = result.ToObject<ForgotPwdResponse>();
+                ForgotPwdResult retVal = result.ToObject<ForgotPwdResult>();
 
                 if (retVal.Result)
                     _lastTime = DateTime.UtcNow;
@@ -60,7 +47,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
             }
             catch (Exception e)
             {
-                return new ForgotPwdResponse {Result = false, Message = e.Message};
+                return new ForgotPwdResult(false, e.Message);
             }
         }
     }

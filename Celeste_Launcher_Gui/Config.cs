@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -27,6 +28,18 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "Celeste_Launcher_Gui_Config")]
     public class UserConfig
     {
+
+#if DEBUG
+        [DefaultValue("ws://127.0.0.1:4512/")]
+        [XmlElement(ElementName = "ServerUri")]
+        //public string ServerUri { get; set; } = "ws://127.0.0.1:4512/";
+        public string ServerUri { get; set; } = "wss://80.ip-66-70-189.net:4513/";
+#else
+        [DefaultValue("wss://ns544971.ip-66-70-180.net:4513/")]
+        [XmlElement(ElementName = "ServerUri")]
+        public string ServerUri { get; set; } = "wss://ns544971.ip-66-70-180.net:4513/";
+#endif
+
         [XmlElement(ElementName = "GameFilesPath")]
         public string GameFilesPath { get; set; } = string.Empty;
 

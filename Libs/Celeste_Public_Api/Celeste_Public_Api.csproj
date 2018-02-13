@@ -44,6 +44,7 @@
       <HintPath>$(SolutionDir)\packages\SuperSocket.ClientEngine.Core.0.9.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -66,8 +67,22 @@
     <Compile Include="Helpers\ZipUtils.cs" />
     <Compile Include="GameScanner_Api\Models\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebSocket_Api\Models\UserExt\Friend.cs" />
-    <Compile Include="WebSocket_Api\Models\User.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\ADDFRIEND.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\CHANGEPWD.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\CONFFRIEND.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\GETFRIENDS.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\GETPFRIENDS.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\LOGIN.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\REMFRIEND.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\NotLogged\FORGOTPWD.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\NotLogged\REGISTER.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\NotLogged\RESETPWD.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\NotLogged\VALIDMAIL.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\ConfirmFriend.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\AddFriend.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\RemoveFriend.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\GetPendingFriends.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\Command\GetFriends.cs" />
     <Compile Include="WebSocket_Api\WebSocket\Command\Register.cs" />
     <Compile Include="WebSocket_Api\WebSocket\Command\ValidMail.cs" />
     <Compile Include="WebSocket_Api\WebSocket\Command\ForgotPwd.cs" />

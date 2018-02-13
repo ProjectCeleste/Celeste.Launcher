@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.WebSocket_Api.WebSocket;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Command;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
 
 #endregion
@@ -28,13 +30,23 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private readonly ValidMail _validMail;
 
-        private readonly Version _apiVersion = new Version(2, 0, 1, 5);
+        private readonly GetFriends _getFriends;
+
+        private readonly GetPendingFriends _getPFriends;
+
+        private readonly RemoveFriend _removeFriend;
+
+        private readonly AddFriend _addFriend;
+
+        private readonly ConfirmFriend _confirmFriend;
+
+        private readonly Version _apiVersion = new Version(2, 0, 3, 0);
 
         private DateTime _lastActivity = DateTime.UtcNow;
 
         private bool _loggedIn;
 
-        private LoginRequest _loginRequest;
+        private LoginInfo _loginRequest;
 
         public WebSocketApi(string uri)
         {
@@ -45,6 +57,11 @@ namespace Celeste_Public_Api.WebSocket_Api
             _resetPwd = new ResetPwd(_client);
             _validMail = new ValidMail(_client);
             _register = new Register(_client);
+            _getFriends = new GetFriends(_client);
+            _getPFriends = new GetPendingFriends(_client);
+            _removeFriend = new RemoveFriend(_client);
+            _addFriend = new AddFriend(_client);
+            _confirmFriend = new ConfirmFriend(_client);
         }
 
         public bool Connected => _client?.State == ClientState.Connected;
@@ -79,20 +96,14 @@ namespace Celeste_Public_Api.WebSocket_Api
             }
         }
 
-        public async Task<LoginResponse> DoLogin(string eMail, string password)
+        public async Task<LoginResult> DoLogin(string eMail, string password)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new LoginRequest
-            {
-                Mail = eMail,
-                Password = password,
-                Version = _apiVersion,
-                FingerPrint = FingerPrint.Value()
-            };
+            var request = new LoginInfo(eMail, password, _apiVersion, FingerPrint.Value());
 
             var response = await _login.DoLogin(request);
 
@@ -119,110 +130,166 @@ namespace Celeste_Public_Api.WebSocket_Api
             return response;
         }
 
-        private async Task<LoginResponse> DoReLogin()
+        private async Task<LoginResult> DoReLogin()
         {
             if (_loginRequest == null)
-                return new LoginResponse {Result = false, Message = "Invalid stored login information!"};
+                return new LoginResult (false, "Invalid stored login information");
             
             return await DoLogin(_loginRequest.Mail, _loginRequest.Password);
         }
 
-        public async Task<ChangePwdResponse> DoChangePassword(string oldPwd, string newPwd)
+        public async Task<ChangePwdResult> DoChangePassword(string oldPwd, string newPwd)
         {
             _lastActivity = DateTime.UtcNow;
 
-            var request = new ChangePwdRequest
-            {
-                Old = oldPwd,
-                New = newPwd
-            };
+            var request = new ChangePwdInfo(oldPwd, newPwd);
 
             if (LoggedIn)
                 return await _changePwd.DoChangePwd(request);
 
             var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
-                return new ChangePwdResponse {Result = false, Message = loginResponse.Message};
+                return new ChangePwdResult(false,loginResponse.Message);
 
             return await _changePwd.DoChangePwd(request);
         }
 
-        public async Task<ForgotPwdResponse> DoForgotPwd(string eMail)
+        public async Task<ForgotPwdResult> DoForgotPwd(string eMail)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new ForgotPwdRequest
-            {
-                Version = _apiVersion,
-                EMail = eMail
-            };
+            var request = new ForgotPwdInfo(_apiVersion, eMail);
 
             var response = await _forgotPwd.DoForgotPwd(request);
 
             return response;
         }
 
-        public async Task<ResetPwdResponse> DoResetPwd(string eMail, string verifyKey)
+        public async Task<ResetPwdResult> DoResetPwd(string eMail, string verifyKey)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new ResetPwdRequest
-            {
-                Version = _apiVersion,
-                EMail = eMail,
-                VerifyKey = verifyKey
-            };
+            var request = new ResetPwdInfo(_apiVersion, eMail, verifyKey);
 
             var response = await _resetPwd.DoResetPwd(request);
 
             return response;
         }
 
-        public async Task<ValidMailResponse> DoValidMail(string eMail)
+        public async Task<ValidMailResult> DoValidMail(string eMail)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new ValidMailRequest
-            {
-                Version = _apiVersion,
-                EMail = eMail
-            };
+            var request = new ValidMailInfo(_apiVersion, eMail);
 
             var response = await _validMail.DoValidMail(request);
 
             return response;
         }
 
-        public async Task<RegisterResponse> DoRegister(string eMail, string verifyKey, string username, string password)
+        public async Task<RegisterUserResult> DoRegister(string eMail, string verifyKey, string username, string password)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new RegisterRequest
-            {
-                Version = _apiVersion,
-                Mail = eMail,
-                VerifyKey = verifyKey,
-                UserName = username,
-                Password = password,
-                FingerPrint = FingerPrint.Value()
-            };
+            var request = new RegisterUserInfo(_apiVersion, eMail, verifyKey, username, password, FingerPrint.Value());
 
             var response = await _register.DoRegister(request);
 
             return response;
         }
+
+        public async Task<GetFriendsResult> DoGetFriends()
+        {
+            _lastActivity = DateTime.UtcNow;
+
+            var request = new GetFriendsInfo();
+
+            if (LoggedIn)
+                return await _getFriends.DoGetFriends(request);
+
+            var loginResponse = await DoReLogin();
+            if (!loginResponse.Result)
+                return new GetFriendsResult(false, loginResponse.Message);
+
+            return await _getFriends.DoGetFriends(request);
+        }
+
+        public async Task<GetPendingFriendsResult> DoGetPendingFriends()
+        {
+            _lastActivity = DateTime.UtcNow;
+
+            var request = new GetPendingFriendsInfo();
+
+            if (LoggedIn)
+                return await _getPFriends.DoGetPendingFriends(request);
+
+            var loginResponse = await DoReLogin();
+            if (!loginResponse.Result)
+                return new GetPendingFriendsResult(false, loginResponse.Message);
+
+            return await _getPFriends.DoGetPendingFriends(request);
+        }
+
+        public async Task<RemoveFriendResult> DoRemoveFriend(long xuid)
+        {
+            _lastActivity = DateTime.UtcNow;
+
+            var request = new RemoveFriendInfo(xuid);
+
+            if (LoggedIn)
+                return await _removeFriend.DoRemoveFriend(request);
+
+            var loginResponse = await DoReLogin();
+            if (!loginResponse.Result)
+                return new RemoveFriendResult(false, loginResponse.Message);
+
+            return await _removeFriend.DoRemoveFriend(request);
+        }
+
+        public async Task<AddFriendResult> DoAddFriend(string friendName)
+        {
+            _lastActivity = DateTime.UtcNow;
+
+            var request = new AddFriendInfo(friendName);
+
+            if (LoggedIn)
+                return await _addFriend.DoAddFriend(request);
+
+            var loginResponse = await DoReLogin();
+            if (!loginResponse.Result)
+                return new AddFriendResult(false, loginResponse.Message);
+
+            return await _addFriend.DoAddFriend(request);
+        }
+
+        public async Task<ConfirmFriendResult> DoConfirmFriend(long xuid)
+        {
+            _lastActivity = DateTime.UtcNow;
+
+            var request = new ConfirmFriendInfo(xuid);
+
+            if (LoggedIn)
+                return await _confirmFriend.DoConfirmFriend(request);
+
+            var loginResponse = await DoReLogin();
+            if (!loginResponse.Result)
+                return new ConfirmFriendResult(false, loginResponse.Message);
+
+            return await _confirmFriend.DoConfirmFriend(request);
+        }
+
 
         #region Disconnect Idle Session
 

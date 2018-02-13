@@ -77,6 +77,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMS_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +90,6 @@
             this.cMS_ProjectCelesteCom = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -132,7 +132,7 @@
             this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
             this.mainContainer1.CloseButton = true;
             this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.mainContainer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.mainContainer1.Location = new System.Drawing.Point(0, 0);
             this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.mainContainer1.MinimizeBox = true;
@@ -150,7 +150,7 @@
             this.p_UserInfo.Controls.Add(this.panel2);
             this.p_UserInfo.Controls.Add(this.panel1);
             this.p_UserInfo.Controls.Add(this.panel9);
-            this.p_UserInfo.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.p_UserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.p_UserInfo.Location = new System.Drawing.Point(26, 67);
             this.p_UserInfo.Name = "p_UserInfo";
             this.p_UserInfo.Size = new System.Drawing.Size(919, 509);
@@ -162,7 +162,7 @@
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel4.Controls.Add(this.tableLayoutPanel5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(546, 346);
@@ -175,7 +175,7 @@
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel7, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 4;
@@ -202,7 +202,7 @@
             this.tableLayoutPanel2.Controls.Add(this.pictureBoxButtonCustom5, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.pictureBoxButtonCustom1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 274);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -215,7 +215,7 @@
             // 
             this.pictureBoxButtonCustom3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom3.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteHover;
             this.pictureBoxButtonCustom3.Image = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteNormal;
             this.pictureBoxButtonCustom3.Location = new System.Drawing.Point(0, 0);
@@ -234,7 +234,7 @@
             // 
             this.pictureBoxButtonCustom2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom2.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.RedditHover;
             this.pictureBoxButtonCustom2.Image = global::Celeste_Launcher_Gui.Properties.Resources.RedditNormal;
             this.pictureBoxButtonCustom2.Location = new System.Drawing.Point(218, 0);
@@ -253,7 +253,7 @@
             // 
             this.pictureBoxButtonCustom4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom4.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBHover;
             this.pictureBoxButtonCustom4.Image = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBNormal;
             this.pictureBoxButtonCustom4.Location = new System.Drawing.Point(327, 0);
@@ -272,7 +272,7 @@
             // 
             this.pictureBoxButtonCustom5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom5.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DonateHover;
             this.pictureBoxButtonCustom5.Image = global::Celeste_Launcher_Gui.Properties.Resources.DonateNormal;
             this.pictureBoxButtonCustom5.Location = new System.Drawing.Point(436, 0);
@@ -291,7 +291,7 @@
             // 
             this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DiscordHover;
             this.pictureBoxButtonCustom1.Image = global::Celeste_Launcher_Gui.Properties.Resources.DiscordNormal;
             this.pictureBoxButtonCustom1.Location = new System.Drawing.Point(109, 0);
@@ -314,7 +314,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Controls.Add(this.panel8, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 13);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
@@ -326,7 +326,7 @@
             // 
             this.panel8.Controls.Add(this.newsSideShow1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel8.Location = new System.Drawing.Point(60, 3);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(420, 242);
@@ -337,7 +337,7 @@
             this.newsSideShow1.BackColor = System.Drawing.Color.Transparent;
             this.newsSideShow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.newsSideShow1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newsSideShow1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.newsSideShow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.newsSideShow1.Location = new System.Drawing.Point(0, 0);
             this.newsSideShow1.Margin = new System.Windows.Forms.Padding(0);
             this.newsSideShow1.Name = "newsSideShow1";
@@ -348,7 +348,7 @@
             // 
             this.panel5.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparatorVertical;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel5.Location = new System.Drawing.Point(546, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
@@ -360,7 +360,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panelManager1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel2.Location = new System.Drawing.Point(573, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
@@ -372,7 +372,7 @@
             this.panel3.Controls.Add(this.panel11);
             this.panel3.Controls.Add(this.tableLayoutPanel3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel3.Location = new System.Drawing.Point(0, 270);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
@@ -383,7 +383,7 @@
             // 
             this.panel11.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel11.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
@@ -402,7 +402,7 @@
             this.tableLayoutPanel3.Controls.Add(this.pictureBoxButtonCustom8, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.panel7, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 29);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -415,7 +415,7 @@
             // 
             this.pictureBoxButtonCustom8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom8.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.ToolsHover;
             this.pictureBoxButtonCustom8.Image = global::Celeste_Launcher_Gui.Properties.Resources.ToolsNormal;
             this.pictureBoxButtonCustom8.Location = new System.Drawing.Point(266, 0);
@@ -436,7 +436,7 @@
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel7.Controls.Add(this.lb_Ver);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
@@ -447,7 +447,7 @@
             // 
             this.lb_Ver.BackColor = System.Drawing.Color.Transparent;
             this.lb_Ver.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lb_Ver.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
+            this.lb_Ver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.lb_Ver.ForeColor = System.Drawing.Color.Black;
             this.lb_Ver.Location = new System.Drawing.Point(0, 0);
             this.lb_Ver.Margin = new System.Windows.Forms.Padding(3);
@@ -463,7 +463,7 @@
             this.panelManager1.Controls.Add(this.managedPanel2);
             this.panelManager1.Controls.Add(this.managedPanel1);
             this.panelManager1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelManager1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panelManager1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panelManager1.Location = new System.Drawing.Point(0, 0);
             this.panelManager1.Margin = new System.Windows.Forms.Padding(0);
             this.panelManager1.Name = "panelManager1";
@@ -477,7 +477,7 @@
             this.managedPanel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.MiddleOne;
             this.managedPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.managedPanel2.Controls.Add(this.tableLayoutPanel1);
-            this.managedPanel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.managedPanel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.managedPanel2.Location = new System.Drawing.Point(0, 0);
             this.managedPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.managedPanel2.Name = "managedPanel2";
@@ -493,7 +493,7 @@
             this.tableLayoutPanel1.Controls.Add(this.customBtn2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -510,7 +510,7 @@
             this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn1.BtnText = "LOGIN";
             this.customBtn1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.customBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.customBtn1.Location = new System.Drawing.Point(0, -114);
             this.customBtn1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.customBtn1.Name = "customBtn1";
@@ -524,7 +524,7 @@
             this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn2.BtnText = "REGISTER";
             this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.customBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.customBtn2.Location = new System.Drawing.Point(0, -54);
             this.customBtn2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.customBtn2.Name = "customBtn2";
@@ -535,7 +535,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.CelesteLogo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 10);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
@@ -550,7 +550,7 @@
             this.managedPanel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.MiddleOne;
             this.managedPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.managedPanel1.Controls.Add(this.tableLayoutPanel6);
-            this.managedPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.managedPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.managedPanel1.Location = new System.Drawing.Point(0, 0);
             this.managedPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.managedPanel1.Name = "managedPanel1";
@@ -566,7 +566,7 @@
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.panel6, 0, 2);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -582,7 +582,7 @@
             // 
             this.panel10.Controls.Add(this.gamerCard1);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel10.Location = new System.Drawing.Point(13, 2);
             this.panel10.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.panel10.Name = "panel10";
@@ -595,7 +595,7 @@
             this.gamerCard1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gamerCard1.BackgroundImage")));
             this.gamerCard1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.gamerCard1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gamerCard1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.gamerCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.gamerCard1.Location = new System.Drawing.Point(0, 0);
             this.gamerCard1.Margin = new System.Windows.Forms.Padding(0);
             this.gamerCard1.Name = "gamerCard1";
@@ -614,7 +614,7 @@
             this.tableLayoutPanel8.Controls.Add(this.pictureBoxButtonCustom9, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.pictureBoxButtonCustom6, 1, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(10, 121);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -627,7 +627,7 @@
             // 
             this.pictureBoxButtonCustom7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom7.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom7.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AccountHover;
             this.pictureBoxButtonCustom7.Image = global::Celeste_Launcher_Gui.Properties.Resources.AccountNormal;
             this.pictureBoxButtonCustom7.Location = new System.Drawing.Point(108, 5);
@@ -646,7 +646,7 @@
             // 
             this.pictureBoxButtonCustom9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom9.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.SettingsHover;
             this.pictureBoxButtonCustom9.Image = global::Celeste_Launcher_Gui.Properties.Resources.SettingsNormal;
             this.pictureBoxButtonCustom9.Location = new System.Drawing.Point(0, 5);
@@ -665,7 +665,7 @@
             // 
             this.pictureBoxButtonCustom6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxButtonCustom6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom6.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.FriendsHover;
             this.pictureBoxButtonCustom6.Image = global::Celeste_Launcher_Gui.Properties.Resources.FriendsNormal;
             this.pictureBoxButtonCustom6.Location = new System.Drawing.Point(216, 5);
@@ -678,12 +678,13 @@
             this.pictureBoxButtonCustom6.TabIndex = 73;
             this.pictureBoxButtonCustom6.TabStop = false;
             this.pictureBoxButtonCustom6.ToolTipText = "Friends (Soon)";
+            this.pictureBoxButtonCustom6.Click += new System.EventHandler(this.PictureBoxButtonCustom6_Click);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btn_Play);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel6.Location = new System.Drawing.Point(10, 196);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
@@ -695,7 +696,7 @@
             this.btn_Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Play.BackgroundImage")));
             this.btn_Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Play.BtnText = "PLAY";
-            this.btn_Play.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btn_Play.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btn_Play.Location = new System.Drawing.Point(60, 13);
             this.btn_Play.Margin = new System.Windows.Forms.Padding(20);
             this.btn_Play.Name = "btn_Play";
@@ -707,7 +708,7 @@
             // 
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel1.Location = new System.Drawing.Point(0, 346);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
@@ -718,7 +719,7 @@
             // 
             this.panel9.Controls.Add(this.tableLayoutPanel4);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel9.Location = new System.Drawing.Point(0, 373);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(919, 136);
@@ -733,7 +734,7 @@
             this.tableLayoutPanel4.Controls.Add(this.linkLabel4, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -749,7 +750,7 @@
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.linkLabel4.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
+            this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.linkLabel4.LinkColor = System.Drawing.Color.DarkBlue;
             this.linkLabel4.Location = new System.Drawing.Point(3, 101);
             this.linkLabel4.Name = "linkLabel4";
@@ -767,7 +768,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Ashley Crawford CG", 12F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(3);
@@ -786,7 +787,7 @@
             this.helpersToolStripMenuItem});
             this.cMS_Tools.Name = "contextMenuStrip1";
             this.cMS_Tools.ShowImageMargin = false;
-            this.cMS_Tools.Size = new System.Drawing.Size(141, 98);
+            this.cMS_Tools.Size = new System.Drawing.Size(141, 76);
             // 
             // updaterToolStripMenuItem
             // 
@@ -819,6 +820,14 @@
             this.windowsFeaturesToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
             this.windowsFeaturesToolStripMenuItem.Text = "Windows Features";
             this.windowsFeaturesToolStripMenuItem.Click += new System.EventHandler(this.WindowsFeaturesToolStripMenuItem_Click);
+            // 
+            // steamToolStripMenuItem
+            // 
+            this.steamToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.steamToolStripMenuItem.Name = "steamToolStripMenuItem";
+            this.steamToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.steamToolStripMenuItem.Text = "Steam";
+            this.steamToolStripMenuItem.Click += new System.EventHandler(this.SteamToolStripMenuItem_Click);
             // 
             // cMS_Settings
             // 
@@ -921,14 +930,6 @@
             this.forumsToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.forumsToolStripMenuItem.Text = "Forums";
             this.forumsToolStripMenuItem.Click += new System.EventHandler(this.ForumsToolStripMenuItem_Click);
-            // 
-            // steamToolStripMenuItem
-            // 
-            this.steamToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.steamToolStripMenuItem.Name = "steamToolStripMenuItem";
-            this.steamToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
-            this.steamToolStripMenuItem.Text = "Steam";
-            this.steamToolStripMenuItem.Click += new System.EventHandler(this.SteamToolStripMenuItem_Click);
             // 
             // MainForm
             // 
