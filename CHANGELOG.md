@@ -1,8 +1,12 @@
 # Change Log
 
-## [v2.0.2.1](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.2.1) (2018-02-05)
+## [v2.0.3.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.3.0) (2018-02-13)
 
-[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.2.0...v2.0.2.1)
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.2.0...v2.0.3.0)
+
+**New Features:**
+
+- Friends: You can now add and see your friends activity.
 
 **Bug Fix:**
 
