@@ -32,8 +32,7 @@ namespace Celeste_Launcher_Gui
 #if DEBUG
         [DefaultValue("ws://127.0.0.1:4512/")]
         [XmlElement(ElementName = "ServerUri")]
-        //public string ServerUri { get; set; } = "ws://127.0.0.1:4512/";
-        public string ServerUri { get; set; } = "wss://80.ip-66-70-189.net:4513/";
+        public string ServerUri { get; set; } = "ws://127.0.0.1:4512/";
 #else
         [DefaultValue("wss://ns544971.ip-66-70-180.net:4513/")]
         [XmlElement(ElementName = "ServerUri")]
