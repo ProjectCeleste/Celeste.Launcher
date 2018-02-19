@@ -90,6 +90,7 @@
             this.cMS_ProjectCelesteCom = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -835,22 +836,23 @@
             this.cMS_Settings.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMS_Settings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.enableDiagnosticModeToolStripMenuItem});
             this.cMS_Settings.Name = "contextMenuStrip1";
             this.cMS_Settings.ShowImageMargin = false;
-            this.cMS_Settings.Size = new System.Drawing.Size(179, 52);
+            this.cMS_Settings.Size = new System.Drawing.Size(239, 98);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(178, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(238, 24);
             this.toolStripMenuItem2.Text = "Game Language";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(178, 24);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(238, 24);
             this.toolStripMenuItem3.Text = "MP Settings";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.ToolStripMenuItem3_Click);
             // 
@@ -930,6 +932,13 @@
             this.forumsToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.forumsToolStripMenuItem.Text = "Forums";
             this.forumsToolStripMenuItem.Click += new System.EventHandler(this.ForumsToolStripMenuItem_Click);
+            // 
+            // enableDiagnosticModeToolStripMenuItem
+            // 
+            this.enableDiagnosticModeToolStripMenuItem.Name = "enableDiagnosticModeToolStripMenuItem";
+            this.enableDiagnosticModeToolStripMenuItem.Size = new System.Drawing.Size(238, 24);
+            this.enableDiagnosticModeToolStripMenuItem.Text = "Enable Diagnostic Mode";
+            this.enableDiagnosticModeToolStripMenuItem.Click += new System.EventHandler(this.EnableDiagnosticModeToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1050,5 +1059,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsFeaturesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem steamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
     }
 }

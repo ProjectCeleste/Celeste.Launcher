@@ -57,6 +57,9 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "MpSettings")]
         public MpSettings MpSettings { get; set; } = new MpSettings();
 
+        [XmlElement(ElementName = "IsDiagnosticMode")]
+        public bool IsDiagnosticMode { get; set; } = false;
+
         public void Save(string path)
         {
             XmlUtils.SerializeToFile(this, path);
