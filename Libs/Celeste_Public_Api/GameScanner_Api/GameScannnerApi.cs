@@ -475,13 +475,28 @@ namespace Celeste_Public_Api.GameScanner_Api
         {
             var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
 
-            using (var client = new WebClient())
+            try
             {
-                client.DownloadFile(
-                    betaUpdate
-                        ? "https://downloads.projectceleste.com/game_files/manifest_override_b.xml"
-                        : "https://downloads.projectceleste.com/game_files/manifest_override.xml",
-                    tempFileName);
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile(
+                        betaUpdate
+                            ? "https://downloads.projectceleste.com/game_files/manifest_override_b.xml"
+                            : "https://downloads.projectceleste.com/game_files/manifest_override.xml",
+                        tempFileName);
+                }
+            }
+            catch
+            {
+                //FallBack Server
+                using (var client = new WebClient())
+                {
+                    client.DownloadFile(
+                        betaUpdate
+                            ? "https://ns544971.ip-66-70-180.net/game_files/manifest_override_b.xml"
+                            : "https://ns544971.ip-66-70-180.net/game_files/manifest_override.xml",
+                        tempFileName);
+                }
             }
 
             var retVal = XmlUtils.DeserializeFromFile<GameFilesInfo>(tempFileName).FileInfo.Values;

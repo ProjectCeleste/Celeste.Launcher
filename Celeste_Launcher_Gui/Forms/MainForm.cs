@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Security.AccessControl;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls;
 using Celeste_AOEO_Controls.MsgBox;
@@ -172,18 +171,10 @@ namespace Celeste_Launcher_Gui.Forms
                 if (!path.EndsWith(Path.DirectorySeparatorChar.ToString()))
                     path += Path.DirectorySeparatorChar;
 
-                var spartanPath = $"{path}Spartan.exe";
+                var spartanPath = Path.Combine(path, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
-                {
-                    MsgBox.ShowMessage(
-                        "Error: Spartan.exe not found!",
-                        @"Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    btn_Play.Enabled = true;
-                    return;
-                }
+                    throw new FileNotFoundException("Spartan.exe not found!", spartanPath);
 
                 string lang;
                 switch (Program.UserConfig.GameLanguage)
@@ -210,49 +201,63 @@ namespace Celeste_Launcher_Gui.Forms
                         throw new ArgumentOutOfRangeException();
                 }
 
-                if (Program.UserConfig.IsDiagnosticMode)
+                try
                 {
-                    var procdumpFileName = "procdump.exe";
-                    const int maxNumOfCrashDumps = 30;
-                    if (!File.Exists(procdumpFileName))
-                        throw new FileNotFoundException("Diagonstic Mode requires procdump.exe (File not Found)");
-
-                    // First ensure that all directories are set
-                    var pathToCrashDumpFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                        @"Spartan\MiniDumps");
-                    Directory.CreateDirectory(pathToCrashDumpFolder);
-
-                    // Check for cleanup
-                    Directory.GetFiles(pathToCrashDumpFolder)
-                        .OrderByDescending(File.GetLastWriteTime) // Sort by age --> old one last
-                        .Skip(maxNumOfCrashDumps) // Skip max num crash dumps
-                        .ToList()
-                        .ForEach(File.Delete); // Remove the rest
-
-                    var excludeExceptions = new string[]
+                    if (Program.UserConfig.IsDiagnosticMode)
                     {
-                        "E0434F4D.COM", // .NET native exception
-                        "E06D7363.msc",
-                        "E06D7363.PAVEEFileLoadException@@",
-                        "E0434F4D.System.IO.FileNotFoundException" // .NET managed exception
-                    };
+                        var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
+                        const int maxNumOfCrashDumps = 30;
+                        if (!File.Exists(procdumpFileName))
+                            throw new FileNotFoundException("Diagonstic Mode requires procdump.exe (File not Found)",
+                                procdumpFileName);
 
-                    var excludeExcpetionsCmd = string.Join(" ", excludeExceptions.Select(elem => "-fx " + elem));
+                        // First ensure that all directories are set
+                        var pathToCrashDumpFolder =
+                            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                                @"Spartan\MiniDumps");
 
-                    var fullCmdArgs = "-accepteula -mm -e 1 -n 10 " + excludeExcpetionsCmd +
-                                  " -g -w Spartan.exe \"" + pathToCrashDumpFolder + "\"";
+                        if (!Directory.Exists(pathToCrashDumpFolder))
+                            Directory.CreateDirectory(pathToCrashDumpFolder);
 
-                    // MsgBox.ShowMessage(fullCmd);
-                    var startInfo = new ProcessStartInfo(procdumpFileName, fullCmdArgs)
-                    {
-                        WorkingDirectory = path,
-                        CreateNoWindow = true,
-                        UseShellExecute = false,
-                        RedirectStandardError = true,
-                        RedirectStandardOutput = true
-                    };
+                        // Check for cleanup
+                        Directory.GetFiles(pathToCrashDumpFolder)
+                            .OrderByDescending(File.GetLastWriteTime) // Sort by age --> old one last
+                            .Skip(maxNumOfCrashDumps) // Skip max num crash dumps
+                            .ToList()
+                            .ForEach(File.Delete); // Remove the rest
 
-                    Process.Start(startInfo);
+                        var excludeExceptions = new[]
+                        {
+                            "E0434F4D.COM", // .NET native exception
+                            "E06D7363.msc",
+                            "E06D7363.PAVEEFileLoadException@@",
+                            "E0434F4D.System.IO.FileNotFoundException" // .NET managed exception
+                        };
+
+                        var excludeExcpetionsCmd = string.Join(" ", excludeExceptions.Select(elem => "-fx " + elem));
+
+                        var fullCmdArgs = "-accepteula -mm -e 1 -n 10 " + excludeExcpetionsCmd +
+                                          " -g -w Spartan.exe \"" + pathToCrashDumpFolder + "\"";
+
+                        // MsgBox.ShowMessage(fullCmd);
+                        var startInfo = new ProcessStartInfo(procdumpFileName, fullCmdArgs)
+                        {
+                            WorkingDirectory = path,
+                            CreateNoWindow = true,
+                            UseShellExecute = false,
+                            RedirectStandardError = true,
+                            RedirectStandardOutput = true
+                        };
+
+                        Process.Start(startInfo);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MsgBox.ShowMessage(
+                        $"Warning: {exception.Message}",
+                        @"Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 var arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
@@ -634,24 +639,19 @@ namespace Celeste_Launcher_Gui.Forms
                 x.ShowDialog();
             }
         }
-		
+
         private void UpdateDiagModeToolStripFromConfig()
         {
-            if (Program.UserConfig.IsDiagnosticMode)
-            {
-                enableDiagnosticModeToolStripMenuItem.Text = @"Disable Diagnostic Mode";
-            }
-            else
-            {
-                enableDiagnosticModeToolStripMenuItem.Text = @"Enable Diagnostic Mode";
-            }
+            enableDiagnosticModeToolStripMenuItem.Text = Program.UserConfig.IsDiagnosticMode
+                ? @"Disable Diagnostic Mode"
+                : @"Enable Diagnostic Mode";
         }
 
         private void EnableDiagnosticModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.UserConfig.IsDiagnosticMode = !Program.UserConfig.IsDiagnosticMode;
 
-            UpdateDiagModeToolStripFromConfig();   
+            UpdateDiagModeToolStripFromConfig();
         }
     }
 }

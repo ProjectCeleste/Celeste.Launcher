@@ -1,5 +1,15 @@
 # Change Log
 
+## [v2.0.3.1](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.3.1) (2018-02-20)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.3.0...v2.0.3.1)
+
+**Enhancements:**
+
+- Add support for "procdump" to help debug game issue.
+- Add fallback server for "GameScan".
+
+
 ## [v2.0.3.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.3.0) (2018-02-13)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.2.0...v2.0.3.0)
