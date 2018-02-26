@@ -130,14 +130,14 @@ after_build:
         Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.pdb" -ErrorAction Ignore;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.xml" -ErrorAction Ignore;
-        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher_gui" -Recurse -Force;
+        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher_gui" -Recurse -Force;
     }  
     elseif ($env:PLATFORM -eq "x64")
     {
         Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.pdb" -ErrorAction Ignore;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.xml" -ErrorAction Ignore;
-        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher_gui" -Recurse -Force;
+        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher_gui" -Recurse -Force;
     
     }
     elseif ($env:PLATFORM -eq "Any CPU")
@@ -145,7 +145,7 @@ after_build:
         Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.pdb" -ErrorAction Ignore;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.xml" -ErrorAction Ignore;
-        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher_gui" -Recurse -Force;
+        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher_gui" -Recurse -Force;
     }
         
 
@@ -167,7 +167,7 @@ artifacts:
   - path: '\$(PLATFORM)\$(CONFIGURATION)\celeste_launcher'
     name: Celeste_Launcher
 
-  - path: '\$(PLATFORM)\$(CONFIGURATION)\celeste_launcher_gui'
+  - path: '\celeste_launcher_gui'
     name: Celeste_Launcher_Gui
 
 #---------------------------------#
