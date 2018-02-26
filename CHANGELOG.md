@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.0.3.2](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.3.2) (2018-02-26)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.3.1...v2.0.3.2)
+
+**Bug Fix:**
+
+- Fix issue with auto-updater.
+
 ## [v2.0.3.1](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.3.1) (2018-02-20)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.3.0...v2.0.3.1)
@@ -8,7 +16,6 @@
 
 - Add support for "procdump" to help debug game issue.
 - Add fallback server for "GameScan".
-
 
 ## [v2.0.3.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.3.0) (2018-02-13)
 
@@ -21,7 +28,6 @@
 **Bug Fix:**
 
 - Fix issue with change password.
-
 
 ## [v2.0.2.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.2.0) (2018-01-31)
 

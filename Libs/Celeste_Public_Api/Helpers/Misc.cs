@@ -3,6 +3,7 @@
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -39,9 +40,8 @@ namespace Celeste_Public_Api.Helpers
 
         public static void CleanUpFiles(string path, string pattern = "*")
         {
-            var files = new DirectoryInfo(path).GetFiles(pattern, SearchOption.AllDirectories);
-
-            foreach (var file in files)
+            Parallel.ForEach(new DirectoryInfo(path).GetFiles(pattern, SearchOption.AllDirectories), file =>
+            {
                 try
                 {
                     File.Delete(file.FullName);
@@ -50,6 +50,7 @@ namespace Celeste_Public_Api.Helpers
                 {
                     //
                 }
+            });
         }
 
         public static void MoveFile(string originalFilePath, string destFilePath, bool doBackup = true)
@@ -72,41 +73,46 @@ namespace Celeste_Public_Api.Helpers
             File.Move(originalFilePath, destFilePath);
         }
 
-        public static void MoveFiles(string originalPath, string destPath, bool doBackup = true)
+        public static void MoveFiles(string originalPath, string destPath, bool doBackup = true,
+            string backupExt = ".old")
         {
             if (!Directory.Exists(destPath))
                 Directory.CreateDirectory(destPath);
 
-            foreach (var file in Directory.GetFiles(originalPath))
+            Parallel.ForEach(Directory.GetFiles(originalPath), file =>
             {
                 var name = Path.GetFileName(file);
+                if (name == null)
+                    return;
+
                 var dest = Path.Combine(destPath, name);
 
                 if (File.Exists(dest))
                     if (doBackup)
                     {
-                        if (File.Exists(dest + ".old"))
-                            File.Delete(dest + ".old");
+                        if (File.Exists(dest + backupExt))
+                            File.Delete(dest + backupExt);
 
-                        File.Move(dest, dest + ".old");
+                        File.Move(dest, dest + backupExt);
                     }
 
                 if (File.Exists(dest))
                     File.Delete(dest);
 
                 File.Move(file, dest);
-            }
+            });
 
-            var folders = Directory.GetDirectories(originalPath);
-
-            foreach (var folder in folders)
+            foreach (var folder in Directory.GetDirectories(originalPath))
             {
+
                 var name = Path.GetFileName(folder);
-                if (name == null) continue;
+                if (name == null)
+                    return;
                 var dest = Path.Combine(destPath, name);
-                MoveFiles(folder, dest, doBackup);
+                MoveFiles(folder, dest, doBackup, backupExt);
             }
         }
+
 
         public static string ThreeNonZeroDigits(double value)
         {

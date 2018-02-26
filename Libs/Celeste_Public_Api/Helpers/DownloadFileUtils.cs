@@ -4,8 +4,11 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 #endregion
 
@@ -65,6 +68,9 @@ namespace Celeste_Public_Api.Helpers
         {
             try
             {
+                ServicePointManager.ServerCertificateValidationCallback += ValidateRemoteCertificate;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls |
+                                                       SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
                 await Task.Run(() =>
                 {
                     using (var webClient = new WebClient())
@@ -127,6 +133,24 @@ namespace Celeste_Public_Api.Helpers
             }
             //
             DownloadState = e.Cancelled ? DownloadState.Cancelled : DownloadState.Completed;
+        }
+
+        /// <summary>
+        ///     Certificate validation callback.
+        /// </summary>
+        private static bool ValidateRemoteCertificate(object sender, X509Certificate cert, X509Chain chain,
+            SslPolicyErrors error)
+        {
+            // If the certificate is a valid, signed certificate, return true.
+            if (error == SslPolicyErrors.None)
+                return true;
+
+            MessageBox.Show($"X509Certificate [{cert.Subject}]\r\n" +
+                            "Policy Error:\r\n" +
+                            $"'{error}'", "", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+
+            return false;
         }
     }
 }
