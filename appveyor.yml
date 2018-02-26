@@ -163,6 +163,7 @@ test: off
 artifacts:
   - path: '\$(PLATFORM)\$(CONFIGURATION)\celeste_launcher'
     name: Celeste_Launcher
+
   - path: '\$(PLATFORM)\$(CONFIGURATION)\celeste_launcher'
     name: Celeste_Launcher_Gui
 
