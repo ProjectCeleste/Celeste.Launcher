@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
@@ -46,6 +47,9 @@ namespace Celeste_Launcher_Gui
                     MessageBoxIcon.Error);
                 return;
             }
+
+            //
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
             //Load UserConfig
             try

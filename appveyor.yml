@@ -163,7 +163,8 @@ test: off
 artifacts:
   - path: '\build'
     name: Celeste_Launcher
-
+    type: zip
+    
 #---------------------------------#
 #     deployment configuration    #
 #---------------------------------#
@@ -193,6 +194,7 @@ deploy:
     password: $(ftp_pass)
     folder: static
     artifact: Celeste_Launcher
+    beta: true
     on:
       appveyor_repo_tag: true
   
