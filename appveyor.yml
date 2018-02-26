@@ -127,25 +127,22 @@ after_build:
     New-Item -ItemType Directory -Force -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)";
     if ($env:PLATFORM -eq "x86")
     {
-        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.pdb" -ErrorAction Ignore;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.xml" -ErrorAction Ignore;
-        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher_gui" -Recurse -Force;
+        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher" -Force;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher\*.pdb" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher\*.xml" -ErrorAction Ignore;
     }  
     elseif ($env:PLATFORM -eq "x64")
     {
-        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.pdb" -ErrorAction Ignore;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.xml" -ErrorAction Ignore;
-        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher_gui" -Recurse -Force;
+        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher" -Force;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher\*.pdb" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher\*.xml" -ErrorAction Ignore;
     
     }
     elseif ($env:PLATFORM -eq "Any CPU")
     {
-        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Force;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.pdb" -ErrorAction Ignore;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher\*.xml" -ErrorAction Ignore;
-        Copy-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\$($env:PLATFORM)\$($env:CONFIGURATION)\celeste_launcher" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher_gui" -Recurse -Force;
+        Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher" -Force;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher\*.pdb" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\celeste_launcher\*.xml" -ErrorAction Ignore;
     }
         
 
@@ -164,11 +161,8 @@ test: off
 #---------------------------------#
 
 artifacts:
-  - path: '\$(PLATFORM)\$(CONFIGURATION)\celeste_launcher'
+  - path: '\celeste_launcher'
     name: Celeste_Launcher
-
-  - path: '\celeste_launcher_gui'
-    name: Celeste_Launcher_Gui
 
 #---------------------------------#
 #     deployment configuration    #
@@ -198,7 +192,7 @@ deploy:
     username: $(ftp_login)
     password: $(ftp_pass)
     folder: static
-    artifact: Celeste_Launcher_Gui
+    artifact: Celeste_Launcher
     on:
       appveyor_repo_tag: true
   
