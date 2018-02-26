@@ -51,7 +51,7 @@
             // lbl_selectnatdevice
             // 
             this.lbl_selectnatdevice.AutoSize = true;
-            this.lbl_selectnatdevice.Font = new System.Drawing.Font("Ashley Crawford CG", 14.25F);
+            this.lbl_selectnatdevice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lbl_selectnatdevice.Location = new System.Drawing.Point(12, 5);
             this.lbl_selectnatdevice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_selectnatdevice.Name = "lbl_selectnatdevice";
@@ -63,7 +63,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel1.Location = new System.Drawing.Point(26, 17);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(615, 219);
@@ -78,7 +78,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.lv_NetInterface, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -94,7 +94,7 @@
             this.panel2.Controls.Add(this.btnSmall1);
             this.panel2.Controls.Add(this.btnSmall2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel2.Location = new System.Drawing.Point(455, 40);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
@@ -108,7 +108,7 @@
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "Refresh";
             this.btnSmall1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSmall1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btnSmall1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnSmall1.Location = new System.Drawing.Point(5, 0);
             this.btnSmall1.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall1.Name = "btnSmall1";
@@ -122,7 +122,7 @@
             this.btnSmall2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall2.BtnText = "Ok";
             this.btnSmall2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSmall2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btnSmall2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.btnSmall2.Location = new System.Drawing.Point(5, 92);
             this.btnSmall2.Margin = new System.Windows.Forms.Padding(0);
             this.btnSmall2.Name = "btnSmall2";
@@ -137,7 +137,7 @@
             this.columnHeader1,
             this.columnHeader2});
             this.lv_NetInterface.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lv_NetInterface.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.lv_NetInterface.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lv_NetInterface.Location = new System.Drawing.Point(13, 43);
             this.lv_NetInterface.MultiSelect = false;
             this.lv_NetInterface.Name = "lv_NetInterface";
@@ -162,7 +162,7 @@
             this.boxContainer1.BackColor = System.Drawing.Color.Transparent;
             this.boxContainer1.CloseButton = true;
             this.boxContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.boxContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.boxContainer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.boxContainer1.Location = new System.Drawing.Point(0, 0);
             this.boxContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.boxContainer1.MinimumSize = new System.Drawing.Size(310, 250);
@@ -178,7 +178,7 @@
             this.panel3.Controls.Add(this.pictureBoxButtonCustom1);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
@@ -190,7 +190,7 @@
             this.pictureBoxButtonCustom1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxButtonCustom1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Hover;
             this.pictureBoxButtonCustom1.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
             this.pictureBoxButtonCustom1.Location = new System.Drawing.Point(622, 15);
