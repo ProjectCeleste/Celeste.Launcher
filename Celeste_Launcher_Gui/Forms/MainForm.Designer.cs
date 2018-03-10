@@ -78,6 +78,7 @@
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.windowsFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMS_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +92,6 @@
             this.cMS_ProjectCelesteCom = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.windowsFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -809,8 +809,8 @@
             // 
             this.helpersToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.helpersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.windowsFeaturesToolStripMenuItem,
             this.steamToolStripMenuItem,
+            this.windowsFeaturesToolStripMenuItem,
             this.windowsFirewallToolStripMenuItem});
             this.helpersToolStripMenuItem.Name = "helpersToolStripMenuItem";
             this.helpersToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
@@ -831,6 +831,14 @@
             this.steamToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
             this.steamToolStripMenuItem.Text = "Steam";
             this.steamToolStripMenuItem.Click += new System.EventHandler(this.SteamToolStripMenuItem_Click);
+            // 
+            // windowsFirewallToolStripMenuItem
+            // 
+            this.windowsFirewallToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.windowsFirewallToolStripMenuItem.Name = "windowsFirewallToolStripMenuItem";
+            this.windowsFirewallToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.windowsFirewallToolStripMenuItem.Text = "Windows Firewall";
+            this.windowsFirewallToolStripMenuItem.Click += new System.EventHandler(this.WindowsFirewallToolStripMenuItem_Click);
             // 
             // cMS_Settings
             // 
@@ -941,14 +949,6 @@
             this.forumsToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.forumsToolStripMenuItem.Text = "Forums";
             this.forumsToolStripMenuItem.Click += new System.EventHandler(this.ForumsToolStripMenuItem_Click);
-            // 
-            // windowsFirewallToolStripMenuItem
-            // 
-            this.windowsFirewallToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.windowsFirewallToolStripMenuItem.Name = "windowsFirewallToolStripMenuItem";
-            this.windowsFirewallToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
-            this.windowsFirewallToolStripMenuItem.Text = "Windows Firewall";
-            this.windowsFirewallToolStripMenuItem.Click += new System.EventHandler(this.WindowsFirewallToolStripMenuItem_Click);
             // 
             // MainForm
             // 
