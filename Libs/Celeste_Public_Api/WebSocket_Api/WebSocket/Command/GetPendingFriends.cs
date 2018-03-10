@@ -11,7 +11,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     public class GetPendingFriends
     {
         public const string CmdName = "GETPFRIENDS";
-        
+
         public GetPendingFriends(Client webSocketClient)
         {
             DataExchange = new DataExchange(webSocketClient, CmdName);
@@ -28,7 +28,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
                 GetPendingFriendsResult retVal = result.ToObject<GetPendingFriendsResult>();
-                
+
                 return retVal;
             }
             catch (Exception e)

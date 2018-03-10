@@ -246,7 +246,7 @@ namespace Celeste_Public_Api.Helpers
 
             await Task.Delay(200, ct).ConfigureAwait(false);
         }
-        
+
         #endregion
     }
 }

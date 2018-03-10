@@ -28,7 +28,6 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "Celeste_Launcher_Gui_Config")]
     public class UserConfig
     {
-
 #if DEBUG
         [DefaultValue("ws://127.0.0.1:4512/")]
         [XmlElement(ElementName = "ServerUri")]
@@ -58,7 +57,7 @@ namespace Celeste_Launcher_Gui
         public MpSettings MpSettings { get; set; } = new MpSettings();
 
         [XmlElement(ElementName = "IsDiagnosticMode")]
-        public bool IsDiagnosticMode { get; set; } = false;
+        public bool IsDiagnosticMode { get; set; }
 
         public void Save(string path)
         {
@@ -205,14 +204,14 @@ namespace Celeste_Launcher_Gui
             set => _publicIp = value;
         }
 
-        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
-        //        if (_publicPort != 0) return _publicPort;
-        //    {
-
-        //{
+        //[XmlElement(ElementName = "PublicPort")]
         //public int PublicPort
 
-        //[XmlElement(ElementName = "PublicPort")]
+        //{
+        //    {
+        //        if (_publicPort != 0) return _publicPort;
+
+        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
         //        _publicPort = rnd.Next(1001, ushort.MaxValue);
 
         //        return _publicPort;

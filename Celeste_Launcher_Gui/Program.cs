@@ -18,15 +18,14 @@ namespace Celeste_Launcher_Gui
 {
     internal static class Program
     {
+        public static UserConfig UserConfig = new UserConfig();
+
+        private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
         public static WebSocketApi WebSocketApi { get; private set; }
 
         public static User CurrentUser { get; set; }
 
-        public static UserConfig UserConfig = new UserConfig();
-
         public static string UserConfigFilePath { get; } = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
-
-        private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
         [STAThread]
         private static void Main()
@@ -84,10 +83,10 @@ namespace Celeste_Launcher_Gui
             }
 
             //Init WebSocketApi
-            WebSocketApi  = new WebSocketApi(UserConfig.ServerUri);
+            WebSocketApi = new WebSocketApi(UserConfig.ServerUri);
 
-    //Start Gui
-    Application.Run(new MainForm());
+            //Start Gui
+            Application.Run(new MainForm());
 
             GC.KeepAlive(mutex);
         }

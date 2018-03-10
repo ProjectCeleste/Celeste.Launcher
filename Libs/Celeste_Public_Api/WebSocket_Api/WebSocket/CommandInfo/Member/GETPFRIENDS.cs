@@ -21,7 +21,8 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
 
         [JsonConstructor]
         public GetPendingFriendsResult([JsonProperty("Result", Required = Required.Always)] bool result,
-            [JsonProperty("Message")] string message, [JsonProperty("PendingFriendsRequest")] FriendsJson pendingFriendsRequest,
+            [JsonProperty("Message")] string message,
+            [JsonProperty("PendingFriendsRequest")] FriendsJson pendingFriendsRequest,
             [JsonProperty("PendingFriendsInvite")] FriendsJson pendingFriendsInvite)
         {
             Result = result;

@@ -104,7 +104,6 @@ namespace Celeste_Public_Api.Helpers
 
             foreach (var folder in Directory.GetDirectories(originalPath))
             {
-
                 var name = Path.GetFileName(folder);
                 if (name == null)
                     return;
@@ -131,7 +130,7 @@ namespace Celeste_Public_Api.Helpers
 
         public static bool IsValidePassword(string password)
         {
-            return !string.IsNullOrWhiteSpace(password)  && !password.Contains("'") && !password.Contains("\"");
+            return !string.IsNullOrWhiteSpace(password) && !password.Contains("'") && !password.Contains("\"");
         }
     }
 }

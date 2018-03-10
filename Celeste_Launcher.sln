@@ -16,35 +16,21 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Release|Any CPU = Release|Any CPU
-		Release|Mixed Platforms = Release|Mixed Platforms
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{589BC356-4A36-42FB-AE10-95AEDEC36AE6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D84366A3-0232-4680-B838-9EC2F23CD52B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

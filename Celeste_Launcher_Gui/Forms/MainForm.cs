@@ -168,9 +168,6 @@ namespace Celeste_Launcher_Gui.Forms
                     ? Program.UserConfig.GameFilesPath
                     : GameScannnerApi.GetGameFilesRootPath();
 
-                if (!path.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                    path += Path.DirectorySeparatorChar;
-
                 var spartanPath = Path.Combine(path, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
@@ -618,6 +615,18 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void WindowsFeaturesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var osInfo = OsVersionInfo.GetOsVersionInfo();
+            if (osInfo.Major < 6 || osInfo.Major == 6 && osInfo.Minor < 2)
+            {
+                MsgBox.ShowMessage(
+                    "Only for Windows 8 and more\r\n" +
+                    $"Your current OS is {osInfo.FullName}",
+                    @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
+            }
+
             using (var form = new WindowsFeaturesForm())
             {
                 form.ShowDialog();
@@ -652,6 +661,14 @@ namespace Celeste_Launcher_Gui.Forms
             Program.UserConfig.IsDiagnosticMode = !Program.UserConfig.IsDiagnosticMode;
 
             UpdateDiagModeToolStripFromConfig();
+        }
+
+        private void WindowsFirewallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new FirewallForm())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

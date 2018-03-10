@@ -41,7 +41,8 @@ namespace Celeste_Public_Api.GameScanner_Api.Models
     public class GameFilesInfo
     {
         [XmlIgnore]
-        public Dictionary<string, GameFileInfo> FileInfo { get; } = new Dictionary<string, GameFileInfo>(StringComparer.OrdinalIgnoreCase);
+        public Dictionary<string, GameFileInfo> FileInfo { get; } =
+            new Dictionary<string, GameFileInfo>(StringComparer.OrdinalIgnoreCase);
 
         [XmlElement(ElementName = "FilesInfo")]
         public GameFileInfo[] FilesInfoArray
@@ -51,7 +52,7 @@ namespace Celeste_Public_Api.GameScanner_Api.Models
             {
                 if (value == null) return;
                 foreach (var item in value)
-                    FileInfo.Add(item.FileName.ToLower(), item);
+                    FileInfo.Add(item.FileName, item);
             }
         }
 

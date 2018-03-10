@@ -11,7 +11,8 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged
     public class ForgotPwdInfo
     {
         [JsonConstructor]
-        public ForgotPwdInfo([JsonProperty("Version", Required = Required.Always)] Version version, [JsonProperty("EMail", Required = Required.Always)] string eMail)
+        public ForgotPwdInfo([JsonProperty("Version", Required = Required.Always)] Version version,
+            [JsonProperty("EMail", Required = Required.Always)] string eMail)
         {
             Version = version;
             EMail = eMail;
@@ -29,7 +30,8 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged
     public class ForgotPwdResult
     {
         [JsonConstructor]
-        public ForgotPwdResult([JsonProperty("Result", Required = Required.Always)] bool result, [JsonProperty("Message")] string message = null)
+        public ForgotPwdResult([JsonProperty("Result", Required = Required.Always)] bool result,
+            [JsonProperty("Message")] string message = null)
         {
             Result = result;
             Message = message;

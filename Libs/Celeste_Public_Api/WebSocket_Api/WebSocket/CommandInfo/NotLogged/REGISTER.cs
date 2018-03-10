@@ -45,7 +45,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged
         [Required(AllowEmptyStrings = false)]
         [JsonProperty("Password", Required = Required.Always)]
         public string Password { get; }
-        
+
         [JsonProperty("FingerPrint")]
         public string FingerPrint { get; }
     }

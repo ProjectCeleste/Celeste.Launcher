@@ -11,7 +11,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     public class RemoveFriend
     {
         public const string CmdName = "REMFRIEND";
-        
+
         public RemoveFriend(Client webSocketClient)
         {
             DataExchange = new DataExchange(webSocketClient, CmdName);
@@ -28,7 +28,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
                 RemoveFriendResult retVal = result.ToObject<RemoveFriendResult>();
-                
+
                 return retVal;
             }
             catch (Exception e)

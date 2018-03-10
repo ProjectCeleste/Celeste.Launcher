@@ -388,17 +388,17 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             //Load default manifest
             foreach (var fileInfo in FilesInfoFromGameManifest("production", 6148, isSteam))
-                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                    filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
+                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
                 else
-                    filesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
+                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             //Override for celeste file
             foreach (var fileInfo in FilesInfoOverrideFromCelesteXml(false))
-                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                    filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
+                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
                 else
-                    filesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
+                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             if (isLegacyXLive)
                 return filesInfo.FileInfo.Values;
@@ -407,10 +407,10 @@ namespace Celeste_Public_Api.GameScanner_Api
             try
             {
                 foreach (var fileInfo in FilesInfoOverrideFromCelesteXml(true))
-                    if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                        filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
+                    if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                        filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
                     else
-                        filesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
+                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
             }
             catch (Exception)
             {
@@ -434,24 +434,28 @@ namespace Celeste_Public_Api.GameScanner_Api
                 where line.StartsWith("+")
                 where
                 // Launcher
-                !line.StartsWith("+AoeOnlineDlg.dll") && !line.StartsWith("+AoeOnlinePatch.dll") &&
-                !line.StartsWith("+expapply.dll") && !line.StartsWith("+LauncherLocList.txt") &&
-                !line.StartsWith("+LauncherStrings-de-DE.xml") &&
-                !line.StartsWith("+LauncherStrings-en-US.xml") &&
-                !line.StartsWith("+LauncherStrings-es-ES.xml") &&
-                !line.StartsWith("+LauncherStrings-fr-FR.xml") &&
-                !line.StartsWith("+LauncherStrings-it-IT.xml") &&
-                !line.StartsWith("+LauncherStrings-zh-CHT.xml") && !line.StartsWith("+AOEOnline.exe.cfg") &&
+                !line.StartsWith("+AoeOnlineDlg.dll", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+AoeOnlinePatch.dll", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+expapply.dll", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherLocList.txt", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-de-DE.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-en-US.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-es-ES.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-fr-FR.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-it-IT.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-zh-CHT.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+AOEOnline.exe.cfg", StringComparison.OrdinalIgnoreCase) &&
                 //Beta Launcher
-                !line.StartsWith("+Launcher.exe") &&
-                !line.StartsWith("+LauncherReplace.exe") &&
-                !line.StartsWith("+LauncherLocList.txt") &&
-                !line.StartsWith("+AOEO_Privacy.rtf") &&
-                !line.StartsWith("+pw32b.dll") &&
+                !line.StartsWith("+Launcher.exe", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherReplace.exe", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherLocList.txt", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+AOEO_Privacy.rtf", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+pw32b.dll", StringComparison.OrdinalIgnoreCase) &&
                 //Steam
-                (!line.StartsWith("+steam_api.dll") || isSteam && line.StartsWith("+steam_api.dll")) &&
+                (!line.StartsWith("+steam_api.dll", StringComparison.OrdinalIgnoreCase) || isSteam &&
+                 line.StartsWith("+steam_api.dll", StringComparison.OrdinalIgnoreCase)) &&
                 //Junk
-                !line.StartsWith("+t3656t4234.tmp")
+                !line.StartsWith("+t3656t4234.tmp", StringComparison.OrdinalIgnoreCase)
                 select line.Split('|')
                 into lineSplit
                 select new GameFileInfo
