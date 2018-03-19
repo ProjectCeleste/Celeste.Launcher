@@ -53,6 +53,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -174,6 +175,7 @@
             this.tableLayoutPanel3.Controls.Add(this.l_State_S_In, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.l_State_S_Out, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.l_State_MP_Out, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 127);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -422,6 +424,19 @@
             this.label3.Text = "API: ...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Black", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.label6.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 37);
+            this.label6.TabIndex = 88;
+            this.label6.Text = "Rules";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FirewallForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -478,5 +493,6 @@
         private System.Windows.Forms.Label l_State_S_In;
         private System.Windows.Forms.Label l_State_S_Out;
         private System.Windows.Forms.Label l_State_MP_Out;
+        private System.Windows.Forms.Label label6;
     }
 }

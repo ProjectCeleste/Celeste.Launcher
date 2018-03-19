@@ -88,9 +88,6 @@ namespace Celeste_Launcher_Gui.Helpers
                         Protocol = protocol
                     };
 
-                    //if (direction == FirewallDirection.Inbound && (protocol.Equals(FirewallProtocol.TCP) || protocol.Equals(FirewallProtocol.UDP)))
-                    //    rule.EdgeTraversalOptions = EdgeTraversalAction.DefferToUser;
-
                     Firewall.Instance.Rules.Add(rule);
                 }
                 else if (StandardRuleWin7.IsSupported)
@@ -105,9 +102,6 @@ namespace Celeste_Launcher_Gui.Helpers
                                          FirewallInterfaceTypes.Wireless,
                         Protocol = protocol
                     };
-
-                    //if (direction == FirewallDirection.Inbound && (protocol.Equals(FirewallProtocol.TCP) || protocol.Equals(FirewallProtocol.UDP)))
-                    //    rule.EdgeTraversalOptions = EdgeTraversalAction.DefferToUser;
 
                     Firewall.Instance.Rules.Add(rule);
                 }
