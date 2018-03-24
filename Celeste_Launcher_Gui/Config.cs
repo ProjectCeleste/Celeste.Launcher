@@ -56,13 +56,9 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "MpSettings")]
         public MpSettings MpSettings { get; set; } = new MpSettings();
 
+        [DefaultValue(false)]
         [XmlElement(ElementName = "IsDiagnosticMode")]
         public bool IsDiagnosticMode { get; set; }
-
-        public void Save(string path)
-        {
-            XmlUtils.SerializeToFile(this, path);
-        }
 
         public static UserConfig Load(string path)
         {
@@ -95,6 +91,12 @@ namespace Celeste_Launcher_Gui
 
             return userConfig;
         }
+
+        public void Save(string path)
+        {
+            this.SerializeToXmlFile(path);
+        }
+
     }
 
     [XmlRoot(ElementName = "LoginInfo")]
