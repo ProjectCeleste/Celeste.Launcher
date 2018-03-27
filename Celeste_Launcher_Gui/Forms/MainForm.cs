@@ -670,5 +670,13 @@ namespace Celeste_Launcher_Gui.Forms
                 form.ShowDialog();
             }
         }
+
+        private void gameEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new EditorForm())
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }

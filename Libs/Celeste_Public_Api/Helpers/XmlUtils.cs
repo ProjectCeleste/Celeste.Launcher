@@ -88,7 +88,7 @@ namespace Celeste_Public_Api.Helpers
             var xmls = new XmlSerializer(typeof(T));
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
             {
-                output = (T)xmls.Deserialize(ms);
+                output = (T) xmls.Deserialize(ms);
             }
             return output;
         }
@@ -113,7 +113,5 @@ namespace Celeste_Public_Api.Helpers
             }
             return output;
         }
-
-
     }
 }
