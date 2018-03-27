@@ -26,12 +26,12 @@ namespace Celeste_Public_Api.GameScanner_Api
             if (!Directory.Exists(filesRootPath))
                 Directory.CreateDirectory(filesRootPath);
 
+            CleanTmpFolder();
+
             FilesInfo = GetGameFilesInfo(isSteam, isLegacyXLive);
             FilesRootPath = filesRootPath;
 
             _cts = new CancellationTokenSource();
-
-            CleanTmpFolder();
         }
 
         public GameScannnerApi(IEnumerable<GameFileInfo> filesInfo, string filesRootPath)
@@ -42,12 +42,12 @@ namespace Celeste_Public_Api.GameScanner_Api
             if (!Directory.Exists(filesRootPath))
                 Directory.CreateDirectory(filesRootPath);
 
+            CleanTmpFolder();
+
             FilesInfo = filesInfo;
             FilesRootPath = filesRootPath;
 
             _cts = new CancellationTokenSource();
-
-            CleanTmpFolder();
         }
 
         public IEnumerable<GameFileInfo> FilesInfo { get; }
@@ -75,12 +75,11 @@ namespace Celeste_Public_Api.GameScanner_Api
         {
             try
             {
-                var filePath = !string.IsNullOrWhiteSpace(fileInfo.OverrideFileName)
-                    ? Path.Combine(gameFilePath, fileInfo.OverrideFileName)
-                    : Path.Combine(gameFilePath, fileInfo.FileName);
+                var filePath = Path.Combine(gameFilePath, fileInfo.FileName);
 
+                ct.ThrowIfCancellationRequested();
                 //#1 File Check
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 1,
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 1,
                     new ExLog(LogLevel.Info, "-------------------------\r\n" +
                                              $"[{fileInfo.FileName}]\r\n" +
                                              "-------------------------\r\n" +
@@ -89,27 +88,28 @@ namespace Celeste_Public_Api.GameScanner_Api
                 if (RunFileCheck(filePath, fileInfo.Size, fileInfo.Crc32))
                     goto end;
 
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 5,
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 5,
                     new ExLog(LogLevel.Warn, "          Warning: File is missing or invalid.")));
 
                 ct.ThrowIfCancellationRequested();
-
                 //#6 Download File
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 6,
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 6,
                     new ExLog(LogLevel.Info, "      - File downloading...")));
 
                 var dowloadProgress = new Progress<DownloadFileProgress>();
-                dowloadProgress.ProgressChanged += (o, ea) =>
-                {
-                    progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
-                        6 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (65 - 6))), ea));
-                };
+                if (progress != null)
+                    dowloadProgress.ProgressChanged += (o, ea) =>
+                    {
+                        progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
+                            6 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (65 - 6))), ea));
+                    };
                 var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
                 var x = new DownloadFileUtils(new Uri(fileInfo.HttpLink), tempFileName, dowloadProgress);
                 await x.DoDownload(ct);
 
+                ct.ThrowIfCancellationRequested();
                 //#65 Check Downloaded File
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 65,
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 65,
                     new ExLog(LogLevel.Info, "      - Checking downloaded file...")));
 
                 if (!RunFileCheck(tempFileName, fileInfo.BinSize, fileInfo.BinCrc32))
@@ -120,22 +120,28 @@ namespace Celeste_Public_Api.GameScanner_Api
                     throw new Exception("Downloaded file is invalid!");
                 }
 
+                ct.ThrowIfCancellationRequested();
                 //#70 Extract downloaded file
                 var tmpFilePath = tempFileName;
                 var tempFileName2 = Path.Combine(GetTempPath(), Path.GetRandomFileName());
                 if (ZipUtils.IsL33TZipFile(tempFileName))
                 {
-                    progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 70,
+                    ct.ThrowIfCancellationRequested();
+                    //
+                    progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 70,
                         new ExLog(LogLevel.Info, "      - Extract downloaded file...")));
 
                     var extractProgress = new Progress<ZipFileProgress>();
-                    extractProgress.ProgressChanged += (o, ea) =>
-                    {
-                        progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
-                            70 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (90 - 70))), ea));
-                    };
+                    if (progress != null)
+                        extractProgress.ProgressChanged += (o, ea) =>
+                        {
+                            progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
+                                70 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (90 - 70))),
+                                ea));
+                        };
                     await ZipUtils.DoExtractL33TZipFile(tempFileName, tempFileName2, extractProgress, ct);
 
+                    ct.ThrowIfCancellationRequested();
                     //#90 Check Downloaded File
                     if (!RunFileCheck(tempFileName2, fileInfo.Size, fileInfo.Crc32))
                     {
@@ -151,8 +157,9 @@ namespace Celeste_Public_Api.GameScanner_Api
                     tmpFilePath = tempFileName2;
                 }
 
+                ct.ThrowIfCancellationRequested();
                 //#95 Move new file to game folder
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 95,
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 95,
                     new ExLog(LogLevel.Info, "      - Moving new file...")));
 
                 if (File.Exists(filePath))
@@ -165,7 +172,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                 File.Move(tmpFilePath, filePath);
 
                 //#99 Removing temporary file
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 99,
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 99,
                     new ExLog(LogLevel.Info, "      - Clean-up temporary files...")));
 
                 if (File.Exists(tmpFilePath))
@@ -179,11 +186,11 @@ namespace Celeste_Public_Api.GameScanner_Api
 
                 end:
                 //#100
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 100));
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 100));
             }
             catch (AggregateException e)
             {
-                progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 100,
+                progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 100,
                     new ExLog(LogLevel.Info, "-------------------------\r\n" +
                                              "!!! Error !!!\r\n" +
                                              "-------------------------\r\n" +
@@ -296,17 +303,18 @@ namespace Celeste_Public_Api.GameScanner_Api
 
                                 _cts.Token.ThrowIfCancellationRequested();
 
-                                progress.Report(new ScanAndRepairProgress(totalCount, currentIndex,
+                                progress?.Report(new ScanAndRepairProgress(totalCount, currentIndex,
                                     new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
 
                                 await Task.Delay(25, _cts.Token).ConfigureAwait(false);
 
                                 var fileProgress = new Progress<ScanAndRepairFileProgress>();
                                 var ci = currentIndex;
-                                fileProgress.ProgressChanged += (o, ea) =>
-                                {
-                                    progress.Report(new ScanAndRepairProgress(totalCount, ci, ea));
-                                };
+                                if (progress != null)
+                                    fileProgress.ProgressChanged += (o, ea) =>
+                                    {
+                                        progress.Report(new ScanAndRepairProgress(totalCount, ci, ea));
+                                    };
                                 retVal = await ScanAndRepairFile(fileInfo, FilesRootPath, fileProgress, _cts.Token);
 
                                 await Task.Delay(25, _cts.Token).ConfigureAwait(false);
@@ -362,8 +370,6 @@ namespace Celeste_Public_Api.GameScanner_Api
                         progress?.Report(new ScanAndRepairProgress(totalCount, index,
                             new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
 
-                        RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size);
-
                         if (RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size))
                             return;
 
@@ -388,34 +394,27 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             //Load default manifest
             foreach (var fileInfo in FilesInfoFromGameManifest("production", 6148, isSteam))
-                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                    filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
+                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
                 else
-                    filesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
+                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             //Override for celeste file
-            foreach (var fileInfo in FilesInfoOverrideFromCelesteXml(false))
-                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                    filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
+            foreach (var fileInfo in FilesInfoOverrideFromCelesteXml())
+                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
                 else
-                    filesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
+                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             if (isLegacyXLive)
                 return filesInfo.FileInfo.Values;
 
             //Override for celeste file (beta)
-            try
-            {
-                foreach (var fileInfo in FilesInfoOverrideFromCelesteXml(true))
-                    if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName.ToLower()))
-                        filesInfo.FileInfo[fileInfo.FileName.ToLower()] = fileInfo;
-                    else
-                        filesInfo.FileInfo.Add(fileInfo.FileName.ToLower(), fileInfo);
-            }
-            catch (Exception)
-            {
-                //Better to ignore any error for this one!
-            }
+            foreach (var fileInfo in FilesInfoOverrideFromCelesteXml("b"))
+                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+                else
+                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             return filesInfo.FileInfo.Values;
         }
@@ -434,30 +433,33 @@ namespace Celeste_Public_Api.GameScanner_Api
                 where line.StartsWith("+")
                 where
                 // Launcher
-                !line.StartsWith("+AoeOnlineDlg.dll") && !line.StartsWith("+AoeOnlinePatch.dll") &&
-                !line.StartsWith("+expapply.dll") && !line.StartsWith("+LauncherLocList.txt") &&
-                !line.StartsWith("+LauncherStrings-de-DE.xml") &&
-                !line.StartsWith("+LauncherStrings-en-US.xml") &&
-                !line.StartsWith("+LauncherStrings-es-ES.xml") &&
-                !line.StartsWith("+LauncherStrings-fr-FR.xml") &&
-                !line.StartsWith("+LauncherStrings-it-IT.xml") &&
-                !line.StartsWith("+LauncherStrings-zh-CHT.xml") && !line.StartsWith("+AOEOnline.exe.cfg") &&
+                !line.StartsWith("+AoeOnlineDlg.dll", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+AoeOnlinePatch.dll", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+expapply.dll", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherLocList.txt", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-de-DE.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-en-US.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-es-ES.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-fr-FR.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-it-IT.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherStrings-zh-CHT.xml", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+AOEOnline.exe.cfg", StringComparison.OrdinalIgnoreCase) &&
                 //Beta Launcher
-                !line.StartsWith("+Launcher.exe") &&
-                !line.StartsWith("+LauncherReplace.exe") &&
-                !line.StartsWith("+LauncherLocList.txt") &&
-                !line.StartsWith("+AOEO_Privacy.rtf") &&
-                !line.StartsWith("+pw32b.dll") &&
-                //Steam
-                (!line.StartsWith("+steam_api.dll") || isSteam && line.StartsWith("+steam_api.dll")) &&
+                !line.StartsWith("+Launcher.exe", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherReplace.exe", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+LauncherLocList.txt", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+AOEO_Privacy.rtf", StringComparison.OrdinalIgnoreCase) &&
+                !line.StartsWith("+pw32b.dll", StringComparison.OrdinalIgnoreCase) &&
+                //Steam                      
+                (!line.StartsWith("+steam_api.dll", StringComparison.OrdinalIgnoreCase) || isSteam &&
+                 line.StartsWith("+steam_api.dll", StringComparison.OrdinalIgnoreCase)) &&
                 //Junk
-                !line.StartsWith("+t3656t4234.tmp")
+                !line.StartsWith("+t3656t4234.tmp", StringComparison.OrdinalIgnoreCase)
                 select line.Split('|')
                 into lineSplit
                 select new GameFileInfo
                 {
-                    FileName = lineSplit[0].Substring(1, lineSplit[0].Length - 1).ToLower(),
-                    OverrideFileName = null,
+                    FileName = lineSplit[0].Substring(1, lineSplit[0].Length - 1),
                     Crc32 = Convert.ToUInt32(lineSplit[1]),
                     Size = Convert.ToInt64(lineSplit[2]),
                     HttpLink = $"http://spartan.msgamestudios.com/content/spartan/{type}/{build}/{lineSplit[3]}",
@@ -471,7 +473,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return retVal;
         }
 
-        private static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(bool betaUpdate)
+        private static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(string type = null)
         {
             var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
 
@@ -480,8 +482,8 @@ namespace Celeste_Public_Api.GameScanner_Api
                 using (var client = new WebClient())
                 {
                     client.DownloadFile(
-                        betaUpdate
-                            ? "https://downloads.projectceleste.com/game_files/manifest_override_b.xml"
+                        !string.IsNullOrWhiteSpace(type)
+                            ? $"https://downloads.projectceleste.com/game_files/manifest_override_{type}.xml"
                             : "https://downloads.projectceleste.com/game_files/manifest_override.xml",
                         tempFileName);
                 }
@@ -492,8 +494,8 @@ namespace Celeste_Public_Api.GameScanner_Api
                 using (var client = new WebClient())
                 {
                     client.DownloadFile(
-                        betaUpdate
-                            ? "https://ns544971.ip-66-70-180.net/game_files/manifest_override_b.xml"
+                        !string.IsNullOrWhiteSpace(type)
+                            ? $"https://downloads.projectceleste.com/game_files/manifest_override_{type}.xml"
                             : "https://ns544971.ip-66-70-180.net/game_files/manifest_override.xml",
                         tempFileName);
                 }
@@ -536,6 +538,82 @@ namespace Celeste_Public_Api.GameScanner_Api
             catch (Exception)
             {
                 //
+            }
+        }
+
+        public static async Task InstallGameEditor(string filesRootPath,
+            IProgress<ScanAndRepairProgress> progress = null)
+        {
+            var filesInfo = new GameFilesInfo();
+
+            //Load editor manifest
+            foreach (var fileInfo in FilesInfoFromGameManifest("precert", 2296, false))
+                // ReSharper disable once SwitchStatementMissingSomeCases
+                switch (fileInfo.FileName.ToLower())
+                {
+                    case "spartan.exe":
+                    {
+                        fileInfo.FileName = "Editor.exe";
+                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        break;
+                    }
+                    case "spartan.exe.cfg":
+                    {
+                        fileInfo.FileName = "Editor.exe.cfg";
+                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        break;
+                    }
+                    case "xlivedlc.dll":
+                    {
+                        fileInfo.FileName = "xEditDLC.dll";
+                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        break;
+                    }
+                    case "startup\\hotkeys.con":
+                    case "startup\\developer.con":
+                    case "startup\\editor.con":
+                    {
+                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        break;
+                    }
+                }
+
+            //Override for editor celeste file
+            foreach (var fileInfo in FilesInfoOverrideFromCelesteXml("e"))
+                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+                else
+                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+
+            var gameScan = new GameScannnerApi(filesInfo.FileInfo.Values, filesRootPath);
+            await gameScan.ScanAndRepair(progress);
+
+            //Patch Editor.exe
+            var editorExePath = Path.Combine(filesRootPath, "Editor.exe");
+            using (var fileStream =
+                File.Open(editorExePath, FileMode.Open, FileAccess.Write, FileShare.None))
+            {
+                using (var writer = new BinaryWriter(fileStream))
+                {
+                    writer.Seek(0x008B4D12, SeekOrigin.Begin);
+                    writer.Write(new[] {'x', 'e', 'd', 'i', 't', '.', 'd', 'l', 'l'});
+                    writer.Seek(0x000AC3C0, SeekOrigin.Begin);
+                    writer.Write((byte) 0xEB);
+                    writer.Seek(0x00522296, SeekOrigin.Begin);
+                    writer.Write((byte) 0xEB);
+                }
+            }
+
+            //Patch xEditDLC.dll
+            var xLiveDlcDllPath = Path.Combine(filesRootPath, "xEditDLC.dll");
+            using (var fileStream =
+                File.Open(xLiveDlcDllPath, FileMode.Open, FileAccess.Write, FileShare.None))
+            {
+                using (var writer = new BinaryWriter(fileStream))
+                {
+                    writer.Seek(0x0000155C, SeekOrigin.Begin);
+                    writer.Write(new[] {'x', 'e', 'd', 'i', 't', '.', 'd', 'l', 'l'});
+                }
             }
         }
     }

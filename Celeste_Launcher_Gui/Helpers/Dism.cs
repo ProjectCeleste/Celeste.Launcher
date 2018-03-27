@@ -50,7 +50,7 @@ namespace Celeste_Launcher_Gui.Helpers
             {
                 using (var session = DismApi.OpenOnlineSession())
                 {
-                    retVal =  DismApi.GetFeatureInfo(session, featureName);
+                    retVal = DismApi.GetFeatureInfo(session, featureName);
                 }
             }
             finally

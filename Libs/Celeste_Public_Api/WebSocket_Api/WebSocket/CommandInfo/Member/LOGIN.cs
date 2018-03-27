@@ -117,7 +117,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
 
         [JsonProperty("Message")]
         public string Message { get; }
-        
+
         [JsonProperty("User")]
         public User User { get; }
     }

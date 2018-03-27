@@ -9,7 +9,6 @@ using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 
 namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 {
-
     public class Register
     {
         public const string CmdName = "REGISTER";
@@ -61,7 +60,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
             }
             catch (Exception e)
             {
-                return new RegisterUserResult (false,  e.Message);
+                return new RegisterUserResult(false, e.Message);
             }
         }
     }

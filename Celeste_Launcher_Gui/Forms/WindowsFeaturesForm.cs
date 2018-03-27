@@ -23,11 +23,10 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        private async void GameScan_Load(object sender, EventArgs e)
+        private async void WindowsFeatures_Load(object sender, EventArgs e)
         {
             try
             {
@@ -113,7 +112,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void DismProgress(DismProgress e)
         {
-            progressBar1.Value = Convert.ToInt32(Math.Floor((double)e.Current / e.Total * 100));
+            progressBar1.Value = Convert.ToInt32(Math.Floor((double) e.Current / e.Total * 100));
         }
 
         private async void Btn_FixDirectPlay_Click(object sender, EventArgs e)
@@ -161,13 +160,13 @@ namespace Celeste_Launcher_Gui.Forms
             }
             Enabled = true;
         }
-        
+
         private async void Btn_FixNetFx_Click(object sender, EventArgs e)
         {
             Enabled = false;
             try
             {
-                var feature =  await Dism.EnableWindowsFeatures("NetFx3", DismProgress);
+                var feature = await Dism.EnableWindowsFeatures("NetFx3", DismProgress);
                 // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (feature.FeatureState)
                 {

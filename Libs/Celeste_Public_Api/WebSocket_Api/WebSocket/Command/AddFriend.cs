@@ -12,7 +12,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     public class AddFriend
     {
         public const string CmdName = "ADDFRIEND";
-        
+
         public AddFriend(Client webSocketClient)
         {
             DataExchange = new DataExchange(webSocketClient, CmdName);
@@ -33,7 +33,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
 
                 AddFriendResult retVal = result.ToObject<AddFriendResult>();
-                
+
                 return retVal;
             }
             catch (Exception e)

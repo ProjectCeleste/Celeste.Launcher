@@ -50,7 +50,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
             }
             catch (Exception e)
             {
-                return new ResetPwdResult (false, e.Message);
+                return new ResetPwdResult(false, e.Message);
             }
         }
     }

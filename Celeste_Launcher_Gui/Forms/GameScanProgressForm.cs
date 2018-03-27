@@ -3,7 +3,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
@@ -17,7 +16,7 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScanProgressForm : Form
     {
-        public GameScanProgressForm(string gameFilesPath,bool isSteam, bool isLegacyXLive)
+        public GameScanProgressForm(string gameFilesPath, bool isSteam, bool isLegacyXLive)
         {
             InitializeComponent();
 
@@ -156,7 +155,7 @@ namespace Celeste_Launcher_Gui.Forms
             GameScannner.CancelScan();
             while (GameScannner.IsScanRunning)
             {
-                 //
+                //
             }
         }
 
@@ -170,10 +169,10 @@ namespace Celeste_Launcher_Gui.Forms
                 GameScannner.CancelScan();
                 while (GameScannner.IsScanRunning)
                 {
-                   //
+                    //
                 }
             }
-            
+
             Close();
         }
 

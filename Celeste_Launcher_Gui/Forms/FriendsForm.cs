@@ -120,7 +120,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (listView1.SelectedItems.Count < 1)
                 return;
 
-                await RemFriends(((FriendJson)listView1.SelectedItems[0].Tag).Xuid);
+            await RemFriends(((FriendJson) listView1.SelectedItems[0].Tag).Xuid);
 
             RefreshBtn_Click(null, null);
         }
@@ -130,7 +130,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (listView3.SelectedItems.Count < 1)
                 return;
 
-            await RemFriends(((FriendJson)listView3.SelectedItems[0].Tag).Xuid);
+            await RemFriends(((FriendJson) listView3.SelectedItems[0].Tag).Xuid);
 
             RefreshBtn_Click(null, null);
         }
@@ -196,7 +196,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (listView2.SelectedItems.Count < 1)
                 return;
 
-            await RemFriends(((FriendJson)listView2.SelectedItems[0].Tag).Xuid);
+            await RemFriends(((FriendJson) listView2.SelectedItems[0].Tag).Xuid);
 
             PictureBoxButtonCustom3_Click(null, null);
         }
@@ -209,7 +209,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 var response =
-                    await Program.WebSocketApi.DoConfirmFriend(((FriendJson)listView2.SelectedItems[0].Tag).Xuid);
+                    await Program.WebSocketApi.DoConfirmFriend(((FriendJson) listView2.SelectedItems[0].Tag).Xuid);
 
                 if (!response.Result)
                     throw new Exception(response.Message);
@@ -233,14 +233,13 @@ namespace Celeste_Launcher_Gui.Forms
             if (listView4.SelectedItems.Count < 1)
                 return;
 
-            await RemFriends(((FriendJson)listView4.SelectedItems[0].Tag).Xuid);
+            await RemFriends(((FriendJson) listView4.SelectedItems[0].Tag).Xuid);
 
             PictureBoxButtonCustom3_Click(null, null);
         }
 
         private async void PictureBoxButtonCustom3_Click(object sender, EventArgs e)
         {
-
             listView2.Enabled = false;
             listView4.Enabled = false;
             pictureBoxButtonCustom3.Enabled = false;

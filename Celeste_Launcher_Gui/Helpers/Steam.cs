@@ -24,7 +24,7 @@ namespace Celeste_Launcher_Gui.Helpers
             }
             catch (Exception)
             {
-               //Optional
+                //Optional
             }
         }
 

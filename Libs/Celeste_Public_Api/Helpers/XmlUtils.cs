@@ -22,37 +22,25 @@ namespace Celeste_Public_Api.Helpers
             return SerializeToString(serializableObject);
         }
 
-        public static string PrettyXml(string xml)
-        {
-            string output;
-            var xmlDoc = XDocument.Parse(xml);
-            using (var stringWriter = new Utf8StringWriter())
-            {
-                using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings
-                {
-                    Encoding = Encoding.UTF8,
-                    Indent = true,
-                    OmitXmlDeclaration = false,
-                    NewLineHandling = NewLineHandling.None
-                }))
-                {
-                    xmlDoc.Save(xmlWriter);
-                }
-                output = stringWriter.ToString();
-            }
-            return output;
-        }
-
-        public static void SerializeToFile(object serializableObject, string xmlFilePath, bool backup = true)
+        public static void SerializeToXmlFile(this object serializableObject, string xmlFilePath, bool backup = true)
         {
             var xml = SerializeToString(serializableObject);
+
             if (File.Exists(xmlFilePath))
             {
                 if (backup)
-                    File.Copy(xmlFilePath, $"{xmlFilePath}.bak", true);
+                {
+                    var backupFile = $"{xmlFilePath}.bak";
+
+                    if (File.Exists(backupFile))
+                        File.Delete(backupFile);
+
+                    File.Move(xmlFilePath, backupFile);
+                }
 
                 File.Delete(xmlFilePath);
             }
+
             File.WriteAllText(xmlFilePath, xml, Encoding.UTF8);
         }
 
@@ -100,9 +88,32 @@ namespace Celeste_Public_Api.Helpers
             var xmls = new XmlSerializer(typeof(T));
             using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
             {
-                output = (T) xmls.Deserialize(ms);
+                output = (T)xmls.Deserialize(ms);
             }
             return output;
         }
+
+        public static string PrettyXml(string xml)
+        {
+            string output;
+            var xmlDoc = XDocument.Parse(xml);
+            using (var stringWriter = new Utf8StringWriter())
+            {
+                using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings
+                {
+                    Encoding = Encoding.UTF8,
+                    Indent = true,
+                    OmitXmlDeclaration = false,
+                    NewLineHandling = NewLineHandling.None
+                }))
+                {
+                    xmlDoc.Save(xmlWriter);
+                }
+                output = stringWriter.ToString();
+            }
+            return output;
+        }
+
+
     }
 }

@@ -2,10 +2,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Xml.Serialization;
-using Celeste_Public_Api.Helpers;
 
 #endregion
 
@@ -16,10 +14,6 @@ namespace Celeste_Public_Api.GameScanner_Api.Models
     {
         [XmlAttribute(AttributeName = "FileName")]
         public string FileName { get; set; }
-
-        [DefaultValue(null)]
-        [XmlAttribute(AttributeName = "OverrideFileName")]
-        public string OverrideFileName { get; set; }
 
         [XmlAttribute(AttributeName = "CRC32")]
         public uint Crc32 { get; set; }
@@ -41,7 +35,8 @@ namespace Celeste_Public_Api.GameScanner_Api.Models
     public class GameFilesInfo
     {
         [XmlIgnore]
-        public Dictionary<string, GameFileInfo> FileInfo { get; } = new Dictionary<string, GameFileInfo>(StringComparer.OrdinalIgnoreCase);
+        public Dictionary<string, GameFileInfo> FileInfo { get; } =
+            new Dictionary<string, GameFileInfo>(StringComparer.OrdinalIgnoreCase);
 
         [XmlElement(ElementName = "FilesInfo")]
         public GameFileInfo[] FilesInfoArray
@@ -51,13 +46,8 @@ namespace Celeste_Public_Api.GameScanner_Api.Models
             {
                 if (value == null) return;
                 foreach (var item in value)
-                    FileInfo.Add(item.FileName.ToLower(), item);
+                    FileInfo.Add(item.FileName, item);
             }
-        }
-
-        public void ToXml(string filename)
-        {
-            XmlUtils.SerializeToFile(this, filename);
         }
     }
 }

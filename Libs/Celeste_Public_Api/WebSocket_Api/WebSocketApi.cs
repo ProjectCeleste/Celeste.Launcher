@@ -16,31 +16,30 @@ namespace Celeste_Public_Api.WebSocket_Api
 {
     public class WebSocketApi
     {
+        private readonly AddFriend _addFriend;
+
+        private readonly Version _apiVersion = new Version(2, 0, 3, 0);
         private readonly ChangePwd _changePwd;
 
         private readonly Client _client;
 
+        private readonly ConfirmFriend _confirmFriend;
+
         private readonly ForgotPwd _forgotPwd;
-
-        private readonly Login _login;
-
-        private readonly Register _register;
-
-        private readonly ResetPwd _resetPwd;
-
-        private readonly ValidMail _validMail;
 
         private readonly GetFriends _getFriends;
 
         private readonly GetPendingFriends _getPFriends;
 
+        private readonly Login _login;
+
+        private readonly Register _register;
+
         private readonly RemoveFriend _removeFriend;
 
-        private readonly AddFriend _addFriend;
+        private readonly ResetPwd _resetPwd;
 
-        private readonly ConfirmFriend _confirmFriend;
-
-        private readonly Version _apiVersion = new Version(2, 0, 3, 0);
+        private readonly ValidMail _validMail;
 
         private DateTime _lastActivity = DateTime.UtcNow;
 
@@ -133,8 +132,8 @@ namespace Celeste_Public_Api.WebSocket_Api
         private async Task<LoginResult> DoReLogin()
         {
             if (_loginRequest == null)
-                return new LoginResult (false, "Invalid stored login information");
-            
+                return new LoginResult(false, "Invalid stored login information");
+
             return await DoLogin(_loginRequest.Mail, _loginRequest.Password);
         }
 
@@ -149,7 +148,7 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
-                return new ChangePwdResult(false,loginResponse.Message);
+                return new ChangePwdResult(false, loginResponse.Message);
 
             return await _changePwd.DoChangePwd(request);
         }
@@ -196,7 +195,8 @@ namespace Celeste_Public_Api.WebSocket_Api
             return response;
         }
 
-        public async Task<RegisterUserResult> DoRegister(string eMail, string verifyKey, string username, string password)
+        public async Task<RegisterUserResult> DoRegister(string eMail, string verifyKey, string username,
+            string password)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
@@ -309,8 +309,8 @@ namespace Celeste_Public_Api.WebSocket_Api
             try
             {
                 if (_disconnectIdleSession == null)
-                    _disconnectIdleSession = new Timer(DisconnectIdleSession, new object(), TimerInterval, TimerInterval);
-
+                    _disconnectIdleSession = new Timer(DisconnectIdleSession, new object(), TimerInterval,
+                        TimerInterval);
             }
             catch
             {

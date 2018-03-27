@@ -28,7 +28,7 @@ namespace Celeste_Launcher_Gui.Forms
             else
                 rB_Sparta.Checked = true;
         }
-        
+
         private void BtnRunScan_Click(object sender, EventArgs e)
         {
             try
@@ -37,14 +37,13 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.UserConfig.IsLegacyXLive = rB_Legacy.Checked;
                 Program.UserConfig.Save(Program.UserConfigFilePath);
 
-                using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath, Program.UserConfig.IsSteamVersion, Program.UserConfig.IsLegacyXLive))
+                using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath,
+                    Program.UserConfig.IsSteamVersion, Program.UserConfig.IsLegacyXLive))
                 {
                     var dr = form.ShowDialog();
 
                     if (dr == DialogResult.OK)
-                    {
                         Close();
-                    }
                 }
             }
             catch (Exception ex)
