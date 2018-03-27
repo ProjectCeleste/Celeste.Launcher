@@ -1,5 +1,18 @@
 # Change Log
 
+## [v2.0.4.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.4.0) (2018-03-27)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.3.2...v2.0.4.0)
+
+**New Features:**
+
+- "Game Editor" : Now you can install and use the "Game Editor" (Tools Menu) to start designing map and maybe see them include in "Celeste Fan Project".
+- Windows Firewall Helper : Easily configure in few click the default windows firewall for "Celeste Fan Project Launcher" and the game.
+
+**Enhancements:**
+
+- Windows Features Helper is now disabled on Windows 7 to avoid confusion (not needed).
+
 ## [v2.0.3.2](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.3.2) (2018-02-26)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.3.1...v2.0.3.2)
