@@ -37,6 +37,21 @@ namespace Celeste_Launcher_Gui.Forms
             tB_Report.Text = string.Empty;
         }
 
+        public GameScanProgressForm(GameScannnerApi gameScannnerApi)
+        {
+            InitializeComponent();
+
+            SkinHelper.SetFont(Controls);
+
+            GameScannner = gameScannnerApi;
+            lbl_ProgressTitle.Text = string.Empty;
+            lbl_ProgressDetail.Text = string.Empty;
+            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
+            pB_GlobalProgress.Value = 0;
+            pB_SubProgress.Value = 0;
+            tB_Report.Text = string.Empty;
+        }
+
         private GameScannnerApi GameScannner { get; }
 
         public void ProgressChanged(object sender, ScanAndRepairProgress e)

@@ -156,6 +156,38 @@ namespace Celeste_Public_Api.GameScanner_Api
 
                     tmpFilePath = tempFileName2;
                 }
+                else if (ZipUtils.IsL66TZipFile(tempFileName))
+                {
+                    ct.ThrowIfCancellationRequested();
+                    //
+                    progress?.Report(new ScanAndRepairFileProgress(fileInfo.FileName, 70,
+                        new ExLog(LogLevel.Info, "      - Extract downloaded file...")));
+
+                    var extractProgress = new Progress<ZipFileProgress>();
+                    if (progress != null)
+                        extractProgress.ProgressChanged += (o, ea) =>
+                        {
+                            progress.Report(new ScanAndRepairFileProgress(fileInfo.FileName,
+                                70 + Convert.ToInt32(Math.Floor((double) ea.ProgressPercentage / 100 * (90 - 70))),
+                                ea));
+                        };
+                    await ZipUtils.DoExtractL66TZipFile(tempFileName, tempFileName2, extractProgress, ct);
+
+                    ct.ThrowIfCancellationRequested();
+                    //#90 Check Downloaded File
+                    if (!RunFileCheck(tempFileName2, fileInfo.Size, fileInfo.Crc32))
+                    {
+                        if (File.Exists(tempFileName))
+                            File.Delete(tempFileName);
+
+                        if (File.Exists(tempFileName2))
+                            File.Delete(tempFileName2);
+
+                        throw new Exception("Extracted file is invalid!");
+                    }
+
+                    tmpFilePath = tempFileName2;
+                }
 
                 ct.ThrowIfCancellationRequested();
                 //#95 Move new file to game folder
@@ -297,7 +329,8 @@ namespace Celeste_Public_Api.GameScanner_Api
                         {
                             var totalCount = FilesInfo.Count();
                             var currentIndex = 0;
-                            foreach (var fileInfo in FilesInfo)
+                            foreach (var fileInfo in FilesInfo.OrderByDescending(key => key.FileName.Contains("\\"))
+                                .ThenBy(key => key.FileName))
                             {
                                 currentIndex += 1;
 
@@ -327,10 +360,6 @@ namespace Celeste_Public_Api.GameScanner_Api
                         {
                             retVal = false;
                             throw;
-                        }
-                        finally
-                        {
-                            IsScanRunning = false;
                         }
                     }, _cts.Token);
 
@@ -495,7 +524,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                 {
                     client.DownloadFile(
                         !string.IsNullOrWhiteSpace(type)
-                            ? $"https://downloads.projectceleste.com/game_files/manifest_override_{type}.xml"
+                            ? $"https://ns544971.ip-66-70-180.net/game_files/manifest_override_{type}.xml"
                             : "https://ns544971.ip-66-70-180.net/game_files/manifest_override.xml",
                         tempFileName);
                 }
@@ -541,10 +570,12 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public static async Task InstallGameEditor(string filesRootPath,
-            IProgress<ScanAndRepairProgress> progress = null)
+        public static GameScannnerApi InstallGameEditor(bool isSteam, bool isLegacyXLive, string filesRootPath)
         {
             var filesInfo = new GameFilesInfo();
+
+            foreach (var fileInfo in GetGameFilesInfo(isSteam, isLegacyXLive))
+                filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             //Load editor manifest
             foreach (var fileInfo in FilesInfoFromGameManifest("precert", 2296, false))
@@ -554,26 +585,38 @@ namespace Celeste_Public_Api.GameScanner_Api
                     case "spartan.exe":
                     {
                         fileInfo.FileName = "Editor.exe";
-                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                            filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+                        else
+                            filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
                         break;
                     }
                     case "spartan.exe.cfg":
                     {
                         fileInfo.FileName = "Editor.exe.cfg";
-                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                            filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+                        else
+                            filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
                         break;
                     }
                     case "xlivedlc.dll":
                     {
                         fileInfo.FileName = "xEditDLC.dll";
-                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                            filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+                        else
+                            filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
                         break;
                     }
                     case "startup\\hotkeys.con":
                     case "startup\\developer.con":
                     case "startup\\editor.con":
                     {
-                        filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
+                        if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
+                            filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
+                        else
+                            filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
                         break;
                     }
                 }
@@ -585,36 +628,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                 else
                     filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
-            var gameScan = new GameScannnerApi(filesInfo.FileInfo.Values, filesRootPath);
-            await gameScan.ScanAndRepair(progress);
-
-            //Patch Editor.exe
-            var editorExePath = Path.Combine(filesRootPath, "Editor.exe");
-            using (var fileStream =
-                File.Open(editorExePath, FileMode.Open, FileAccess.Write, FileShare.None))
-            {
-                using (var writer = new BinaryWriter(fileStream))
-                {
-                    writer.Seek(0x008B4D12, SeekOrigin.Begin);
-                    writer.Write(new[] {'x', 'e', 'd', 'i', 't', '.', 'd', 'l', 'l'});
-                    writer.Seek(0x000AC3C0, SeekOrigin.Begin);
-                    writer.Write((byte) 0xEB);
-                    writer.Seek(0x00522296, SeekOrigin.Begin);
-                    writer.Write((byte) 0xEB);
-                }
-            }
-
-            //Patch xEditDLC.dll
-            var xLiveDlcDllPath = Path.Combine(filesRootPath, "xEditDLC.dll");
-            using (var fileStream =
-                File.Open(xLiveDlcDllPath, FileMode.Open, FileAccess.Write, FileShare.None))
-            {
-                using (var writer = new BinaryWriter(fileStream))
-                {
-                    writer.Seek(0x0000155C, SeekOrigin.Begin);
-                    writer.Write(new[] {'x', 'e', 'd', 'i', 't', '.', 'd', 'l', 'l'});
-                }
-            }
+            return new GameScannnerApi(filesInfo.FileInfo.Values, filesRootPath);
         }
     }
 }
