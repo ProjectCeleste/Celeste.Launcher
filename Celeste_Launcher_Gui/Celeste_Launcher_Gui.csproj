@@ -90,6 +90,12 @@
     <Compile Include="Forms\EditorForm.Designer.cs">
       <DependentUpon>EditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InstallProcDump.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallProcDump.Designer.cs">
+      <DependentUpon>InstallProcDump.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SteamForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditorForm.resx">
       <DependentUpon>EditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstallProcDump.resx">
+      <DependentUpon>InstallProcDump.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SteamForm.resx">
       <DependentUpon>SteamForm.cs</DependentUpon>

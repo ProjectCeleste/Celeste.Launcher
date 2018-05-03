@@ -26,6 +26,8 @@ namespace Celeste_Launcher_Gui.Forms
 
             //
             lb_Ver.Text = $@"v{Assembly.GetEntryAssembly().GetName().Version}";
+
+            //
             UpdateDiagModeToolStripFromConfig();
 
             //
@@ -38,6 +40,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 Program.WebSocketApi?.Disconnect();
                 NatDiscoverer.ReleaseAll();
+                Program.UserConfig?.Save(Program.UserConfigFilePath);
             }
             catch
             {
@@ -195,7 +198,8 @@ namespace Celeste_Launcher_Gui.Forms
                         lang = "zh-CHT";
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        throw new ArgumentOutOfRangeException(nameof(Program.UserConfig.GameLanguage),
+                            Program.UserConfig.GameLanguage, null);
                 }
 
                 try
@@ -205,8 +209,13 @@ namespace Celeste_Launcher_Gui.Forms
                         var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
                         const int maxNumOfCrashDumps = 30;
                         if (!File.Exists(procdumpFileName))
-                            throw new FileNotFoundException("Diagonstic Mode requires procdump.exe (File not Found)",
+                        {
+                            Program.UserConfig.IsDiagnosticMode = false;
+                            throw new FileNotFoundException(
+                                "Diagonstic Mode requires procdump.exe (File not Found).\r\n" +
+                                "Diagonstic Mode will be disabled.",
                                 procdumpFileName);
+                        }
 
                         // First ensure that all directories are set
                         var pathToCrashDumpFolder =
@@ -659,6 +668,37 @@ namespace Celeste_Launcher_Gui.Forms
         private void EnableDiagnosticModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.UserConfig.IsDiagnosticMode = !Program.UserConfig.IsDiagnosticMode;
+
+            if (Program.UserConfig.IsDiagnosticMode)
+                try
+                {
+                    var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
+                    if (!File.Exists(procdumpFileName))
+                        using (var form =
+                            new MsgBoxYesNo(
+                                "ProcDump.exe need to be installed first. Click \"Yes\" to install it, or \"No\" to cancel.\r\n" +
+                                "(https://docs.microsoft.com/en-us/sysinternals/downloads/procdump)"
+                            )
+                        )
+                        {
+                            var dr = form.ShowDialog();
+                            if (dr == DialogResult.OK)
+                                using (var form2 = new InstallProcDump())
+                                {
+                                    form2.ShowDialog();
+                                }
+                            else
+                                Program.UserConfig.IsDiagnosticMode = false;
+                        }
+                }
+                catch (Exception exception)
+                {
+                    Program.UserConfig.IsDiagnosticMode = false;
+                    MsgBox.ShowMessage(
+                        $"Warning: Failed to enable \"Diagnostic Mode\". Error message: {exception.Message}",
+                        @"Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
             UpdateDiagModeToolStripFromConfig();
         }

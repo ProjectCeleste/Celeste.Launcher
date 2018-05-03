@@ -48,7 +48,7 @@ namespace Celeste_Public_Api.Helpers
     {
         private readonly Stopwatch _stopwatch;
 
-        public DownloadFileUtils(Uri httpLink, string outputFileName, IProgress<DownloadFileProgress> progress)
+        public DownloadFileUtils(Uri httpLink, string outputFileName, IProgress<DownloadFileProgress> progress = null)
         {
             HttpLink = httpLink;
             OutputFileName = outputFileName;
@@ -80,7 +80,7 @@ namespace Celeste_Public_Api.Helpers
                         webClient.DownloadProgressChanged += ProgressChanged;
 
                         //
-                        Progress.Report(new DownloadFileProgress(0, 0, 0, 0));
+                        Progress?.Report(new DownloadFileProgress(0, 0, 0, 0));
 
                         //
                         _stopwatch.Start();
@@ -115,7 +115,7 @@ namespace Celeste_Public_Api.Helpers
 
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            Progress.Report(new DownloadFileProgress(_stopwatch.Elapsed.TotalMilliseconds, e.ProgressPercentage,
+            Progress?.Report(new DownloadFileProgress(_stopwatch.Elapsed.TotalMilliseconds, e.ProgressPercentage,
                 e.BytesReceived,
                 e.TotalBytesToReceive));
         }
