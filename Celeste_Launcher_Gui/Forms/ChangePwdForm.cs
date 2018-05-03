@@ -40,6 +40,11 @@ namespace Celeste_Launcher_Gui.Forms
                     MsgBox.ShowMessage(@"Password changed with success.", @"Celeste Fan Project",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    if (Program.UserConfig?.LoginInfo != null)
+                    {
+                        Program.UserConfig.LoginInfo.Password = tb_ConfirmPassword.Text;
+                    }
+
                     DialogResult = DialogResult.OK;
                     Close();
                     return;
