@@ -29,9 +29,9 @@ namespace Celeste_Launcher_Gui
     public class UserConfig
     {
 #if DEBUG
-        [DefaultValue("ws://127.0.0.1:4512/")]
+        [DefaultValue("wss://127.0.0.1:4513/")]
         [XmlElement(ElementName = "ServerUri")]
-        public string ServerUri { get; set; } = "ws://127.0.0.1:4512/";
+        public string ServerUri { get; set; } = "wss://127.0.0.1:4513/";
 #else
         [DefaultValue("wss://ns544971.ip-66-70-180.net:4513/")]
         [XmlElement(ElementName = "ServerUri")]
@@ -67,7 +67,7 @@ namespace Celeste_Launcher_Gui
             if (userConfig.MpSettings.IsOnline)
                 return userConfig;
 
-            if (!string.IsNullOrEmpty(userConfig.MpSettings.LanNetworkInterface))
+            if (!string.IsNullOrWhiteSpace(userConfig.MpSettings.LanNetworkInterface))
             {
                 var selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
                 var netInterface = NetworkInterface.GetAllNetworkInterfaces()
@@ -116,12 +116,12 @@ namespace Celeste_Launcher_Gui
             {
                 _cryptedPassword = value;
 
-                if (!string.IsNullOrEmpty(_uncryptedPassword))
+                if (!string.IsNullOrWhiteSpace(_uncryptedPassword))
                     return;
 
                 try
                 {
-                    _uncryptedPassword = string.IsNullOrEmpty(value)
+                    _uncryptedPassword = string.IsNullOrWhiteSpace(value)
                         ? string.Empty
                         : EncryptDecrypt.Decrypt(value, true);
                 }
@@ -143,12 +143,12 @@ namespace Celeste_Launcher_Gui
         {
             get
             {
-                if (!string.IsNullOrEmpty(_uncryptedPassword))
+                if (!string.IsNullOrWhiteSpace(_uncryptedPassword))
                     return _uncryptedPassword;
 
                 try
                 {
-                    _uncryptedPassword = string.IsNullOrEmpty(CryptedPassword)
+                    _uncryptedPassword = string.IsNullOrWhiteSpace(CryptedPassword)
                         ? string.Empty
                         : EncryptDecrypt.Decrypt(CryptedPassword, true);
                 }
@@ -161,12 +161,12 @@ namespace Celeste_Launcher_Gui
             }
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrWhiteSpace(value))
                     CryptedPassword = string.Empty;
 
                 try
                 {
-                    CryptedPassword = string.IsNullOrEmpty(value) ? string.Empty : EncryptDecrypt.Encrypt(value, true);
+                    CryptedPassword = string.IsNullOrWhiteSpace(value) ? string.Empty : EncryptDecrypt.Encrypt(value, true);
                 }
                 catch (Exception)
                 {
@@ -202,7 +202,7 @@ namespace Celeste_Launcher_Gui
         [XmlIgnore]
         public string PublicIp
         {
-            get => string.IsNullOrEmpty(_publicIp) ? "127.0.0.1" : _publicIp;
+            get => string.IsNullOrWhiteSpace(_publicIp) ? "127.0.0.1" : _publicIp;
             set => _publicIp = value;
         }
 

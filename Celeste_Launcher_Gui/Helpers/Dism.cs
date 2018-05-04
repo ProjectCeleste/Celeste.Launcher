@@ -26,7 +26,7 @@ namespace Celeste_Launcher_Gui.Helpers
             {
                 using (var session = DismApi.OpenOnlineSession())
                 {
-                    retVal.AddRange(enumerable.Where(key => !string.IsNullOrEmpty(key))
+                    retVal.AddRange(enumerable.Where(key => !string.IsNullOrWhiteSpace(key))
                         .Select(featureName => new KeyValuePair<string, DismFeatureInfo>(featureName,
                             DismApi.GetFeatureInfo(session, featureName))));
                 }
@@ -66,7 +66,7 @@ namespace Celeste_Launcher_Gui.Helpers
         public static async Task<DismFeatureInfo> EnableWindowsFeatures(string featureName,
             DismProgressCallback dismProgressCallback)
         {
-            if (string.IsNullOrEmpty(featureName))
+            if (string.IsNullOrWhiteSpace(featureName))
                 throw new ArgumentException();
 
             DismApi.Initialize(DismLogLevel.LogErrors);

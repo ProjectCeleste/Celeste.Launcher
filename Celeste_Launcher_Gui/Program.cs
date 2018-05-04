@@ -21,11 +21,12 @@ namespace Celeste_Launcher_Gui
         public static UserConfig UserConfig = new UserConfig();
 
         private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
+
         public static WebSocketApi WebSocketApi { get; private set; }
 
         public static User CurrentUser { get; set; }
 
-        public static string UserConfigFilePath { get; } = $"{AppDomain.CurrentDomain.BaseDirectory}CelesteConfig.xml";
+        public static string UserConfigFilePath { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CelesteConfig.xml");
 
         [STAThread]
         private static void Main()
@@ -60,10 +61,10 @@ namespace Celeste_Launcher_Gui
             {
                 //
             }
-
+            
             try
             {
-                if (string.IsNullOrEmpty(UserConfig.GameFilesPath))
+                if (string.IsNullOrWhiteSpace(UserConfig.GameFilesPath))
                     UserConfig.GameFilesPath = GameScannnerApi.GetGameFilesRootPath();
             }
             catch (Exception)

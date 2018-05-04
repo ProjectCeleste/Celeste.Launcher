@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Public_Api.GameScanner_Api;
+using Celeste_Public_Api.Helpers;
 
 #endregion
 
@@ -19,7 +20,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         public EditorForm()
         {
-            var path = !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath)
+            var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                 ? Program.UserConfig.GameFilesPath
                 : GameScannnerApi.GetGameFilesRootPath();
 
@@ -44,21 +45,32 @@ namespace Celeste_Launcher_Gui.Forms
                 //
             }
 
-            if (await _gameScannner.QuickScan())
+            if (!DownloadFileUtils.IsConnectedToInternet())
             {
-                Btn_Install_Editor.Enabled = false;
-                btn_Browse.Enabled = true;
+                if (await _gameScannner.QuickScan())
+                {
+                    Btn_Install_Editor.Enabled = false;
+                    btn_Browse.Enabled = true;
 
-                label2.Text = @"Installed";
-                label2.ForeColor = Color.Green;
+                    label2.Text = @"Installed";
+                    label2.ForeColor = Color.Green;
+                }
+                else
+                {
+                    label2.Text = @"Non-Installed Or Outdated";
+                    label2.ForeColor = Color.Red;
+
+                    Btn_Install_Editor.Enabled = true;
+                    btn_Browse.Enabled = false;
+                }
             }
             else
             {
-                label2.Text = @"Non-Installed";
-                label2.ForeColor = Color.Red;
-
                 Btn_Install_Editor.Enabled = true;
-                btn_Browse.Enabled = false;
+                btn_Browse.Enabled = true;
+
+                label2.Text = @"Unknow";
+                label2.ForeColor = Color.OrangeRed;
             }
         }
 
@@ -76,7 +88,7 @@ namespace Celeste_Launcher_Gui.Forms
                 btn_Browse.Enabled = false;
 
                 //Launch Game
-                var path = !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath)
+                var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                     ? Program.UserConfig.GameFilesPath
                     : GameScannnerApi.GetGameFilesRootPath();
 
@@ -85,6 +97,15 @@ namespace Celeste_Launcher_Gui.Forms
                 if (!File.Exists(spartanPath))
                     throw new FileNotFoundException("Editor.exe not found!", spartanPath);
 
+                //isSteam
+                if (!Program.UserConfig.IsSteamVersion)
+                {
+                    var steamApiDll = Path.Combine(Program.UserConfig.GameFilesPath, "steam_api.dll");
+                    if (File.Exists(steamApiDll))
+                        File.Delete(steamApiDll);
+                }
+
+                //
                 string lang;
                 switch (Program.UserConfig.GameLanguage)
                 {
@@ -126,7 +147,7 @@ namespace Celeste_Launcher_Gui.Forms
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            btn_Browse.Enabled = false;
+            btn_Browse.Enabled = true;
         }
 
         private void Btn_Install_Editor_Click(object sender, EventArgs e)

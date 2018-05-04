@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Security;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
@@ -151,6 +152,17 @@ namespace Celeste_Public_Api.Helpers
                 MessageBoxIcon.Error);
 
             return false;
+        }
+
+        [DllImport("wininet.dll")]
+        private static extern bool InternetGetConnectedState(out int description, int reservedValue);
+
+        /// <summary>
+        ///     Check if IsConnectedToInternet
+        /// </summary>
+        public static bool IsConnectedToInternet()
+        {
+                return InternetGetConnectedState(out int _, 0);
         }
     }
 }

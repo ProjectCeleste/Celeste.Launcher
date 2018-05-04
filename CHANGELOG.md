@@ -1,5 +1,18 @@
 # Change Log
 
+## [v2.0.5.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.5.0) (2018-05-04)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.4.0...v2.0.5.0)
+
+**New Features:**
+
+- "Offline Mode" : You can now play custom scneario made by the community using "Game Editor".
+
+**Enhancements:**
+
+- Necessary file for "Diagnostic Mode" are now automatically downloaded if missing.
+- "Game Editor" can now be launched without an internet connection available.
+
 ## [v2.0.4.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.4.0) (2018-03-27)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.3.2...v2.0.4.0)

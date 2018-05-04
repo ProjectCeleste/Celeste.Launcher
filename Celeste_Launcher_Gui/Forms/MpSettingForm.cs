@@ -90,7 +90,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (rb_Wan.Checked)
             {
                 if (Program.CurrentUser != null &&
-                    !string.IsNullOrEmpty(Program.CurrentUser.Ip))
+                    !string.IsNullOrWhiteSpace(Program.CurrentUser.Ip))
                 {
                     tb_remoteIp.Text = Program.CurrentUser.Ip;
                 }
@@ -131,7 +131,7 @@ namespace Celeste_Launcher_Gui.Forms
                     }
 
                     _selectedInterfaceName = netDeviceSelectDialog.SelectedInterfaceName;
-                    if (string.IsNullOrEmpty(netDeviceSelectDialog.SelectedIpAddress?.ToString()))
+                    if (string.IsNullOrWhiteSpace(netDeviceSelectDialog.SelectedIpAddress?.ToString()))
                         rb_Wan.Checked = true;
                     else
                         tb_remoteIp.Text = netDeviceSelectDialog.SelectedIpAddress?.ToString();
@@ -139,7 +139,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             else
             {
-                if (!string.IsNullOrEmpty(Program.UserConfig?.MpSettings?.LanNetworkInterface))
+                if (!string.IsNullOrWhiteSpace(Program.UserConfig?.MpSettings?.LanNetworkInterface))
                 {
                     _selectedInterfaceName = Program.UserConfig.MpSettings.LanNetworkInterface;
                     var netInterface = NetworkInterface.GetAllNetworkInterfaces()

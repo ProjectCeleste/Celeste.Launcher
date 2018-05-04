@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            if (string.IsNullOrEmpty(gameFilesPath))
+            if (string.IsNullOrWhiteSpace(gameFilesPath))
                 throw new Exception(@"Game files path is empty!");
 
             SkinHelper.SetFont(Controls);

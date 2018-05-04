@@ -108,13 +108,13 @@ namespace Celeste_Launcher_Gui.Forms
                     changelogRaw = await responseContent.Content.ReadAsStringAsync().ConfigureAwait(false);
                 }
 
-                if (string.IsNullOrEmpty(changelogRaw))
+                if (string.IsNullOrWhiteSpace(changelogRaw))
                     throw new Exception(@"No Changelog found...");
 
                 var changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
                     .Replace("Full Changelog", string.Empty).Replace("Change Log", string.Empty);
 
-                if (!string.IsNullOrEmpty(changelogFormatted))
+                if (!string.IsNullOrWhiteSpace(changelogFormatted))
                     return changelogFormatted;
 
                 throw new Exception(@"No Changelog found...");

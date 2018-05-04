@@ -18,7 +18,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             SkinHelper.SetFont(Controls);
 
-            if (Program.UserConfig != null && !string.IsNullOrEmpty(Program.UserConfig.GameFilesPath))
+            if (Program.UserConfig != null && !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath))
                 tb_GamePath.Text = Program.UserConfig.GameFilesPath;
             else
                 tb_GamePath.Text = GameScannnerApi.GetGameFilesRootPath();

@@ -54,9 +54,11 @@
             this.panelManager1 = new Controls.PanelManager();
             this.managedPanel2 = new Controls.ManagedPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
-            this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
+            this.customBtn3 = new Celeste_AOEO_Controls.CustomBtn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
+            this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
             this.managedPanel1 = new Controls.ManagedPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -73,26 +75,21 @@
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.cMS_Tools = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customScenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMS_Settings = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.updaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMS_Account = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMS_Donate = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.donateWithPayPalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moreDonateOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMS_ProjectCelesteCom = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.forumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -113,6 +110,7 @@
             this.managedPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel9.SuspendLayout();
             this.managedPanel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -124,10 +122,7 @@
             this.panel9.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.cMS_Tools.SuspendLayout();
-            this.cMS_Settings.SuspendLayout();
             this.cMS_Account.SuspendLayout();
-            this.cMS_Donate.SuspendLayout();
-            this.cMS_ProjectCelesteCom.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainContainer1
@@ -492,9 +487,9 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.customBtn1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.customBtn2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.customBtn3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -503,23 +498,53 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // customBtn1
+            // customBtn3
             // 
-            this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
-            this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn1.BtnText = "LOGIN";
-            this.customBtn1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn1.Location = new System.Drawing.Point(0, -114);
-            this.customBtn1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(1, 50);
-            this.customBtn1.TabIndex = 1;
-            this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
+            this.customBtn3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn3.BackgroundImage")));
+            this.customBtn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customBtn3.BtnText = "PLAY OFFLINE";
+            this.customBtn3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customBtn3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.customBtn3.Location = new System.Drawing.Point(5, -49);
+            this.customBtn3.Margin = new System.Windows.Forms.Padding(5);
+            this.customBtn3.Name = "customBtn3";
+            this.customBtn3.Size = new System.Drawing.Size(1, 45);
+            this.customBtn3.TabIndex = 46;
+            this.customBtn3.Click += new System.EventHandler(this.CustomBtn3_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.CelesteLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1, 1);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 45;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 2;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.customBtn2, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.customBtn1, 0, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, -114);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 1;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1, 60);
+            this.tableLayoutPanel9.TabIndex = 47;
             // 
             // customBtn2
             // 
@@ -528,25 +553,26 @@
             this.customBtn2.BtnText = "REGISTER";
             this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customBtn2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn2.Location = new System.Drawing.Point(0, -54);
-            this.customBtn2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.customBtn2.Location = new System.Drawing.Point(5, 5);
+            this.customBtn2.Margin = new System.Windows.Forms.Padding(5);
             this.customBtn2.Name = "customBtn2";
             this.customBtn2.Size = new System.Drawing.Size(1, 50);
             this.customBtn2.TabIndex = 2;
             this.customBtn2.Click += new System.EventHandler(this.CustomBtn2_Click);
             // 
-            // pictureBox1
+            // customBtn1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.pictureBox1.Image = global::Celeste_Launcher_Gui.Properties.Resources.CelesteLogo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1, 1);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 45;
-            this.pictureBox1.TabStop = false;
+            this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
+            this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customBtn1.BtnText = "LOGIN";
+            this.customBtn1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customBtn1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.customBtn1.Location = new System.Drawing.Point(5, 5);
+            this.customBtn1.Margin = new System.Windows.Forms.Padding(5);
+            this.customBtn1.Name = "customBtn1";
+            this.customBtn1.Size = new System.Drawing.Size(1, 50);
+            this.customBtn1.TabIndex = 1;
+            this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
             // 
             // managedPanel1
             // 
@@ -661,7 +687,7 @@
             this.pictureBoxButtonCustom9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxButtonCustom9.TabIndex = 74;
             this.pictureBoxButtonCustom9.TabStop = false;
-            this.pictureBoxButtonCustom9.ToolTipText = "Settings";
+            this.pictureBoxButtonCustom9.ToolTipText = "MP Settings";
             this.pictureBoxButtonCustom9.Click += new System.EventHandler(this.PictureBoxButtonCustom9_Click);
             // 
             // pictureBoxButtonCustom6
@@ -785,27 +811,64 @@
             this.cMS_Tools.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.cMS_Tools.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMS_Tools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gameEditorToolStripMenuItem,
-            this.toolStripMenuItem1,
+            this.gameSettingsToolStripMenuItem,
+            this.offlineModeToolStripMenuItem,
             this.helpersToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.updaterToolStripMenuItem});
             this.cMS_Tools.Name = "contextMenuStrip1";
             this.cMS_Tools.ShowImageMargin = false;
-            this.cMS_Tools.Size = new System.Drawing.Size(148, 122);
+            this.cMS_Tools.Size = new System.Drawing.Size(165, 146);
             // 
-            // updaterToolStripMenuItem
+            // gameSettingsToolStripMenuItem
             // 
-            this.updaterToolStripMenuItem.Name = "updaterToolStripMenuItem";
-            this.updaterToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
-            this.updaterToolStripMenuItem.Text = "Updater";
-            this.updaterToolStripMenuItem.Click += new System.EventHandler(this.UpdaterToolStripMenuItem_Click);
+            this.gameSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.enableDiagnosticModeToolStripMenuItem});
+            this.gameSettingsToolStripMenuItem.Name = "gameSettingsToolStripMenuItem";
+            this.gameSettingsToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.gameSettingsToolStripMenuItem.Text = "Game Settings";
             // 
-            // toolStripMenuItem1
+            // toolStripMenuItem2
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(147, 24);
-            this.toolStripMenuItem1.Text = "Game Scan";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
+            this.toolStripMenuItem2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(263, 24);
+            this.toolStripMenuItem2.Text = "Game Language";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click_1);
+            // 
+            // enableDiagnosticModeToolStripMenuItem
+            // 
+            this.enableDiagnosticModeToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.enableDiagnosticModeToolStripMenuItem.Name = "enableDiagnosticModeToolStripMenuItem";
+            this.enableDiagnosticModeToolStripMenuItem.Size = new System.Drawing.Size(263, 24);
+            this.enableDiagnosticModeToolStripMenuItem.Text = "Enable Diagnostic Mode";
+            this.enableDiagnosticModeToolStripMenuItem.Click += new System.EventHandler(this.EnableDiagnosticModeToolStripMenuItem_Click);
+            // 
+            // offlineModeToolStripMenuItem
+            // 
+            this.offlineModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customScenarioToolStripMenuItem,
+            this.gameEditorToolStripMenuItem});
+            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
+            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
+            // 
+            // customScenarioToolStripMenuItem
+            // 
+            this.customScenarioToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.customScenarioToolStripMenuItem.Name = "customScenarioToolStripMenuItem";
+            this.customScenarioToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.customScenarioToolStripMenuItem.Text = "Custom Scenario";
+            this.customScenarioToolStripMenuItem.Click += new System.EventHandler(this.customScenarioToolStripMenuItem_Click);
+            // 
+            // gameEditorToolStripMenuItem
+            // 
+            this.gameEditorToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.gameEditorToolStripMenuItem.Name = "gameEditorToolStripMenuItem";
+            this.gameEditorToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.gameEditorToolStripMenuItem.Text = "Game Editor";
+            this.gameEditorToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
             // 
             // helpersToolStripMenuItem
             // 
@@ -815,7 +878,7 @@
             this.windowsFeaturesToolStripMenuItem,
             this.windowsFirewallToolStripMenuItem});
             this.helpersToolStripMenuItem.Name = "helpersToolStripMenuItem";
-            this.helpersToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
+            this.helpersToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.helpersToolStripMenuItem.Text = "Helpers";
             // 
             // steamToolStripMenuItem
@@ -842,38 +905,19 @@
             this.windowsFirewallToolStripMenuItem.Text = "Windows Firewall";
             this.windowsFirewallToolStripMenuItem.Click += new System.EventHandler(this.WindowsFirewallToolStripMenuItem_Click);
             // 
-            // cMS_Settings
+            // toolStripMenuItem1
             // 
-            this.cMS_Settings.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.cMS_Settings.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cMS_Settings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.enableDiagnosticModeToolStripMenuItem});
-            this.cMS_Settings.Name = "contextMenuStrip1";
-            this.cMS_Settings.ShowImageMargin = false;
-            this.cMS_Settings.Size = new System.Drawing.Size(239, 76);
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(164, 24);
+            this.toolStripMenuItem1.Text = "Game Scan";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
             // 
-            // toolStripMenuItem2
+            // updaterToolStripMenuItem
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(238, 24);
-            this.toolStripMenuItem2.Text = "Game Language";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(238, 24);
-            this.toolStripMenuItem3.Text = "MP Settings";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.ToolStripMenuItem3_Click);
-            // 
-            // enableDiagnosticModeToolStripMenuItem
-            // 
-            this.enableDiagnosticModeToolStripMenuItem.Name = "enableDiagnosticModeToolStripMenuItem";
-            this.enableDiagnosticModeToolStripMenuItem.Size = new System.Drawing.Size(238, 24);
-            this.enableDiagnosticModeToolStripMenuItem.Text = "Enable Diagnostic Mode";
-            this.enableDiagnosticModeToolStripMenuItem.Click += new System.EventHandler(this.EnableDiagnosticModeToolStripMenuItem_Click);
+            this.updaterToolStripMenuItem.Name = "updaterToolStripMenuItem";
+            this.updaterToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.updaterToolStripMenuItem.Text = "Updater";
+            this.updaterToolStripMenuItem.Click += new System.EventHandler(this.UpdaterToolStripMenuItem_Click);
             // 
             // cMS_Account
             // 
@@ -899,65 +943,6 @@
             this.logOffToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.logOffToolStripMenuItem.Text = "Log-Out";
             this.logOffToolStripMenuItem.Click += new System.EventHandler(this.LogOffToolStripMenuItem_Click);
-            // 
-            // cMS_Donate
-            // 
-            this.cMS_Donate.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.cMS_Donate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.cMS_Donate.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.donateWithPayPalToolStripMenuItem,
-            this.moreDonateOptionsToolStripMenuItem});
-            this.cMS_Donate.Name = "cMS_Donate";
-            this.cMS_Donate.ShowImageMargin = false;
-            this.cMS_Donate.Size = new System.Drawing.Size(248, 52);
-            // 
-            // donateWithPayPalToolStripMenuItem
-            // 
-            this.donateWithPayPalToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.donateWithPayPalToolStripMenuItem.Name = "donateWithPayPalToolStripMenuItem";
-            this.donateWithPayPalToolStripMenuItem.Size = new System.Drawing.Size(247, 24);
-            this.donateWithPayPalToolStripMenuItem.Text = "Quick donate with PayPal";
-            this.donateWithPayPalToolStripMenuItem.Click += new System.EventHandler(this.DonateWithPayPalToolStripMenuItem_Click);
-            // 
-            // moreDonateOptionsToolStripMenuItem
-            // 
-            this.moreDonateOptionsToolStripMenuItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.moreDonateOptionsToolStripMenuItem.Name = "moreDonateOptionsToolStripMenuItem";
-            this.moreDonateOptionsToolStripMenuItem.Size = new System.Drawing.Size(247, 24);
-            this.moreDonateOptionsToolStripMenuItem.Text = "More donate options";
-            this.moreDonateOptionsToolStripMenuItem.Click += new System.EventHandler(this.MoreDonateOptionsToolStripMenuItem_Click);
-            // 
-            // cMS_ProjectCelesteCom
-            // 
-            this.cMS_ProjectCelesteCom.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.cMS_ProjectCelesteCom.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.cMS_ProjectCelesteCom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.homeToolStripMenuItem,
-            this.forumsToolStripMenuItem});
-            this.cMS_ProjectCelesteCom.Name = "cMS_ProjectCelesteCom";
-            this.cMS_ProjectCelesteCom.ShowImageMargin = false;
-            this.cMS_ProjectCelesteCom.Size = new System.Drawing.Size(113, 52);
-            // 
-            // homeToolStripMenuItem
-            // 
-            this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
-            this.homeToolStripMenuItem.Text = "Home";
-            this.homeToolStripMenuItem.Click += new System.EventHandler(this.HomeToolStripMenuItem_Click);
-            // 
-            // forumsToolStripMenuItem
-            // 
-            this.forumsToolStripMenuItem.Name = "forumsToolStripMenuItem";
-            this.forumsToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
-            this.forumsToolStripMenuItem.Text = "Forums";
-            this.forumsToolStripMenuItem.Click += new System.EventHandler(this.ForumsToolStripMenuItem_Click);
-            // 
-            // gameEditorToolStripMenuItem
-            // 
-            this.gameEditorToolStripMenuItem.Name = "gameEditorToolStripMenuItem";
-            this.gameEditorToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
-            this.gameEditorToolStripMenuItem.Text = "Game Editor";
-            this.gameEditorToolStripMenuItem.Click += new System.EventHandler(this.gameEditorToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -997,6 +982,7 @@
             this.managedPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel9.ResumeLayout(false);
             this.managedPanel1.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
@@ -1009,10 +995,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.cMS_Tools.ResumeLayout(false);
-            this.cMS_Settings.ResumeLayout(false);
             this.cMS_Account.ResumeLayout(false);
-            this.cMS_Donate.ResumeLayout(false);
-            this.cMS_ProjectCelesteCom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1056,9 +1039,6 @@
         private System.Windows.Forms.ToolStripMenuItem updaterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.ContextMenuStrip cMS_Settings;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ContextMenuStrip cMS_Account;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private Celeste_AOEO_Controls.GamerCard gamerCard1;
@@ -1068,18 +1048,18 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Panel panel8;
         private Celeste_AOEO_Controls.NewsSideShow newsSideShow1;
-        private System.Windows.Forms.ContextMenuStrip cMS_Donate;
-        private System.Windows.Forms.ToolStripMenuItem donateWithPayPalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem moreDonateOptionsToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip cMS_ProjectCelesteCom;
-        private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem forumsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsFeaturesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem steamToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsFirewallToolStripMenuItem;
+        private Celeste_AOEO_Controls.CustomBtn customBtn3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.ToolStripMenuItem gameSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem offlineModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customScenarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gameEditorToolStripMenuItem;
     }
 }
