@@ -45,7 +45,7 @@ namespace Celeste_Launcher_Gui.Forms
                 //
             }
 
-            if (!DownloadFileUtils.IsConnectedToInternet())
+            if (DownloadFileUtils.IsConnectedToInternet())
             {
                 if (await _gameScannner.QuickScan())
                 {
