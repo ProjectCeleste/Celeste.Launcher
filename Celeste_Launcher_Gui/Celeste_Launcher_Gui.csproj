@@ -84,11 +84,11 @@
     <Compile Include="Forms\FriendsForm.Designer.cs">
       <DependentUpon>FriendsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditorForm.cs">
+    <Compile Include="Forms\OfflineModeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditorForm.Designer.cs">
-      <DependentUpon>EditorForm.cs</DependentUpon>
+    <Compile Include="Forms\OfflineModeForm.Designer.cs">
+      <DependentUpon>OfflineModeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\InstallProcDump.cs">
       <SubType>Form</SubType>
@@ -195,8 +195,8 @@
     <EmbeddedResource Include="Forms\FriendsForm.resx">
       <DependentUpon>FriendsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditorForm.resx">
-      <DependentUpon>EditorForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\OfflineModeForm.resx">
+      <DependentUpon>OfflineModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InstallProcDump.resx">
       <DependentUpon>InstallProcDump.cs</DependentUpon>
@@ -269,6 +269,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\DialogBox1.png" />
     <None Include="Resources\FriendRequests_Normal.png" />
     <None Include="Resources\AddFriends_Normal.png" />
     <None Include="Resources\RefreshHover.png" />
