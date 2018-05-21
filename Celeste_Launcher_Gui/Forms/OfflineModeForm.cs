@@ -36,7 +36,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             comboBox1.SelectedIndex = 0;
             refreshLists();
-
+            
             try
             {
                 if (DwmApi.DwmIsCompositionEnabled())
@@ -82,7 +82,7 @@ namespace Celeste_Launcher_Gui.Forms
             Close();
         }
 
-        private void Btn_Browse_Click(object sender, EventArgs e) // Editor Button Click Event
+        private void Btn_Browse_Click(object sender, EventArgs e) // Editor Button Click Event (Launch Editor)
         {
             btn_Editor.Enabled = false;
             try
@@ -140,8 +140,7 @@ namespace Celeste_Launcher_Gui.Forms
                     {
                         WorkingDirectory = path
                     });
-
-                Close();
+                
             }
             catch (Exception ex)
             {
@@ -465,5 +464,44 @@ namespace Celeste_Launcher_Gui.Forms
             Process.Start("https://forums.projectceleste.com/forums/custom-scenario-sharing.79/");
         }
 
+        private void btnSync(object sender, EventArgs e)
+        {
+            var msg = new MsgBoxYesNo("This will combine the two folders and will overwrite any duplicate names. Continue?");
+            var msg2 = msg.ShowDialog();
+            if (msg2 == DialogResult.OK)
+            {
+                String editorScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario";
+                String playScenPath = Program.UserConfig.GameFilesPath + "\\Scenario";
+                DirectoryInfo d1 = new DirectoryInfo(playScenPath);
+                DirectoryInfo d2 = new DirectoryInfo(editorScenPath);
+
+                try
+                {
+                    foreach (var file in d2.GetFiles("*.age4scn")) // List 2 Files
+                    {
+                        string filePath = editorScenPath + "\\" + file.Name.ToString();
+                        string destinationPath = playScenPath + "\\" + file.Name.ToString();
+                        File.Copy(filePath, destinationPath, true);
+                    }
+
+                    foreach (var file in d1.GetFiles("*.age4scn")) // List 1 Files
+                    {
+                        string filePath = playScenPath + "\\" + file.Name.ToString();
+                        string destinationPath = editorScenPath + "\\" + file.Name.ToString();
+                        File.Copy(filePath, destinationPath, true);
+                    }
+                }
+                catch (Exception err)
+                {
+                    MsgBox.ShowMessage(
+                    $"Warning: Error during quick scan. Error message: {err.Message}",
+                    @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshLists();
+                MsgBox.ShowMessage("Folders were synced!");
+
+            }
+        }
     }
 }
