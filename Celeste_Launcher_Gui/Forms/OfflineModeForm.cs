@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -466,7 +467,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void btnSync(object sender, EventArgs e)
         {
-            var msg = new MsgBoxYesNo("This will combine the two folders and will overwrite any duplicate names. Continue?");
+            var msg = new MsgBoxYesNo("This will combine both folders with eachother. Any duplicate files will be replaced with the version from the Editor's Folder. Continue?");
             var msg2 = msg.ShowDialog();
             if (msg2 == DialogResult.OK)
             {
@@ -474,7 +475,7 @@ namespace Celeste_Launcher_Gui.Forms
                 String playScenPath = Program.UserConfig.GameFilesPath + "\\Scenario";
                 DirectoryInfo d1 = new DirectoryInfo(playScenPath);
                 DirectoryInfo d2 = new DirectoryInfo(editorScenPath);
-
+                List<string> usedList = new List<string>();
                 try
                 {
                     foreach (var file in d2.GetFiles("*.age4scn")) // List 2 Files
@@ -482,6 +483,7 @@ namespace Celeste_Launcher_Gui.Forms
                         string filePath = editorScenPath + "\\" + file.Name.ToString();
                         string destinationPath = playScenPath + "\\" + file.Name.ToString();
                         File.Copy(filePath, destinationPath, true);
+                        usedList.Add(file.Name.ToString());
                     }
 
                     foreach (var file in d1.GetFiles("*.age4scn")) // List 1 Files
@@ -489,6 +491,14 @@ namespace Celeste_Launcher_Gui.Forms
                         string filePath = playScenPath + "\\" + file.Name.ToString();
                         string destinationPath = editorScenPath + "\\" + file.Name.ToString();
                         File.Copy(filePath, destinationPath, true);
+                        if (usedList.Contains(file.Name.ToString()))
+                        {
+                            Console.WriteLine("Skipping File in Sync: " + file.Name.ToString());
+                        }
+                        else
+                        {
+                            File.Copy(filePath, destinationPath, true);
+                        }
                     }
                 }
                 catch (Exception err)
@@ -500,7 +510,6 @@ namespace Celeste_Launcher_Gui.Forms
                 }
                 refreshLists();
                 MsgBox.ShowMessage("Folders were synced!");
-
             }
         }
     }
