@@ -46,7 +46,6 @@
             this.customBtn5 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn4 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn3 = new Celeste_AOEO_Controls.CustomBtn();
-            this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,9 +54,13 @@
             this.btn_Editor = new Celeste_AOEO_Controls.CustomBtn();
             this.btnPlay = new Celeste_AOEO_Controls.CustomBtn();
             this.pictureBoxButtonCustom1 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
+            this.editorWatcher = new System.IO.FileSystemWatcher();
+            this.playWatcher = new System.IO.FileSystemWatcher();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editorWatcher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playWatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,7 +81,6 @@
             this.panel1.Controls.Add(this.customBtn5);
             this.panel1.Controls.Add(this.customBtn4);
             this.panel1.Controls.Add(this.customBtn3);
-            this.panel1.Controls.Add(this.customBtn2);
             this.panel1.Controls.Add(this.customBtn1);
             this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.label3);
@@ -153,7 +155,7 @@
             this.customBtn8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn8.BtnText = "Sync";
             this.customBtn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn8.Location = new System.Drawing.Point(239, 270);
+            this.customBtn8.Location = new System.Drawing.Point(239, 228);
             this.customBtn8.Margin = new System.Windows.Forms.Padding(0);
             this.customBtn8.Name = "customBtn8";
             this.customBtn8.Size = new System.Drawing.Size(105, 32);
@@ -291,19 +293,6 @@
             this.customBtn3.TabIndex = 80;
             this.customBtn3.Click += new System.EventHandler(this.moveToEditor);
             // 
-            // customBtn2
-            // 
-            this.customBtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn2.BackgroundImage")));
-            this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn2.BtnText = "↻";
-            this.customBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn2.Location = new System.Drawing.Point(239, 229);
-            this.customBtn2.Margin = new System.Windows.Forms.Padding(0);
-            this.customBtn2.Name = "customBtn2";
-            this.customBtn2.Size = new System.Drawing.Size(105, 32);
-            this.customBtn2.TabIndex = 79;
-            this.customBtn2.Click += new System.EventHandler(this.btnRefresh);
-            // 
             // customBtn1
             // 
             this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
@@ -404,6 +393,16 @@
             this.pictureBoxButtonCustom1.ToolTipText = "Close";
             this.pictureBoxButtonCustom1.Click += new System.EventHandler(this.PictureBoxButtonCustom1_Click);
             // 
+            // editorWatcher
+            // 
+            this.editorWatcher.EnableRaisingEvents = true;
+            this.editorWatcher.SynchronizingObject = this;
+            // 
+            // playWatcher
+            // 
+            this.playWatcher.EnableRaisingEvents = true;
+            this.playWatcher.SynchronizingObject = this;
+            // 
             // OfflineModeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -428,6 +427,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editorWatcher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playWatcher)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -442,7 +443,6 @@
         private Celeste_AOEO_Controls.CustomBtn customBtn5;
         private Celeste_AOEO_Controls.CustomBtn customBtn4;
         private Celeste_AOEO_Controls.CustomBtn customBtn3;
-        private Celeste_AOEO_Controls.CustomBtn customBtn2;
         private Celeste_AOEO_Controls.CustomBtn customBtn1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
@@ -459,5 +459,7 @@
         private Celeste_AOEO_Controls.CustomBtn customBtn6;
         private Celeste_AOEO_Controls.CustomBtn customBtn8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.IO.FileSystemWatcher editorWatcher;
+        private System.IO.FileSystemWatcher playWatcher;
     }
 }

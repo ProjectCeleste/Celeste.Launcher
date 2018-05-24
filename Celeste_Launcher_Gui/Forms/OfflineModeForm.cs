@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
@@ -30,12 +31,26 @@ namespace Celeste_Launcher_Gui.Forms
 
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            //SkinHelper.SetFont(Controls);
         }
 
         private async void EditorForm_Load(object sender, EventArgs e)
         {
+            if (!Directory.Exists(Program.UserConfig.GameFilesPath))
+            {
+                MsgBox.ShowMessage("Please run a Game Scan first");
+                Close();
+                MainForm mf = new MainForm();
+                mf.ToolStripMenuItem1_Click(sender, e);
+            }
+            if (!Directory.Exists(Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario"))
+            {
+                Directory.CreateDirectory(Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario");
+            }
+            
             comboBox1.SelectedIndex = 0;
+            editorFolderListener();
+            playFolderListener();
             refreshLists();
             
             try
@@ -45,7 +60,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception)
             {
-                //
+                
             }
 
             if (DownloadFileUtils.IsConnectedToInternet())
@@ -200,21 +215,11 @@ namespace Celeste_Launcher_Gui.Forms
 
         public void refreshLists()
         {
-
-            if (Program.UserConfig.GameFilesPath == "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Age Of Empires Online" && !Directory.Exists(Program.UserConfig.GameFilesPath))
-            {
-                MsgBox.ShowMessage("Please run a Game Scan first");
-                Close();
-                
-            }
-
             String editorScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario";
             String playScenPath = Program.UserConfig.GameFilesPath + "\\Scenario";
-
+            
             listBox1.Items.Clear();
             listBox2.Items.Clear();
-
-
             
             string filepath1 = playScenPath;
             DirectoryInfo d1 = new DirectoryInfo(filepath1);
@@ -296,6 +301,7 @@ namespace Celeste_Launcher_Gui.Forms
                     Console.WriteLine(err);
                 }
             }
+            refreshLists();
         }
 
         private void importToOfflinePlayer(object sender, EventArgs e)
@@ -328,6 +334,7 @@ namespace Celeste_Launcher_Gui.Forms
                     Console.WriteLine(err);
                 }
             }
+            refreshLists();
         }
 
         private void moveToEditor(object sender, EventArgs e)
@@ -512,5 +519,42 @@ namespace Celeste_Launcher_Gui.Forms
                 MsgBox.ShowMessage("Folders were synced!");
             }
         }
+
+        public void editorFolderListener()
+        {
+            editorWatcher.Path = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario";
+            editorWatcher.NotifyFilter = NotifyFilters.Attributes | NotifyFilters.CreationTime | NotifyFilters.DirectoryName | NotifyFilters.FileName | NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.Security | NotifyFilters.Size;
+            editorWatcher.Filter = "*.*";
+            editorWatcher.Changed += new FileSystemEventHandler(OnChangedEditor);
+            editorWatcher.Created += new FileSystemEventHandler(OnChangedEditor);
+            editorWatcher.Deleted += new FileSystemEventHandler(OnChangedEditor);
+            editorWatcher.Renamed += new RenamedEventHandler(OnChangedEditor);
+            editorWatcher.EnableRaisingEvents = true;
+            editorWatcher.IncludeSubdirectories = true;
+        }
+
+        public void playFolderListener()
+        {
+            playWatcher.Path = Program.UserConfig.GameFilesPath + "\\Scenario";
+            playWatcher.NotifyFilter = NotifyFilters.Attributes | NotifyFilters.CreationTime | NotifyFilters.DirectoryName | NotifyFilters.FileName | NotifyFilters.LastAccess | NotifyFilters.LastWrite | NotifyFilters.Security | NotifyFilters.Size;
+            playWatcher.Filter = "*.*";
+            playWatcher.Changed += new FileSystemEventHandler(OnChangedPlay);
+            playWatcher.Created += new FileSystemEventHandler(OnChangedPlay);
+            playWatcher.Deleted += new FileSystemEventHandler(OnChangedPlay);
+            playWatcher.Renamed += new RenamedEventHandler(OnChangedPlay);
+            playWatcher.EnableRaisingEvents = true;
+            playWatcher.IncludeSubdirectories = true;
+        }
+
+        private void OnChangedEditor(object source, FileSystemEventArgs e)
+        {
+            refreshLists();
+        }
+
+        private void OnChangedPlay(object source, FileSystemEventArgs e)
+        {
+            refreshLists();
+        }
+
     }
 }

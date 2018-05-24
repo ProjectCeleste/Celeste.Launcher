@@ -395,7 +395,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
