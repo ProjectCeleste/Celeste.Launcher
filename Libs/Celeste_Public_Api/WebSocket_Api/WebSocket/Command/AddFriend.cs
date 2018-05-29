@@ -24,10 +24,6 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         {
             try
             {
-                if (!Misc.IsValideUserName(request.FriendName))
-                    throw new Exception(
-                        "Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!");
-
                 dynamic requestInfo = request;
 
                 var result = await DataExchange.DoDataExchange((object) requestInfo);
