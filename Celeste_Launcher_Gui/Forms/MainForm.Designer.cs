@@ -78,15 +78,13 @@
             this.gameSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customScenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.updaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMS_Account = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -845,31 +843,6 @@
             this.enableDiagnosticModeToolStripMenuItem.Text = "Enable Diagnostic Mode";
             this.enableDiagnosticModeToolStripMenuItem.Click += new System.EventHandler(this.EnableDiagnosticModeToolStripMenuItem_Click);
             // 
-            // offlineModeToolStripMenuItem
-            // 
-            this.offlineModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customScenarioToolStripMenuItem,
-            this.gameEditorToolStripMenuItem});
-            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
-            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
-            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
-            // 
-            // customScenarioToolStripMenuItem
-            // 
-            this.customScenarioToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.customScenarioToolStripMenuItem.Name = "customScenarioToolStripMenuItem";
-            this.customScenarioToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.customScenarioToolStripMenuItem.Text = "Custom Scenario";
-            this.customScenarioToolStripMenuItem.Click += new System.EventHandler(this.customScenarioToolStripMenuItem_Click);
-            // 
-            // gameEditorToolStripMenuItem
-            // 
-            this.gameEditorToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.gameEditorToolStripMenuItem.Name = "gameEditorToolStripMenuItem";
-            this.gameEditorToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.gameEditorToolStripMenuItem.Text = "Game Editor";
-            this.gameEditorToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
-            // 
             // helpersToolStripMenuItem
             // 
             this.helpersToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
@@ -918,6 +891,13 @@
             this.updaterToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.updaterToolStripMenuItem.Text = "Updater";
             this.updaterToolStripMenuItem.Click += new System.EventHandler(this.UpdaterToolStripMenuItem_Click);
+            // 
+            // offlineModeToolStripMenuItem
+            // 
+            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
+            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
+            this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
             // 
             // cMS_Account
             // 
@@ -1059,7 +1039,5 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offlineModeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customScenarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gameEditorToolStripMenuItem;
     }
 }
