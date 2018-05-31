@@ -36,18 +36,32 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void EditorForm_Load(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Program.UserConfig.GameFilesPath))
+            if (Program.UserConfig.IsSteamVersion == true)
             {
-                MsgBox.ShowMessage("Please run a Game Scan first");
-                Close();
-                MainForm mf = new MainForm();
-                mf.ToolStripMenuItem1_Click(sender, e);
+                if (!Directory.Exists(Program.UserConfig.GameFilesPath) || !File.Exists(Program.UserConfig.GameFilesPath + "\\Spartan.exe") || !File.Exists(Program.UserConfig.GameFilesPath + "\\AOEOnline.exe"))
+                {
+                    MsgBox.ShowMessage("Please run a game scan before using the editor or offline mode.");
+                    Close();
+                    MainForm mf = new MainForm();
+                    mf.ToolStripMenuItem1_Click(sender, e);
+                    goto end;
+                }
+            } else
+            {
+                if (!Directory.Exists(Program.UserConfig.GameFilesPath) || !File.Exists(Program.UserConfig.GameFilesPath + "\\Spartan.exe") || !File.Exists(Program.UserConfig.GameFilesPath + "\\Celeste_Launcher_Gui.exe"))
+                {
+                    MsgBox.ShowMessage("Please run a game scan before using the editor or offline mode.");
+                    Close();
+                    MainForm mf = new MainForm();
+                    mf.ToolStripMenuItem1_Click(sender, e);
+                    goto end;
+                }
             }
             if (!Directory.Exists(Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario"))
             {
                 Directory.CreateDirectory(Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario");
             }
-            
+
             comboBox1.SelectedIndex = 0;
             editorFolderListener();
             playFolderListener();
@@ -90,6 +104,7 @@ namespace Celeste_Launcher_Gui.Forms
                 label2.Text = @"Unknown";
                 label2.ForeColor = Color.OrangeRed;
             }
+        end:;
         }
 
 
@@ -548,12 +563,26 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void OnChangedEditor(object source, FileSystemEventArgs e)
         {
-            refreshLists();
+            try
+            {
+                refreshLists();
+            }
+            catch (ObjectDisposedException)
+            {
+                Console.WriteLine("Disposed Object Caught!");
+            }
         }
 
         private void OnChangedPlay(object source, FileSystemEventArgs e)
         {
-            refreshLists();
+            try
+            {
+                refreshLists();
+            }
+            catch (ObjectDisposedException)
+            {
+                Console.WriteLine("Disposed Object Caught!");
+            }
         }
 
     }
