@@ -178,7 +178,7 @@
             this.l_DirectPlayState.Name = "l_DirectPlayState";
             this.l_DirectPlayState.Size = new System.Drawing.Size(344, 75);
             this.l_DirectPlayState.TabIndex = 76;
-            this.l_DirectPlayState.Text = "Unknow";
+            this.l_DirectPlayState.Text = "Unknown";
             this.l_DirectPlayState.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -235,7 +235,7 @@
             this.l_NetFx3State.Name = "l_NetFx3State";
             this.l_NetFx3State.Size = new System.Drawing.Size(344, 75);
             this.l_NetFx3State.TabIndex = 68;
-            this.l_NetFx3State.Text = "Unknow";
+            this.l_NetFx3State.Text = "Unknown";
             this.l_NetFx3State.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btn_FixDirectPlay

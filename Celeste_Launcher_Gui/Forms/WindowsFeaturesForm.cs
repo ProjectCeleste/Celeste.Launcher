@@ -105,7 +105,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception)
             {
-                l_DirectPlayState.Text = @"Not supported (unknow error)";
+                l_DirectPlayState.Text = @"Not supported (unknown error)";
                 l_DirectPlayState.ForeColor = Color.Red;
             }
         }
