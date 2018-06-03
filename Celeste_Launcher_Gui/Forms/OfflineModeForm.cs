@@ -36,26 +36,13 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void EditorForm_Load(object sender, EventArgs e)
         {
-            if (Program.UserConfig.IsSteamVersion == true)
+            if (!Directory.Exists(Program.UserConfig.GameFilesPath) || !File.Exists(Program.UserConfig.GameFilesPath + "\\Spartan.exe"))
             {
-                if (!Directory.Exists(Program.UserConfig.GameFilesPath) || !File.Exists(Program.UserConfig.GameFilesPath + "\\Spartan.exe") || !File.Exists(Program.UserConfig.GameFilesPath + "\\AOEOnline.exe"))
-                {
-                    MsgBox.ShowMessage("Please run a game scan before using the editor or offline mode.");
-                    Close();
-                    MainForm mf = new MainForm();
-                    mf.ToolStripMenuItem1_Click(sender, e);
-                    goto end;
-                }
-            } else
-            {
-                if (!Directory.Exists(Program.UserConfig.GameFilesPath) || !File.Exists(Program.UserConfig.GameFilesPath + "\\Spartan.exe") || !File.Exists(Program.UserConfig.GameFilesPath + "\\Celeste_Launcher_Gui.exe"))
-                {
-                    MsgBox.ShowMessage("Please run a game scan before using the editor or offline mode.");
-                    Close();
-                    MainForm mf = new MainForm();
-                    mf.ToolStripMenuItem1_Click(sender, e);
-                    goto end;
-                }
+                MsgBox.ShowMessage("Please run a game scan before using the editor or offline mode.");
+                Close();
+                MainForm mf = new MainForm();
+                mf.ToolStripMenuItem1_Click(sender, e);
+                goto end;
             }
             if (!Directory.Exists(Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario"))
             {
@@ -66,15 +53,18 @@ namespace Celeste_Launcher_Gui.Forms
             editorFolderListener();
             playFolderListener();
             refreshLists();
-            
+            editorWatcher.EnableRaisingEvents = true;
+            playWatcher.EnableRaisingEvents = true;
+
+
             try
             {
                 if (DwmApi.DwmIsCompositionEnabled())
                     DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 10, 10, 10));
             }
-            catch (Exception)
+            catch (Exception err)
             {
-                
+                Console.WriteLine(err.Message);
             }
 
             if (DownloadFileUtils.IsConnectedToInternet())
@@ -110,6 +100,8 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
+            editorWatcher.EnableRaisingEvents = false;
+            playWatcher.EnableRaisingEvents = false;
             Close();
         }
 
