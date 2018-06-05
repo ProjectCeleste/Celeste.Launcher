@@ -199,7 +199,7 @@
             this.l_State_MP_In.Name = "l_State_MP_In";
             this.l_State_MP_In.Size = new System.Drawing.Size(164, 39);
             this.l_State_MP_In.TabIndex = 87;
-            this.l_State_MP_In.Text = "Unknow";
+            this.l_State_MP_In.Text = "Unknown";
             this.l_State_MP_In.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
@@ -227,7 +227,7 @@
             this.l_State_L_In.Name = "l_State_L_In";
             this.l_State_L_In.Size = new System.Drawing.Size(164, 37);
             this.l_State_L_In.TabIndex = 76;
-            this.l_State_L_In.Text = "Unknow";
+            this.l_State_L_In.Text = "Unknown";
             this.l_State_L_In.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
@@ -297,7 +297,7 @@
             this.l_State_L_Out.Name = "l_State_L_Out";
             this.l_State_L_Out.Size = new System.Drawing.Size(164, 37);
             this.l_State_L_Out.TabIndex = 79;
-            this.l_State_L_Out.Text = "Unknow";
+            this.l_State_L_Out.Text = "Unknown";
             this.l_State_L_Out.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
@@ -353,7 +353,7 @@
             this.l_State_S_In.Name = "l_State_S_In";
             this.l_State_S_In.Size = new System.Drawing.Size(164, 37);
             this.l_State_S_In.TabIndex = 85;
-            this.l_State_S_In.Text = "Unknow";
+            this.l_State_S_In.Text = "Unknown";
             this.l_State_S_In.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // l_State_S_Out
@@ -367,7 +367,7 @@
             this.l_State_S_Out.Name = "l_State_S_Out";
             this.l_State_S_Out.Size = new System.Drawing.Size(164, 37);
             this.l_State_S_Out.TabIndex = 84;
-            this.l_State_S_Out.Text = "Unknow";
+            this.l_State_S_Out.Text = "Unknown";
             this.l_State_S_Out.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // l_State_MP_Out
@@ -381,7 +381,7 @@
             this.l_State_MP_Out.Name = "l_State_MP_Out";
             this.l_State_MP_Out.Size = new System.Drawing.Size(164, 39);
             this.l_State_MP_Out.TabIndex = 86;
-            this.l_State_MP_Out.Text = "Unknow";
+            this.l_State_MP_Out.Text = "Unknowns";
             this.l_State_MP_Out.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2

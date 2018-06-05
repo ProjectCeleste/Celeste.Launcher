@@ -72,7 +72,7 @@ namespace Celeste_Launcher_Gui.Forms
                 retry:
                 if (!await gameScannner.QuickScan())
                 {
-                    bool success;
+                    bool success; // using (var form = new MsgBoxYesNo("") { }
                     using (var form =
                         new MsgBoxYesNo(
                             @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).")
@@ -395,7 +395,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
@@ -628,17 +628,8 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void GameEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        public async void offlineLaunch()
         {
-            using (var form = new EditorForm())
-            {
-                form.ShowDialog();
-            }
-        }
-
-        private async void CustomBtn3_Click(object sender, EventArgs e)
-        {
-            customBtn3.Enabled = false;
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
@@ -659,7 +650,7 @@ namespace Celeste_Launcher_Gui.Forms
                     var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion,
                         Program.UserConfig.IsLegacyXLive);
 
-                    retry:
+                retry:
                     if (!await gameScannner.QuickScan())
                     {
                         bool success;
@@ -803,7 +794,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 var arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
-                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
+                Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
 
                 WindowState = FormWindowState.Minimized;
             }
@@ -814,8 +805,23 @@ namespace Celeste_Launcher_Gui.Forms
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
+        }
 
-            customBtn3.Enabled = true;
+        private void GameEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new OfflineModeForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        public void CustomBtn3_Click(object sender, EventArgs e)
+        {
+            using (var form = new OfflineModeForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void ToolStripMenuItem2_Click_1(object sender, EventArgs e)
