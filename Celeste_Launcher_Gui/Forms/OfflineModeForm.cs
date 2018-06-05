@@ -18,20 +18,34 @@ namespace Celeste_Launcher_Gui.Forms
     public partial class OfflineModeForm : Form
     {
         private readonly GameScannnerApi _gameScannner;
-
+        public bool internetAccess;
         public OfflineModeForm()
         {
-            var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
+            try
+            {
+                using (var client = new System.Net.WebClient())
+                using (client.OpenRead("http://clients3.google.com/generate_204"))
+                {
+                    internetAccess = true;
+                }
+            }
+            catch
+            {
+                internetAccess = false;
+            }
+            
+            if (internetAccess == true)
+            {
+                var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                 ? Program.UserConfig.GameFilesPath
                 : GameScannnerApi.GetGameFilesRootPath();
-
-            _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion,
-                Program.UserConfig.IsLegacyXLive,
-                path);
-
+            
+                _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion,
+                    Program.UserConfig.IsLegacyXLive,
+                    path);
+            }
             InitializeComponent();
 
-            //SkinHelper.SetFont(Controls);
         }
 
         private async void EditorForm_Load(object sender, EventArgs e)
@@ -48,7 +62,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 Directory.CreateDirectory(Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario");
             }
-
+            
             comboBox1.SelectedIndex = 0;
             editorFolderListener();
             playFolderListener();
@@ -67,19 +81,19 @@ namespace Celeste_Launcher_Gui.Forms
                 Console.WriteLine(err.Message);
             }
 
-            if (DownloadFileUtils.IsConnectedToInternet())
+            if (internetAccess == true)
             {
                 if (await _gameScannner.QuickScan())
                 {
                     Btn_Install_Editor.Enabled = false;
                     btn_Editor.Enabled = true;
 
-                    label2.Text = @"OK";
+                    label2.Text = @"✓";
                     label2.ForeColor = Color.Green;
                 }
                 else
                 {
-                    label2.Text = @"Missing";
+                    label2.Text = @"✕";
                     label2.ForeColor = Color.Red;
 
                     Btn_Install_Editor.Enabled = true;
@@ -91,10 +105,10 @@ namespace Celeste_Launcher_Gui.Forms
                 Btn_Install_Editor.Enabled = true;
                 btn_Editor.Enabled = true;
 
-                label2.Text = @"Unknown";
-                label2.ForeColor = Color.OrangeRed;
+                label2.Text = @"?";
+                label2.ForeColor = Color.Black;
             }
-        end:;
+            end:;
         }
 
 
@@ -114,9 +128,11 @@ namespace Celeste_Launcher_Gui.Forms
 
 
                 //Launch Game
-                var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
-                    ? Program.UserConfig.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
+                //var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
+                //    ? Program.UserConfig.GameFilesPath
+                //    : GameScannnerApi.GetGameFilesRootPath();
+
+                var path = Program.UserConfig.GameFilesPath;
 
                 var spartanPath = Path.Combine(path, "Editor.exe");
 
@@ -180,44 +196,47 @@ namespace Celeste_Launcher_Gui.Forms
         {
             Btn_Install_Editor.Enabled = false;
             btn_Editor.Enabled = false;
-            try
+            if (internetAccess == true)
             {
-                using (var form = new GameScanProgressForm(_gameScannner))
+                try
                 {
-                    form.ShowDialog();
+                    using (var form = new GameScanProgressForm(_gameScannner))
+                    {
+                        form.ShowDialog();
 
-                    if (form.DialogResult != DialogResult.OK)
-                        throw new Exception("Installation failed");
+                        if (form.DialogResult != DialogResult.OK)
+                            throw new Exception("Installation failed");
 
-                    label2.Text = @"OK";
-                    label2.ForeColor = Color.Green;
+                        label2.Text = @"OK";
+                        label2.ForeColor = Color.Green;
 
-                    btn_Editor.Enabled = true;
+                        btn_Editor.Enabled = true;
+                    }
                 }
-            }
-            catch (Exception exception)
+                catch (Exception exception)
+                {
+                    MsgBox.ShowMessage(
+                        $"Error: Error during the installation of the 'Game Editor'. Error message: {exception.Message}",
+                        @"Celeste Fan Project",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    label2.Text = @"Missing";
+                    label2.ForeColor = Color.Red;
+
+                    Btn_Install_Editor.Enabled = true;
+                }
+            } else
             {
-                MsgBox.ShowMessage(
-                    $"Error: Error during the installation of the 'Game Editor'. Error message: {exception.Message}",
-                    @"Celeste Fan Project",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                label2.Text = @"Missing";
-                label2.ForeColor = Color.Red;
-
-                Btn_Install_Editor.Enabled = true;
+                MsgBox.ShowMessage("Internet Connection is not available. Functions such as editor installation are limited.");
             }
+            Btn_Install_Editor.Enabled = true;
+            btn_Editor.Enabled = true;
         }
 
         public void btnOfflineLaunch(object sender, EventArgs e)
         {
             MainForm mf = new MainForm();
             mf.offlineLaunch();
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         public void refreshLists()
@@ -344,78 +363,44 @@ namespace Celeste_Launcher_Gui.Forms
             refreshLists();
         }
 
-        private void moveToEditor(object sender, EventArgs e)
+        private void moveScen(object sender, EventArgs e)
         {
-            string selectedFile = listBox1.GetItemText(listBox1.SelectedItem);
-            String editorScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario";
-            String playScenPath = Program.UserConfig.GameFilesPath + "\\Scenario";
-            String location = playScenPath + "\\" + selectedFile + ".age4scn";
-            String destination = editorScenPath + "\\" + selectedFile + ".age4scn";
-            string selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
-            try
+            if (listBox1.SelectedIndex != -1 && listBox2.SelectedIndex == -1)
             {
-                if (File.Exists(destination))
+                string selectedFile = listBox1.GetItemText(listBox1.SelectedItem);
+                String editorScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario";
+                String playScenPath = Program.UserConfig.GameFilesPath + "\\Scenario";
+                String location = playScenPath + "\\" + selectedFile + ".age4scn";
+                String destination = editorScenPath + "\\" + selectedFile + ".age4scn";
+                string selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+                try
                 {
-                    var msg = new MsgBoxYesNo("File already exists in the new location. Replace?");
-                    var msg2 = msg.ShowDialog();
-                    if (msg2 == DialogResult.OK)
+                    if (File.Exists(destination))
                     {
-                        if (selectedItem == "Copy")
+                        var msg = new MsgBoxYesNo("File already exists in the new location. Replace?");
+                        var msg2 = msg.ShowDialog();
+                        if (msg2 == DialogResult.OK)
                         {
-                            File.Delete(destination);
-                            File.Copy(location, destination);
-                            refreshLists();
-                        } else
-                        {
-                            File.Delete(destination);
-                            File.Move(location, destination);
-                            refreshLists();
+                            if (selectedItem == "Copy")
+                            {
+                                File.Delete(destination);
+                                File.Copy(location, destination);
+                                refreshLists();
+                            }
+                            else
+                            {
+                                File.Delete(destination);
+                                File.Move(location, destination);
+                                refreshLists();
+                            }
                         }
+                        else
+                        {
+                            goto end;
+                        }
+
                     }
                     else
-                    {
-                        goto end;
-                    }
-
-                }
-                else
-                {
-                    if (selectedItem == "Copy")
-                    {
-                        File.Delete(destination);
-                        File.Copy(location, destination);
-                        refreshLists();
-                    }
-                    else
-                    {
-                        File.Delete(destination);
-                        File.Move(location, destination);
-                        refreshLists();
-                    }
-                }
-            }
-            catch (Exception err)
-            {
-                Console.WriteLine(err);
-            }
-        end:;
-        }
-
-        private void moveToOfflinePlay(object sender, EventArgs e)
-        {
-            string selectedFile = listBox2.GetItemText(listBox2.SelectedItem);
-            String editorScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario";
-            String playScenPath = Program.UserConfig.GameFilesPath + "\\Scenario";
-            String location = editorScenPath + "\\" + selectedFile + ".age4scn";
-            String destination = playScenPath + "\\" + selectedFile + ".age4scn";
-            string selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
-            try
-            {
-                if (File.Exists(destination))
-                {
-                    var msg = new MsgBoxYesNo("File already exists in the new location. Replace?");
-                    var msg2 = msg.ShowDialog();
-                    if (msg2 == DialogResult.OK)
                     {
                         if (selectedItem == "Copy")
                         {
@@ -430,33 +415,68 @@ namespace Celeste_Launcher_Gui.Forms
                             refreshLists();
                         }
                     }
-                    else
-                    {
-                        goto end;
-                    }
-                
                 }
-                else
+                catch (Exception err)
                 {
-                    if (selectedItem == "Copy")
+                    Console.WriteLine(err);
+                }
+            } else if (listBox1.SelectedIndex == -1 && listBox2.SelectedIndex != -1)
+            {
+                string selectedFile = listBox2.GetItemText(listBox2.SelectedItem);
+                String editorScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Age of Empires Online\\Scenario";
+                String playScenPath = Program.UserConfig.GameFilesPath + "\\Scenario";
+                String location = editorScenPath + "\\" + selectedFile + ".age4scn";
+                String destination = playScenPath + "\\" + selectedFile + ".age4scn";
+                string selectedItem = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+                try
+                {
+                    if (File.Exists(destination))
                     {
-                        File.Delete(destination);
-                        File.Copy(location, destination);
-                        refreshLists();
+                        var msg = new MsgBoxYesNo("File already exists in the new location. Replace?");
+                        var msg2 = msg.ShowDialog();
+                        if (msg2 == DialogResult.OK)
+                        {
+                            if (selectedItem == "Copy")
+                            {
+                                File.Delete(destination);
+                                File.Copy(location, destination);
+                                refreshLists();
+                            }
+                            else
+                            {
+                                File.Delete(destination);
+                                File.Move(location, destination);
+                                refreshLists();
+                            }
+                        }
+                        else
+                        {
+                            goto end;
+                        }
+
                     }
                     else
                     {
-                        File.Delete(destination);
-                        File.Move(location, destination);
-                        refreshLists();
+                        if (selectedItem == "Copy")
+                        {
+                            File.Delete(destination);
+                            File.Copy(location, destination);
+                            refreshLists();
+                        }
+                        else
+                        {
+                            File.Delete(destination);
+                            File.Move(location, destination);
+                            refreshLists();
+                        }
                     }
                 }
+                catch (Exception err)
+                {
+                    Console.WriteLine(err);
+                }
             }
-            catch (Exception err)
-            {
-                Console.WriteLine(err);
-            }
-            end:;
+         end:;
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -576,6 +596,6 @@ namespace Celeste_Launcher_Gui.Forms
                 Console.WriteLine("Disposed Object Caught!");
             }
         }
-
+        
     }
 }

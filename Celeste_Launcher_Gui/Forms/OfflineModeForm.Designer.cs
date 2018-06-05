@@ -46,7 +46,6 @@
             this.customBtn5 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn4 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn3 = new Celeste_AOEO_Controls.CustomBtn();
-            this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,7 +80,6 @@
             this.panel1.Controls.Add(this.customBtn5);
             this.panel1.Controls.Add(this.customBtn4);
             this.panel1.Controls.Add(this.customBtn3);
-            this.panel1.Controls.Add(this.customBtn1);
             this.panel1.Controls.Add(this.listBox2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
@@ -130,7 +128,7 @@
             this.Btn_Install_Editor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Btn_Install_Editor.BtnText = "Install";
             this.Btn_Install_Editor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Install_Editor.Location = new System.Drawing.Point(174, 0);
+            this.Btn_Install_Editor.Location = new System.Drawing.Point(167, 0);
             this.Btn_Install_Editor.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_Install_Editor.Name = "Btn_Install_Editor";
             this.Btn_Install_Editor.Size = new System.Drawing.Size(143, 34);
@@ -145,9 +143,9 @@
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label2.Location = new System.Drawing.Point(135, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 25);
+            this.label2.Size = new System.Drawing.Size(21, 25);
             this.label2.TabIndex = 86;
-            this.label2.Text = "OK";
+            this.label2.Text = "?";
             // 
             // customBtn8
             // 
@@ -155,7 +153,7 @@
             this.customBtn8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn8.BtnText = "Sync";
             this.customBtn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn8.Location = new System.Drawing.Point(239, 228);
+            this.customBtn8.Location = new System.Drawing.Point(239, 189);
             this.customBtn8.Margin = new System.Windows.Forms.Padding(0);
             this.customBtn8.Name = "customBtn8";
             this.customBtn8.Size = new System.Drawing.Size(105, 32);
@@ -284,30 +282,18 @@
             // 
             this.customBtn3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn3.BackgroundImage")));
             this.customBtn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn3.BtnText = "→";
+            this.customBtn3.BtnText = "⇄";
             this.customBtn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customBtn3.Location = new System.Drawing.Point(239, 148);
             this.customBtn3.Margin = new System.Windows.Forms.Padding(0);
             this.customBtn3.Name = "customBtn3";
             this.customBtn3.Size = new System.Drawing.Size(105, 32);
             this.customBtn3.TabIndex = 80;
-            this.customBtn3.Click += new System.EventHandler(this.moveToEditor);
-            // 
-            // customBtn1
-            // 
-            this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
-            this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn1.BtnText = "←";
-            this.customBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn1.Location = new System.Drawing.Point(239, 188);
-            this.customBtn1.Margin = new System.Windows.Forms.Padding(0);
-            this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(105, 32);
-            this.customBtn1.TabIndex = 78;
-            this.customBtn1.Click += new System.EventHandler(this.moveToOfflinePlay);
+            this.customBtn3.Click += new System.EventHandler(this.moveScen);
             // 
             // listBox2
             // 
+            this.listBox2.BackColor = System.Drawing.SystemColors.Window;
             this.listBox2.FormattingEnabled = true;
             this.listBox2.HorizontalScrollbar = true;
             this.listBox2.ItemHeight = 15;
@@ -347,7 +333,6 @@
             this.listBox1.Size = new System.Drawing.Size(185, 229);
             this.listBox1.TabIndex = 75;
             this.listBox1.Click += new System.EventHandler(this.clearListBox2);
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // btn_Editor
             // 
@@ -443,7 +428,6 @@
         private Celeste_AOEO_Controls.CustomBtn customBtn5;
         private Celeste_AOEO_Controls.CustomBtn customBtn4;
         private Celeste_AOEO_Controls.CustomBtn customBtn3;
-        private Celeste_AOEO_Controls.CustomBtn customBtn1;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
