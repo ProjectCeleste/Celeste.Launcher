@@ -801,9 +801,29 @@ namespace Celeste_Launcher_Gui.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                var arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                //SymLink CustomScn Folder
+                var profileDir = Path.Combine(Environment.GetEnvironmentVariable("userprofile"));
+                var path1 = Path.Combine(path, "Scenario", "CustomScn");
+                var path2 = Path.Combine(profileDir, "Documents", "Spartan", "Scenario");
 
-                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
+                if (Directory.Exists(path1) &&
+                    (!Misc.IsSymLink(path1, Misc.SymLinkFlag.Directory) ||
+                     !string.Equals(Misc.GetRealPath(path1), path2, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Directory.Delete(path1);
+                    Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
+                }
+                else
+                {
+                    Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
+                }
+
+                //
+                Process.Start(
+                    new ProcessStartInfo(spartanPath, $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033")
+                {
+                    WorkingDirectory = path
+                });
 
                 WindowState = FormWindowState.Minimized;
             }
