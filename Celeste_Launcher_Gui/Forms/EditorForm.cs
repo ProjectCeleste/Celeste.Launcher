@@ -199,7 +199,7 @@ namespace Celeste_Launcher_Gui.Forms
                                 continue;
 
                             //
-                            var outFile = new FileInfo(Path.Combine(outputPath, baseDir));
+                            var outFile = new FileInfo(Path.Combine(outputPath, fileName));
                             if (outFile.Exists)
                             {
                                 if (outFile.Length == fileSize && Crc32Utils.GetCrc32File(outFile.FullName) ==
