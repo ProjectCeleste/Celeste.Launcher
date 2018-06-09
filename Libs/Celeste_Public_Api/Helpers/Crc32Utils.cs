@@ -18,7 +18,7 @@ namespace Celeste_Public_Api.Helpers
 
             uint retVal;
 
-            using (var fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (var fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 using (var crc32Algo = new Crc32Algorithm())
                 {
