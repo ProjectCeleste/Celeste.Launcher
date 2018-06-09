@@ -145,7 +145,7 @@ namespace Celeste_Public_Api.Helpers
             // If the certificate is a valid, signed certificate, return true.
             if (error == SslPolicyErrors.None)
                 return true;
-            
+
             MessageBox.Show($"X509Certificate [{cert.Subject}]\r\n" +
                             "Policy Error:\r\n" +
                             $"'{error}'", "", MessageBoxButtons.OK,

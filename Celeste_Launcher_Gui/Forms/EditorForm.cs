@@ -142,7 +142,7 @@ namespace Celeste_Launcher_Gui.Forms
                     (!Misc.IsSymLink(path1, Misc.SymLinkFlag.Directory) ||
                      !string.Equals(Misc.GetRealPath(path1), path2, StringComparison.OrdinalIgnoreCase)))
                 {
-                    Directory.Delete(path1);
+                    Directory.Delete(path1, true);
                     Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
                 }
                 else
