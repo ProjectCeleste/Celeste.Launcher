@@ -220,8 +220,8 @@ namespace Celeste_Launcher_Gui.Forms
                             //
                             File.WriteAllBytes(outFile.FullName, bytes);
 
-                            if ((outFile.Attributes & FileAttributes.Hidden) != FileAttributes.Hidden)
-                                outFile.Attributes |= FileAttributes.Hidden;
+                            if ((outFile.Attributes & FileAttributes.ReadOnly) != FileAttributes.ReadOnly)
+                                outFile.Attributes |= FileAttributes.ReadOnly;
                         }
                     }
                 }
