@@ -1,5 +1,19 @@
 # Change Log
 
+## [v2.0.6.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.6.0) (2018-06-12)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.5.0...v2.0.6.0)
+
+**Enhancements:**
+
+- Scenario from "Game Editor" can now be easilly acces in "Offline Mode" using folder "/Scenario/CustomScn/".
+- Ai script are now available in "Game Editor".
+
+**Bug Fix:**
+
+- Fix issue with "Game Editor install state".
+- Fix issue where "Game Editor" use an incorrect "user folder" when started from launcher.
+
 ## [v2.0.5.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.5.0) (2018-05-04)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.4.0...v2.0.5.0)
