@@ -56,12 +56,6 @@ shallow_clone: false
 
 # environment variables
 environment:
-  ftp_server:
-    secure: BrqC415xyPsANUoz2/9Tgg==
-  ftp_login:
-    secure: zZ7kmutQHO/bSXMna+hIzw==
-  ftp_pass:
-    secure: YaiYwmApbRrWPEDQ3r98og==
   access_token:
     secure: FCfA6NOUpYu23Acwkb5xfB0fI9iOtw7t7maO76F/0Qu0XTMAXnjLa33b8LUTahEY
   github_email:
@@ -183,18 +177,6 @@ deploy:
     draft: false
     prerelease: false
     force_update: true
-    on:
-      appveyor_repo_tag: true
-
-  # Deploy to FTP Releases
-  - provider: FTP
-    protocol: ftp
-    host: $(ftp_server)
-    username: $(ftp_login)
-    password: $(ftp_pass)
-    folder: static
-    artifact: Celeste_Launcher
-    beta: true
     on:
       appveyor_repo_tag: true
   
