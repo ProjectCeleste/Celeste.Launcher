@@ -240,7 +240,12 @@ namespace Celeste_Launcher_Gui.Forms
                     ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
                     : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
-                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
+
+                Process.Start(
+                new ProcessStartInfo(spartanPath, $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033")
+                {
+                    WorkingDirectory = path
+                });
 
                 WindowState = FormWindowState.Minimized;
             }
@@ -650,7 +655,7 @@ namespace Celeste_Launcher_Gui.Forms
                     var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion,
                         Program.UserConfig.IsLegacyXLive);
 
-                retry:
+                    retry:
                     if (!await gameScannner.QuickScan())
                     {
                         bool success;
@@ -792,9 +797,29 @@ namespace Celeste_Launcher_Gui.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-                var arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                //SymLink CustomScn Folder
+                var profileDir = Path.Combine(Environment.GetEnvironmentVariable("userprofile"));
+                var path1 = Path.Combine(path, "Scenario", "CustomScn");
+                var path2 = Path.Combine(profileDir, "Documents", "Spartan", "Scenario");
 
-                Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
+                if (Directory.Exists(path1) &&
+                    (!Misc.IsSymLink(path1, Misc.SymLinkFlag.Directory) ||
+                     !string.Equals(Misc.GetRealPath(path1), path2, StringComparison.OrdinalIgnoreCase)))
+                {
+                    Directory.Delete(path1, true);
+                    Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
+                }
+                else
+                {
+                    Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
+                }
+
+                //
+                Process.Start(
+                    new ProcessStartInfo(spartanPath, $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033")
+                    {
+                        WorkingDirectory = path
+                    });
 
                 WindowState = FormWindowState.Minimized;
             }
@@ -805,7 +830,6 @@ namespace Celeste_Launcher_Gui.Forms
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         private void GameEditorToolStripMenuItem_Click(object sender, EventArgs e)

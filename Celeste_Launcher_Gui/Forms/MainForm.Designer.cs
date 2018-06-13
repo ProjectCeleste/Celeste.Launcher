@@ -78,13 +78,13 @@
             this.gameSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFirewallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.updaterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cMS_Account = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -816,7 +816,7 @@
             this.updaterToolStripMenuItem});
             this.cMS_Tools.Name = "contextMenuStrip1";
             this.cMS_Tools.ShowImageMargin = false;
-            this.cMS_Tools.Size = new System.Drawing.Size(165, 146);
+            this.cMS_Tools.Size = new System.Drawing.Size(165, 124);
             // 
             // gameSettingsToolStripMenuItem
             // 
@@ -842,6 +842,13 @@
             this.enableDiagnosticModeToolStripMenuItem.Size = new System.Drawing.Size(263, 24);
             this.enableDiagnosticModeToolStripMenuItem.Text = "Enable Diagnostic Mode";
             this.enableDiagnosticModeToolStripMenuItem.Click += new System.EventHandler(this.EnableDiagnosticModeToolStripMenuItem_Click);
+            // 
+            // offlineModeToolStripMenuItem
+            // 
+            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
+            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
+            this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
             // 
             // helpersToolStripMenuItem
             // 
@@ -891,13 +898,6 @@
             this.updaterToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.updaterToolStripMenuItem.Text = "Updater";
             this.updaterToolStripMenuItem.Click += new System.EventHandler(this.UpdaterToolStripMenuItem_Click);
-            // 
-            // offlineModeToolStripMenuItem
-            // 
-            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
-            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
-            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
-            this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
             // 
             // cMS_Account
             // 
