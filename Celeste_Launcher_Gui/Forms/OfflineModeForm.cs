@@ -384,27 +384,23 @@ namespace Celeste_Launcher_Gui.Forms
                 Filter = @"Scenario files (*.age4scn)|*.age4scn",
                 CheckFileExists = true,
                 Title = @"Choose Scenario File",
-                Multiselect = false
+                Multiselect = true
             };
-            dlg.ShowDialog();
-            if (dlg.FileName == string.Empty)
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                Console.WriteLine("No file was chosen, closing OpenFileDialog");
-            }
-            else
-            {
-                try
+                String ScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Spartan\\Scenario";
+
+                foreach (string filename in dlg.FileNames)
                 {
-                    String ScenPath = Environment.GetEnvironmentVariable("userprofile") + "\\Documents\\Spartan\\Scenario";
-                    String selectedFullPath = dlg.FileName;
-                    String selectedFileOnly = Path.GetFileName(selectedFullPath);
+                    String selectedFileOnly = Path.GetFileName(filename);
                     String selectedDestinationPath = ScenPath + "\\" + selectedFileOnly;
-                    File.Move(selectedFullPath, selectedDestinationPath);
-                    refreshList();
-                }
-                catch (Exception err)
-                {
-                    Console.WriteLine(err);
+                    try
+                    {
+                        File.Move(filename, selectedDestinationPath);
+                    } catch (Exception ioerr)
+                    {
+                        Console.WriteLine(ioerr.Message);
+                    }
                 }
             }
             refreshList();
@@ -443,16 +439,6 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 // Caught disposed object
             }
-        }
-
-        private void editorExited(object sender, EventArgs e)
-        {
-            MsgBox.ShowMessage("Exited!");
-        }
-
-        private void offlineModeExited(object sender, EventArgs e)
-        {
-
         }
     }
 }

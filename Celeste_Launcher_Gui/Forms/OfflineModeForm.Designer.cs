@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OfflineModeForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.Btn_Install_Editor = new Celeste_AOEO_Controls.CustomBtn();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,6 +45,7 @@
             this.btnPlay = new Celeste_AOEO_Controls.CustomBtn();
             this.pictureBoxButtonCustom1 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.folderListener = new System.IO.FileSystemWatcher();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.folderListener)).BeginInit();
@@ -53,6 +56,7 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.DialogBox1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.Btn_Install_Editor);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -72,6 +76,19 @@
             this.panel1.Size = new System.Drawing.Size(587, 512);
             this.panel1.TabIndex = 71;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(299, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(258, 36);
+            this.label3.TabIndex = 97;
+            this.label3.Text = "Scenarios are located in:\r\n\"/Scenario/CustomScn\"";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.UseCompatibleTextRendering = true;
+            // 
             // Btn_Install_Editor
             // 
             this.Btn_Install_Editor.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -90,17 +107,21 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Help;
             this.label4.Font = new System.Drawing.Font("Ashley Crawford CG", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(64, 426);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(126, 25);
             this.label4.TabIndex = 86;
             this.label4.Text = "Editor State";
+            this.toolTip1.SetToolTip(this.label4, "✓ = Editor is installed\r\n✕ = Editor not installed/outdated\r\n? = Unable to check s" +
+        "tatus (Network Error)");
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Help;
             this.label2.Font = new System.Drawing.Font("Ashley Crawford CG", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label2.Location = new System.Drawing.Point(185, 426);
@@ -108,16 +129,19 @@
             this.label2.Size = new System.Drawing.Size(21, 25);
             this.label2.TabIndex = 86;
             this.label2.Text = "?";
+            this.toolTip1.SetToolTip(this.label2, "✓ = Editor is installed\r\n✕ = Editor not installed/outdated\r\n? = Unable to check s" +
+        "tatus (Network Error)");
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("Ashley Crawford CG", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(85, 25);
+            this.label1.Location = new System.Drawing.Point(24, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 23);
+            this.label1.Size = new System.Drawing.Size(228, 23);
             this.label1.TabIndex = 96;
             this.label1.Text = "Scenarios";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // customBtn6
             // 
@@ -138,7 +162,7 @@
             this.customBtn7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn7.BtnText = "Download Scenarios";
             this.customBtn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn7.Location = new System.Drawing.Point(299, 144);
+            this.customBtn7.Location = new System.Drawing.Point(299, 152);
             this.customBtn7.Margin = new System.Windows.Forms.Padding(0);
             this.customBtn7.Name = "customBtn7";
             this.customBtn7.Size = new System.Drawing.Size(258, 69);
@@ -200,11 +224,12 @@
             this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnPlay.BtnText = "Play Scenarios";
             this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlay.Location = new System.Drawing.Point(299, 65);
+            this.btnPlay.Location = new System.Drawing.Point(299, 81);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(0);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(258, 69);
             this.btnPlay.TabIndex = 72;
+            this.toolTip1.SetToolTip(this.btnPlay, "Tooltip");
             this.btnPlay.Click += new System.EventHandler(this.btnOfflineLaunch);
             // 
             // pictureBoxButtonCustom1
@@ -272,5 +297,7 @@
         private Celeste_AOEO_Controls.CustomBtn customBtn6;
         private System.IO.FileSystemWatcher folderListener;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
