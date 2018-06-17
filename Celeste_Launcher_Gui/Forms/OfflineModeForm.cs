@@ -408,7 +408,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            Process.Start("https://forums.projectceleste.com/threads/read-me.3428/");
+            Process.Start("https://forums.projectceleste.com/threads/offline-mode-help-wip.3543/");
         }
 
         private void btnDlMore_Click(object sender, EventArgs e)

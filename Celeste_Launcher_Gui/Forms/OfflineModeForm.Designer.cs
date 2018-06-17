@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OfflineModeForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.Btn_Install_Editor = new Celeste_AOEO_Controls.CustomBtn();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,7 +55,6 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.DialogBox1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.Btn_Install_Editor);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -75,19 +73,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(587, 512);
             this.panel1.TabIndex = 71;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(299, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(258, 36);
-            this.label3.TabIndex = 97;
-            this.label3.Text = "Scenarios are located in:\r\n\"/Scenario/CustomScn\"";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.UseCompatibleTextRendering = true;
             // 
             // Btn_Install_Editor
             // 
@@ -149,7 +134,7 @@
             this.customBtn6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn6.BtnText = "Help";
             this.customBtn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn6.Location = new System.Drawing.Point(299, 223);
+            this.customBtn6.Location = new System.Drawing.Point(299, 207);
             this.customBtn6.Margin = new System.Windows.Forms.Padding(0);
             this.customBtn6.Name = "customBtn6";
             this.customBtn6.Size = new System.Drawing.Size(258, 69);
@@ -162,7 +147,7 @@
             this.customBtn7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn7.BtnText = "Download Scenarios";
             this.customBtn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn7.Location = new System.Drawing.Point(299, 152);
+            this.customBtn7.Location = new System.Drawing.Point(299, 136);
             this.customBtn7.Margin = new System.Windows.Forms.Padding(0);
             this.customBtn7.Name = "customBtn7";
             this.customBtn7.Size = new System.Drawing.Size(258, 69);
@@ -224,7 +209,7 @@
             this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnPlay.BtnText = "Play Scenarios";
             this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlay.Location = new System.Drawing.Point(299, 81);
+            this.btnPlay.Location = new System.Drawing.Point(299, 65);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(0);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(258, 69);
@@ -297,7 +282,6 @@
         private Celeste_AOEO_Controls.CustomBtn customBtn6;
         private System.IO.FileSystemWatcher folderListener;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolTip toolTip1;
     }
 }
