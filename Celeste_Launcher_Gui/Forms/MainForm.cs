@@ -395,7 +395,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        public void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
@@ -630,15 +630,14 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void GameEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new EditorForm())
+            using (var form = new OfflineModeForm())
             {
                 form.ShowDialog();
             }
         }
 
-        private async void CustomBtn3_Click(object sender, EventArgs e)
+        public async void offlineLaunch()
         {
-            customBtn3.Enabled = false;
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
@@ -821,9 +820,9 @@ namespace Celeste_Launcher_Gui.Forms
                 //
                 Process.Start(
                     new ProcessStartInfo(spartanPath, $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033")
-                {
-                    WorkingDirectory = path
-                });
+                    {
+                        WorkingDirectory = path
+                    });
 
                 WindowState = FormWindowState.Minimized;
             }
@@ -834,8 +833,14 @@ namespace Celeste_Launcher_Gui.Forms
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
-            customBtn3.Enabled = true;
+        private void CustomBtn3_Click(object sender, EventArgs e)
+        {
+            using (var form = new OfflineModeForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void ToolStripMenuItem2_Click_1(object sender, EventArgs e)
