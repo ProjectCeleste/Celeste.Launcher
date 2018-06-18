@@ -79,8 +79,6 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customScenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -847,28 +845,10 @@
             // 
             // offlineModeToolStripMenuItem
             // 
-            this.offlineModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customScenarioToolStripMenuItem,
-            this.gameEditorToolStripMenuItem});
             this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
             this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.offlineModeToolStripMenuItem.Text = "Offline Mode";
-            // 
-            // customScenarioToolStripMenuItem
-            // 
-            this.customScenarioToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.customScenarioToolStripMenuItem.Name = "customScenarioToolStripMenuItem";
-            this.customScenarioToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.customScenarioToolStripMenuItem.Text = "Custom Scenario";
-            this.customScenarioToolStripMenuItem.Click += new System.EventHandler(this.customScenarioToolStripMenuItem_Click);
-            // 
-            // gameEditorToolStripMenuItem
-            // 
-            this.gameEditorToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.gameEditorToolStripMenuItem.Name = "gameEditorToolStripMenuItem";
-            this.gameEditorToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
-            this.gameEditorToolStripMenuItem.Text = "Game Editor";
-            this.gameEditorToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
+            this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.CustomBtn3_Click);
             // 
             // helpersToolStripMenuItem
             // 
@@ -1059,7 +1039,5 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offlineModeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customScenarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gameEditorToolStripMenuItem;
     }
 }
