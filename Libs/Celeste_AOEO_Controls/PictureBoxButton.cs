@@ -14,13 +14,17 @@ namespace Celeste_AOEO_Controls
         private Image _normalImage;
 
         private bool _showToolTip;
+
         private string _toolTipText;
+        private Image _disabledImage;
 
         public PictureBoxButtonCustom()
         {
             InitializeComponent();
 
-            if (NormalImage != null)
+            if (!Enabled && DisabledImage != null)
+                Image = DisabledImage;
+            else if (Enabled && NormalImage != null)
                 Image = NormalImage;
         }
 
@@ -32,7 +36,21 @@ namespace Celeste_AOEO_Controls
             set
             {
                 _normalImage = value;
-                Image = _normalImage;
+                if (!Enabled && DisabledImage != null)
+                    Image = DisabledImage;
+                else if (Enabled && NormalImage != null)
+                    Image = NormalImage;
+            }
+        }
+
+        public Image DisabledImage
+        {
+            get => _disabledImage;
+            set { _disabledImage = value;
+                if (!Enabled && DisabledImage != null)
+                    Image = DisabledImage;
+                else if (Enabled && NormalImage != null)
+                    Image = NormalImage;
             }
         }
 
@@ -77,13 +95,25 @@ namespace Celeste_AOEO_Controls
 
         private void PictureBoxButtonCustom_MouseHover(object sender, EventArgs e)
         {
-            if (HoverImage != null)
+            if (Enabled && HoverImage != null)
                 Image = HoverImage;
+            else if (!Enabled && DisabledImage != null)
+                Image = DisabledImage;
         }
 
         private void PictureBoxButtonCustom_MouseLeave(object sender, EventArgs e)
         {
-            if (NormalImage != null)
+            if (Enabled && NormalImage != null)
+                Image = NormalImage;
+            else if (!Enabled && DisabledImage != null)
+                Image = DisabledImage;
+        }
+
+        private void This_EnabledChanged(object sender, EventArgs e)
+        {
+            if (!Enabled && DisabledImage != null)
+                Image = DisabledImage;
+            else if (Enabled && NormalImage != null)
                 Image = NormalImage;
         }
 
@@ -93,9 +123,10 @@ namespace Celeste_AOEO_Controls
             SuspendLayout();
             Cursor = Cursors.Hand;
             Size = new Size(64, 64);
-            SizeMode = PictureBoxSizeMode.CenterImage;
+            SizeMode = PictureBoxSizeMode.Zoom;
             MouseLeave += PictureBoxButtonCustom_MouseLeave;
             MouseHover += PictureBoxButtonCustom_MouseHover;
+            EnabledChanged += This_EnabledChanged;
             ((ISupportInitialize) this).EndInit();
             ResumeLayout(false);
         }

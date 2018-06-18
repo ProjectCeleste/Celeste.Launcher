@@ -395,7 +395,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        public void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
@@ -630,14 +630,15 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void GameEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new OfflineModeForm())
+            using (var form = new EditorForm())
             {
                 form.ShowDialog();
             }
         }
 
-        public async void offlineLaunch()
+        private async void CustomBtn3_Click(object sender, EventArgs e)
         {
+            customBtn3.Enabled = false;
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
@@ -820,9 +821,9 @@ namespace Celeste_Launcher_Gui.Forms
                 //
                 Process.Start(
                     new ProcessStartInfo(spartanPath, $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033")
-                    {
-                        WorkingDirectory = path
-                    });
+                {
+                    WorkingDirectory = path
+                });
 
                 WindowState = FormWindowState.Minimized;
             }
@@ -833,14 +834,8 @@ namespace Celeste_Launcher_Gui.Forms
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
 
-        private void CustomBtn3_Click(object sender, EventArgs e)
-        {
-            using (var form = new OfflineModeForm())
-            {
-                form.ShowDialog();
-            }
+            customBtn3.Enabled = true;
         }
 
         private void ToolStripMenuItem2_Click_1(object sender, EventArgs e)
@@ -866,10 +861,18 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void customScenarioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CustomScenarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(customBtn3.Enabled)
                 CustomBtn3_Click(sender, e);
+        }
+
+        private void ScenarioManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new ScnManagerForm())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

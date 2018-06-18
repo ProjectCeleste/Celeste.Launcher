@@ -83,6 +83,26 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_folder_64 {
+            get {
+                object obj = ResourceManager.GetObject("add-folder-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_folder_64__g {
+            get {
+                object obj = ResourceManager.GetObject("add-folder-64 _g", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AddFriends_Normal {
             get {
                 object obj = ResourceManager.GetObject("AddFriends_Normal", resourceCulture);
@@ -183,6 +203,36 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_64 {
+            get {
+                object obj = ResourceManager.GetObject("delete-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_64_g {
+            get {
+                object obj = ResourceManager.GetObject("delete-64_g", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete_64_gray {
+            get {
+                object obj = ResourceManager.GetObject("delete-64_gray", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DialogBox {
             get {
                 object obj = ResourceManager.GetObject("DialogBox", resourceCulture);
@@ -236,6 +286,26 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap DonateNormal {
             get {
                 object obj = ResourceManager.GetObject("DonateNormal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap downloads_64 {
+            get {
+                object obj = ResourceManager.GetObject("downloads-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap downloads_64__g {
+            get {
+                object obj = ResourceManager.GetObject("downloads-64 _g", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,6 +433,36 @@ namespace Celeste_Launcher_Gui.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_3_64 {
+            get {
+                object obj = ResourceManager.GetObject("folder-3-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_3_64__g {
+            get {
+                object obj = ResourceManager.GetObject("folder-3-64 _g", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_3_64__g1 {
+            get {
+                object obj = ResourceManager.GetObject("folder-3-64 _g1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FriendRequests_Normal {
             get {
                 object obj = ResourceManager.GetObject("FriendRequests_Normal", resourceCulture);
@@ -386,6 +486,26 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap FriendsNormal {
             get {
                 object obj = ResourceManager.GetObject("FriendsNormal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap help_64 {
+            get {
+                object obj = ResourceManager.GetObject("help-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap help_64_g {
+            get {
+                object obj = ResourceManager.GetObject("help-64_g", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

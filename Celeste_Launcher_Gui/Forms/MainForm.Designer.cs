@@ -79,6 +79,9 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customScenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scenarioManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -210,6 +213,7 @@
             // pictureBoxButtonCustom3
             // 
             this.pictureBoxButtonCustom3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom3.DisabledImage = null;
             this.pictureBoxButtonCustom3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom3.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.CelesteWebsiteHover;
@@ -229,6 +233,7 @@
             // pictureBoxButtonCustom2
             // 
             this.pictureBoxButtonCustom2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom2.DisabledImage = null;
             this.pictureBoxButtonCustom2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom2.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.RedditHover;
@@ -248,6 +253,7 @@
             // pictureBoxButtonCustom4
             // 
             this.pictureBoxButtonCustom4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom4.DisabledImage = null;
             this.pictureBoxButtonCustom4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom4.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom4.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AOEDBHover;
@@ -267,6 +273,7 @@
             // pictureBoxButtonCustom5
             // 
             this.pictureBoxButtonCustom5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom5.DisabledImage = null;
             this.pictureBoxButtonCustom5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom5.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom5.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DonateHover;
@@ -286,6 +293,7 @@
             // pictureBoxButtonCustom1
             // 
             this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom1.DisabledImage = null;
             this.pictureBoxButtonCustom1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.DiscordHover;
@@ -410,6 +418,7 @@
             // pictureBoxButtonCustom8
             // 
             this.pictureBoxButtonCustom8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom8.DisabledImage = null;
             this.pictureBoxButtonCustom8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom8.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.ToolsHover;
@@ -653,6 +662,7 @@
             // pictureBoxButtonCustom7
             // 
             this.pictureBoxButtonCustom7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom7.DisabledImage = null;
             this.pictureBoxButtonCustom7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom7.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom7.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.AccountHover;
@@ -672,6 +682,7 @@
             // pictureBoxButtonCustom9
             // 
             this.pictureBoxButtonCustom9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom9.DisabledImage = null;
             this.pictureBoxButtonCustom9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom9.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.SettingsHover;
@@ -691,6 +702,7 @@
             // pictureBoxButtonCustom6
             // 
             this.pictureBoxButtonCustom6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom6.DisabledImage = null;
             this.pictureBoxButtonCustom6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.pictureBoxButtonCustom6.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.FriendsHover;
@@ -816,7 +828,7 @@
             this.updaterToolStripMenuItem});
             this.cMS_Tools.Name = "contextMenuStrip1";
             this.cMS_Tools.ShowImageMargin = false;
-            this.cMS_Tools.Size = new System.Drawing.Size(165, 146);
+            this.cMS_Tools.Size = new System.Drawing.Size(165, 124);
             // 
             // gameSettingsToolStripMenuItem
             // 
@@ -845,10 +857,37 @@
             // 
             // offlineModeToolStripMenuItem
             // 
+            this.offlineModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.customScenarioToolStripMenuItem,
+            this.scenarioManagerToolStripMenuItem,
+            this.gameEditorToolStripMenuItem});
             this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
             this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.offlineModeToolStripMenuItem.Text = "Offline Mode";
-            this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.CustomBtn3_Click);
+            // 
+            // customScenarioToolStripMenuItem
+            // 
+            this.customScenarioToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.customScenarioToolStripMenuItem.Name = "customScenarioToolStripMenuItem";
+            this.customScenarioToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
+            this.customScenarioToolStripMenuItem.Text = "Play Offline";
+            this.customScenarioToolStripMenuItem.Click += new System.EventHandler(this.CustomScenarioToolStripMenuItem_Click);
+            // 
+            // gameEditorToolStripMenuItem
+            // 
+            this.gameEditorToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.gameEditorToolStripMenuItem.Name = "gameEditorToolStripMenuItem";
+            this.gameEditorToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
+            this.gameEditorToolStripMenuItem.Text = "Game Editor";
+            this.gameEditorToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
+            // 
+            // scenarioManagerToolStripMenuItem
+            // 
+            this.scenarioManagerToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.scenarioManagerToolStripMenuItem.Name = "scenarioManagerToolStripMenuItem";
+            this.scenarioManagerToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
+            this.scenarioManagerToolStripMenuItem.Text = "Scenario Manager";
+            this.scenarioManagerToolStripMenuItem.Click += new System.EventHandler(this.ScenarioManagerToolStripMenuItem_Click);
             // 
             // helpersToolStripMenuItem
             // 
@@ -1039,5 +1078,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem offlineModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customScenarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scenarioManagerToolStripMenuItem;
     }
 }
