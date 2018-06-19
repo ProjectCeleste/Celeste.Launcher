@@ -26,7 +26,8 @@ namespace Celeste_Launcher_Gui
 
         public static User CurrentUser { get; set; }
 
-        public static string UserConfigFilePath { get; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CelesteConfig.xml");
+        public static string UserConfigFilePath { get; } =
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CelesteConfig.xml");
 
         [STAThread]
         private static void Main()
@@ -61,7 +62,7 @@ namespace Celeste_Launcher_Gui
             {
                 //
             }
-            
+
             try
             {
                 if (string.IsNullOrWhiteSpace(UserConfig.GameFilesPath))

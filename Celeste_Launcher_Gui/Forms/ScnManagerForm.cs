@@ -147,7 +147,9 @@ namespace Celeste_Launcher_Gui.Forms
                             if (File.Exists(selectedDestinationPath))
                                 using (var form =
                                     new MsgBoxYesNo(
-                                        $@"The file already exist ""{selectedDestinationPath}"". Click ""Yes"" to overwrite it, or ""No"" to ignore it.")
+                                        $@"The file already exist ""{
+                                                selectedDestinationPath
+                                            }"". Click ""Yes"" to overwrite it, or ""No"" to ignore it.")
                                 )
                                 {
                                     var dr = form.ShowDialog();
@@ -188,7 +190,10 @@ namespace Celeste_Launcher_Gui.Forms
                     {
                         if (File.Exists((string) lvi.Tag))
                             using (var form =
-                                new MsgBoxYesNo( $@"Are you sure to want to remove ""{lvi.Text}"" ? Click ""Yes"" to remove it, or ""No"" to cancel.")
+                                new MsgBoxYesNo(
+                                    $@"Are you sure to want to remove ""{
+                                            lvi.Text
+                                        }"" ? Click ""Yes"" to remove it, or ""No"" to cancel.")
                             )
                             {
                                 var dr = form.ShowDialog();
@@ -228,6 +233,19 @@ namespace Celeste_Launcher_Gui.Forms
         private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             pictureBoxButtonCustom3.Enabled = listView1.SelectedItems.Count > 0;
+        }
+
+        private void CustomBtn1_Click(object sender, EventArgs e)
+        {
+            MainForm.StartGame(true);
+        }
+
+        private void CustomBtn2_Click(object sender, EventArgs e)
+        {
+            using (var form = new EditorForm())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

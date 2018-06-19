@@ -41,9 +41,14 @@
             this.pictureBoxButtonCustom5 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.pictureBoxButtonCustom6 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
+            this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
@@ -55,6 +60,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,8 +137,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.listView1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 98);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -243,7 +250,7 @@
             this.pictureBoxButtonCustom5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxButtonCustom5.TabIndex = 3;
             this.pictureBoxButtonCustom5.TabStop = false;
-            this.pictureBoxButtonCustom5.ToolTipText = "Download Scenario";
+            this.pictureBoxButtonCustom5.ToolTipText = "Download Scenarios";
             this.pictureBoxButtonCustom5.Click += new System.EventHandler(this.PictureBoxButtonCustom5_Click);
             // 
             // pictureBoxButtonCustom6
@@ -275,6 +282,45 @@
             this.panel4.Size = new System.Drawing.Size(70, 28);
             this.panel4.TabIndex = 5;
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparatorVertical;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(536, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(28, 332);
+            this.panel2.TabIndex = 78;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.panel5, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.listView1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 2);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(536, 332);
+            this.tableLayoutPanel4.TabIndex = 79;
+            // 
+            // panel5
+            // 
+            this.panel5.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 234);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(536, 28);
+            this.panel5.TabIndex = 99;
+            // 
             // listView1
             // 
             this.listView1.BackColor = System.Drawing.Color.White;
@@ -287,11 +333,11 @@
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(530, 326);
+            this.listView1.Size = new System.Drawing.Size(530, 228);
             this.listView1.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listView1.TabIndex = 77;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.ListView1_SelectedIndexChanged);
             // 
             // columnHeader1
@@ -299,15 +345,49 @@
             this.columnHeader1.Text = "File(s)";
             this.columnHeader1.Width = 250;
             // 
-            // panel2
+            // tableLayoutPanel5
             // 
-            this.panel2.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparatorVertical;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(536, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(28, 332);
-            this.panel2.TabIndex = 78;
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.customBtn2, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.customBtn1, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 262);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(536, 70);
+            this.tableLayoutPanel5.TabIndex = 78;
+            // 
+            // customBtn2
+            // 
+            this.customBtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn2.BackgroundImage")));
+            this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customBtn2.BtnText = "Scenario Editor";
+            this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customBtn2.Location = new System.Drawing.Point(278, 8);
+            this.customBtn2.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.customBtn2.Name = "customBtn2";
+            this.customBtn2.Size = new System.Drawing.Size(248, 54);
+            this.customBtn2.TabIndex = 1;
+            this.customBtn2.Click += new System.EventHandler(this.CustomBtn2_Click);
+            // 
+            // customBtn1
+            // 
+            this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
+            this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customBtn1.BtnText = "Play Scenarios";
+            this.customBtn1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customBtn1.Location = new System.Drawing.Point(10, 8);
+            this.customBtn1.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.customBtn1.Name = "customBtn1";
+            this.customBtn1.Size = new System.Drawing.Size(248, 54);
+            this.customBtn1.TabIndex = 0;
+            this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
             // 
             // panel3
             // 
@@ -349,6 +429,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -370,5 +452,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private Celeste_AOEO_Controls.CustomBtn customBtn2;
+        private Celeste_AOEO_Controls.CustomBtn customBtn1;
     }
 }

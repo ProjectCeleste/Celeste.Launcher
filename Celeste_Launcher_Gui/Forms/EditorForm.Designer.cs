@@ -32,11 +32,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.Btn_Install_Editor = new Celeste_AOEO_Controls.CustomBtn();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_Mail = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_Install_Editor = new Celeste_AOEO_Controls.CustomBtn();
             this.btn_Browse = new Celeste_AOEO_Controls.CustomBtn();
             this.pictureBoxButtonCustom1 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.panel1.SuspendLayout();
@@ -94,21 +94,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(487, 50);
             this.tableLayoutPanel1.TabIndex = 69;
             // 
-            // Btn_Install_Editor
-            // 
-            this.Btn_Install_Editor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Install_Editor.BackgroundImage")));
-            this.Btn_Install_Editor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Btn_Install_Editor.BtnText = "Install";
-            this.Btn_Install_Editor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Btn_Install_Editor.Enabled = false;
-            this.Btn_Install_Editor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Btn_Install_Editor.Location = new System.Drawing.Point(357, 5);
-            this.Btn_Install_Editor.Margin = new System.Windows.Forms.Padding(5);
-            this.Btn_Install_Editor.Name = "Btn_Install_Editor";
-            this.Btn_Install_Editor.Size = new System.Drawing.Size(125, 40);
-            this.Btn_Install_Editor.TabIndex = 89;
-            this.Btn_Install_Editor.Click += new System.EventHandler(this.Btn_Install_Editor_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -146,8 +131,8 @@
             this.lbl_Mail.Name = "lbl_Mail";
             this.lbl_Mail.Size = new System.Drawing.Size(481, 97);
             this.lbl_Mail.TabIndex = 67;
-            this.lbl_Mail.Text = "Use the \"Game Editor\" to start designing map and maybe see them include in \"Celes" +
-    "te Fan Project\".";
+            this.lbl_Mail.Text = "Use the \"Game Editor\" to start designing map for offline playing and maybe see th" +
+    "em include in \"Celeste Fan Project\".";
             this.lbl_Mail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -160,8 +145,25 @@
             this.panel2.Size = new System.Drawing.Size(487, 60);
             this.panel2.TabIndex = 68;
             // 
+            // Btn_Install_Editor
+            // 
+            this.Btn_Install_Editor.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_Install_Editor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Install_Editor.BackgroundImage")));
+            this.Btn_Install_Editor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Btn_Install_Editor.BtnText = "Install";
+            this.Btn_Install_Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Btn_Install_Editor.Enabled = false;
+            this.Btn_Install_Editor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Btn_Install_Editor.Location = new System.Drawing.Point(357, 5);
+            this.Btn_Install_Editor.Margin = new System.Windows.Forms.Padding(5);
+            this.Btn_Install_Editor.Name = "Btn_Install_Editor";
+            this.Btn_Install_Editor.Size = new System.Drawing.Size(125, 40);
+            this.Btn_Install_Editor.TabIndex = 89;
+            this.Btn_Install_Editor.Click += new System.EventHandler(this.Btn_Install_Editor_Click);
+            // 
             // btn_Browse
             // 
+            this.btn_Browse.BackColor = System.Drawing.Color.Transparent;
             this.btn_Browse.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Browse.BackgroundImage")));
             this.btn_Browse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Browse.BtnText = "Run Game Editor";
@@ -173,13 +175,14 @@
             this.btn_Browse.Name = "btn_Browse";
             this.btn_Browse.Size = new System.Drawing.Size(487, 60);
             this.btn_Browse.TabIndex = 16;
-            this.btn_Browse.Click += new System.EventHandler(this.Btn_Browse_Click);
+            this.btn_Browse.Click += new System.EventHandler(this.Btn_RunEditor_Click);
             // 
             // pictureBoxButtonCustom1
             // 
             this.pictureBoxButtonCustom1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxButtonCustom1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom1.DisabledImage = null;
             this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Hover;
             this.pictureBoxButtonCustom1.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
             this.pictureBoxButtonCustom1.Location = new System.Drawing.Point(469, 10);
@@ -212,6 +215,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Celeste Fan Project";
             this.Load += new System.EventHandler(this.EditorForm_Load);
+            this.Shown += new System.EventHandler(this.EditorForm_Shown);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();

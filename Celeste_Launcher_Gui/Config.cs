@@ -96,7 +96,6 @@ namespace Celeste_Launcher_Gui
         {
             this.SerializeToXmlFile(path);
         }
-
     }
 
     [XmlRoot(ElementName = "LoginInfo")]
@@ -166,7 +165,9 @@ namespace Celeste_Launcher_Gui
 
                 try
                 {
-                    CryptedPassword = string.IsNullOrWhiteSpace(value) ? string.Empty : EncryptDecrypt.Encrypt(value, true);
+                    CryptedPassword = string.IsNullOrWhiteSpace(value)
+                        ? string.Empty
+                        : EncryptDecrypt.Encrypt(value, true);
                 }
                 catch (Exception)
                 {
@@ -206,14 +207,14 @@ namespace Celeste_Launcher_Gui
             set => _publicIp = value;
         }
 
-        //[XmlElement(ElementName = "PublicPort")]
-        //public int PublicPort
+        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //        if (_publicPort != 0) return _publicPort;
+        //    {
 
         //{
-        //    {
-        //        if (_publicPort != 0) return _publicPort;
+        //public int PublicPort
 
-        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
+        //[XmlElement(ElementName = "PublicPort")]
         //        _publicPort = rnd.Next(1001, ushort.MaxValue);
 
         //        return _publicPort;

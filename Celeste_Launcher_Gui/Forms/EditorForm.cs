@@ -19,6 +19,8 @@ namespace Celeste_Launcher_Gui.Forms
     {
         private readonly GameScannnerApi _gameScannner;
 
+        private readonly bool _isAutoRun;
+
         public EditorForm()
         {
             var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
@@ -32,29 +34,17 @@ namespace Celeste_Launcher_Gui.Forms
             InitializeComponent();
 
             SkinHelper.SetFont(Controls);
-        }
-
-        private async void EditorForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (DwmApi.DwmIsCompositionEnabled())
-                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 10, 10, 10));
-            }
-            catch (Exception)
-            {
-                //
-            }
 
             if (DownloadFileUtils.IsConnectedToInternet())
             {
-                if (await _gameScannner.QuickScan())
+                if (_gameScannner.QuickScan().GetAwaiter().GetResult())
                 {
                     Btn_Install_Editor.Enabled = false;
                     btn_Browse.Enabled = true;
 
                     label2.Text = @"Installed";
                     label2.ForeColor = Color.Green;
+                    _isAutoRun = true;
                 }
                 else
                 {
@@ -75,17 +65,36 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
+        private void EditorForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DwmApi.DwmIsCompositionEnabled())
+                    DwmApi.DwmExtendFrameIntoClientArea(Handle, new DwmApi.MARGINS(10, 10, 10, 10));
+            }
+            catch (Exception)
+            {
+                //
+            }
+        }
+
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void Btn_Browse_Click(object sender, EventArgs e)
+        private void Btn_RunEditor_Click(object sender, EventArgs e)
         {
-            btn_Browse.Enabled = false;
             try
             {
+                var pname = Process.GetProcessesByName("editor");
+                if (pname.Length > 0)
+                {
+                    MsgBox.ShowMessage(@"Editor already running!");
+                    return;
+                }
+
                 btn_Browse.Enabled = false;
 
                 //Launch Game
@@ -137,6 +146,9 @@ namespace Celeste_Launcher_Gui.Forms
                 var profileDir = Path.Combine(Environment.GetEnvironmentVariable("userprofile"));
                 var path1 = Path.Combine(profileDir, "Documents", "Age of Empires Online");
                 var path2 = Path.Combine(profileDir, "Documents", "Spartan");
+
+                if (Directory.Exists(path2))
+                    Directory.CreateDirectory(path2);
 
                 if (Directory.Exists(path1) &&
                     (!Misc.IsSymLink(path1, Misc.SymLinkFlag.Directory) ||
@@ -191,11 +203,11 @@ namespace Celeste_Launcher_Gui.Forms
                             binReader.BaseStream.Seek(offset, SeekOrigin.Begin);
 
                             var bytes = binReader.ReadBytes(fileSize);
-                            
+
                             binReader.BaseStream.Seek(position, SeekOrigin.Begin);
 
                             var str = Encoding.Default.GetString(bytes);
-                            if (!str.Contains("include \"aiMain.xs\";"))
+                            if (!str.ToLower().Contains("include \"aimain.xs\";"))
                                 continue;
 
                             //
@@ -243,8 +255,9 @@ namespace Celeste_Launcher_Gui.Forms
                     $"Error: {ex.Message}",
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                btn_Browse.Enabled = true;
             }
-            btn_Browse.Enabled = true;
         }
 
         private void Btn_Install_Editor_Click(object sender, EventArgs e)
@@ -275,9 +288,14 @@ namespace Celeste_Launcher_Gui.Forms
 
                 label2.Text = @"Non-Installed";
                 label2.ForeColor = Color.Red;
-
                 Btn_Install_Editor.Enabled = true;
             }
+        }
+
+        private void EditorForm_Shown(object sender, EventArgs e)
+        {
+            if (_isAutoRun)
+                Btn_RunEditor_Click(sender, e);
         }
     }
 }

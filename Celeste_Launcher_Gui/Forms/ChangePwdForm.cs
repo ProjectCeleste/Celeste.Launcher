@@ -41,9 +41,7 @@ namespace Celeste_Launcher_Gui.Forms
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     if (Program.UserConfig?.LoginInfo != null)
-                    {
                         Program.UserConfig.LoginInfo.Password = tb_ConfirmPassword.Text;
-                    }
 
                     DialogResult = DialogResult.OK;
                     Close();

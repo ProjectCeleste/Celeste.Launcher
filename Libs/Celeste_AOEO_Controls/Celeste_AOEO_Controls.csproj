@@ -44,6 +44,12 @@
     <Compile Include="BoxContainer.Designer.cs">
       <DependentUpon>BoxContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomBtnSplit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomBtnSplit.Designer.cs">
+      <DependentUpon>CustomBtnSplit.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomBtn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,9 @@
   <ItemGroup>
     <EmbeddedResource Include="BoxContainer.resx">
       <DependentUpon>BoxContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomBtnSplit.resx">
+      <DependentUpon>CustomBtnSplit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomBtn.resx">
       <DependentUpon>CustomBtn.cs</DependentUpon>
@@ -215,6 +224,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\no-avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

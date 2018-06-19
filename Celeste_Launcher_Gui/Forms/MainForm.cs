@@ -48,211 +48,12 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private async void Btn_Play_Click(object sender, EventArgs e)
+        private void Btn_Play_Click(object sender, EventArgs e)
         {
             btn_Play.Enabled = false;
-            var pname = Process.GetProcessesByName("spartan");
-            if (pname.Length > 0)
-            {
-                MsgBox.ShowMessage(@"Game already running!");
-                btn_Play.Enabled = true;
-                return;
-            }
-
-            //QuickGameScan
-            try
-            {
-                var gameFilePath = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
-                    ? Program.UserConfig.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
-
-                var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion,
-                    Program.UserConfig.IsLegacyXLive);
-
-                retry:
-                if (!await gameScannner.QuickScan())
-                {
-                    bool success;
-                    using (var form =
-                        new MsgBoxYesNo(
-                            @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).")
-                    )
-                    {
-                        var dr = form.ShowDialog();
-                        if (dr == DialogResult.OK)
-                            using (var form2 = new GameScan())
-                            {
-                                form2.ShowDialog();
-                                success = false;
-                            }
-                        else
-                            success = true;
-                    }
-                    if (!success)
-                        goto retry;
-                }
-            }
-            catch (Exception ex)
-            {
-                MsgBox.ShowMessage(
-                    $"Warning: Error during quick scan. Error message: {ex.Message}",
-                    @"Celeste Fan Project",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            //isSteam
-            if (!Program.UserConfig.IsSteamVersion)
-            {
-                var steamApiDll = Path.Combine(Program.UserConfig.GameFilesPath, "steam_api.dll");
-                if (File.Exists(steamApiDll))
-                    File.Delete(steamApiDll);
-            }
-
-            //MpSettings
-            if (Program.UserConfig.MpSettings != null)
-                if (Program.UserConfig.MpSettings.IsOnline)
-                {
-                    Program.UserConfig.MpSettings.PublicIp = Program.CurrentUser.Ip;
-
-                    if (Program.UserConfig.MpSettings.AutoPortMapping)
-                        try
-                        {
-                            await OpenNat.MapPortTask(1000, 1000);
-                        }
-                        catch (Exception)
-                        {
-                            Program.UserConfig.MpSettings.AutoPortMapping = false;
-
-                            MsgBox.ShowMessage(
-                                "Error: Upnp device not found! Set \"Auto Port Mapping\" has been disabled.",
-                                @"Celeste Fan Project",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        finally
-                        {
-                            NatDiscoverer.TraceSource.Close();
-                        }
-                }
-
-            try
-            {
-                //Launch Game
-                var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
-                    ? Program.UserConfig.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
-
-                var spartanPath = Path.Combine(path, "Spartan.exe");
-
-                if (!File.Exists(spartanPath))
-                    throw new FileNotFoundException("Spartan.exe not found!", spartanPath);
-
-                string lang;
-                switch (Program.UserConfig.GameLanguage)
-                {
-                    case GameLanguage.deDE:
-                        lang = "de-DE";
-                        break;
-                    case GameLanguage.enUS:
-                        lang = "en-US";
-                        break;
-                    case GameLanguage.esES:
-                        lang = "es-ES";
-                        break;
-                    case GameLanguage.frFR:
-                        lang = "fr-FR";
-                        break;
-                    case GameLanguage.itIT:
-                        lang = "it-IT";
-                        break;
-                    case GameLanguage.zhCHT:
-                        lang = "zh-CHT";
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(Program.UserConfig.GameLanguage),
-                            Program.UserConfig.GameLanguage, null);
-                }
-
-                try
-                {
-                    if (Program.UserConfig.IsDiagnosticMode)
-                    {
-                        var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
-                        const int maxNumOfCrashDumps = 30;
-                        if (!File.Exists(procdumpFileName))
-                        {
-                            Program.UserConfig.IsDiagnosticMode = false;
-                            throw new FileNotFoundException(
-                                "Diagonstic Mode requires procdump.exe (File not Found).\r\n" +
-                                "Diagonstic Mode will be disabled.",
-                                procdumpFileName);
-                        }
-
-                        // First ensure that all directories are set
-                        var pathToCrashDumpFolder =
-                            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                                @"Spartan\MiniDumps");
-
-                        if (!Directory.Exists(pathToCrashDumpFolder))
-                            Directory.CreateDirectory(pathToCrashDumpFolder);
-
-                        // Check for cleanup
-                        Directory.GetFiles(pathToCrashDumpFolder)
-                            .OrderByDescending(File.GetLastWriteTime) // Sort by age --> old one last
-                            .Skip(maxNumOfCrashDumps) // Skip max num crash dumps
-                            .ToList()
-                            .ForEach(File.Delete); // Remove the rest
-
-                        var excludeExceptions = new[]
-                        {
-                            "E0434F4D.COM", // .NET native exception
-                            "E06D7363.msc",
-                            "E06D7363.PAVEEFileLoadException@@",
-                            "E0434F4D.System.IO.FileNotFoundException" // .NET managed exception
-                        };
-
-                        var excludeExcpetionsCmd = string.Join(" ", excludeExceptions.Select(elem => "-fx " + elem));
-
-                        var fullCmdArgs = "-accepteula -mm -e 1 -n 10 " + excludeExcpetionsCmd +
-                                          " -g -w Spartan.exe \"" + pathToCrashDumpFolder + "\"";
-
-                        // MsgBox.ShowMessage(fullCmd);
-                        var startInfo = new ProcessStartInfo(procdumpFileName, fullCmdArgs)
-                        {
-                            WorkingDirectory = path,
-                            CreateNoWindow = true,
-                            UseShellExecute = false,
-                            RedirectStandardError = true,
-                            RedirectStandardOutput = true
-                        };
-
-                        Process.Start(startInfo);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    MsgBox.ShowMessage(
-                        $"Warning: {exception.Message}",
-                        @"Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-                var arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
-                    ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                    : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-
-                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
-
-                WindowState = FormWindowState.Minimized;
-            }
-            catch (Exception exception)
-            {
-                MsgBox.ShowMessage(
-                    $"Error: {exception.Message}",
-                    @"Celeste Fan Project",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            StartGame();
             btn_Play.Enabled = true;
+            WindowState = FormWindowState.Minimized;
         }
 
         private void PictureBoxButtonCustom3_Click(object sender, EventArgs e)
@@ -424,7 +225,7 @@ namespace Celeste_Launcher_Gui.Forms
             var pt = new Point(btnSender.Bounds.Width + 1, btnSender.Bounds.Top);
             cMS_Account.Show(btnSender, pt);
         }
-        
+
         private void ToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             using (var form = new ChangePwdForm())
@@ -450,61 +251,61 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (!DownloadFileUtils.IsConnectedToInternet()) return;
 
-                //Update Check
-                try
-                {
-                    if (await UpdaterForm.GetGitHubVersion() > Assembly.GetExecutingAssembly().GetName().Version)
-                        using (var form =
-                            new MsgBoxYesNo(
-                                @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to ignore it (not recommended).")
-                        )
-                        {
-                            var dr = form.ShowDialog();
-                            if (dr == DialogResult.OK)
-                                using (var form2 = new UpdaterForm())
-                                {
-                                    form2.ShowDialog();
-                                }
-                        }
-                }
-                catch (Exception ex)
-                {
-                    MsgBox.ShowMessage(
-                        $"Warning: Error during update check. Error message: {ex.Message}",
-                        @"Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-
-                //Auto Login
-                if (Program.UserConfig?.LoginInfo == null)
-                    return;
-
-                if (!Program.UserConfig.LoginInfo.AutoLogin)
-                    return;
-
-                panelManager1.Enabled = false;
-                try
-                {
-                    var response = await Program.WebSocketApi.DoLogin(Program.UserConfig.LoginInfo.Email,
-                        Program.UserConfig.LoginInfo.Password);
-
-                    if (response.Result)
+            //Update Check
+            try
+            {
+                if (await UpdaterForm.GetGitHubVersion() > Assembly.GetExecutingAssembly().GetName().Version)
+                    using (var form =
+                        new MsgBoxYesNo(
+                            @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to ignore it (not recommended).")
+                    )
                     {
-                        Program.CurrentUser = response.User;
-
-                        gamerCard1.UserName = Program.CurrentUser.ProfileName;
-                        gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
-
-                        panelManager1.SelectedPanel = managedPanel1;
+                        var dr = form.ShowDialog();
+                        if (dr == DialogResult.OK)
+                            using (var form2 = new UpdaterForm())
+                            {
+                                form2.ShowDialog();
+                            }
                     }
-                }
-                catch (Exception)
+            }
+            catch (Exception ex)
+            {
+                MsgBox.ShowMessage(
+                    $"Warning: Error during update check. Error message: {ex.Message}",
+                    @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //Auto Login
+            if (Program.UserConfig?.LoginInfo == null)
+                return;
+
+            if (!Program.UserConfig.LoginInfo.AutoLogin)
+                return;
+
+            panelManager1.Enabled = false;
+            try
+            {
+                var response = await Program.WebSocketApi.DoLogin(Program.UserConfig.LoginInfo.Email,
+                    Program.UserConfig.LoginInfo.Password);
+
+                if (response.Result)
                 {
-                    //
+                    Program.CurrentUser = response.User;
+
+                    gamerCard1.UserName = Program.CurrentUser.ProfileName;
+                    gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
+
+                    panelManager1.SelectedPanel = managedPanel1;
                 }
-                panelManager1.Enabled = true;
+            }
+            catch (Exception)
+            {
+                //
+            }
+            panelManager1.Enabled = true;
         }
-        
+
         private void LogOffToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panelManager1.Enabled = false;
@@ -628,28 +429,48 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void GameEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CustomBtn3_Click(object sender, EventArgs e)
         {
-            using (var form = new EditorForm())
+            customBtn3.Enabled = false;
+            StartGame(true);
+            customBtn3.Enabled = true;
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void ToolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+            using (var form = new LanguageChooser())
             {
-                form.ShowDialog();
+                var dr = form.ShowDialog();
+
+                if (dr != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    if (Program.UserConfig != null)
+                        Program.UserConfig.GameLanguage = form.SelectedLang;
+                    else
+                        Program.UserConfig = new UserConfig {GameLanguage = form.SelectedLang};
+                }
+                catch (Exception)
+                {
+                    //
+                }
             }
         }
 
-        private async void CustomBtn3_Click(object sender, EventArgs e)
+        public static async void StartGame(bool isOffline = false)
         {
-            customBtn3.Enabled = false;
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
                 MsgBox.ShowMessage(@"Game already running!");
-                btn_Play.Enabled = true;
                 return;
             }
 
             //QuickGameScan
-            if (DownloadFileUtils.IsConnectedToInternet())
-            {
+            if (!isOffline || DownloadFileUtils.IsConnectedToInternet())
                 try
                 {
                     var gameFilePath = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
@@ -689,7 +510,6 @@ namespace Celeste_Launcher_Gui.Forms
                         @"Celeste Fan Project",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
 
             //isSteam
             if (!Program.UserConfig.IsSteamVersion)
@@ -698,6 +518,32 @@ namespace Celeste_Launcher_Gui.Forms
                 if (File.Exists(steamApiDll))
                     File.Delete(steamApiDll);
             }
+
+            //MpSettings
+            if (!isOffline && Program.UserConfig.MpSettings != null)
+                if (Program.UserConfig.MpSettings.IsOnline)
+                {
+                    Program.UserConfig.MpSettings.PublicIp = Program.CurrentUser.Ip;
+
+                    if (Program.UserConfig.MpSettings.AutoPortMapping)
+                        try
+                        {
+                            await OpenNat.MapPortTask(1000, 1000);
+                        }
+                        catch (Exception)
+                        {
+                            Program.UserConfig.MpSettings.AutoPortMapping = false;
+
+                            MsgBox.ShowMessage(
+                                "Error: Upnp device not found! Set \"Auto Port Mapping\" has been disabled.",
+                                @"Celeste Fan Project",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            NatDiscoverer.TraceSource.Close();
+                        }
+                }
 
             try
             {
@@ -741,6 +587,25 @@ namespace Celeste_Launcher_Gui.Forms
                 {
                     if (Program.UserConfig.IsDiagnosticMode)
                     {
+                        //
+                        try
+                        {
+                            var killInfo = new ProcessStartInfo("cmd.exe", "/c taskkill /F /IM procdump.exe /T")
+                            {
+                                WorkingDirectory = path,
+                                CreateNoWindow = true,
+                                UseShellExecute = false,
+                                RedirectStandardError = true,
+                                RedirectStandardOutput = true
+                            };
+
+                            Process.Start(killInfo);
+                        }
+                        catch (Exception)
+                        {
+                            //
+                        }
+
                         var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
                         const int maxNumOfCrashDumps = 30;
                         if (!File.Exists(procdumpFileName))
@@ -780,7 +645,6 @@ namespace Celeste_Launcher_Gui.Forms
                         var fullCmdArgs = "-accepteula -mm -e 1 -n 10 " + excludeExcpetionsCmd +
                                           " -g -w Spartan.exe \"" + pathToCrashDumpFolder + "\"";
 
-                        // MsgBox.ShowMessage(fullCmd);
                         var startInfo = new ProcessStartInfo(procdumpFileName, fullCmdArgs)
                         {
                             WorkingDirectory = path,
@@ -806,6 +670,9 @@ namespace Celeste_Launcher_Gui.Forms
                 var path1 = Path.Combine(path, "Scenario", "CustomScn");
                 var path2 = Path.Combine(profileDir, "Documents", "Spartan", "Scenario");
 
+                if (!Directory.Exists(path2))
+                    Directory.CreateDirectory(path2);
+
                 if (Directory.Exists(path1) &&
                     (!Misc.IsSymLink(path1, Misc.SymLinkFlag.Directory) ||
                      !string.Equals(Misc.GetRealPath(path1), path2, StringComparison.OrdinalIgnoreCase)))
@@ -818,14 +685,15 @@ namespace Celeste_Launcher_Gui.Forms
                     Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
                 }
 
-                //
-                Process.Start(
-                    new ProcessStartInfo(spartanPath, $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033")
-                {
-                    WorkingDirectory = path
-                });
+                string arg;
+                if (isOffline)
+                    arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                else
+                    arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
+                        ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
-                WindowState = FormWindowState.Minimized;
+                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
             }
             catch (Exception exception)
             {
@@ -834,45 +702,34 @@ namespace Celeste_Launcher_Gui.Forms
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            customBtn3.Enabled = true;
         }
 
-        private void ToolStripMenuItem2_Click_1(object sender, EventArgs e)
+        private void PlayOfflineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var form = new LanguageChooser())
-            {
-                var dr = form.ShowDialog();
-
-                if (dr != DialogResult.OK)
-                    return;
-
-                try
-                {
-                    if (Program.UserConfig != null)
-                        Program.UserConfig.GameLanguage = form.SelectedLang;
-                    else
-                        Program.UserConfig = new UserConfig { GameLanguage = form.SelectedLang };
-                }
-                catch (Exception)
-                {
-                    //
-                }
-            }
-        }
-
-        private void CustomScenarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if(customBtn3.Enabled)
+            if (customBtn3.Enabled)
                 CustomBtn3_Click(sender, e);
         }
 
-        private void ScenarioManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ScenarioManagerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             using (var form = new ScnManagerForm())
             {
                 form.ShowDialog();
             }
+        }
+
+        private void ScenarioEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new EditorForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void PlayOnlineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (btn_Play.Enabled)
+                Btn_Play_Click(sender, e);
         }
     }
 }

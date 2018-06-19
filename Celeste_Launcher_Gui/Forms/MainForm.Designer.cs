@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.p_UserInfo = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,21 +53,28 @@
             this.panelManager1 = new Controls.PanelManager();
             this.managedPanel2 = new Controls.ManagedPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.customBtn3 = new Celeste_AOEO_Controls.CustomBtn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
+            this.customBtn3 = new Celeste_AOEO_Controls.CustomBtnSplit();
+            this.cMS_Offline = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playOfflineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scenarioManagerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.scenarioEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managedPanel1 = new Controls.ManagedPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.gamerCard1 = new Celeste_AOEO_Controls.GamerCard();
+            this.btn_Play = new Celeste_AOEO_Controls.CustomBtnSplit();
+            this.cMS_Online = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playOnlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxButtonCustom7 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.pictureBoxButtonCustom9 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.pictureBoxButtonCustom6 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_Play = new Celeste_AOEO_Controls.CustomBtn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -78,10 +84,6 @@
             this.gameSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.offlineModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.customScenarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scenarioManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +93,7 @@
             this.cMS_Account = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -112,33 +115,19 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel9.SuspendLayout();
+            this.cMS_Offline.SuspendLayout();
             this.managedPanel1.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            this.panel10.SuspendLayout();
+            this.cMS_Online.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).BeginInit();
-            this.panel6.SuspendLayout();
             this.panel9.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.cMS_Tools.SuspendLayout();
             this.cMS_Account.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // mainContainer1
-            // 
-            this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
-            this.mainContainer1.CloseButton = true;
-            this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.mainContainer1.Location = new System.Drawing.Point(0, 0);
-            this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.mainContainer1.MinimizeBox = true;
-            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
-            this.mainContainer1.Name = "mainContainer1";
-            this.mainContainer1.Size = new System.Drawing.Size(970, 600);
-            this.mainContainer1.TabIndex = 2;
             // 
             // p_UserInfo
             // 
@@ -212,6 +201,7 @@
             // 
             // pictureBoxButtonCustom3
             // 
+            this.pictureBoxButtonCustom3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom3.DisabledImage = null;
             this.pictureBoxButtonCustom3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -232,6 +222,7 @@
             // 
             // pictureBoxButtonCustom2
             // 
+            this.pictureBoxButtonCustom2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom2.DisabledImage = null;
             this.pictureBoxButtonCustom2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -252,6 +243,7 @@
             // 
             // pictureBoxButtonCustom4
             // 
+            this.pictureBoxButtonCustom4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom4.DisabledImage = null;
             this.pictureBoxButtonCustom4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -272,6 +264,7 @@
             // 
             // pictureBoxButtonCustom5
             // 
+            this.pictureBoxButtonCustom5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom5.DisabledImage = null;
             this.pictureBoxButtonCustom5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -292,6 +285,7 @@
             // 
             // pictureBoxButtonCustom1
             // 
+            this.pictureBoxButtonCustom1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom1.DisabledImage = null;
             this.pictureBoxButtonCustom1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -417,6 +411,7 @@
             // 
             // pictureBoxButtonCustom8
             // 
+            this.pictureBoxButtonCustom8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom8.DisabledImage = null;
             this.pictureBoxButtonCustom8.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -486,7 +481,7 @@
             this.managedPanel2.Location = new System.Drawing.Point(0, 0);
             this.managedPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.managedPanel2.Name = "managedPanel2";
-            this.managedPanel2.Size = new System.Drawing.Size(0, 0);
+            this.managedPanel2.Size = new System.Drawing.Size(346, 270);
             this.managedPanel2.Text = "managedPanel2";
             // 
             // tableLayoutPanel1
@@ -494,9 +489,9 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.customBtn3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.customBtn3, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -505,23 +500,9 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(0, 0);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 270);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // customBtn3
-            // 
-            this.customBtn3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn3.BackgroundImage")));
-            this.customBtn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn3.BtnText = "PLAY OFFLINE";
-            this.customBtn3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn3.Location = new System.Drawing.Point(5, -49);
-            this.customBtn3.Margin = new System.Windows.Forms.Padding(5);
-            this.customBtn3.Name = "customBtn3";
-            this.customBtn3.Size = new System.Drawing.Size(1, 45);
-            this.customBtn3.TabIndex = 46;
-            this.customBtn3.Click += new System.EventHandler(this.CustomBtn3_Click);
             // 
             // pictureBox1
             // 
@@ -531,7 +512,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1, 1);
+            this.pictureBox1.Size = new System.Drawing.Size(346, 135);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 45;
             this.pictureBox1.TabStop = false;
@@ -545,30 +526,32 @@
             this.tableLayoutPanel9.Controls.Add(this.customBtn1, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, -114);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 140);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1, 60);
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(346, 60);
             this.tableLayoutPanel9.TabIndex = 47;
             // 
             // customBtn2
             // 
+            this.customBtn2.BackColor = System.Drawing.Color.Transparent;
             this.customBtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn2.BackgroundImage")));
             this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn2.BtnText = "REGISTER";
             this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customBtn2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn2.Location = new System.Drawing.Point(5, 5);
+            this.customBtn2.Location = new System.Drawing.Point(178, 5);
             this.customBtn2.Margin = new System.Windows.Forms.Padding(5);
             this.customBtn2.Name = "customBtn2";
-            this.customBtn2.Size = new System.Drawing.Size(1, 50);
+            this.customBtn2.Size = new System.Drawing.Size(163, 50);
             this.customBtn2.TabIndex = 2;
             this.customBtn2.Click += new System.EventHandler(this.CustomBtn2_Click);
             // 
             // customBtn1
             // 
+            this.customBtn1.BackColor = System.Drawing.Color.Transparent;
             this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
             this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn1.BtnText = "LOGIN";
@@ -577,9 +560,58 @@
             this.customBtn1.Location = new System.Drawing.Point(5, 5);
             this.customBtn1.Margin = new System.Windows.Forms.Padding(5);
             this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(1, 50);
+            this.customBtn1.Size = new System.Drawing.Size(163, 50);
             this.customBtn1.TabIndex = 1;
             this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
+            // 
+            // customBtn3
+            // 
+            this.customBtn3.BackColor = System.Drawing.Color.Transparent;
+            this.customBtn3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn3.BackgroundImage")));
+            this.customBtn3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.customBtn3.BtnText = "PLAY OFFLINE";
+            this.customBtn3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customBtn3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.customBtn3.Location = new System.Drawing.Point(60, 205);
+            this.customBtn3.Margin = new System.Windows.Forms.Padding(60, 5, 60, 5);
+            this.customBtn3.Menu = this.cMS_Offline;
+            this.customBtn3.Name = "customBtn3";
+            this.customBtn3.Size = new System.Drawing.Size(226, 60);
+            this.customBtn3.TabIndex = 46;
+            this.customBtn3.Click += new System.EventHandler(this.CustomBtn3_Click);
+            // 
+            // cMS_Offline
+            // 
+            this.cMS_Offline.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.cMS_Offline.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cMS_Offline.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playOfflineToolStripMenuItem,
+            this.scenarioManagerToolStripMenuItem1,
+            this.scenarioEditorToolStripMenuItem});
+            this.cMS_Offline.Name = "contextMenuStrip1";
+            this.cMS_Offline.ShowImageMargin = false;
+            this.cMS_Offline.Size = new System.Drawing.Size(192, 76);
+            // 
+            // playOfflineToolStripMenuItem
+            // 
+            this.playOfflineToolStripMenuItem.Name = "playOfflineToolStripMenuItem";
+            this.playOfflineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
+            this.playOfflineToolStripMenuItem.Text = "Play Offline";
+            this.playOfflineToolStripMenuItem.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
+            // 
+            // scenarioManagerToolStripMenuItem1
+            // 
+            this.scenarioManagerToolStripMenuItem1.Name = "scenarioManagerToolStripMenuItem1";
+            this.scenarioManagerToolStripMenuItem1.Size = new System.Drawing.Size(191, 24);
+            this.scenarioManagerToolStripMenuItem1.Text = "Scenario Manager";
+            this.scenarioManagerToolStripMenuItem1.Click += new System.EventHandler(this.ScenarioManagerToolStripMenuItem1_Click);
+            // 
+            // scenarioEditorToolStripMenuItem
+            // 
+            this.scenarioEditorToolStripMenuItem.Name = "scenarioEditorToolStripMenuItem";
+            this.scenarioEditorToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
+            this.scenarioEditorToolStripMenuItem.Text = "Scenario Editor";
+            this.scenarioEditorToolStripMenuItem.Click += new System.EventHandler(this.ScenarioEditorToolStripMenuItem_Click);
             // 
             // managedPanel1
             // 
@@ -598,9 +630,9 @@
             this.tableLayoutPanel6.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel6.ColumnCount = 1;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.panel10, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.gamerCard1, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btn_Play, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.panel6, 0, 2);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
@@ -608,22 +640,11 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.Padding = new System.Windows.Forms.Padding(10, 2, 10, 2);
             this.tableLayoutPanel6.RowCount = 3;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(346, 270);
             this.tableLayoutPanel6.TabIndex = 65;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.gamerCard1);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel10.Location = new System.Drawing.Point(13, 2);
-            this.panel10.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(323, 119);
-            this.panel10.TabIndex = 72;
             // 
             // gamerCard1
             // 
@@ -632,35 +653,93 @@
             this.gamerCard1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.gamerCard1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gamerCard1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.gamerCard1.Location = new System.Drawing.Point(0, 0);
+            this.gamerCard1.Location = new System.Drawing.Point(10, 2);
             this.gamerCard1.Margin = new System.Windows.Forms.Padding(0);
             this.gamerCard1.Name = "gamerCard1";
             this.gamerCard1.Rank = "[Rank]";
-            this.gamerCard1.Size = new System.Drawing.Size(323, 119);
+            this.gamerCard1.Size = new System.Drawing.Size(326, 120);
             this.gamerCard1.TabIndex = 0;
             this.gamerCard1.UserName = "[UserName]";
+            // 
+            // btn_Play
+            // 
+            this.btn_Play.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Play.BackgroundImage")));
+            this.btn_Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Play.BtnText = "PLAY ONLINE";
+            this.btn_Play.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Play.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.btn_Play.Location = new System.Drawing.Point(60, 200);
+            this.btn_Play.Margin = new System.Windows.Forms.Padding(50, 8, 50, 8);
+            this.btn_Play.Menu = this.cMS_Online;
+            this.btn_Play.Name = "btn_Play";
+            this.btn_Play.Size = new System.Drawing.Size(226, 60);
+            this.btn_Play.TabIndex = 0;
+            this.btn_Play.Click += new System.EventHandler(this.Btn_Play_Click);
+            // 
+            // cMS_Online
+            // 
+            this.cMS_Online.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.cMS_Online.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cMS_Online.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playOnlineToolStripMenuItem,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6});
+            this.cMS_Online.Name = "contextMenuStrip1";
+            this.cMS_Online.ShowImageMargin = false;
+            this.cMS_Online.Size = new System.Drawing.Size(192, 100);
+            // 
+            // playOnlineToolStripMenuItem
+            // 
+            this.playOnlineToolStripMenuItem.Name = "playOnlineToolStripMenuItem";
+            this.playOnlineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
+            this.playOnlineToolStripMenuItem.Text = "Play Online";
+            this.playOnlineToolStripMenuItem.Click += new System.EventHandler(this.PlayOnlineToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(191, 24);
+            this.toolStripMenuItem3.Text = "Play Offline";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(191, 24);
+            this.toolStripMenuItem5.Text = "Scenario Manager";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.ScenarioManagerToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(191, 24);
+            this.toolStripMenuItem6.Text = "Scenario Editor";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.ScenarioEditorToolStripMenuItem_Click);
             // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 3;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel8.Controls.Add(this.pictureBoxButtonCustom7, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.pictureBoxButtonCustom9, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.pictureBoxButtonCustom6, 1, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(10, 121);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(10, 122);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(326, 75);
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(326, 70);
             this.tableLayoutPanel8.TabIndex = 73;
             // 
             // pictureBoxButtonCustom7
             // 
+            this.pictureBoxButtonCustom7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom7.DisabledImage = null;
             this.pictureBoxButtonCustom7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -672,7 +751,7 @@
             this.pictureBoxButtonCustom7.Name = "pictureBoxButtonCustom7";
             this.pictureBoxButtonCustom7.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.AccountNormal;
             this.pictureBoxButtonCustom7.ShowToolTip = true;
-            this.pictureBoxButtonCustom7.Size = new System.Drawing.Size(108, 65);
+            this.pictureBoxButtonCustom7.Size = new System.Drawing.Size(108, 60);
             this.pictureBoxButtonCustom7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxButtonCustom7.TabIndex = 75;
             this.pictureBoxButtonCustom7.TabStop = false;
@@ -681,6 +760,7 @@
             // 
             // pictureBoxButtonCustom9
             // 
+            this.pictureBoxButtonCustom9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom9.DisabledImage = null;
             this.pictureBoxButtonCustom9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -692,7 +772,7 @@
             this.pictureBoxButtonCustom9.Name = "pictureBoxButtonCustom9";
             this.pictureBoxButtonCustom9.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.SettingsNormal;
             this.pictureBoxButtonCustom9.ShowToolTip = true;
-            this.pictureBoxButtonCustom9.Size = new System.Drawing.Size(108, 65);
+            this.pictureBoxButtonCustom9.Size = new System.Drawing.Size(108, 60);
             this.pictureBoxButtonCustom9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxButtonCustom9.TabIndex = 74;
             this.pictureBoxButtonCustom9.TabStop = false;
@@ -701,6 +781,7 @@
             // 
             // pictureBoxButtonCustom6
             // 
+            this.pictureBoxButtonCustom6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom6.DisabledImage = null;
             this.pictureBoxButtonCustom6.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -712,36 +793,12 @@
             this.pictureBoxButtonCustom6.Name = "pictureBoxButtonCustom6";
             this.pictureBoxButtonCustom6.NormalImage = global::Celeste_Launcher_Gui.Properties.Resources.FriendsNormal;
             this.pictureBoxButtonCustom6.ShowToolTip = true;
-            this.pictureBoxButtonCustom6.Size = new System.Drawing.Size(110, 65);
+            this.pictureBoxButtonCustom6.Size = new System.Drawing.Size(110, 60);
             this.pictureBoxButtonCustom6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxButtonCustom6.TabIndex = 73;
             this.pictureBoxButtonCustom6.TabStop = false;
             this.pictureBoxButtonCustom6.ToolTipText = "Friends";
             this.pictureBoxButtonCustom6.Click += new System.EventHandler(this.PictureBoxButtonCustom6_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.btn_Play);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.panel6.Location = new System.Drawing.Point(10, 196);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(326, 72);
-            this.panel6.TabIndex = 74;
-            // 
-            // btn_Play
-            // 
-            this.btn_Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_Play.BackgroundImage")));
-            this.btn_Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_Play.BtnText = "PLAY";
-            this.btn_Play.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.btn_Play.Location = new System.Drawing.Point(60, 13);
-            this.btn_Play.Margin = new System.Windows.Forms.Padding(20);
-            this.btn_Play.Name = "btn_Play";
-            this.btn_Play.Size = new System.Drawing.Size(194, 47);
-            this.btn_Play.TabIndex = 0;
-            this.btn_Play.Click += new System.EventHandler(this.Btn_Play_Click);
             // 
             // panel1
             // 
@@ -822,13 +879,12 @@
             this.cMS_Tools.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMS_Tools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gameSettingsToolStripMenuItem,
-            this.offlineModeToolStripMenuItem,
             this.helpersToolStripMenuItem,
             this.toolStripMenuItem1,
             this.updaterToolStripMenuItem});
             this.cMS_Tools.Name = "contextMenuStrip1";
             this.cMS_Tools.ShowImageMargin = false;
-            this.cMS_Tools.Size = new System.Drawing.Size(165, 124);
+            this.cMS_Tools.Size = new System.Drawing.Size(165, 100);
             // 
             // gameSettingsToolStripMenuItem
             // 
@@ -854,40 +910,6 @@
             this.enableDiagnosticModeToolStripMenuItem.Size = new System.Drawing.Size(263, 24);
             this.enableDiagnosticModeToolStripMenuItem.Text = "Enable Diagnostic Mode";
             this.enableDiagnosticModeToolStripMenuItem.Click += new System.EventHandler(this.EnableDiagnosticModeToolStripMenuItem_Click);
-            // 
-            // offlineModeToolStripMenuItem
-            // 
-            this.offlineModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.customScenarioToolStripMenuItem,
-            this.scenarioManagerToolStripMenuItem,
-            this.gameEditorToolStripMenuItem});
-            this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
-            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
-            this.offlineModeToolStripMenuItem.Text = "Offline Mode";
-            // 
-            // customScenarioToolStripMenuItem
-            // 
-            this.customScenarioToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.customScenarioToolStripMenuItem.Name = "customScenarioToolStripMenuItem";
-            this.customScenarioToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
-            this.customScenarioToolStripMenuItem.Text = "Play Offline";
-            this.customScenarioToolStripMenuItem.Click += new System.EventHandler(this.CustomScenarioToolStripMenuItem_Click);
-            // 
-            // gameEditorToolStripMenuItem
-            // 
-            this.gameEditorToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.gameEditorToolStripMenuItem.Name = "gameEditorToolStripMenuItem";
-            this.gameEditorToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
-            this.gameEditorToolStripMenuItem.Text = "Game Editor";
-            this.gameEditorToolStripMenuItem.Click += new System.EventHandler(this.GameEditorToolStripMenuItem_Click);
-            // 
-            // scenarioManagerToolStripMenuItem
-            // 
-            this.scenarioManagerToolStripMenuItem.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
-            this.scenarioManagerToolStripMenuItem.Name = "scenarioManagerToolStripMenuItem";
-            this.scenarioManagerToolStripMenuItem.Size = new System.Drawing.Size(216, 24);
-            this.scenarioManagerToolStripMenuItem.Text = "Scenario Manager";
-            this.scenarioManagerToolStripMenuItem.Click += new System.EventHandler(this.ScenarioManagerToolStripMenuItem_Click);
             // 
             // helpersToolStripMenuItem
             // 
@@ -963,6 +985,20 @@
             this.logOffToolStripMenuItem.Text = "Log-Out";
             this.logOffToolStripMenuItem.Click += new System.EventHandler(this.LogOffToolStripMenuItem_Click);
             // 
+            // mainContainer1
+            // 
+            this.mainContainer1.BackColor = System.Drawing.Color.Transparent;
+            this.mainContainer1.CloseButton = true;
+            this.mainContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer1.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
+            this.mainContainer1.Location = new System.Drawing.Point(0, 0);
+            this.mainContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.mainContainer1.MinimizeBox = true;
+            this.mainContainer1.MinimumSize = new System.Drawing.Size(310, 250);
+            this.mainContainer1.Name = "mainContainer1";
+            this.mainContainer1.Size = new System.Drawing.Size(970, 600);
+            this.mainContainer1.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1002,14 +1038,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
+            this.cMS_Offline.ResumeLayout(false);
             this.managedPanel1.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
+            this.cMS_Online.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom6)).EndInit();
-            this.panel6.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
@@ -1047,13 +1083,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private Celeste_AOEO_Controls.PictureBoxButtonCustom pictureBoxButtonCustom7;
         private Celeste_AOEO_Controls.PictureBoxButtonCustom pictureBoxButtonCustom9;
         private Celeste_AOEO_Controls.PictureBoxButtonCustom pictureBoxButtonCustom6;
-        private System.Windows.Forms.Panel panel6;
-        private Celeste_AOEO_Controls.CustomBtn btn_Play;
+        private Celeste_AOEO_Controls.CustomBtnSplit btn_Play;
         private System.Windows.Forms.ContextMenuStrip cMS_Tools;
         private System.Windows.Forms.ToolStripMenuItem updaterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
@@ -1072,14 +1106,19 @@
         private System.Windows.Forms.ToolStripMenuItem windowsFeaturesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem steamToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsFirewallToolStripMenuItem;
-        private Celeste_AOEO_Controls.CustomBtn customBtn3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.ToolStripMenuItem gameSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem offlineModeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem customScenarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gameEditorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem scenarioManagerToolStripMenuItem;
+        private Celeste_AOEO_Controls.CustomBtnSplit customBtn3;
+        private System.Windows.Forms.ContextMenuStrip cMS_Offline;
+        private System.Windows.Forms.ToolStripMenuItem playOfflineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scenarioManagerToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem scenarioEditorToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cMS_Online;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem playOnlineToolStripMenuItem;
     }
 }

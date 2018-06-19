@@ -59,13 +59,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(103, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(211, 118);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(217, 118);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label2
@@ -77,7 +78,7 @@
             this.label2.Location = new System.Drawing.Point(3, 59);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.label2.Size = new System.Drawing.Size(205, 59);
+            this.label2.Size = new System.Drawing.Size(211, 59);
             this.label2.TabIndex = 1;
             this.label2.Text = "[Rank]";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -91,7 +92,7 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.label1.Size = new System.Drawing.Size(205, 59);
+            this.label1.Size = new System.Drawing.Size(211, 59);
             this.label1.TabIndex = 0;
             this.label1.Text = "[UserName]";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,7 +137,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Celeste_AOEO_Controls.Properties.Resources.GamerCard;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.tableLayoutPanel2);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
