@@ -75,6 +75,7 @@
             this.pictureBoxButtonCustom1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxButtonCustom1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom1.DisabledImage = null;
             this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Hover;
             this.pictureBoxButtonCustom1.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
@@ -145,6 +146,7 @@
             // 
             // btnSmall3
             // 
+            this.btnSmall3.BackColor = System.Drawing.Color.Transparent;
             this.btnSmall3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall3.BackgroundImage")));
             this.btnSmall3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall3.BtnText = "VERIFY";
@@ -213,6 +215,7 @@
             // 
             // btnSmall1
             // 
+            this.btnSmall1.BackColor = System.Drawing.Color.Transparent;
             this.btnSmall1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall1.BackgroundImage")));
             this.btnSmall1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall1.BtnText = "RESET PASSWORD";
@@ -247,6 +250,7 @@
             // 
             // btnSmall4
             // 
+            this.btnSmall4.BackColor = System.Drawing.Color.Transparent;
             this.btnSmall4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSmall4.BackgroundImage")));
             this.btnSmall4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSmall4.BtnText = "RESEND";

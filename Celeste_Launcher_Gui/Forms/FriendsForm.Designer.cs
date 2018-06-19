@@ -119,6 +119,7 @@
             this.pictureBoxButtonCustom1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxButtonCustom1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom1.DisabledImage = null;
             this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Hover;
             this.pictureBoxButtonCustom1.Image = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Normal;
             this.pictureBoxButtonCustom1.Location = new System.Drawing.Point(789, 15);
@@ -285,6 +286,7 @@
             // 
             // customBtn1
             // 
+            this.customBtn1.BackColor = System.Drawing.Color.Transparent;
             this.customBtn1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn1.BackgroundImage")));
             this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn1.BtnText = "INVITE";
@@ -438,6 +440,7 @@
             // 
             this.pictureBoxButtonCustom3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom3.DisabledImage = null;
             this.pictureBoxButtonCustom3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom3.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.RefreshHover;
             this.pictureBoxButtonCustom3.Image = global::Celeste_Launcher_Gui.Properties.Resources.RefreshNormal;
@@ -635,6 +638,7 @@
             // 
             this.pictureBoxButtonCustom2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxButtonCustom2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxButtonCustom2.DisabledImage = null;
             this.pictureBoxButtonCustom2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxButtonCustom2.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.RefreshHover;
             this.pictureBoxButtonCustom2.Image = global::Celeste_Launcher_Gui.Properties.Resources.RefreshNormal;
