@@ -156,15 +156,23 @@ namespace Celeste_Public_Api.Helpers
 
         [DllImport("wininet.dll")]
         private static extern bool InternetGetConnectedState(out int description, int reservedValue);
-
-        /// <summary>
-        ///     Check if IsConnectedToInternet
-        /// </summary>
+        
         public static bool IsConnectedToInternet()
         {
             try
             {
-                return InternetGetConnectedState(out int _, 0);
+                if(InternetGetConnectedState(out int _, 0))
+                    return true;
+
+                var request = (HttpWebRequest)WebRequest.Create("http://clients3.google.com/generate_204");
+                request.UserAgent = "Android";
+                request.KeepAlive = false;
+                request.Timeout = 1500;
+
+                using (var response = (HttpWebResponse)request.GetResponse())
+                {
+                    return response.ContentLength == 0 && response.StatusCode == HttpStatusCode.NoContent;
+                }
             }
             catch (Exception)
             {
