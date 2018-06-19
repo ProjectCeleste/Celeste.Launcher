@@ -40,10 +40,7 @@ namespace Celeste_Launcher_Gui
 
         [XmlElement(ElementName = "GameFilesPath")]
         public string GameFilesPath { get; set; } = string.Empty;
-
-        [XmlElement(ElementName = "IsLegacyXLive")]
-        public bool IsLegacyXLive { get; set; }
-
+        
         [XmlIgnore]
         public bool IsSteamVersion { get; set; } = false;
 
@@ -101,12 +98,17 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "LoginInfo")]
     public class LoginInfo
     {
+        [XmlIgnore]
         private string _cryptedPassword = string.Empty;
+
+        [XmlIgnore]
         private string _uncryptedPassword = string.Empty;
 
+        [DefaultValue(null)]
         [XmlElement(ElementName = "Email")]
         public string Email { get; set; }
 
+        [DefaultValue(null)]
         [XmlElement(ElementName = "Password")]
         public string CryptedPassword
         {
@@ -131,9 +133,11 @@ namespace Celeste_Launcher_Gui
             }
         }
 
+        [DefaultValue(false)]
         [XmlElement(ElementName = "RememberMe")]
         public bool RememberMe { get; set; }
 
+        [DefaultValue(false)]
         [XmlElement(ElementName = "AutoLogin")]
         public bool AutoLogin { get; set; }
 
@@ -182,17 +186,21 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "MpSettings")]
     public class MpSettings
     {
+        [XmlIgnore]
         private bool _autoPortMapping;
+
+        [XmlIgnore]
         private string _publicIp;
 
-        //private int _publicPort;
-
+        [DefaultValue(true)]
         [XmlElement(ElementName = "isOnline")]
         public bool IsOnline { get; set; } = true;
 
+        [DefaultValue(null)]
         [XmlElement(ElementName = "LanNetworkInterface")]
         public string LanNetworkInterface { get; set; }
 
+        [DefaultValue(false)]
         [XmlElement(ElementName = "isAutoPortMapping")]
         public bool AutoPortMapping
         {
@@ -206,30 +214,5 @@ namespace Celeste_Launcher_Gui
             get => string.IsNullOrWhiteSpace(_publicIp) ? "127.0.0.1" : _publicIp;
             set => _publicIp = value;
         }
-
-        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
-        //        if (_publicPort != 0) return _publicPort;
-        //    {
-
-        //{
-        //public int PublicPort
-
-        //[XmlElement(ElementName = "PublicPort")]
-        //        _publicPort = rnd.Next(1001, ushort.MaxValue);
-
-        //        return _publicPort;
-        //    }
-        //    set
-        //    {
-        //        if (value != 0)
-        //        {
-        //            _publicPort = value;
-        //            return;
-        //        }
-
-        //        var rnd = new Random(DateTime.UtcNow.Millisecond);
-        //        _publicPort = rnd.Next(1001, ushort.MaxValue);
-        //    }
-        //}
     }
 }

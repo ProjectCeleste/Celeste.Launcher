@@ -44,6 +44,7 @@ namespace Celeste_Public_Api.GameScanner_Api.Models
             get => FileInfo.Values.ToArray();
             set
             {
+                FileInfo.Clear();
                 if (value == null) return;
                 foreach (var item in value)
                     FileInfo.Add(item.FileName, item);

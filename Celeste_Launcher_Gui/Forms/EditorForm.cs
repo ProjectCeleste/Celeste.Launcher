@@ -27,9 +27,7 @@ namespace Celeste_Launcher_Gui.Forms
                 ? Program.UserConfig.GameFilesPath
                 : GameScannnerApi.GetGameFilesRootPath();
 
-            _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion,
-                Program.UserConfig.IsLegacyXLive,
-                path);
+            _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion, path);
 
             InitializeComponent();
 
