@@ -227,7 +227,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void PictureBoxButtonCustom6_Click(object sender, EventArgs e)
         {
-            Process.Start("https://forums.projectceleste.com/threads/offline-mode-help-wip.3543/");
+            Process.Start("https://forums.projectceleste.com/wiki/offline-mode/");
         }
 
         private void ListView1_SelectedIndexChanged(object sender, EventArgs e)
