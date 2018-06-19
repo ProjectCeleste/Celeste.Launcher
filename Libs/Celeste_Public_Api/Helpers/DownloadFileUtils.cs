@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Security;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
@@ -156,23 +157,17 @@ namespace Celeste_Public_Api.Helpers
 
         [DllImport("wininet.dll")]
         private static extern bool InternetGetConnectedState(out int description, int reservedValue);
-        
+
         public static bool IsConnectedToInternet()
         {
             try
             {
-                if(InternetGetConnectedState(out int _, 0))
+                if (InternetGetConnectedState(out int _, 0))
                     return true;
 
-                var request = (HttpWebRequest)WebRequest.Create("http://clients3.google.com/generate_204");
-                request.UserAgent = "Android";
-                request.KeepAlive = false;
-                request.Timeout = 1500;
+                var ping = new Ping().Send("8.8.8.8", 1000, new byte[32], new PingOptions());
 
-                using (var response = (HttpWebResponse)request.GetResponse())
-                {
-                    return response.ContentLength == 0 && response.StatusCode == HttpStatusCode.NoContent;
-                }
+                return ping != null && ping.Status == IPStatus.Success;
             }
             catch (Exception)
             {
