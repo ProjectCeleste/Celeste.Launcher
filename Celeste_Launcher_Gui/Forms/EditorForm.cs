@@ -27,16 +27,24 @@ namespace Celeste_Launcher_Gui.Forms
                 ? Program.UserConfig.GameFilesPath
                 : GameScannnerApi.GetGameFilesRootPath();
 
-            _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion,
-                Program.UserConfig.IsLegacyXLive,
-                path);
+            try
+            {
+                _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion,
+                    Program.UserConfig.IsLegacyXLive,
+                    path);
+            }
+            catch (Exception)
+            {
+                //
+            }
 
             InitializeComponent();
 
             SkinHelper.SetFont(Controls);
 
-            if (DownloadFileUtils.IsConnectedToInternet())
+            if (_gameScannner != null && DownloadFileUtils.IsConnectedToInternet())
             {
+                
                 if (_gameScannner.QuickScan().GetAwaiter().GetResult())
                 {
                     Btn_Install_Editor.Enabled = false;
@@ -147,7 +155,7 @@ namespace Celeste_Launcher_Gui.Forms
                 var path1 = Path.Combine(profileDir, "Documents", "Age of Empires Online");
                 var path2 = Path.Combine(profileDir, "Documents", "Spartan");
 
-                if (Directory.Exists(path2))
+                if (!Directory.Exists(path2))
                     Directory.CreateDirectory(path2);
 
                 if (Directory.Exists(path1) &&
@@ -262,6 +270,9 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Btn_Install_Editor_Click(object sender, EventArgs e)
         {
+            if (_gameScannner == null)
+                return;
+
             Btn_Install_Editor.Enabled = false;
             btn_Browse.Enabled = false;
             try
