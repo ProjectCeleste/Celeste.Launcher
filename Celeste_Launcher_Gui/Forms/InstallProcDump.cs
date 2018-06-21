@@ -18,7 +18,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
         }
 
         private void QuickGameScan_Load(object sender, EventArgs e)

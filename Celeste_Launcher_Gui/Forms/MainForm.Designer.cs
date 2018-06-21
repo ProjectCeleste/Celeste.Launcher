@@ -59,7 +59,6 @@
             this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn3 = new Celeste_AOEO_Controls.CustomBtnSplit();
             this.cMS_Offline = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.playOfflineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scenarioManagerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.scenarioEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managedPanel1 = new Controls.ManagedPanel();
@@ -67,8 +66,6 @@
             this.gamerCard1 = new Celeste_AOEO_Controls.GamerCard();
             this.btn_Play = new Celeste_AOEO_Controls.CustomBtnSplit();
             this.cMS_Online = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.playOnlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -94,6 +91,7 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
+            this.playOfflineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -481,7 +479,7 @@
             this.managedPanel2.Location = new System.Drawing.Point(0, 0);
             this.managedPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.managedPanel2.Name = "managedPanel2";
-            this.managedPanel2.Size = new System.Drawing.Size(346, 270);
+            this.managedPanel2.Size = new System.Drawing.Size(0, 0);
             this.managedPanel2.Text = "managedPanel2";
             // 
             // tableLayoutPanel1
@@ -500,8 +498,8 @@
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(346, 270);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -512,7 +510,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 5);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(346, 135);
+            this.pictureBox1.Size = new System.Drawing.Size(1, 1);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 45;
             this.pictureBox1.TabStop = false;
@@ -526,12 +524,12 @@
             this.tableLayoutPanel9.Controls.Add(this.customBtn1, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 140);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, -131);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(346, 60);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1, 60);
             this.tableLayoutPanel9.TabIndex = 47;
             // 
             // customBtn2
@@ -542,10 +540,10 @@
             this.customBtn2.BtnText = "REGISTER";
             this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customBtn2.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn2.Location = new System.Drawing.Point(178, 5);
+            this.customBtn2.Location = new System.Drawing.Point(5, 5);
             this.customBtn2.Margin = new System.Windows.Forms.Padding(5);
             this.customBtn2.Name = "customBtn2";
-            this.customBtn2.Size = new System.Drawing.Size(163, 50);
+            this.customBtn2.Size = new System.Drawing.Size(1, 50);
             this.customBtn2.TabIndex = 2;
             this.customBtn2.Click += new System.EventHandler(this.CustomBtn2_Click);
             // 
@@ -560,7 +558,7 @@
             this.customBtn1.Location = new System.Drawing.Point(5, 5);
             this.customBtn1.Margin = new System.Windows.Forms.Padding(5);
             this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(163, 50);
+            this.customBtn1.Size = new System.Drawing.Size(1, 50);
             this.customBtn1.TabIndex = 1;
             this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
             // 
@@ -572,11 +570,11 @@
             this.customBtn3.BtnText = "PLAY OFFLINE";
             this.customBtn3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customBtn3.Font = new System.Drawing.Font("Ashley Crawford CG", 8.25F);
-            this.customBtn3.Location = new System.Drawing.Point(60, 205);
-            this.customBtn3.Margin = new System.Windows.Forms.Padding(60, 5, 60, 5);
+            this.customBtn3.Location = new System.Drawing.Point(55, -66);
+            this.customBtn3.Margin = new System.Windows.Forms.Padding(55, 5, 55, 5);
             this.customBtn3.Menu = this.cMS_Offline;
             this.customBtn3.Name = "customBtn3";
-            this.customBtn3.Size = new System.Drawing.Size(226, 60);
+            this.customBtn3.Size = new System.Drawing.Size(1, 62);
             this.customBtn3.TabIndex = 46;
             this.customBtn3.Click += new System.EventHandler(this.CustomBtn3_Click);
             // 
@@ -585,19 +583,11 @@
             this.cMS_Offline.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.cMS_Offline.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMS_Offline.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playOfflineToolStripMenuItem,
             this.scenarioManagerToolStripMenuItem1,
             this.scenarioEditorToolStripMenuItem});
             this.cMS_Offline.Name = "contextMenuStrip1";
             this.cMS_Offline.ShowImageMargin = false;
-            this.cMS_Offline.Size = new System.Drawing.Size(192, 76);
-            // 
-            // playOfflineToolStripMenuItem
-            // 
-            this.playOfflineToolStripMenuItem.Name = "playOfflineToolStripMenuItem";
-            this.playOfflineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
-            this.playOfflineToolStripMenuItem.Text = "Play Offline";
-            this.playOfflineToolStripMenuItem.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
+            this.cMS_Offline.Size = new System.Drawing.Size(192, 52);
             // 
             // scenarioManagerToolStripMenuItem1
             // 
@@ -682,27 +672,12 @@
             this.cMS_Online.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.cMS_Online.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMS_Online.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playOnlineToolStripMenuItem,
-            this.toolStripMenuItem3,
+            this.playOfflineToolStripMenuItem,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6});
             this.cMS_Online.Name = "contextMenuStrip1";
             this.cMS_Online.ShowImageMargin = false;
-            this.cMS_Online.Size = new System.Drawing.Size(192, 100);
-            // 
-            // playOnlineToolStripMenuItem
-            // 
-            this.playOnlineToolStripMenuItem.Name = "playOnlineToolStripMenuItem";
-            this.playOnlineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
-            this.playOnlineToolStripMenuItem.Text = "Play Online";
-            this.playOnlineToolStripMenuItem.Click += new System.EventHandler(this.PlayOnlineToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(191, 24);
-            this.toolStripMenuItem3.Text = "Play Offline";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
+            this.cMS_Online.Size = new System.Drawing.Size(192, 98);
             // 
             // toolStripMenuItem5
             // 
@@ -999,6 +974,13 @@
             this.mainContainer1.Size = new System.Drawing.Size(970, 600);
             this.mainContainer1.TabIndex = 2;
             // 
+            // playOfflineToolStripMenuItem
+            // 
+            this.playOfflineToolStripMenuItem.Name = "playOfflineToolStripMenuItem";
+            this.playOfflineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
+            this.playOfflineToolStripMenuItem.Text = "Play Offline";
+            this.playOfflineToolStripMenuItem.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1112,13 +1094,11 @@
         private System.Windows.Forms.ToolStripMenuItem enableDiagnosticModeToolStripMenuItem;
         private Celeste_AOEO_Controls.CustomBtnSplit customBtn3;
         private System.Windows.Forms.ContextMenuStrip cMS_Offline;
-        private System.Windows.Forms.ToolStripMenuItem playOfflineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem scenarioManagerToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem scenarioEditorToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cMS_Online;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem playOnlineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playOfflineToolStripMenuItem;
     }
 }

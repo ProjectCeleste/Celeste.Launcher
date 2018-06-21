@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             //MpSettings
             if (mpSettings.IsOnline)

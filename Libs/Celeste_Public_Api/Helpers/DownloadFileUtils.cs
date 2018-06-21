@@ -4,7 +4,6 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Net.Security;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
@@ -162,12 +161,7 @@ namespace Celeste_Public_Api.Helpers
         {
             try
             {
-                if (InternetGetConnectedState(out int _, 0))
-                    return true;
-
-                var ping = new Ping().Send("8.8.8.8", 1000, new byte[32], new PingOptions());
-
-                return ping != null && ping.Status == IPStatus.Success;
+                return InternetGetConnectedState(out int _, 0);
             }
             catch (Exception)
             {

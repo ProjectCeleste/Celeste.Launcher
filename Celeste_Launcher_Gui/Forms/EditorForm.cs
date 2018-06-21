@@ -40,7 +40,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             if (_gameScannner != null && DownloadFileUtils.IsConnectedToInternet())
             {

@@ -23,7 +23,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (string.IsNullOrWhiteSpace(gameFilesPath))
                 throw new Exception(@"Game files path is empty!");
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
@@ -41,7 +41,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             GameScannner = gameScannnerApi;
             lbl_ProgressTitle.Text = string.Empty;

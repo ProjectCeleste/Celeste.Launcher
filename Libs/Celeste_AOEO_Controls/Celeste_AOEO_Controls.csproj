@@ -63,6 +63,7 @@
       <DependentUpon>GamerCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DWM.cs" />
+    <Compile Include="Helpers\SkinHelperFonts.cs" />
     <Compile Include="MainContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +137,7 @@
     <None Include="Resources\Ashley_Crawford_CG_1.otf" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Ashley_Crawford_CG_1.ttf" />
     <None Include="Resources\BackgroundTexture.png" />
   </ItemGroup>
   <ItemGroup>

@@ -38,7 +38,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             richTextBox1.SetInnerMargins(20, 15, 20, 15);
         }

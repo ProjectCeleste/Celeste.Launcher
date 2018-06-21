@@ -15,7 +15,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
         }
 
         private async void Btn_Verify_Click(object sender, EventArgs e)

@@ -402,7 +402,7 @@
             this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn2.BtnText = "Scenario Editor";
             this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customBtn2.Location = new System.Drawing.Point(278, 8);
             this.customBtn2.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
             this.customBtn2.Name = "customBtn2";
@@ -417,7 +417,7 @@
             this.customBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.customBtn1.BtnText = "Play Scenarios";
             this.customBtn1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customBtn1.Location = new System.Drawing.Point(10, 8);
             this.customBtn1.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
             this.customBtn1.Name = "customBtn1";

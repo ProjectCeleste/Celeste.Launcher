@@ -703,13 +703,7 @@ namespace Celeste_Launcher_Gui.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void PlayOfflineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (customBtn3.Enabled)
-                CustomBtn3_Click(sender, e);
-        }
-
+        
         private void ScenarioManagerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             using (var form = new ScnManagerForm())
@@ -726,10 +720,10 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void PlayOnlineToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PlayOfflineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (btn_Play.Enabled)
-                Btn_Play_Click(sender, e);
+            if (customBtn3.Enabled)
+                CustomBtn3_Click(sender, e);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Celeste_AOEO_Controls.MsgBox
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             label1.Text = message;
         }

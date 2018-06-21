@@ -23,7 +23,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             label3.Text = $@"API: {FirewallManager.Version}";
         }

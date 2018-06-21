@@ -208,7 +208,7 @@
   <data name="BtnSmallHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BtnSmallHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ashley_Crawford_CG_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Ashley_Crawford_CG_1_OTF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ashley_Crawford_CG_1.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MiddleLeftFluid" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -216,5 +216,8 @@
   </data>
   <data name="arrow2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ashley_Crawford_CG_1_TTF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ashley_Crawford_CG_1.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

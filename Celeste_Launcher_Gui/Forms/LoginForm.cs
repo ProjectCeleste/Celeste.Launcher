@@ -16,7 +16,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             //Load UserConfig
             if (Program.UserConfig?.LoginInfo?.RememberMe != true) return;

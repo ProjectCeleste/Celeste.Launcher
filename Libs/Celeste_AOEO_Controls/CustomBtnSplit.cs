@@ -20,7 +20,7 @@ namespace Celeste_AOEO_Controls
             InitializeComponent();
 
             //Configure Fonts
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
         }
 
         [DefaultValue(null)]

@@ -83,9 +83,19 @@ namespace Celeste_AOEO_Controls.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
-        internal static byte[] Ashley_Crawford_CG_1 {
+        internal static byte[] Ashley_Crawford_CG_1_OTF {
             get {
-                object obj = ResourceManager.GetObject("Ashley_Crawford_CG_1", resourceCulture);
+                object obj = ResourceManager.GetObject("Ashley_Crawford_CG_1_OTF", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Byte[].
+        /// </summary>
+        internal static byte[] Ashley_Crawford_CG_1_TTF {
+            get {
+                object obj = ResourceManager.GetObject("Ashley_Crawford_CG_1_TTF", resourceCulture);
                 return ((byte[])(obj));
             }
         }

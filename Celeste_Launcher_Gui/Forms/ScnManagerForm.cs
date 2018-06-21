@@ -26,7 +26,7 @@ namespace Celeste_Launcher_Gui.Forms
         {
             InitializeComponent();
 
-            SkinHelper.SetFont(Controls);
+            SkinHelperFonts.SetFont(Controls);
 
             if (!Directory.Exists(_scnPath))
                 Directory.CreateDirectory(_scnPath);

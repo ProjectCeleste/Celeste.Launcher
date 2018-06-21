@@ -79,7 +79,7 @@ namespace Celeste_AOEO_Controls
             var parentForm = ParentForm;
             if (parentForm != null)
             {
-                SkinHelper.SetFont(parentForm.Controls);
+                SkinHelperFonts.SetFont(parentForm.Controls);
                 try
                 {
                     if (DwmApi.DwmIsCompositionEnabled())
@@ -93,7 +93,7 @@ namespace Celeste_AOEO_Controls
             else
             {
                 //Configure Fonts
-                SkinHelper.SetFont(Controls);
+                SkinHelperFonts.SetFont(Controls);
             }
         }
     }
