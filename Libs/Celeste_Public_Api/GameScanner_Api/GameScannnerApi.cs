@@ -18,7 +18,7 @@ namespace Celeste_Public_Api.GameScanner_Api
     {
         private CancellationTokenSource _cts;
 
-        public GameScannnerApi(string filesRootPath, bool isSteam, bool isLegacyXLive)
+        public GameScannnerApi(string filesRootPath, bool isSteam)
         {
             if (string.IsNullOrWhiteSpace(filesRootPath))
                 throw new ArgumentException(@"Game files path is null or empty!", nameof(filesRootPath));
@@ -28,7 +28,7 @@ namespace Celeste_Public_Api.GameScanner_Api
 
             CleanTmpFolder();
 
-            FilesInfo = GetGameFilesInfo(isSteam, isLegacyXLive);
+            FilesInfo = GetGameFilesInfo(isSteam);
             FilesRootPath = filesRootPath;
 
             _cts = new CancellationTokenSource();
@@ -417,7 +417,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool isSteam, bool isLegacyXLive)
+        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool isSteam)
         {
             var filesInfo = new GameFilesInfo();
 
@@ -435,17 +435,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                 else
                     filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
-            if (isLegacyXLive)
-                return filesInfo.FileInfo.Values;
-
-            //Override for celeste file (beta)
-            foreach (var fileInfo in FilesInfoOverrideFromCelesteXml("b"))
-                if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
-                    filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
-                else
-                    filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
-
-            return filesInfo.FileInfo.Values;
+            return filesInfo.FilesInfoArray;
         }
 
         public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build, bool isSteam)
@@ -570,11 +560,11 @@ namespace Celeste_Public_Api.GameScanner_Api
             }
         }
 
-        public static GameScannnerApi InstallGameEditor(bool isSteam, bool isLegacyXLive, string filesRootPath)
+        public static GameScannnerApi InstallGameEditor(bool isSteam, string filesRootPath)
         {
             var filesInfo = new GameFilesInfo();
 
-            foreach (var fileInfo in GetGameFilesInfo(isSteam, isLegacyXLive))
+            foreach (var fileInfo in GetGameFilesInfo(isSteam))
                 filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             //Load editor manifest

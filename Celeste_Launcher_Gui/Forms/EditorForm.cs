@@ -26,18 +26,16 @@ namespace Celeste_Launcher_Gui.Forms
             var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                 ? Program.UserConfig.GameFilesPath
                 : GameScannnerApi.GetGameFilesRootPath();
-
+            
             try
             {
                 _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion,
-                    Program.UserConfig.IsLegacyXLive,
                     path);
             }
             catch (Exception)
             {
                 //
             }
-
             InitializeComponent();
 
             SkinHelperFonts.SetFont(Controls);

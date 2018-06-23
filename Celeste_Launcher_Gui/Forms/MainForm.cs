@@ -477,8 +477,7 @@ namespace Celeste_Launcher_Gui.Forms
                         ? Program.UserConfig.GameFilesPath
                         : GameScannnerApi.GetGameFilesRootPath();
 
-                    var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion,
-                        Program.UserConfig.IsLegacyXLive);
+                    var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion);
 
                     retry:
                     if (!await gameScannner.QuickScan())
