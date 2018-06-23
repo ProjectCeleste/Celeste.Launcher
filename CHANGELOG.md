@@ -1,5 +1,19 @@
 # Change Log
 
+## [v2.0.7.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.7.0) (2018-06-23)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.6.0...v2.0.7.0)
+
+**New Features:**
+
+- "Scenario Manager" : Manage your scenario for offline playing.
+
+**Enhancements:**
+
+- UI Improvement.
+- Support for xLive Legacy "removed".
+
+
 ## [v2.0.6.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.6.0) (2018-06-12)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.5.0...v2.0.6.0)
@@ -20,7 +34,7 @@
 
 **New Features:**
 
-- "Offline Mode" : You can now play custom scneario made by the community using "Game Editor".
+- "Offline Mode" : You can now play custom scenario made by the community using "Game Editor".
 
 **Enhancements:**
 
