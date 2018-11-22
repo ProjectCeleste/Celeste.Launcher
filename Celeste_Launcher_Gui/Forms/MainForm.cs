@@ -724,5 +724,13 @@ namespace Celeste_Launcher_Gui.Forms
             if (customBtn3.Enabled)
                 CustomBtn3_Click(sender, e);
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            using (var form = new LaunchArgsForm())
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }

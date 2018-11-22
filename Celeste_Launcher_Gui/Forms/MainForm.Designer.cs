@@ -66,6 +66,7 @@
             this.gamerCard1 = new Celeste_AOEO_Controls.GamerCard();
             this.btn_Play = new Celeste_AOEO_Controls.CustomBtnSplit();
             this.cMS_Online = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playOfflineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -81,6 +82,7 @@
             this.gameSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.enableDiagnosticModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.steamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsFeaturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,7 +93,6 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
-            this.playOfflineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -677,7 +678,14 @@
             this.toolStripMenuItem6});
             this.cMS_Online.Name = "contextMenuStrip1";
             this.cMS_Online.ShowImageMargin = false;
-            this.cMS_Online.Size = new System.Drawing.Size(192, 98);
+            this.cMS_Online.Size = new System.Drawing.Size(192, 76);
+            // 
+            // playOfflineToolStripMenuItem
+            // 
+            this.playOfflineToolStripMenuItem.Name = "playOfflineToolStripMenuItem";
+            this.playOfflineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
+            this.playOfflineToolStripMenuItem.Text = "Play Offline";
+            this.playOfflineToolStripMenuItem.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -859,13 +867,14 @@
             this.updaterToolStripMenuItem});
             this.cMS_Tools.Name = "contextMenuStrip1";
             this.cMS_Tools.ShowImageMargin = false;
-            this.cMS_Tools.Size = new System.Drawing.Size(165, 100);
+            this.cMS_Tools.Size = new System.Drawing.Size(165, 122);
             // 
             // gameSettingsToolStripMenuItem
             // 
             this.gameSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
-            this.enableDiagnosticModeToolStripMenuItem});
+            this.enableDiagnosticModeToolStripMenuItem,
+            this.toolStripMenuItem3});
             this.gameSettingsToolStripMenuItem.Name = "gameSettingsToolStripMenuItem";
             this.gameSettingsToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.gameSettingsToolStripMenuItem.Text = "Game Settings";
@@ -885,6 +894,14 @@
             this.enableDiagnosticModeToolStripMenuItem.Size = new System.Drawing.Size(263, 24);
             this.enableDiagnosticModeToolStripMenuItem.Text = "Enable Diagnostic Mode";
             this.enableDiagnosticModeToolStripMenuItem.Click += new System.EventHandler(this.EnableDiagnosticModeToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(263, 24);
+            this.toolStripMenuItem3.Text = "Manage Args";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // helpersToolStripMenuItem
             // 
@@ -973,13 +990,6 @@
             this.mainContainer1.Name = "mainContainer1";
             this.mainContainer1.Size = new System.Drawing.Size(970, 600);
             this.mainContainer1.TabIndex = 2;
-            // 
-            // playOfflineToolStripMenuItem
-            // 
-            this.playOfflineToolStripMenuItem.Name = "playOfflineToolStripMenuItem";
-            this.playOfflineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
-            this.playOfflineToolStripMenuItem.Text = "Play Offline";
-            this.playOfflineToolStripMenuItem.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -1100,5 +1110,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem playOfflineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
