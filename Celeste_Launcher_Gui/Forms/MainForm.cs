@@ -643,7 +643,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                         var fullCmdArgs = "-accepteula -mm -e 1 -n 10 " + excludeExcpetionsCmd +
                                           " -g -w Spartan.exe \"" + pathToCrashDumpFolder + "\"";
-
+                        
                         var startInfo = new ProcessStartInfo(procdumpFileName, fullCmdArgs)
                         {
                             WorkingDirectory = path,
@@ -689,10 +689,18 @@ namespace Celeste_Launcher_Gui.Forms
                     arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
                 else
                     arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
-                        ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-
-                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
+                                        ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                if (!string.IsNullOrWhiteSpace(Program.UserConfig.AdditionalLaunchArgs) && !string.IsNullOrEmpty(Program.UserConfig.AdditionalLaunchArgs))
+                {
+                    arg = arg + Program.UserConfig.AdditionalLaunchArgs;
+                    Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
+                }
+                else
+                {
+                    Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
+                }
+                
             }
             catch (Exception exception)
             {

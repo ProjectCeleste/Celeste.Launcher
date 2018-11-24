@@ -26,7 +26,7 @@ namespace Celeste_Launcher_Gui.Forms
         private void customBtn1_Click(object sender, EventArgs e)
         {
             customBtn1.Enabled = false;
-            Program.UserConfig.AdditionalLaunchArgs = textBox1.Text;
+            Program.UserConfig.AdditionalLaunchArgs = textBox1.Text.Trim();
             MsgBox.ShowMessage("Applied new arguments");
             customBtn1.Enabled = true;
         }
