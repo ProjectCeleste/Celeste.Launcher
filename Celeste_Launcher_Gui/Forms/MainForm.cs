@@ -686,21 +686,12 @@ namespace Celeste_Launcher_Gui.Forms
 
                 string arg;
                 if (isOffline)
-                    arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                    arg = $"--offline --ignore_rest {Program.UserConfig.AdditionalLaunchArgs} LauncherLang={lang} LauncherLocale=1033";
                 else
                     arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
-                                        ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-                if (!string.IsNullOrWhiteSpace(Program.UserConfig.AdditionalLaunchArgs) && !string.IsNullOrEmpty(Program.UserConfig.AdditionalLaunchArgs))
-                {
-                    arg = arg + Program.UserConfig.AdditionalLaunchArgs;
-                    Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
-                }
-                else
-                {
-                    Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
-                }
-                
+                                        ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest {Program.UserConfig.AdditionalLaunchArgs} LauncherLang={lang} LauncherLocale=1033"
+                                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest {Program.UserConfig.AdditionalLaunchArgs} LauncherLang={lang} LauncherLocale=1033";
+                Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
             }
             catch (Exception exception)
             {
