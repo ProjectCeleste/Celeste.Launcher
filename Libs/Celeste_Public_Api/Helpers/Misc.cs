@@ -30,8 +30,8 @@ namespace Celeste_Public_Api.Helpers
         {
             string[] suffixes =
             {
-                "bytes", "KB", "MB", "GB",
-                "TB", "PB", "EB", "ZB", "YB"
+                "bytes", "KiB", "MiB", "GiB",
+                "TiB", "PiB", "EiB", "ZiB", "YiB"
             };
 
             for (var i = 0; i < suffixes.Length; i++)
