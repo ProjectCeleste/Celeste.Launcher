@@ -17,11 +17,6 @@ skip_tags: false
 # Start builds on tags only
 skip_non_tags: false
 
-# Skipping commits affecting specific files
-skip_commits:
-  files:
-  - 'Celeste_Launcher_Gui\Properties\AssemblyInfo.cs'
-
 # 
 pull_requests:
   do_not_increment_build_number: true
