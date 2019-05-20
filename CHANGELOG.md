@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.0.8.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.8.0) (2019-05-20)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.7.0...v2.0.8.0)
+
+- Add support for "NatPunchtrough".
+- Remove support for "old beta editor".
+
+
 ## [v2.0.7.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.7.0) (2018-06-23)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.6.0...v2.0.7.0)
