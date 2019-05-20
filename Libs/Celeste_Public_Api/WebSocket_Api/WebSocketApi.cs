@@ -18,7 +18,7 @@ namespace Celeste_Public_Api.WebSocket_Api
     {
         private readonly AddFriend _addFriend;
 
-        private readonly Version _apiVersion = new Version(2, 0, 7, 1);
+        private readonly Version _apiVersion = new Version(2, 0, 8, 0);
 
         private readonly ChangePwd _changePwd;
 
