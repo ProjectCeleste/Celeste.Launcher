@@ -63,6 +63,7 @@
       <DependentUpon>GamerCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DWM.cs" />
+    <Compile Include="Helpers\RichTextBoxExtensions.cs" />
     <Compile Include="Helpers\SkinHelperFonts.cs" />
     <Compile Include="MainContainer.cs">
       <SubType>UserControl</SubType>
