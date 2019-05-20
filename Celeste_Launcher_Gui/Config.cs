@@ -24,6 +24,20 @@ namespace Celeste_Launcher_Gui
         [XmlEnum("it-IT")] itIT,
         [XmlEnum("zh-CHT")] zhCHT
     }
+    
+    public enum ConnectionType
+    {
+        [XmlEnum("WAN")] Wan,
+        [XmlEnum("LAN")] Lan,
+        [XmlEnum("OTHER")] Other
+    }
+    
+    public enum PortMappingType
+    {
+        [XmlEnum("NATPunch")] NatPunch,
+        [XmlEnum("UPnP")] Upnp,
+        [XmlEnum("Manual")] Manual
+    }
 
     [XmlRoot(ElementName = "Celeste_Launcher_Gui_Config")]
     public class UserConfig
@@ -40,7 +54,7 @@ namespace Celeste_Launcher_Gui
 
         [XmlElement(ElementName = "GameFilesPath")]
         public string GameFilesPath { get; set; } = string.Empty;
-        
+
         [XmlIgnore]
         public bool IsSteamVersion { get; set; } = false;
 
@@ -61,7 +75,7 @@ namespace Celeste_Launcher_Gui
         {
             var userConfig = XmlUtils.DeserializeFromFile<UserConfig>(path);
 
-            if (userConfig.MpSettings.IsOnline)
+            if (userConfig.MpSettings.ConnectionType != ConnectionType.Lan)
                 return userConfig;
 
             if (!string.IsNullOrWhiteSpace(userConfig.MpSettings.LanNetworkInterface))
@@ -84,7 +98,7 @@ namespace Celeste_Launcher_Gui
 
             notfound:
             //Fall back to wan
-            userConfig.MpSettings.IsOnline = true;
+            userConfig.MpSettings.ConnectionType = ConnectionType.Wan;
 
             return userConfig;
         }
@@ -98,11 +112,9 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "LoginInfo")]
     public class LoginInfo
     {
-        [XmlIgnore]
-        private string _cryptedPassword = string.Empty;
+        [XmlIgnore] private string _cryptedPassword = string.Empty;
 
-        [XmlIgnore]
-        private string _uncryptedPassword = string.Empty;
+        [XmlIgnore] private string _uncryptedPassword = string.Empty;
 
         [DefaultValue(null)]
         [XmlElement(ElementName = "Email")]
@@ -186,27 +198,19 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "MpSettings")]
     public class MpSettings
     {
-        [XmlIgnore]
-        private bool _autoPortMapping;
+        [XmlIgnore] private string _publicIp;
 
-        [XmlIgnore]
-        private string _publicIp;
-
-        [DefaultValue(true)]
-        [XmlElement(ElementName = "isOnline")]
-        public bool IsOnline { get; set; } = true;
+        [DefaultValue(ConnectionType.Wan)]
+        [XmlElement(ElementName = "ConnectionType")]
+        public ConnectionType ConnectionType { get; set; } = ConnectionType.Wan;
 
         [DefaultValue(null)]
         [XmlElement(ElementName = "LanNetworkInterface")]
         public string LanNetworkInterface { get; set; }
 
-        [DefaultValue(false)]
-        [XmlElement(ElementName = "isAutoPortMapping")]
-        public bool AutoPortMapping
-        {
-            get => IsOnline && _autoPortMapping;
-            set => _autoPortMapping = value;
-        }
+        [DefaultValue(PortMappingType.NatPunch)]
+        [XmlElement(ElementName = "PortMappingType")]
+        public PortMappingType PortMappingType { get; set; } = PortMappingType.NatPunch;
 
         [XmlIgnore]
         public string PublicIp

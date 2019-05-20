@@ -35,7 +35,6 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
             Close();

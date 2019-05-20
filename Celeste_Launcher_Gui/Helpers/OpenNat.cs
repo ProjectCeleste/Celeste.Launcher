@@ -22,6 +22,7 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public static async Task<int> MapPortTask(int privatePort, int publicPort)
         {
+            var logFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OpenNat.log");
             try
             {
                 if (!NatDiscoverer.TraceSource.Listeners.Contains(TextWriterTraceListener))
@@ -29,8 +30,8 @@ namespace Celeste_Launcher_Gui.Helpers
 
                 TextWriterTraceListener.Close();
 
-                if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log"))
-                    File.Delete($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log");
+                if (File.Exists(logFile))
+                    File.Delete(logFile);
             }
             catch
             {
@@ -41,11 +42,9 @@ namespace Celeste_Launcher_Gui.Helpers
             NatDiscoverer.TraceSource.Switch.Level = SourceLevels.All;
 
             if (TextWriterTraceListener == null)
-                TextWriterTraceListener =
-                    new TextWriterTraceListener($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log", "OpenNatTxtLog");
+                TextWriterTraceListener = new TextWriterTraceListener(logFile, "OpenNatTxtLog");
 
             if (!NatDiscoverer.TraceSource.Listeners.Contains(TextWriterTraceListener))
-
                 NatDiscoverer.TraceSource.Listeners.Add(TextWriterTraceListener);
 
             var nat = new NatDiscoverer();

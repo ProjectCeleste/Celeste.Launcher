@@ -520,21 +520,21 @@ namespace Celeste_Launcher_Gui.Forms
 
             //MpSettings
             if (!isOffline && Program.UserConfig.MpSettings != null)
-                if (Program.UserConfig.MpSettings.IsOnline)
+                if (Program.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
                 {
                     Program.UserConfig.MpSettings.PublicIp = Program.CurrentUser.Ip;
 
-                    if (Program.UserConfig.MpSettings.AutoPortMapping)
+                    if (Program.UserConfig.MpSettings.PortMappingType == PortMappingType.Upnp)
                         try
                         {
                             await OpenNat.MapPortTask(1000, 1000);
                         }
                         catch (Exception)
                         {
-                            Program.UserConfig.MpSettings.AutoPortMapping = false;
+                            Program.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
 
                             MsgBox.ShowMessage(
-                                "Error: Upnp device not found! Set \"Auto Port Mapping\" has been disabled.",
+                                "Error: Upnp device not found! \"UPnP Port Mapping\" has been disabled.",
                                 @"Celeste Fan Project",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -687,10 +687,14 @@ namespace Celeste_Launcher_Gui.Forms
                 string arg;
                 if (isOffline)
                     arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-                else
-                    arg = Program.UserConfig?.MpSettings == null || Program.UserConfig.MpSettings.IsOnline
+                else if (Program.UserConfig?.MpSettings == null ||
+                         Program.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
+                    arg = Program.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
                         ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                else
+                    arg =
+                        $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
                 Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
             }
@@ -702,7 +706,7 @@ namespace Celeste_Launcher_Gui.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private void ScenarioManagerToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             using (var form = new ScnManagerForm())

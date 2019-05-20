@@ -23,19 +23,36 @@ namespace Celeste_Launcher_Gui.Forms
             SkinHelperFonts.SetFont(Controls);
 
             //MpSettings
-            if (mpSettings.IsOnline)
-                rb_Wan.Checked = true;
-            else
-                rb_Lan.Checked = true;
+            switch (mpSettings.ConnectionType)
+            {
+                case ConnectionType.Wan:
+                    rb_Wan.Checked = true;
+                    break;
+                case ConnectionType.Lan:
+                    rb_Lan.Checked = true;
+                    break;
+                case ConnectionType.Other:
+                    rb_Other.Checked = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mpSettings.ConnectionType), mpSettings.ConnectionType, null);
+            }
 
-            if (mpSettings.AutoPortMapping)
-                rb_Automatic.Checked = true;
-            else
-                rb_Manual.Checked = true;
-
-            //numericUpDown2.Value = mpSettings.PublicPort;
+            switch (mpSettings.PortMappingType)
+            {
+                case PortMappingType.NatPunch:
+                    rb_NatPunchtrough.Checked = true;
+                    break;
+                case PortMappingType.Upnp:
+                    rb_UPnP.Checked = true;
+                    break;
+                case PortMappingType.Manual:
+                    rb_Manual.Checked = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mpSettings.PortMappingType), mpSettings.PortMappingType, null);
+            }
         }
-
 
         private void MpSettingBox_Load(object sender, EventArgs e)
         {
@@ -52,28 +69,38 @@ namespace Celeste_Launcher_Gui.Forms
             _isFirstRun = false;
         }
 
-        //private string getExternalIp()
-        //{
-        //    try
-        //    {
-        //        var externalIp = new WebClient().DownloadString("http://checkip.dyndns.org/");
-        //        externalIp = new Regex(@"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}")
-        //            .Matches(externalIp)[0].ToString();
-        //        return externalIp;
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //}
-
         private void BtnSmall1_Click(object sender, EventArgs e)
         {
-            Program.UserConfig.MpSettings.IsOnline = rb_Wan.Checked;
-            Program.UserConfig.MpSettings.LanNetworkInterface = _selectedInterfaceName;
-            Program.UserConfig.MpSettings.AutoPortMapping = rb_Automatic.Checked;
-            //Program.UserConfig.MpSettings.PublicPort = Convert.ToInt32(numericUpDown2.Value);
+            if (rb_Wan.Checked)
+            {
+                Program.UserConfig.MpSettings.ConnectionType = ConnectionType.Wan;
+                Program.UserConfig.MpSettings.LanNetworkInterface = null;
+            }
+            else if (rb_Lan.Checked)
+            {
+                Program.UserConfig.MpSettings.ConnectionType = ConnectionType.Lan;
+                Program.UserConfig.MpSettings.LanNetworkInterface = _selectedInterfaceName;
+            }
+            else if (rb_Other.Checked)
+            {
+                Program.UserConfig.MpSettings.ConnectionType = ConnectionType.Other;
+                Program.UserConfig.MpSettings.LanNetworkInterface = null;
+            }
+            if (rb_NatPunchtrough.Checked)
+            {
+                Program.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
+            }
+            else if (rb_UPnP.Checked)
+            {
+                Program.UserConfig.MpSettings.PortMappingType = PortMappingType.Upnp;
+            }
+            else if (rb_Manual.Checked)
+            {
+                Program.UserConfig.MpSettings.PortMappingType = PortMappingType.Manual;
+            }
+
             Program.UserConfig.MpSettings.PublicIp = tb_remoteIp.Text;
+
             try
             {
                 Program.UserConfig.Save(Program.UserConfigFilePath);
@@ -82,6 +109,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 //
             }
+
             Close();
         }
 
@@ -162,30 +190,30 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void Rb_Automatic_CheckedChanged(object sender, EventArgs e)
         {
-            if (rb_Automatic.Checked)
-            {
-                if (rb_Manual.Checked)
-                    rb_Manual.Checked = false;
-            }
-            else
-            {
-                if (!rb_Manual.Checked)
-                    rb_Manual.Checked = true;
-            }
+            //if (rb_UPnP.Checked)
+            //{
+            //    if (rb_Manual.Checked)
+            //        rb_Manual.Checked = false;
+            //}
+            //else
+            //{
+            //    if (!rb_Manual.Checked)
+            //        rb_Manual.Checked = true;
+            //}
         }
 
         private void Rb_Manual_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rb_Manual.Checked)
-            {
-                if (rb_Automatic.Checked)
-                    rb_Automatic.Checked = false;
-            }
-            else
-            {
-                if (!rb_Automatic.Checked)
-                    rb_Automatic.Checked = true;
-            }
+        { 
+            //if (rb_Manual.Checked)
+        //    {
+        //        if (rb_UPnP.Checked)
+        //            rb_UPnP.Checked = false;
+        //    }
+        //    else
+        //    {
+        //        if (!rb_UPnP.Checked)
+        //            rb_UPnP.Checked = true;
+        //    }
         }
 
         private void Rb_Other_CheckedChanged(object sender, EventArgs e)

@@ -26,7 +26,7 @@ namespace Celeste_Launcher_Gui.Forms
             var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                 ? Program.UserConfig.GameFilesPath
                 : GameScannnerApi.GetGameFilesRootPath();
-            
+
             try
             {
                 _gameScannner = GameScannnerApi.InstallGameEditor(Program.UserConfig.IsSteamVersion,
@@ -42,7 +42,6 @@ namespace Celeste_Launcher_Gui.Forms
 
             if (_gameScannner != null && DownloadFileUtils.IsConnectedToInternet())
             {
-                
                 if (_gameScannner.QuickScan().GetAwaiter().GetResult())
                 {
                     Btn_Install_Editor.Enabled = false;
@@ -83,7 +82,6 @@ namespace Celeste_Launcher_Gui.Forms
                 //
             }
         }
-
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
