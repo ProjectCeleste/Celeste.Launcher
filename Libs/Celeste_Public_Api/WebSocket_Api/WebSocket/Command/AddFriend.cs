@@ -2,7 +2,6 @@
 
 using System;
 using System.Threading.Tasks;
-using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 
 #endregion

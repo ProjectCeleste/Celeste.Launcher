@@ -116,7 +116,6 @@ namespace Celeste_Public_Api.Helpers
             }
         }
 
-
         public static string ThreeNonZeroDigits(double value)
         {
             return value >= 100 ? value.ToString("0,0") : value.ToString(value >= 10 ? "0.0" : "0.00");

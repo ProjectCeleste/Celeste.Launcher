@@ -19,8 +19,8 @@ namespace Celeste_Public_Api.WebSocket_Api
         private readonly AddFriend _addFriend;
 
         private readonly Version _apiVersion = new Version(2, 0, 7, 1);
-        
-		private readonly ChangePwd _changePwd;
+
+        private readonly ChangePwd _changePwd;
 
         private readonly Client _client;
 
@@ -290,7 +290,6 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             return await _confirmFriend.DoConfirmFriend(request);
         }
-
 
         #region Disconnect Idle Session
 

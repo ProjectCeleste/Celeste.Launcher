@@ -1,356 +1,347 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>{589BC356-4A36-42FB-AE10-95AEDEC36AE6}</ProjectGuid>
-		<OutputType>WinExe</OutputType>
-		<RootNamespace>Celeste_Launcher_Gui</RootNamespace>
-		<AssemblyName>Celeste_Launcher_Gui</AssemblyName>
-		<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-		<FileAlignment>512</FileAlignment>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<Prefer32Bit>false</Prefer32Bit>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<PlatformTarget>AnyCPU</PlatformTarget>
-		<DebugType>none</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\Release\</OutputPath>
-		<DefineConstants>TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<Prefer32Bit>false</Prefer32Bit>
-		<DocumentationFile>
-		</DocumentationFile>
-	</PropertyGroup>
-	<PropertyGroup>
-		<ApplicationIcon>icon.ico</ApplicationIcon>
-	</PropertyGroup>
-	<PropertyGroup />
-	<PropertyGroup>
-		<StartupObject />
-	</PropertyGroup>
-	<PropertyGroup>
-		<ApplicationManifest>app.manifest</ApplicationManifest>
-	</PropertyGroup>
-	<ItemGroup>
-		<Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
-			<HintPath>$(SolutionDir)\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
-		</Reference>
-		<Reference Include="Markdig, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<HintPath>$(SolutionDir)\packages\Markdig.0.17.0\lib\net40\Markdig.dll</HintPath>
-			<Private>True</Private>
-		</Reference>
-		<Reference Include="Microsoft.CSharp" />
-		<Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
-			<HintPath>$(SolutionDir)\packages\Microsoft.Dism.2.0.14\lib\net40\Microsoft.Dism.dll</HintPath>
-			<Private>True</Private>
-		</Reference>
-		<Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
-			<HintPath>$(SolutionDir)\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
-		</Reference>
-		<Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<HintPath>$(SolutionDir)\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
-		</Reference>
-		<Reference Include="System" />
-		<Reference Include="System.Configuration" />
-		<Reference Include="System.Net" />
-		<Reference Include="System.Net.Http" />
-		<Reference Include="System.Web" />
-		<Reference Include="System.Data" />
-		<Reference Include="System.Deployment" />
-		<Reference Include="System.Drawing" />
-		<Reference Include="System.Windows.Forms" />
-		<Reference Include="System.Xml" />
-		<Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-			<HintPath>$(SolutionDir)\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
-			<Private>True</Private>
-		</Reference>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="Config.cs" />
-		<Compile Include="Forms\FriendsForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FriendsForm.Designer.cs">
-			<DependentUpon>FriendsForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\EditorForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\EditorForm.Designer.cs">
-			<DependentUpon>EditorForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\ScnManagerForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\ScnManagerForm.Designer.cs">
-			<DependentUpon>ScnManagerForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\InstallProcDump.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\InstallProcDump.Designer.cs">
-			<DependentUpon>InstallProcDump.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\SteamForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\SteamForm.Designer.cs">
-			<DependentUpon>SteamForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\FirewallForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\FirewallForm.Designer.cs">
-			<DependentUpon>FirewallForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\WindowsFeaturesForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
-			<DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\GameScanProgressForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\GameScanProgressForm.Designer.cs">
-			<DependentUpon>GameScanProgressForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\LanguageChooser.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\LanguageChooser.Designer.cs">
-			<DependentUpon>LanguageChooser.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\GameScan.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\GameScan.Designer.cs">
-			<DependentUpon>GameScan.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\NetworkDeviceSelectionDialog.Designer.cs">
-			<DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\ResetPwdForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\ResetPwdForm.Designer.cs">
-			<DependentUpon>ResetPwdForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\ChangePwdForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\ChangePwdForm.Designer.cs">
-			<DependentUpon>ChangePwdForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\MainForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\MainForm.Designer.cs">
-			<DependentUpon>MainForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\LoginForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\LoginForm.Designer.cs">
-			<DependentUpon>LoginForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\MpSettingForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\MpSettingForm.Designer.cs">
-			<DependentUpon>MpSettingForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Helpers\EncryptDecrypt.cs" />
-		<Compile Include="Helpers\Dism.cs" />
-		<Compile Include="Helpers\Firewall.cs" />
-		<Compile Include="Helpers\OpenNat.cs" />
-		<Compile Include="Helpers\OSVersion.cs" />
-		<Compile Include="Helpers\Steam.cs" />
-		<Compile Include="Program.cs" />
-		<Compile Include="Properties\AssemblyInfo.cs" />
-		<Compile Include="Forms\RegisterForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\RegisterForm.Designer.cs">
-			<DependentUpon>RegisterForm.cs</DependentUpon>
-		</Compile>
-		<Compile Include="Forms\UpdaterForm.cs">
-			<SubType>Form</SubType>
-		</Compile>
-		<Compile Include="Forms\UpdaterForm.Designer.cs">
-			<DependentUpon>UpdaterForm.cs</DependentUpon>
-		</Compile>
-		<EmbeddedResource Include="Forms\ChangePwdForm.resx">
-			<DependentUpon>ChangePwdForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FriendsForm.resx">
-			<DependentUpon>FriendsForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\EditorForm.resx">
-			<DependentUpon>EditorForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\ScnManagerForm.resx">
-			<DependentUpon>ScnManagerForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\InstallProcDump.resx">
-			<DependentUpon>InstallProcDump.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\SteamForm.resx">
-			<DependentUpon>SteamForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\FirewallForm.resx">
-			<DependentUpon>FirewallForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
-			<DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\GameScanProgressForm.resx">
-			<DependentUpon>GameScanProgressForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\LanguageChooser.resx">
-			<DependentUpon>LanguageChooser.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\GameScan.resx">
-			<DependentUpon>GameScan.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\MainForm.resx">
-			<DependentUpon>MainForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\LoginForm.resx">
-			<DependentUpon>LoginForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\MpSettingForm.resx">
-			<DependentUpon>MpSettingForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
-			<DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\ResetPwdForm.resx">
-			<DependentUpon>ResetPwdForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Properties\Resources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-			<SubType>Designer</SubType>
-		</EmbeddedResource>
-		<Compile Include="Properties\Resources.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-			<DesignTime>True</DesignTime>
-		</Compile>
-		<EmbeddedResource Include="Forms\RegisterForm.resx">
-			<DependentUpon>RegisterForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<EmbeddedResource Include="Forms\UpdaterForm.resx">
-			<DependentUpon>UpdaterForm.cs</DependentUpon>
-		</EmbeddedResource>
-		<None Include="app.config">
-			<SubType>Designer</SubType>
-		</None>
-		<None Include="app.manifest">
-			<SubType>Designer</SubType>
-		</None>
-		<None Include="packages.config">
-			<SubType>Designer</SubType>
-		</None>
-		<None Include="Properties\Settings.settings">
-			<Generator>SettingsSingleFileGenerator</Generator>
-			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
-		</None>
-		<Compile Include="Properties\Settings.Designer.cs">
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Settings.settings</DependentUpon>
-			<DesignTimeSharedInput>True</DesignTimeSharedInput>
-		</Compile>
-	</ItemGroup>
-	<ItemGroup>
-		<Content Include="icon.ico" />
-		<None Include="Resources\delete-64_gray.png" />
-		<None Include="Resources\help-64_g1.png" />
-		<None Include="Resources\downloads-64 _g.png" />
-		<None Include="Resources\help-64_g.png" />
-		<None Include="Resources\help-64.png" />
-		<None Include="Resources\folder-3-64 _g1.png" />
-		<None Include="Resources\downloads-64.png" />
-		<None Include="Resources\folder-3-64 _g.png" />
-		<None Include="Resources\delete-64_g.png" />
-		<None Include="Resources\add-folder-64 _g.png" />
-		<None Include="Resources\folder-3-64.png" />
-		<None Include="Resources\delete-64.png" />
-		<None Include="Resources\add-folder-64.png" />
-		<None Include="Resources\FriendRequests_Normal.png" />
-		<None Include="Resources\AddFriends_Normal.png" />
-		<None Include="Resources\RefreshHover.png" />
-		<None Include="Resources\RefreshNormal.png" />
-		<None Include="Resources\LongOne.png" />
-		<None Include="Resources\BigOne.png" />
-		<None Include="Resources\SmallOne.png" />
-		<None Include="Resources\MiddleOne.png" />
-		<None Include="Resources\DialogBox.png" />
-		<None Include="Resources\VersionNumberPlate.png" />
-		<None Include="Resources\XButton_Hover.png" />
-		<None Include="Resources\XButton_Normal.png" />
-		<None Include="Resources\FriendsHover.png" />
-		<None Include="Resources\FriendsNormal.png" />
-		<None Include="Resources\AccountHover.png" />
-		<None Include="Resources\AccountNormal.png" />
-		<None Include="Resources\FlagCNHover.png" />
-		<None Include="Resources\FlagCNNormal.png" />
-		<None Include="Resources\FlagITHover.png" />
-		<None Include="Resources\FlagITNormal.png" />
-		<None Include="Resources\FlagFRHover.png" />
-		<None Include="Resources\FlagFRNormal.png" />
-		<None Include="Resources\FlagESHover.png" />
-		<None Include="Resources\FlagESNormal.png" />
-		<None Include="Resources\FlagUSHover.png" />
-		<None Include="Resources\FlagUSNormal.png" />
-		<None Include="Resources\FlagDEHover.png" />
-		<None Include="Resources\FlagDENormal.png" />
-		<None Include="Resources\DialogBoxSmall.png" />
-		<None Include="Resources\ToolsHover.png" />
-		<None Include="Resources\ToolsNormal.png" />
-		<None Include="Resources\CelesteLogo.png" />
-		<None Include="Resources\DonateHover.png" />
-		<None Include="Resources\DonateNormal.png" />
-		<None Include="Resources\AOEDBHover.png" />
-		<None Include="Resources\AOEDBNormal.png" />
-		<None Include="Resources\CelesteWebsiteHover.png" />
-		<None Include="Resources\CelesteWebsiteNormal.png" />
-		<None Include="Resources\RedditHover.png" />
-		<None Include="Resources\RedditNormal.png" />
-		<None Include="Resources\DiscordHover.png" />
-		<None Include="Resources\DiscordNormal.png" />
-		<None Include="Resources\SettingsHover.png" />
-		<None Include="Resources\SettingsNormal.png" />
-		<None Include="Resources\BarSeparatorVertical.png" />
-		<None Include="Resources\BarSeparator.png" />
-		<None Include="Resources\BackgroundTexture.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="$(SolutionDir)\Libs\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
-			<Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
-			<Name>Celeste_AOEO_Controls</Name>
-		</ProjectReference>
-		<ProjectReference Include="$(SolutionDir)\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
-			<Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
-			<Name>Celeste_Public_Api</Name>
-		</ProjectReference>
-	</ItemGroup>
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{589BC356-4A36-42FB-AE10-95AEDEC36AE6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Celeste_Launcher_Gui</RootNamespace>
+    <AssemblyName>Celeste_Launcher_Gui</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Markdig, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Markdig.0.17.0\lib\net40\Markdig.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Microsoft.Dism.2.0.14\lib\net40\Microsoft.Dism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
+    </Reference>
+    <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Forms\FriendsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FriendsForm.Designer.cs">
+      <DependentUpon>FriendsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ScnManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScnManagerForm.Designer.cs">
+      <DependentUpon>ScnManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InstallProcDump.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstallProcDump.Designer.cs">
+      <DependentUpon>InstallProcDump.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SteamForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SteamForm.Designer.cs">
+      <DependentUpon>SteamForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FirewallForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FirewallForm.Designer.cs">
+      <DependentUpon>FirewallForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WindowsFeaturesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
+      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GameScanProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameScanProgressForm.Designer.cs">
+      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LanguageChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LanguageChooser.Designer.cs">
+      <DependentUpon>LanguageChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GameScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GameScan.Designer.cs">
+      <DependentUpon>GameScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NetworkDeviceSelectionDialog.Designer.cs">
+      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ResetPwdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResetPwdForm.Designer.cs">
+      <DependentUpon>ResetPwdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChangePwdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangePwdForm.Designer.cs">
+      <DependentUpon>ChangePwdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MpSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MpSettingForm.Designer.cs">
+      <DependentUpon>MpSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\EncryptDecrypt.cs" />
+    <Compile Include="Helpers\Dism.cs" />
+    <Compile Include="Helpers\Firewall.cs" />
+    <Compile Include="Helpers\OpenNat.cs" />
+    <Compile Include="Helpers\OSVersion.cs" />
+    <Compile Include="Helpers\Steam.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UpdaterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdaterForm.Designer.cs">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\ChangePwdForm.resx">
+      <DependentUpon>ChangePwdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FriendsForm.resx">
+      <DependentUpon>FriendsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ScnManagerForm.resx">
+      <DependentUpon>ScnManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstallProcDump.resx">
+      <DependentUpon>InstallProcDump.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SteamForm.resx">
+      <DependentUpon>SteamForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FirewallForm.resx">
+      <DependentUpon>FirewallForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
+      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameScanProgressForm.resx">
+      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LanguageChooser.resx">
+      <DependentUpon>LanguageChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GameScan.resx">
+      <DependentUpon>GameScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MpSettingForm.resx">
+      <DependentUpon>MpSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
+      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResetPwdForm.resx">
+      <DependentUpon>ResetPwdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdaterForm.resx">
+      <DependentUpon>UpdaterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <None Include="Resources\delete-64_gray.png" />
+    <None Include="Resources\help-64_g1.png" />
+    <None Include="Resources\downloads-64 _g.png" />
+    <None Include="Resources\help-64_g.png" />
+    <None Include="Resources\help-64.png" />
+    <None Include="Resources\folder-3-64 _g1.png" />
+    <None Include="Resources\downloads-64.png" />
+    <None Include="Resources\folder-3-64 _g.png" />
+    <None Include="Resources\delete-64_g.png" />
+    <None Include="Resources\add-folder-64 _g.png" />
+    <None Include="Resources\folder-3-64.png" />
+    <None Include="Resources\delete-64.png" />
+    <None Include="Resources\add-folder-64.png" />
+    <None Include="Resources\FriendRequests_Normal.png" />
+    <None Include="Resources\AddFriends_Normal.png" />
+    <None Include="Resources\RefreshHover.png" />
+    <None Include="Resources\RefreshNormal.png" />
+    <None Include="Resources\LongOne.png" />
+    <None Include="Resources\BigOne.png" />
+    <None Include="Resources\SmallOne.png" />
+    <None Include="Resources\MiddleOne.png" />
+    <None Include="Resources\DialogBox.png" />
+    <None Include="Resources\VersionNumberPlate.png" />
+    <None Include="Resources\XButton_Hover.png" />
+    <None Include="Resources\XButton_Normal.png" />
+    <None Include="Resources\FriendsHover.png" />
+    <None Include="Resources\FriendsNormal.png" />
+    <None Include="Resources\AccountHover.png" />
+    <None Include="Resources\AccountNormal.png" />
+    <None Include="Resources\FlagCNHover.png" />
+    <None Include="Resources\FlagCNNormal.png" />
+    <None Include="Resources\FlagITHover.png" />
+    <None Include="Resources\FlagITNormal.png" />
+    <None Include="Resources\FlagFRHover.png" />
+    <None Include="Resources\FlagFRNormal.png" />
+    <None Include="Resources\FlagESHover.png" />
+    <None Include="Resources\FlagESNormal.png" />
+    <None Include="Resources\FlagUSHover.png" />
+    <None Include="Resources\FlagUSNormal.png" />
+    <None Include="Resources\FlagDEHover.png" />
+    <None Include="Resources\FlagDENormal.png" />
+    <None Include="Resources\DialogBoxSmall.png" />
+    <None Include="Resources\ToolsHover.png" />
+    <None Include="Resources\ToolsNormal.png" />
+    <None Include="Resources\CelesteLogo.png" />
+    <None Include="Resources\DonateHover.png" />
+    <None Include="Resources\DonateNormal.png" />
+    <None Include="Resources\AOEDBHover.png" />
+    <None Include="Resources\AOEDBNormal.png" />
+    <None Include="Resources\CelesteWebsiteHover.png" />
+    <None Include="Resources\CelesteWebsiteNormal.png" />
+    <None Include="Resources\RedditHover.png" />
+    <None Include="Resources\RedditNormal.png" />
+    <None Include="Resources\DiscordHover.png" />
+    <None Include="Resources\DiscordNormal.png" />
+    <None Include="Resources\SettingsHover.png" />
+    <None Include="Resources\SettingsNormal.png" />
+    <None Include="Resources\BarSeparatorVertical.png" />
+    <None Include="Resources\BarSeparator.png" />
+    <None Include="Resources\BackgroundTexture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)\Libs\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
+      <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
+      <Name>Celeste_AOEO_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="$(SolutionDir)\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
+      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
+      <Name>Celeste_Public_Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

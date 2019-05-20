@@ -239,13 +239,5 @@ namespace Celeste_Launcher_Gui.Forms
         {
             MainForm.StartGame(true);
         }
-
-        private void CustomBtn2_Click(object sender, EventArgs e)
-        {
-            using (var form = new EditorForm())
-            {
-                form.ShowDialog();
-            }
-        }
     }
 }

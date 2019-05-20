@@ -60,14 +60,13 @@
             this.customBtn3 = new Celeste_AOEO_Controls.CustomBtnSplit();
             this.cMS_Offline = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.scenarioManagerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.scenarioEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managedPanel1 = new Controls.ManagedPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.gamerCard1 = new Celeste_AOEO_Controls.GamerCard();
             this.btn_Play = new Celeste_AOEO_Controls.CustomBtnSplit();
             this.cMS_Online = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.playOfflineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxButtonCustom7 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.pictureBoxButtonCustom9 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
@@ -91,7 +90,6 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainContainer1 = new Celeste_AOEO_Controls.MainContainer();
-            this.playOfflineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p_UserInfo.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -583,11 +581,10 @@
             this.cMS_Offline.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BackgroundTexture;
             this.cMS_Offline.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMS_Offline.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.scenarioManagerToolStripMenuItem1,
-            this.scenarioEditorToolStripMenuItem});
+            this.scenarioManagerToolStripMenuItem1});
             this.cMS_Offline.Name = "contextMenuStrip1";
             this.cMS_Offline.ShowImageMargin = false;
-            this.cMS_Offline.Size = new System.Drawing.Size(192, 52);
+            this.cMS_Offline.Size = new System.Drawing.Size(192, 50);
             // 
             // scenarioManagerToolStripMenuItem1
             // 
@@ -595,13 +592,6 @@
             this.scenarioManagerToolStripMenuItem1.Size = new System.Drawing.Size(191, 24);
             this.scenarioManagerToolStripMenuItem1.Text = "Scenario Manager";
             this.scenarioManagerToolStripMenuItem1.Click += new System.EventHandler(this.ScenarioManagerToolStripMenuItem1_Click);
-            // 
-            // scenarioEditorToolStripMenuItem
-            // 
-            this.scenarioEditorToolStripMenuItem.Name = "scenarioEditorToolStripMenuItem";
-            this.scenarioEditorToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
-            this.scenarioEditorToolStripMenuItem.Text = "Scenario Editor";
-            this.scenarioEditorToolStripMenuItem.Click += new System.EventHandler(this.ScenarioEditorToolStripMenuItem_Click);
             // 
             // managedPanel1
             // 
@@ -673,11 +663,17 @@
             this.cMS_Online.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMS_Online.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playOfflineToolStripMenuItem,
-            this.toolStripMenuItem5,
-            this.toolStripMenuItem6});
+            this.toolStripMenuItem5});
             this.cMS_Online.Name = "contextMenuStrip1";
             this.cMS_Online.ShowImageMargin = false;
-            this.cMS_Online.Size = new System.Drawing.Size(192, 98);
+            this.cMS_Online.Size = new System.Drawing.Size(192, 52);
+            // 
+            // playOfflineToolStripMenuItem
+            // 
+            this.playOfflineToolStripMenuItem.Name = "playOfflineToolStripMenuItem";
+            this.playOfflineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
+            this.playOfflineToolStripMenuItem.Text = "Play Offline";
+            this.playOfflineToolStripMenuItem.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -685,13 +681,6 @@
             this.toolStripMenuItem5.Size = new System.Drawing.Size(191, 24);
             this.toolStripMenuItem5.Text = "Scenario Manager";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.ScenarioManagerToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(191, 24);
-            this.toolStripMenuItem6.Text = "Scenario Editor";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.ScenarioEditorToolStripMenuItem_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -974,13 +963,6 @@
             this.mainContainer1.Size = new System.Drawing.Size(970, 600);
             this.mainContainer1.TabIndex = 2;
             // 
-            // playOfflineToolStripMenuItem
-            // 
-            this.playOfflineToolStripMenuItem.Name = "playOfflineToolStripMenuItem";
-            this.playOfflineToolStripMenuItem.Size = new System.Drawing.Size(191, 24);
-            this.playOfflineToolStripMenuItem.Text = "Play Offline";
-            this.playOfflineToolStripMenuItem.Click += new System.EventHandler(this.PlayOfflineToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1095,10 +1077,8 @@
         private Celeste_AOEO_Controls.CustomBtnSplit customBtn3;
         private System.Windows.Forms.ContextMenuStrip cMS_Offline;
         private System.Windows.Forms.ToolStripMenuItem scenarioManagerToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem scenarioEditorToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cMS_Online;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem playOfflineToolStripMenuItem;
     }
 }

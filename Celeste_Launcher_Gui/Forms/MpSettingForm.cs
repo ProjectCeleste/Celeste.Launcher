@@ -35,7 +35,8 @@ namespace Celeste_Launcher_Gui.Forms
                     rb_Other.Checked = true;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(mpSettings.ConnectionType), mpSettings.ConnectionType, null);
+                    throw new ArgumentOutOfRangeException(nameof(mpSettings.ConnectionType), mpSettings.ConnectionType,
+                        null);
             }
 
             switch (mpSettings.PortMappingType)
@@ -50,7 +51,8 @@ namespace Celeste_Launcher_Gui.Forms
                     rb_Manual.Checked = true;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(mpSettings.PortMappingType), mpSettings.PortMappingType, null);
+                    throw new ArgumentOutOfRangeException(nameof(mpSettings.PortMappingType),
+                        mpSettings.PortMappingType, null);
             }
         }
 
@@ -87,17 +89,11 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.UserConfig.MpSettings.LanNetworkInterface = null;
             }
             if (rb_NatPunchtrough.Checked)
-            {
                 Program.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
-            }
             else if (rb_UPnP.Checked)
-            {
                 Program.UserConfig.MpSettings.PortMappingType = PortMappingType.Upnp;
-            }
             else if (rb_Manual.Checked)
-            {
                 Program.UserConfig.MpSettings.PortMappingType = PortMappingType.Manual;
-            }
 
             Program.UserConfig.MpSettings.PublicIp = tb_remoteIp.Text;
 
@@ -203,17 +199,17 @@ namespace Celeste_Launcher_Gui.Forms
         }
 
         private void Rb_Manual_CheckedChanged(object sender, EventArgs e)
-        { 
+        {
             //if (rb_Manual.Checked)
-        //    {
-        //        if (rb_UPnP.Checked)
-        //            rb_UPnP.Checked = false;
-        //    }
-        //    else
-        //    {
-        //        if (!rb_UPnP.Checked)
-        //            rb_UPnP.Checked = true;
-        //    }
+            //    {
+            //        if (rb_UPnP.Checked)
+            //            rb_UPnP.Checked = false;
+            //    }
+            //    else
+            //    {
+            //        if (!rb_UPnP.Checked)
+            //            rb_UPnP.Checked = true;
+            //    }
         }
 
         private void Rb_Other_CheckedChanged(object sender, EventArgs e)

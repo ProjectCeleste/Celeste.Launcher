@@ -715,14 +715,6 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void ScenarioEditorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (var form = new EditorForm())
-            {
-                form.ShowDialog();
-            }
-        }
-
         private void PlayOfflineToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (customBtn3.Enabled)

@@ -24,14 +24,14 @@ namespace Celeste_Launcher_Gui
         [XmlEnum("it-IT")] itIT,
         [XmlEnum("zh-CHT")] zhCHT
     }
-    
+
     public enum ConnectionType
     {
         [XmlEnum("WAN")] Wan,
         [XmlEnum("LAN")] Lan,
         [XmlEnum("OTHER")] Other
     }
-    
+
     public enum PortMappingType
     {
         [XmlEnum("NATPunch")] NatPunch,

@@ -49,7 +49,6 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.customBtn2 = new Celeste_AOEO_Controls.CustomBtn();
             this.customBtn1 = new Celeste_AOEO_Controls.CustomBtn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -161,7 +160,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(538, 70);
             this.label1.TabIndex = 68;
-            this.label1.Text = "Scenario Manager";
+            this.label1.Text = "Custom Scenario Manager";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -381,10 +380,8 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.customBtn2, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.customBtn1, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 262);
@@ -394,21 +391,6 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(536, 70);
             this.tableLayoutPanel5.TabIndex = 78;
-            // 
-            // customBtn2
-            // 
-            this.customBtn2.BackColor = System.Drawing.Color.Transparent;
-            this.customBtn2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customBtn2.BackgroundImage")));
-            this.customBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.customBtn2.BtnText = "Scenario Editor";
-            this.customBtn2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.customBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customBtn2.Location = new System.Drawing.Point(278, 8);
-            this.customBtn2.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
-            this.customBtn2.Name = "customBtn2";
-            this.customBtn2.Size = new System.Drawing.Size(248, 54);
-            this.customBtn2.TabIndex = 1;
-            this.customBtn2.Click += new System.EventHandler(this.CustomBtn2_Click);
             // 
             // customBtn1
             // 
@@ -421,7 +403,7 @@
             this.customBtn1.Location = new System.Drawing.Point(10, 8);
             this.customBtn1.Margin = new System.Windows.Forms.Padding(10, 8, 10, 8);
             this.customBtn1.Name = "customBtn1";
-            this.customBtn1.Size = new System.Drawing.Size(248, 54);
+            this.customBtn1.Size = new System.Drawing.Size(516, 54);
             this.customBtn1.TabIndex = 0;
             this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
             // 
@@ -492,7 +474,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private Celeste_AOEO_Controls.CustomBtn customBtn2;
         private Celeste_AOEO_Controls.CustomBtn customBtn1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.PictureBox pictureBox1;
