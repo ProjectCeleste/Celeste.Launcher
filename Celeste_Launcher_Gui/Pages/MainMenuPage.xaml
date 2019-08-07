@@ -1,0 +1,47 @@
+﻿<Page x:Class="Celeste_Launcher_Gui.Pages.MainMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+      xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="587" d:DesignWidth="964" UseLayoutRounding="True">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+            <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/AoEO_Logo.png" Stretch="None" Margin="10"></Image>
+            <local:LargeButton Content="{x:Static p:Resources.MainMenuLoginBtn}" Margin="5" Click="OnLoginClick"/>
+            <local:LargeButton Content="{x:Static p:Resources.MainMenuRegisterBtn}" Margin="5" Click="OnRegisterClick"/>
+            <local:LargeButton Content="{x:Static p:Resources.MainMenuPlayOfflineBtn}" Margin="5" Click="OnPlayOfflineClick"/>
+        </StackPanel>
+
+        <StackPanel Width="300" Height="auto" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom">
+            <local:SideBarMenuItemWide 
+                        LabelContents="{x:Static p:Resources.MainMenuCelesteSideMenuBtn}" 
+                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Normal.png"
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" />
+
+            <local:SideBarMenuItem 
+                        LabelContents="{x:Static p:Resources.MainMenuDiscordSideMenuBtn}" 
+                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Normal.png"
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" HorizontalAlignment="Left" />
+
+            <local:SideBarMenuItem 
+                        LabelContents="{x:Static p:Resources.MainMenuRedditSideMenuBtn}" 
+                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Normal.png"
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Hover.png" HorizontalAlignment="Left" />
+
+            <local:SideBarMenuItem 
+                        LabelContents="{x:Static p:Resources.MainMenuYoutubeSideMenuBtn}" 
+                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Normal.png"
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Hover.png" HorizontalAlignment="Left" />
+        </StackPanel>
+
+        <Label Content="V 2.0.8.1" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
+            <Label.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
+            </Label.Background>
+        </Label>
+    </Grid>
+</Page>

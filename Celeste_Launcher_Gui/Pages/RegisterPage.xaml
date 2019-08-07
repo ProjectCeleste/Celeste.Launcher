@@ -1,0 +1,41 @@
+﻿<Page x:Class="Celeste_Launcher_Gui.Pages.RegisterPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+        xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        mc:Ignorable="d"
+        UseLayoutRounding="True"
+        d:DesignHeight="587" d:DesignWidth="964">
+    <Grid>
+        <Grid VerticalAlignment="Top" Height="168">
+            <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterEmailLabelText}"/>
+                <local:MediumButton Content="{x:Static p:Resources.RegisterVerifyBtnText}" Margin="10,0,0,0"/>
+            </WrapPanel>
+        </Grid>
+        <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-SuperLongVertical.png" Stretch="None" Height="53" VerticalAlignment="Top" Margin="0,150,0,0"/>
+
+        <Grid VerticalAlignment="Bottom" Height="406">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}"/>
+                    <local:MediumButton Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0"/>
+                </WrapPanel>
+                <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left"/>
+                <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left"/>
+                <DockPanel>
+                    <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left"/>
+                    <local:MediumButton Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right"/>
+                </DockPanel>
+            </StackPanel>
+        </Grid>
+
+        <Label Content="V 2.0.8.1" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
+            <Label.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
+            </Label.Background>
+        </Label>
+    </Grid>
+</Page>

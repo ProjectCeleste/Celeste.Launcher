@@ -295,4 +295,130 @@
   <data name="delete-64_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-64_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GameUpdateInstalledVersionLabel" xml:space="preserve">
+    <value>Installed:</value>
+  </data>
+  <data name="GameUpdateNewVersionLabel" xml:space="preserve">
+    <value>New:</value>
+  </data>
+  <data name="GameUpdateTitle" xml:space="preserve">
+    <value>Game Update</value>
+  </data>
+  <data name="GameUpdateUpdateBtn" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="LoginAutoLoginOption" xml:space="preserve">
+    <value>Auto-login</value>
+  </data>
+  <data name="LoginEmailField" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="LoginForgottenPassword" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+  <data name="LoginPasswordField" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="LoginPerformLoginBtn" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginRememberPasswordOption" xml:space="preserve">
+    <value>Remember password</value>
+  </data>
+  <data name="MainMenuCelesteSideMenuBtn" xml:space="preserve">
+    <value>projectceleste.com</value>
+  </data>
+  <data name="MainMenuDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="MainMenuLoginBtn" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="MainMenuPlayOfflineBtn" xml:space="preserve">
+    <value>Play Offline</value>
+  </data>
+  <data name="MainMenuRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="MainMenuRegisterBtn" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="MainMenuYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="OptionNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="OptionOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="OptionYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="OverviewAccountSideMenuBtn" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="OverviewAoedbSideMenuBtn" xml:space="preserve">
+    <value>aoedb.net</value>
+  </data>
+  <data name="OverviewDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="OverviewDonateSideMenuBtn" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="OverviewFriendsSideMenuBtn" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="OverviewLoginBtn" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="OverviewLogoutSideMenuBtn" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="OverviewPatchNotesSideMenuBtn" xml:space="preserve">
+    <value>Patch Notes</value>
+  </data>
+  <data name="OverviewPlayOfflineBtn" xml:space="preserve">
+    <value>Play Offline</value>
+  </data>
+  <data name="OverviewPvpPatchNotesSideMenuBtn" xml:space="preserve">
+    <value>Pvp Patch Notes</value>
+  </data>
+  <data name="OverviewRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="OverviewSettingsSideMenuBtn" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="OverviewWebsiteSideMenuBtn" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="OverviewYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="RegisterCompleteRegistrationBtnText" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterEmailLabelText" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="RegisterPasswordConfirmationLabelText" xml:space="preserve">
+    <value>Confirm password:</value>
+  </data>
+  <data name="RegisterPasswordLabelText" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="RegisterResendBtnText" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="RegisterUsernameLabelText" xml:space="preserve">
+    <value>Username:</value>
+  </data>
+  <data name="RegisterVerifyBtnText" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="RegisterVerifyLabelText" xml:space="preserve">
+    <value>Verify key:</value>
+  </data>
 </root>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="Celeste_Launcher_Gui.Windows.UpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.GameUpdateTitle}" Height="521" Width="671" WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/UpdateWindow.png" />
+        </Grid.Background>
+        <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseSmallNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseSmallHover.png"
+                    IconWidth="23" IconHeight="23"
+                    Click="OnClose"
+                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,6,8,0"/>
+        <Grid Width="510" Height="32" VerticalAlignment="Top" Margin="0,11,0,0" MouseDown="OnMoveWindow" Background="Transparent">
+            <TextBlock Text="{Binding Title}" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        </Grid>
+        <Grid Width="510" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50,30,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.GameUpdateNewVersionLabel}" VersionNumber="0.0.0.0" Margin="0,0,10,0"/>
+                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.GameUpdateInstalledVersionLabel}" VersionNumber="0.0.0.0"/>
+            </StackPanel>
+            
+        </Grid>
+        <TextBlock Width="490" Height="240" Text="asd" Margin="0,121,16,0" VerticalAlignment="Top" Foreground="White" />
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="90">
+            <local:MediumButton Content="{x:Static p:Resources.GameUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate"/>
+            <StackPanel VerticalAlignment="Center" x:Name="UpdateProgressionControls" Visibility="Hidden">
+                <local:UpdateProgressBar x:Name="ProgressBar"/>
+                <Label Content="Update in progress" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="20" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

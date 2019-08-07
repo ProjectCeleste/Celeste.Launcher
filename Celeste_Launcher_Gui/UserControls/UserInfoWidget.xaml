@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Celeste_Launcher_Gui.UserControls.UserInfoWidget"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+             mc:Ignorable="d" 
+             d:DesignWidth="352" d:DesignHeight="96"
+             Width="352" Height="96">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/PlayerNameplateEmpty.png" />
+        </Grid.Background>
+        <Image Source="{Binding PlayerIcon}" Height="90" Width="90" HorizontalAlignment="Left"/>
+        <Label Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" Margin="90,18,0,0" Content="{Binding Username}"/>
+        <Label Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" Margin="90,47,0,0" Content="{Binding Rank}"/>
+    </Grid>
+</UserControl>

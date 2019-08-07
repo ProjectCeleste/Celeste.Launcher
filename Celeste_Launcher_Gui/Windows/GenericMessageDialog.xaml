@@ -1,0 +1,33 @@
+﻿<Window x:Class="Celeste_Launcher_Gui.Windows.GenericMessageDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+        mc:Ignorable="d"
+        Height="312" Width="512" WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/YesNoDialogBackground.png"/>
+        </Grid.Background>
+        <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
+            <DockPanel MouseDown="ContentMoved">
+                <DockPanel VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="YesNoOptions" Visibility="Collapsed">
+                        <local:TinyButton Content="{x:Static p:Resources.OptionYes}" Click="YesClicked" Margin="30"/>
+                        <local:TinyButton Content="{x:Static p:Resources.OptionNo}" Click="NoClicked" Margin="30"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="OkOptions">
+                        <local:TinyButton Content="{x:Static p:Resources.OptionOk}" Click="OkClicked" Margin="30"/>
+                    </StackPanel>
+                </DockPanel>
+
+                <DockPanel>
+                    <Image Source="{Binding IconSource}" Stretch="None" Margin="20,0,0,0" x:Name="DialogIconContents"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="{StaticResource Ashley-Crawford-CG}" TextWrapping="WrapWithOverflow" Foreground="White" TextAlignment="Center" Text="{Binding Message}" Margin="10,0,20,0"/>
+                </DockPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -30,7 +30,7 @@ namespace Celeste_Launcher_Gui
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CelesteConfig.xml");
 
         [STAThread]
-        private static void Main()
+        public static void InitializeLegacyComponents()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

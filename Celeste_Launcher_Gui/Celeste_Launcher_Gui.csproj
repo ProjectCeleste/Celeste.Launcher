@@ -63,6 +63,8 @@
     <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Net" />
@@ -72,6 +74,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
@@ -79,6 +82,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Config.cs" />
     <Compile Include="Forms\FriendsForm.cs">
       <SubType>Form</SubType>
@@ -176,6 +182,18 @@
     <Compile Include="Helpers\OpenNat.cs" />
     <Compile Include="Helpers\OSVersion.cs" />
     <Compile Include="Helpers\Steam.cs" />
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainMenuPage.xaml.cs">
+      <DependentUpon>MainMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OverviewPage.xaml.cs">
+      <DependentUpon>OverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\RegisterForm.cs">
@@ -189,6 +207,60 @@
     </Compile>
     <Compile Include="Forms\UpdaterForm.Designer.cs">
       <DependentUpon>UpdaterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CheckBox.xaml.cs">
+      <DependentUpon>CheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LargeButton.xaml.cs">
+      <DependentUpon>LargeButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MediumButton.xaml.cs">
+      <DependentUpon>MediumButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ShortRegisterInputField.xaml.cs">
+      <DependentUpon>ShortRegisterInputField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ShortRegisterPasswordInputField.xaml.cs">
+      <DependentUpon>ShortRegisterPasswordInputField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SideBarMenuItem.xaml.cs">
+      <DependentUpon>SideBarMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SideBarMenuItemRight.xaml.cs">
+      <DependentUpon>SideBarMenuItemRight.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SideBarMenuItemWide.xaml.cs">
+      <DependentUpon>SideBarMenuItemWide.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TinyButton.xaml.cs">
+      <DependentUpon>TinyButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UpdateProgressBar.xaml.cs">
+      <DependentUpon>UpdateProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserInfoWidget.xaml.cs">
+      <DependentUpon>UserInfoWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VersionNumberLabel.xaml.cs">
+      <DependentUpon>VersionNumberLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WideRegisterInputField.xaml.cs">
+      <DependentUpon>WideRegisterInputField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WideRegisterPasswordInputField.xaml.cs">
+      <DependentUpon>WideRegisterPasswordInputField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WindowControl.xaml.cs">
+      <DependentUpon>WindowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GenericMessageDialog.xaml.cs">
+      <DependentUpon>GenericMessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UpdateWindow.xaml.cs">
+      <DependentUpon>UpdateWindow.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\ChangePwdForm.resx">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
@@ -236,7 +308,7 @@
       <DependentUpon>ResetPwdForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -272,6 +344,81 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\AoEO_Logo.png" />
+    <Resource Include="Resources\ButtonBackgroundBarLong.png" />
+    <Resource Include="Resources\ButtonBackgroundBarShort.png" />
+    <Resource Include="Resources\Buttons\LargeButtonHover.png" />
+    <Resource Include="Resources\Buttons\LargeButtonNormal.png" />
+    <Resource Include="Resources\Buttons\MediumButtonHover.png" />
+    <Resource Include="Resources\Buttons\MediumButtonNormal.png" />
+    <Resource Include="Resources\Buttons\TinyButtonHover.png" />
+    <Resource Include="Resources\Buttons\TinyButtonNormal.png" />
+    <Resource Include="Resources\Celeste Logo Roman Final.png" />
+    <Resource Include="Resources\CheckBoxCheckGreen_ua.png" />
+    <Resource Include="Resources\CheckBoxUnChecked_ua.png" />
+    <Resource Include="Resources\Error.png" />
+    <Resource Include="Resources\Icons\Account-Hover.png" />
+    <Resource Include="Resources\Icons\Account-Normal.png" />
+    <Resource Include="Resources\Icons\aoedb-Hover.png" />
+    <Resource Include="Resources\Icons\aoedb-Normal.png" />
+    <Resource Include="Resources\Icons\Discord-Hover.png" />
+    <Resource Include="Resources\Icons\Discord-Normal.png" />
+    <Resource Include="Resources\Icons\Donate-Hover.png" />
+    <Resource Include="Resources\Icons\Donate-Normal.png" />
+    <Resource Include="Resources\Icons\Friends-Hover.png" />
+    <Resource Include="Resources\Icons\Friends-Normal.png" />
+    <Resource Include="Resources\Icons\List-Hover.png" />
+    <Resource Include="Resources\Icons\List-Normal.png" />
+    <Resource Include="Resources\Icons\Logout-Hover.png" />
+    <Resource Include="Resources\Icons\Logout-Normal.png" />
+    <Resource Include="Resources\Icons\MapsList-Hover.png" />
+    <Resource Include="Resources\Icons\MapsList-Normal.png" />
+    <Resource Include="Resources\Icons\MapsList2-Hover.png" />
+    <Resource Include="Resources\Icons\MapsList2-Normal.png" />
+    <Resource Include="Resources\Icons\PatchNotes-Hover.png" />
+    <Resource Include="Resources\Icons\PatchNotes-Normal.png" />
+    <Resource Include="Resources\Icons\PvPPatchNotes-Hover.png" />
+    <Resource Include="Resources\Icons\PvPPatchNotes-Normal.png" />
+    <Resource Include="Resources\Icons\Reddit-Hover.png" />
+    <Resource Include="Resources\Icons\Reddit-Normal.png" />
+    <Resource Include="Resources\Icons\ScenarioManager-Hover.png" />
+    <Resource Include="Resources\Icons\ScenarioManager-Normal.png" />
+    <Resource Include="Resources\Icons\Settings-Hover.png" />
+    <Resource Include="Resources\Icons\Settings-Normal.png" />
+    <Resource Include="Resources\Icons\Tools-Hover.png" />
+    <Resource Include="Resources\Icons\Tools-Normal.png" />
+    <Resource Include="Resources\Icons\Tools2-Hover.png" />
+    <Resource Include="Resources\Icons\Tools2-Normal.png" />
+    <Resource Include="Resources\Icons\WCCloseHover.png" />
+    <Resource Include="Resources\Icons\WCCloseNormal.png" />
+    <Resource Include="Resources\Icons\WCCloseSmallHover.png" />
+    <Resource Include="Resources\Icons\WCCloseSmallNormal.png" />
+    <Resource Include="Resources\Icons\WCMinimizeHover.png" />
+    <Resource Include="Resources\Icons\WCMinimizeNormal.png" />
+    <Resource Include="Resources\Icons\Website-Hover.png" />
+    <Resource Include="Resources\Icons\Website-Normal.png" />
+    <Resource Include="Resources\Icons\YouTube-Hover.png" />
+    <Resource Include="Resources\Icons\YouTube-Normal.png" />
+    <Resource Include="Resources\LoggedInScreenSeparators.png" />
+    <Resource Include="Resources\LoginWindowContents.png" />
+    <Resource Include="Resources\LoginWindowFrame.png" />
+    <Resource Include="Resources\MainWindow_InnerContents.png" />
+    <Resource Include="Resources\PlayerNameplateEmpty.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Agvald.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Bahram.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Rohham.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Tahmineh.png" />
+    <Resource Include="Resources\ProgressBarOverlay.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxLong.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxShort.png" />
+    <Resource Include="Resources\Separator-SuperLongVertical.png" />
+    <Resource Include="Resources\TopBorder.png" />
+    <Resource Include="Resources\UpdateWindow.png" />
+    <Resource Include="Resources\VersionNumberBox.png" />
+    <Resource Include="Resources\VersionNumberLabelBackground.png" />
+    <Resource Include="Resources\Warning.png" />
+    <Resource Include="Resources\YesNoDialogBackground.png" />
+    <Resource Include="Resources\ashley_crawford_cg.ttf" />
     <None Include="Resources\delete-64_gray.png" />
     <None Include="Resources\help-64_g1.png" />
     <None Include="Resources\downloads-64 _g.png" />
@@ -287,6 +434,7 @@
     <None Include="Resources\add-folder-64.png" />
     <None Include="Resources\FriendRequests_Normal.png" />
     <None Include="Resources\AddFriends_Normal.png" />
+    <Resource Include="Resources\LithosPro-Black.otf" />
     <None Include="Resources\RefreshHover.png" />
     <None Include="Resources\RefreshNormal.png" />
     <None Include="Resources\LongOne.png" />
@@ -342,6 +490,100 @@
       <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
       <Name>Celeste_Public_Api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Pages\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MainMenuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\OverviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\RegisterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LargeButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MediumButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ShortRegisterInputField.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ShortRegisterPasswordInputField.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SideBarMenuItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SideBarMenuItemRight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SideBarMenuItemWide.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TinyButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\UpdateProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\UserInfoWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\VersionNumberLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\WideRegisterInputField.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\WideRegisterPasswordInputField.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\WindowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\GenericMessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\UpdateWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
