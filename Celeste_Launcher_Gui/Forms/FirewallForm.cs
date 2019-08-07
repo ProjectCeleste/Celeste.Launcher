@@ -100,8 +100,8 @@ namespace Celeste_Launcher_Gui.Forms
                     }
                 }
 
-                var path = !string.IsNullOrWhiteSpace(Program.UserConfig?.GameFilesPath)
-                    ? Program.UserConfig?.GameFilesPath
+                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
+                    ? LegacyBootstrapper.UserConfig?.GameFilesPath
                     : GameScannnerApi.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
@@ -254,8 +254,8 @@ namespace Celeste_Launcher_Gui.Forms
             Enabled = false;
             try
             {
-                var path = !string.IsNullOrWhiteSpace(Program.UserConfig?.GameFilesPath)
-                    ? Program.UserConfig?.GameFilesPath
+                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
+                    ? LegacyBootstrapper.UserConfig?.GameFilesPath
                     : GameScannnerApi.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");

@@ -16,7 +16,7 @@ using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 
 namespace Celeste_Launcher_Gui
 {
-    internal static class Program
+    internal static class LegacyBootstrapper
     {
         public static UserConfig UserConfig = new UserConfig();
 
@@ -29,12 +29,12 @@ namespace Celeste_Launcher_Gui
         public static string UserConfigFilePath { get; } =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CelesteConfig.xml");
 
-        [STAThread]
         public static void InitializeLegacyComponents()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // TODO: Move this to app.xaml.cs
             var mutex = new Mutex(true, AppName, out bool createdNew);
 
             //Only one instance
@@ -88,7 +88,7 @@ namespace Celeste_Launcher_Gui
             WebSocketApi = new WebSocketApi(UserConfig.ServerUri);
 
             //Start Gui
-            Application.Run(new MainForm());
+            //Application.Run(new MainForm());
 
             GC.KeepAlive(mutex);
         }

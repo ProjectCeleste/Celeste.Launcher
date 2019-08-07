@@ -24,7 +24,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var response = await Program.WebSocketApi.DoForgotPwd(tb_Mail.Text);
+                var response = await LegacyBootstrapper.WebSocketApi.DoForgotPwd(tb_Mail.Text);
 
                 if (response.Result)
                 {
@@ -55,7 +55,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var response = await Program.WebSocketApi.DoResetPwd(tb_Mail.Text, tb_InviteCode.Text);
+                var response = await LegacyBootstrapper.WebSocketApi.DoResetPwd(tb_Mail.Text, tb_InviteCode.Text);
 
                 if (response.Result)
                 {

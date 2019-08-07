@@ -75,31 +75,31 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (rb_Wan.Checked)
             {
-                Program.UserConfig.MpSettings.ConnectionType = ConnectionType.Wan;
-                Program.UserConfig.MpSettings.LanNetworkInterface = null;
+                LegacyBootstrapper.UserConfig.MpSettings.ConnectionType = ConnectionType.Wan;
+                LegacyBootstrapper.UserConfig.MpSettings.LanNetworkInterface = null;
             }
             else if (rb_Lan.Checked)
             {
-                Program.UserConfig.MpSettings.ConnectionType = ConnectionType.Lan;
-                Program.UserConfig.MpSettings.LanNetworkInterface = _selectedInterfaceName;
+                LegacyBootstrapper.UserConfig.MpSettings.ConnectionType = ConnectionType.Lan;
+                LegacyBootstrapper.UserConfig.MpSettings.LanNetworkInterface = _selectedInterfaceName;
             }
             else if (rb_Other.Checked)
             {
-                Program.UserConfig.MpSettings.ConnectionType = ConnectionType.Other;
-                Program.UserConfig.MpSettings.LanNetworkInterface = null;
+                LegacyBootstrapper.UserConfig.MpSettings.ConnectionType = ConnectionType.Other;
+                LegacyBootstrapper.UserConfig.MpSettings.LanNetworkInterface = null;
             }
             if (rb_NatPunchtrough.Checked)
-                Program.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
+                LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
             else if (rb_UPnP.Checked)
-                Program.UserConfig.MpSettings.PortMappingType = PortMappingType.Upnp;
+                LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.Upnp;
             else if (rb_Manual.Checked)
-                Program.UserConfig.MpSettings.PortMappingType = PortMappingType.Manual;
+                LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.Manual;
 
-            Program.UserConfig.MpSettings.PublicIp = tb_remoteIp.Text;
+            LegacyBootstrapper.UserConfig.MpSettings.PublicIp = tb_remoteIp.Text;
 
             try
             {
-                Program.UserConfig.Save(Program.UserConfigFilePath);
+                LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
             }
             catch (Exception)
             {
@@ -113,10 +113,10 @@ namespace Celeste_Launcher_Gui.Forms
         {
             if (rb_Wan.Checked)
             {
-                if (Program.CurrentUser != null &&
-                    !string.IsNullOrWhiteSpace(Program.CurrentUser.Ip))
+                if (LegacyBootstrapper.CurrentUser != null &&
+                    !string.IsNullOrWhiteSpace(LegacyBootstrapper.CurrentUser.Ip))
                 {
-                    tb_remoteIp.Text = Program.CurrentUser.Ip;
+                    tb_remoteIp.Text = LegacyBootstrapper.CurrentUser.Ip;
                 }
                 else
                 {
@@ -163,9 +163,9 @@ namespace Celeste_Launcher_Gui.Forms
             }
             else
             {
-                if (!string.IsNullOrWhiteSpace(Program.UserConfig?.MpSettings?.LanNetworkInterface))
+                if (!string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.MpSettings?.LanNetworkInterface))
                 {
-                    _selectedInterfaceName = Program.UserConfig.MpSettings.LanNetworkInterface;
+                    _selectedInterfaceName = LegacyBootstrapper.UserConfig.MpSettings.LanNetworkInterface;
                     var netInterface = NetworkInterface.GetAllNetworkInterfaces()
                         .FirstOrDefault(elem => elem.Name == _selectedInterfaceName);
 

@@ -49,11 +49,11 @@ namespace Celeste_Launcher_Gui.Forms
                     throw new Exception("Celeste Fan Project Launcher is already compatible with \"Steam\".");
 
                 var exeFolder = Path.GetDirectoryName(exePath);
-                if (!string.Equals(Program.UserConfig.GameFilesPath, exeFolder, StringComparison.OrdinalIgnoreCase))
+                if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, exeFolder, StringComparison.OrdinalIgnoreCase))
                     throw new Exception(
                         "Celeste Fan Project Launcher need to be installed in the same folder has the game.");
 
-                Steam.ConvertToSteam(Program.UserConfig.GameFilesPath);
+                Steam.ConvertToSteam(LegacyBootstrapper.UserConfig.GameFilesPath);
 
                 MsgBox.ShowMessage(
                     @"""Celeste Fan Project Launcher"" is now compatible with ""Steam"", it will now re-start.",

@@ -14,5 +14,9 @@ namespace Celeste_Launcher_Gui
     public partial class App : Application
     {
         // TODO: Invoke legacy main function from here
+        public App()
+        {
+            LegacyBootstrapper.InitializeLegacyComponents();
+        }
     }
 }

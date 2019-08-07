@@ -38,9 +38,9 @@ namespace Celeste_Launcher_Gui.Forms
         {
             try
             {
-                Program.WebSocketApi?.Disconnect();
+                LegacyBootstrapper.WebSocketApi?.Disconnect();
                 NatDiscoverer.ReleaseAll();
-                Program.UserConfig?.Save(Program.UserConfigFilePath);
+                LegacyBootstrapper.UserConfig?.Save(LegacyBootstrapper.UserConfigFilePath);
             }
             catch
             {
@@ -93,10 +93,10 @@ namespace Celeste_Launcher_Gui.Forms
                     if (form.CurrentUser == null)
                         return;
 
-                    Program.CurrentUser = form.CurrentUser;
+                    LegacyBootstrapper.CurrentUser = form.CurrentUser;
 
-                    gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
-                    gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
+                    gamerCard1.UserName = $@"{LegacyBootstrapper.CurrentUser.ProfileName}";
+                    gamerCard1.Rank = $@"{LegacyBootstrapper.CurrentUser.Rank}";
 
                     panelManager1.SelectedPanel = managedPanel1;
                 }
@@ -129,9 +129,9 @@ namespace Celeste_Launcher_Gui.Forms
                     return;
 
                 //Save UserConfig
-                if (Program.UserConfig == null)
+                if (LegacyBootstrapper.UserConfig == null)
                 {
-                    Program.UserConfig = new UserConfig
+                    LegacyBootstrapper.UserConfig = new UserConfig
                     {
                         LoginInfo = new LoginInfo
                         {
@@ -143,13 +143,13 @@ namespace Celeste_Launcher_Gui.Forms
                 }
                 else
                 {
-                    Program.UserConfig.LoginInfo.Email = form.tb_Mail.Text;
-                    Program.UserConfig.LoginInfo.Password = form.tb_Password.Text;
-                    Program.UserConfig.LoginInfo.RememberMe = true;
+                    LegacyBootstrapper.UserConfig.LoginInfo.Email = form.tb_Mail.Text;
+                    LegacyBootstrapper.UserConfig.LoginInfo.Password = form.tb_Password.Text;
+                    LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = true;
                 }
                 try
                 {
-                    Program.UserConfig.Save(Program.UserConfigFilePath);
+                    LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
                 }
                 catch (Exception)
                 {
@@ -167,10 +167,10 @@ namespace Celeste_Launcher_Gui.Forms
                     if (form.CurrentUser == null)
                         return;
 
-                    Program.CurrentUser = form.CurrentUser;
+                    LegacyBootstrapper.CurrentUser = form.CurrentUser;
 
-                    gamerCard1.UserName = $@"{Program.CurrentUser.ProfileName}";
-                    gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
+                    gamerCard1.UserName = $@"{LegacyBootstrapper.CurrentUser.ProfileName}";
+                    gamerCard1.Rank = $@"{LegacyBootstrapper.CurrentUser.Rank}";
 
                     panelManager1.SelectedPanel = managedPanel1;
                 }
@@ -213,7 +213,7 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void PictureBoxButtonCustom9_Click(object sender, EventArgs e)
         {
-            using (var form = new MpSettingForm(Program.UserConfig.MpSettings))
+            using (var form = new MpSettingForm(LegacyBootstrapper.UserConfig.MpSettings))
             {
                 form.ShowDialog();
             }
@@ -277,24 +277,24 @@ namespace Celeste_Launcher_Gui.Forms
             }
 
             //Auto Login
-            if (Program.UserConfig?.LoginInfo == null)
+            if (LegacyBootstrapper.UserConfig?.LoginInfo == null)
                 return;
 
-            if (!Program.UserConfig.LoginInfo.AutoLogin)
+            if (!LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin)
                 return;
 
             panelManager1.Enabled = false;
             try
             {
-                var response = await Program.WebSocketApi.DoLogin(Program.UserConfig.LoginInfo.Email,
-                    Program.UserConfig.LoginInfo.Password);
+                var response = await LegacyBootstrapper.WebSocketApi.DoLogin(LegacyBootstrapper.UserConfig.LoginInfo.Email,
+                    LegacyBootstrapper.UserConfig.LoginInfo.Password);
 
                 if (response.Result)
                 {
-                    Program.CurrentUser = response.User;
+                    LegacyBootstrapper.CurrentUser = response.User;
 
-                    gamerCard1.UserName = Program.CurrentUser.ProfileName;
-                    gamerCard1.Rank = $@"{Program.CurrentUser.Rank}";
+                    gamerCard1.UserName = LegacyBootstrapper.CurrentUser.ProfileName;
+                    gamerCard1.Rank = $@"{LegacyBootstrapper.CurrentUser.Rank}";
 
                     panelManager1.SelectedPanel = managedPanel1;
                 }
@@ -312,7 +312,7 @@ namespace Celeste_Launcher_Gui.Forms
             //
             try
             {
-                Program.WebSocketApi?.Disconnect();
+                LegacyBootstrapper.WebSocketApi?.Disconnect();
             }
             catch
             {
@@ -321,13 +321,13 @@ namespace Celeste_Launcher_Gui.Forms
             //
 
             //Save UserConfig
-            if (Program.UserConfig?.LoginInfo != null)
+            if (LegacyBootstrapper.UserConfig?.LoginInfo != null)
             {
-                Program.UserConfig.LoginInfo.AutoLogin = false;
+                LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = false;
 
                 try
                 {
-                    Program.UserConfig.Save(Program.UserConfigFilePath);
+                    LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
                 }
                 catch (Exception)
                 {
@@ -378,16 +378,16 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void UpdateDiagModeToolStripFromConfig()
         {
-            enableDiagnosticModeToolStripMenuItem.Text = Program.UserConfig.IsDiagnosticMode
+            enableDiagnosticModeToolStripMenuItem.Text = LegacyBootstrapper.UserConfig.IsDiagnosticMode
                 ? @"Disable Diagnostic Mode"
                 : @"Enable Diagnostic Mode";
         }
 
         private void EnableDiagnosticModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.UserConfig.IsDiagnosticMode = !Program.UserConfig.IsDiagnosticMode;
+            LegacyBootstrapper.UserConfig.IsDiagnosticMode = !LegacyBootstrapper.UserConfig.IsDiagnosticMode;
 
-            if (Program.UserConfig.IsDiagnosticMode)
+            if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
                 try
                 {
                     var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
@@ -406,12 +406,12 @@ namespace Celeste_Launcher_Gui.Forms
                                     form2.ShowDialog();
                                 }
                             else
-                                Program.UserConfig.IsDiagnosticMode = false;
+                                LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
                         }
                 }
                 catch (Exception exception)
                 {
-                    Program.UserConfig.IsDiagnosticMode = false;
+                    LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
                     MsgBox.ShowMessage(
                         $"Warning: Failed to enable \"Diagnostic Mode\". Error message: {exception.Message}",
                         @"Celeste Fan Project",
@@ -448,10 +448,10 @@ namespace Celeste_Launcher_Gui.Forms
 
                 try
                 {
-                    if (Program.UserConfig != null)
-                        Program.UserConfig.GameLanguage = form.SelectedLang;
+                    if (LegacyBootstrapper.UserConfig != null)
+                        LegacyBootstrapper.UserConfig.GameLanguage = form.SelectedLang;
                     else
-                        Program.UserConfig = new UserConfig {GameLanguage = form.SelectedLang};
+                        LegacyBootstrapper.UserConfig = new UserConfig {GameLanguage = form.SelectedLang};
                 }
                 catch (Exception)
                 {
@@ -473,11 +473,11 @@ namespace Celeste_Launcher_Gui.Forms
             if (!isOffline || DownloadFileUtils.IsConnectedToInternet())
                 try
                 {
-                    var gameFilePath = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
-                        ? Program.UserConfig.GameFilesPath
+                    var gameFilePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
+                        ? LegacyBootstrapper.UserConfig.GameFilesPath
                         : GameScannnerApi.GetGameFilesRootPath();
 
-                    var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion);
+                    var gameScannner = new GameScannnerApi(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
 
                     retry:
                     if (!await gameScannner.QuickScan())
@@ -511,27 +511,27 @@ namespace Celeste_Launcher_Gui.Forms
                 }
 
             //isSteam
-            if (!Program.UserConfig.IsSteamVersion)
+            if (!LegacyBootstrapper.UserConfig.IsSteamVersion)
             {
-                var steamApiDll = Path.Combine(Program.UserConfig.GameFilesPath, "steam_api.dll");
+                var steamApiDll = Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "steam_api.dll");
                 if (File.Exists(steamApiDll))
                     File.Delete(steamApiDll);
             }
 
             //MpSettings
-            if (!isOffline && Program.UserConfig.MpSettings != null)
-                if (Program.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
+            if (!isOffline && LegacyBootstrapper.UserConfig.MpSettings != null)
+                if (LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
                 {
-                    Program.UserConfig.MpSettings.PublicIp = Program.CurrentUser.Ip;
+                    LegacyBootstrapper.UserConfig.MpSettings.PublicIp = LegacyBootstrapper.CurrentUser.Ip;
 
-                    if (Program.UserConfig.MpSettings.PortMappingType == PortMappingType.Upnp)
+                    if (LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.Upnp)
                         try
                         {
                             await OpenNat.MapPortTask(1000, 1000);
                         }
                         catch (Exception)
                         {
-                            Program.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
+                            LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
 
                             MsgBox.ShowMessage(
                                 "Error: Upnp device not found! \"UPnP Port Mapping\" has been disabled.",
@@ -547,8 +547,8 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 //Launch Game
-                var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
-                    ? Program.UserConfig.GameFilesPath
+                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
+                    ? LegacyBootstrapper.UserConfig.GameFilesPath
                     : GameScannnerApi.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
@@ -557,7 +557,7 @@ namespace Celeste_Launcher_Gui.Forms
                     throw new FileNotFoundException("Spartan.exe not found!", spartanPath);
 
                 string lang;
-                switch (Program.UserConfig.GameLanguage)
+                switch (LegacyBootstrapper.UserConfig.GameLanguage)
                 {
                     case GameLanguage.deDE:
                         lang = "de-DE";
@@ -578,13 +578,13 @@ namespace Celeste_Launcher_Gui.Forms
                         lang = "zh-CHT";
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException(nameof(Program.UserConfig.GameLanguage),
-                            Program.UserConfig.GameLanguage, null);
+                        throw new ArgumentOutOfRangeException(nameof(LegacyBootstrapper.UserConfig.GameLanguage),
+                            LegacyBootstrapper.UserConfig.GameLanguage, null);
                 }
 
                 try
                 {
-                    if (Program.UserConfig.IsDiagnosticMode)
+                    if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
                     {
                         //
                         try
@@ -609,7 +609,7 @@ namespace Celeste_Launcher_Gui.Forms
                         const int maxNumOfCrashDumps = 30;
                         if (!File.Exists(procdumpFileName))
                         {
-                            Program.UserConfig.IsDiagnosticMode = false;
+                            LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
                             throw new FileNotFoundException(
                                 "Diagonstic Mode requires procdump.exe (File not Found).\r\n" +
                                 "Diagonstic Mode will be disabled.",
@@ -687,6 +687,7 @@ namespace Celeste_Launcher_Gui.Forms
                 string arg;
                 if (isOffline)
                     arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+<<<<<<< HEAD
                 else if (Program.UserConfig?.MpSettings == null ||
                          Program.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
                     arg = Program.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
@@ -695,6 +696,12 @@ namespace Celeste_Launcher_Gui.Forms
                 else
                     arg =
                         $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+=======
+                else
+                    arg = LegacyBootstrapper.UserConfig?.MpSettings == null || LegacyBootstrapper.UserConfig.MpSettings.IsOnline
+                        ? $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+>>>>>>> Refactor old main class to legacy bootstrapper
 
                 Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
             }

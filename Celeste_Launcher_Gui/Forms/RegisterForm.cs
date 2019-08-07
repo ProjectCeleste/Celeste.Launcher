@@ -24,7 +24,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var response = await Program.WebSocketApi.DoValidMail(tb_Mail.Text);
+                var response = await LegacyBootstrapper.WebSocketApi.DoValidMail(tb_Mail.Text);
 
                 if (response.Result)
                 {
@@ -63,7 +63,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var response = await Program.WebSocketApi.DoRegister(tb_Mail.Text, tb_InviteCode.Text, tb_UserName.Text,
+                var response = await LegacyBootstrapper.WebSocketApi.DoRegister(tb_Mail.Text, tb_InviteCode.Text, tb_UserName.Text,
                     tb_Password.Text);
 
                 if (response.Result)

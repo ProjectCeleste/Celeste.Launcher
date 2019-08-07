@@ -18,8 +18,8 @@ namespace Celeste_Launcher_Gui.Forms
 
             SkinHelperFonts.SetFont(Controls);
 
-            if (Program.UserConfig != null && !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath))
-                tb_GamePath.Text = Program.UserConfig.GameFilesPath;
+            if (LegacyBootstrapper.UserConfig != null && !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath))
+                tb_GamePath.Text = LegacyBootstrapper.UserConfig.GameFilesPath;
             else
                 tb_GamePath.Text = GameScannnerApi.GetGameFilesRootPath();
         }
@@ -28,11 +28,11 @@ namespace Celeste_Launcher_Gui.Forms
         {
             try
             {
-                Program.UserConfig.GameFilesPath = tb_GamePath.Text;
-                Program.UserConfig.Save(Program.UserConfigFilePath);
+                LegacyBootstrapper.UserConfig.GameFilesPath = tb_GamePath.Text;
+                LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
-                using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath,
-                    Program.UserConfig.IsSteamVersion))
+                using (var form = new GameScanProgressForm(LegacyBootstrapper.UserConfig.GameFilesPath,
+                    LegacyBootstrapper.UserConfig.IsSteamVersion))
                 {
                     var dr = form.ShowDialog();
 

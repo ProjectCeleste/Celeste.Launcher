@@ -28,7 +28,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var response = await Program.WebSocketApi.DoGetFriends();
+                var response = await LegacyBootstrapper.WebSocketApi.DoGetFriends();
 
                 if (!response.Result)
                     throw new Exception(response.Message);
@@ -150,7 +150,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 var response =
-                    await Program.WebSocketApi.DoRemoveFriend(xuid);
+                    await LegacyBootstrapper.WebSocketApi.DoRemoveFriend(xuid);
 
                 if (!response.Result)
                     throw new Exception(response.Message);
@@ -172,7 +172,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 var response =
-                    await Program.WebSocketApi.DoAddFriend(tb_AddFriend.Text);
+                    await LegacyBootstrapper.WebSocketApi.DoAddFriend(tb_AddFriend.Text);
 
                 if (!response.Result)
                     throw new Exception(response.Message);
@@ -209,7 +209,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 var response =
-                    await Program.WebSocketApi.DoConfirmFriend(((FriendJson) listView2.SelectedItems[0].Tag).Xuid);
+                    await LegacyBootstrapper.WebSocketApi.DoConfirmFriend(((FriendJson) listView2.SelectedItems[0].Tag).Xuid);
 
                 if (!response.Result)
                     throw new Exception(response.Message);
@@ -246,7 +246,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var responsePendingFriends = await Program.WebSocketApi.DoGetPendingFriends();
+                var responsePendingFriends = await LegacyBootstrapper.WebSocketApi.DoGetPendingFriends();
 
                 if (!responsePendingFriends.Result)
                     throw new Exception(responsePendingFriends.Message);

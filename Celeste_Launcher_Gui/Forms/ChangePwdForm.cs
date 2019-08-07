@@ -33,15 +33,15 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var response = await Program.WebSocketApi.DoChangePassword(tb_Password.Text, tb_ConfirmPassword.Text);
+                var response = await LegacyBootstrapper.WebSocketApi.DoChangePassword(tb_Password.Text, tb_ConfirmPassword.Text);
 
                 if (response.Result)
                 {
                     MsgBox.ShowMessage(@"Password changed with success.", @"Celeste Fan Project",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (Program.UserConfig?.LoginInfo != null)
-                        Program.UserConfig.LoginInfo.Password = tb_ConfirmPassword.Text;
+                    if (LegacyBootstrapper.UserConfig?.LoginInfo != null)
+                        LegacyBootstrapper.UserConfig.LoginInfo.Password = tb_ConfirmPassword.Text;
 
                     DialogResult = DialogResult.OK;
                     Close();

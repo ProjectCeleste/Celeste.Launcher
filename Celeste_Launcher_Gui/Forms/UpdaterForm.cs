@@ -242,7 +242,7 @@ namespace Celeste_Launcher_Gui.Forms
                 var progress = new Progress<int>();
                 progress.ProgressChanged += ProgressChanged;
 
-                await DoDownloadAndInstallUpdate(Program.UserConfig.IsSteamVersion, progress, _cts.Token);
+                await DoDownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
 
                 MsgBox.ShowMessage(
                     @"""Celeste Fan Project Launcher"" has been updated, it will now re-start.",
