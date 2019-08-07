@@ -729,6 +729,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PvP Info.
+        /// </summary>
+        public static string OverviewChampionModeInfoSideMenuBtn {
+            get {
+                return ResourceManager.GetString("OverviewChampionModeInfoSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discord.
         /// </summary>
         public static string OverviewDiscordSideMenuBtn {
@@ -788,15 +797,6 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string OverviewPlayOfflineBtn {
             get {
                 return ResourceManager.GetString("OverviewPlayOfflineBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pvp Patch Notes.
-        /// </summary>
-        public static string OverviewPvpPatchNotesSideMenuBtn {
-            get {
-                return ResourceManager.GetString("OverviewPvpPatchNotesSideMenuBtn", resourceCulture);
             }
         }
         

@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
       xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+      xmlns:h="clr-namespace:Celeste_Launcher_Gui.Helpers"
       mc:Ignorable="d" 
       d:DesignHeight="587" d:DesignWidth="964" UseLayoutRounding="True">
 
@@ -20,25 +21,25 @@
             <local:SideBarMenuItemWide 
                         LabelContents="{x:Static p:Resources.MainMenuCelesteSideMenuBtn}" 
                         DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Normal.png"
-                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" />
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" Click="OnCelesteClick"/>
 
             <local:SideBarMenuItem 
                         LabelContents="{x:Static p:Resources.MainMenuDiscordSideMenuBtn}" 
                         DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Normal.png"
-                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" HorizontalAlignment="Left" />
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" HorizontalAlignment="Left"  Click="OnDiscordClick"/>
 
             <local:SideBarMenuItem 
                         LabelContents="{x:Static p:Resources.MainMenuRedditSideMenuBtn}" 
                         DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Normal.png"
-                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Hover.png" HorizontalAlignment="Left" />
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Hover.png" HorizontalAlignment="Left"  Click="OnRedditClick"/>
 
             <local:SideBarMenuItem 
                         LabelContents="{x:Static p:Resources.MainMenuYoutubeSideMenuBtn}" 
                         DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Normal.png"
-                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Hover.png" HorizontalAlignment="Left" />
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Hover.png" HorizontalAlignment="Left"  Click="OnYoutubeClick"/>
         </StackPanel>
 
-        <Label Content="V 2.0.8.1" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
+        <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
             <Label.Background>
                 <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
             </Label.Background>

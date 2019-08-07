@@ -361,6 +361,9 @@
   <data name="OverviewAoedbSideMenuBtn" xml:space="preserve">
     <value>aoedb.net</value>
   </data>
+  <data name="OverviewChampionModeInfoSideMenuBtn" xml:space="preserve">
+    <value>PvP Info</value>
+  </data>
   <data name="OverviewDiscordSideMenuBtn" xml:space="preserve">
     <value>Discord</value>
   </data>
@@ -381,9 +384,6 @@
   </data>
   <data name="OverviewPlayOfflineBtn" xml:space="preserve">
     <value>Play Offline</value>
-  </data>
-  <data name="OverviewPvpPatchNotesSideMenuBtn" xml:space="preserve">
-    <value>Pvp Patch Notes</value>
   </data>
   <data name="OverviewRedditSideMenuBtn" xml:space="preserve">
     <value>Reddit</value>

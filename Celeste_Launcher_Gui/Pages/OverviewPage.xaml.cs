@@ -1,6 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Windows;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,5 +30,67 @@ namespace Celeste_Launcher_Gui.Pages
         {
             new UpdateWindow().Show();
         }
+
+        #region Links
+        private void OnCelesteClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://projectceleste.com");
+        }
+
+        private void OnDiscordClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://discord.gg/xXFUvWA");
+        }
+
+        private void OnRedditClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://www.reddit.com/r/projectceleste/");
+        }
+
+        private void OnYoutubeClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://www.youtube.com/channel/UC5gS69ffCAeqvJrqWvlnZgg");
+        }
+
+        private void OnAccountClick(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
+        private void OnFriendsClick(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
+        private void OnDonateClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://forums.projectceleste.com/donations/project-celeste-donations.2/campaign");
+        }
+
+        private void OnLogoutClick(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
+        private void OnSettingsClick(object sender, RoutedEventArgs e)
+        {
+            // TODO
+        }
+
+        private void OnAoeodbClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://aoedb.net/");
+        }
+
+        private void OnPatchNotesClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://forums.projectceleste.com/forums/announcements.12/");
+        }
+
+        private void OnChampionModeInfoClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://champion.projectceleste.com/greek/military");
+        }
+        #endregion
     }
 }

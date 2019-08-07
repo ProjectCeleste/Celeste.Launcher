@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
         xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        xmlns:h="clr-namespace:Celeste_Launcher_Gui.Helpers"
         mc:Ignorable="d"
         UseLayoutRounding="True"
         d:DesignHeight="587" d:DesignWidth="964">
@@ -15,27 +16,27 @@
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewAccountSideMenuBtn}" 
                 DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Hover.png" HorizontalAlignment="Left" />
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Hover.png" HorizontalAlignment="Left" Click="OnAccountClick"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewFriendsSideMenuBtn}" 
                 DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Hover.png" HorizontalAlignment="Left" />
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Hover.png" HorizontalAlignment="Left" Click="OnFriendsClick"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewDonateSideMenuBtn}" 
                 DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Hover.png" HorizontalAlignment="Left" />
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Hover.png" HorizontalAlignment="Left" Click="OnDonateClick"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewLogoutSideMenuBtn}" 
                 DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Logout-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Logout-Hover.png" HorizontalAlignment="Left" />
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Logout-Hover.png" HorizontalAlignment="Left" Click="OnLogoutClick"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewSettingsSideMenuBtn}" 
                 DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Left" />
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Left" Click="OnSettingsClick"/>
         </StackPanel>
         </Grid>
 
@@ -53,46 +54,45 @@
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewWebsiteSideMenuBtn}" 
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" Click="OnWebisteClick"/>
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" Click="OnCelesteClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewDiscordSideMenuBtn}" 
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" HorizontalAlignment="Left" />
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" HorizontalAlignment="Left" Click="OnDiscordClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewRedditSideMenuBtn}" 
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Hover.png" HorizontalAlignment="Left" />
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Hover.png" HorizontalAlignment="Left" Click="OnRedditClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewYoutubeSideMenuBtn}" 
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/YouTube-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/YouTube-Hover.png" HorizontalAlignment="Left" />
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/YouTube-Hover.png" HorizontalAlignment="Left" Click="OnYoutubeClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewAoedbSideMenuBtn}" 
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/aoedb-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/aoedb-Hover.png" HorizontalAlignment="Left" />
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/aoedb-Hover.png" HorizontalAlignment="Left" Click="OnAoeodbClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewPatchNotesSideMenuBtn}"
                     LabelSize="14"
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Hover.png" HorizontalAlignment="Left" />
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnPatchNotesClick"/>
 
                 <local:SideBarMenuItemRight
-                    LabelContents="{x:Static p:Resources.OverviewPvpPatchNotesSideMenuBtn}"
-                    LabelSize="11"
+                    LabelContents="{x:Static p:Resources.OverviewChampionModeInfoSideMenuBtn}"
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PvPPatchNotes-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PvPPatchNotes-Hover.png" HorizontalAlignment="Left" />
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PvPPatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnChampionModeInfoClick"/>
             </StackPanel>
         </Grid>
 
         <!-- version number box = 280x78 -->
         <Grid Margin="485,343,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="279" Height="78">
             <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Label Content="V 2.0.8.1" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
+                <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
                     <Label.Background>
                         <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
                     </Label.Background>

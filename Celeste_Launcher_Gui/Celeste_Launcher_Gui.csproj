@@ -176,6 +176,7 @@
     <Compile Include="Forms\MpSettingForm.Designer.cs">
       <DependentUpon>MpSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AppVersionService.cs" />
     <Compile Include="Helpers\EncryptDecrypt.cs" />
     <Compile Include="Helpers\Dism.cs" />
     <Compile Include="Helpers\Firewall.cs" />

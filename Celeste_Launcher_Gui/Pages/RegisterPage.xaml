@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
         xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        xmlns:h="clr-namespace:Celeste_Launcher_Gui.Helpers"
         mc:Ignorable="d"
         UseLayoutRounding="True"
         d:DesignHeight="587" d:DesignWidth="964">
@@ -32,7 +33,7 @@
             </StackPanel>
         </Grid>
 
-        <Label Content="V 2.0.8.1" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
+        <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
             <Label.Background>
                 <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
             </Label.Background>

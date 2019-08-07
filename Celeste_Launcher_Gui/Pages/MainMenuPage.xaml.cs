@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Celeste_Launcher_Gui.Pages
             InitializeComponent();
         }
 
+        #region Navigation
         private void OnLoginClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Pages/LoginPage.xaml", UriKind.Relative));
@@ -44,5 +46,28 @@ namespace Celeste_Launcher_Gui.Pages
         {
             NavigationService.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
         }
+        #endregion
+
+        #region Links
+        private void OnCelesteClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://projectceleste.com");
+        }
+
+        private void OnDiscordClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://discord.gg/xXFUvWA");
+        }
+
+        private void OnRedditClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://www.reddit.com/r/projectceleste/");
+        }
+
+        private void OnYoutubeClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://www.youtube.com/channel/UC5gS69ffCAeqvJrqWvlnZgg");
+        }
+        #endregion
     }
 }

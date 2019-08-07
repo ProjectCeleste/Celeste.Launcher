@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,11 @@ namespace Celeste_Launcher_Gui.Windows
         private void OnMinimize(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void OpenLegalTermsWebsite(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start("https://www.xbox.com/en-us/developers/rules");
         }
     }
 }
