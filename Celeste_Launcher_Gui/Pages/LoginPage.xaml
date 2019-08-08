@@ -21,17 +21,17 @@
                         <Setter Property="Margin" Value="0,10,0,0"/>
                     </Style>
                 </StackPanel.Resources>
-                <local:WideRegisterInputField LabelContent="{x:Static p:Resources.LoginEmailField}" Margin="2"/>
-                <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.LoginPasswordField}" Margin="2"/>
+                <local:WideRegisterInputField LabelContent="{x:Static p:Resources.LoginEmailField}" Margin="2" x:Name="EmailInputField"/>
+                <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.LoginPasswordField}" x:Name="PasswordInputField" Margin="2"/>
                 <DockPanel>
                     <StackPanel HorizontalAlignment="Left" Margin="4,2,0,0">
-                        <local:CheckBox Content="{x:Static p:Resources.LoginRememberPasswordOption}" Margin="2"/>
-                        <local:CheckBox Content="{x:Static p:Resources.LoginAutoLoginOption}" Margin="2"/>
+                        <local:CheckBox Content="{x:Static p:Resources.LoginRememberPasswordOption}" x:Name="RememberPasswordOption" Margin="2"/>
+                        <local:CheckBox Content="{x:Static p:Resources.LoginAutoLoginOption}" x:Name="AutoLoginOption" Margin="2"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right" Margin="2">
-                        <local:MediumButton Content="{x:Static p:Resources.LoginPerformLoginBtn}" Click="PerformLogin" Margin="2"/>
+                        <local:MediumButton Content="{x:Static p:Resources.LoginPerformLoginBtn}" Click="PerformLogin" Margin="2" x:Name="LoginButton"/>
                         <Label Margin="2" HorizontalAlignment="Center">
-                            <Hyperlink NavigateUri="/PageLibrary;component/SharedPage.xaml" Foreground="#32a5f5" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="17">
+                            <Hyperlink Foreground="#32a5f5" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="17" Click="ForgottenPasswordClick">
                                 <TextBlock Text="{x:Static p:Resources.LoginForgottenPassword}"/>
                             </Hyperlink>
                         </Label>

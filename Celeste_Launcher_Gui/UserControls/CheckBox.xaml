@@ -7,7 +7,7 @@
              mc:Ignorable="d">
     <UserControl.Template>
         <ControlTemplate>
-            <CheckBox FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" FontSize="15" Content="{Binding Path=Content, RelativeSource={x:Static RelativeSource.TemplatedParent}}">
+            <CheckBox FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" FontSize="15" Content="{Binding Path=Content, RelativeSource={x:Static RelativeSource.TemplatedParent}}" IsChecked="{Binding Path=Checked, RelativeSource={x:Static RelativeSource.TemplatedParent}}">
                 <CheckBox.Template>
                     <ControlTemplate TargetType="CheckBox">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

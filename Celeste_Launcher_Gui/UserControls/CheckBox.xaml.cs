@@ -20,6 +20,15 @@ namespace Celeste_Launcher_Gui.UserControls
     /// </summary>
     public partial class CheckBox : UserControl
     {
+        public static readonly DependencyProperty CheckedProperty =
+            DependencyProperty.Register("Checked", typeof(bool), typeof(CheckBox), new PropertyMetadata(false));
+
+        public bool Checked
+        {
+            get { return (bool)GetValue(CheckedProperty); }
+            set { SetValue(CheckedProperty, value); }
+        }
+
         public CheckBox()
         {
             InitializeComponent();

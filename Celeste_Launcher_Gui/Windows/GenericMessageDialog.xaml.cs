@@ -48,6 +48,12 @@ namespace Celeste_Launcher_Gui.Windows
             }
         }
 
+        public static bool? Show(string message, DialogIcon icon = DialogIcon.None, DialogOptions option = DialogOptions.Ok)
+        {
+            var dialog = new GenericMessageDialog(message, icon, option);
+            return dialog.ShowDialog();
+        }
+
         private void BorderMoved(object sender, MouseButtonEventArgs e)
         {
             DragMove();
