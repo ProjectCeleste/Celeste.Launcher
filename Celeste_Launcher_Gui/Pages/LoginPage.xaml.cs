@@ -55,6 +55,8 @@ namespace Celeste_Launcher_Gui.Pages
 
                     LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
+                    LegacyBootstrapper.CurrentUser = response.User;
+
                     NavigationService.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
                 }
                 else

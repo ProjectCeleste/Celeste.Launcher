@@ -209,6 +209,7 @@
     <Compile Include="Forms\UpdaterForm.Designer.cs">
       <DependentUpon>UpdaterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\GameService.cs" />
     <Compile Include="UserControls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>

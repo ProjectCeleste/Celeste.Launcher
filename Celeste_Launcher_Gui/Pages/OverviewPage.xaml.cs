@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Windows;
+﻿using Celeste_Launcher_Gui.Services;
+using Celeste_Launcher_Gui.Windows;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -92,5 +93,20 @@ namespace Celeste_Launcher_Gui.Pages
             Process.Start("https://champion.projectceleste.com/greek/military");
         }
         #endregion
+
+        private void OnLoginClick(object sender, RoutedEventArgs e)
+        {
+            // Start the game
+            LoginBtn.IsEnabled = false;
+            GameService.StartGame();
+            LoginBtn.IsEnabled = true;
+        }
+
+        private void OnPlayOffline(object sender, RoutedEventArgs e)
+        {
+            PlayOfflineBtn.IsEnabled = false;
+            GameService.StartGame();
+            PlayOfflineBtn.IsEnabled = true;
+        }
     }
 }
