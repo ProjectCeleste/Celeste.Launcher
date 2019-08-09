@@ -18,7 +18,7 @@
                 <DockPanel DockPanel.Dock="Bottom">
                     <TextBlock TextWrapping="WrapWithOverflow" Height="77" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="16" Foreground="White" TextAlignment="Center">
                         Age of Empires Online © Microsoft Corporation.<LineBreak/>
-                        Project Celeste was created under Microsoft's "<Hyperlink RequestNavigate="OpenLegalTermsWebsite" Foreground="#32a5f5">Game Content Usage Rules</Hyperlink>" using assets from<LineBreak/>
+                        Project Celeste was created under Microsoft's "<Hyperlink Click="OpenLegalTermsWebsite" Foreground="#32a5f5">Game Content Usage Rules</Hyperlink>" using assets from<LineBreak/>
                         Age of Empires Online, and it is not endorsed by or affiliated with Microsoft.
                     </TextBlock>
                 </DockPanel>

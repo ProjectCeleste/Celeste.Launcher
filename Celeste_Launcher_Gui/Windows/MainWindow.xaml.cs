@@ -46,7 +46,7 @@ namespace Celeste_Launcher_Gui.Windows
             WindowState = WindowState.Minimized;
         }
 
-        private void OpenLegalTermsWebsite(object sender, RequestNavigateEventArgs e)
+        private void OpenLegalTermsWebsite(object sender, RoutedEventArgs e)
         {
             Process.Start("https://www.xbox.com/en-us/developers/rules");
         }
