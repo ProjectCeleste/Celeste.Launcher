@@ -74,7 +74,23 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnLogoutClick(object sender, RoutedEventArgs e)
         {
-            // TODO
+            try
+            {
+                LegacyBootstrapper.WebSocketApi?.Disconnect();
+            }
+            catch
+            {
+                // TODO: Log exception here
+            }
+
+            //Save UserConfig
+            if (LegacyBootstrapper.UserConfig?.LoginInfo != null)
+            {
+                LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = false;
+                LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
+            }
+
+            NavigationService.Navigate(new Uri("Pages/MainMenuPage.xaml", UriKind.Relative));
         }
 
         private void OnSettingsClick(object sender, RoutedEventArgs e)
@@ -100,7 +116,6 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnLoginClick(object sender, RoutedEventArgs e)
         {
-            // Start the game
             LoginBtn.IsEnabled = false;
             GameService.StartGame();
             LoginBtn.IsEnabled = true;
