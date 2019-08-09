@@ -12,8 +12,8 @@
     <Grid>
         <Grid VerticalAlignment="Top" Height="168">
             <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterEmailLabelText}"/>
-                <local:MediumButton Content="{x:Static p:Resources.RegisterVerifyBtnText}" Margin="10,0,0,0"/>
+                <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterEmailLabelText}" x:Name="EmailField"/>
+                <local:MediumButton Content="{x:Static p:Resources.RegisterVerifyBtnText}" Margin="10,0,0,0" Click="OnVerifyEmail" x:Name="VerifyEmailBtn"/>
             </WrapPanel>
         </Grid>
         <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-SuperLongVertical.png" Stretch="None" Height="53" VerticalAlignment="Top" Margin="0,150,0,0"/>
@@ -21,14 +21,14 @@
         <Grid VerticalAlignment="Bottom" Height="406">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}"/>
-                    <local:MediumButton Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0"/>
+                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" x:Name="VerifyKeyField"/>
+                    <local:MediumButton Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0" Click="OnResendVerificationKey" x:Name="ResentKeyBtn"/>
                 </WrapPanel>
-                <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left"/>
-                <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left"/>
+                <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left" x:Name="UsernameField"/>
+                <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left" x:Name="PasswordField"/>
                 <DockPanel>
-                    <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left"/>
-                    <local:MediumButton Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right"/>
+                    <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="ConfirmPasswordField"/>
+                    <local:MediumButton Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn"/>
                 </DockPanel>
             </StackPanel>
         </Grid>
