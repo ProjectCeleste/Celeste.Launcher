@@ -1,5 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,9 +23,12 @@ namespace Celeste_Launcher_Gui.Pages
     /// </summary>
     public partial class OverviewPage : Page
     {
+        public User CurrentUser => LegacyBootstrapper.CurrentUser;
+
         public OverviewPage()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         public void OnWebisteClick(object sender, RoutedEventArgs e)

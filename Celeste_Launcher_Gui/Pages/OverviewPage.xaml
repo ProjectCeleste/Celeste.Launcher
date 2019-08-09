@@ -43,7 +43,7 @@
         <!-- topmiddle = 566x331 -->
         <Grid Margin="199,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="565" Height="332">
             <StackPanel VerticalAlignment="Center">
-                <local:UserInfoWidget />
+                <local:UserInfoWidget Username="{Binding CurrentUser.ProfileName}" Rank="{Binding CurrentUser.Rank}"/>
                 <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Celeste Logo Roman Final.png" Stretch="None" Margin="0,5,0,0"/>
             </StackPanel>
         </Grid>
