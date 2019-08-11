@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Horizontal">
+    <StackPanel Orientation="Horizontal" x:Name="LayoutRoot">
         <Label Content="{Binding LabelContents}" Foreground="White" VerticalAlignment="Center" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15">
             <Label.Effect>
                 <DropShadowEffect ShadowDepth="4"

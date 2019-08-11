@@ -6,7 +6,7 @@
         xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
         xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.GameUpdateTitle}" Height="521" Width="671" WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True">
+        Title="{x:Static p:Resources.GameUpdateTitle}" Height="521" Width="671" WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True" Loaded="LoadVersionData">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/UpdateWindow.png" />
@@ -22,14 +22,14 @@
         </Grid>
         <Grid Width="510" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50,30,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.GameUpdateNewVersionLabel}" VersionNumber="0.0.0.0" Margin="0,0,10,0"/>
-                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.GameUpdateInstalledVersionLabel}" VersionNumber="0.0.0.0"/>
+                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.GameUpdateNewVersionLabel}" VersionNumber="{Binding NewVersion}" Margin="0,0,10,0"/>
+                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.GameUpdateInstalledVersionLabel}" VersionNumber="{Binding CurrentVersion}"/>
             </StackPanel>
             
         </Grid>
-        <TextBlock Width="490" Height="240" Text="asd" Margin="0,121,16,0" VerticalAlignment="Top" Foreground="White" />
+        <TextBlock Width="490" Height="240" Text="{Binding ChangeLog}" Margin="0,121,16,0" VerticalAlignment="Top" Foreground="White" x:Name="Bloock"/>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="90">
-            <local:MediumButton Content="{x:Static p:Resources.GameUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate"/>
+            <local:MediumButton Content="{x:Static p:Resources.GameUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate" Visibility="Hidden"/>
             <StackPanel VerticalAlignment="Center" x:Name="UpdateProgressionControls" Visibility="Hidden">
                 <local:UpdateProgressBar x:Name="ProgressBar"/>
                 <Label Content="Update in progress" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="20" HorizontalAlignment="Center"/>

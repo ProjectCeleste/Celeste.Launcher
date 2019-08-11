@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Celeste_Launcher_Gui.Windows;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -51,7 +52,8 @@ namespace Celeste_Launcher_Gui.Pages
         #region Links
         private void OnCelesteClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://projectceleste.com");
+            //Process.Start("https://projectceleste.com");
+            new UpdateWindow().Show();
         }
 
         private void OnDiscordClick(object sender, RoutedEventArgs e)

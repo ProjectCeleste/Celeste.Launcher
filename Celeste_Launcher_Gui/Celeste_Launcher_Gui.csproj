@@ -213,6 +213,7 @@
       <DependentUpon>UpdaterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\UpdateService.cs" />
     <Compile Include="UserControls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
@@ -258,6 +259,7 @@
     <Compile Include="UserControls\WindowControl.xaml.cs">
       <DependentUpon>WindowControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\LauncherVersionInfo.cs" />
     <Compile Include="Windows\GenericMessageDialog.xaml.cs">
       <DependentUpon>GenericMessageDialog.xaml</DependentUpon>
     </Compile>
