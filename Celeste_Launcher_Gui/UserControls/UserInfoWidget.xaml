@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignWidth="352" d:DesignHeight="96"
              Width="352" Height="96">
-    <Grid>
+    <Grid x:Name="LayoutRoot">
         <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/PlayerNameplateEmpty.png" />
         </Grid.Background>

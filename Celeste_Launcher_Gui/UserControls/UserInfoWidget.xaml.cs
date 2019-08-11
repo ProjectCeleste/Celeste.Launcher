@@ -51,7 +51,7 @@ namespace Celeste_Launcher_Gui.UserControls
         public UserInfoWidget()
         {
             InitializeComponent();
-            DataContext = this;
+            LayoutRoot.DataContext = this;
         }
     }
 }

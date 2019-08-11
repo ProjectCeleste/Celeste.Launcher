@@ -69,7 +69,7 @@ namespace Celeste_Launcher_Gui.UserControls
         public SideBarMenuItemRight()
         {
             InitializeComponent();
-            DataContext = this;
+            SideBarGrid.DataContext = this;
         }
 
         private void SideBarGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -41,7 +41,7 @@ namespace Celeste_Launcher_Gui.UserControls
         public ShortRegisterPasswordInputField()
         {
             InitializeComponent();
-            DataContext = this;
+            LayoutRoot.DataContext = this;
         }
     }
 }

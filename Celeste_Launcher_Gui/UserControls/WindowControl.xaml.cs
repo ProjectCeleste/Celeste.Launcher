@@ -68,7 +68,6 @@ namespace Celeste_Launcher_Gui.UserControls
         public WindowControl()
         {
             InitializeComponent();
-            DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

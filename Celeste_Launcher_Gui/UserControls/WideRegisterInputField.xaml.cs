@@ -50,7 +50,7 @@ namespace Celeste_Launcher_Gui.UserControls
         public WideRegisterInputField()
         {
             InitializeComponent();
-            DataContext = this;
+            LayoutRoot.DataContext = this;
         }
     }
 }
