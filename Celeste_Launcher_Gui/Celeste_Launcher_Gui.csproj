@@ -79,9 +79,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
     <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
