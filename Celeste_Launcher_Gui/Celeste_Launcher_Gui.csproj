@@ -186,6 +186,10 @@
     <Compile Include="Helpers\OpenNat.cs" />
     <Compile Include="Helpers\OSVersion.cs" />
     <Compile Include="Helpers\Steam.cs" />
+    <Compile Include="Helpers\ButtonThemeProperties.cs" />
+    <Compile Include="Pages\LanguageSelectionPage.xaml.cs">
+      <DependentUpon>LanguageSelectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -228,6 +232,9 @@
     </Compile>
     <Compile Include="UserControls\ShortRegisterPasswordInputField.xaml.cs">
       <DependentUpon>ShortRegisterPasswordInputField.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LanguageButton.xaml.cs">
+      <DependentUpon>LanguageButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SideBarMenuItem.xaml.cs">
       <DependentUpon>SideBarMenuItem.xaml</DependentUpon>
@@ -351,6 +358,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\Icons\Flags\de-DE-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\de-DE-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\en-US-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\en-US-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\es-ES-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\es-ES-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\fr-FR-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\fr-FR-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\it-IT-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\it-IT-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\pt-BR-Disabled.png" />
+    <Resource Include="Resources\Icons\Flags\pt-BR-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\pt-BR-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\zh-CHT-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\zh-CHT-Normal.png" />
     <Resource Include="Resources\AoEO_Logo.png" />
     <Resource Include="Resources\ButtonBackgroundBarLong.png" />
     <Resource Include="Resources\ButtonBackgroundBarShort.png" />
@@ -503,6 +525,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Pages\LanguageSelectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -536,6 +562,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ShortRegisterPasswordInputField.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LanguageButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -40,7 +40,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnPlayOfflineClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("Pages/LanguageSelectionPage.xaml", UriKind.Relative));
         }
 
         private void OpenMainOverview(object sender, RoutedEventArgs e)

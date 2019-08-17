@@ -1,0 +1,60 @@
+﻿<Page x:Class="Celeste_Launcher_Gui.Pages.LanguageSelectionPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+        xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        xmlns:theme="clr-namespace:Celeste_Launcher_Gui.Helpers"
+        mc:Ignorable="d"
+        Height="308" Width="849" UseLayoutRounding="True">
+    <Grid>
+        <Border BorderThickness="23">
+            <Border.BorderBrush>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/LoginWindowFrame.png"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/LoginWindowContents.png"/>
+            </Border.Background>
+            <StackPanel VerticalAlignment="Center">
+
+                <Label FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="30" Foreground="#C0B38F" HorizontalAlignment="Center" Content="Select your game language" Margin="0,0,0,20"/>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <local:LanguageButton
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/de-DE-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/de-DE-Hover.png" Margin="10" Click="SelectGerman"/>
+
+                    <local:LanguageButton
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/en-US-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/en-US-Hover.png" Margin="10" Click="SelectEnglish"/>
+
+                    <local:LanguageButton
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/es-ES-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/es-ES-Hover.png" Margin="10" Click="SelectSpanish"/>
+
+                    <local:LanguageButton
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/fr-FR-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/fr-FR-Hover.png" Margin="10" Click="SelectFrench"/>
+
+                    <local:LanguageButton
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/it-IT-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/it-IT-Hover.png" Margin="10" Click="SelectItalian"/>
+
+                    <local:LanguageButton
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/zh-CHT-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/zh-CHT-Hover.png" Margin="10" Click="SelectChinese"/>
+
+                    <local:LanguageButton
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/pt-BR-Disabled.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/pt-BR-Disabled.png" Margin="10"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
+             <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseHover.png"
+                    Click="OnAbortLoginClick"/>
+        </StackPanel>
+    </Grid>
+</Page>
