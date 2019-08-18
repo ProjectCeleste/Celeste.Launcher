@@ -23,15 +23,25 @@ namespace Celeste_Launcher_Gui.UserControls
         public static readonly DependencyProperty ClickProperty =
             DependencyProperty.Register("Click", typeof(RoutedEventHandler), typeof(LargeButton), new PropertyMetadata(default(RoutedEventHandler)));
 
+        public static readonly DependencyProperty IsDefaultProperty =
+            DependencyProperty.Register("IsDefault", typeof(bool), typeof(LargeButton), new PropertyMetadata(false));
+
         public RoutedEventHandler Click
         {
             get { return (RoutedEventHandler)GetValue(ClickProperty); }
             set { SetValue(ClickProperty, value); }
         }
+        
+        public bool IsDefault
+        {
+            get { return (bool)GetValue(IsDefaultProperty); }
+            set { SetValue(IsDefaultProperty, value); }
+        }
 
         public LargeButton()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

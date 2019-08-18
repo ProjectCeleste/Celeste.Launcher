@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
             <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/AoEO_Logo.png" Stretch="None" Margin="10"></Image>
-            <local:LargeButton Content="{x:Static p:Resources.MainMenuLoginBtn}" Margin="5" Click="OnLoginClick"/>
+            <local:LargeButton Content="{x:Static p:Resources.MainMenuLoginBtn}" Margin="5" Click="OnLoginClick" IsDefault="True"/>
             <local:LargeButton Content="{x:Static p:Resources.MainMenuRegisterBtn}" Margin="5" Click="OnRegisterClick"/>
             <local:LargeButton Content="{x:Static p:Resources.MainMenuPlayOfflineBtn}" Margin="5" Click="OnPlayOfflineClick"/>
         </StackPanel>

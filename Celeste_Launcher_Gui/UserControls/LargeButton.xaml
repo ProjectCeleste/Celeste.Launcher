@@ -44,7 +44,7 @@
                     </Setter>
                 </Style>
             </ControlTemplate.Resources>
-            <Button Width="273" Height="66" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="30" Foreground="White" Content="{Binding Path=Content, RelativeSource={x:Static RelativeSource.TemplatedParent}}" Style="{StaticResource InformButton}" Click="Button_Click">
+            <Button Width="273" Height="66" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="30" Foreground="White" Content="{Binding Path=Content, RelativeSource={x:Static RelativeSource.TemplatedParent}}" Style="{StaticResource InformButton}" Click="Button_Click" IsDefault="{Binding IsDefault}">
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="4"
                                         Direction="330"
