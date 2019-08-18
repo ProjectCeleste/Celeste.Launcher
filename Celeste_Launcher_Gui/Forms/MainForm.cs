@@ -687,21 +687,15 @@ namespace Celeste_Launcher_Gui.Forms
                 string arg;
                 if (isOffline)
                     arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-<<<<<<< HEAD
-                else if (Program.UserConfig?.MpSettings == null ||
-                         Program.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
-                    arg = Program.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
-                        ? $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                else if (LegacyBootstrapper.UserConfig?.MpSettings == null ||
+                         LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
+                    arg = LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
+                        ? $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
                 else
                     arg =
-                        $"--email \"{Program.UserConfig.LoginInfo.Email}\" --password \"{Program.UserConfig.LoginInfo.Password}\" --online-ip \"{Program.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-=======
-                else
-                    arg = LegacyBootstrapper.UserConfig?.MpSettings == null || LegacyBootstrapper.UserConfig.MpSettings.IsOnline
-                        ? $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
->>>>>>> Refactor old main class to legacy bootstrapper
+                        $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+
 
                 Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
             }

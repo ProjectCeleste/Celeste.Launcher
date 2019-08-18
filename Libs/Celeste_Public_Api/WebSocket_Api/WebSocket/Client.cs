@@ -3,6 +3,7 @@
 using System;
 using System.ComponentModel;
 using System.Net.Sockets;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
 using SuperSocket.ClientEngine;

@@ -73,21 +73,21 @@ namespace Celeste_Launcher_Gui.Services
 
             //MpSettings
             if (!isOffline && LegacyBootstrapper.UserConfig.MpSettings != null)
-                if (LegacyBootstrapper.UserConfig.MpSettings.IsOnline)
+                if (LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
                 {
                     LegacyBootstrapper.UserConfig.MpSettings.PublicIp = LegacyBootstrapper.CurrentUser.Ip;
 
-                    if (LegacyBootstrapper.UserConfig.MpSettings.AutoPortMapping)
+                    if (LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.Upnp)
                         try
                         {
                             await OpenNat.MapPortTask(1000, 1000);
                         }
                         catch (Exception)
                         {
-                            LegacyBootstrapper.UserConfig.MpSettings.AutoPortMapping = false;
+                            LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
 
                             MsgBox.ShowMessage(
-                                "Error: Upnp device not found! Set \"Auto Port Mapping\" has been disabled.",
+                                "Error: Upnp device not found! \"UPnP Port Mapping\" has been disabled.",
                                 @"Celeste Fan Project",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -240,10 +240,15 @@ namespace Celeste_Launcher_Gui.Services
                 string arg;
                 if (isOffline)
                     arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-                else
-                    arg = LegacyBootstrapper.UserConfig?.MpSettings == null || LegacyBootstrapper.UserConfig.MpSettings.IsOnline
+                else if (LegacyBootstrapper.UserConfig?.MpSettings == null ||
+                         LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
+                    arg = LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
                         ? $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                else
+                    arg =
+                        $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+
 
                 Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
             }
@@ -255,7 +260,5 @@ namespace Celeste_Launcher_Gui.Services
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        
     }
 }
