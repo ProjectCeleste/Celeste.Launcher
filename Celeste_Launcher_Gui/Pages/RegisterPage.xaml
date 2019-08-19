@@ -18,7 +18,7 @@
         </Grid>
         <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-SuperLongVertical.png" Stretch="None" Height="53" VerticalAlignment="Top" Margin="0,150,0,0"/>
 
-        <Grid VerticalAlignment="Bottom" Height="406">
+        <Grid VerticalAlignment="Bottom" Height="356" Margin="0,0,0,50">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" x:Name="VerifyKeyField"/>
@@ -28,8 +28,9 @@
                 <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left" x:Name="PasswordField"/>
                 <DockPanel>
                     <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="ConfirmPasswordField"/>
-                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn"/>
+                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn2"/>
                 </DockPanel>
+                <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCancelBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnAbort" x:Name="RegisterBtn"/>
             </StackPanel>
         </Grid>
 

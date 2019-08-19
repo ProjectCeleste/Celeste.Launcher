@@ -877,6 +877,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string RegisterCancelBtnText {
+            get {
+                return ResourceManager.GetString("RegisterCancelBtnText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string RegisterCompleteRegistrationBtnText {

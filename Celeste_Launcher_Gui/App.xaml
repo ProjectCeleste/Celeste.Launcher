@@ -78,7 +78,7 @@
         <Style x:Key="TinyButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
             <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonNormal.png"/>
             <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonHover.png"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="15"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Width" Value="164"/>
         </Style>

@@ -90,5 +90,10 @@ namespace Celeste_Launcher_Gui.Pages
 
             RegisterBtn.IsEnabled = true;
         }
+
+        private void OnAbort(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

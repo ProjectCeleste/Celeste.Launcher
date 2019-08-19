@@ -421,4 +421,7 @@
   <data name="RegisterVerifyLabelText" xml:space="preserve">
     <value>Verify key:</value>
   </data>
+  <data name="RegisterCancelBtnText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>
