@@ -221,20 +221,11 @@
     <Compile Include="UserControls\CheckBox.xaml.cs">
       <DependentUpon>CheckBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\LargeButton.xaml.cs">
-      <DependentUpon>LargeButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\MediumButton.xaml.cs">
-      <DependentUpon>MediumButton.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\ShortRegisterInputField.xaml.cs">
       <DependentUpon>ShortRegisterInputField.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ShortRegisterPasswordInputField.xaml.cs">
       <DependentUpon>ShortRegisterPasswordInputField.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\LanguageButton.xaml.cs">
-      <DependentUpon>LanguageButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SideBarMenuItem.xaml.cs">
       <DependentUpon>SideBarMenuItem.xaml</DependentUpon>
@@ -244,9 +235,6 @@
     </Compile>
     <Compile Include="UserControls\SideBarMenuItemWide.xaml.cs">
       <DependentUpon>SideBarMenuItemWide.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\TinyButton.xaml.cs">
-      <DependentUpon>TinyButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UpdateProgressBar.xaml.cs">
       <DependentUpon>UpdateProgressBar.xaml</DependentUpon>
@@ -549,23 +537,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\LargeButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\MediumButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UserControls\ShortRegisterInputField.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\ShortRegisterPasswordInputField.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\LanguageButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -578,10 +554,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\SideBarMenuItemWide.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\TinyButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

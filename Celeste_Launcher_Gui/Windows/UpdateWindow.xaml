@@ -29,7 +29,7 @@
         </Grid>
         <TextBlock Width="490" Height="240" Text="{Binding ChangeLog}" Margin="0,121,16,0" VerticalAlignment="Top" Foreground="White" x:Name="Bloock"/>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="90">
-            <local:MediumButton Content="{x:Static p:Resources.GameUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate" Visibility="Hidden"/>
+            <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.GameUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate" Visibility="Hidden"/>
             <StackPanel VerticalAlignment="Center" x:Name="UpdateProgressionControls" Visibility="Hidden">
                 <local:UpdateProgressBar x:Name="ProgressBar"/>
                 <Label Content="Update in progress" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="20" HorizontalAlignment="Center"/>

@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
-    public static class ButtonThemeProperties
+    public class ButtonThemeProperties : DependencyObject
     {
         public static ImageSource GetDefaultIcon(DependencyObject obj)
         {

@@ -32,7 +32,7 @@
                         <local:CheckBox Content="{x:Static p:Resources.LoginAutoLoginOption}" x:Name="AutoLoginOption" Margin="2"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Right" Margin="2">
-                        <local:MediumButton Content="{x:Static p:Resources.LoginPerformLoginBtn}" Click="PerformLogin" Margin="2" x:Name="LoginButton" IsDefault="True"/>
+                        <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.LoginPerformLoginBtn}" Click="PerformLogin" Margin="2" x:Name="LoginButton" IsDefault="True"/>
                         <Label Margin="2" HorizontalAlignment="Center">
                             <Hyperlink Foreground="#32a5f5" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="17" Click="ForgottenPasswordClick">
                                 <TextBlock Text="{x:Static p:Resources.LoginForgottenPassword}"/>

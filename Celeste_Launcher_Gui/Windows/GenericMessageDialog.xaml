@@ -15,11 +15,11 @@
             <DockPanel MouseDown="ContentMoved">
                 <DockPanel VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="YesNoOptions" Visibility="Collapsed">
-                        <local:TinyButton Content="{x:Static p:Resources.OptionYes}" Click="YesClicked" Margin="30"/>
-                        <local:TinyButton Content="{x:Static p:Resources.OptionNo}" Click="NoClicked" Margin="30"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionYes}" Click="YesClicked" Margin="30"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionNo}" Click="NoClicked" Margin="30"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="OkOptions">
-                        <local:TinyButton Content="{x:Static p:Resources.OptionOk}" Click="OkClicked" Margin="30"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionOk}" Click="OkClicked" Margin="30"/>
                     </StackPanel>
                 </DockPanel>
 

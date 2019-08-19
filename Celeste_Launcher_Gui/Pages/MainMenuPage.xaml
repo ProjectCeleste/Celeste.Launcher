@@ -6,15 +6,15 @@
       xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
       xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
       xmlns:h="clr-namespace:Celeste_Launcher_Gui.Helpers"
+      xmlns:theme="clr-namespace:Celeste_Launcher_Gui.Helpers"
       mc:Ignorable="d" 
       d:DesignHeight="587" d:DesignWidth="964" UseLayoutRounding="True">
-
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
             <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/AoEO_Logo.png" Stretch="None" Margin="10"></Image>
-            <local:LargeButton Content="{x:Static p:Resources.MainMenuLoginBtn}" Margin="5" Click="OnLoginClick" IsDefault="True"/>
-            <local:LargeButton Content="{x:Static p:Resources.MainMenuRegisterBtn}" Margin="5" Click="OnRegisterClick"/>
-            <local:LargeButton Content="{x:Static p:Resources.MainMenuPlayOfflineBtn}" Margin="5" Click="OnPlayOfflineClick"/>
+            <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.MainMenuLoginBtn}" Margin="5" Click="OnLoginClick" IsDefault="True"/>
+            <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.MainMenuRegisterBtn}" Margin="5" Click="OnRegisterClick"/>
+            <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.MainMenuPlayOfflineBtn}" Margin="5" Click="OnPlayOfflineClick"/>
         </StackPanel>
 
         <StackPanel Width="300" Height="auto" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom">
