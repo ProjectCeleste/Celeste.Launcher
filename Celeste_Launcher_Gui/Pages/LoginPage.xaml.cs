@@ -50,8 +50,8 @@ namespace Celeste_Launcher_Gui.Pages
                  
                     LegacyBootstrapper.UserConfig.LoginInfo.Email = EmailInputField.InputContent;
                     LegacyBootstrapper.UserConfig.LoginInfo.Password = PasswordInputField.PasswordInputBox.Password;
-                    LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = RememberPasswordOption.Checked;
-                    LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = AutoLoginOption.Checked;
+                    LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = RememberPasswordOption.IsChecked ?? false;
+                    LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = AutoLoginOption.IsChecked ?? false;
 
                     LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 

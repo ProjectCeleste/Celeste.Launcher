@@ -218,9 +218,6 @@
     </Compile>
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\UpdateService.cs" />
-    <Compile Include="UserControls\CheckBox.xaml.cs">
-      <DependentUpon>CheckBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\ShortRegisterInputField.xaml.cs">
       <DependentUpon>ShortRegisterInputField.xaml</DependentUpon>
     </Compile>
@@ -530,10 +527,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\RegisterPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\CheckBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
