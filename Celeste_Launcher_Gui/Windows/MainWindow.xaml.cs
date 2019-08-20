@@ -50,5 +50,34 @@ namespace Celeste_Launcher_Gui.Windows
         {
             Process.Start("https://www.xbox.com/en-us/developers/rules");
         }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (LegacyBootstrapper.UserConfig?.LoginInfo.AutoLogin == true)
+            {
+                NavigationFrame.IsEnabled = false;
+                try
+                {
+                    var response = await LegacyBootstrapper.WebSocketApi.DoLogin(LegacyBootstrapper.UserConfig.LoginInfo.Email,
+                        LegacyBootstrapper.UserConfig.LoginInfo.Password);
+
+                    if (response.Result)
+                    {
+                        LegacyBootstrapper.CurrentUser = response.User;
+                        NavigationFrame.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
+                    }
+                    else
+                    {
+                        GenericMessageDialog.Show($@"Could not perform auto-signin, please sign in again manually", DialogIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    GenericMessageDialog.Show($@"Could not perform auto-signin: {ex.Message}", DialogIcon.Error);
+                }
+
+                NavigationFrame.IsEnabled = true;
+            }
+        }
     }
 }

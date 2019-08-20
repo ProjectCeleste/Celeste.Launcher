@@ -23,6 +23,15 @@ namespace Celeste_Launcher_Gui.Pages
         public LoginPage()
         {
             InitializeComponent();
+
+            // TODO: Rewrite how passwords are stored as this is _highly_ insecure
+            if (LegacyBootstrapper.UserConfig?.LoginInfo?.RememberMe == true)
+            {
+                EmailInputField.InputContent = LegacyBootstrapper.UserConfig.LoginInfo.Email;
+                PasswordInputField.PasswordInputBox.Password = LegacyBootstrapper.UserConfig.LoginInfo.Password;
+                RememberPasswordOption.IsChecked = true;
+                AutoLoginOption.IsEnabled = true;
+            }
         }
 
         private void OnAbortLoginClick(object sender, RoutedEventArgs e)
@@ -78,6 +87,17 @@ namespace Celeste_Launcher_Gui.Pages
             {
                 form.ShowDialog();
             }
+        }
+
+        private void EnableRememberMe(object sender, RoutedEventArgs e)
+        {
+            AutoLoginOption.IsEnabled = true;
+        }
+
+        private void DisableRememberMeOption(object sender, RoutedEventArgs e)
+        {
+            AutoLoginOption.IsEnabled = false;
+            AutoLoginOption.IsChecked = false;
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
         mc:Ignorable="d"
-        Title="Celeste Launcher" Width="1018" Height="730" WindowStyle="none" ResizeMode="NoResize" Background="Black" UseLayoutRounding="True">
+        Title="Celeste Launcher" Width="1018" Height="730" WindowStyle="none" ResizeMode="NoResize" Background="Black" UseLayoutRounding="True" Loaded="Window_Loaded">
     <Grid>
         <Border BorderThickness="27" MouseDown="BorderMoved">
             <Border.BorderBrush>
