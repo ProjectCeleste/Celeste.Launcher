@@ -1,6 +1,7 @@
 ﻿#region Using directives
 
 using System;
+using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
@@ -46,7 +47,8 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private bool _loggedIn;
 
-        private LoginInfo _loginRequest;
+        private string _currentEmail;
+        private SecureString _currentPassword;
 
         public WebSocketApi(string uri)
         {
@@ -96,26 +98,28 @@ namespace Celeste_Public_Api.WebSocket_Api
             }
         }
 
-        public async Task<LoginResult> DoLogin(string eMail, string password)
+        public async Task<LoginResult> DoLogin(string email, SecureString password)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new LoginInfo(eMail, password, _apiVersion, FingerPrint.Value());
+            var request = new LoginInfo(email, password.GetValue(), _apiVersion, FingerPrint.Value());
 
             var response = await _login.DoLogin(request);
 
             if (response.Result)
             {
                 LoggedIn = true;
-                _loginRequest = request;
+                _currentEmail = email;
+                _currentPassword = password;
             }
             else
             {
                 LoggedIn = false;
-                _loginRequest = null;
+                _currentEmail = null;
+                _currentPassword = null;
 
                 try
                 {
@@ -132,10 +136,10 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private async Task<LoginResult> DoReLogin()
         {
-            if (_loginRequest == null)
+            if (_currentEmail == null || _currentPassword == null)
                 return new LoginResult(false, "Invalid stored login information");
 
-            return await DoLogin(_loginRequest.Mail, _loginRequest.Password);
+            return await DoLogin(_currentEmail, _currentPassword);
         }
 
         public async Task<ChangePwdResult> DoChangePassword(string oldPwd, string newPwd)

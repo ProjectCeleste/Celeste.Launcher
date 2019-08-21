@@ -65,6 +65,7 @@
     <Compile Include="Helpers\Crc32Utils.cs" />
     <Compile Include="Helpers\FingerPrint.cs" />
     <Compile Include="Helpers\Misc.cs" />
+    <Compile Include="Helpers\SecureStringExtensions.cs" />
     <Compile Include="Helpers\XmlUtils.cs" />
     <Compile Include="Helpers\ZipUtils.cs" />
     <Compile Include="GameScanner_Api\Models\Log.cs" />

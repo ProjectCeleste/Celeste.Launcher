@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Services;
+﻿using Celeste_Launcher_Gui.Account;
+using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using System;
@@ -74,6 +75,8 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnLogoutClick(object sender, RoutedEventArgs e)
         {
+            UserCredentialService.ClearVault();
+
             try
             {
                 LegacyBootstrapper.WebSocketApi?.Disconnect();

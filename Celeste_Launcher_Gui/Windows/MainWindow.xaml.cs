@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Celeste_Launcher_Gui.Account;
+using Celeste_Launcher_Gui.Services;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -53,16 +55,18 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (LegacyBootstrapper.UserConfig?.LoginInfo.AutoLogin == true)
+            var savedCredentials = UserCredentialService.GetStoredUserCredentials();
+
+            if (LegacyBootstrapper.UserConfig?.LoginInfo.AutoLogin == true && savedCredentials != null)
             {
                 NavigationFrame.IsEnabled = false;
                 try
                 {
-                    var response = await LegacyBootstrapper.WebSocketApi.DoLogin(LegacyBootstrapper.UserConfig.LoginInfo.Email,
-                        LegacyBootstrapper.UserConfig.LoginInfo.Password);
+                    var response = await LegacyBootstrapper.WebSocketApi.DoLogin(savedCredentials.Email, savedCredentials.Password);
 
                     if (response.Result)
                     {
+                        GameService.SetCredentials(savedCredentials.Email, savedCredentials.Password);
                         LegacyBootstrapper.CurrentUser = response.User;
                         NavigationFrame.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
                     }

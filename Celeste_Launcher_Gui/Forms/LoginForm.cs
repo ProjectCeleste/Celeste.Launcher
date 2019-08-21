@@ -21,8 +21,8 @@ namespace Celeste_Launcher_Gui.Forms
             //Load UserConfig
             if (LegacyBootstrapper.UserConfig?.LoginInfo?.RememberMe != true) return;
 
-            tb_Mail.Text = LegacyBootstrapper.UserConfig.LoginInfo.Email;
-            tb_Password.Text = LegacyBootstrapper.UserConfig.LoginInfo.Password;
+            //tb_Mail.Text = LegacyBootstrapper.UserConfig.LoginInfo.Email;
+           // tb_Password.Text = LegacyBootstrapper.UserConfig.LoginInfo.Password;
             cb_RememberMe.Checked = LegacyBootstrapper.UserConfig.LoginInfo.RememberMe;
         }
 
@@ -33,51 +33,51 @@ namespace Celeste_Launcher_Gui.Forms
             Enabled = false;
             try
             {
-                var response = await LegacyBootstrapper.WebSocketApi.DoLogin(tb_Mail.Text, tb_Password.Text);
+                //var response = await LegacyBootstrapper.WebSocketApi.DoLogin(tb_Mail.Text, tb_Password.Text);
 
-                if (response.Result)
-                {
-                    //
-                    CurrentUser = response.User;
+                //if (response.Result)
+                //{
+                //    //
+                //    CurrentUser = response.User;
 
-                    //Save UserConfig
-                    if (LegacyBootstrapper.UserConfig == null)
-                    {
-                        LegacyBootstrapper.UserConfig = new UserConfig
-                        {
-                            LoginInfo = new LoginInfo
-                            {
-                                Email = tb_Mail.Text,
-                                Password = tb_Password.Text,
-                                RememberMe = cb_RememberMe.Checked,
-                                AutoLogin = cB_AutoLogin.Checked
-                            }
-                        };
-                    }
-                    else
-                    {
-                        LegacyBootstrapper.UserConfig.LoginInfo.Email = tb_Mail.Text;
-                        LegacyBootstrapper.UserConfig.LoginInfo.Password = tb_Password.Text;
-                        LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
-                        LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = cB_AutoLogin.Checked;
-                    }
+                    ////Save UserConfig
+                    //if (LegacyBootstrapper.UserConfig == null)
+                    //{
+                    //    LegacyBootstrapper.UserConfig = new UserConfig
+                    //    {
+                    //        LoginInfo = new LoginInfo
+                    //        {
+                    //            Email = tb_Mail.Text,
+                    //            Password = tb_Password.Text,
+                    //            RememberMe = cb_RememberMe.Checked,
+                    //            AutoLogin = cB_AutoLogin.Checked
+                    //        }
+                    //    };
+                    //}
+                    //else
+                    //{
+                    //    LegacyBootstrapper.UserConfig.LoginInfo.Email = tb_Mail.Text;
+                    //    LegacyBootstrapper.UserConfig.LoginInfo.Password = tb_Password.Text;
+                    //    LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = cb_RememberMe.Checked;
+                    //    LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = cB_AutoLogin.Checked;
+                    //}
 
-                    try
-                    {
-                        LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
-                    }
-                    catch (Exception)
-                    {
-                        //
-                    }
+                    //try
+                    //{
+                    //    LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    //
+                    //}
 
                     //
                     DialogResult = DialogResult.OK;
                     Close();
                     return;
-                }
-                MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
+                //MsgBox.ShowMessage($@"Error: {response.Message}", @"Celeste Fan Project",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

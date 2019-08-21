@@ -33,11 +33,10 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
                 if (!Misc.IsValideEmailAdress(request.Mail))
                     throw new Exception("Invalid eMail!");
 
-                dynamic requestInfo = request;
-
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
+                var result = await DataExchange.DoDataExchange(request);
 
                 return result.ToObject<LoginResult>();
+                
             }
             catch (Exception e)
             {

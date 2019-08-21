@@ -1,7 +1,11 @@
-﻿using Celeste_Launcher_Gui.Windows;
+﻿using Celeste_Launcher_Gui.Account;
+using Celeste_Launcher_Gui.Services;
+using Celeste_Launcher_Gui.Windows;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,11 +28,12 @@ namespace Celeste_Launcher_Gui.Pages
         {
             InitializeComponent();
 
-            // TODO: Rewrite how passwords are stored as this is _highly_ insecure
-            if (LegacyBootstrapper.UserConfig?.LoginInfo?.RememberMe == true)
+            var storedCredentials = UserCredentialService.GetStoredUserCredentials();
+
+            if (LegacyBootstrapper.UserConfig?.LoginInfo?.RememberMe == true && storedCredentials != null)
             {
-                EmailInputField.InputContent = LegacyBootstrapper.UserConfig.LoginInfo.Email;
-                PasswordInputField.PasswordInputBox.Password = LegacyBootstrapper.UserConfig.LoginInfo.Password;
+                EmailInputField.InputContent = storedCredentials.Email;
+                PasswordInputField.PasswordInputBox.Password = "**********";
                 RememberPasswordOption.IsChecked = true;
                 AutoLoginOption.IsEnabled = true;
             }
@@ -44,33 +49,37 @@ namespace Celeste_Launcher_Gui.Pages
             LoginButton.IsEnabled = false;
             try
             {
-                var response = await LegacyBootstrapper.WebSocketApi.DoLogin(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.Password);
+                var storedCredentials = UserCredentialService.GetStoredUserCredentials();
+                LoginResult loginResult;
 
-                if (response.Result)
+                if (storedCredentials != null && (RememberPasswordOption.IsChecked ?? false))
                 {
-                    // Save UserConfig
-                    if (LegacyBootstrapper.UserConfig == null)
-                    {
-                        LegacyBootstrapper.UserConfig = new UserConfig
-                        {
-                            LoginInfo = new LoginInfo()
-                        };
-                    }
-                 
-                    LegacyBootstrapper.UserConfig.LoginInfo.Email = EmailInputField.InputContent;
-                    LegacyBootstrapper.UserConfig.LoginInfo.Password = PasswordInputField.PasswordInputBox.Password;
+                    loginResult = await PerformLogin(storedCredentials.Email, storedCredentials.Password);
+                }
+                else
+                {
+                    loginResult = await PerformLogin(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
+                }
+
+                if (loginResult.Result)
+                {
                     LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = RememberPasswordOption.IsChecked ?? false;
                     LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = AutoLoginOption.IsChecked ?? false;
 
+                    if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe)
+                    {
+                        UserCredentialService.StoreCredential(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
+                    }
+
                     LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
-                    LegacyBootstrapper.CurrentUser = response.User;
+                    LegacyBootstrapper.CurrentUser = loginResult.User;
 
                     NavigationService.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"Error: {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show($@"Error: {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
                 }
             }
             catch (Exception ex)
@@ -79,6 +88,12 @@ namespace Celeste_Launcher_Gui.Pages
             }
 
             LoginButton.IsEnabled = true;
+        }
+
+        private async Task<LoginResult> PerformLogin(string email, SecureString password)
+        {
+            GameService.SetCredentials(email, password);
+            return await LegacyBootstrapper.WebSocketApi.DoLogin(email, password);
         }
 
         private void ForgottenPasswordClick(object sender, RoutedEventArgs e)

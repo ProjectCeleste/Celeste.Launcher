@@ -121,41 +121,41 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void CustomBtn2_Click(object sender, EventArgs e)
         {
-            //Register
-            using (var form = new RegisterForm())
-            {
-                form.ShowDialog();
-                if (form.DialogResult != DialogResult.OK)
-                    return;
+            ////Register
+            //using (var form = new RegisterForm())
+            //{
+            //    form.ShowDialog();
+            //    if (form.DialogResult != DialogResult.OK)
+            //        return;
 
-                //Save UserConfig
-                if (LegacyBootstrapper.UserConfig == null)
-                {
-                    LegacyBootstrapper.UserConfig = new UserConfig
-                    {
-                        LoginInfo = new LoginInfo
-                        {
-                            Email = form.tb_Mail.Text,
-                            Password = form.tb_Password.Text,
-                            RememberMe = true
-                        }
-                    };
-                }
-                else
-                {
-                    LegacyBootstrapper.UserConfig.LoginInfo.Email = form.tb_Mail.Text;
-                    LegacyBootstrapper.UserConfig.LoginInfo.Password = form.tb_Password.Text;
-                    LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = true;
-                }
-                try
-                {
-                    LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-            }
+            //    //Save UserConfig
+            //    if (LegacyBootstrapper.UserConfig == null)
+            //    {
+            //        LegacyBootstrapper.UserConfig = new UserConfig
+            //        {
+            //            LoginInfo = new LoginInfo
+            //            {
+            //                Email = form.tb_Mail.Text,
+            //                Password = form.tb_Password.Text,
+            //                RememberMe = true
+            //            }
+            //        };
+            //    }
+            //    else
+            //    {
+            //        LegacyBootstrapper.UserConfig.LoginInfo.Email = form.tb_Mail.Text;
+            //        LegacyBootstrapper.UserConfig.LoginInfo.Password = form.tb_Password.Text;
+            //        LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = true;
+            //    }
+            //    try
+            //    {
+            //        LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
+            //    }
+            //    catch (Exception)
+            //    {
+            //        //
+            //    }
+            //}
 
             //Login
             using (var form = new LoginForm())
@@ -284,25 +284,25 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
 
             panelManager1.Enabled = false;
-            try
-            {
-                var response = await LegacyBootstrapper.WebSocketApi.DoLogin(LegacyBootstrapper.UserConfig.LoginInfo.Email,
-                    LegacyBootstrapper.UserConfig.LoginInfo.Password);
+            //try
+            //{
+            //    var response = await LegacyBootstrapper.WebSocketApi.DoLogin(LegacyBootstrapper.UserConfig.LoginInfo.Email,
+            //        LegacyBootstrapper.UserConfig.LoginInfo.Password);
 
-                if (response.Result)
-                {
-                    LegacyBootstrapper.CurrentUser = response.User;
+            //    if (response.Result)
+            //    {
+            //        LegacyBootstrapper.CurrentUser = response.User;
 
-                    gamerCard1.UserName = LegacyBootstrapper.CurrentUser.ProfileName;
-                    gamerCard1.Rank = $@"{LegacyBootstrapper.CurrentUser.Rank}";
+            //        gamerCard1.UserName = LegacyBootstrapper.CurrentUser.ProfileName;
+            //        gamerCard1.Rank = $@"{LegacyBootstrapper.CurrentUser.Rank}";
 
-                    panelManager1.SelectedPanel = managedPanel1;
-                }
-            }
-            catch (Exception)
-            {
-                //
-            }
+            //        panelManager1.SelectedPanel = managedPanel1;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    //
+            //}
             panelManager1.Enabled = true;
         }
 
@@ -446,17 +446,17 @@ namespace Celeste_Launcher_Gui.Forms
                 if (dr != DialogResult.OK)
                     return;
 
-                try
-                {
-                    if (LegacyBootstrapper.UserConfig != null)
-                        LegacyBootstrapper.UserConfig.GameLanguage = form.SelectedLang;
-                    else
-                        LegacyBootstrapper.UserConfig = new UserConfig {GameLanguage = form.SelectedLang};
-                }
-                catch (Exception)
-                {
-                    //
-                }
+                //try
+                //{
+                //    if (LegacyBootstrapper.UserConfig != null)
+                //        LegacyBootstrapper.UserConfig.GameLanguage = form.SelectedLang;
+                //    else
+                //        LegacyBootstrapper.UserConfig = new UserConfig {GameLanguage = form.SelectedLang};
+                //}
+                //catch (Exception)
+                //{
+                //    //
+                //}
             }
         }
 
@@ -684,20 +684,20 @@ namespace Celeste_Launcher_Gui.Forms
                     Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
                 }
 
-                string arg;
-                if (isOffline)
-                    arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-                else if (LegacyBootstrapper.UserConfig?.MpSettings == null ||
-                         LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
-                    arg = LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
-                        ? $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
-                else
-                    arg =
-                        $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                //string arg;
+                //if (isOffline)
+                //    arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                //else if (LegacyBootstrapper.UserConfig?.MpSettings == null ||
+                //         LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
+                //    arg = LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
+                //        ? $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                //        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                //else
+                //    arg =
+                //        $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
 
-                Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
+                //Process.Start(new ProcessStartInfo(spartanPath, arg) {WorkingDirectory = path});
             }
             catch (Exception exception)
             {

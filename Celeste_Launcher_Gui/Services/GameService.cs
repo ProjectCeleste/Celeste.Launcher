@@ -7,12 +7,23 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Windows.Forms;
 
 namespace Celeste_Launcher_Gui.Services
 {
     class GameService
     {
+        // TODO: Find a better way to do this (for example using an auth token)
+        private static string CurrentEmail;
+        private static SecureString CurrentPassword;
+
+        internal static void SetCredentials(string email, SecureString password)
+        {
+            CurrentEmail = email;
+            CurrentPassword = password;
+        }
+
         public static async void StartGame(bool isOffline = false)
         {
             var pname = Process.GetProcessesByName("spartan");
@@ -243,11 +254,11 @@ namespace Celeste_Launcher_Gui.Services
                 else if (LegacyBootstrapper.UserConfig?.MpSettings == null ||
                          LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
                     arg = LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
-                        ? $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                        ? $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                        : $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
                 else
                     arg =
-                        $"--email \"{LegacyBootstrapper.UserConfig.LoginInfo.Email}\" --password \"{LegacyBootstrapper.UserConfig.LoginInfo.Password}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                        $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
 
                 Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });

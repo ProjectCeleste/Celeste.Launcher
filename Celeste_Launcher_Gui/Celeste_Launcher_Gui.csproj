@@ -48,6 +48,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CredentialManagement, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CredentialManagement.1.0.2\lib\net35\CredentialManagement.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\Unofficial.Ionic.Zip.1.9.1.8\lib\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -85,6 +88,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\CurrentUser.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -180,7 +184,6 @@
       <DependentUpon>MpSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppVersionService.cs" />
-    <Compile Include="Helpers\EncryptDecrypt.cs" />
     <Compile Include="Helpers\Dism.cs" />
     <Compile Include="Helpers\Firewall.cs" />
     <Compile Include="Helpers\OpenNat.cs" />
@@ -218,6 +221,7 @@
     </Compile>
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\UpdateService.cs" />
+    <Compile Include="Account\UserCredentialService.cs" />
     <Compile Include="UserControls\ShortRegisterInputField.xaml.cs">
       <DependentUpon>ShortRegisterInputField.xaml</DependentUpon>
     </Compile>
@@ -590,5 +594,6 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

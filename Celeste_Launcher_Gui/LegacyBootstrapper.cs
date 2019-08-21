@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.MsgBox;
+using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.WebSocket_Api;
@@ -18,8 +19,8 @@ namespace Celeste_Launcher_Gui
 {
     internal static class LegacyBootstrapper
     {
-        public static UserConfig UserConfig = new UserConfig();
-
+        public static UserConfig UserConfig { get; private set; } = new UserConfig();
+        
         private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
         public static WebSocketApi WebSocketApi { get; private set; }
