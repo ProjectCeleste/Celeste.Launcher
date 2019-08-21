@@ -66,7 +66,7 @@ namespace Celeste_Launcher_Gui.Pages
                     LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = RememberPasswordOption.IsChecked ?? false;
                     LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = AutoLoginOption.IsChecked ?? false;
 
-                    if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe)
+                    if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe && storedCredentials == null)
                     {
                         UserCredentialService.StoreCredential(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
                     }
@@ -80,11 +80,15 @@ namespace Celeste_Launcher_Gui.Pages
                 else
                 {
                     GenericMessageDialog.Show($@"Error: {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    PasswordInputField.PasswordInputBox.Clear();
+                    UserCredentialService.ClearVault();
                 }
             }
             catch (Exception ex)
             {
                 GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                PasswordInputField.PasswordInputBox.Clear();
+                UserCredentialService.ClearVault();
             }
 
             LoginButton.IsEnabled = true;
