@@ -38,5 +38,21 @@ namespace Celeste_Launcher_Gui.Helpers
                 typeof(ImageSource),
                 typeof(ButtonThemeProperties),
                 new FrameworkPropertyMetadata(default(ImageSource)));
+
+        public static ImageSource GetDisabledIcon(DependencyObject obj)
+        {
+            return (ImageSource)obj.GetValue(DisabledIconProperty);
+        }
+
+        public static void SetDisabledIcon(DependencyObject obj, ImageSource value)
+        {
+            obj.SetValue(DisabledIconProperty, value);
+        }
+
+        public static readonly DependencyProperty DisabledIconProperty =
+            DependencyProperty.RegisterAttached("DisabledIcon",
+                typeof(ImageSource),
+                typeof(ButtonThemeProperties),
+                new FrameworkPropertyMetadata(default(ImageSource)));
     }
 }

@@ -343,6 +343,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\Buttons\LargeButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\MediumButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\TinyButtonDisabled.png" />
     <Resource Include="Resources\Icons\Flags\de-DE-Hover.png" />
     <Resource Include="Resources\Icons\Flags\de-DE-Normal.png" />
     <Resource Include="Resources\Icons\Flags\en-US-Hover.png" />
