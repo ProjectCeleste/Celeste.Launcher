@@ -6,7 +6,7 @@ namespace Celeste_Launcher_Gui.Services
 {
     class NewsPictureLoader
     {
-        private const string NewsDescriptionUri = "https://i.shikashi.me/5EX8X";
+        private const string NewsDescriptionUri = "https://i.shikashi.me/N65Rd";
 
         public async Task<NewsPicture> GetNewsDescription()
         {
