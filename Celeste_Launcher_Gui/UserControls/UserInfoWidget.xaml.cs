@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.UserControls
     /// </summary>
     public partial class UserInfoWidget : UserControl
     {
-
+        private static readonly string[] ProfilePicture = { "Coin-Agvald.png", "Coin-Bahram.png", "Coin-Rohham.png", "Coin-Tahmineh.png" };
         public string PlayerIcon
         {
             get { return (string)GetValue(PlayerIconProperty); }
@@ -50,8 +50,16 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public UserInfoWidget()
         {
+            SetRandomProfilePicture();
             InitializeComponent();
             LayoutRoot.DataContext = this;
+        }
+
+        private void SetRandomProfilePicture()
+        {
+            var rnd = new Random();
+            var imgIndex = rnd.Next(ProfilePicture.Length);
+            PlayerIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/ProfilePics/" + ProfilePicture[imgIndex];
         }
     }
 }
