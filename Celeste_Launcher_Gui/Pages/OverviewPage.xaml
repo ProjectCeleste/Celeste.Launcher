@@ -8,7 +8,7 @@
         xmlns:h="clr-namespace:Celeste_Launcher_Gui.Helpers"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        d:DesignHeight="587" d:DesignWidth="964">
+        d:DesignHeight="587" d:DesignWidth="964" Loaded="Page_Loaded">
     <Page.Resources>
         <!--Control colors.-->
         <SolidColorBrush x:Key="DefaultMenuBackground" Color="#1D343C" />
@@ -107,6 +107,16 @@
                                 </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -223,7 +233,11 @@
 
         <!-- newsbox = 472x244 -->
         <Grid Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="472" Height="244">
-
+            <TextBlock>
+                <Hyperlink Click="OpenNews" TextDecorations="None">
+                    <Image x:Name="NewsImage" Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png" Stretch="None"/>
+                </Hyperlink>   
+            </TextBlock>
         </Grid>
 
         <!-- playbuttons box = 480x155 -->

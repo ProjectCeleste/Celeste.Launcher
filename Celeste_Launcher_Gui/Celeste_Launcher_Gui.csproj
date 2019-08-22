@@ -63,6 +63,9 @@
       <HintPath>$(SolutionDir)\packages\Microsoft.Dism.2.0.14\lib\net40\Microsoft.Dism.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
     </Reference>
@@ -220,6 +223,7 @@
       <DependentUpon>UpdaterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\NewsPictureLoader.cs" />
     <Compile Include="Services\UpdateService.cs" />
     <Compile Include="Account\UserCredentialService.cs" />
     <Compile Include="UserControls\ShortRegisterInputField.xaml.cs">
@@ -347,6 +351,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\DefaultNewsGraphics.png" />
     <Resource Include="Resources\Buttons\LargeButtonDisabled.png" />
     <Resource Include="Resources\Buttons\MediumButtonDisabled.png" />
     <Resource Include="Resources\Buttons\TinyButtonDisabled.png" />

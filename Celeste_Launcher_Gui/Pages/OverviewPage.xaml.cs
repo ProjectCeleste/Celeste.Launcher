@@ -30,10 +30,12 @@ namespace Celeste_Launcher_Gui.Pages
     public partial class OverviewPage : Page
     {
         public User CurrentUser => LegacyBootstrapper.CurrentUser;
+        private NewsPicture _currentNews = NewsPicture.Default();
 
         public OverviewPage()
         {
             InitializeComponent();
+            SetNewsPictureSource(_currentNews.ImageSource);
             DataContext = this;
         }
 
@@ -242,5 +244,37 @@ namespace Celeste_Launcher_Gui.Pages
             updater.ShowDialog();
         }
         #endregion
+
+
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var newsLoader = new NewsPictureLoader();
+            try
+            {
+                _currentNews = await newsLoader.GetNewsDescription();
+            }
+            catch
+            {
+                _currentNews = NewsPicture.Default();
+            }
+
+            SetNewsPictureSource(_currentNews.ImageSource);
+        }
+
+        private void SetNewsPictureSource(string imageUri)
+        {
+            var bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = new Uri(imageUri);
+            bitmapImage.EndInit();
+
+            NewsImage.Source = bitmapImage;
+        }
+
+        private void OpenNews(object sender, RoutedEventArgs e)
+        {
+            Process.Start(_currentNews.Href);
+        }
     }
 }
