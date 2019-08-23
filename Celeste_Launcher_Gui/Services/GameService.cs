@@ -1,5 +1,5 @@
-﻿using Celeste_AOEO_Controls.MsgBox;
-using Celeste_Launcher_Gui.Helpers;
+﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.Helpers;
 using Open.Nat;
@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security;
-using System.Windows.Forms;
 
 namespace Celeste_Launcher_Gui.Services
 {
@@ -29,12 +28,13 @@ namespace Celeste_Launcher_Gui.Services
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                MsgBox.ShowMessage(@"Game already running!");
+                GenericMessageDialog.Show($"Game already running", DialogIcon.Warning);
                 return;
             }
 
             //QuickGameScan
             if (!isOffline || DownloadFileUtils.IsConnectedToInternet())
+            {
                 try
                 {
                     var gameFilePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
@@ -43,36 +43,33 @@ namespace Celeste_Launcher_Gui.Services
 
                     var gameScannner = new GameScannnerApi(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
 
-                retry:
-                    if (!await gameScannner.QuickScan())
+                    var success = false;
+
+                    while (!success)
                     {
-                        bool success;
-                        using (var form =
-                            new MsgBoxYesNo(
-                                @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).")
-                        )
+                        if (!await gameScannner.QuickScan())
                         {
-                            var dr = form.ShowDialog();
-                            if (dr == DialogResult.OK)
-                                using (var form2 = new Forms.GameScan())
+                            var dialogResult = GenericMessageDialog.Show(@"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).", DialogIcon.Error);
+
+                            if (dialogResult.Value)
+                            {
+                                using (var gameScannerForm = new Forms.GameScan())
                                 {
-                                    form2.ShowDialog();
-                                    success = false;
+                                    gameScannerForm.ShowDialog();
                                 }
+                            }
                             else
+                            {
                                 success = true;
+                            }
                         }
-                        if (!success)
-                            goto retry;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MsgBox.ShowMessage(
-                        $"Warning: Error during quick scan. Error message: {ex.Message}",
-                        @"Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    GenericMessageDialog.Show($"Warning: Error during quick scan. Error message: {ex.Message}", DialogIcon.Warning);
                 }
+            }
 
             //isSteam
             if (!LegacyBootstrapper.UserConfig.IsSteamVersion)
@@ -97,10 +94,7 @@ namespace Celeste_Launcher_Gui.Services
                         {
                             LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
 
-                            MsgBox.ShowMessage(
-                                "Error: Upnp device not found! \"UPnP Port Mapping\" has been disabled.",
-                                @"Celeste Fan Project",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            GenericMessageDialog.Show("Error: Upnp device not found! \"UPnP Port Mapping\" has been disabled.", DialogIcon.Error);
                         }
                         finally
                         {
@@ -111,11 +105,11 @@ namespace Celeste_Launcher_Gui.Services
             try
             {
                 //Launch Game
-                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
+                var gamePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig.GameFilesPath
                     : GameScannnerApi.GetGameFilesRootPath();
 
-                var spartanPath = Path.Combine(path, "Spartan.exe");
+                var spartanPath = Path.Combine(gamePath, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
                     throw new FileNotFoundException("Spartan.exe not found!", spartanPath);
@@ -155,7 +149,7 @@ namespace Celeste_Launcher_Gui.Services
                         {
                             var killInfo = new ProcessStartInfo("cmd.exe", "/c taskkill /F /IM procdump.exe /T")
                             {
-                                WorkingDirectory = path,
+                                WorkingDirectory = gamePath,
                                 CreateNoWindow = true,
                                 UseShellExecute = false,
                                 RedirectStandardError = true,
@@ -210,7 +204,7 @@ namespace Celeste_Launcher_Gui.Services
 
                         var startInfo = new ProcessStartInfo(procdumpFileName, fullCmdArgs)
                         {
-                            WorkingDirectory = path,
+                            WorkingDirectory = gamePath,
                             CreateNoWindow = true,
                             UseShellExecute = false,
                             RedirectStandardError = true,
@@ -222,30 +216,27 @@ namespace Celeste_Launcher_Gui.Services
                 }
                 catch (Exception exception)
                 {
-                    MsgBox.ShowMessage(
-                        $"Warning: {exception.Message}",
-                        @"Celeste Fan Project",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    GenericMessageDialog.Show($"Warning: {exception.Message}", DialogIcon.Warning);
                 }
 
                 //SymLink CustomScn Folder
                 var profileDir = Path.Combine(Environment.GetEnvironmentVariable("userprofile"));
-                var path1 = Path.Combine(path, "Scenario", "CustomScn");
-                var path2 = Path.Combine(profileDir, "Documents", "Spartan", "Scenario");
+                var customScnGamePath = Path.Combine(gamePath, "Scenario", "CustomScn");
+                var scenarioUserPath = Path.Combine(profileDir, "Documents", "Spartan", "Scenario");
 
-                if (!Directory.Exists(path2))
-                    Directory.CreateDirectory(path2);
+                if (!Directory.Exists(scenarioUserPath))
+                    Directory.CreateDirectory(scenarioUserPath);
 
-                if (Directory.Exists(path1) &&
-                    (!Misc.IsSymLink(path1, Misc.SymLinkFlag.Directory) ||
-                     !string.Equals(Misc.GetRealPath(path1), path2, StringComparison.OrdinalIgnoreCase)))
+                if (Directory.Exists(customScnGamePath) &&
+                    (!Misc.IsSymLink(customScnGamePath, Misc.SymLinkFlag.Directory) ||
+                     !string.Equals(Misc.GetRealPath(customScnGamePath), scenarioUserPath, StringComparison.OrdinalIgnoreCase)))
                 {
-                    Directory.Delete(path1, true);
-                    Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
+                    Directory.Delete(customScnGamePath, true);
+                    Misc.CreateSymbolicLink(customScnGamePath, scenarioUserPath, Misc.SymLinkFlag.Directory);
                 }
                 else
                 {
-                    Misc.CreateSymbolicLink(path1, path2, Misc.SymLinkFlag.Directory);
+                    Misc.CreateSymbolicLink(customScnGamePath, scenarioUserPath, Misc.SymLinkFlag.Directory);
                 }
 
                 string arg;
@@ -261,14 +252,11 @@ namespace Celeste_Launcher_Gui.Services
                         $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
 
-                Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = path });
+                Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });
             }
             catch (Exception exception)
             {
-                MsgBox.ShowMessage(
-                    $"Error: {exception.Message}",
-                    @"Celeste Fan Project",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                GenericMessageDialog.Show($"Error: {exception.Message}", DialogIcon.Error);
             }
         }
     }

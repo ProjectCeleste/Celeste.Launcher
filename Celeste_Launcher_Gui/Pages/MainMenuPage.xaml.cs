@@ -43,11 +43,6 @@ namespace Celeste_Launcher_Gui.Pages
         {
             GameService.StartGame(true);
         }
-
-        private void OpenMainOverview(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
-        }
         #endregion
 
         #region Links
