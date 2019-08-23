@@ -49,7 +49,7 @@ namespace Celeste_Launcher_Gui.Services
                     {
                         if (!await gameScannner.QuickScan())
                         {
-                            var dialogResult = GenericMessageDialog.Show(@"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).", DialogIcon.Error);
+                            var dialogResult = GenericMessageDialog.Show(@"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).", DialogIcon.None, DialogOptions.YesNo);
 
                             if (dialogResult.Value)
                             {
