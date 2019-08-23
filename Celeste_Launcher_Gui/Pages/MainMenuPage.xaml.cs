@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Windows;
+﻿using Celeste_Launcher_Gui.Services;
+using Celeste_Launcher_Gui.Windows;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,7 +41,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnPlayOfflineClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/LanguageSelectionPage.xaml", UriKind.Relative));
+            GameService.StartGame(true);
         }
 
         private void OpenMainOverview(object sender, RoutedEventArgs e)
@@ -52,8 +53,7 @@ namespace Celeste_Launcher_Gui.Pages
         #region Links
         private void OnCelesteClick(object sender, RoutedEventArgs e)
         {
-            //Process.Start("https://projectceleste.com");
-            new UpdateWindow().Show();
+            Process.Start("https://projectceleste.com");
         }
 
         private void OnDiscordClick(object sender, RoutedEventArgs e)
