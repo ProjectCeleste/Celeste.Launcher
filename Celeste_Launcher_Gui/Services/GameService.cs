@@ -63,6 +63,10 @@ namespace Celeste_Launcher_Gui.Services
                                 success = true;
                             }
                         }
+                        else
+                        {
+                            success = true;
+                        }
                     }
                 }
                 catch (Exception ex)
