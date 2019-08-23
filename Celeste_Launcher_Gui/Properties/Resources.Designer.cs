@@ -765,7 +765,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login.
+        ///   Looks up a localized string similar to Play.
         /// </summary>
         public static string OverviewLoginBtn {
             get {
