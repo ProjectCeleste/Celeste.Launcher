@@ -374,7 +374,7 @@
     <value>Friends</value>
   </data>
   <data name="OverviewLoginBtn" xml:space="preserve">
-    <value>Login</value>
+    <value>Play</value>
   </data>
   <data name="OverviewLogoutSideMenuBtn" xml:space="preserve">
     <value>Log Out</value>
