@@ -22,7 +22,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
         public string FriendName { get; }
     }
 
-    public class AddFriendResult
+    public class AddFriendResult : IGenericResponse
     {
         [JsonConstructor]
         public AddFriendResult([JsonProperty("Result", Required = Required.Always)] bool result,

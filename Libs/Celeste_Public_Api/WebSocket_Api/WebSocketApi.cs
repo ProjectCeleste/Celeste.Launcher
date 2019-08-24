@@ -5,11 +5,13 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api.WebSocket;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Command;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
+using Serilog;
 
 #endregion
 
@@ -50,20 +52,25 @@ namespace Celeste_Public_Api.WebSocket_Api
         private string _currentEmail;
         private SecureString _currentPassword;
 
+        private readonly ILogger _logger;
+
         public WebSocketApi(string uri)
         {
             _client = new Client(uri);
-            _login = new Login(_client);
-            _changePwd = new ChangePwd(_client);
-            _forgotPwd = new ForgotPwd(_client);
-            _resetPwd = new ResetPwd(_client);
-            _validMail = new ValidMail(_client);
-            _register = new Register(_client);
-            _getFriends = new GetFriends(_client);
-            _getPFriends = new GetPendingFriends(_client);
-            _removeFriend = new RemoveFriend(_client);
-            _addFriend = new AddFriend(_client);
-            _confirmFriend = new ConfirmFriend(_client);
+            var dataExchange = new DataExchange(_client);
+
+            _login = new Login(dataExchange);
+            _changePwd = new ChangePwd(dataExchange);
+            _forgotPwd = new ForgotPwd(dataExchange);
+            _resetPwd = new ResetPwd(dataExchange);
+            _validMail = new ValidMail(dataExchange);
+            _register = new Register(dataExchange);
+            _getFriends = new GetFriends(dataExchange);
+            _getPFriends = new GetPendingFriends(dataExchange);
+            _removeFriend = new RemoveFriend(dataExchange);
+            _addFriend = new AddFriend(dataExchange);
+            _confirmFriend = new ConfirmFriend(dataExchange);
+            _logger = LoggerFactory.GetLogger();
         }
 
         public bool Connected => _client?.State == ClientState.Connected;
@@ -107,7 +114,9 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             var request = new LoginInfo(email, password.GetValue(), _apiVersion, FingerPrint.Value());
 
+            _logger.Debug("Sending login request");
             var response = await _login.DoLogin(request);
+            _logger.Debug("Received login response");
 
             if (response.Result)
             {

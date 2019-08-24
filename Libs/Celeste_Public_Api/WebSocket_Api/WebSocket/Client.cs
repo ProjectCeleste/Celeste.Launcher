@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Net.Sockets;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
+using Serilog;
 using SuperSocket.ClientEngine;
 using WebSocket4Net;
 
@@ -15,7 +17,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 {
     public class Client
     {
-        public const int TimeOut = 30; //30 Seconds
+        public const int ConnectionTimeoutInSeconds = 30; //30 Seconds
 
         private readonly string _uri;
 
@@ -25,9 +27,12 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 
         private ClientState _state = ClientState.Offline;
 
+        private ILogger _logger;
+
         public Client(string uri)
         {
             _uri = uri;
+            _logger = LoggerFactory.GetLogger();
         }
 
         public string ErrorMessage
@@ -63,7 +68,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
                 throw new Exception($"Invalid server URI ({_uri}).Exception: {ex.Message}");
             }
 
-#if DEBUG
+//#if DEBUG
             if (_uri.StartsWith("wss://", StringComparison.OrdinalIgnoreCase))
             {
                 _agent.Security.EnabledSslProtocols = SslProtocols.Tls;
@@ -72,7 +77,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
                 _agent.Security.AllowNameMismatchCertificate = true;
                 _agent.Security.AllowCertificateChainErrors = true;
             }
-#endif
+//#endif
 
             _agent.Closed += WebSocket_Closed;
             _agent.Error += WebSocket_Error;
@@ -99,30 +104,40 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
         public async Task DoConnect()
         {
             if (_state == ClientState.Connected)
+            {
+                _logger.Debug("Socket already connected");
                 return;
+            }
 
+            _logger.Debug("Initializing web socket");
             InitializeWebSocket();
 
             State = ClientState.Connecting;
 
+            _logger.Debug("Opening web socket");
             _agent.Open();
 
-            var starttime = DateTime.UtcNow;
+            var startTime = DateTime.UtcNow;
             while (State == ClientState.Connecting)
             {
-                var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
-                if (diff < TimeOut)
-                    continue;
+                await Task.Delay(10);
+                _logger.Debug("Performing spin wait");
 
-                State = ClientState.TimeOut;
+                var timeSpentInSeconds = DateTime.UtcNow.Subtract(startTime).TotalSeconds;
+                if (timeSpentInSeconds > ConnectionTimeoutInSeconds)
+                {
+                    State = ClientState.TimeOut;
+                    _logger.Debug("Timing out");
 
-                throw new Exception($"Server connection timeout ({diff}s)!");
+                    throw new Exception($"Server connection timeout ({timeSpentInSeconds}s)!");
+                }
             }
 
             if (State != ClientState.Connected)
                 throw new Exception("Server Offline!");
 
             await Task.Delay(200).ConfigureAwait(false);
+            _logger.Debug("Connected");
         }
 
         private void WebSocket_Opened(object sender, EventArgs e)

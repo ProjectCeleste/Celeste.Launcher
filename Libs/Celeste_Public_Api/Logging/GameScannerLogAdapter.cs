@@ -2,7 +2,7 @@
 using Serilog;
 using System;
 
-namespace Celeste_Launcher_Gui.Logging
+namespace Celeste_Public_Api.Logging
 {
     public class GameScannerLogAdapter : IProgress<ScanAndRepairProgress>
     {

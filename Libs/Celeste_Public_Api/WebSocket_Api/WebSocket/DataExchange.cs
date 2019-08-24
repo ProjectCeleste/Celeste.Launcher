@@ -2,6 +2,7 @@
 
 using System;
 using System.Threading.Tasks;
+using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
 
 #endregion
@@ -10,71 +11,48 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 {
     public class DataExchange
     {
-        public DataExchange(Client webSocketClient, string cmdName)
+        private readonly Client _webSocketClient;
+
+        public DataExchange(Client webSocketClient)
         {
-            CmdName = cmdName;
-            WebSocketClient = webSocketClient;
+            _webSocketClient = webSocketClient;
         }
 
-        private string CmdName { get; }
+        private RequestState _requestState = RequestState.Idle;
 
-        private Client WebSocketClient { get; }
-
-        private dynamic RequestResult { get; set; }
-
-        private RequestState RequestState { get; set; } = RequestState.Idle;
-
-        public async Task<dynamic> DoDataExchange(dynamic content)
+        public async Task<TResponse> DoDataExchange<TResponse, TRequest>(TRequest content, string cmdName)
+            where TResponse : IGenericResponse
         {
-            dynamic retVal;
-
-            if (RequestState == RequestState.InProgress)
+            if (_requestState == RequestState.InProgress)
                 throw new Exception(@"Request already in progress!");
 
-            RequestState = RequestState.InProgress;
+            _requestState = RequestState.InProgress;
 
-            WebSocketClient.Query<dynamic>(CmdName, (object) content, OnDataExchange);
+            var responseAction = new AwaitableOperation<TResponse>();
 
-            var starttime = DateTime.UtcNow;
-            while (RequestState == RequestState.InProgress && WebSocketClient.State == ClientState.Connected)
+            _webSocketClient.Query<TResponse>(cmdName, content, responseAction.ReceivedMessage);
+
+            var response = await responseAction.WaitForResponseAsync(Client.ConnectionTimeoutInSeconds);
+
+            try
             {
-                var diff = DateTime.UtcNow.Subtract(starttime).TotalSeconds;
-                if (diff < Client.TimeOut)
-                    continue;
-
-                RequestState = RequestState.TimedOut;
-
-                throw new Exception($"Server response timeout ({diff}s)!");
-            }
-
-            if (RequestState == RequestState.Success)
-            {
-                retVal = RequestResult;
-            }
-            else
-            {
-                if (RequestResult != null)
+                if (!response.Result)
                 {
-                    var msg = RequestResult["Message"].ToObject<string>();
-                    if (!string.IsNullOrEmpty(msg))
-                        throw new Exception(msg);
+                    if (string.IsNullOrWhiteSpace(response.Message))
+                        throw new Exception(response.Message);
+
+                    if (!string.IsNullOrEmpty(_webSocketClient.ErrorMessage))
+                        throw new Exception(_webSocketClient.ErrorMessage);
+
+                    throw new Exception("Unknow error!");
                 }
 
-                if (!string.IsNullOrEmpty(WebSocketClient.ErrorMessage))
-                    throw new Exception(WebSocketClient.ErrorMessage);
-
-                throw new Exception("Unknow error!");
+                return response;
             }
-
-            await Task.Delay(200).ConfigureAwait(false);
-
-            return retVal;
-        }
-
-        private void OnDataExchange(dynamic result)
-        {
-            RequestResult = result;
-            RequestState = RequestResult["Result"].ToObject<bool>() ? RequestState.Success : RequestState.Failed;
+            finally
+            {
+                _requestState = RequestState.Idle;
+            }
         }
     }
 }

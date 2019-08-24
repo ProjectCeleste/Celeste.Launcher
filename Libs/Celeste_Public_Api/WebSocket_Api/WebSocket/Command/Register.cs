@@ -14,13 +14,12 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         public const string CmdName = "REGISTER";
 
         private DateTime _lastTime = DateTime.UtcNow.AddMinutes(-5);
+        private readonly DataExchange _dataExchange;
 
-        public Register(Client webSocketClient)
+        public Register(DataExchange dataExchange)
         {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
+            _dataExchange = dataExchange;
         }
-
-        private DataExchange DataExchange { get; }
 
         public async Task<RegisterUserResult> DoRegister(RegisterUserInfo request)
         {
@@ -47,16 +46,12 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
                     throw new Exception(
                         $"You need to wait at least 90 seconds before to try again! Last try was {lastSendTime} seconds ago.");
 
-                dynamic requestInfo = request;
+                var result = await _dataExchange.DoDataExchange<RegisterUserResult, RegisterUserInfo>(request, CmdName);
 
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                RegisterUserResult retVal = result.ToObject<RegisterUserResult>();
-
-                if (retVal.Result)
+                if (result.Result)
                     _lastTime = DateTime.UtcNow;
 
-                return retVal;
+                return result;
             }
             catch (Exception e)
             {

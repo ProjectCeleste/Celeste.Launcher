@@ -1,8 +1,8 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
-using Celeste_Launcher_Gui.Logging;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
 using Open.Nat;
 using Serilog;
 using System;

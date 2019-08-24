@@ -57,7 +57,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
     {
     }
 
-    public class GetFriendsResult
+    public class GetFriendsResult : IGenericResponse
     {
         public GetFriendsResult(bool result, string message)
         {

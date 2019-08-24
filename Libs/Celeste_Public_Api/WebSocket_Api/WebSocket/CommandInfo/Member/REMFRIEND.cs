@@ -21,7 +21,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
         public long FriendXuid { get; }
     }
 
-    public class RemoveFriendResult
+    public class RemoveFriendResult : IGenericResponse
     {
         [JsonConstructor]
         public RemoveFriendResult([JsonProperty("Result", Required = Required.Always)] bool result,

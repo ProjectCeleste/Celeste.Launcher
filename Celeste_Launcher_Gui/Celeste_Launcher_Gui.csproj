@@ -202,8 +202,6 @@
     <Compile Include="Helpers\OSVersion.cs" />
     <Compile Include="Helpers\Steam.cs" />
     <Compile Include="Helpers\ButtonThemeProperties.cs" />
-    <Compile Include="Logging\GameScannerLogAdapter.cs" />
-    <Compile Include="Logging\LoggerFactory.cs" />
     <Compile Include="Pages\LanguageSelectionPage.xaml.cs">
       <DependentUpon>LanguageSelectionPage.xaml</DependentUpon>
     </Compile>

@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace Celeste_Launcher_Gui.Logging
+namespace Celeste_Public_Api.Logging
 {
     public class LoggerFactory
     {

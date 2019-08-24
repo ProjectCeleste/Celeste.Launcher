@@ -1,7 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Account;
-using Celeste_Launcher_Gui.Logging;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
+using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
 using System;

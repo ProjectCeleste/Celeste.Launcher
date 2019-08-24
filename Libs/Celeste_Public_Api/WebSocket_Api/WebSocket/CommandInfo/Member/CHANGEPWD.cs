@@ -30,7 +30,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
         public string New { get; }
     }
 
-    public class ChangePwdResult
+    public class ChangePwdResult : IGenericResponse
     {
         [JsonConstructor]
         public ChangePwdResult([JsonProperty("Result", Required = Required.Always)] bool result,
