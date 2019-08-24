@@ -65,6 +65,11 @@ namespace Celeste_Launcher_Gui.Pages
         {
             Process.Start("https://www.youtube.com/channel/UC5gS69ffCAeqvJrqWvlnZgg");
         }
+
+        private void ChangeLanguage(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Pages/LanguageSelectionPage.xaml", UriKind.Relative));
+        }
         #endregion
     }
 }

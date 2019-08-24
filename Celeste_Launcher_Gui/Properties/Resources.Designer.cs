@@ -629,6 +629,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string MainMenuGameLanguageBtn {
+            get {
+                return ResourceManager.GetString("MainMenuGameLanguageBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string MainMenuLoginBtn {

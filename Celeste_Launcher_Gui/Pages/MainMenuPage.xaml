@@ -39,6 +39,13 @@
                         HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Hover.png" HorizontalAlignment="Left"  Click="OnYoutubeClick"/>
         </StackPanel>
 
+        <StackPanel Width="300" Height="auto" HorizontalAlignment="Right" Margin="0,0,15,70" VerticalAlignment="Bottom">
+            <local:SideBarMenuItemRight 
+                        LabelContents="{x:Static p:Resources.MainMenuGameLanguageBtn}" 
+                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Language-Normal.png"
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Language-Hover.png" HorizontalAlignment="Right" Click="ChangeLanguage"/>
+        </StackPanel>
+
         <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
             <Label.Background>
                 <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>

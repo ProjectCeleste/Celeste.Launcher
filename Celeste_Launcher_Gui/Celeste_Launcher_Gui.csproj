@@ -362,6 +362,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\Icons\Language-Hover.png" />
+    <Resource Include="Resources\Icons\Language-Normal.png" />
     <Resource Include="Resources\DefaultNewsGraphics.png" />
     <Resource Include="Resources\Buttons\LargeButtonDisabled.png" />
     <Resource Include="Resources\Buttons\MediumButtonDisabled.png" />

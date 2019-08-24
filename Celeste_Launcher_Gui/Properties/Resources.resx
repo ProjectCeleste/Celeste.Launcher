@@ -424,4 +424,7 @@
   <data name="RegisterCancelBtnText" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="MainMenuGameLanguageBtn" xml:space="preserve">
+    <value>Language</value>
+  </data>
 </root>
