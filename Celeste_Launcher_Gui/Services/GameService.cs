@@ -1,8 +1,10 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Logging;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.Helpers;
 using Open.Nat;
+using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -16,6 +18,7 @@ namespace Celeste_Launcher_Gui.Services
         // TODO: Find a better way to do this (for example using an auth token)
         private static string CurrentEmail;
         private static SecureString CurrentPassword;
+        private static ILogger Logger = LoggerFactory.GetLogger();
 
         internal static void SetCredentials(string email, SecureString password)
         {
@@ -25,9 +28,12 @@ namespace Celeste_Launcher_Gui.Services
 
         public static async void StartGame(bool isOffline = false)
         {
+            Logger.Information("Preparing to start game, is offline: {@isOffline}", isOffline);
+
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
+                Logger.Information("Game is already started with PID {@PID}", pname.Select(t => t.Id));
                 GenericMessageDialog.Show($"Game already running", DialogIcon.Warning);
                 return;
             }
@@ -47,8 +53,11 @@ namespace Celeste_Launcher_Gui.Services
 
                     while (!success)
                     {
-                        if (!await gameScannner.QuickScan())
+                        Logger.Information("Starting quick game scan");
+                        if (!await gameScannner.QuickScan(new GameScannerLogAdapter(Logger, Celeste_Public_Api.GameScanner_Api.Models.LogLevel.Warn)))
                         {
+                            Logger.Information("Game scanner did not approve game files");
+
                             var dialogResult = GenericMessageDialog.Show(@"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).", DialogIcon.None, DialogOptions.YesNo);
 
                             if (dialogResult.Value)
@@ -65,12 +74,14 @@ namespace Celeste_Launcher_Gui.Services
                         }
                         else
                         {
+                            Logger.Information("Game files passed file scanner");
                             success = true;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
+                    Logger.Error(ex, ex.Message);
                     GenericMessageDialog.Show($"Warning: Error during quick scan. Error message: {ex.Message}", DialogIcon.Warning);
                 }
             }
@@ -85,17 +96,20 @@ namespace Celeste_Launcher_Gui.Services
 
             //MpSettings
             if (!isOffline && LegacyBootstrapper.UserConfig.MpSettings != null)
+            {
                 if (LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
                 {
                     LegacyBootstrapper.UserConfig.MpSettings.PublicIp = LegacyBootstrapper.CurrentUser.Ip;
 
                     if (LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.Upnp)
+                    {
                         try
                         {
                             await OpenNat.MapPortTask(1000, 1000);
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
+                            Logger.Error(ex, ex.Message);
                             LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
 
                             GenericMessageDialog.Show("Error: Upnp device not found! \"UPnP Port Mapping\" has been disabled.", DialogIcon.Error);
@@ -104,7 +118,9 @@ namespace Celeste_Launcher_Gui.Services
                         {
                             NatDiscoverer.TraceSource.Close();
                         }
+                    }
                 }
+            }
 
             try
             {
@@ -148,6 +164,7 @@ namespace Celeste_Launcher_Gui.Services
                 {
                     if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
                     {
+                        Logger.Information("Diagnostics mode is enabled");
                         //
                         try
                         {
@@ -160,17 +177,19 @@ namespace Celeste_Launcher_Gui.Services
                                 RedirectStandardOutput = true
                             };
 
+                            Logger.Information("Starting prcoess {@Proc} with args {@Procargs}", killInfo.FileName, killInfo.Arguments);
                             Process.Start(killInfo);
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-                            //
+                            Logger.Error(ex, ex.Message);
                         }
 
                         var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
                         const int maxNumOfCrashDumps = 30;
                         if (!File.Exists(procdumpFileName))
                         {
+                            Logger.Information("Could not find procdump.exe");
                             LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
                             throw new FileNotFoundException(
                                 "Diagonstic Mode requires procdump.exe (File not Found).\r\n" +
@@ -182,6 +201,8 @@ namespace Celeste_Launcher_Gui.Services
                         var pathToCrashDumpFolder =
                             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                                 @"Spartan\MiniDumps");
+
+                        Logger.Information("CrashDumpFolder is set to {@CrashDumpFolder}", pathToCrashDumpFolder);
 
                         if (!Directory.Exists(pathToCrashDumpFolder))
                             Directory.CreateDirectory(pathToCrashDumpFolder);
@@ -215,11 +236,14 @@ namespace Celeste_Launcher_Gui.Services
                             RedirectStandardOutput = true
                         };
 
+                        Logger.Information("Starting prcoess {@Proc} with args {@Procargs}", startInfo.FileName, startInfo.Arguments);
+
                         Process.Start(startInfo);
                     }
                 }
                 catch (Exception exception)
                 {
+                    Logger.Error(exception, exception.Message);
                     GenericMessageDialog.Show($"Warning: {exception.Message}", DialogIcon.Warning);
                 }
 
@@ -227,6 +251,9 @@ namespace Celeste_Launcher_Gui.Services
                 var profileDir = Path.Combine(Environment.GetEnvironmentVariable("userprofile"));
                 var customScnGamePath = Path.Combine(gamePath, "Scenario", "CustomScn");
                 var scenarioUserPath = Path.Combine(profileDir, "Documents", "Spartan", "Scenario");
+
+                Logger.Information("CustomScn directory: {@customScnPath}", customScnGamePath);
+                Logger.Information("Scenario directory: {@scenarioPath}", scenarioUserPath);
 
                 if (!Directory.Exists(scenarioUserPath))
                     Directory.CreateDirectory(scenarioUserPath);
@@ -255,11 +282,12 @@ namespace Celeste_Launcher_Gui.Services
                     arg =
                         $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
-
+                Logger.Information("Starting game {@GameExecutable} at {@GamePath}", spartanPath, gamePath);
                 Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });
             }
             catch (Exception exception)
             {
+                Logger.Error(exception, exception.Message);
                 GenericMessageDialog.Show($"Error: {exception.Message}", DialogIcon.Error);
             }
         }

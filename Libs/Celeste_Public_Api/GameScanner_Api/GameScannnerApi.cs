@@ -399,11 +399,13 @@ namespace Celeste_Public_Api.GameScanner_Api
                         progress?.Report(new ScanAndRepairProgress(totalCount, index,
                             new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
 
-                        if (RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size))
-                            return;
-
-                        retVal = false;
-                        state.Break();
+                        if (!RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size))
+                        {
+                            progress?.Report(new ScanAndRepairProgress(totalCount, index,
+                                new ExLog(LogLevel.Warn, $"{fileInfo.FileName} did not have expected file size {fileInfo.Size}")));
+                            retVal = false;
+                            state.Break();
+                        }
                     });
 
                     await Task.Delay(25, _cts.Token).ConfigureAwait(false);

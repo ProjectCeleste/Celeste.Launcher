@@ -9,9 +9,11 @@ using System.Windows.Forms;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Forms;
+using Celeste_Launcher_Gui.Logging;
 using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.WebSocket_Api;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
+using Serilog;
 
 #endregion
 
@@ -30,8 +32,11 @@ namespace Celeste_Launcher_Gui
         public static string UserConfigFilePath { get; } =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "CelesteConfig.xml");
 
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public static void InitializeLegacyComponents()
         {
+            Logger.Information("Initializing bootstrapper");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -41,6 +46,7 @@ namespace Celeste_Launcher_Gui
             //Only one instance
             if (!createdNew)
             {
+                Logger.Information("Launcher is already started, will exit");
                 MsgBox.ShowMessage(
                     $@"""Celeste Fan Project Launcher"" v{
                             Assembly.GetEntryAssembly().GetName().Version
@@ -57,21 +63,35 @@ namespace Celeste_Launcher_Gui
             try
             {
                 if (File.Exists(UserConfigFilePath))
+                {
                     UserConfig = UserConfig.Load(UserConfigFilePath);
+                    Logger.Information("User config loaded from {@Path}", UserConfigFilePath);
+                }
+                else
+                {
+                    Logger.Information("No user config loaded, path {@Path} does not exist", UserConfigFilePath);
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //
+                Logger.Error(ex, ex.Message);
             }
 
             try
             {
                 if (string.IsNullOrWhiteSpace(UserConfig.GameFilesPath))
+                {
                     UserConfig.GameFilesPath = GameScannnerApi.GetGameFilesRootPath();
+                    Logger.Information("Game path set to {@Path}", UserConfigFilePath);
+                }
+                else
+                {
+                    Logger.Information("No game path is set");
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //
+                Logger.Error(ex, ex.Message);
             }
 
             //Check if Steam Version
@@ -79,19 +99,23 @@ namespace Celeste_Launcher_Gui
             {
                 UserConfig.IsSteamVersion = Assembly.GetEntryAssembly().Location
                     .EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase);
+
+                Logger.Information("IsSteamVersion: {@IsSteamVersion}", UserConfig.IsSteamVersion);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //
+                Logger.Error(ex, ex.Message);
             }
 
             //Init WebSocketApi
             WebSocketApi = new WebSocketApi(UserConfig.ServerUri);
+            Logger.Information("Initialized web socket");
 
             //Start Gui
             //Application.Run(new MainForm());
 
             GC.KeepAlive(mutex);
+            Logger.Information("Bootstrapper initialized");
         }
     }
 }

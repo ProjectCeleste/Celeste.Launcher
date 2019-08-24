@@ -1,7 +1,9 @@
 ﻿using Celeste_Launcher_Gui.Account;
+using Celeste_Launcher_Gui.Logging;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +26,17 @@ namespace Celeste_Launcher_Gui.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        private ILogger _logger = LoggerFactory.GetLogger();
+
         public LoginPage()
         {
             InitializeComponent();
 
             var storedCredentials = UserCredentialService.GetStoredUserCredentials();
 
-            if (LegacyBootstrapper.UserConfig?.LoginInfo?.RememberMe == true && storedCredentials != null)
+            if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe == true && storedCredentials != null)
             {
+                _logger.Information("User has already stored credentials before");
                 EmailInputField.InputContent = storedCredentials.Email;
                 PasswordInputField.PasswordInputBox.Password = "**********";
                 RememberPasswordOption.IsChecked = true;
@@ -52,22 +57,28 @@ namespace Celeste_Launcher_Gui.Pages
                 var storedCredentials = UserCredentialService.GetStoredUserCredentials();
                 LoginResult loginResult;
 
+                _logger.Information("Stored credentials is null: {@IsNull}", (storedCredentials == null));
+
                 if (storedCredentials != null && (RememberPasswordOption.IsChecked ?? false))
                 {
+                    _logger.Information("Performing login with stored credentials");
                     loginResult = await PerformLogin(storedCredentials.Email, storedCredentials.Password);
                 }
                 else
                 {
+                    _logger.Information("Performing login with entered credentials");
                     loginResult = await PerformLogin(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
                 }
 
                 if (loginResult.Result)
                 {
+                    _logger.Information("Login succeeded");
                     LegacyBootstrapper.UserConfig.LoginInfo.RememberMe = RememberPasswordOption.IsChecked ?? false;
                     LegacyBootstrapper.UserConfig.LoginInfo.AutoLogin = AutoLoginOption.IsChecked ?? false;
 
                     if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe && storedCredentials == null)
                     {
+                        _logger.Information("User has selected to store new credentials");
                         UserCredentialService.StoreCredential(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
                     }
 
@@ -79,6 +90,7 @@ namespace Celeste_Launcher_Gui.Pages
                 }
                 else
                 {
+                    _logger.Information("Failed signing in because {@Message}", loginResult.Message);
                     GenericMessageDialog.Show($@"Error: {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
                     PasswordInputField.PasswordInputBox.Clear();
                     UserCredentialService.ClearVault();
@@ -86,6 +98,7 @@ namespace Celeste_Launcher_Gui.Pages
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, ex.Message);
                 GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
                 PasswordInputField.PasswordInputBox.Clear();
                 UserCredentialService.ClearVault();
