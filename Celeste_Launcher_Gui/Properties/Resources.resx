@@ -427,4 +427,7 @@
   <data name="MainMenuGameLanguageBtn" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="LanguageComingSoonToolTip" xml:space="preserve">
+    <value>Coming soon™</value>
+  </data>
 </root>

@@ -44,7 +44,7 @@
                         theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/zh-CHT-Normal.png"
                         theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/zh-CHT-Hover.png" Margin="10" Click="SelectChinese"/>
 
-                    <Button Style="{StaticResource FlagButton}"
+                    <Button Style="{StaticResource FlagButton}" ToolTip="{x:Static p:Resources.LanguageComingSoonToolTip}"
                         theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/pt-BR-Disabled.png"
                         theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Flags/pt-BR-Disabled.png" Margin="10" Click="SelectPortugese"/>
                 </StackPanel>

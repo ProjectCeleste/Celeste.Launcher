@@ -547,6 +547,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coming soon™.
+        /// </summary>
+        public static string LanguageComingSoonToolTip {
+            get {
+                return ResourceManager.GetString("LanguageComingSoonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Auto-login.
         /// </summary>
         public static string LoginAutoLoginOption {
