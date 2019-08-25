@@ -112,7 +112,7 @@ namespace Celeste_Public_Api.WebSocket_Api
             
             _lastActivity = DateTime.UtcNow;
 
-            var fingerPrint = FingerPrint.Value();
+            var fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
 
             var request = new LoginInfo(email, password.GetValue(), _apiVersion, fingerPrint);
 
@@ -217,7 +217,9 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new RegisterUserInfo(_apiVersion, eMail, verifyKey, username, password, FingerPrint.Value());
+            var fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
+
+            var request = new RegisterUserInfo(_apiVersion, eMail, verifyKey, username, password, fingerPrint);
 
             var response = await _register.DoRegister(request);
 

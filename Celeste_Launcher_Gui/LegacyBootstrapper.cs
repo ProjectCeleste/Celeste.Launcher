@@ -10,6 +10,7 @@ using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Public_Api.GameScanner_Api;
+using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
@@ -115,6 +116,10 @@ namespace Celeste_Launcher_Gui
             //Application.Run(new MainForm());
 
             GC.KeepAlive(mutex);
+
+            Logger.Information("Initializing fingerprint provider");
+            FingerPrintProvider.Initialize();
+
             Logger.Information("Bootstrapper initialized");
         }
     }

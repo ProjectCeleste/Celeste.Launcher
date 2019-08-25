@@ -145,6 +145,7 @@
     <Compile Include="Helpers\DownloadFileUtils.cs" />
     <Compile Include="Helpers\Crc32Utils.cs" />
     <Compile Include="Helpers\FingerPrint.cs" />
+    <Compile Include="Helpers\FingerPrintProvider.cs" />
     <Compile Include="Helpers\Misc.cs" />
     <Compile Include="Helpers\SecureStringExtensions.cs" />
     <Compile Include="Helpers\XmlUtils.cs" />
