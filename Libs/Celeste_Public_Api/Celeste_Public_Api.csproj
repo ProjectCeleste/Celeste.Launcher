@@ -153,6 +153,8 @@
     <Compile Include="Logging\GameScannerLogAdapter.cs" />
     <Compile Include="Logging\LoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\AwaitableOperation.cs" />
+    <Compile Include="WebSocket_Api\WebSocket\CommandInfo\IGenericResponse.cs" />
     <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\ADDFRIEND.cs" />
     <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\CHANGEPWD.cs" />
     <Compile Include="WebSocket_Api\WebSocket\CommandInfo\Member\CONFFRIEND.cs" />

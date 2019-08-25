@@ -109,14 +109,14 @@ namespace Celeste_Public_Api.WebSocket_Api
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
-
+            
             _lastActivity = DateTime.UtcNow;
 
-            var request = new LoginInfo(email, password.GetValue(), _apiVersion, FingerPrint.Value());
+            var fingerPrint = FingerPrint.Value();
 
-            _logger.Debug("Sending login request");
+            var request = new LoginInfo(email, password.GetValue(), _apiVersion, fingerPrint);
+
             var response = await _login.DoLogin(request);
-            _logger.Debug("Received login response");
 
             if (response.Result)
             {

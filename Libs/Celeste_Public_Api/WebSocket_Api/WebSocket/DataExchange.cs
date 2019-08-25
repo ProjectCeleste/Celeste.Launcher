@@ -32,10 +32,10 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 
             _webSocketClient.Query<TResponse>(cmdName, content, responseAction.ReceivedMessage);
 
-            var response = await responseAction.WaitForResponseAsync(Client.ConnectionTimeoutInSeconds);
-
             try
             {
+                var response = await responseAction.WaitForResponseAsync(Client.ConnectionTimeoutInMilliseconds);
+
                 if (!response.Result)
                 {
                     if (string.IsNullOrWhiteSpace(response.Message))

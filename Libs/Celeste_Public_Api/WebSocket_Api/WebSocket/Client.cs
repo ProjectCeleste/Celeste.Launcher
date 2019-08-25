@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Net.Sockets;
 using System.Security.Authentication;
+using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
@@ -17,17 +18,14 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 {
     public class Client
     {
-        public const int ConnectionTimeoutInSeconds = 30; //30 Seconds
+        public const int ConnectionTimeoutInMilliseconds = 30 * 1000;
 
         private readonly string _uri;
 
         private Agent _agent;
-
-        private string _errorMessage;
-
-        private ClientState _state = ClientState.Offline;
-
         private ILogger _logger;
+
+        private SemaphoreSlim _socketCallbackSemaphore;
 
         public Client(string uri)
         {
@@ -35,27 +33,9 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
             _logger = LoggerFactory.GetLogger();
         }
 
-        public string ErrorMessage
-        {
-            get => _errorMessage;
-            private set
-            {
-                _errorMessage = value;
-                RaisePropertyChanged("ErrorMessage");
-            }
-        }
+        public string ErrorMessage { get; private set; }
 
-        public ClientState State
-        {
-            get => _state;
-            private set
-            {
-                _state = value;
-                RaisePropertyChanged("State");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ClientState State { get; private set; } = ClientState.Offline;
 
         private void InitializeWebSocket()
         {
@@ -82,6 +62,9 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
             _agent.Closed += WebSocket_Closed;
             _agent.Error += WebSocket_Error;
             _agent.Opened += WebSocket_Opened;
+
+            _socketCallbackSemaphore?.Dispose();
+            _socketCallbackSemaphore = new SemaphoreSlim(0, 1);
         }
 
         public string Query<T>(string name, object content, Action<T> executor)
@@ -103,7 +86,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 
         public async Task DoConnect()
         {
-            if (_state == ClientState.Connected)
+            if (State == ClientState.Connected)
             {
                 _logger.Debug("Socket already connected");
                 return;
@@ -114,43 +97,41 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 
             State = ClientState.Connecting;
 
-            _logger.Debug("Opening web socket");
+            _logger.Information("Attempting to connect to {@Uri}", _uri);
             _agent.Open();
 
-            var startTime = DateTime.UtcNow;
-            while (State == ClientState.Connecting)
+            var receivedSocketCallback = await _socketCallbackSemaphore.WaitAsync(ConnectionTimeoutInMilliseconds);
+
+            if (!receivedSocketCallback)
             {
-                await Task.Delay(10);
-                _logger.Debug("Performing spin wait");
+                State = ClientState.TimeOut;
+                _logger.Warning("Timed out connecting to server");
 
-                var timeSpentInSeconds = DateTime.UtcNow.Subtract(startTime).TotalSeconds;
-                if (timeSpentInSeconds > ConnectionTimeoutInSeconds)
-                {
-                    State = ClientState.TimeOut;
-                    _logger.Debug("Timing out");
-
-                    throw new Exception($"Server connection timeout ({timeSpentInSeconds}s)!");
-                }
+                throw new Exception($"Server connection timeout)!");
             }
 
             if (State != ClientState.Connected)
                 throw new Exception("Server Offline!");
 
-            await Task.Delay(200).ConfigureAwait(false);
-            _logger.Debug("Connected");
+            _logger.Information("Successfully connected websocket");
         }
 
         private void WebSocket_Opened(object sender, EventArgs e)
         {
+            _logger.Debug("Web socket open");
             State = ClientState.Connected;
+            _socketCallbackSemaphore.Release();
         }
 
         private void WebSocket_Closed(object sender, EventArgs e)
         {
+            _logger.Debug("Web socket closed");
             State = ClientState.Offline;
 
             if (string.IsNullOrEmpty(ErrorMessage))
                 ErrorMessage = "Offline";
+
+            _socketCallbackSemaphore.Release();
         }
 
         private void WebSocket_Error(object sender, ErrorEventArgs e)
@@ -162,16 +143,13 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
             else
                 ErrorMessage = e.Exception.StackTrace;
 
+            _logger.Error(e.Exception, e.Exception.Message);
+
             if (_agent.State != WebSocketState.None ||
                 State != ClientState.Connecting) return;
 
             State = ClientState.Offline;
-        }
-
-        protected void RaisePropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            _socketCallbackSemaphore.Release();
         }
     }
 }

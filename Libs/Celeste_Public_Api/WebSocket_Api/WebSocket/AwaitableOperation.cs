@@ -18,7 +18,11 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 
         public async Task<TResponse> WaitForResponseAsync(int timeoutInSeconds)
         {
-            await _semaphore.WaitAsync(timeoutInSeconds * 1000);
+            var waitSucceeded = await _semaphore.WaitAsync(timeoutInSeconds * 1000);
+
+            if (!waitSucceeded)
+                throw new System.Exception("Operation timed out");
+
             return _response;
         }
     }
