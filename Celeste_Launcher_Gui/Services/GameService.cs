@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security;
+using System.Threading.Tasks;
 
 namespace Celeste_Launcher_Gui.Services
 {
@@ -26,7 +27,7 @@ namespace Celeste_Launcher_Gui.Services
             CurrentPassword = password;
         }
 
-        public static async void StartGame(bool isOffline = false)
+        public static async Task StartGame(bool isOffline = false)
         {
             Logger.Information("Preparing to start game, is offline: {@isOffline}", isOffline);
 
@@ -41,13 +42,16 @@ namespace Celeste_Launcher_Gui.Services
             //QuickGameScan
             if (!isOffline || DownloadFileUtils.IsConnectedToInternet())
             {
+                Logger.Information("User is online, will perform game scan");
                 try
                 {
                     var gameFilePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
                         ? LegacyBootstrapper.UserConfig.GameFilesPath
                         : GameScannnerApi.GetGameFilesRootPath();
 
+                    Logger.Information("Preparing games canner api");
                     var gameScannner = new GameScannnerApi(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
+                    await gameScannner.InitializeAsync();
 
                     var success = false;
 

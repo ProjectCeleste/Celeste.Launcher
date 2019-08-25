@@ -39,9 +39,11 @@ namespace Celeste_Launcher_Gui.Pages
             NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
         }
 
-        private void OnPlayOfflineClick(object sender, RoutedEventArgs e)
+        private async void OnPlayOfflineClick(object sender, RoutedEventArgs e)
         {
-            GameService.StartGame(true);
+            PlayOfflineBtn.IsEnabled = false;
+            await GameService.StartGame(true);
+            PlayOfflineBtn.IsEnabled = true;
         }
         #endregion
 

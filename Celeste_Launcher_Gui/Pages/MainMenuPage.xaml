@@ -14,7 +14,7 @@
             <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/AoEO_Logo.png" Stretch="None" Margin="10"></Image>
             <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.MainMenuLoginBtn}" Margin="5" Click="OnLoginClick" IsDefault="True"/>
             <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.MainMenuRegisterBtn}" Margin="5" Click="OnRegisterClick"/>
-            <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.MainMenuPlayOfflineBtn}" Margin="5" Click="OnPlayOfflineClick"/>
+            <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.MainMenuPlayOfflineBtn}" Margin="5" Click="OnPlayOfflineClick" x:Name="PlayOfflineBtn"/>
         </StackPanel>
 
         <StackPanel Width="300" Height="auto" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom">

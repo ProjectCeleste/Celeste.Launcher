@@ -28,10 +28,9 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScannner = new GameScannnerApi(gameFilesPath, isSteam);
+            GameScanner = new GameScannnerApi(gameFilesPath, isSteam);
             lbl_ProgressTitle.Text = string.Empty;
             lbl_ProgressDetail.Text = string.Empty;
-            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
             pB_GlobalProgress.Value = 0;
             pB_SubProgress.Value = 0;
             tB_Report.Text = string.Empty;
@@ -43,16 +42,16 @@ namespace Celeste_Launcher_Gui.Forms
 
             SkinHelperFonts.SetFont(Controls);
 
-            GameScannner = gameScannnerApi;
+            GameScanner = gameScannnerApi;
             lbl_ProgressTitle.Text = string.Empty;
             lbl_ProgressDetail.Text = string.Empty;
-            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
+            lbl_GlobalProgress.Text = $@"0/{GameScanner.FilesInfo.Count()}";
             pB_GlobalProgress.Value = 0;
             pB_SubProgress.Value = 0;
             tB_Report.Text = string.Empty;
         }
 
-        private GameScannnerApi GameScannner { get; }
+        private GameScannnerApi GameScanner { get; }
 
         public void ProgressChanged(object sender, ScanAndRepairProgress e)
         {
@@ -164,11 +163,11 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void GameScan_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!GameScannner.IsScanRunning)
+            if (!GameScanner.IsScanRunning)
                 return;
 
-            GameScannner.CancelScan();
-            while (GameScannner.IsScanRunning)
+            GameScanner.CancelScan();
+            while (GameScanner.IsScanRunning)
             {
                 //
             }
@@ -178,11 +177,11 @@ namespace Celeste_Launcher_Gui.Forms
         {
             pictureBoxButtonCustom1.Enabled = false;
 
-            if (GameScannner.IsScanRunning)
+            if (GameScanner.IsScanRunning)
             {
                 pictureBoxButtonCustom1.Enabled = false;
-                GameScannner.CancelScan();
-                while (GameScannner.IsScanRunning)
+                GameScanner.CancelScan();
+                while (GameScanner.IsScanRunning)
                 {
                     //
                 }
@@ -195,9 +194,11 @@ namespace Celeste_Launcher_Gui.Forms
         {
             try
             {
+                await GameScanner.InitializeAsync();
+                lbl_GlobalProgress.Text = $@"0/{GameScanner.FilesInfo.Count()}";
                 var progress = new Progress<ScanAndRepairProgress>();
                 progress.ProgressChanged += ProgressChanged;
-                if (await GameScannner.ScanAndRepair(progress))
+                if (await GameScanner.ScanAndRepair(progress))
                 {
                     MsgBox.ShowMessage(@"Game scan completed with success.",
                         @"Project Celeste -- Game Scan",

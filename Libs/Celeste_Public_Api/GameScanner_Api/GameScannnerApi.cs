@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.GameScanner_Api.Models;
 using Celeste_Public_Api.Helpers;
+using Serilog;
 
 #endregion
 
@@ -17,40 +18,29 @@ namespace Celeste_Public_Api.GameScanner_Api
     public class GameScannnerApi
     {
         private CancellationTokenSource _cts;
+        private bool _isSteam;
 
         public GameScannnerApi(string filesRootPath, bool isSteam)
         {
+            _isSteam = isSteam;
+            FilesRootPath = filesRootPath;
+
             if (string.IsNullOrWhiteSpace(filesRootPath))
                 throw new ArgumentException(@"Game files path is null or empty!", nameof(filesRootPath));
 
             if (!Directory.Exists(filesRootPath))
                 Directory.CreateDirectory(filesRootPath);
 
-            CleanTmpFolder();
-
-            FilesInfo = GetGameFilesInfo(isSteam);
-            FilesRootPath = filesRootPath;
-
             _cts = new CancellationTokenSource();
         }
 
-        public GameScannnerApi(IEnumerable<GameFileInfo> filesInfo, string filesRootPath)
+        public async Task InitializeAsync()
         {
-            if (string.IsNullOrEmpty(filesRootPath))
-                throw new ArgumentException(@"Game files path is null or empty!", nameof(filesRootPath));
-
-            if (!Directory.Exists(filesRootPath))
-                Directory.CreateDirectory(filesRootPath);
-
-            CleanTmpFolder();
-
-            FilesInfo = filesInfo;
-            FilesRootPath = filesRootPath;
-
-            _cts = new CancellationTokenSource();
+            await Task.Factory.StartNew(() => CleanTmpFolder());
+            FilesInfo = await GetGameFilesInfoAsync(_isSteam);
         }
 
-        public IEnumerable<GameFileInfo> FilesInfo { get; }
+        public IEnumerable<GameFileInfo> FilesInfo { get; private set; }
 
         public string FilesRootPath { get; }
 
@@ -376,62 +366,63 @@ namespace Celeste_Public_Api.GameScanner_Api
 
         public async Task<bool> QuickScan(IProgress<ScanAndRepairProgress> progress = null)
         {
+            if (IsScanRunning)
+                throw new Exception("Scan already running!");
+
+            var retVal = true;
+            IsScanRunning = true;
+            try
             {
-                if (IsScanRunning)
-                    throw new Exception("Scan already running!");
+                _cts.Cancel();
+                _cts = new CancellationTokenSource();
+                IsCancellationRequested = false;
 
-                var retVal = true;
-                IsScanRunning = true;
-                try
+                var totalCount = FilesInfo.Count();
+                var currentIndex = 0;
+                Parallel.ForEach(FilesInfo, (fileInfo, state) =>
                 {
-                    _cts.Cancel();
-                    _cts = new CancellationTokenSource();
-                    IsCancellationRequested = false;
+                    var index = Interlocked.Increment(ref currentIndex);
 
-                    var totalCount = FilesInfo.Count();
-                    var currentIndex = 0;
-                    Parallel.ForEach(FilesInfo, (fileInfo, state) =>
+                    _cts.Token.ThrowIfCancellationRequested();
+
+                    progress?.Report(new ScanAndRepairProgress(totalCount, index,
+                        new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
+
+                    if (!RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size))
                     {
-                        var index = Interlocked.Increment(ref currentIndex);
-
-                        _cts.Token.ThrowIfCancellationRequested();
-
                         progress?.Report(new ScanAndRepairProgress(totalCount, index,
-                            new ExLog(LogLevel.Info, $"{fileInfo.FileName}")));
+                            new ExLog(LogLevel.Warn, $"{fileInfo.FileName} did not have expected file size {fileInfo.Size}")));
+                        retVal = false;
+                        state.Break();
+                    }
+                });
 
-                        if (!RunFileQuickCheck(Path.Combine(FilesRootPath, fileInfo.FileName), fileInfo.Size))
-                        {
-                            progress?.Report(new ScanAndRepairProgress(totalCount, index,
-                                new ExLog(LogLevel.Warn, $"{fileInfo.FileName} did not have expected file size {fileInfo.Size}")));
-                            retVal = false;
-                            state.Break();
-                        }
-                    });
-
-                    await Task.Delay(25, _cts.Token).ConfigureAwait(false);
-                }
-                finally
-                {
-                    IsScanRunning = false;
-                }
-
-                return retVal;
+                await Task.Delay(25, _cts.Token).ConfigureAwait(false);
             }
+            finally
+            {
+                IsScanRunning = false;
+            }
+
+            return retVal;
         }
 
-        public static IEnumerable<GameFileInfo> GetGameFilesInfo(bool isSteam)
+        private static async Task<IEnumerable<GameFileInfo>> GetGameFilesInfoAsync(bool isSteam)
         {
             var filesInfo = new GameFilesInfo();
 
             //Load default manifest
-            foreach (var fileInfo in FilesInfoFromGameManifest("production", 6148, isSteam))
+            var manifestFiles = await FilesInfoFromGameManifestAsync("production", 6148, isSteam);
+
+            foreach (var fileInfo in manifestFiles)
                 if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
                     filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
                 else
                     filesInfo.FileInfo.Add(fileInfo.FileName, fileInfo);
 
             //Override for celeste file
-            foreach (var fileInfo in FilesInfoOverrideFromCelesteXml())
+            var celesteFiles = await FilesInfoOverrideFromCelesteXmlAsync();
+            foreach (var fileInfo in celesteFiles)
                 if (filesInfo.FileInfo.ContainsKey(fileInfo.FileName))
                     filesInfo.FileInfo[fileInfo.FileName] = fileInfo;
                 else
@@ -440,13 +431,13 @@ namespace Celeste_Public_Api.GameScanner_Api
             return filesInfo.FilesInfoArray;
         }
 
-        public static IEnumerable<GameFileInfo> FilesInfoFromGameManifest(string type, int build, bool isSteam)
+        public static async Task<IEnumerable<GameFileInfo>> FilesInfoFromGameManifestAsync(string type, int build, bool isSteam)
         {
             var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
 
             using (var client = new WebClient())
             {
-                client.DownloadFile($"http://spartan.msgamestudios.com/content/spartan/{type}/{build}/manifest.txt",
+                await client.DownloadFileTaskAsync($"http://spartan.msgamestudios.com/content/spartan/{type}/{build}/manifest.txt",
                     tempFileName);
             }
 
@@ -494,7 +485,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return retVal;
         }
 
-        private static IEnumerable<GameFileInfo> FilesInfoOverrideFromCelesteXml(string type = null)
+        private static async Task<IEnumerable<GameFileInfo>> FilesInfoOverrideFromCelesteXmlAsync(string type = null)
         {
             var tempFileName = Path.Combine(GetTempPath(), Path.GetRandomFileName());
 
@@ -502,7 +493,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             {
                 using (var client = new WebClient())
                 {
-                    client.DownloadFile(
+                    await client.DownloadFileTaskAsync(
                         !string.IsNullOrWhiteSpace(type)
                             ? $"https://downloads.projectceleste.com/game_files/manifest_override_{type}.xml"
                             : "https://downloads.projectceleste.com/game_files/manifest_override.xml",
@@ -514,7 +505,7 @@ namespace Celeste_Public_Api.GameScanner_Api
                 //FallBack Server
                 using (var client = new WebClient())
                 {
-                    client.DownloadFile(
+                    await client.DownloadFileTaskAsync(
                         !string.IsNullOrWhiteSpace(type)
                             ? $"https://ns544971.ip-66-70-180.net/game_files/manifest_override_{type}.xml"
                             : "https://ns544971.ip-66-70-180.net/game_files/manifest_override.xml",
@@ -530,7 +521,7 @@ namespace Celeste_Public_Api.GameScanner_Api
             return retVal;
         }
 
-        private static void CleanTmpFolder()
+        private void CleanTmpFolder()
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmp");
 

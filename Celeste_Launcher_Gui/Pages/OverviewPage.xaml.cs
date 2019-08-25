@@ -132,17 +132,17 @@ namespace Celeste_Launcher_Gui.Pages
         #endregion
 
         #region Settings context menu callbacks
-        private void OnLoginClick(object sender, RoutedEventArgs e)
+        private async void OnLoginClick(object sender, RoutedEventArgs e)
         {
             LoginBtn.IsEnabled = false;
-            GameService.StartGame();
+            await GameService.StartGame();
             LoginBtn.IsEnabled = true;
         }
 
-        private void OnPlayOffline(object sender, RoutedEventArgs e)
+        private async void OnPlayOffline(object sender, RoutedEventArgs e)
         {
             PlayOfflineBtn.IsEnabled = false;
-            GameService.StartGame();
+            await GameService.StartGame();
             PlayOfflineBtn.IsEnabled = true;
         }
 
