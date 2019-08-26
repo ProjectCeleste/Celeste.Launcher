@@ -3,10 +3,9 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Threading;
 using System.Threading.Tasks;
-using Ionic.Zip;
-using Ionic.Zlib;
 
 #endregion
 
@@ -41,35 +40,22 @@ namespace Celeste_Public_Api.Helpers
     public static class ZipUtils
     {
         public static async Task DoExtractZipFile(string archiveFileName, string outFolder,
-            IProgress<ZipFileProgress>progress, CancellationToken ct,
-            string password = null)
+            IProgress<ZipFileProgress>progress, CancellationToken ct)
         {
-            using (var zip = new ZipFile(archiveFileName))
+            using (var zipFile = ZipFile.OpenRead(archiveFileName))
             {
-                if (!string.IsNullOrEmpty(password))
-                    zip.Password = password;
-                foreach (var zipEntry in zip)
+                foreach (var zipEntry in zipFile.Entries)
                 {
-                    if (zipEntry.IsDirectory)
-                        continue;
+                    var length = zipEntry.Length;
 
-                    var length = zipEntry.UncompressedSize;
-
-                    var filePath = Path.Combine(outFolder, zipEntry.FileName);
+                    var filePath = Path.Combine(outFolder, zipEntry.Name);
                     var directoryName = Path.GetDirectoryName(filePath);
 
                     if (!string.IsNullOrEmpty(directoryName))
                         Directory.CreateDirectory(directoryName);
 
-                    using (var a = new MemoryStream())
+                    using (var a = zipEntry.Open())
                     {
-                        if (!string.IsNullOrEmpty(password))
-                            zipEntry.ExtractWithPassword(a, password);
-                        else
-                            zipEntry.Extract(a);
-
-                        a.Position = 0;
-
                         using (var fileStreamFinal =
                             File.Open(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
                         {
@@ -90,7 +76,7 @@ namespace Celeste_Public_Api.Helpers
                                     }
 
                                     //
-                                    if (read > zipEntry.UncompressedSize)
+                                    if (read > zipEntry.Length)
                                     {
                                         totalread += length;
                                         final.Write(buffer, 0, Convert.ToInt32(length));

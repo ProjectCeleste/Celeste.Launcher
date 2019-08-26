@@ -72,8 +72,6 @@ namespace Celeste_Public_Api.Helpers
                 ServicePointManager.ServerCertificateValidationCallback += ValidateRemoteCertificate;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls |
                                                        SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-                await Task.Run(() =>
-                {
                     using (var webClient = new WebClient())
                     {
                         //
@@ -93,6 +91,7 @@ namespace Celeste_Public_Api.Helpers
                         //
                         while (DownloadState == DownloadState.InProgress)
                         {
+                            await Task.Delay(100);
                             if (!ct.IsCancellationRequested)
                                 continue;
 
@@ -103,7 +102,6 @@ namespace Celeste_Public_Api.Helpers
                         if (DownloadState != DownloadState.Completed)
                             throw new WebException("Download Failed!");
                     }
-                }, ct);
             }
             catch (AggregateException)
             {
