@@ -66,10 +66,8 @@ namespace Celeste_Launcher_Gui.Services
 
                             if (dialogResult.Value)
                             {
-                                using (var gameScannerForm = new Forms.GameScan())
-                                {
-                                    gameScannerForm.ShowDialog();
-                                }
+                                var scanner = new GamePathSelectionWindow();
+                                scanner.ShowDialog();
                             }
                             else
                             {

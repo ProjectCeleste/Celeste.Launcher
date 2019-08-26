@@ -491,6 +491,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game Scan.
+        /// </summary>
+        public static string GameScannerTitle {
+            get {
+                return ResourceManager.GetString("GameScannerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Installed:.
         /// </summary>
         public static string GameUpdateInstalledVersionLabel {

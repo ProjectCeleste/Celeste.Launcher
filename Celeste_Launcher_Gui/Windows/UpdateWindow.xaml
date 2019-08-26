@@ -17,8 +17,8 @@
                     IconWidth="23" IconHeight="23"
                     Click="OnClose"
                     VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,6,8,0"/>
-        <Grid Width="510" Height="32" VerticalAlignment="Top" Margin="0,11,0,0" MouseDown="OnMoveWindow" Background="Transparent">
-            <TextBlock Text="{Binding Title}" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+        <Grid Width="510" Height="27" VerticalAlignment="Top" Margin="0,11,0,0" MouseDown="OnMoveWindow" Background="Transparent">
+            <TextBlock Text="{x:Static p:Resources.GameUpdateTitle}" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
         </Grid>
         <Grid Width="510" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50,30,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

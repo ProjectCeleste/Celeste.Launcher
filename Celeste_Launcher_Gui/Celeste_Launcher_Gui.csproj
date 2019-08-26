@@ -230,10 +230,19 @@
     <Compile Include="UserControls\WideRegisterPasswordInputField.xaml.cs">
       <DependentUpon>WideRegisterPasswordInputField.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WideUpdateProgressBar.xaml.cs">
+      <DependentUpon>WideUpdateProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WindowControl.xaml.cs">
       <DependentUpon>WindowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LauncherVersionInfo.cs" />
+    <Compile Include="Windows\GamePathSelectionWindow.xaml.cs">
+      <DependentUpon>GamePathSelectionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GameScannerWindow.xaml.cs">
+      <DependentUpon>GameScannerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\GenericMessageDialog.xaml.cs">
       <DependentUpon>GenericMessageDialog.xaml</DependentUpon>
     </Compile>
@@ -322,6 +331,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\GamePathInputBox.png" />
+    <Resource Include="Resources\GamePathSelectionWindowBackground.png" />
+    <Resource Include="Resources\ProgressBarOverlayWide.png" />
+    <Resource Include="Resources\GameScannerBackground.png" />
     <Resource Include="Resources\Icons\Language-Hover.png" />
     <Resource Include="Resources\Icons\Language-Normal.png" />
     <Resource Include="Resources\DefaultNewsGraphics.png" />
@@ -555,9 +568,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControls\WideUpdateProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\WindowControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\GamePathSelectionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GameScannerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\GenericMessageDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -587,6 +612,9 @@
     </PackageReference>
     <PackageReference Include="PanelManager">
       <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Windows7APICodePack-Shell">
+      <Version>1.1.0</Version>
     </PackageReference>
     <PackageReference Include="WindowsFirewallHelper">
       <Version>1.6.3.40</Version>

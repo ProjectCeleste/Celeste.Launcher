@@ -225,10 +225,8 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            using (var form = new GameScan())
-            {
-                form.ShowDialog();
-            }
+            var scanner = new GamePathSelectionWindow();
+            scanner.ShowDialog();
         }
 
         private void OpenUpdater(object sender, RoutedEventArgs e)

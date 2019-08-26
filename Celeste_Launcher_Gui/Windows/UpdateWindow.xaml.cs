@@ -68,7 +68,7 @@ namespace Celeste_Launcher_Gui.Windows
                 var progress = new Progress<int>();
                 progress.ProgressChanged += Progress_ProgressChanged;
 
-                progress.ProgressChanged += (s, value) => 
+                progress.ProgressChanged += (s, value) =>
                 {
                     ProgressBar.ProgressBar.Value = value;
                 };

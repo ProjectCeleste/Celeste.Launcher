@@ -430,4 +430,7 @@
   <data name="LanguageComingSoonToolTip" xml:space="preserve">
     <value>Coming soon™</value>
   </data>
+  <data name="GameScannerTitle" xml:space="preserve">
+    <value>Game Scan</value>
+  </data>
 </root>

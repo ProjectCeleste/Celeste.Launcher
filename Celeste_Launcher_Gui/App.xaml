@@ -6,6 +6,7 @@
              StartupUri="Windows/MainWindow.xaml">
     <Application.Resources>
         <FontFamily x:Key="Ashley-Crawford-CG">/Resources/#Ashley Crawford CG</FontFamily>
+        <FontFamily x:Key="Lithos-Pro-Regular">/Resources/#Lithos Pro Regular</FontFamily>
 
         <Style x:Key="GenericCustomizedButton" TargetType="Button">
             <Setter Property="Background">
