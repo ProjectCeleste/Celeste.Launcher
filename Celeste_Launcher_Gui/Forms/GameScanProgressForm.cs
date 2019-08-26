@@ -167,10 +167,6 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
 
             GameScanner.CancelScan();
-            while (GameScanner.IsScanRunning)
-            {
-                //
-            }
         }
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
@@ -181,10 +177,6 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 pictureBoxButtonCustom1.Enabled = false;
                 GameScanner.CancelScan();
-                while (GameScanner.IsScanRunning)
-                {
-                    //
-                }
             }
 
             Close();
