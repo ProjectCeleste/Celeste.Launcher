@@ -491,6 +491,34 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Browse.
+        /// </summary>
+        public static string GamePathSelectionBrowseBtn {
+            get {
+                return ResourceManager.GetString("GamePathSelectionBrowseBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan.
+        /// </summary>
+        public static string GamePathSelectionScanBtn {
+            get {
+                return ResourceManager.GetString("GamePathSelectionScanBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run a game scan to install/update/repair 
+        ///Age of Empires Online - Celeste Fan Project.
+        /// </summary>
+        public static string GamePathSelectionTitle {
+            get {
+                return ResourceManager.GetString("GamePathSelectionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Scan.
         /// </summary>
         public static string GameScannerTitle {

@@ -433,4 +433,14 @@
   <data name="GameScannerTitle" xml:space="preserve">
     <value>Game Scan</value>
   </data>
+  <data name="GamePathSelectionBrowseBtn" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="GamePathSelectionScanBtn" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="GamePathSelectionTitle" xml:space="preserve">
+    <value>Run a game scan to install/update/repair 
+Age of Empires Online - Celeste Fan Project</value>
+  </data>
 </root>
