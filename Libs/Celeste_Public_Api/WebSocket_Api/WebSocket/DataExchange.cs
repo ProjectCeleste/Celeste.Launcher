@@ -38,7 +38,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 
                 if (!response.Result)
                 {
-                    if (string.IsNullOrWhiteSpace(response.Message))
+                    if (!string.IsNullOrWhiteSpace(response.Message))
                         throw new Exception(response.Message);
 
                     if (!string.IsNullOrEmpty(_webSocketClient.ErrorMessage))
