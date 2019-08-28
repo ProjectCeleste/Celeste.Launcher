@@ -94,7 +94,7 @@ namespace Celeste_Launcher_Gui.Windows
             pB_GlobalProgress.ProgressBar.Value = e.ProgressPercentage;
             if (e.ScanAndRepairFileProgress != null)
             {
-                lbl_ProgressTitle.Content = e.ScanAndRepairFileProgress.FileName;
+                lbl_ProgressTitle.Content = $"{e.ScanAndRepairFileProgress.FileName} ({e.CurrentIndex}/{e.TotalFile})";
 
                 pB_SubProgress.ProgressBar.Value = e.ScanAndRepairFileProgress.TotalProgressPercentage;
 
