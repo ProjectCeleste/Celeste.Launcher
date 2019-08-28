@@ -13,6 +13,7 @@ namespace Celeste_Launcher_Gui.Windows
         public GamePathSelectionWindow()
         {
             InitializeComponent();
+            PathLocation.Text = LegacyBootstrapper.UserConfig.GameFilesPath;
         }
 
         private void BorderMoved(object sender, MouseButtonEventArgs e)
@@ -31,11 +32,11 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 Title = "Select Celeste location",
                 IsFolderPicker = true,
-                InitialDirectory = LegacyBootstrapper.UserConfig.GameFilesPath,
+                InitialDirectory = PathLocation.Text,
 
                 AddToMostRecentlyUsedList = false,
                 AllowNonFileSystemItems = false,
-                DefaultDirectory = LegacyBootstrapper.UserConfig.GameFilesPath,
+                DefaultDirectory = PathLocation.Text,
                 EnsureFileExists = true,
                 EnsurePathExists = true,
                 EnsureReadOnly = false,
@@ -62,6 +63,8 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 Close();
 
+                LegacyBootstrapper.UserConfig.GameFilesPath = PathLocation.Text;
+                LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
                 var scanner = new GameScannerWindow(PathLocation.Text, LegacyBootstrapper.UserConfig.IsSteamVersion);
                 scanner.ShowDialog();
             }
