@@ -22,7 +22,7 @@
         <Grid Width="510" Height="27" VerticalAlignment="Top" Margin="0,11,0,0" MouseDown="OnMoveWindow" Background="Transparent">
             <TextBlock Text="{x:Static p:Resources.GameScannerTitle}" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
         </Grid>
-        <TextBox Width="460" Height="230" Margin="0,110,35,0" VerticalAlignment="Top" Foreground="White" x:Name="tB_Report" Background="Transparent" BorderBrush="Transparent"/>
+        <TextBox Width="460" Height="230" Margin="0,110,35,0" VerticalAlignment="Top" Foreground="White" x:Name="tB_Report" Background="Transparent" BorderThickness="0"/>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,105,28,0">
             <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
                         theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Normal.png"
