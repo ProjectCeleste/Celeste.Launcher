@@ -75,39 +75,56 @@ namespace Celeste_Launcher_Gui.Windows
                 progress.ProgressChanged += ProgressChanged;
                 if (await GameScanner.ScanAndRepair(progress))
                 {
-                    GenericMessageDialog.Show($@"Game scan completed with success.", DialogIcon.None, DialogOptions.Ok);
+                    CurrentFileLabel.Content = string.Empty;
+                    MainProgressLabel.Content = string.Empty;
+                    FileProgress.ProgressBar.IsIndeterminate = false;
+                    tB_Report.Text += "Done";
+                    GenericMessageDialog.Show($@"Game scan has succesfully completed", DialogIcon.None, DialogOptions.Ok);
                     DialogResult = true;
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"Game scan failed", DialogIcon.Error, DialogOptions.Ok);
+                    FailGameScan("Game scan failed");
                 }
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                FailGameScan(ex.Message);
             }
+        }
+
+        private void FailGameScan(string reason)
+        {
+            FileProgress.ProgressBar.Foreground = Brushes.Red;
+            ScanTotalProgress.ProgressBar.Foreground = Brushes.Red;
+            CurrentFileLabel.Content = string.Empty;
+            MainProgressLabel.Content = string.Empty;
+            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
+            GenericMessageDialog.Show($@"Error: {reason}", DialogIcon.Error, DialogOptions.Ok);
         }
 
         public void ProgressChanged(object sender, ScanAndRepairProgress e)
         {
-            pB_GlobalProgress.ProgressBar.Value = e.ProgressPercentage;
+            ScanTotalProgress.ProgressBar.Value = e.ProgressPercentage;
+            TaskbarItemInfo.ProgressValue = ((e.ProgressPercentage) / 100d);
+
             if (e.ScanAndRepairFileProgress != null)
             {
-                lbl_ProgressTitle.Content = $"{e.ScanAndRepairFileProgress.FileName} ({e.CurrentIndex}/{e.TotalFile})";
+                CurrentFileLabel.Content = $"{e.ScanAndRepairFileProgress.FileName} ({e.CurrentIndex}/{e.TotalFile})";
 
-                pB_SubProgress.ProgressBar.Value = e.ScanAndRepairFileProgress.TotalProgressPercentage;
+                FileProgress.ProgressBar.IsIndeterminate = false;
+                FileProgress.ProgressBar.Value = e.ScanAndRepairFileProgress.TotalProgressPercentage;
 
                 if (e.ScanAndRepairFileProgress.DownloadFileProgress != null)
                 {
                     var speed = e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived /
                                 (e.ScanAndRepairFileProgress.DownloadFileProgress.TotalMilliseconds / 1000);
 
-                    lbl_ProgressDetail.Content = $"Downloading {e.ScanAndRepairFileProgress.FileName} ({Misc.ToFileSize(speed)}/s)"; ;
+                    MainProgressLabel.Content = $"Downloading {e.ScanAndRepairFileProgress.FileName} ({Misc.ToFileSize(speed)}/s)"; ;
                 }
                 else if (e.ScanAndRepairFileProgress.L33TZipExtractProgress != null)
                 {
-                    lbl_ProgressDetail.Content = $@"Extracting {
+                    MainProgressLabel.Content = $@"Extracting {
                                 Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesProcessed)
                             }/{
                                 Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalBytesToProcess)
@@ -115,7 +132,8 @@ namespace Celeste_Launcher_Gui.Windows
                 }
                 else
                 {
-                    lbl_ProgressDetail.Content = "Waiting";
+                    MainProgressLabel.Content = "Verifying file";
+                    FileProgress.ProgressBar.IsIndeterminate = true;
                 }
 
                 if (e.ProgressLog != null)
@@ -178,9 +196,9 @@ namespace Celeste_Launcher_Gui.Windows
             }
             else
             {
-                lbl_ProgressTitle.Content = string.Empty;
-                lbl_ProgressDetail.Content = string.Empty;
-                pB_SubProgress.ProgressBar.Value = 0;
+                CurrentFileLabel.Content = string.Empty;
+                MainProgressLabel.Content = string.Empty;
+                FileProgress.ProgressBar.Value = 0;
             }
         }
     }

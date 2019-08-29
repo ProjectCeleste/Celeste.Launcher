@@ -9,6 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
                 Title="{x:Static p:Resources.GameScannerTitle}" Height="521" Width="671" WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True" Closed="Window_Closed" Loaded="Window_Loaded">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo Description="Celeste game scanner" ProgressState="Normal" />
+    </Window.TaskbarItemInfo>
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/GameScannerBackground.png" />
@@ -34,10 +37,10 @@
         </StackPanel>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,9,25" Height="146">
             <StackPanel VerticalAlignment="Center" x:Name="UpdateProgressionControls">
-                <local:WideUpdateProgressBar x:Name="pB_SubProgress"/>
-                <Label Content="Waiting" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" HorizontalAlignment="Center" x:Name="lbl_ProgressDetail"/>
-                <local:UpdateProgressBar x:Name="pB_GlobalProgress"/>
-                <Label Content="Ready" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" HorizontalAlignment="Center" x:Name="lbl_ProgressTitle"/>
+                <local:WideUpdateProgressBar x:Name="FileProgress"/>
+                <Label Content="Waiting" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" HorizontalAlignment="Center" x:Name="MainProgressLabel"/>
+                <local:UpdateProgressBar x:Name="ScanTotalProgress"/>
+                <Label Content="Ready" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" HorizontalAlignment="Center" x:Name="CurrentFileLabel"/>
             </StackPanel>
         </Grid>
     </Grid>

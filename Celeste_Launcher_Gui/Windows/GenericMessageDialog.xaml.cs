@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,7 @@ namespace Celeste_Launcher_Gui.Windows
         public GenericMessageDialog(string message, DialogIcon icon = DialogIcon.None, DialogOptions option = DialogOptions.Ok)
         {
             InitializeComponent();
+            SystemSounds.Beep.Play();
             DataContext = this;
 
             Message = message;
