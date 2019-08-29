@@ -29,11 +29,13 @@
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,105,28,0">
             <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
                         theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Hover.png" Margin="2" Click="OpenPatchNotes"/>
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Hover.png" Margin="2" Click="OpenPatchNotes"
+                        ToolTip="{x:Static p:Resources.GameScannerPatchNotesLabel}"/>
             
             <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
                         theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" Margin="2" Click="OpenDiscord"/>
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" Margin="2" Click="OpenDiscord"
+                        ToolTip="{x:Static p:Resources.GameScannerDiscordLabel}"/>
         </StackPanel>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,9,25" Height="146">
             <StackPanel VerticalAlignment="Center" x:Name="UpdateProgressionControls">

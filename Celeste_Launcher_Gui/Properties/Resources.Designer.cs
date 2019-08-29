@@ -519,6 +519,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discord.
+        /// </summary>
+        public static string GameScannerDiscordLabel {
+            get {
+                return ResourceManager.GetString("GameScannerDiscordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patch notes.
+        /// </summary>
+        public static string GameScannerPatchNotesLabel {
+            get {
+                return ResourceManager.GetString("GameScannerPatchNotesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Scan.
         /// </summary>
         public static string GameScannerTitle {

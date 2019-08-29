@@ -443,4 +443,10 @@
     <value>Run a game scan to install/update/repair 
 Age of Empires Online - Celeste Fan Project</value>
   </data>
+  <data name="GameScannerDiscordLabel" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="GameScannerPatchNotesLabel" xml:space="preserve">
+    <value>Patch notes</value>
+  </data>
 </root>
