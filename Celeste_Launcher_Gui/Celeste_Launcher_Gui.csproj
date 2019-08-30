@@ -106,24 +106,6 @@
     <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
       <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GameScanProgressForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GameScanProgressForm.Designer.cs">
-      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\LanguageChooser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LanguageChooser.Designer.cs">
-      <DependentUpon>LanguageChooser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\GameScan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GameScan.Designer.cs">
-      <DependentUpon>GameScan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,18 +123,6 @@
     </Compile>
     <Compile Include="Forms\ChangePwdForm.Designer.cs">
       <DependentUpon>ChangePwdForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MpSettingForm.cs">
       <SubType>Form</SubType>
@@ -184,18 +154,6 @@
     </Compile>
     <Compile Include="LegacyBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\RegisterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\RegisterForm.Designer.cs">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\UpdaterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UpdaterForm.Designer.cs">
-      <DependentUpon>UpdaterForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\NewsPictureLoader.cs" />
     <Compile Include="Services\UpdateService.cs" />
@@ -273,21 +231,6 @@
     <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
       <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GameScanProgressForm.resx">
-      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LanguageChooser.resx">
-      <DependentUpon>LanguageChooser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GameScan.resx">
-      <DependentUpon>GameScan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MpSettingForm.resx">
       <DependentUpon>MpSettingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,12 +250,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\RegisterForm.resx">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UpdaterForm.resx">
-      <DependentUpon>UpdaterForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
