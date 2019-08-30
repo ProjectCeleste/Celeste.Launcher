@@ -274,5 +274,21 @@ namespace Celeste_Launcher_Gui.Pages
         {
             Process.Start(_currentNews.Href);
         }
+
+        private void OpenScenarionManager(object sender, RoutedEventArgs e)
+        {
+            using (var form = new ScnManagerForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void OpenMultiplayerSettings(object sender, RoutedEventArgs e)
+        {
+            using (var form = new MpSettingForm(LegacyBootstrapper.UserConfig.MpSettings))
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }

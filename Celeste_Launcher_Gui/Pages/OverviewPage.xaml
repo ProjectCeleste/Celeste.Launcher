@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
         xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
         xmlns:h="clr-namespace:Celeste_Launcher_Gui.Helpers"
+        xmlns:theme="clr-namespace:Celeste_Launcher_Gui.Helpers"
         mc:Ignorable="d"
         UseLayoutRounding="True"
         d:DesignHeight="587" d:DesignWidth="964" Loaded="Page_Loaded">
@@ -154,6 +155,7 @@
                     <local:SideBarMenuItem.ContextMenu>
                         <ContextMenu StaysOpen="true">
                             <MenuItem Header="Game Settings">
+                                <MenuItem Header="Multiplayer Settings" Click="OpenMultiplayerSettings"/>
                                 <MenuItem Header="Game Language" Click="OpenGameLanguage"/>
                                 <MenuItem Header="Enable Diagnostic Mode" Click="EnableDiagnosticsMode"/>
                             </MenuItem>
@@ -163,7 +165,7 @@
                                 <MenuItem Header="Windows Firewall" Click="OpenWindowsFirewall"/>
                             </MenuItem>
                             <MenuItem Header="Game Scan" Click="OpenGameScanner"/>
-                            <MenuItem Header="Update" Click="OpenUpdater"/>
+                            <MenuItem Header="Update launcher" Click="OpenUpdater"/>
                         </ContextMenu>
                     </local:SideBarMenuItem.ContextMenu>
                 </local:SideBarMenuItem>
@@ -246,7 +248,9 @@
                 <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.OverviewLoginBtn}" Margin="0,0,0,2" Click="OnLoginClick" x:Name="LoginBtn"/>
                 <WrapPanel HorizontalAlignment="Center">
                     <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OverviewPlayOfflineBtn}" Click="OnPlayOffline" x:Name="PlayOfflineBtn"/>
-                    <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Normal.png" Stretch="None" Margin="5,0,0,0"/>
+                    <Button Style="{StaticResource GenericCustomizedButton}" Click="OpenScenarionManager" Margin="5,0,0,0" Width="36" Height="37"
+                            theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Normal.png"
+                            theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Hover.png" />
                 </WrapPanel>
             </StackPanel>
         </Grid>
