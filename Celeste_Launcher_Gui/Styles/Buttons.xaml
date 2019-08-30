@@ -1,0 +1,89 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:theme="clr-namespace:Celeste_Launcher_Gui.Helpers">
+    <Style x:Key="GenericCustomizedButton" TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="{Binding Path=(theme:ButtonThemeProperties.DefaultIcon), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Name="content">
+                                <ContentPresenter.Effect>
+                                    <DropShadowEffect ShadowDepth="4"
+                                                      Direction="330"
+                                                      Color="Black"
+                                                      Opacity="0.5"
+                                                      BlurRadius="4"/>
+                                </ContentPresenter.Effect>
+                            </ContentPresenter>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="{Binding Path=(theme:ButtonThemeProperties.HoverIcon), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="{Binding Path=(theme:ButtonThemeProperties.DisabledIcon), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="4"
+                                  Direction="330"
+                                  Color="Black"
+                                  Opacity="0.5"
+                                  BlurRadius="4"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FlagButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
+        <Setter Property="Height" Value="88"/>
+        <Setter Property="Width" Value="85"/>
+    </Style>
+
+    <Style x:Key="LargeButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
+        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/LargeButtonNormal.png"/>
+        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/LargeButtonHover.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/LargeButtonDisabled.png"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Height" Value="66"/>
+        <Setter Property="Width" Value="273"/>
+    </Style>
+
+    <Style x:Key="MediumButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
+        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/MediumButtonNormal.png"/>
+        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/MediumButtonHover.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/MediumButtonDisabled.png"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Height" Value="51"/>
+        <Setter Property="Width" Value="219"/>
+    </Style>
+
+    <Style x:Key="TinyButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
+        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonNormal.png"/>
+        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonHover.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonDisabled.png"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="164"/>
+    </Style>
+</ResourceDictionary>

@@ -27,7 +27,7 @@
             </StackPanel>
             
         </Grid>
-        <TextBox Width="470" Height="225" Text="{Binding ChangeLog}" Margin="0,130,16,0" VerticalAlignment="Top" Foreground="White" Background="Transparent" BorderThickness="0"/>
+        <TextBox Width="470" Height="225" Text="{Binding ChangeLog}" Margin="0,130,16,0" VerticalAlignment="Top" Style="{StaticResource TextLog}"/>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="90">
             <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.GameUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate" Visibility="Hidden"/>
             <StackPanel VerticalAlignment="Center" x:Name="UpdateProgressionControls" Visibility="Hidden">
