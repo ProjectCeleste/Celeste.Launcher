@@ -41,9 +41,18 @@
 
         <StackPanel Width="300" Height="auto" HorizontalAlignment="Right" Margin="0,0,15,70" VerticalAlignment="Bottom">
             <local:SideBarMenuItemRight 
-                        LabelContents="{x:Static p:Resources.MainMenuGameLanguageBtn}" 
-                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Language-Normal.png"
-                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Language-Hover.png" HorizontalAlignment="Right" Click="ChangeLanguage"/>
+                        LabelContents="{x:Static p:Resources.MainMenuGameSettingsBtn}" 
+                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Normal.png"
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Right" Click="OpenSettings" x:Name="SettingsButton">
+                <local:SideBarMenuItemRight.ContextMenu>
+                    <ContextMenu StaysOpen="true">
+                        <MenuItem Header="Convert to Steam game" Click="OpenSteam"/>
+                        <MenuItem Header="Game Language" Click="OpenGameLanguage"/>
+                        <MenuItem Header="Enable Diagnostic Mode" Click="EnableDiagnosticsMode"/>
+                        <MenuItem Header="Windows Features" Click="OpenWindowsFeatures"/>
+                    </ContextMenu>
+                </local:SideBarMenuItemRight.ContextMenu>
+            </local:SideBarMenuItemRight>
         </StackPanel>
 
         <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">

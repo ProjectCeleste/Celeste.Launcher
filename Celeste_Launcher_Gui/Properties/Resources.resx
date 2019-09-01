@@ -328,8 +328,8 @@
   <data name="RegisterCancelBtnText" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="MainMenuGameLanguageBtn" xml:space="preserve">
-    <value>Language</value>
+  <data name="MainMenuGameSettingsBtn" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="LanguageComingSoonToolTip" xml:space="preserve">
     <value>Coming soon™</value>
