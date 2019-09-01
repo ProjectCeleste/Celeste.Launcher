@@ -353,4 +353,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerPatchNotesLabel" xml:space="preserve">
     <value>Patch Notes</value>
   </data>
+  <data name="OverviewScenarioBtnTooltip" xml:space="preserve">
+    <value>Scenario Manager</value>
+  </data>
 </root>

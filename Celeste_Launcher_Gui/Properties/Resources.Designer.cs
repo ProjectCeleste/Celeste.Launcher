@@ -643,6 +643,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scenario Manager.
+        /// </summary>
+        public static string OverviewScenarioBtnTooltip {
+            get {
+                return ResourceManager.GetString("OverviewScenarioBtnTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string OverviewSettingsSideMenuBtn {

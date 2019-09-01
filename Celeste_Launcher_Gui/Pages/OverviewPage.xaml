@@ -150,7 +150,7 @@
                     <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OverviewPlayOfflineBtn}" Click="OnPlayOffline" x:Name="PlayOfflineBtn"/>
                     <Button Style="{StaticResource GenericCustomizedButton}" Click="OpenScenarionManager" Margin="5,0,0,0" Width="36" Height="37"
                             theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Normal.png"
-                            theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Hover.png" />
+                            theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Hover.png" ToolTip="{x:Static p:Resources.OverviewScenarioBtnTooltip}" />
                 </WrapPanel>
             </StackPanel>
         </Grid>
