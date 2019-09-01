@@ -121,15 +121,14 @@ namespace Celeste_Launcher_Gui.Pages
             }
         }
 
-        private void EnableRememberMe(object sender, RoutedEventArgs e)
-        {
-            AutoLoginOption.IsEnabled = true;
-        }
-
         private void DisableRememberMeOption(object sender, RoutedEventArgs e)
         {
-            AutoLoginOption.IsEnabled = false;
             AutoLoginOption.IsChecked = false;
+        }
+
+        private void AutoLoginOption_Checked(object sender, RoutedEventArgs e)
+        {
+            RememberPasswordOption.IsChecked = true;
         }
     }
 }
