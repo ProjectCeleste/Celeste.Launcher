@@ -120,7 +120,10 @@ namespace Celeste_Launcher_Gui.Windows
                     var speed = e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived /
                                 (e.ScanAndRepairFileProgress.DownloadFileProgress.TotalMilliseconds / 1000);
 
-                    MainProgressLabel.Content = $"Downloading {e.ScanAndRepairFileProgress.FileName} ({Misc.ToFileSize(speed)}/s)"; ;
+                    MainProgressLabel.Content = $"Downloading " +
+                        $"{Misc.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived)}/" +
+                        $"{Misc.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.TotalBytesToReceive)}" +
+                        $"({Misc.ToFileSize(speed)}/s)";
                 }
                 else if (e.ScanAndRepairFileProgress.L33TZipExtractProgress != null)
                 {
