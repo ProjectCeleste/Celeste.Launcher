@@ -144,6 +144,10 @@ namespace Celeste_Public_Api.Helpers
             if (error == SslPolicyErrors.None)
                 return true;
 
+//#if DEBUG
+            if (error == SslPolicyErrors.RemoteCertificateNameMismatch || error == SslPolicyErrors.RemoteCertificateChainErrors)
+                return true;
+//#endif      
             MessageBox.Show($"X509Certificate [{cert.Subject}]\r\n" +
                             "Policy Error:\r\n" +
                             $"'{error}'", "", MessageBoxButtons.OK,
