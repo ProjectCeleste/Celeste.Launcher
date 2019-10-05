@@ -4,7 +4,7 @@
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.8.0...v2.1.0.0)
 
-**Celeste Launcher will no require .NETFramework version 4.7 instead of version 4.5!**
+**Celeste Launcher will now require .NETFramework version 4.7 instead of version 4.5!**
 
 **Game Scanner Enhancements:**
 
