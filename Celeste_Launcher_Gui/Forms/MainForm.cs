@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using Celeste_AOEO_Controls;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.Helpers;
 using Open.Nat;
+using ProjectCeleste.GameFiles.GameScanner;
 
 #endregion
 
@@ -249,12 +249,12 @@ namespace Celeste_Launcher_Gui.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-            if (!DownloadFileUtils.IsConnectedToInternet()) return;
+            if (!InternetUtils.IsConnectedToInternet()) return;
 
             //Update Check
             try
             {
-                if (await UpdaterForm.GetGitHubVersion() > Assembly.GetExecutingAssembly().GetName().Version)
+                if (await Updater.GetGitHubVersion() > Assembly.GetExecutingAssembly().GetName().Version)
                     using (var form =
                         new MsgBoxYesNo(
                             @"An update is avalaible. Click ""Yes"" to install it, or ""No"" to ignore it (not recommended).")
@@ -470,36 +470,37 @@ namespace Celeste_Launcher_Gui.Forms
             }
 
             //QuickGameScan
-            if (!isOffline || DownloadFileUtils.IsConnectedToInternet())
+            if (!isOffline || InternetUtils.IsConnectedToInternet())
                 try
                 {
                     var gameFilePath = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                         ? Program.UserConfig.GameFilesPath
-                        : GameScannnerApi.GetGameFilesRootPath();
+                        : GameScannnerManager.GetGameFilesRootPath();
 
-                    var gameScannner = new GameScannnerApi(gameFilePath, Program.UserConfig.IsSteamVersion);
-
-                    retry:
-                    if (!await gameScannner.QuickScan())
+                    using (var gameScannner = new GameScannnerManager(gameFilePath, Program.UserConfig.IsSteamVersion))
                     {
-                        bool success;
-                        using (var form =
-                            new MsgBoxYesNo(
-                                @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).")
-                        )
+                        retry:
+                        if (!await gameScannner.Scan(true))
                         {
-                            var dr = form.ShowDialog();
-                            if (dr == DialogResult.OK)
-                                using (var form2 = new GameScan())
-                                {
-                                    form2.ShowDialog();
-                                    success = false;
-                                }
-                            else
-                                success = true;
+                            bool success;
+                            using (var form =
+                                new MsgBoxYesNo(
+                                    @"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).")
+                            )
+                            {
+                                var dr = form.ShowDialog();
+                                if (dr == DialogResult.OK)
+                                    using (var form2 = new GameScan())
+                                    {
+                                        form2.ShowDialog();
+                                        success = false;
+                                    }
+                                else
+                                    success = true;
+                            }
+                            if (!success)
+                                goto retry;
                         }
-                        if (!success)
-                            goto retry;
                     }
                 }
                 catch (Exception ex)
@@ -549,7 +550,7 @@ namespace Celeste_Launcher_Gui.Forms
                 //Launch Game
                 var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                     ? Program.UserConfig.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
+                    : GameScannnerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
 

@@ -4,7 +4,7 @@ using System;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
-using Celeste_Public_Api.GameScanner_Api;
+using ProjectCeleste.GameFiles.GameScanner;
 
 #endregion
 
@@ -21,7 +21,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (Program.UserConfig != null && !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath))
                 tb_GamePath.Text = Program.UserConfig.GameFilesPath;
             else
-                tb_GamePath.Text = GameScannnerApi.GetGameFilesRootPath();
+                tb_GamePath.Text = GameScannnerManager.GetGameFilesRootPath();
         }
 
         private void BtnRunScan_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.UserConfig.Save(Program.UserConfigFilePath);
 
                 using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath,
-                    Program.UserConfig.IsSteamVersion))
+                    Program.UserConfig.IsSteamVersion, checkBox1.Checked))
                 {
                     var dr = form.ShowDialog();
 
@@ -42,7 +42,7 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception ex)
             {
-                MsgBox.ShowMessage($@"Error: {ex.Message}",
+                MsgBox.ShowMessage($@"Exception: {ex.Message}",
                     @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

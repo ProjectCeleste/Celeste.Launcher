@@ -2,13 +2,12 @@
 
 using System;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
-using Celeste_Public_Api.GameScanner_Api;
-using Celeste_Public_Api.GameScanner_Api.Models;
 using Celeste_Public_Api.Helpers;
+using ProjectCeleste.GameFiles.GameScanner;
+using ProjectCeleste.GameFiles.GameScanner.Models;
 
 #endregion
 
@@ -16,7 +15,9 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScanProgressForm : Form
     {
-        public GameScanProgressForm(string gameFilesPath, bool isSteam)
+        private GameScannnerManager _gameScannner;
+
+        public GameScanProgressForm(string gameFilesPath, bool isSteam = false, bool downloadBoost = false)
         {
             InitializeComponent();
 
@@ -28,195 +29,137 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScannner = new GameScannnerApi(gameFilesPath, isSteam);
+            _gameScannner = new GameScannnerManager(gameFilesPath, downloadBoost, isSteam);
             lbl_ProgressTitle.Text = string.Empty;
             lbl_ProgressDetail.Text = string.Empty;
-            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
+            lbl_GlobalProgress.Text = string.Empty;
+            label1.Text = string.Empty;
             pB_GlobalProgress.Value = 0;
             pB_SubProgress.Value = 0;
-            tB_Report.Text = string.Empty;
         }
 
-        public GameScanProgressForm(GameScannnerApi gameScannnerApi)
+        private void ProgressChanged(object sender, ScanProgress e)
         {
-            InitializeComponent();
-
-            SkinHelperFonts.SetFont(Controls);
-
-            GameScannner = gameScannnerApi;
-            lbl_ProgressTitle.Text = string.Empty;
-            lbl_ProgressDetail.Text = string.Empty;
-            lbl_GlobalProgress.Text = $@"0/{GameScannner.FilesInfo.Count()}";
-            pB_GlobalProgress.Value = 0;
-            pB_SubProgress.Value = 0;
-            tB_Report.Text = string.Empty;
-        }
-
-        private GameScannnerApi GameScannner { get; }
-
-        public void ProgressChanged(object sender, ScanAndRepairProgress e)
-        {
-            pB_GlobalProgress.Value = e.ProgressPercentage;
-            lbl_GlobalProgress.Text =
-                $@"{e.CurrentIndex}/{e.TotalFile}";
-            if (e.ScanAndRepairFileProgress != null)
+            try
             {
-                lbl_ProgressTitle.Text = e.ScanAndRepairFileProgress.FileName;
-
-                pB_SubProgress.Value = e.ScanAndRepairFileProgress.TotalProgressPercentage;
-
-                if (e.ScanAndRepairFileProgress.DownloadFileProgress != null)
-                {
-                    var speed = e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived /
-                                (e.ScanAndRepairFileProgress.DownloadFileProgress.TotalMilliseconds / 1000);
-
-                    lbl_ProgressDetail.Text =
-                        $@"Download Speed: {Misc.ToFileSize(speed)}/s{Environment.NewLine}" +
-                        $@"Progress: {Misc.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.BytesReceived)}/{
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.DownloadFileProgress.TotalBytesToReceive)
-                            }";
-                }
-                else if (e.ScanAndRepairFileProgress.L33TZipExtractProgress != null)
-                {
-                    var speed = e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesProcessed /
-                                (e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalMilliseconds / 1000);
-
-                    lbl_ProgressDetail.Text =
-                        $@"Extract Speed: {Misc.ToFileSize(speed)}/s{Environment.NewLine}" +
-                        $@"Progress: {
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.BytesProcessed)
-                            }/{
-                                Misc.ToFileSize(e.ScanAndRepairFileProgress.L33TZipExtractProgress.TotalBytesToProcess)
-                            }";
-                }
-                else
-                {
-                    lbl_ProgressDetail.Text = string.Empty;
-                }
-
-                if (e.ProgressLog != null)
-                {
-                    switch (e.ProgressLog.LogLevel)
-                    {
-                        case LogLevel.Info:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Warn:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Error:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Fatal:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.Debug:
-                            //tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        case LogLevel.All:
-                            tB_Report.Text += e.ProgressLog.Message + Environment.NewLine;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-
-                    tB_Report.SelectionStart = tB_Report.TextLength;
-                    tB_Report.ScrollToCaret();
-                }
-
-                if (e.ScanAndRepairFileProgress.ProgressLog == null)
-                    return;
-
-                switch (e.ScanAndRepairFileProgress.ProgressLog.LogLevel)
-                {
-                    case LogLevel.Info:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Warn:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Error:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Fatal:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.Debug:
-                        //tB_Report.Text += e.ProgressGameFile.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    case LogLevel.All:
-                        tB_Report.Text += e.ScanAndRepairFileProgress.ProgressLog.Message + Environment.NewLine;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                tB_Report.SelectionStart = tB_Report.TextLength;
-                tB_Report.ScrollToCaret();
+                lbl_ProgressTitle.Text = e.File;
+                pB_GlobalProgress.Value = (int) e.ProgressPercentage;
+                lbl_GlobalProgress.Text = $@"{e.Index}/{e.TotalIndex}";
             }
-            else
+            catch (Exception)
             {
-                lbl_ProgressTitle.Text = string.Empty;
-                lbl_ProgressDetail.Text = string.Empty;
-                pB_SubProgress.Value = 0;
+                //
+            }
+        }
+
+        private void SubProgressChanged(object sender, ScanSubProgress e)
+        {
+            try
+            {
+                if (e.DownloadProgress != null)
+                    lbl_ProgressDetail.Text =
+                        $"{BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted)}/{BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size)}\r\n" +
+                        $"Speed: {BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}ps";
+                else if (!string.IsNullOrWhiteSpace(lbl_ProgressDetail.Text))
+                    lbl_ProgressDetail.Text = string.Empty;
+
+                int baseProgress;
+                int rangeMaxProgress;
+                switch (e.Step)
+                {
+                    case ScanSubProgressStep.Check:
+                        label1.Text = $@"[{(int) e.Step + 1}/{(int) ScanSubProgressStep.End}] Checking";
+                        baseProgress = 0;
+                        rangeMaxProgress = 10;
+                        break;
+                    case ScanSubProgressStep.Download:
+                        label1.Text = $@"[{(int) e.Step + 1}/{(int) ScanSubProgressStep.End}] Downloading";
+                        baseProgress = 10;
+                        rangeMaxProgress = 59;
+                        break;
+                    case ScanSubProgressStep.CheckDownload:
+                        label1.Text = $@"[{(int) e.Step + 1}/{(int) ScanSubProgressStep.End}] Checking downloaded file";
+                        baseProgress = 69;
+                        rangeMaxProgress = 10;
+                        break;
+                    case ScanSubProgressStep.ExtractDownload:
+                        label1.Text =
+                            $@"[{(int) e.Step + 1}/{(int) ScanSubProgressStep.End}] Extracting downloaded file";
+                        baseProgress = 79;
+                        rangeMaxProgress = 10;
+                        break;
+                    case ScanSubProgressStep.CheckExtractDownload:
+                        label1.Text = $@"[{(int) e.Step + 1}/{(int) ScanSubProgressStep.End}] Checking extracted file";
+                        baseProgress = 89;
+                        rangeMaxProgress = 10;
+                        break;
+                    case ScanSubProgressStep.Finalize:
+                        label1.Text = $@"[{(int) e.Step + 1}/{(int) ScanSubProgressStep.End}] Finalize";
+                        baseProgress = 99;
+                        rangeMaxProgress = 1;
+                        break;
+                    case ScanSubProgressStep.End:
+                        label1.Text = @"End";
+                        pB_SubProgress.Value = 100;
+                        return;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(e.Step), e.Step, null);
+                }
+
+                pB_SubProgress.Value = (int) (baseProgress + rangeMaxProgress * (e.ProgressPercentage / 100));
+            }
+            catch (Exception)
+            {
+                //
             }
         }
 
         private void GameScan_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!GameScannner.IsScanRunning)
-                return;
-
-            GameScannner.CancelScan();
-            while (GameScannner.IsScanRunning)
-            {
-                //
-            }
+            _gameScannner?.Dispose();
+            _gameScannner = null;
         }
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
         {
             pictureBoxButtonCustom1.Enabled = false;
 
-            if (GameScannner.IsScanRunning)
-            {
-                pictureBoxButtonCustom1.Enabled = false;
-                GameScannner.CancelScan();
-                while (GameScannner.IsScanRunning)
-                {
-                    //
-                }
-            }
-
-            Close();
+            DialogResult = DialogResult.Cancel;
         }
 
         private async void GameScanProgressForm_Shown(object sender, EventArgs e)
         {
+            var progress = new Progress<ScanProgress>();
+            progress.ProgressChanged += ProgressChanged;
+            var subProgress = new Progress<ScanSubProgress>();
+            subProgress.ProgressChanged += SubProgressChanged;
             try
             {
-                var progress = new Progress<ScanAndRepairProgress>();
-                progress.ProgressChanged += ProgressChanged;
-                if (await GameScannner.ScanAndRepair(progress))
+                await _gameScannner.InitializeFromCelesteManifest();
+                if (await _gameScannner.ScanAndRepair(progress, subProgress))
                 {
                     MsgBox.ShowMessage(@"Game scan completed with success.",
-                        @"Project Celeste -- Game Scan",
+                        @"Celeste Fan Project",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MsgBox.ShowMessage(@"Game scan failed!",
-                        @"Project Celeste -- Game Scan",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    throw new Exception("Game scan failed");
                 }
             }
             catch (Exception ex)
             {
-                MsgBox.ShowMessage($@"Error: {ex.Message}",
-                    @"Project Celeste -- Game Scan",
+                _gameScannner?.Abort();
+                _gameScannner?.Dispose();
+                _gameScannner = null;
+
+                MsgBox.ShowMessage("Exception:\r\n" + ex.Message,
+                    @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                DialogResult = DialogResult.Cancel;
             }
         }
 

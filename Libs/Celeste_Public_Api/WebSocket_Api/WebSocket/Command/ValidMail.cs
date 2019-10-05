@@ -26,7 +26,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         {
             try
             {
-                if (!Misc.IsValideEmailAdress(request.EMail))
+                if (!Misc.IsValidEmailAdress(request.EMail))
                     throw new Exception("Invalid eMail!");
 
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;

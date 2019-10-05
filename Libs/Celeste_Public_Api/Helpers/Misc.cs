@@ -26,22 +26,6 @@ namespace Celeste_Public_Api.Helpers
         private const string MatchUserNamePattern =
             @"^[A-Za-z0-9]{3,15}$";
 
-        public static string ToFileSize(double value)
-        {
-            string[] suffixes =
-            {
-                "bytes", "KB", "MB", "GB",
-                "TB", "PB", "EB", "ZB", "YB"
-            };
-
-            for (var i = 0; i < suffixes.Length; i++)
-                if (value <= Math.Pow(1024, i + 1))
-                    return ThreeNonZeroDigits(value / Math.Pow(1024, i)) + " " + suffixes[i];
-
-            return ThreeNonZeroDigits(value / Math.Pow(1024, suffixes.Length - 1)) + " " +
-                   suffixes[suffixes.Length - 1];
-        }
-
         public static void CleanUpFiles(string path, string pattern = "*")
         {
             Parallel.ForEach(new DirectoryInfo(path).GetFiles(pattern, SearchOption.AllDirectories), file =>
@@ -116,22 +100,17 @@ namespace Celeste_Public_Api.Helpers
             }
         }
 
-        public static string ThreeNonZeroDigits(double value)
-        {
-            return value >= 100 ? value.ToString("0,0") : value.ToString(value >= 10 ? "0.0" : "0.00");
-        }
-
-        public static bool IsValideEmailAdress(string emailAdress)
+        public static bool IsValidEmailAdress(string emailAdress)
         {
             return !string.IsNullOrWhiteSpace(emailAdress) && Regex.IsMatch(emailAdress, MatchEmailPattern);
         }
 
-        public static bool IsValideUserName(string userName)
+        public static bool IsValidUserName(string userName)
         {
             return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, MatchUserNamePattern);
         }
 
-        public static bool IsValidePassword(string password)
+        public static bool IsValidPassword(string password)
         {
             return !string.IsNullOrWhiteSpace(password) && !password.Contains("'") && !password.Contains("\"");
         }

@@ -8,9 +8,10 @@ using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Forms;
-using Celeste_Public_Api.GameScanner_Api;
+using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.WebSocket_Api;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
+using ProjectCeleste.GameFiles.GameScanner;
 
 #endregion
 
@@ -20,7 +21,8 @@ namespace Celeste_Launcher_Gui
     {
         public static UserConfig UserConfig = new UserConfig();
 
-        private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
+        private static readonly string AppName =
+            $"CelesteFanProject_v{Assembly.GetEntryAssembly()?.GetName().Version ?? new Version(0, 0, 0, 1)}";
 
         public static WebSocketApi WebSocketApi { get; private set; }
 
@@ -42,7 +44,7 @@ namespace Celeste_Launcher_Gui
             {
                 MsgBox.ShowMessage(
                     $@"""Celeste Fan Project Launcher"" v{
-                            Assembly.GetEntryAssembly().GetName().Version
+                            Assembly.GetEntryAssembly()?.GetName().Version
                         } already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -66,7 +68,7 @@ namespace Celeste_Launcher_Gui
             try
             {
                 if (string.IsNullOrWhiteSpace(UserConfig.GameFilesPath))
-                    UserConfig.GameFilesPath = GameScannnerApi.GetGameFilesRootPath();
+                    UserConfig.GameFilesPath = GameScannnerManager.GetGameFilesRootPath();
             }
             catch (Exception)
             {
@@ -76,13 +78,16 @@ namespace Celeste_Launcher_Gui
             //Check if Steam Version
             try
             {
-                UserConfig.IsSteamVersion = Assembly.GetEntryAssembly().Location
-                    .EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase);
+                UserConfig.IsSteamVersion = Assembly.GetEntryAssembly()?.Location
+                                                .EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase) ?? false;
             }
             catch (Exception)
             {
                 //
             }
+
+            //SslFix (invalid cert)
+            InternetUtils.SslFix();
 
             //Init WebSocketApi
             WebSocketApi = new WebSocketApi(UserConfig.ServerUri);

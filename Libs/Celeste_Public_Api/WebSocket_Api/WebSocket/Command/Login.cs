@@ -30,7 +30,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
                 if (request.Password.Length > 32)
                     throw new Exception("Password maximum length is 32 char!");
 
-                if (!Misc.IsValideEmailAdress(request.Mail))
+                if (!Misc.IsValidEmailAdress(request.Mail))
                     throw new Exception("Invalid eMail!");
 
                 dynamic requestInfo = request;

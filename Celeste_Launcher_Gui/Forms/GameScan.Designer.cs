@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRunScan = new Celeste_AOEO_Controls.CustomBtn();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxButtonCustom1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -50,6 +52,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -69,7 +72,6 @@
             // 
             this.pictureBoxButtonCustom1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxButtonCustom1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxButtonCustom1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxButtonCustom1.DisabledImage = null;
             this.pictureBoxButtonCustom1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pictureBoxButtonCustom1.HoverImage = global::Celeste_Launcher_Gui.Properties.Resources.XButton_Hover;
@@ -94,14 +96,16 @@
             this.tableLayoutPanel1.Controls.Add(this.panel12, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel11, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(531, 312);
             this.tableLayoutPanel1.TabIndex = 66;
@@ -115,12 +119,12 @@
             this.tableLayoutPanel3.Controls.Add(this.btn_Browse, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.lbl_Mail, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 131);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 101);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(525, 85);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(525, 80);
             this.tableLayoutPanel3.TabIndex = 68;
             // 
             // tb_GamePath
@@ -170,7 +174,7 @@
             this.panel12.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.panel12.Location = new System.Drawing.Point(0, 100);
+            this.panel12.Location = new System.Drawing.Point(0, 70);
             this.panel12.Margin = new System.Windows.Forms.Padding(0);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(531, 28);
@@ -181,7 +185,7 @@
             this.panel11.BackgroundImage = global::Celeste_Launcher_Gui.Properties.Resources.BarSeparator;
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.panel11.Location = new System.Drawing.Point(0, 219);
+            this.panel11.Location = new System.Drawing.Point(0, 184);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(531, 28);
@@ -199,7 +203,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(525, 94);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(525, 64);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // pictureBox1
@@ -210,7 +214,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(90, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 75;
             this.pictureBox1.TabStop = false;
@@ -223,7 +227,7 @@
             this.label1.Location = new System.Drawing.Point(93, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 30, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(402, 94);
+            this.label1.Size = new System.Drawing.Size(402, 64);
             this.label1.TabIndex = 68;
             this.label1.Text = "Run a \"Game Scan\" to install/update/repair Age Of Empires Online Celeste Fan Proj" +
     "ect";
@@ -254,6 +258,34 @@
             this.btnRunScan.TabIndex = 64;
             this.btnRunScan.Click += new System.EventHandler(this.BtnRunScan_Click);
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.checkBox1, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 212);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(531, 35);
+            this.tableLayoutPanel4.TabIndex = 70;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI Black", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.checkBox1.Location = new System.Drawing.Point(145, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(240, 29);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "Enable Download Boost (beta)";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // GameScan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -281,6 +313,8 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -300,5 +334,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Celeste_AOEO_Controls.PictureBoxButtonCustom pictureBoxButtonCustom1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
