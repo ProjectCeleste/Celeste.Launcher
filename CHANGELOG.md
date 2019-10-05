@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.1.1.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.1.1.0) (2019-10-05)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.1.0.0...v2.1.1.0)
+
+**Bug Fix:**
+
+- Fix issue with "Quick Scan" not beeing initialized.
+
 ## [v2.1.0.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.1.0.0) (2019-10-05)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.8.0...v2.1.0.0)
@@ -10,7 +18,6 @@
 
 - Add "Download Boost" (you need to check the box to enable it before run an scan and enjoy faster game update).
 - File check execution speed has been improved (avg. 3x faster).
-
 
 ## [v2.0.8.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.8.0) (2019-05-20)
 

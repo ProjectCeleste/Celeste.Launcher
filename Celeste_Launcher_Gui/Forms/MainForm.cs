@@ -479,6 +479,8 @@ namespace Celeste_Launcher_Gui.Forms
 
                     using (var gameScannner = new GameScannnerManager(gameFilePath, Program.UserConfig.IsSteamVersion))
                     {
+                        await gameScannner.InitializeFromCelesteManifest();
+
                         retry:
                         if (!await gameScannner.Scan(true))
                         {
