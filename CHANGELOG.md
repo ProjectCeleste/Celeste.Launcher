@@ -2,7 +2,7 @@
 
 ## [v2.1.2.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.1.2.0) (2019-10-08)
 
-[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.1.1.0...v2.1.1.0)
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.1.1.0...v2.1.2.0)
 
 **Bug Fix:**
 
