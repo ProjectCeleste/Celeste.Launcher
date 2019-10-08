@@ -67,11 +67,15 @@
     <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>$(SolutionDir)packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
     </Reference>
-    <Reference Include="ProjectCeleste.GameFiles.GameScanner, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)packages\ProjectCeleste.GameFiles.GameScanner.2.1.2\lib\net47\ProjectCeleste.GameFiles.GameScanner.dll</HintPath>
+    <Reference Include="ProjectCeleste.GameFiles.GameScanner, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\ProjectCeleste.GameFiles.GameScanner.2.2.2\lib\net47\ProjectCeleste.GameFiles.GameScanner.dll</HintPath>
     </Reference>
-    <Reference Include="ProjectCeleste.GameFiles.Tools, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)packages\ProjectCeleste.GameFiles.Tools.2.1.3\lib\net47\ProjectCeleste.GameFiles.Tools.dll</HintPath>
+    <Reference Include="ProjectCeleste.GameFiles.Tools, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\ProjectCeleste.GameFiles.Tools.2.2.2\lib\net47\ProjectCeleste.GameFiles.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -85,10 +89,16 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-      <HintPath>$(SolutionDir)packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(SolutionDir)Libs\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
+      <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
+      <Name>Celeste_AOEO_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="$(SolutionDir)Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
+      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
+      <Name>Celeste_Public_Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
@@ -347,16 +357,6 @@
     <None Include="Resources\BarSeparatorVertical.png" />
     <None Include="Resources\BarSeparator.png" />
     <None Include="Resources\BackgroundTexture.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)Libs\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
-      <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
-      <Name>Celeste_AOEO_Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
-      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
-      <Name>Celeste_Public_Api</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
