@@ -268,6 +268,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\Icons\itemsearch-Hover.png" />
+    <Resource Include="Resources\Icons\itemsearch-Normal.png" />
     <Resource Include="Resources\GamePathInputBox.png" />
     <Resource Include="Resources\GamePathSelectionWindowBackground.png" />
     <Resource Include="Resources\ProgressBarOverlayWide.png" />
@@ -308,8 +310,6 @@
     <Resource Include="Resources\Error.png" />
     <Resource Include="Resources\Icons\Account-Hover.png" />
     <Resource Include="Resources\Icons\Account-Normal.png" />
-    <Resource Include="Resources\Icons\aoedb-Hover.png" />
-    <Resource Include="Resources\Icons\aoedb-Normal.png" />
     <Resource Include="Resources\Icons\Discord-Hover.png" />
     <Resource Include="Resources\Icons\Discord-Normal.png" />
     <Resource Include="Resources\Icons\Donate-Hover.png" />

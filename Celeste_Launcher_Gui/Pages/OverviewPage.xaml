@@ -104,9 +104,10 @@
                     HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/YouTube-Hover.png" HorizontalAlignment="Left" Click="OnYoutubeClick"/>
 
                 <local:SideBarMenuItemRight
-                    LabelContents="{x:Static p:Resources.OverviewAoedbSideMenuBtn}" 
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/aoedb-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/aoedb-Hover.png" HorizontalAlignment="Left" Click="OnAoeodbClick"/>
+                    LabelContents="{x:Static p:Resources.OverviewItemSearchSideMenuBtn}" 
+                    LabelSize="14"
+                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/itemsearch-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/itemsearch-Hover.png" HorizontalAlignment="Left" Click="OnItemSearchClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewPatchNotesSideMenuBtn}"

@@ -262,8 +262,8 @@
   <data name="OverviewAccountSideMenuBtn" xml:space="preserve">
     <value>Account</value>
   </data>
-  <data name="OverviewAoedbSideMenuBtn" xml:space="preserve">
-    <value>aoedb.net</value>
+  <data name="OverviewItemSearchSideMenuBtn" xml:space="preserve">
+    <value>Item Search</value>
   </data>
   <data name="OverviewChampionModeInfoSideMenuBtn" xml:space="preserve">
     <value>PvP Info</value>

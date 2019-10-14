@@ -553,15 +553,6 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to aoedb.net.
-        /// </summary>
-        public static string OverviewAoedbSideMenuBtn {
-            get {
-                return ResourceManager.GetString("OverviewAoedbSideMenuBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to PvP Info.
         /// </summary>
         public static string OverviewChampionModeInfoSideMenuBtn {
@@ -594,6 +585,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string OverviewFriendsSideMenuBtn {
             get {
                 return ResourceManager.GetString("OverviewFriendsSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Search.
+        /// </summary>
+        public static string OverviewItemSearchSideMenuBtn {
+            get {
+                return ResourceManager.GetString("OverviewItemSearchSideMenuBtn", resourceCulture);
             }
         }
         

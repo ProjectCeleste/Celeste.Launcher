@@ -115,9 +115,9 @@ namespace Celeste_Launcher_Gui.Pages
             SettingsButton.ContextMenu.IsOpen = true;
         }
 
-        private void OnAoeodbClick(object sender, RoutedEventArgs e)
+        private void OnItemSearchClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://aoedb.net/");
+            Process.Start("https://search.projectceleste.com");
         }
 
         private void OnPatchNotesClick(object sender, RoutedEventArgs e)
