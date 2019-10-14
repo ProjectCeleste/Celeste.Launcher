@@ -661,6 +661,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game tools.
+        /// </summary>
+        public static string OverviewToolsBtnTooltip {
+            get {
+                return ResourceManager.GetString("OverviewToolsBtnTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Website.
         /// </summary>
         public static string OverviewWebsiteSideMenuBtn {

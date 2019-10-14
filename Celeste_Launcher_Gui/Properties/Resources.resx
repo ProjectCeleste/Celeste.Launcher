@@ -356,4 +356,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="OverviewScenarioBtnTooltip" xml:space="preserve">
     <value>Scenario Manager</value>
   </data>
+  <data name="OverviewToolsBtnTooltip" xml:space="preserve">
+    <value>Game tools</value>
+  </data>
 </root>

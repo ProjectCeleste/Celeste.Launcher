@@ -296,5 +296,11 @@ namespace Celeste_Launcher_Gui.Pages
                 form.ShowDialog();
             }
         }
+
+        private void OpenToolsButtonToolTip(object sender, RoutedEventArgs e)
+        {
+            ToolsButton.ContextMenu.PlacementTarget = sender as UIElement;
+            ToolsButton.ContextMenu.IsOpen = true;
+        }
     }
 }

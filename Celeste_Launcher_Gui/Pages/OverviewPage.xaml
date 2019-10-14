@@ -67,12 +67,6 @@
                                 <MenuItem Header="Game Language" Click="OpenGameLanguage"/>
                                 <MenuItem Header="Enable Diagnostic Mode" Click="EnableDiagnosticsMode"/>
                             </MenuItem>
-                            <MenuItem Header="Helpers">
-                                <MenuItem Header="Steam" Click="OpenSteam"/>
-                                <MenuItem Header="Windows Features" Click="OpenWindowsFeatures"/>
-                                <MenuItem Header="Windows Firewall" Click="OpenWindowsFirewall"/>
-                            </MenuItem>
-                            <MenuItem Header="Game Scan" Click="OpenGameScanner"/>
                             <MenuItem Header="Update launcher" Click="OpenUpdater"/>
                         </ContextMenu>
                     </local:SideBarMenuItem.ContextMenu>
@@ -138,7 +132,19 @@
                         <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
                     </Label.Background>
                 </Label>
-                <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Tools2-Normal.png" Stretch="None"/>
+
+                <Button Style="{StaticResource GenericCustomizedButton}" Click="OpenToolsButtonToolTip" Margin="5,0,0,0" Width="37" Height="38" x:Name="ToolsButton"
+                            theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Tools2-Normal.png"
+                            theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Tools2-Hover.png" ToolTip="{x:Static p:Resources.OverviewToolsBtnTooltip}">
+                    <Button.ContextMenu>
+                        <ContextMenu StaysOpen="true">
+                            <MenuItem Header="Steam" Click="OpenSteam"/>
+                            <MenuItem Header="Windows Features" Click="OpenWindowsFeatures"/>
+                            <MenuItem Header="Windows Firewall" Click="OpenWindowsFirewall"/>
+                            <MenuItem Header="Game Scan" Click="OpenGameScanner"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
             </WrapPanel>
         </Grid>
 
