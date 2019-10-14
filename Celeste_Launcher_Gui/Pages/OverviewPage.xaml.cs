@@ -67,10 +67,8 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnAccountClick(object sender, RoutedEventArgs e)
         {
-            using (var form = new ChangePwdForm())
-            {
-                form.ShowDialog();
-            }
+            AccountButton.ContextMenu.PlacementTarget = sender as UIElement;
+            AccountButton.ContextMenu.IsOpen = true;
         }
 
         private void OnFriendsClick(object sender, RoutedEventArgs e)
@@ -113,6 +111,14 @@ namespace Celeste_Launcher_Gui.Pages
         {
             SettingsButton.ContextMenu.PlacementTarget = sender as UIElement;
             SettingsButton.ContextMenu.IsOpen = true;
+        }
+
+        private void OnChangePasswordClick(object sender, RoutedEventArgs e)
+        {
+            using (var form = new ChangePwdForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void OnItemSearchClick(object sender, RoutedEventArgs e)

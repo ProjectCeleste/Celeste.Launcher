@@ -30,7 +30,15 @@
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewAccountSideMenuBtn}" 
                 DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Hover.png" HorizontalAlignment="Left" Click="OnAccountClick"/>
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Hover.png" HorizontalAlignment="Left" Click="OnAccountClick"
+                x:Name="AccountButton">
+                <local:SideBarMenuItem.ContextMenu>
+                    <ContextMenu StaysOpen="true">
+                        <MenuItem Header="Change password" Click="OnChangePasswordClick"/>
+                        <MenuItem Header="Log out" Click="OnLogoutClick"/>
+                    </ContextMenu>
+                </local:SideBarMenuItem.ContextMenu>
+            </local:SideBarMenuItem>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewFriendsSideMenuBtn}" 
