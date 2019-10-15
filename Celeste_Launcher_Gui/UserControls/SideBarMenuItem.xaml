@@ -11,7 +11,7 @@
         <Grid HorizontalAlignment="Right">
             <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/ButtonBackgroundBarShort.png" Stretch="None"></Image>
             <Label Name="LabelText" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Ashley-Crawford-CG}"
-                       FontSize="18"
+                       FontSize="{Binding LabelSize}"
                        Foreground="White" Content="{Binding LabelContents}">
                 <Label.Effect>
                     <DropShadowEffect ShadowDepth="4"

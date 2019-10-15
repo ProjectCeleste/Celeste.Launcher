@@ -51,9 +51,10 @@
                 HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Hover.png" HorizontalAlignment="Left" Click="OnDonateClick"/>
 
             <local:SideBarMenuItem
-                LabelContents="{x:Static p:Resources.OverviewLogoutSideMenuBtn}" 
-                DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Logout-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Logout-Hover.png" HorizontalAlignment="Left" Click="OnLogoutClick"/>
+                LabelContents="{x:Static p:Resources.OverviewScenarioManagerSideMenuBtn}"
+                LabelSize="17"
+                DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/MapsList2-Normal.png"
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/MapsList2-Hover.png" HorizontalAlignment="Left" Click="OpenScenarionManager"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewSettingsSideMenuBtn}" 
@@ -163,9 +164,6 @@
                 <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.OverviewLoginBtn}" Margin="0,0,0,2" Click="OnLoginClick" x:Name="LoginBtn"/>
                 <WrapPanel HorizontalAlignment="Center">
                     <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OverviewPlayOfflineBtn}" Click="OnPlayOffline" x:Name="PlayOfflineBtn"/>
-                    <Button Style="{StaticResource GenericCustomizedButton}" Click="OpenScenarionManager" Margin="5,0,0,0" Width="36" Height="37"
-                            theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Normal.png"
-                            theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioManager-Hover.png" ToolTip="{x:Static p:Resources.OverviewScenarioBtnTooltip}" />
                 </WrapPanel>
             </StackPanel>
         </Grid>

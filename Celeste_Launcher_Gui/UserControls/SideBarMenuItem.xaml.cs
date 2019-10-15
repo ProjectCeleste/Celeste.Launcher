@@ -26,7 +26,6 @@ namespace Celeste_Launcher_Gui.UserControls
             set { SetValue(LabelContentsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LabelContents.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelContentsProperty =
             DependencyProperty.Register("LabelContents", typeof(string), typeof(SideBarMenuItem), new PropertyMetadata(default(string)));
 
@@ -36,7 +35,6 @@ namespace Celeste_Launcher_Gui.UserControls
             set { SetValue(DefaultIconProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for DefaultIcon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DefaultIconProperty =
             DependencyProperty.Register("DefaultIcon", typeof(string), typeof(SideBarMenuItem), new PropertyMetadata(default(string)));
 
@@ -46,9 +44,17 @@ namespace Celeste_Launcher_Gui.UserControls
             set { SetValue(HoverIconProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HoverIcon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverIconProperty =
             DependencyProperty.Register("HoverIcon", typeof(string), typeof(SideBarMenuItem), new PropertyMetadata(default(string)));
+
+        public int LabelSize
+        {
+            get { return (int)GetValue(LabelSizeProperty); }
+            set { SetValue(LabelSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty LabelSizeProperty =
+            DependencyProperty.Register("LabelSize", typeof(int), typeof(SideBarMenuItem), new PropertyMetadata(18));
 
         public RoutedEventHandler Click
         {

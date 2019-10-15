@@ -607,15 +607,6 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log Out.
-        /// </summary>
-        public static string OverviewLogoutSideMenuBtn {
-            get {
-                return ResourceManager.GetString("OverviewLogoutSideMenuBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Patch Notes.
         /// </summary>
         public static string OverviewPatchNotesSideMenuBtn {
@@ -643,11 +634,11 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scenario Manager.
+        ///   Looks up a localized string similar to Scenarios.
         /// </summary>
-        public static string OverviewScenarioBtnTooltip {
+        public static string OverviewScenarioManagerSideMenuBtn {
             get {
-                return ResourceManager.GetString("OverviewScenarioBtnTooltip", resourceCulture);
+                return ResourceManager.GetString("OverviewScenarioManagerSideMenuBtn", resourceCulture);
             }
         }
         

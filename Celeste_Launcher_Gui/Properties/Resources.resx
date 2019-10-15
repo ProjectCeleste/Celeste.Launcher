@@ -280,8 +280,8 @@
   <data name="OverviewLoginBtn" xml:space="preserve">
     <value>Play</value>
   </data>
-  <data name="OverviewLogoutSideMenuBtn" xml:space="preserve">
-    <value>Log Out</value>
+  <data name="OverviewScenarioManagerSideMenuBtn" xml:space="preserve">
+    <value>Scenarios</value>
   </data>
   <data name="OverviewPatchNotesSideMenuBtn" xml:space="preserve">
     <value>Patch Notes</value>
@@ -352,9 +352,6 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="GameScannerPatchNotesLabel" xml:space="preserve">
     <value>Patch Notes</value>
-  </data>
-  <data name="OverviewScenarioBtnTooltip" xml:space="preserve">
-    <value>Scenario Manager</value>
   </data>
   <data name="OverviewToolsBtnTooltip" xml:space="preserve">
     <value>Game tools</value>
