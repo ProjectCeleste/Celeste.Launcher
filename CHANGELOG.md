@@ -1,12 +1,38 @@
 # Change Log
 
+## [v2.1.2.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.1.2.0) (2019-10-08)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.1.1.0...v2.1.2.0)
+
+**Bug Fix:**
+
+- Fix delay due to "Quick Scan" when "Play Button" is pressed.
+
+## [v2.1.1.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.1.1.0) (2019-10-05)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.1.0.0...v2.1.1.0)
+
+**Bug Fix:**
+
+- Fix issue with "Quick Scan" not beeing initialized.
+
+## [v2.1.0.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.1.0.0) (2019-10-05)
+
+[Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.8.0...v2.1.0.0)
+
+**Celeste Launcher will now require .NETFramework version 4.7 instead of version 4.5!**
+
+**Game Scanner Enhancements:**
+
+- Add "Download Boost" (you need to check the box to enable it before run an scan and enjoy faster game update).
+- File check execution speed has been improved (avg. 3x faster).
+
 ## [v2.0.8.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.8.0) (2019-05-20)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.0.7.0...v2.0.8.0)
 
 - Add support for "NatPunchtrough".
 - Remove support for "old beta editor".
-
 
 ## [v2.0.7.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.7.0) (2018-06-23)
 
@@ -20,7 +46,6 @@
 
 - UI Improvement.
 - Support for xLive Legacy "removed".
-
 
 ## [v2.0.6.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.0.6.0) (2018-06-12)
 

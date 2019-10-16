@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Services;
+﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -73,7 +74,7 @@ namespace Celeste_Launcher_Gui.Windows
                     ProgressBar.ProgressBar.Value = value;
                 };
 
-                await UpdateService.DoDownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
+                await Updater.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
 
                 GenericMessageDialog.Show(
                     @"""Celeste Fan Project Launcher"" has been updated, it will now re-start.", DialogIcon.Warning, DialogOptions.Ok);

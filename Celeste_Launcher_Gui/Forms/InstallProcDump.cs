@@ -1,12 +1,10 @@
 ﻿#region Using directives
 
 using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
-using Celeste_Public_Api.Helpers;
+using Celeste_AOEO_Controls.MsgBox;
+using Celeste_Launcher_Gui.Helpers;
 
 #endregion
 
@@ -36,42 +34,24 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void InstallProcDump_Shown(object sender, EventArgs e)
         {
-            await DoDownloadAndInstallProcdump();
-        }
-
-        private async Task DoDownloadAndInstallProcdump(CancellationToken ct = new CancellationToken())
-        {
-            const string downloadLink = @"https://download.sysinternals.com/files/Procdump.zip";
-
-            var tempFileName = Path.GetTempFileName();
-
             try
             {
-                var dowloadProgress = new Progress<DownloadFileProgress>();
-                dowloadProgress.ProgressChanged += (o, ea) =>
-                {
-                    progressBar1.Value = Convert.ToInt32(Math.Floor(75 * ((double) ea.ProgressPercentage / 100)));
-                };
-                var downloadFileAsync = new DownloadFileUtils(new Uri(downloadLink), tempFileName, dowloadProgress);
-                await downloadFileAsync.DoDownload(ct);
+                var progress = new Progress<int>();
+                progress.ProgressChanged += (s, o) => { progressBar1.Value = o; };
 
-                var extractProgress = new Progress<ZipFileProgress>();
-                extractProgress.ProgressChanged += (o, ea) =>
-                {
-                    progressBar1.Value =
-                        75 + Convert.ToInt32(Math.Floor(25 * ((double) ea.ProgressPercentage / 100)));
-                };
-                await ZipUtils.DoExtractZipFile(tempFileName, AppDomain.CurrentDomain.BaseDirectory, extractProgress,
-                    ct);
+                await ProcDump.DoDownloadAndInstallProcDump(progress);
+            }
+            catch (Exception exception)
+            {
+                MsgBox.ShowMessage(
+                    $@"Error: {exception.Message}",
+                    @"Celeste Fan Project",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             finally
             {
-                if (File.Exists(tempFileName))
-                    File.Delete(tempFileName);
+                Close();
             }
-            //
-            DialogResult = DialogResult.OK;
-            Close();
         }
     }
 }

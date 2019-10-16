@@ -9,12 +9,12 @@ using System.Windows.Forms;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Forms;
-using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
+using ProjectCeleste.GameFiles.GameScanner;
 
 #endregion
 
@@ -50,7 +50,7 @@ namespace Celeste_Launcher_Gui
                 Logger.Information("Launcher is already started, will exit");
                 MsgBox.ShowMessage(
                     $@"""Celeste Fan Project Launcher"" v{
-                            Assembly.GetEntryAssembly().GetName().Version
+                            Assembly.GetEntryAssembly()?.GetName().Version
                         } already running!", "Celeste Fan Project",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -82,7 +82,7 @@ namespace Celeste_Launcher_Gui
             {
                 if (string.IsNullOrWhiteSpace(UserConfig.GameFilesPath))
                 {
-                    UserConfig.GameFilesPath = GameScannnerApi.GetGameFilesRootPath();
+                    UserConfig.GameFilesPath = GameScannnerManager.GetGameFilesRootPath();
                     Logger.Information("Game path set to {@Path}", UserConfigFilePath);
                 }
                 else
@@ -107,6 +107,9 @@ namespace Celeste_Launcher_Gui
             {
                 Logger.Error(ex, ex.Message);
             }
+
+            //SslFix (invalid cert)
+            InternetUtils.SslFix();
 
             //Init WebSocketApi
             WebSocketApi = new WebSocketApi(UserConfig.ServerUri);

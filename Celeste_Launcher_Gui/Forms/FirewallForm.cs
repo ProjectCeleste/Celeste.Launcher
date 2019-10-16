@@ -11,7 +11,7 @@ using WindowsFirewallHelper.FirewallAPIv2.Rules;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.GameScanner_Api;
+using ProjectCeleste.GameFiles.GameScanner;
 
 #endregion
 
@@ -102,7 +102,7 @@ namespace Celeste_Launcher_Gui.Forms
 
                 var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
+                    : GameScannnerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
 
@@ -256,7 +256,7 @@ namespace Celeste_Launcher_Gui.Forms
             {
                 var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
+                    : GameScannnerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
 

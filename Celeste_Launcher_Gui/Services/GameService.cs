@@ -1,9 +1,9 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Windows;
-using Celeste_Public_Api.GameScanner_Api;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Open.Nat;
+using ProjectCeleste.GameFiles.GameScanner;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -40,25 +40,24 @@ namespace Celeste_Launcher_Gui.Services
             }
 
             //QuickGameScan
-            if (!isOffline || DownloadFileUtils.IsConnectedToInternet())
+            if (!isOffline || InternetUtils.IsConnectedToInternet())
             {
                 Logger.Information("User is online, will perform game scan");
                 try
                 {
                     var gameFilePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
                         ? LegacyBootstrapper.UserConfig.GameFilesPath
-                        : GameScannnerApi.GetGameFilesRootPath();
+                        : GameScannnerManager.GetGameFilesRootPath();
 
                     Logger.Information("Preparing games canner api");
-                    var gameScannner = new GameScannnerApi(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
-                    await gameScannner.InitializeAsync();
+                    var gameScannner = new GameScannnerManager(gameFilePath, false, LegacyBootstrapper.UserConfig.IsSteamVersion);
 
                     var success = false;
 
                     while (!success)
                     {
                         Logger.Information("Starting quick game scan");
-                        if (!await gameScannner.QuickScan(new GameScannerLogAdapter(Logger, Celeste_Public_Api.GameScanner_Api.Models.LogLevel.Warn)))
+                        if (!await gameScannner.Scan(true))
                         {
                             Logger.Information("Game scanner did not approve game files");
 
@@ -129,7 +128,7 @@ namespace Celeste_Launcher_Gui.Services
                 //Launch Game
                 var gamePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig.GameFilesPath
-                    : GameScannnerApi.GetGameFilesRootPath();
+                    : GameScannnerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(gamePath, "Spartan.exe");
 
