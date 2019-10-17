@@ -79,9 +79,8 @@ namespace Celeste_Launcher_Gui.Windows
                 if (await GameScanner.ScanAndRepair(progress, subProgress))
                 {
                     CurrentFileLabel.Content = string.Empty;
-                    MainProgressLabel.Content = string.Empty;
+                    MainProgressLabel.Content = "Done";
                     FileProgress.ProgressBar.IsIndeterminate = false;
-                    tB_Report.Text += "Done";
                     GenericMessageDialog.Show($@"Game scan has succesfully completed", DialogIcon.None, DialogOptions.Ok);
                     DialogResult = true;
                 }
@@ -99,7 +98,8 @@ namespace Celeste_Launcher_Gui.Windows
         private void ProgressChanged(object sender, ScanProgress e)
         {
             CurrentFileLabel.Content = $"{e.File} ({e.Index}/{e.TotalIndex})";
-            FileProgress.ProgressBar.Value = (int)e.ProgressPercentage;
+            ScanTotalProgress.ProgressBar.Value = e.ProgressPercentage;
+            TaskbarItemInfo.ProgressValue = e.ProgressPercentage;
         }
 
         private void FailGameScan(string reason)
@@ -114,63 +114,52 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void SubProgressChanged(object sender, ScanSubProgress e)
         {
-            if (e.DownloadProgress != null)
-                MainProgressLabel.Content =
-                    $"{BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted)}/{BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size)}\r\n" +
-                    $"Speed: {BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}ps";
-            else if (!string.IsNullOrWhiteSpace(MainProgressLabel.Content?.ToString()))
-                MainProgressLabel.Content = string.Empty;
-
-            int baseProgress;
-            int rangeMaxProgress;
             switch (e.Step)
             {
                 case ScanSubProgressStep.Check:
-                    tB_Report.Text += $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Checking";
+                    MainProgressLabel.Content = $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Checking";
                     FileProgress.ProgressBar.IsIndeterminate = true;
-                    baseProgress = 0;
-                    rangeMaxProgress = 10;
                     break;
                 case ScanSubProgressStep.Download:
-                    tB_Report.Text += $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Downloading";
+                    if (e.DownloadProgress != null)
+                    {
+                        var downloaded = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted);
+                        var leftToDownload = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size);
+
+                        var downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
+                            string.Empty : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}ps)";
+
+                        MainProgressLabel.Content = $"Downloading {downloaded}/{leftToDownload} {downloadSpeed}";
+                    }
+
+                    FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     FileProgress.ProgressBar.IsIndeterminate = false;
-                    baseProgress = 10;
-                    rangeMaxProgress = 59;
                     break;
                 case ScanSubProgressStep.CheckDownload:
-                    tB_Report.Text += $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Checking downloaded file";
+                    MainProgressLabel.Content = $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Checking downloaded file";
                     FileProgress.ProgressBar.IsIndeterminate = true;
-                    baseProgress = 69;
-                    rangeMaxProgress = 10;
                     break;
                 case ScanSubProgressStep.ExtractDownload:
-                    tB_Report.Text +=
-                        $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Extracting downloaded file";
-                    FileProgress.ProgressBar.IsIndeterminate = false;
-                    baseProgress = 79;
-                    rangeMaxProgress = 10;
+                    MainProgressLabel.Content = $@"Extracting downloaded file";
+                    FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.CheckExtractDownload:
-                    tB_Report.Text += $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Checking extracted file";
+                    MainProgressLabel.Content = $@"Checking extracted file";
                     FileProgress.ProgressBar.IsIndeterminate = true;
-                    baseProgress = 89;
-                    rangeMaxProgress = 10;
                     break;
                 case ScanSubProgressStep.Finalize:
-                    tB_Report.Text += $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Finalize";
-                    baseProgress = 99;
-                    rangeMaxProgress = 1;
+                    MainProgressLabel.Content = $@"Finalizing";
+                    FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.End:
-                    tB_Report.Text += @"End";
+                    MainProgressLabel.Content = @"Done";
+                    FileProgress.ProgressBar.Value = 100;
                     ScanTotalProgress.ProgressBar.Value = 100;
+                    TaskbarItemInfo.ProgressValue = 100;
                     return;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(e.Step), e.Step, null);
             }
-
-            ScanTotalProgress.ProgressBar.Value = (int)(baseProgress + rangeMaxProgress * (e.ProgressPercentage / 100));
-            TaskbarItemInfo.ProgressValue = ScanTotalProgress.ProgressBar.Value;
         }
     }
 }
