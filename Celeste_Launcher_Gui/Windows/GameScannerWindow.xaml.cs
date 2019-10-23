@@ -1,6 +1,9 @@
-﻿using Celeste_Public_Api.Helpers;
+﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
 using ProjectCeleste.GameFiles.GameScanner;
 using ProjectCeleste.GameFiles.GameScanner.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,6 +29,7 @@ namespace Celeste_Launcher_Gui.Windows
     public partial class GameScannerWindow : Window
     {
         private GameScannnerManager GameScanner;
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
         public GameScannerWindow(string gameFilesPath, bool isSteam)
         {
@@ -37,7 +41,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScanner = new GameScannnerManager(gameFilesPath, false, isSteam);
+            GameScanner = new GameScannnerManager(gameFilesPath, true, isSteam);
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
@@ -97,9 +101,10 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void ProgressChanged(object sender, ScanProgress e)
         {
-            CurrentFileLabel.Content = $"{e.File} ({e.Index}/{e.TotalIndex})";
+            var wrappedFileName = e.File.WrapIfLengthIsLongerThan(35, "...");
+            CurrentFileLabel.Content = $"{wrappedFileName} ({e.Index}/{e.TotalIndex})";
             ScanTotalProgress.ProgressBar.Value = e.ProgressPercentage;
-            TaskbarItemInfo.ProgressValue = e.ProgressPercentage;
+            TaskbarItemInfo.ProgressValue = (e.ProgressPercentage / 100);
         }
 
         private void FailGameScan(string reason)
@@ -117,31 +122,40 @@ namespace Celeste_Launcher_Gui.Windows
             switch (e.Step)
             {
                 case ScanSubProgressStep.Check:
-                    MainProgressLabel.Content = $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Checking";
-                    FileProgress.ProgressBar.IsIndeterminate = true;
+                    MainProgressLabel.Content = $@"Verifying file integrity";
+                    FileProgress.ProgressBar.IsIndeterminate = false;
+                    FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     break;
                 case ScanSubProgressStep.Download:
                     if (e.DownloadProgress != null)
                     {
-                        var downloaded = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted);
-                        var leftToDownload = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size);
+                        if (e.DownloadProgress.Size == 0)
+                        {
+                            MainProgressLabel.Content = "Starting download";
+                        }
+                        else
+                        {
+                            var downloaded = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted);
+                            var leftToDownload = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size);
 
-                        var downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
-                            string.Empty : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}ps)";
+                            var downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
+                                string.Empty : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}/s)";
 
-                        MainProgressLabel.Content = $"Downloading {downloaded}/{leftToDownload} {downloadSpeed}";
+                            MainProgressLabel.Content = $"Downloading {downloaded}/{leftToDownload} {downloadSpeed}";
+                        }
                     }
 
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
                 case ScanSubProgressStep.CheckDownload:
-                    MainProgressLabel.Content = $@"[{(int)e.Step + 1}/{(int)ScanSubProgressStep.End}] Checking downloaded file";
+                    MainProgressLabel.Content = $@"Checking downloaded file";
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.ExtractDownload:
                     MainProgressLabel.Content = $@"Extracting downloaded file";
-                    FileProgress.ProgressBar.IsIndeterminate = true;
+                    FileProgress.ProgressBar.Value = e.ProgressPercentage;
+                    FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
                 case ScanSubProgressStep.CheckExtractDownload:
                     MainProgressLabel.Content = $@"Checking extracted file";
@@ -152,7 +166,6 @@ namespace Celeste_Launcher_Gui.Windows
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.End:
-                    MainProgressLabel.Content = @"Done";
                     FileProgress.ProgressBar.Value = 100;
                     ScanTotalProgress.ProgressBar.Value = 100;
                     TaskbarItemInfo.ProgressValue = 100;
