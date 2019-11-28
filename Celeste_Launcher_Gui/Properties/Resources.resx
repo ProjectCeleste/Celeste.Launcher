@@ -199,16 +199,16 @@
   <data name="delete-64_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-64_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GameUpdateInstalledVersionLabel" xml:space="preserve">
+  <data name="LauncherInstalledVersionLabel" xml:space="preserve">
     <value>Installed:</value>
   </data>
-  <data name="GameUpdateNewVersionLabel" xml:space="preserve">
+  <data name="LauncherUpdateNewVersionLabel" xml:space="preserve">
     <value>New:</value>
   </data>
-  <data name="GameUpdateTitle" xml:space="preserve">
-    <value>Game Update</value>
+  <data name="LauncherUpdateTitle" xml:space="preserve">
+    <value>Launcher Update</value>
   </data>
-  <data name="GameUpdateUpdateBtn" xml:space="preserve">
+  <data name="LauncherUpdateUpdateBtn" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="LoginAutoLoginOption" xml:space="preserve">

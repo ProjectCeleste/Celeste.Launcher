@@ -316,42 +316,6 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Installed:.
-        /// </summary>
-        public static string GameUpdateInstalledVersionLabel {
-            get {
-                return ResourceManager.GetString("GameUpdateInstalledVersionLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New:.
-        /// </summary>
-        public static string GameUpdateNewVersionLabel {
-            get {
-                return ResourceManager.GetString("GameUpdateNewVersionLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Game Update.
-        /// </summary>
-        public static string GameUpdateTitle {
-            get {
-                return ResourceManager.GetString("GameUpdateTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update.
-        /// </summary>
-        public static string GameUpdateUpdateBtn {
-            get {
-                return ResourceManager.GetString("GameUpdateUpdateBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap help_64 {
@@ -377,6 +341,42 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string LanguageComingSoonToolTip {
             get {
                 return ResourceManager.GetString("LanguageComingSoonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed:.
+        /// </summary>
+        public static string LauncherInstalledVersionLabel {
+            get {
+                return ResourceManager.GetString("LauncherInstalledVersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New:.
+        /// </summary>
+        public static string LauncherUpdateNewVersionLabel {
+            get {
+                return ResourceManager.GetString("LauncherUpdateNewVersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launcher Update.
+        /// </summary>
+        public static string LauncherUpdateTitle {
+            get {
+                return ResourceManager.GetString("LauncherUpdateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string LauncherUpdateUpdateBtn {
+            get {
+                return ResourceManager.GetString("LauncherUpdateUpdateBtn", resourceCulture);
             }
         }
         
