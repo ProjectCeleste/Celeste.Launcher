@@ -34,20 +34,20 @@ init:
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
         $env:CelesteLauncher_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
-        if ($env:CelesteLauncher_Version.Contain('b'))
+        if ($env:CelesteLauncher_Version -contains 'b')
         {
             $env:CelesteLauncher_Version = "$($env:CelesteLauncher_Version.Replace('b', ''))";
-            $env:CelesteLauncher_Beta = true;
+            $env:CelesteLauncher_Beta = "true";
         }
         else
         {
-            $env:CelesteLauncher_Beta = false;
+            $env:CelesteLauncher_Beta = "false";
         }
     }
     else
     {
         $env:CelesteLauncher_Version = "$($env:APPVEYOR_BUILD_VERSION)";
-        $env:CelesteLauncher_Beta = false;
+        $env:CelesteLauncher_Beta = "false";
     }
 - cmd: git config --global core.autocrlf true
 
