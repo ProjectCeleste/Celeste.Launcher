@@ -23,12 +23,17 @@ namespace Celeste_Launcher_Gui.Forms
 
         private async void RefreshBtn_Click(object sender, EventArgs e)
         {
+            await LoadFriendlist();
+        }
+
+        private async Task LoadFriendlist()
+        {
             listView1.Enabled = false;
             customBtn1.Enabled = false;
 
             try
             {
-                var response = await Program.WebSocketApi.DoGetFriends();
+                var response = await LegacyBootstrapper.WebSocketApi.DoGetFriends();
 
                 if (!response.Result)
                     throw new Exception(response.Message);
@@ -109,10 +114,10 @@ namespace Celeste_Launcher_Gui.Forms
             }
         }
 
-        private void FriendsForm_Shown(object sender, EventArgs e)
+        private async void FriendsForm_Shown(object sender, EventArgs e)
         {
-            RefreshBtn_Click(sender, e);
-            PictureBoxButtonCustom3_Click(sender, e);
+            await LoadFriendlist();
+            await LoadFriendRequests();
         }
 
         private async void RemoveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -122,7 +127,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             await RemFriends(((FriendJson) listView1.SelectedItems[0].Tag).Xuid);
 
-            RefreshBtn_Click(null, null);
+            await LoadFriendlist();
         }
 
         private async void ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -132,7 +137,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             await RemFriends(((FriendJson) listView3.SelectedItems[0].Tag).Xuid);
 
-            RefreshBtn_Click(null, null);
+            await LoadFriendlist();
         }
 
         private static async Task RemFriends(long xuid)
@@ -150,7 +155,7 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 var response =
-                    await Program.WebSocketApi.DoRemoveFriend(xuid);
+                    await LegacyBootstrapper.WebSocketApi.DoRemoveFriend(xuid);
 
                 if (!response.Result)
                     throw new Exception(response.Message);
@@ -172,12 +177,12 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 var response =
-                    await Program.WebSocketApi.DoAddFriend(tb_AddFriend.Text);
+                    await LegacyBootstrapper.WebSocketApi.DoAddFriend(tb_AddFriend.Text);
 
                 if (!response.Result)
                     throw new Exception(response.Message);
 
-                PictureBoxButtonCustom3_Click(sender, e);
+                await LoadFriendRequests();
 
                 MsgBox.ShowMessage(@"Friend request send with success", @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -197,8 +202,7 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
 
             await RemFriends(((FriendJson) listView2.SelectedItems[0].Tag).Xuid);
-
-            PictureBoxButtonCustom3_Click(null, null);
+            await LoadFriendRequests();
         }
 
         private async void ToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -209,14 +213,14 @@ namespace Celeste_Launcher_Gui.Forms
             try
             {
                 var response =
-                    await Program.WebSocketApi.DoConfirmFriend(((FriendJson) listView2.SelectedItems[0].Tag).Xuid);
+                    await LegacyBootstrapper.WebSocketApi.DoConfirmFriend(((FriendJson) listView2.SelectedItems[0].Tag).Xuid);
 
                 if (!response.Result)
                     throw new Exception(response.Message);
 
-                RefreshBtn_Click(null, null);
+                await LoadFriendlist();
 
-                PictureBoxButtonCustom3_Click(null, null);
+                await LoadFriendRequests();
 
                 MsgBox.ShowMessage(@"Friend add with success", @"Celeste Fan Project",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -234,11 +238,15 @@ namespace Celeste_Launcher_Gui.Forms
                 return;
 
             await RemFriends(((FriendJson) listView4.SelectedItems[0].Tag).Xuid);
-
-            PictureBoxButtonCustom3_Click(null, null);
+            await LoadFriendRequests();
         }
 
         private async void PictureBoxButtonCustom3_Click(object sender, EventArgs e)
+        {
+            await LoadFriendRequests();
+        }
+
+        private async Task LoadFriendRequests()
         {
             listView2.Enabled = false;
             listView4.Enabled = false;
@@ -246,7 +254,7 @@ namespace Celeste_Launcher_Gui.Forms
 
             try
             {
-                var responsePendingFriends = await Program.WebSocketApi.DoGetPendingFriends();
+                var responsePendingFriends = await LegacyBootstrapper.WebSocketApi.DoGetPendingFriends();
 
                 if (!responsePendingFriends.Result)
                     throw new Exception(responsePendingFriends.Message);

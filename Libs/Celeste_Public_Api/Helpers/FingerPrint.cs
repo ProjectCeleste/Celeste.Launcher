@@ -19,7 +19,7 @@ namespace Celeste_Public_Api.Helpers
     {
         private static string _fingerPrint = string.Empty;
 
-        public static string Value()
+        public static string GenerateValue()
         {
             if (string.IsNullOrEmpty(_fingerPrint))
                 _fingerPrint = GetHash("CPU >> " + CpuId() +

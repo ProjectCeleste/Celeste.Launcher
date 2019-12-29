@@ -14,13 +14,12 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         public const string CmdName = "CHANGEPWD";
 
         private DateTime _lastTime = DateTime.UtcNow.AddMinutes(-5);
+        private readonly DataExchange _dataExchange;
 
-        public ChangePwd(Client webSocketClient)
+        public ChangePwd(DataExchange dataExchange)
         {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
+            _dataExchange = dataExchange;
         }
-
-        private DataExchange DataExchange { get; }
 
         public async Task<ChangePwdResult> DoChangePwd(ChangePwdInfo request)
         {
@@ -45,14 +44,12 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 dynamic requestInfo = request;
 
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
+                var result = await _dataExchange.DoDataExchange<ChangePwdResult, ChangePwdInfo>(request, CmdName);
 
-                ChangePwdResult retVal = result.ToObject<ChangePwdResult>();
-
-                if (retVal.Result)
+                if (result.Result)
                     _lastTime = DateTime.UtcNow;
 
-                return retVal;
+                return result;
             }
             catch (Exception e)
             {

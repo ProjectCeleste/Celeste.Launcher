@@ -33,7 +33,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged
         public string VerifyKey { get; }
     }
 
-    public class ResetPwdResult
+    public class ResetPwdResult : IGenericResponse
     {
         [JsonConstructor]
         public ResetPwdResult([JsonProperty("Result", Required = Required.Always)] bool result,
