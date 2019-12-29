@@ -356,4 +356,28 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="OverviewToolsBtnTooltip" xml:space="preserve">
     <value>Game tools</value>
   </data>
+  <data name="MainMenuDonateSideMenuBtn" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuChangeGameLanguage" xml:space="preserve">
+    <value>Change game language</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuConvertToSteamGame" xml:space="preserve">
+    <value>Convert to Steam game</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuDiagnosticsMode" xml:space="preserve">
+    <value>Enable diagnostic mode</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuFirewallHelper" xml:space="preserve">
+    <value>Firewall helper</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuGameScanner" xml:space="preserve">
+    <value>Game scanner</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuLauncherUpdater" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuWindowsFeatures" xml:space="preserve">
+    <value>Windows features</value>
+  </data>
 </root>

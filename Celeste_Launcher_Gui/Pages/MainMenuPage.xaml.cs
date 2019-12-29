@@ -3,21 +3,11 @@ using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Pages
 {
@@ -75,6 +65,11 @@ namespace Celeste_Launcher_Gui.Pages
         {
             SettingsButton.ContextMenu.PlacementTarget = sender as UIElement;
             SettingsButton.ContextMenu.IsOpen = true;
+        }
+
+        private void OnDonateClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://forums.projectceleste.com/donations/project-celeste-donations.2/campaign");
         }
         #endregion
 
@@ -141,6 +136,39 @@ namespace Celeste_Launcher_Gui.Pages
             NavigationService.Navigate(new Uri("Pages/LanguageSelectionPage.xaml", UriKind.Relative));
         }
 
+        private void OpenGameScanner(object sender, RoutedEventArgs e)
+        {
+            var pname = Process.GetProcessesByName("spartan");
+            if (pname.Length > 0)
+            {
+                GenericMessageDialog.Show($@"Game is still running, please close it and try again", DialogIcon.Error, DialogOptions.Ok);
+                return;
+            }
+
+            var scanner = new GamePathSelectionWindow();
+            scanner.ShowDialog();
+        }
+
+        private void OpenFirewallHelper(object sender, RoutedEventArgs e)
+        {
+            using (var form = new FirewallForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void OpenLauncherUpdater(object sender, RoutedEventArgs e)
+        {
+            var pname = Process.GetProcessesByName("spartan");
+            if (pname.Length > 0)
+            {
+                GenericMessageDialog.Show($@"Game is still running, please close it and try again", DialogIcon.Error, DialogOptions.Ok);
+                return;
+            }
+
+            var updater = new UpdateWindow();
+            updater.ShowDialog();
+        }
         #endregion
     }
 }

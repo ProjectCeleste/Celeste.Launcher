@@ -37,6 +37,11 @@
                         LabelContents="{x:Static p:Resources.MainMenuYoutubeSideMenuBtn}" 
                         DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Normal.png"
                         HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Youtube-Hover.png" HorizontalAlignment="Left"  Click="OnYoutubeClick"/>
+
+            <local:SideBarMenuItem 
+                        LabelContents="{x:Static p:Resources.MainMenuDonateSideMenuBtn}" 
+                        DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Normal.png"
+                        HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Hover.png" HorizontalAlignment="Left"  Click="OnDonateClick"/>
         </StackPanel>
 
         <StackPanel Width="300" Height="auto" HorizontalAlignment="Right" Margin="0,0,15,70" VerticalAlignment="Bottom">
@@ -46,10 +51,13 @@
                         HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Right" Click="OpenSettings" x:Name="SettingsButton">
                 <local:SideBarMenuItemRight.ContextMenu>
                     <ContextMenu StaysOpen="true">
-                        <MenuItem Header="Convert to Steam game" Click="OpenSteam"/>
-                        <MenuItem Header="Game Language" Click="OpenGameLanguage"/>
-                        <MenuItem Header="Enable Diagnostic Mode" Click="EnableDiagnosticsMode"/>
-                        <MenuItem Header="Windows Features" Click="OpenWindowsFeatures"/>
+                        <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuGameScanner}" Click="OpenGameScanner"/>
+                        <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuFirewallHelper}" Click="OpenFirewallHelper"/>
+                        <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuConvertToSteamGame}" Click="OpenSteam"/>
+                        <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuChangeGameLanguage}" Click="OpenGameLanguage"/>
+                        <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuDiagnosticsMode}" Click="EnableDiagnosticsMode"/>
+                        <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuWindowsFeatures}" Click="OpenWindowsFeatures"/>
+                        <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuLauncherUpdater}" Click="OpenLauncherUpdater"/>
                     </ContextMenu>
                 </local:SideBarMenuItemRight.ContextMenu>
             </local:SideBarMenuItemRight>

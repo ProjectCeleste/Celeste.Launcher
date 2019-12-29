@@ -463,11 +463,83 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Donate.
+        /// </summary>
+        public static string MainMenuDonateSideMenuBtn {
+            get {
+                return ResourceManager.GetString("MainMenuDonateSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string MainMenuGameSettingsBtn {
             get {
                 return ResourceManager.GetString("MainMenuGameSettingsBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change game language.
+        /// </summary>
+        public static string MainMenuGameSettingsMenuChangeGameLanguage {
+            get {
+                return ResourceManager.GetString("MainMenuGameSettingsMenuChangeGameLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to Steam game.
+        /// </summary>
+        public static string MainMenuGameSettingsMenuConvertToSteamGame {
+            get {
+                return ResourceManager.GetString("MainMenuGameSettingsMenuConvertToSteamGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable diagnostic mode.
+        /// </summary>
+        public static string MainMenuGameSettingsMenuDiagnosticsMode {
+            get {
+                return ResourceManager.GetString("MainMenuGameSettingsMenuDiagnosticsMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firewall helper.
+        /// </summary>
+        public static string MainMenuGameSettingsMenuFirewallHelper {
+            get {
+                return ResourceManager.GetString("MainMenuGameSettingsMenuFirewallHelper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game scanner.
+        /// </summary>
+        public static string MainMenuGameSettingsMenuGameScanner {
+            get {
+                return ResourceManager.GetString("MainMenuGameSettingsMenuGameScanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        public static string MainMenuGameSettingsMenuLauncherUpdater {
+            get {
+                return ResourceManager.GetString("MainMenuGameSettingsMenuLauncherUpdater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows features.
+        /// </summary>
+        public static string MainMenuGameSettingsMenuWindowsFeatures {
+            get {
+                return ResourceManager.GetString("MainMenuGameSettingsMenuWindowsFeatures", resourceCulture);
             }
         }
         
