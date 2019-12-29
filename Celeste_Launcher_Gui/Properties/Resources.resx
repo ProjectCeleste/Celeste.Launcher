@@ -121,18 +121,6 @@
   <data name="add-folder-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add-folder-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CelesteLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CelesteLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DiscordHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiscordHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagCNHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagCNHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagCNNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagCNNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="RefreshHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RefreshHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,23 +148,11 @@
   <data name="help-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="VersionNumberPlate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VersionNumberPlate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AOEDBHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AOEDBHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DonateNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DonateNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="XButton_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BigOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BigOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="XButton_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XButton_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,29 +160,11 @@
   <data name="AddFriends_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddFriends_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DiscordNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiscordNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagDENormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagDENormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FlagFRNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagFRNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="FriendRequests_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FriendRequests_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RedditHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RedditHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagESNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagESNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagITNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagITNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RefreshNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RefreshNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,82 +175,209 @@
   <data name="help-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FlagITHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagITHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ToolsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ToolsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="FriendsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FriendsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LongOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LongOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AOEDBNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AOEDBNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="delete-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DonateHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DonateHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagESHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagESHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SettingsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SettingsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MiddleOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MiddleOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add-folder-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add-folder-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FlagUSHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagUSHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AccountNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="downloads-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\downloads-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagDEHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagDEHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SmallOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SmallOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagFRHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagFRHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="delete-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SettingsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SettingsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FlagUSNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagUSNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CelesteWebsiteHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CelesteWebsiteHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RedditNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RedditNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ToolsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ToolsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="folder-3-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-3-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AccountHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="delete-64_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete-64_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LauncherInstalledVersionLabel" xml:space="preserve">
+    <value>Installed:</value>
+  </data>
+  <data name="LauncherUpdateNewVersionLabel" xml:space="preserve">
+    <value>New:</value>
+  </data>
+  <data name="LauncherUpdateTitle" xml:space="preserve">
+    <value>Launcher Update</value>
+  </data>
+  <data name="LauncherUpdateUpdateBtn" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="LoginAutoLoginOption" xml:space="preserve">
+    <value>Auto-login</value>
+  </data>
+  <data name="LoginEmailField" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="LoginForgottenPassword" xml:space="preserve">
+    <value>Forgot password?</value>
+  </data>
+  <data name="LoginPasswordField" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="LoginPerformLoginBtn" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginRememberPasswordOption" xml:space="preserve">
+    <value>Remember password</value>
+  </data>
+  <data name="MainMenuCelesteSideMenuBtn" xml:space="preserve">
+    <value>projectceleste.com</value>
+  </data>
+  <data name="MainMenuDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="MainMenuLoginBtn" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="MainMenuPlayOfflineBtn" xml:space="preserve">
+    <value>Play Offline</value>
+  </data>
+  <data name="MainMenuRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="MainMenuRegisterBtn" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="MainMenuYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="OptionNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="OptionOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="OptionYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="OverviewAccountSideMenuBtn" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="OverviewItemSearchSideMenuBtn" xml:space="preserve">
+    <value>Item Search</value>
+  </data>
+  <data name="OverviewChampionModeInfoSideMenuBtn" xml:space="preserve">
+    <value>PvP Info</value>
+  </data>
+  <data name="OverviewDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="OverviewDonateSideMenuBtn" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="OverviewFriendsSideMenuBtn" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="OverviewLoginBtn" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="OverviewScenarioManagerSideMenuBtn" xml:space="preserve">
+    <value>Scenarios</value>
+  </data>
+  <data name="OverviewPatchNotesSideMenuBtn" xml:space="preserve">
+    <value>Patch Notes</value>
+  </data>
+  <data name="OverviewPlayOfflineBtn" xml:space="preserve">
+    <value>Play Offline</value>
+  </data>
+  <data name="OverviewRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="OverviewSettingsSideMenuBtn" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="OverviewWebsiteSideMenuBtn" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="OverviewYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="RegisterCompleteRegistrationBtnText" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterEmailLabelText" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="RegisterPasswordConfirmationLabelText" xml:space="preserve">
+    <value>Confirm password:</value>
+  </data>
+  <data name="RegisterPasswordLabelText" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="RegisterResendBtnText" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="RegisterUsernameLabelText" xml:space="preserve">
+    <value>Username:</value>
+  </data>
+  <data name="RegisterVerifyBtnText" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="RegisterVerifyLabelText" xml:space="preserve">
+    <value>Verify key:</value>
+  </data>
+  <data name="RegisterCancelBtnText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="MainMenuGameSettingsBtn" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="LanguageComingSoonToolTip" xml:space="preserve">
+    <value>Coming soon™</value>
+  </data>
+  <data name="GameScannerTitle" xml:space="preserve">
+    <value>Game Scan</value>
+  </data>
+  <data name="GamePathSelectionBrowseBtn" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="GamePathSelectionScanBtn" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="GamePathSelectionTitle" xml:space="preserve">
+    <value>Run a game scan to install/update/repair 
+Age of Empires Online - Celeste Fan Project</value>
+  </data>
+  <data name="GameScannerDiscordLabel" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="GameScannerPatchNotesLabel" xml:space="preserve">
+    <value>Patch Notes</value>
+  </data>
+  <data name="OverviewToolsBtnTooltip" xml:space="preserve">
+    <value>Game tools</value>
+  </data>
+  <data name="MainMenuDonateSideMenuBtn" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuChangeGameLanguage" xml:space="preserve">
+    <value>Change game language</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuConvertToSteamGame" xml:space="preserve">
+    <value>Convert to Steam game</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuDiagnosticsMode" xml:space="preserve">
+    <value>Enable diagnostic mode</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuFirewallHelper" xml:space="preserve">
+    <value>Firewall helper</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuGameScanner" xml:space="preserve">
+    <value>Game scanner</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuLauncherUpdater" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuWindowsFeatures" xml:space="preserve">
+    <value>Windows features</value>
   </data>
 </root>

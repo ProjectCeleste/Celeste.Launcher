@@ -22,7 +22,8 @@ namespace Celeste_Launcher_Gui
         [XmlEnum("es-ES")] esES,
         [XmlEnum("fr-FR")] frFR,
         [XmlEnum("it-IT")] itIT,
-        [XmlEnum("zh-CHT")] zhCHT
+        [XmlEnum("zh-CHT")] zhCHT,
+        [XmlEnum("pt-BR")] ptBR
     }
 
     public enum ConnectionType
@@ -112,39 +113,6 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "LoginInfo")]
     public class LoginInfo
     {
-        [XmlIgnore] private string _cryptedPassword = string.Empty;
-
-        [XmlIgnore] private string _uncryptedPassword = string.Empty;
-
-        [DefaultValue(null)]
-        [XmlElement(ElementName = "Email")]
-        public string Email { get; set; }
-
-        [DefaultValue(null)]
-        [XmlElement(ElementName = "Password")]
-        public string CryptedPassword
-        {
-            get => _cryptedPassword;
-            set
-            {
-                _cryptedPassword = value;
-
-                if (!string.IsNullOrWhiteSpace(_uncryptedPassword))
-                    return;
-
-                try
-                {
-                    _uncryptedPassword = string.IsNullOrWhiteSpace(value)
-                        ? string.Empty
-                        : EncryptDecrypt.Decrypt(value, true);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-            }
-        }
-
         [DefaultValue(false)]
         [XmlElement(ElementName = "RememberMe")]
         public bool RememberMe { get; set; }
@@ -152,47 +120,6 @@ namespace Celeste_Launcher_Gui
         [DefaultValue(false)]
         [XmlElement(ElementName = "AutoLogin")]
         public bool AutoLogin { get; set; }
-
-        [XmlIgnore]
-        public string Password
-        {
-            get
-            {
-                if (!string.IsNullOrWhiteSpace(_uncryptedPassword))
-                    return _uncryptedPassword;
-
-                try
-                {
-                    _uncryptedPassword = string.IsNullOrWhiteSpace(CryptedPassword)
-                        ? string.Empty
-                        : EncryptDecrypt.Decrypt(CryptedPassword, true);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-
-                return _uncryptedPassword;
-            }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    CryptedPassword = string.Empty;
-
-                try
-                {
-                    CryptedPassword = string.IsNullOrWhiteSpace(value)
-                        ? string.Empty
-                        : EncryptDecrypt.Encrypt(value, true);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-
-                _uncryptedPassword = value;
-            }
-        }
     }
 
     [XmlRoot(ElementName = "MpSettings")]

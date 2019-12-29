@@ -13,12 +13,12 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     {
         public const string CmdName = "LOGIN";
 
-        public Login(Client webSocketClient)
-        {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
-        }
+        private readonly DataExchange _dataExchange;
 
-        private DataExchange DataExchange { get; }
+        public Login(DataExchange dataExchange)
+        {
+            _dataExchange = dataExchange;
+        }
 
         public async Task<LoginResult> DoLogin(LoginInfo request)
         {
@@ -33,11 +33,8 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
                 if (!Misc.IsValidEmailAdress(request.Mail))
                     throw new Exception("Invalid eMail!");
 
-                dynamic requestInfo = request;
-
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                return result.ToObject<LoginResult>();
+                return await _dataExchange.DoDataExchange<LoginResult, LoginInfo>(request, CmdName);
+                
             }
             catch (Exception e)
             {

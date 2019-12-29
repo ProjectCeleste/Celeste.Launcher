@@ -27,7 +27,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged
         public string EMail { get; }
     }
 
-    public class ValidMailResult
+    public class ValidMailResult : IGenericResponse
     {
         [JsonConstructor]
         public ValidMailResult([JsonProperty("Result", Required = Required.Always)] bool result,

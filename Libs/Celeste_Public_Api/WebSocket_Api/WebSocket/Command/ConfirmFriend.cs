@@ -12,24 +12,18 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     {
         public const string CmdName = "CONFFRIEND";
 
-        public ConfirmFriend(Client webSocketClient)
-        {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
-        }
+        private DataExchange _dataExchange;
 
-        private DataExchange DataExchange { get; }
+        public ConfirmFriend(DataExchange dataExchange)
+        {
+            _dataExchange = dataExchange;
+        }
 
         public async Task<ConfirmFriendResult> DoConfirmFriend(ConfirmFriendInfo request)
         {
             try
             {
-                dynamic requestInfo = request;
-
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                ConfirmFriendResult retVal = result.ToObject<ConfirmFriendResult>();
-
-                return retVal;
+                return await _dataExchange.DoDataExchange<ConfirmFriendResult, ConfirmFriendInfo>(request, CmdName);
             }
             catch (Exception e)
             {

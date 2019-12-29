@@ -50,7 +50,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged
         public string FingerPrint { get; }
     }
 
-    public class RegisterUserResult
+    public class RegisterUserResult : IGenericResponse
     {
         [JsonConstructor]
         public RegisterUserResult([JsonProperty("Result", Required = Required.Always)] bool result,

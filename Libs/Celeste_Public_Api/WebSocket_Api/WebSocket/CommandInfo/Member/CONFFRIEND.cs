@@ -21,7 +21,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
         public long FriendXuid { get; }
     }
 
-    public class ConfirmFriendResult
+    public class ConfirmFriendResult : IGenericResponse
     {
         [JsonConstructor]
         public ConfirmFriendResult([JsonProperty("Result", Required = Required.Always)] bool result,

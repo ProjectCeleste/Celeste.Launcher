@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Celeste_AOEO_Controls.Helpers;
 using Celeste_AOEO_Controls.MsgBox;
+using Celeste_Launcher_Gui.Services;
 
 #endregion
 
@@ -235,9 +236,9 @@ namespace Celeste_Launcher_Gui.Forms
             pictureBoxButtonCustom3.Enabled = listView1.SelectedItems.Count > 0;
         }
 
-        private void CustomBtn1_Click(object sender, EventArgs e)
+        private async void CustomBtn1_Click(object sender, EventArgs e)
         {
-            MainForm.StartGame(true);
+            await GameService.StartGame(true);
         }
     }
 }

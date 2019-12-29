@@ -94,7 +94,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
         public RankEnum Rank { get; }
     }
 
-    public class LoginResult
+    public class LoginResult : IGenericResponse
     {
         public LoginResult(bool result, string message)
         {
