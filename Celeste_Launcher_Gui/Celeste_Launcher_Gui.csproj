@@ -274,6 +274,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\RegisterScreenInputBoxLongDisabled.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxShortDisabled.png" />
     <Resource Include="Resources\Icons\itemsearch-Hover.png" />
     <Resource Include="Resources\Icons\itemsearch-Normal.png" />
     <Resource Include="Resources\GamePathInputBox.png" />

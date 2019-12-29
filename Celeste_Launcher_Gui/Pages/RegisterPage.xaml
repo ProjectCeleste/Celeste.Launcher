@@ -20,17 +20,22 @@
 
         <Grid VerticalAlignment="Bottom" Height="356" Margin="0,0,0,50">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" x:Name="VerifyKeyField"/>
-                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0" Click="OnResendVerificationKey" x:Name="ResentKeyBtn"/>
-                </WrapPanel>
-                <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left" x:Name="UsernameField"/>
-                <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left" x:Name="PasswordField"/>
-                <DockPanel>
-                    <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="ConfirmPasswordField"/>
-                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn2"/>
-                </DockPanel>
-                <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCancelBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnAbort" x:Name="RegisterBtn"/>
+                <StackPanel IsEnabled="False" x:Name="UserInformationInputGroup">
+                    <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" x:Name="VerifyKeyField"/>
+                        <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0" Click="OnResendVerificationKey" x:Name="ResentKeyBtn"/>
+                    </WrapPanel>
+                    <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left" x:Name="UsernameField"/>
+                    <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left" x:Name="PasswordField"/>
+                    <DockPanel>
+                        <local:ShortRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="ConfirmPasswordField"/>
+                        <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn2"/>
+                    </DockPanel>
+
+                </StackPanel>
+                <StackPanel>
+                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCancelBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnAbort" x:Name="RegisterBtn"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
 

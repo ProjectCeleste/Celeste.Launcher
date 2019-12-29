@@ -7,11 +7,25 @@
              mc:Ignorable="d" 
              d:DesignWidth="352" d:DesignHeight="68"
              Width="352" Height="68">
+    <UserControl.Style>
+        <Style>
+            <Setter Property="local:ShortRegisterInputField.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxShort.png" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="local:ShortRegisterInputField.IsEnabled" Value="False">
+                    <Setter Property="local:ShortRegisterInputField.Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxShortDisabled.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
     <Grid x:Name="LayoutRoot">
-        <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxShort.png"/>
-        </Grid.Background>
-
         <TextBlock
             Foreground="White"
             FontFamily="{StaticResource Ashley-Crawford-CG}"

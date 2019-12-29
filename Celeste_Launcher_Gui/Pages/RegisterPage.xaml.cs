@@ -42,6 +42,7 @@ namespace Celeste_Launcher_Gui.Pages
                 if (response.Result)
                 {
                     GenericMessageDialog.Show($@"{response.Message}", DialogIcon.Warning);
+                    UserInformationInputGroup.IsEnabled = true;
                 }
                 else
                 {

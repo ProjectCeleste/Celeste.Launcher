@@ -7,11 +7,25 @@
              mc:Ignorable="d" 
              d:DesignWidth="656" d:DesignHeight="68"
              Width="656" Height="68">
+    <UserControl.Style>
+        <Style>
+            <Setter Property="local:WideRegisterInputField.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxLong.png" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="local:WideRegisterInputField.IsEnabled" Value="False">
+                    <Setter Property="local:WideRegisterInputField.Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxLongDisabled.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
     <Grid x:Name="LayoutRoot">
-        <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxLong.png"/>
-        </Grid.Background>
-
         <TextBlock
             Foreground="White"
             FontFamily="{StaticResource Ashley-Crawford-CG}"
