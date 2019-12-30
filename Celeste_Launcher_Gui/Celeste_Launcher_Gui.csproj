@@ -104,7 +104,6 @@
     </Compile>
     <Compile Include="Helpers\ProcDump.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
-    <Compile Include="Helpers\Updater.cs" />
     <Compile Include="Forms\WindowsFeaturesForm.cs">
       <SubType>Form</SubType>
     </Compile>
