@@ -1,22 +1,11 @@
-﻿using Celeste_Launcher_Gui.Helpers;
-using Celeste_Launcher_Gui.Services;
+﻿using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Windows
 {
@@ -74,7 +63,7 @@ namespace Celeste_Launcher_Gui.Windows
                     ProgressBar.ProgressBar.Value = value;
                 };
 
-                await Updater.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
+                await UpdateService.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
 
                 GenericMessageDialog.Show(
                     @"""Celeste Fan Project Launcher"" has been updated, it will now re-start.", DialogIcon.Warning, DialogOptions.Ok);
