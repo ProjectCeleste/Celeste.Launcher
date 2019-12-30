@@ -380,4 +380,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="MainMenuGameSettingsMenuWindowsFeatures" xml:space="preserve">
     <value>Windows features</value>
   </data>
+  <data name="OverviewTwitchSideMenuBtn" xml:space="preserve">
+    <value>Twitch</value>
+  </data>
 </root>
