@@ -19,11 +19,13 @@ namespace Celeste_Launcher_Gui.Services
     public static class UpdateService
     {
 #if IS_BETA
+
         private const string AssemblyInfoUrl =
                 "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs";
 
         private const string ChangelogUrl =
             "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/CHANGELOG.md";
+
 #else
 
         private const string AssemblyInfoUrl =
@@ -35,7 +37,9 @@ namespace Celeste_Launcher_Gui.Services
 #endif
 
         private const string ReleaseZipUrl =
-            "https://github.com/ProjectCeleste/Celeste_Launcher/releases/download/v";
+            "https://github.com/ProjectCeleste/Celeste_Launcher/releases/download/";
+
+        private const string ZipName = "Celeste_Launcher.zip";
 
         public static async Task<Version> GetGitHubAssemblyVersion()
         {
@@ -69,7 +73,7 @@ namespace Celeste_Launcher_Gui.Services
                 }
 
                 if (string.IsNullOrWhiteSpace(changelogRaw))
-                    throw new Exception(@"No Changelog found...");
+                    throw new Exception("No Changelog found...");
 
                 var changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
                     .Replace("Full Changelog", string.Empty).Replace("Change Log", string.Empty);
@@ -77,7 +81,7 @@ namespace Celeste_Launcher_Gui.Services
                 if (!string.IsNullOrWhiteSpace(changelogFormatted))
                     return changelogFormatted;
 
-                throw new Exception(@"No Changelog found...");
+                throw new Exception("No Changelog found...");
             }
             catch (Exception exception)
             {
@@ -98,6 +102,7 @@ namespace Celeste_Launcher_Gui.Services
             var stripped = reg.Replace(htmlText, "");
             return decode ? HttpUtility.HtmlDecode(stripped) : stripped;
         }
+
         public static async Task DownloadAndInstallUpdate(bool isSteam = false, IProgress<int> progress = null,
             CancellationToken ct = default(CancellationToken))
         {
@@ -112,11 +117,10 @@ namespace Celeste_Launcher_Gui.Services
 
             ct.ThrowIfCancellationRequested();
 
-            const string zipName = "Celeste_Launcher.zip";
 #if IS_BETA
-            var downloadLink = $"{ReleaseZipUrl}{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}-beta/{zipName}";
+            var downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}-beta/{ZipName}";
 #else
-            var downloadLink = $"{ReleaseZipUrl}{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}/{zipName}";
+            var downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}/{ZipName}";
 #endif
 
             //Download File
@@ -201,6 +205,5 @@ namespace Celeste_Launcher_Gui.Services
             //
             progress?.Report(100);
         }
-
     }
 }
