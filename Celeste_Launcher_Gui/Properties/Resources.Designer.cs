@@ -733,6 +733,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Twitch.
+        /// </summary>
+        public static string OverviewTwitchSideMenuBtn {
+            get {
+                return ResourceManager.GetString("OverviewTwitchSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Website.
         /// </summary>
         public static string OverviewWebsiteSideMenuBtn {

@@ -107,10 +107,9 @@
                     HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/YouTube-Hover.png" HorizontalAlignment="Left" Click="OnYoutubeClick"/>
 
                 <local:SideBarMenuItemRight
-                    LabelContents="{x:Static p:Resources.OverviewItemSearchSideMenuBtn}" 
-                    LabelSize="14"
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/itemsearch-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/itemsearch-Hover.png" HorizontalAlignment="Left" Click="OnItemSearchClick"/>
+                    LabelContents="{x:Static p:Resources.OverviewTwitchSideMenuBtn}" 
+                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Twitch-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Twitch-Hover.png" HorizontalAlignment="Left" Click="OnItemSearchClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewPatchNotesSideMenuBtn}"
