@@ -176,9 +176,6 @@
     <Compile Include="UserControls\SideBarMenuItemRight.xaml.cs">
       <DependentUpon>SideBarMenuItemRight.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SideBarMenuItemWide.xaml.cs">
-      <DependentUpon>SideBarMenuItemWide.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UpdateProgressBar.xaml.cs">
       <DependentUpon>UpdateProgressBar.xaml</DependentUpon>
     </Compile>
@@ -474,10 +471,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\SideBarMenuItemRight.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\SideBarMenuItemWide.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
