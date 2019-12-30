@@ -34,9 +34,10 @@ init:
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
         $env:CelesteLauncher_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
-        if ($env:CelesteLauncher_Version -contains 'b')
+        $env:CelesteLauncher_IVersion = "$($env:CelesteLauncher_Version)";
+        if ($env:CelesteLauncher_Version -contains '-beta')
         {
-            $env:CelesteLauncher_Version = "$($env:CelesteLauncher_Version.Replace('b', ''))";
+            $env:CelesteLauncher_Version = "$($env:CelesteLauncher_Version.Replace('-beta', ''))";
             $env:CelesteLauncher_Beta = "true";
         }
         else
@@ -47,6 +48,7 @@ init:
     else
     {
         $env:CelesteLauncher_Version = "$($env:APPVEYOR_BUILD_VERSION)";
+        $env:CelesteLauncher_IVersion = "$($env:CelesteLauncher_Version)";
         $env:CelesteLauncher_Beta = "false";
     }
 - cmd: git config --global core.autocrlf true
@@ -122,7 +124,7 @@ assembly_info:
   file: 'Celeste_Launcher_Gui\Properties\AssemblyInfo.cs'
   assembly_version: '$(CelesteLauncher_Version)'
   assembly_file_version: '$(CelesteLauncher_Version)'
-  assembly_informational_version: '$(CelesteLauncher_Version)'
+  assembly_informational_version: '$(CelesteLauncher_IVersion)'
 
 #---------------------------------#
 #       build configuration       #
@@ -212,7 +214,7 @@ deploy:
   # Deploy to GitHub Releases
   - provider: GitHub
     tag: $(APPVEYOR_REPO_TAG_NAME)
-    description: '[View CHANGELOG.md](https://github.com/ProjectCeleste/Celeste_Launcher/blob/master/CHANGELOG.md)'
+    description: '[View CHANGELOG.md](https://github.com/ProjectCeleste/Celeste_Launcher/blob/$(APPVEYOR_REPO_BRANCH)/CHANGELOG.md)'
     release: Celeste Launcher $(APPVEYOR_REPO_TAG_NAME)
     auth_token: $(access_token)
     artifact: Celeste_Launcher
