@@ -1,3 +1,5 @@
+#define IS_BETA
+
 #region Using directives
 
 using System;
@@ -13,22 +15,29 @@ using Markdig;
 using ProjectCeleste.GameFiles.GameScanner.FileDownloader;
 
 #endregion
-
 namespace Celeste_Launcher_Gui.Helpers
 {
     public static class Updater
     {
+
+#if IS_BETA
         private const string AssemblyInfoUrl =
-                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs"
-            ;
+                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs";
+
+        private const string ChangelogUrl =
+            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/CHANGELOG.md";
+#else
+        private const string AssemblyInfoUrl =
+                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs";
 
         private const string ChangelogUrl =
             "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/CHANGELOG.md";
+#endif
 
         private const string ReleaseZipUrl =
             "https://github.com/ProjectCeleste/Celeste_Launcher/releases/download/v";
 
-        public static async Task<Version> GetGitHubVersion()
+        public static async Task<Version> GetGitHubAssemblyVersion()
         {
             string version;
 
@@ -41,12 +50,10 @@ namespace Celeste_Launcher_Gui.Helpers
             var regex = new Regex(@"\[assembly\: AssemblyVersion\(""(\d{1,})\.(\d{1,})\.(\d{1,})\.(\d{1,})""\)\]");
             var match = regex.Match(version);
 
-            if (!match.Success)
-                throw new Exception("GetLatestVersion() match.Success != true");
+            if (match.Success)
+                return new Version($"{match.Groups[1]}.{match.Groups[2]}.{match.Groups[3]}.{match.Groups[4]}");
 
-            var gitVersion = new Version($"{match.Groups[1]}.{match.Groups[2]}.{match.Groups[3]}.{match.Groups[4]}");
-
-            return gitVersion;
+            throw new Exception("GetLatestVersion() match.Success != true");
         }
 
         public static async Task<string> GetChangeLog()
@@ -62,7 +69,7 @@ namespace Celeste_Launcher_Gui.Helpers
                 }
 
                 if (string.IsNullOrWhiteSpace(changelogRaw))
-                    throw new Exception(@"No Changelog found...");
+                    throw new Exception("No Changelog found...");
 
                 var changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
                     .Replace("Full Changelog", string.Empty).Replace("Change Log", string.Empty);
@@ -70,7 +77,7 @@ namespace Celeste_Launcher_Gui.Helpers
                 if (!string.IsNullOrWhiteSpace(changelogFormatted))
                     return changelogFormatted;
 
-                throw new Exception(@"No Changelog found...");
+                throw new Exception("No Changelog found...");
             }
             catch (Exception exception)
             {
@@ -90,7 +97,7 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             Misc.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
 
-            var gitVersion = await GetGitHubVersion().ConfigureAwait(false);
+            var gitVersion = await GetGitHubAssemblyVersion().ConfigureAwait(false);
 
             progress?.Report(3);
 
@@ -100,7 +107,11 @@ namespace Celeste_Launcher_Gui.Helpers
             ct.ThrowIfCancellationRequested();
 
             const string zipName = "Celeste_Launcher.zip";
-            var downloadLink = $"{ReleaseZipUrl}{gitVersion}/{zipName}";
+#if IS_BETA
+            var downloadLink = $"{ReleaseZipUrl}{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}-beta/{zipName}";
+#else
+            var downloadLink = $"{ReleaseZipUrl}{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}/{zipName}";
+#endif
 
             //Download File
             progress?.Report(5);
