@@ -152,7 +152,7 @@
         <Grid Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="472" Height="244">
             <TextBlock>
                 <Hyperlink Click="OpenNews" TextDecorations="None">
-                    <Image x:Name="NewsImage" Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png" Stretch="None"/>
+                    <Image x:Name="NewsImage" Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/DefaultNewsGraphics.png" Stretch="Fill"/>
                 </Hyperlink>   
             </TextBlock>
         </Grid>
