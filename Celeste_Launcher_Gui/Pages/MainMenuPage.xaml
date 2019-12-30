@@ -18,7 +18,7 @@
         </StackPanel>
 
         <StackPanel Width="300" Height="auto" HorizontalAlignment="Left" Margin="15,0,0,15" VerticalAlignment="Bottom">
-            <local:SideBarMenuItemWide 
+            <local:SideBarMenuItem 
                         LabelContents="{x:Static p:Resources.MainMenuCelesteSideMenuBtn}" 
                         DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Normal.png"
                         HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" Click="OnCelesteClick"/>

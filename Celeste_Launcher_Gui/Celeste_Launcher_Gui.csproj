@@ -176,9 +176,6 @@
     <Compile Include="UserControls\SideBarMenuItemRight.xaml.cs">
       <DependentUpon>SideBarMenuItemRight.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SideBarMenuItemWide.xaml.cs">
-      <DependentUpon>SideBarMenuItemWide.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UpdateProgressBar.xaml.cs">
       <DependentUpon>UpdateProgressBar.xaml</DependentUpon>
     </Compile>
@@ -274,6 +271,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\Icons\Twitch-Hover.png" />
+    <Resource Include="Resources\Icons\Twitch-Normal.png" />
     <Resource Include="Resources\RegisterScreenInputBoxLongDisabled.png" />
     <Resource Include="Resources\RegisterScreenInputBoxShortDisabled.png" />
     <Resource Include="Resources\Icons\itemsearch-Hover.png" />
@@ -474,10 +473,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\SideBarMenuItemRight.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\SideBarMenuItemWide.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

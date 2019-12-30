@@ -12,7 +12,7 @@
             <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/PlayerNameplateEmpty.png" />
         </Grid.Background>
         <Image Source="{Binding PlayerIcon}" Height="90" Width="90" HorizontalAlignment="Left"/>
-        <Label Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" Margin="90,18,0,0" Content="{Binding Username}"/>
-        <Label Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" Margin="90,47,0,0" Content="{Binding Rank}"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" Margin="95,23,0,0" Text="{Binding Username}"/>
+        <TextBlock Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15" Margin="95,52,0,0" Text="{Binding Rank}"/>
     </Grid>
 </UserControl>

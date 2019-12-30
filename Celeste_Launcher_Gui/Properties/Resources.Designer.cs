@@ -445,7 +445,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to projectceleste.com.
+        ///   Looks up a localized string similar to Website.
         /// </summary>
         public static string MainMenuCelesteSideMenuBtn {
             get {
@@ -729,6 +729,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string OverviewToolsBtnTooltip {
             get {
                 return ResourceManager.GetString("OverviewToolsBtnTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twitch.
+        /// </summary>
+        public static string OverviewTwitchSideMenuBtn {
+            get {
+                return ResourceManager.GetString("OverviewTwitchSideMenuBtn", resourceCulture);
             }
         }
         
