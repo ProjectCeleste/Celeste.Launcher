@@ -445,7 +445,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to projectceleste.com.
+        ///   Looks up a localized string similar to Website.
         /// </summary>
         public static string MainMenuCelesteSideMenuBtn {
             get {
