@@ -267,9 +267,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\NetworkSettings-DarkBGMedium.png" />
     <Resource Include="Resources\Icons\RefreshHover.png" />
     <Resource Include="Resources\Icons\RefreshNormal.png" />
-    <Resource Include="Resources\NetworkSettings-DarkBGSmall.png" />
     <Resource Include="Resources\Separator-VerticalSmall.png" />
     <Resource Include="Resources\MediumDialogue-Background.png" />
     <Resource Include="Resources\Icons\Twitch-Hover.png" />
