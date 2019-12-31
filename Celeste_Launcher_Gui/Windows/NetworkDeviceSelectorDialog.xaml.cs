@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Windows
 {
@@ -22,6 +13,10 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class NetworkDeviceSelectorDialog : Window
     {
+        public string SelectedInterfaceName { get; private set; }
+
+        public IPAddress SelectedIpAddress { get; private set; }
+
         public NetworkDeviceSelectorDialog()
         {
             InitializeComponent();
@@ -45,7 +40,19 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void ConfirmBtnClick(object sender, RoutedEventArgs e)
         {
+            var selectedNetworkInterface = NetworkInterfaceListView.SelectedItem as ListViewItem;
 
+            if (selectedNetworkInterface == null)
+            {
+                GenericMessageDialog.Show("Please select a network interface", DialogIcon.Error, DialogOptions.Ok);
+                return;
+            }
+
+            SelectedIpAddress = (IPAddress)selectedNetworkInterface.Tag;
+            SelectedInterfaceName = (string)selectedNetworkInterface.Content;
+
+            DialogResult = true;
+            Close();
         }
 
         private void RefreshNetworkDevices()
@@ -61,9 +68,12 @@ namespace Celeste_Launcher_Gui.Windows
 
                 foreach (var ip in ips)
                 {
+                    string content = $"{networkInterface.Name} ({ip.Address})";
+
                     NetworkInterfaceListView.Items.Add(new ListViewItem
                     {
-                        Content = $"{networkInterface.Name} ({ip.Address})"
+                        Content = content,
+                        Tag = ip.Address
                     });
                 }
             }

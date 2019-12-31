@@ -17,18 +17,18 @@
             <Grid>
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Left" Width="500" HorizontalAlignment="Left">
-                        <Grid>
+                        <StackPanel>
                             <TextBlock FontFamily="{StaticResource Lithos-Pro-Regular}" FontSize="26" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"
                                 Text="Select network device" TextWrapping="Wrap" TextAlignment="Center" Margin="0,15,0,0"/>
 
-                            <Grid Height="113" Width="456" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                            <Grid Height="166" Width="456" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                                 <Grid.Background>
-                                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/NetworkSettings-DarkBGSmall.png"/>
+                                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/NetworkSettings-DarkBGMedium.png"/>
                                 </Grid.Background>
-                                <ListView Margin="10" x:Name="NetworkInterfaceListView">
+                                <ListView Margin="10" x:Name="NetworkInterfaceListView" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                                 </ListView>
                             </Grid>
-                        </Grid>
+                        </StackPanel>
                     </DockPanel>
                     <DockPanel Width="44">
                         <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-VerticalSmall.png" Stretch="None"/>
