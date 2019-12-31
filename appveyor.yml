@@ -33,23 +33,34 @@ init:
 - ps: >-
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
-        $env:CelesteLauncher_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
-        $env:CelesteLauncher_IVersion = "$($env:CelesteLauncher_Version)";
-        if ($env:CelesteLauncher_Version -contains '-beta')
+        $env:CelesteLauncher_IVersion = "$env:APPVEYOR_REPO_TAG_NAME";
+        if ($env:APPVEYOR_REPO_TAG_NAME.StartsWith("v")) 
         {
-            $env:CelesteLauncher_Version = "$($env:CelesteLauncher_Version.Replace('-beta', ''))";
-            $env:CelesteLauncher_Beta = "true";
+            $env:CelesteLauncher_Version = $env:APPVEYOR_REPO_TAG_NAME.Substring(1);
         }
         else
         {
-            $env:CelesteLauncher_Beta = "false";
+            $env:CelesteLauncher_Version = "$env:APPVEYOR_REPO_TAG_NAME";
         }
+        if ($env:APPVEYOR_REPO_TAG_NAME.Contains("-rc") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-beta") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-alpha"))
+        {
+            $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-rc", "");
+            $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-beta", "");
+            $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-alpha", "");
+            $env:CelesteLauncher_PreRelease = "true";
+        }
+        else
+        {
+            $env:CelesteLauncher_PreRelease = "false";
+        }
+        $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0";
     }
     else
     {
-        $env:CelesteLauncher_Version = "$($env:APPVEYOR_BUILD_VERSION)";
-        $env:CelesteLauncher_IVersion = "$($env:CelesteLauncher_Version)";
-        $env:CelesteLauncher_Beta = "false";
+        $env:CelesteLauncher_Version = "$env:APPVEYOR_BUILD_VERSION";
+        $env:CelesteLauncher_AVersion = "$env:APPVEYOR_BUILD_VERSION";
+        $env:CelesteLauncher_IVersion = "$env:APPVEYOR_BUILD_VERSION";
+        $env:CelesteLauncher_PreRelease = "false";
     }
 - cmd: git config --global core.autocrlf true
 
@@ -88,13 +99,11 @@ install:
 - ps: |
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
-      # Set Version number
-      $env:Build_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))"
       # Update VersionManifest
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
-      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:Build_Version
+      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:CelesteLauncher_Version
       # Update AppVeyor build
-      Update-AppveyorBuild -Version $env:Build_Version
+      Update-AppveyorBuild -Version "$env:CelesteLauncher_Version.$env:APPVEYOR_BUILD_NUMBER"
       # Update AppVeyor BuildNumber
       # $headers = @{
       #   "Authorization" = "Bearer $env:APPVEYOR_TOKEN"
@@ -113,17 +122,19 @@ install:
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
       $ManifestContent = Get-Content -Path $VersionManifestPath -Raw
       # Set Version number
-      $env:Build_Version = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
+      $env:CelesteLauncher_Version = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
+      $env:CelesteLauncher_AVersion = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
+      $env:CelesteLauncher_IVersion = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
       # update AppVeyor build
-      Update-AppveyorBuild -Version $env:Build_Version
+      Update-AppveyorBuild -Version $env:CelesteLauncher_Version
     }
 
 # enable patching of AssemblyInfo.* files
 assembly_info:
   patch: true
   file: 'Celeste_Launcher_Gui\Properties\AssemblyInfo.cs'
-  assembly_version: '$(CelesteLauncher_Version)'
-  assembly_file_version: '$(CelesteLauncher_Version)'
+  assembly_version: '$(CelesteLauncher_AVersion)'
+  assembly_file_version: '$(CelesteLauncher_AVersion)'
   assembly_informational_version: '$(CelesteLauncher_IVersion)'
 
 #---------------------------------#
@@ -219,7 +230,7 @@ deploy:
     auth_token: $(access_token)
     artifact: Celeste_Launcher
     draft: false
-    prerelease: $(CelesteLauncher_Beta)
+    prerelease: $(CelesteLauncher_PreRelease)
     force_update: true
     on:
       appveyor_repo_tag: true
