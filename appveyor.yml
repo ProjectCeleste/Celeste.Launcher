@@ -33,11 +33,12 @@ init:
 - ps: >-
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
-        $env:CelesteLauncher_Version = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
-        $env:CelesteLauncher_FVersion = "$($env:CelesteLauncher_Version).0";
-        $env:CelesteLauncher_IVersion = "$($env:APPVEYOR_REPO_TAG_NAME)";
-        if ($env:CelesteLauncher_Version -contains '-beta')
+        $env:CelesteLauncher_Version0 = "$($env:APPVEYOR_REPO_TAG_NAME.Replace('v', ''))";
+        $env:CelesteLauncher_Version = "$env:CelesteLauncher_Version0.0";
+        $env:CelesteLauncher_IVersion = "$env:APPVEYOR_REPO_TAG_NAME";
+        if ($env:CelesteLauncher_Version -contains 'b')
         {
+            $env:CelesteLauncher_Version0 = "$($env:CelesteLauncher_Version0.Replace('-beta', ''))";
             $env:CelesteLauncher_Version = "$($env:CelesteLauncher_Version.Replace('-beta', ''))";
             $env:CelesteLauncher_Beta = "true";
         }
@@ -48,8 +49,8 @@ init:
     }
     else
     {
+        $env:CelesteLauncher_Version0 = "$($env:APPVEYOR_BUILD_VERSION)";
         $env:CelesteLauncher_Version = "$($env:APPVEYOR_BUILD_VERSION)";
-        $env:CelesteLauncher_FVersion = "$($env:APPVEYOR_BUILD_VERSION)";
         $env:CelesteLauncher_IVersion = "$($env:APPVEYOR_BUILD_VERSION)";
         $env:CelesteLauncher_Beta = "false";
     }
@@ -94,7 +95,7 @@ install:
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
       Set-Content -NoNewline -Path $VersionManifestPath -Value $env:CelesteLauncher_Version
       # Update AppVeyor build
-      Update-AppveyorBuild -Version $env:CelesteLauncher_Version
+      Update-AppveyorBuild -Version $env:CelesteLauncher_Version0
       # Update AppVeyor BuildNumber
       # $headers = @{
       #   "Authorization" = "Bearer $env:APPVEYOR_TOKEN"
@@ -125,7 +126,7 @@ assembly_info:
   patch: true
   file: 'Celeste_Launcher_Gui\Properties\AssemblyInfo.cs'
   assembly_version: '$(CelesteLauncher_Version)'
-  assembly_file_version: '$(CelesteLauncher_FVersion)'
+  assembly_file_version: '$(CelesteLauncher_Version)'
   assembly_informational_version: '$(CelesteLauncher_IVersion)'
 
 #---------------------------------#
