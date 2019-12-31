@@ -90,9 +90,9 @@ install:
     {
       # Update VersionManifest
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
-      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:CelesteLauncher_Version0
+      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:CelesteLauncher_Version
       # Update AppVeyor build
-      Update-AppveyorBuild -Version $env:CelesteLauncher_Version
+      Update-AppveyorBuild -Version "$env:CelesteLauncher_Version.$env:APPVEYOR_BUILD_NUMBER"
       # Update AppVeyor BuildNumber
       # $headers = @{
       #   "Authorization" = "Bearer $env:APPVEYOR_TOKEN"
@@ -112,7 +112,7 @@ install:
       $ManifestContent = Get-Content -Path $VersionManifestPath -Raw
       # Set Version number
       $env:CelesteLauncher_Version = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
-      $env:CelesteLauncher_IVersion = "$env:CelesteLauncher_Version";
+      $env:CelesteLauncher_IVersion = "$env:CelesteLauncher_Version"
       # update AppVeyor build
       Update-AppveyorBuild -Version $env:CelesteLauncher_Version
     }
