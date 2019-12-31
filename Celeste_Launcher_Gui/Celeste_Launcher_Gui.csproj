@@ -206,6 +206,9 @@
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\NetworkDeviceSelectorDialog.xaml.cs">
+      <DependentUpon>NetworkDeviceSelectorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UpdateWindow.xaml.cs">
       <DependentUpon>UpdateWindow.xaml</DependentUpon>
     </Compile>
@@ -264,6 +267,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\Icons\RefreshHover.png" />
+    <Resource Include="Resources\Icons\RefreshNormal.png" />
+    <Resource Include="Resources\NetworkSettings-DarkBGSmall.png" />
+    <Resource Include="Resources\Separator-VerticalSmall.png" />
     <Resource Include="Resources\MediumDialogue-Background.png" />
     <Resource Include="Resources\Icons\Twitch-Hover.png" />
     <Resource Include="Resources\Icons\Twitch-Normal.png" />
@@ -444,6 +451,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Scrollbars.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -515,6 +526,10 @@
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NetworkDeviceSelectorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\UpdateWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

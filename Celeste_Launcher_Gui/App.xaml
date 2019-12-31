@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="Styles/CheckBox.xaml"/>
                 <ResourceDictionary Source="Styles/ContextMenus.xaml"/>
                 <ResourceDictionary Source="Styles/Scrollbars.xaml"/>
+                <ResourceDictionary Source="Styles/ListView.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
