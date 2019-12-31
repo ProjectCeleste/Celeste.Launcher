@@ -861,6 +861,42 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string ResetPasswordConfirmBtn {
+            get {
+                return ResourceManager.GetString("ResetPasswordConfirmBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Password.
+        /// </summary>
+        public static string ResetPasswordConfirmNewPassword {
+            get {
+                return ResourceManager.GetString("ResetPasswordConfirmNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Password.
+        /// </summary>
+        public static string ResetPasswordCurrentPassword {
+            get {
+                return ResourceManager.GetString("ResetPasswordCurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        public static string ResetPasswordNewPassword {
+            get {
+                return ResourceManager.GetString("ResetPasswordNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap XButton_Hover {

@@ -115,10 +115,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnChangePasswordClick(object sender, RoutedEventArgs e)
         {
-            using (var form = new ChangePwdForm())
-            {
-                form.ShowDialog();
-            }
+            new ChangePasswordDialog().ShowDialog();
         }
 
         private void OnTwitchClick(object sender, RoutedEventArgs e)
