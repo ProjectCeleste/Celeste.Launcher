@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="ListView">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource CustomScrollbar}"/>
+        </Style.Resources>
+    </Style>
+</ResourceDictionary>
