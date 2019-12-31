@@ -109,7 +109,7 @@
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewTwitchSideMenuBtn}" 
                     DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Twitch-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Twitch-Hover.png" HorizontalAlignment="Left" Click="OnItemSearchClick"/>
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Twitch-Hover.png" HorizontalAlignment="Left" Click="OnTwitchClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewPatchNotesSideMenuBtn}"

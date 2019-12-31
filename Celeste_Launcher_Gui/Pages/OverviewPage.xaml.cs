@@ -121,9 +121,9 @@ namespace Celeste_Launcher_Gui.Pages
             }
         }
 
-        private void OnItemSearchClick(object sender, RoutedEventArgs e)
+        private void OnTwitchClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://search.projectceleste.com");
+            Process.Start("https://www.twitch.tv/projectceleste/");
         }
 
         private void OnPatchNotesClick(object sender, RoutedEventArgs e)
