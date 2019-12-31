@@ -122,12 +122,6 @@
     <Compile Include="Forms\ResetPwdForm.Designer.cs">
       <DependentUpon>ResetPwdForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChangePwdForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ChangePwdForm.Designer.cs">
-      <DependentUpon>ChangePwdForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\MpSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +191,9 @@
       <DependentUpon>WindowControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LauncherVersionInfo.cs" />
+    <Compile Include="Windows\ChangePasswordDialog.xaml.cs">
+      <DependentUpon>ChangePasswordDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\GamePathSelectionWindow.xaml.cs">
       <DependentUpon>GamePathSelectionWindow.xaml</DependentUpon>
     </Compile>
@@ -212,9 +209,6 @@
     <Compile Include="Windows\UpdateWindow.xaml.cs">
       <DependentUpon>UpdateWindow.xaml</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\ChangePwdForm.resx">
-      <DependentUpon>ChangePwdForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FriendsForm.resx">
       <DependentUpon>FriendsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\MediumDialogue-Background.png" />
     <Resource Include="Resources\Icons\Twitch-Hover.png" />
     <Resource Include="Resources\Icons\Twitch-Normal.png" />
     <Resource Include="Resources\RegisterScreenInputBoxLongDisabled.png" />
@@ -355,8 +350,6 @@
     <Resource Include="Resources\Icons\YouTube-Hover.png" />
     <Resource Include="Resources\Icons\YouTube-Normal.png" />
     <Resource Include="Resources\LoggedInScreenSeparators.png" />
-    <Resource Include="Resources\LoginWindowContents.png" />
-    <Resource Include="Resources\LoginWindowFrame.png" />
     <Resource Include="Resources\MainWindow_InnerContents.png" />
     <Resource Include="Resources\PlayerNameplateEmpty.png" />
     <Resource Include="Resources\ProfilePics\Coin-Agvald.png" />
@@ -502,6 +495,10 @@
     <Page Include="UserControls\WindowControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ChangePasswordDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\GamePathSelectionWindow.xaml">
       <SubType>Designer</SubType>

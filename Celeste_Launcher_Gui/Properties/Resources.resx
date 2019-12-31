@@ -383,4 +383,16 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="OverviewTwitchSideMenuBtn" xml:space="preserve">
     <value>Twitch</value>
   </data>
+  <data name="ResetPasswordConfirmBtn" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ResetPasswordConfirmNewPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="ResetPasswordCurrentPassword" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="ResetPasswordNewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
 </root>
