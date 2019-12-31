@@ -42,7 +42,7 @@ init:
         {
             $env:CelesteLauncher_Version = "$env:APPVEYOR_REPO_TAG_NAME";
         }
-        if ($env:APPVEYOR_REPO_TAG_NAME.Contains("-rc") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-beta") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-alpha")) {
+        if ($env:APPVEYOR_REPO_TAG_NAME.Contains("-rc") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-beta") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-alpha"))
         {
             $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-rc", "");
             $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-beta", "");
