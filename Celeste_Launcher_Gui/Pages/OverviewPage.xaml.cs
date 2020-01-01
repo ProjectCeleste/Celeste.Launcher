@@ -246,8 +246,6 @@ namespace Celeste_Launcher_Gui.Pages
         }
         #endregion
 
-
-
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var newsLoader = new NewsPictureLoader();
@@ -288,10 +286,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenMultiplayerSettings(object sender, RoutedEventArgs e)
         {
-            using (var form = new MpSettingForm(LegacyBootstrapper.UserConfig.MpSettings))
-            {
-                form.ShowDialog();
-            }
+            new MultiplayerSettings().ShowDialog();
         }
 
         private void OpenToolsButtonToolTip(object sender, RoutedEventArgs e)

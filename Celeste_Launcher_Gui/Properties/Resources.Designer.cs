@@ -679,7 +679,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to Select.
         /// </summary>
         public static string NetworkDeviceSelectorSaveBtn {
             get {

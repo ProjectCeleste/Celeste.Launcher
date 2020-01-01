@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Styles/ContextMenus.xaml"/>
                 <ResourceDictionary Source="Styles/Scrollbars.xaml"/>
                 <ResourceDictionary Source="Styles/ListView.xaml"/>
+                <ResourceDictionary Source="Styles/RadioButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

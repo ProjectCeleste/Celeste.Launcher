@@ -426,7 +426,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>WAN</value>
   </data>
   <data name="NetworkDeviceSelectorSaveBtn" xml:space="preserve">
-    <value>Save</value>
+    <value>Select</value>
   </data>
   <data name="NetworkDeviceSelectorTitle" xml:space="preserve">
     <value>Select network device</value>

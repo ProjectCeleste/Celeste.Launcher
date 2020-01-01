@@ -13,9 +13,7 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class NetworkDeviceSelectorDialog : Window
     {
-        public string SelectedInterfaceName { get; private set; }
-
-        public IPAddress SelectedIpAddress { get; private set; }
+        public NetworkInterface SelectedInterface { get; private set; }
 
         public NetworkDeviceSelectorDialog()
         {
@@ -48,8 +46,7 @@ namespace Celeste_Launcher_Gui.Windows
                 return;
             }
 
-            SelectedIpAddress = (IPAddress)selectedNetworkInterface.Tag;
-            SelectedInterfaceName = (string)selectedNetworkInterface.Content;
+            SelectedInterface = (NetworkInterface)selectedNetworkInterface.Tag;
 
             DialogResult = true;
             Close();
@@ -73,7 +70,7 @@ namespace Celeste_Launcher_Gui.Windows
                     NetworkInterfaceListView.Items.Add(new ListViewItem
                     {
                         Content = content,
-                        Tag = ip.Address
+                        Tag = networkInterface
                     });
                 }
             }
