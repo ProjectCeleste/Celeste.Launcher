@@ -395,4 +395,40 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ResetPasswordNewPassword" xml:space="preserve">
     <value>New Password</value>
   </data>
+  <data name="MultiplayerSettingsConnectionTypeTitle" xml:space="preserve">
+    <value>Connection Type</value>
+  </data>
+  <data name="MultiplayerSettingsLANCheckbox" xml:space="preserve">
+    <value>LAN only</value>
+  </data>
+  <data name="MultiplayerSettingsManual" xml:space="preserve">
+    <value>Manual (protocol: UDP, port:1000)</value>
+  </data>
+  <data name="MultiplayerSettingsNatPunchthrough" xml:space="preserve">
+    <value>NAT Punchthrough (default)</value>
+  </data>
+  <data name="MultiplayerSettingsOtherCheckbox" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="MultiplayerSettingsPortMappingTitle" xml:space="preserve">
+    <value>Port Mapping (WAN)</value>
+  </data>
+  <data name="MultiplayerSettingsRemoteIPLabel" xml:space="preserve">
+    <value>Remote IP:</value>
+  </data>
+  <data name="MultiplayerSettingsSaveBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="MultiplayerSettingsUpnp" xml:space="preserve">
+    <value>UPnP using open.nat</value>
+  </data>
+  <data name="MultiplayerSettingsWANCheckbox" xml:space="preserve">
+    <value>WAN</value>
+  </data>
+  <data name="NetworkDeviceSelectorSaveBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="NetworkDeviceSelectorTitle" xml:space="preserve">
+    <value>Select network device</value>
+  </data>
 </root>
