@@ -1,0 +1,112 @@
+﻿<Window x:Class="Celeste_Launcher_Gui.Windows.MultiplayerSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+             xmlns:theme="clr-namespace:Celeste_Launcher_Gui.Helpers"
+             xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+             mc:Ignorable="d" 
+             WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
+             Width="849" Height="308">
+    <Window.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="CheckBoxStackPanel">
+            <Setter Property="Margin" Value="20,0,20,0" />
+        </Style>
+
+        <Style TargetType="Label" x:Key="CheckBoxLabel">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TextBlockTitle">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}" x:Key="PortMappingCheckBox">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="PortMappingCheckBoxTextBlock">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="MaxWidth" Value="200" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/MediumDialogue-Background.png"/>
+        </Grid.Background>
+        <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
+            <Grid>
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Left" Width="500" HorizontalAlignment="Left">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource TextBlockTitle}" Text="Connection type" Margin="0,10,0,0"/>
+
+                            <DockPanel HorizontalAlignment="Center">
+                                <StackPanel Style="{StaticResource CheckBoxStackPanel}">
+                                    <Label Content="WAN" Style="{StaticResource CheckBoxLabel}"/>
+                                    <CheckBox Style="{StaticResource CustomCheckBox}" Margin="2" HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource CheckBoxStackPanel}">
+                                    <Label Content="LAN ONLY" Style="{StaticResource CheckBoxLabel}"/>
+                                    <CheckBox Style="{StaticResource CustomCheckBox}" Margin="2" HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource CheckBoxStackPanel}">
+                                    <Label Content="Other" Style="{StaticResource CheckBoxLabel}"/>
+                                    <CheckBox Style="{StaticResource CustomCheckBox}" Margin="2" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </DockPanel>
+
+                            <local:ShortRegisterInputField LabelContent="Remote IP:" Margin="10"/>
+                            <Button Style="{StaticResource TinyButton}" Content="Save"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Width="44">
+                        <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-VerticalSmall.png" Stretch="None"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <DockPanel HorizontalAlignment="Center">
+                            <DockPanel DockPanel.Dock="Top">
+                                <TextBlock Style="{StaticResource TextBlockTitle}"
+                                    Text="Port mapping (WAN)" Margin="0,10,0,0"/>
+                            </DockPanel>
+                            <DockPanel >
+                                <StackPanel VerticalAlignment="Center">
+                                    <CheckBox Style="{StaticResource PortMappingCheckBox}">
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="NAT Punchthrough (default)"/>
+                                    </CheckBox>
+                                    <CheckBox Style="{StaticResource PortMappingCheckBox}">
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="UPnP using open.nat"/>
+                                    </CheckBox>
+                                    <CheckBox Style="{StaticResource PortMappingCheckBox}">
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="Manual (protocol: UDP, port: 1000)"/>
+                                    </CheckBox>
+                                </StackPanel>
+                            </DockPanel>
+                        </DockPanel>
+                    </DockPanel>
+                </DockPanel>
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
+            <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseHover.png"
+                    Click="CloseWindow"/>
+        </StackPanel>
+    </Grid>
+</Window>

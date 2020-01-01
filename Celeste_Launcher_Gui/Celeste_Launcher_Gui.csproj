@@ -206,6 +206,9 @@
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\MultiplayerSettings.xaml.cs">
+      <DependentUpon>MultiplayerSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NetworkDeviceSelectorDialog.xaml.cs">
       <DependentUpon>NetworkDeviceSelectorDialog.xaml</DependentUpon>
     </Compile>
@@ -526,6 +529,10 @@
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\MultiplayerSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\NetworkDeviceSelectorDialog.xaml">
       <SubType>Designer</SubType>
