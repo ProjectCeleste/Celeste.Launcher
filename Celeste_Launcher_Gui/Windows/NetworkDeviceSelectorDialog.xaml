@@ -19,7 +19,7 @@
                     <DockPanel DockPanel.Dock="Left" Width="500" HorizontalAlignment="Left">
                         <StackPanel>
                             <TextBlock FontFamily="{StaticResource Lithos-Pro-Regular}" FontSize="26" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"
-                                Text="Select network device" TextWrapping="Wrap" TextAlignment="Center" Margin="0,15,0,0"/>
+                                Text="{x:Static p:Resources.NetworkDeviceSelectorTitle}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,15,0,0"/>
 
                             <Grid Height="166" Width="456" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                                 <Grid.Background>
@@ -40,7 +40,7 @@
                                 theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/RefreshHover.png"
                                 Margin="10" Click="RefreshNICList"
                                 ToolTip="{x:Static p:Resources.GameScannerPatchNotesLabel}"/>
-                            <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.ResetPasswordConfirmBtn}" Click="ConfirmBtnClick"/>
+                            <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.NetworkDeviceSelectorSaveBtn}" Click="ConfirmBtnClick"/>
                         </StackPanel>
                     </DockPanel>
                 </DockPanel>

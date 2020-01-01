@@ -24,8 +24,8 @@
             <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.LoginPasswordField}" x:Name="PasswordInputField" Margin="2"/>
             <DockPanel>
                 <StackPanel HorizontalAlignment="Left" Margin="4,2,0,0">
-                    <CheckBox Style="{StaticResource CustomCheckBox}" Content="{x:Static p:Resources.LoginRememberPasswordOption}" x:Name="RememberPasswordOption" Margin="2" Unchecked="DisableRememberMeOption"/>
-                    <CheckBox Style="{StaticResource CustomCheckBox}" Content="{x:Static p:Resources.LoginAutoLoginOption}" x:Name="AutoLoginOption" Margin="2" Checked="AutoLoginOption_Checked"/>
+                    <CheckBox Style="{StaticResource LeftSidedCheckBox}" Content="{x:Static p:Resources.LoginRememberPasswordOption}" x:Name="RememberPasswordOption" Margin="2" Unchecked="DisableRememberMeOption"/>
+                    <CheckBox Style="{StaticResource LeftSidedCheckBox}" Content="{x:Static p:Resources.LoginAutoLoginOption}" x:Name="AutoLoginOption" Margin="2" Checked="AutoLoginOption_Checked"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Margin="2">
                     <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.LoginPerformLoginBtn}" Click="PerformLogin" Margin="2" x:Name="LoginButton" IsDefault="True"/>

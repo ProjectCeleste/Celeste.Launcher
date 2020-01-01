@@ -31,10 +31,16 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
             <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,15,0,0" />
         </Style>
 
         <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}" x:Key="PortMappingCheckBox">
             <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}" x:Key="ConnectionTypeCheckBox">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="2" />
         </Style>
 
         <Style TargetType="TextBlock" x:Key="PortMappingCheckBoxTextBlock">
@@ -42,6 +48,7 @@
             <Setter Property="MaxWidth" Value="200" />
             <Setter Property="Margin" Value="10" />
         </Style>
+
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -52,27 +59,27 @@
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Left" Width="500" HorizontalAlignment="Left">
                         <StackPanel>
-                            <TextBlock Style="{StaticResource TextBlockTitle}" Text="Connection type" Margin="0,10,0,0"/>
+                            <TextBlock Style="{StaticResource TextBlockTitle}" Text="{x:Static p:Resources.MultiplayerSettingsConnectionTypeTitle}"/>
 
                             <DockPanel HorizontalAlignment="Center">
                                 <StackPanel Style="{StaticResource CheckBoxStackPanel}">
-                                    <Label Content="WAN" Style="{StaticResource CheckBoxLabel}"/>
-                                    <CheckBox Style="{StaticResource CustomCheckBox}" Margin="2" HorizontalAlignment="Center"/>
+                                    <Label Content="{x:Static p:Resources.MultiplayerSettingsWANCheckbox}" Style="{StaticResource CheckBoxLabel}"/>
+                                    <CheckBox Style="{StaticResource ConnectionTypeCheckBox}"/>
                                 </StackPanel>
 
                                 <StackPanel Style="{StaticResource CheckBoxStackPanel}">
-                                    <Label Content="LAN ONLY" Style="{StaticResource CheckBoxLabel}"/>
-                                    <CheckBox Style="{StaticResource CustomCheckBox}" Margin="2" HorizontalAlignment="Center"/>
+                                    <Label Content="{x:Static p:Resources.MultiplayerSettingsLANCheckbox}" Style="{StaticResource CheckBoxLabel}"/>
+                                    <CheckBox Style="{StaticResource ConnectionTypeCheckBox}"/>
                                 </StackPanel>
 
                                 <StackPanel Style="{StaticResource CheckBoxStackPanel}">
-                                    <Label Content="Other" Style="{StaticResource CheckBoxLabel}"/>
-                                    <CheckBox Style="{StaticResource CustomCheckBox}" Margin="2" HorizontalAlignment="Center"/>
+                                    <Label Content="{x:Static p:Resources.MultiplayerSettingsOtherCheckbox}" Style="{StaticResource CheckBoxLabel}"/>
+                                    <CheckBox Style="{StaticResource ConnectionTypeCheckBox}"/>
                                 </StackPanel>
                             </DockPanel>
 
-                            <local:ShortRegisterInputField LabelContent="Remote IP:" Margin="10"/>
-                            <Button Style="{StaticResource TinyButton}" Content="Save"/>
+                            <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.MultiplayerSettingsRemoteIPLabel}" Margin="10"/>
+                            <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.MultiplayerSettingsSaveBtn}"/>
                         </StackPanel>
                     </DockPanel>
                     <DockPanel Width="44">
@@ -81,19 +88,18 @@
                     <DockPanel>
                         <DockPanel HorizontalAlignment="Center">
                             <DockPanel DockPanel.Dock="Top">
-                                <TextBlock Style="{StaticResource TextBlockTitle}"
-                                    Text="Port mapping (WAN)" Margin="0,10,0,0"/>
+                                <TextBlock Style="{StaticResource TextBlockTitle}" Text="{x:Static p:Resources.MultiplayerSettingsPortMappingTitle}"/>
                             </DockPanel>
                             <DockPanel >
                                 <StackPanel VerticalAlignment="Center">
                                     <CheckBox Style="{StaticResource PortMappingCheckBox}">
-                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="NAT Punchthrough (default)"/>
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="{x:Static p:Resources.MultiplayerSettingsNatPunchthrough}"/>
                                     </CheckBox>
                                     <CheckBox Style="{StaticResource PortMappingCheckBox}">
-                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="UPnP using open.nat"/>
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="{x:Static p:Resources.MultiplayerSettingsUpnp}"/>
                                     </CheckBox>
                                     <CheckBox Style="{StaticResource PortMappingCheckBox}">
-                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="Manual (protocol: UDP, port: 1000)"/>
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="{x:Static p:Resources.MultiplayerSettingsManual}"/>
                                     </CheckBox>
                                 </StackPanel>
                             </DockPanel>

@@ -589,6 +589,114 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection Type.
+        /// </summary>
+        public static string MultiplayerSettingsConnectionTypeTitle {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsConnectionTypeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LAN only.
+        /// </summary>
+        public static string MultiplayerSettingsLANCheckbox {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsLANCheckbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual (protocol: UDP, port:1000).
+        /// </summary>
+        public static string MultiplayerSettingsManual {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsManual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NAT Punchthrough (default).
+        /// </summary>
+        public static string MultiplayerSettingsNatPunchthrough {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsNatPunchthrough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string MultiplayerSettingsOtherCheckbox {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsOtherCheckbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port Mapping (WAN).
+        /// </summary>
+        public static string MultiplayerSettingsPortMappingTitle {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsPortMappingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remote IP:.
+        /// </summary>
+        public static string MultiplayerSettingsRemoteIPLabel {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsRemoteIPLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string MultiplayerSettingsSaveBtn {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsSaveBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPnP using open.nat.
+        /// </summary>
+        public static string MultiplayerSettingsUpnp {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsUpnp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WAN.
+        /// </summary>
+        public static string MultiplayerSettingsWANCheckbox {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsWANCheckbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string NetworkDeviceSelectorSaveBtn {
+            get {
+                return ResourceManager.GetString("NetworkDeviceSelectorSaveBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select network device.
+        /// </summary>
+        public static string NetworkDeviceSelectorTitle {
+            get {
+                return ResourceManager.GetString("NetworkDeviceSelectorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string OptionNo {
