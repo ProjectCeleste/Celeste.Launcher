@@ -34,11 +34,11 @@
             <Setter Property="Margin" Value="0,15,0,0" />
         </Style>
 
-        <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}" x:Key="PortMappingCheckBox">
+        <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}" x:Key="PortMappingCheckBox">
             <Setter Property="HorizontalAlignment" Value="Left" />
         </Style>
 
-        <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}" x:Key="ConnectionTypeCheckBox">
+        <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}" x:Key="ConnectionTypeCheckBox">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Margin" Value="2" />
         </Style>
@@ -64,43 +64,46 @@
                             <DockPanel HorizontalAlignment="Center">
                                 <StackPanel Style="{StaticResource CheckBoxStackPanel}">
                                     <Label Content="{x:Static p:Resources.MultiplayerSettingsWANCheckbox}" Style="{StaticResource CheckBoxLabel}"/>
-                                    <CheckBox Style="{StaticResource ConnectionTypeCheckBox}"/>
+                                    <RadioButton GroupName="ConnectionType" Style="{StaticResource ConnectionTypeCheckBox}" x:Name="WanConnectionTypeCheckBox" Checked="WanConnectionTypeCheckBox_Checked" Unchecked="WanConnectionTypeCheckBox_Checked"/>
                                 </StackPanel>
 
                                 <StackPanel Style="{StaticResource CheckBoxStackPanel}">
                                     <Label Content="{x:Static p:Resources.MultiplayerSettingsLANCheckbox}" Style="{StaticResource CheckBoxLabel}"/>
-                                    <CheckBox Style="{StaticResource ConnectionTypeCheckBox}"/>
+                                    <RadioButton GroupName="ConnectionType" Style="{StaticResource ConnectionTypeCheckBox}" x:Name="LanConnectionTypeCheckBox" Checked="LanConnectionTypeCheckBox_Checked" Unchecked="LanConnectionTypeCheckBox_Checked"/>
                                 </StackPanel>
 
                                 <StackPanel Style="{StaticResource CheckBoxStackPanel}">
                                     <Label Content="{x:Static p:Resources.MultiplayerSettingsOtherCheckbox}" Style="{StaticResource CheckBoxLabel}"/>
-                                    <CheckBox Style="{StaticResource ConnectionTypeCheckBox}"/>
+                                    <RadioButton GroupName="ConnectionType" Style="{StaticResource ConnectionTypeCheckBox}" x:Name="OtherConnectionTypeCheckBox" Checked="OtherConnectionTypeCheckBox_Checked" Unchecked="OtherConnectionTypeCheckBox_Checked"/>
                                 </StackPanel>
                             </DockPanel>
 
-                            <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.MultiplayerSettingsRemoteIPLabel}" Margin="10"/>
-                            <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.MultiplayerSettingsSaveBtn}"/>
+                            <local:ShortRegisterInputField LabelContent="{x:Static p:Resources.MultiplayerSettingsRemoteIPLabel}" Margin="10" x:Name="RemoteIPField" IsEnabled="{Binding ElementName=OtherConnectionTypeCheckBox, Path=IsChecked}"/>
+                            <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.MultiplayerSettingsSaveBtn}" Click="SaveButtonClick"/>
                         </StackPanel>
                     </DockPanel>
                     <DockPanel Width="44">
                         <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-VerticalSmall.png" Stretch="None"/>
                     </DockPanel>
                     <DockPanel>
-                        <DockPanel HorizontalAlignment="Center">
+                        <DockPanel HorizontalAlignment="Center" IsEnabled="{Binding ElementName=WanConnectionTypeCheckBox, Path=IsChecked}">
                             <DockPanel DockPanel.Dock="Top">
                                 <TextBlock Style="{StaticResource TextBlockTitle}" Text="{x:Static p:Resources.MultiplayerSettingsPortMappingTitle}"/>
                             </DockPanel>
                             <DockPanel >
                                 <StackPanel VerticalAlignment="Center">
-                                    <CheckBox Style="{StaticResource PortMappingCheckBox}">
-                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="{x:Static p:Resources.MultiplayerSettingsNatPunchthrough}"/>
-                                    </CheckBox>
-                                    <CheckBox Style="{StaticResource PortMappingCheckBox}">
-                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="{x:Static p:Resources.MultiplayerSettingsUpnp}"/>
-                                    </CheckBox>
-                                    <CheckBox Style="{StaticResource PortMappingCheckBox}">
-                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}" Text="{x:Static p:Resources.MultiplayerSettingsManual}"/>
-                                    </CheckBox>
+                                    <RadioButton GroupName="PortMappingType" Style="{StaticResource PortMappingCheckBox}" x:Name="NatPunchthroughPortMappingCheckBox">
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}"
+                                                   Text="{x:Static p:Resources.MultiplayerSettingsNatPunchthrough}"/>
+                                    </RadioButton>
+                                    <RadioButton GroupName="PortMappingType" Style="{StaticResource PortMappingCheckBox}" x:Name="UPnPCPortMappingheckBox">
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}"
+                                                   Text="{x:Static p:Resources.MultiplayerSettingsUpnp}"/>
+                                    </RadioButton>
+                                    <RadioButton GroupName="PortMappingType" Style="{StaticResource PortMappingCheckBox}" x:Name="ManualPortMappingCheckBox">
+                                        <TextBlock Style="{StaticResource PortMappingCheckBoxTextBlock}"
+                                                   Text="{x:Static p:Resources.MultiplayerSettingsManual}"/>
+                                    </RadioButton>
                                 </StackPanel>
                             </DockPanel>
                         </DockPanel>

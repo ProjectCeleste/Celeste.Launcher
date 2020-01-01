@@ -110,23 +110,11 @@
     <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
       <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NetworkDeviceSelectionDialog.Designer.cs">
-      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ResetPwdForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ResetPwdForm.Designer.cs">
       <DependentUpon>ResetPwdForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MpSettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MpSettingForm.Designer.cs">
-      <DependentUpon>MpSettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppVersionService.cs" />
     <Compile Include="Helpers\Dism.cs" />
@@ -232,12 +220,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
       <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MpSettingForm.resx">
-      <DependentUpon>MpSettingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
-      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ResetPwdForm.resx">
       <DependentUpon>ResetPwdForm.cs</DependentUpon>
@@ -455,6 +437,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\RadioButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
