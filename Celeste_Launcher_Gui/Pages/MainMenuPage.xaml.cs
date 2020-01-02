@@ -122,10 +122,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            using (var form = new SteamForm())
-            {
-                form.ShowDialog();
-            }
+            new SteamConverterWindow().ShowDialog();
         }
 
         private void OpenGameLanguage(object sender, RoutedEventArgs e)

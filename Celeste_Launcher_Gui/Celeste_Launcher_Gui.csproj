@@ -84,12 +84,6 @@
     <Compile Include="Forms\InstallProcDump.Designer.cs">
       <DependentUpon>InstallProcDump.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SteamForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SteamForm.Designer.cs">
-      <DependentUpon>SteamForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\ProcDump.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\AppVersionService.cs" />
@@ -182,6 +176,9 @@
     <Compile Include="Windows\ScenarioManager.xaml.cs">
       <DependentUpon>ScenarioManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\SteamConverterWindow.xaml.cs">
+      <DependentUpon>SteamConverterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UpdateWindow.xaml.cs">
       <DependentUpon>UpdateWindow.xaml</DependentUpon>
     </Compile>
@@ -196,9 +193,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InstallProcDump.resx">
       <DependentUpon>InstallProcDump.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SteamForm.resx">
-      <DependentUpon>SteamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -516,6 +510,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ScenarioManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SteamConverterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
