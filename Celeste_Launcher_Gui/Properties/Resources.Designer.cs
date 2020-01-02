@@ -1005,6 +1005,69 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add scenario.
+        /// </summary>
+        public static string ScenarioManagerAddScenarioTooltip {
+            get {
+                return ResourceManager.GetString("ScenarioManagerAddScenarioTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download scenarios.
+        /// </summary>
+        public static string ScenarioManagerDownloadScenarioTooltip {
+            get {
+                return ResourceManager.GetString("ScenarioManagerDownloadScenarioTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string ScenarioManagerOpenHelpTooltip {
+            get {
+                return ResourceManager.GetString("ScenarioManagerOpenHelpTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open scenario directory in File Explorer.
+        /// </summary>
+        public static string ScenarioManagerOpenScenarioDirectoryTooltip {
+            get {
+                return ResourceManager.GetString("ScenarioManagerOpenScenarioDirectoryTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play Scenario.
+        /// </summary>
+        public static string ScenarioManagerPlayScenarioBtn {
+            get {
+                return ResourceManager.GetString("ScenarioManagerPlayScenarioBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove selected scenario.
+        /// </summary>
+        public static string ScenarioManagerRemoveScenarioTooltip {
+            get {
+                return ResourceManager.GetString("ScenarioManagerRemoveScenarioTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scenario Manager.
+        /// </summary>
+        public static string ScenarioManagerTitle {
+            get {
+                return ResourceManager.GetString("ScenarioManagerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap XButton_Hover {
