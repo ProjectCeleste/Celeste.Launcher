@@ -158,10 +158,7 @@ namespace Celeste_Launcher_Gui.Pages
 
                         var dr = dialog.ShowDialog();
                         if (dr.Value == true)
-                            using (var form2 = new InstallProcDump())
-                            {
-                                form2.ShowDialog();
-                            }
+                            new ProcDumpInstaller().ShowDialog();
                         else
                             LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
                     }
