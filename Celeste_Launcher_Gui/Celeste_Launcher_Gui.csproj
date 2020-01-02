@@ -104,12 +104,6 @@
     <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
       <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ResetPwdForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ResetPwdForm.Designer.cs">
-      <DependentUpon>ResetPwdForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\AppVersionService.cs" />
     <Compile Include="Helpers\Dism.cs" />
     <Compile Include="Helpers\Firewall.cs" />
@@ -194,6 +188,9 @@
     <Compile Include="Windows\NetworkDeviceSelectorDialog.xaml.cs">
       <DependentUpon>NetworkDeviceSelectorDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ResetPasswordDialog.xaml.cs">
+      <DependentUpon>ResetPasswordDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ScenarioManager.xaml.cs">
       <DependentUpon>ScenarioManager.xaml</DependentUpon>
     </Compile>
@@ -214,9 +211,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
       <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ResetPwdForm.resx">
-      <DependentUpon>ResetPwdForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -526,6 +520,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\NetworkDeviceSelectorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ResetPasswordDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

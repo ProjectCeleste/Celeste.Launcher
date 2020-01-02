@@ -115,10 +115,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void ForgottenPasswordClick(object sender, RoutedEventArgs e)
         {
-            using (var form = new Forms.ResetPwdForm())
-            {
-                form.ShowDialog();
-            }
+            new ResetPasswordDialog().ShowDialog();
         }
 
         private void DisableRememberMeOption(object sender, RoutedEventArgs e)

@@ -452,4 +452,16 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ScenarioManagerTitle" xml:space="preserve">
     <value>Scenario Manager</value>
   </data>
+  <data name="ResetPasswordEmailAddressField" xml:space="preserve">
+    <value>Email address:</value>
+  </data>
+  <data name="ResetPasswordResetBtn" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="ResetPasswordResetKeyField" xml:space="preserve">
+    <value>Reset key:</value>
+  </data>
+  <data name="ResetPasswordSendResetBtn" xml:space="preserve">
+    <value>Send reset key</value>
+  </data>
 </root>

@@ -996,11 +996,47 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email address:.
+        /// </summary>
+        public static string ResetPasswordEmailAddressField {
+            get {
+                return ResourceManager.GetString("ResetPasswordEmailAddressField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Password.
         /// </summary>
         public static string ResetPasswordNewPassword {
             get {
                 return ResourceManager.GetString("ResetPasswordNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset password.
+        /// </summary>
+        public static string ResetPasswordResetBtn {
+            get {
+                return ResourceManager.GetString("ResetPasswordResetBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset key:.
+        /// </summary>
+        public static string ResetPasswordResetKeyField {
+            get {
+                return ResourceManager.GetString("ResetPasswordResetKeyField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send reset key.
+        /// </summary>
+        public static string ResetPasswordSendResetBtn {
+            get {
+                return ResourceManager.GetString("ResetPasswordSendResetBtn", resourceCulture);
             }
         }
         
