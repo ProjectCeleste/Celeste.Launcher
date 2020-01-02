@@ -62,7 +62,11 @@ namespace Celeste_Launcher_Gui.Services
                         {
                             Logger.Information("Game scanner did not approve game files");
 
-                            var dialogResult = GenericMessageDialog.Show(@"Error: Your game files are corrupted or outdated. Click ""Yes"" to run a ""Game Scan"" to fix your game files, or ""No"" to ignore the error (not recommended).", DialogIcon.None, DialogOptions.YesNo);
+                            var dialogResult = GenericMessageDialog.Show(
+                                "Some game files appear to be missing. Would you like to run a 'Game Scan' to repair/download files? " +
+                                "If you are installing for the first time click 'Yes' to download the rest of the game.",
+                                DialogIcon.None,
+                                DialogOptions.YesNo);
 
                             if (dialogResult.Value)
                             {
