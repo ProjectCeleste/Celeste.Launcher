@@ -2,25 +2,14 @@
 using Celeste_Launcher_Gui.Forms;
 using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Services;
-using Celeste_Launcher_Gui.UserControls;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Pages
 {
@@ -187,10 +176,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            using (var form = new SteamForm())
-            {
-                form.ShowDialog();
-            }
+            new SteamConverterWindow().ShowDialog();
         }
 
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)

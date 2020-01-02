@@ -1104,6 +1104,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string SteamConverterConfirmBtn {
+            get {
+                return ResourceManager.GetString("SteamConverterConfirmBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please confirm that you want to start Celeste Fan Project Launcher when Age of Empires Online is started through Steam.
+        /// </summary>
+        public static string SteamConverterTitle {
+            get {
+                return ResourceManager.GetString("SteamConverterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable.
         /// </summary>
         public static string WindowsFeatureHelperEnableBtn {

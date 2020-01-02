@@ -479,6 +479,12 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="WindowsFeatureHelperUnknownStatus" xml:space="preserve">
     <value>Unknown</value>
   </data>
+  <data name="SteamConverterConfirmBtn" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="SteamConverterTitle" xml:space="preserve">
+    <value>Please confirm that you want to start Celeste Fan Project Launcher when Age of Empires Online is started through Steam</value>
+  </data>
   <data name="WindowsFirewallHelperApplication" xml:space="preserve">
     <value>Application</value>
   </data>
