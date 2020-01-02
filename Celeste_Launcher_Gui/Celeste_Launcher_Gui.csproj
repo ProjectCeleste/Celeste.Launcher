@@ -98,12 +98,6 @@
     </Compile>
     <Compile Include="Helpers\ProcDump.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
-    <Compile Include="Forms\WindowsFeaturesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
-      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\AppVersionService.cs" />
     <Compile Include="Helpers\Dism.cs" />
     <Compile Include="Helpers\Firewall.cs" />
@@ -197,6 +191,9 @@
     <Compile Include="Windows\UpdateWindow.xaml.cs">
       <DependentUpon>UpdateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WindowsFeatureHelper.xaml.cs">
+      <DependentUpon>WindowsFeatureHelper.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FriendsForm.resx">
       <DependentUpon>FriendsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,9 +205,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FirewallForm.resx">
       <DependentUpon>FirewallForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
-      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -534,6 +528,10 @@
     <Page Include="Windows\UpdateWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\WindowsFeatureHelper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

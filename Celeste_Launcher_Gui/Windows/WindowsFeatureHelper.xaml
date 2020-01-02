@@ -1,0 +1,80 @@
+﻿<Window x:Class="Celeste_Launcher_Gui.Windows.WindowsFeatureHelper"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+             xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+             mc:Ignorable="d" 
+             WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
+             Width="849" Height="308" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/MediumDialogue-Background.png"/>
+        </Grid.Background>
+        <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
+            <Grid>
+                <Label FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                Content="{x:Static p:Resources.WindowsFeatureHelperTitle}" Margin="0,10,0,0"/>
+
+                <StackPanel Margin="0,60,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Label Content="DirectPlay:" Width="160"/>
+                        <TextBlock
+                            Text="{x:Static p:Resources.WindowsFeatureHelperUnknownStatus}"
+                            Width="400"
+                            MaxWidth="400"
+                            TextWrapping="WrapWithOverflow"
+                            x:Name="DirectPlayStatusLabel"/>
+                        <Button
+                            Style="{StaticResource TinyButton}"
+                            Content="{x:Static p:Resources.WindowsFeatureHelperEnableBtn}"
+                            IsEnabled="False"
+                            x:Name="EnableDirectPlayBtn"
+                            Click="EnableDirectPlayBtnClick"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Label Content=".NETfx 3.5:" Width="160" />
+                        <TextBlock
+                            Text="{x:Static p:Resources.WindowsFeatureHelperUnknownStatus}"
+                            Width="400"
+                            MaxWidth="400"
+                            TextWrapping="WrapWithOverflow"
+                            x:Name="NetFrameworkStatusLabel"/>
+                        <Button
+                            Style="{StaticResource TinyButton}"
+                            Content="{x:Static p:Resources.WindowsFeatureHelperEnableBtn}"
+                            IsEnabled="False"
+                            x:Name="EnableNetFrameworkBtn"
+                            Click="EnableNetFrameworkBtnClick"/>
+                    </StackPanel>
+
+                    <local:UpdateProgressBar Margin="10" x:Name="ProgressBarIndicator"></local:UpdateProgressBar>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
+            <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseHover.png"
+                    Click="CloseWindow"/>
+        </StackPanel>
+    </Grid>
+</Window>
