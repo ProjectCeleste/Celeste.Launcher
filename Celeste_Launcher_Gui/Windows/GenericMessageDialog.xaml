@@ -25,7 +25,7 @@
 
                 <DockPanel>
                     <Image Source="{Binding IconSource}" Stretch="None" Margin="40,0,0,0" x:Name="DialogIconContents"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="{StaticResource Ashley-Crawford-CG}" TextWrapping="WrapWithOverflow" Foreground="White" TextAlignment="Center" Text="{Binding Message}" Margin="10,0,20,0"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Ashley-Crawford-CG}" TextWrapping="WrapWithOverflow" Foreground="White" TextAlignment="Center" Text="{Binding Message}" Margin="10,0,20,0"/>
                 </DockPanel>
             </DockPanel>
         </Border>
