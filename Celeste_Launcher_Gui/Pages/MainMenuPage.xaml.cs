@@ -148,10 +148,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenFirewallHelper(object sender, RoutedEventArgs e)
         {
-            using (var form = new FirewallForm())
-            {
-                form.ShowDialog();
-            }
+            new Windows.WindowsFirewallHelper().ShowDialog();
         }
 
         private void OpenLauncherUpdater(object sender, RoutedEventArgs e)
