@@ -479,6 +479,9 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="WindowsFeatureHelperUnknownStatus" xml:space="preserve">
     <value>Unknown</value>
   </data>
+  <data name="ProcDumpInstallerTitle" xml:space="preserve">
+    <value>Installing ProcDump</value>
+  </data>
   <data name="SteamConverterConfirmBtn" xml:space="preserve">
     <value>Confirm</value>
   </data>

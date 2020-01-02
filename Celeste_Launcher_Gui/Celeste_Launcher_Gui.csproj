@@ -78,12 +78,6 @@
     <Compile Include="Forms\FriendsForm.Designer.cs">
       <DependentUpon>FriendsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InstallProcDump.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallProcDump.Designer.cs">
-      <DependentUpon>InstallProcDump.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\ProcDump.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\AppVersionService.cs" />
@@ -170,6 +164,9 @@
     <Compile Include="Windows\NetworkDeviceSelectorDialog.xaml.cs">
       <DependentUpon>NetworkDeviceSelectorDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ProcDumpInstaller.xaml.cs">
+      <DependentUpon>ProcDumpInstaller.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ResetPasswordDialog.xaml.cs">
       <DependentUpon>ResetPasswordDialog.xaml</DependentUpon>
     </Compile>
@@ -190,9 +187,6 @@
     </Compile>
     <EmbeddedResource Include="Forms\FriendsForm.resx">
       <DependentUpon>FriendsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InstallProcDump.resx">
-      <DependentUpon>InstallProcDump.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -502,6 +496,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\NetworkDeviceSelectorDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ProcDumpInstaller.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

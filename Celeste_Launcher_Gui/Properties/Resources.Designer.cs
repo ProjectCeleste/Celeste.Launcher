@@ -868,6 +868,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Installing ProcDump.
+        /// </summary>
+        public static string ProcDumpInstallerTitle {
+            get {
+                return ResourceManager.GetString("ProcDumpInstallerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap RefreshHover {
