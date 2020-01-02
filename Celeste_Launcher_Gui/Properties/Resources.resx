@@ -431,4 +431,25 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="NetworkDeviceSelectorTitle" xml:space="preserve">
     <value>Select network device</value>
   </data>
+  <data name="ScenarioManagerAddScenarioTooltip" xml:space="preserve">
+    <value>Add scenario</value>
+  </data>
+  <data name="ScenarioManagerDownloadScenarioTooltip" xml:space="preserve">
+    <value>Download scenarios</value>
+  </data>
+  <data name="ScenarioManagerOpenHelpTooltip" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ScenarioManagerOpenScenarioDirectoryTooltip" xml:space="preserve">
+    <value>Open scenario directory in File Explorer</value>
+  </data>
+  <data name="ScenarioManagerPlayScenarioBtn" xml:space="preserve">
+    <value>Play Scenario</value>
+  </data>
+  <data name="ScenarioManagerRemoveScenarioTooltip" xml:space="preserve">
+    <value>Remove selected scenario</value>
+  </data>
+  <data name="ScenarioManagerTitle" xml:space="preserve">
+    <value>Scenario Manager</value>
+  </data>
 </root>

@@ -278,10 +278,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenScenarionManager(object sender, RoutedEventArgs e)
         {
-            using (var form = new ScnManagerForm())
-            {
-                form.ShowDialog();
-            }
+            new ScenarioManager().Show();
         }
 
         private void OpenMultiplayerSettings(object sender, RoutedEventArgs e)
