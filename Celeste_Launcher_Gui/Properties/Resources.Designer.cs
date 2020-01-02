@@ -1149,6 +1149,51 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application.
+        /// </summary>
+        public static string WindowsFirewallHelperApplication {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbound.
+        /// </summary>
+        public static string WindowsFirewallHelperInbound {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperInbound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string WindowsFirewallHelperOpenBtn {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperOpenBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outbound.
+        /// </summary>
+        public static string WindowsFirewallHelperOutbound {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperOutbound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Firewall Helper.
+        /// </summary>
+        public static string WindowsFirewallHelperTitle {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap XButton_Hover {
