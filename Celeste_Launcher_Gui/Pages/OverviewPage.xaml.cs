@@ -205,10 +205,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            using (var form = new WindowsFeaturesForm())
-            {
-                form.ShowDialog();
-            }
+            new WindowsFeatureHelper().ShowDialog();
         }
 
         private void OpenWindowsFirewall(object sender, RoutedEventArgs e)

@@ -86,10 +86,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            using (var form = new WindowsFeaturesForm())
-            {
-                form.ShowDialog();
-            }
+            new WindowsFeatureHelper().ShowDialog();
         }
 
         private void EnableDiagnosticsMode(object sender, RoutedEventArgs e)

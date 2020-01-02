@@ -464,4 +464,19 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ResetPasswordSendResetBtn" xml:space="preserve">
     <value>Send reset key</value>
   </data>
+  <data name="WindowsFeatureHelperEnableBtn" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="WindowsFeatureHelperEnabledStatus" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="WindowsFeatureHelperNotEnabledStatus" xml:space="preserve">
+    <value>Not enabled</value>
+  </data>
+  <data name="WindowsFeatureHelperTitle" xml:space="preserve">
+    <value>Windows Feature Helper</value>
+  </data>
+  <data name="WindowsFeatureHelperUnknownStatus" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
 </root>

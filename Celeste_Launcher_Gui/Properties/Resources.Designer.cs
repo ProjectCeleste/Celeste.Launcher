@@ -1104,6 +1104,51 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable.
+        /// </summary>
+        public static string WindowsFeatureHelperEnableBtn {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperEnableBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string WindowsFeatureHelperEnabledStatus {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperEnabledStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not enabled.
+        /// </summary>
+        public static string WindowsFeatureHelperNotEnabledStatus {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperNotEnabledStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Feature Helper.
+        /// </summary>
+        public static string WindowsFeatureHelperTitle {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string WindowsFeatureHelperUnknownStatus {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperUnknownStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap XButton_Hover {
