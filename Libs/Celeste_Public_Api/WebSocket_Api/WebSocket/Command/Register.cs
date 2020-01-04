@@ -25,22 +25,6 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         {
             try
             {
-                if (!Misc.IsValidEmailAdress(request.Mail))
-                    throw new Exception("Invalid eMail!");
-
-                if (!Misc.IsValidUserName(request.UserName))
-                    throw new Exception(
-                        "Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!");
-
-                if (request.Password.Length < 8 || request.Password.Length > 32)
-                    throw new Exception("Password minimum length is 8 char,  maximum length is 32 char!");
-
-                if (!Misc.IsValidPassword(request.Password))
-                    throw new Exception("Invalid password, character ' and \" are not allowed!");
-
-                if (request.VerifyKey.Length != 32)
-                    throw new Exception("Invalid Verify Key!");
-
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;
                 if (lastSendTime <= 90)
                     throw new Exception(

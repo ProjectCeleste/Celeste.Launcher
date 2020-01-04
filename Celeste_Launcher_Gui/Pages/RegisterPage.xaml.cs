@@ -1,17 +1,10 @@
 ﻿using Celeste_Launcher_Gui.Windows;
+using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
+using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Pages
 {
@@ -20,6 +13,8 @@ namespace Celeste_Launcher_Gui.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public RegisterPage()
         {
             InitializeComponent();
@@ -32,6 +27,12 @@ namespace Celeste_Launcher_Gui.Pages
 
         private async void OnVerifyEmail(object sender, RoutedEventArgs args)
         {
+            if (!Misc.IsValidEmailAdress(EmailField.LabelContent))
+            {
+                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
+                return;
+            }
+
             VerifyEmailBtn.IsEnabled = false;
             ResentKeyBtn.IsEnabled = false;
 
@@ -41,17 +42,18 @@ namespace Celeste_Launcher_Gui.Pages
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show($@"{response.Message}", DialogIcon.Warning);
+                    GenericMessageDialog.Show($"{response.Message}", DialogIcon.Warning);
                     UserInformationInputGroup.IsEnabled = true;
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"Error: {response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show($"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show($"Error: {ex.Message}", DialogIcon.Error);
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             VerifyEmailBtn.IsEnabled = true;
@@ -62,7 +64,37 @@ namespace Celeste_Launcher_Gui.Pages
         {
             if (ConfirmPasswordField.PasswordInputBox.Password != PasswordField.PasswordInputBox.Password)
             {
-                GenericMessageDialog.Show(@"The confirmed password must match the first password", DialogIcon.Error);
+                GenericMessageDialog.Show(Properties.Resources.RegisterPasswordMismatch, DialogIcon.Error);
+                return;
+            }
+
+            if (!Misc.IsValidEmailAdress(Properties.Resources.RegisterInvalidEmail))
+            {
+                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
+                return;
+            }
+
+            if (!Misc.IsValidUserName(UsernameField.LabelContent))
+            {
+                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidUsername, DialogIcon.Error);
+                return;
+            }
+
+            if (PasswordField.PasswordInputBox.Password.Length < 8 || PasswordField.PasswordInputBox.Password.Length > 32)
+            {
+                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidPasswordLength, DialogIcon.Error);
+                return;
+            }
+
+            if (!Misc.IsValidPassword(PasswordField.PasswordInputBox.Password))
+            {
+                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidPasswordLength, DialogIcon.Error);
+                return;
+            }
+
+            if (VerifyKeyField.LabelContent.Length != 32)
+            {
+                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidKeyLength, DialogIcon.Error);
                 return;
             }
 
@@ -81,12 +113,13 @@ namespace Celeste_Launcher_Gui.Pages
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"Error: {response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show($@"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show($"Error: {ex.Message}", DialogIcon.Error);
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             RegisterBtn.IsEnabled = true;

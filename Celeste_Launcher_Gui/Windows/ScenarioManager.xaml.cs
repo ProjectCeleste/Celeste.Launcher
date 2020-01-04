@@ -74,6 +74,7 @@ namespace Celeste_Launcher_Gui.Windows
             }
             catch (Exception ex)
             {
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
                 Logger.Error(ex, ex.Message);
             }
             finally
@@ -105,9 +106,9 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 using (var dlg = new System.Windows.Forms.OpenFileDialog
                 {
-                    Filter = @"Scenario files (*.age4scn)|*.age4scn",
+                    Filter = $@"{Properties.Resources.ScenarioEditorFilePickerFileTypes} (*.age4scn)|*.age4scn",
                     CheckFileExists = true,
-                    Title = @"Choose Scenario File",
+                    Title = Properties.Resources.ScenarioEditorFilePickerTitle,
                     Multiselect = true
                 })
                 {
@@ -122,7 +123,7 @@ namespace Celeste_Launcher_Gui.Windows
                         if (File.Exists(selectedDestinationPath))
                         {
                             var userSelectedToOverwrite = GenericMessageDialog.Show(
-                                $"The file {selectedDestinationPath} already exists, overwrite it?",
+                                string.Format(Properties.Resources.ScenarioEditorOverwritePrompt, selectedDestinationPath),
                                 DialogIcon.None,
                                 DialogOptions.YesNo);
 
@@ -139,6 +140,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
             }
             finally
             {
@@ -159,7 +161,7 @@ namespace Celeste_Launcher_Gui.Windows
                     if (File.Exists((string)lvi.Tag))
                     {
                         var userSelectedToDeleteFile = GenericMessageDialog.Show(
-                            $"Are you sure you want to remove {lvi.Content}?",
+                            string.Format(Properties.Resources.ScenarioEditorDeleteScenarioPrompt, lvi.Content),
                             DialogIcon.None,
                             DialogOptions.YesNo);
 
@@ -173,6 +175,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
             }
             finally
             {

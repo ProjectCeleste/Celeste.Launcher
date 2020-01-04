@@ -30,7 +30,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             var dialog = new CommonOpenFileDialog
             {
-                Title = "Select Celeste location",
+                Title = Properties.Resources.GamePathSelectorTitle,
                 IsFolderPicker = true,
                 InitialDirectory = PathLocation.Text,
 
@@ -57,7 +57,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             if (!Directory.Exists(PathLocation.Text))
             {
-                GenericMessageDialog.Show($@"The selected game path does not exist", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GamePathInvalidPath, DialogIcon.Error, DialogOptions.Ok);
             }
             else
             {

@@ -1,4 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Public_Api.Logging;
+using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -13,6 +15,8 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class SteamConverterWindow : Window
     {
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public SteamConverterWindow()
         {
             InitializeComponent();
@@ -34,16 +38,23 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 var exePath = Assembly.GetEntryAssembly().Location;
                 if (exePath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
-                    throw new Exception("Celeste Fan Project Launcher is already compatible with \"Steam\".");
+                {
+                    GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame, DialogIcon.None, DialogOptions.Ok);
+                    Close();
+                    return;
+                }
 
                 var exeFolder = Path.GetDirectoryName(exePath);
                 if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, exeFolder, StringComparison.OrdinalIgnoreCase))
-                    throw new Exception(
-                        "Celeste Fan Project Launcher need to be installed in the same folder has the game.");
+                {
+                    GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);
+                    Close();
+                    return;
+                }
 
                 Steam.ConvertToSteam(LegacyBootstrapper.UserConfig.GameFilesPath);
 
-                GenericMessageDialog.Show(@"Celeste Fan Project Launcher is now compatible with Steam. It will now re-start.", DialogIcon.None, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.SteamConverterSuccess, DialogIcon.None, DialogOptions.Ok);
 
                 Process.Start(Assembly.GetEntryAssembly().Location
                     .Replace("Celeste_Launcher_Gui.exe", "AOEOnline.exe"));
@@ -52,7 +63,8 @@ namespace Celeste_Launcher_Gui.Windows
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
             }
         }
     }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
+using Serilog;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,6 +12,8 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class ChangePasswordDialog : Window
     {
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public ChangePasswordDialog()
         {
             InitializeComponent();
@@ -32,7 +37,34 @@ namespace Celeste_Launcher_Gui.Windows
 
             if (newPassword != confirmedNewPassword)
             {
-                GenericMessageDialog.Show("New password value and confirm new password value don't match",
+                GenericMessageDialog.Show(Properties.Resources.ChangePasswordMismatch,
+                    DialogIcon.Error,
+                    DialogOptions.Ok);
+
+                return;
+            }
+
+            if (currentPassword == newPassword)
+            {
+                GenericMessageDialog.Show(Properties.Resources.ChangePasswordSamePassword,
+                    DialogIcon.Error,
+                    DialogOptions.Ok);
+
+                return;
+            }
+
+            if (newPassword.Length < 8 || newPassword.Length > 32)
+            {
+                GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidLength,
+                    DialogIcon.Error,
+                    DialogOptions.Ok);
+
+                return;
+            }
+
+            if (!Misc.IsValidPassword(newPassword))
+            {
+                GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidPassword,
                     DialogIcon.Error,
                     DialogOptions.Ok);
 
@@ -47,7 +79,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (changePasswordResponse.Result)
                 {
-                    GenericMessageDialog.Show("Password successfully changed.",
+                    GenericMessageDialog.Show(Properties.Resources.ChangePasswordSuccess,
                         DialogIcon.None,
                         DialogOptions.Ok);
 
@@ -55,13 +87,14 @@ namespace Celeste_Launcher_Gui.Windows
                     return;
                 }
 
-                GenericMessageDialog.Show($@"Error: {changePasswordResponse.Message}",
+                GenericMessageDialog.Show($"{Properties.Resources.ChangePasswordError} {changePasswordResponse.Message}",
                         DialogIcon.Error,
                         DialogOptions.Ok);
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show($@"Error: {ex.Message}",
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
                         DialogIcon.Error,
                         DialogOptions.Ok);
             }

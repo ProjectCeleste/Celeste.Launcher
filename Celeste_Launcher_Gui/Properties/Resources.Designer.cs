@@ -91,6 +91,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not perform auto-signin due to an unexpected error.
+        /// </summary>
+        public static string AutoLoginError {
+            get {
+                return ResourceManager.GetString("AutoLoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not perform auto-signin, please sign in again manually.
+        /// </summary>
+        public static string AutoLoginFailed {
+            get {
+                return ResourceManager.GetString("AutoLoginFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap BackgroundTexture {
@@ -131,6 +149,60 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error while changing password:.
+        /// </summary>
+        public static string ChangePasswordError {
+            get {
+                return ResourceManager.GetString("ChangePasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new password must be at least 8 characters and maximum 32 characters..
+        /// </summary>
+        public static string ChangePasswordInvalidLength {
+            get {
+                return ResourceManager.GetString("ChangePasswordInvalidLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid password, character &apos; and &quot; are not allowed!.
+        /// </summary>
+        public static string ChangePasswordInvalidPassword {
+            get {
+                return ResourceManager.GetString("ChangePasswordInvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new password and confirmed password does not match..
+        /// </summary>
+        public static string ChangePasswordMismatch {
+            get {
+                return ResourceManager.GetString("ChangePasswordMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new password must be different from the old..
+        /// </summary>
+        public static string ChangePasswordSamePassword {
+            get {
+                return ResourceManager.GetString("ChangePasswordSamePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password successfully changed..
+        /// </summary>
+        public static string ChangePasswordSuccess {
+            get {
+                return ResourceManager.GetString("ChangePasswordSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap delete_64 {
@@ -157,6 +229,24 @@ namespace Celeste_Launcher_Gui.Properties {
             get {
                 object obj = ResourceManager.GetObject("delete-64_gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred while starting diagnostics mode. Please try again or check the log files..
+        /// </summary>
+        public static string DiagnosticsModeError {
+            get {
+                return ResourceManager.GetString("DiagnosticsModeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnostics mode requires ProcDump to be installed which was not found. Diagnostics mode will therefore be disabled..
+        /// </summary>
+        public static string DiagnosticsModeMissingProcdump {
+            get {
+                return ResourceManager.GetString("DiagnosticsModeMissingProcdump", resourceCulture);
             }
         }
         
@@ -197,6 +287,24 @@ namespace Celeste_Launcher_Gui.Properties {
             get {
                 object obj = ResourceManager.GetObject("downloads-64 _g", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ProcDump.exe need to be installed first. Would you like to install it now?.
+        /// </summary>
+        public static string EnableDiagnosticsModeInstallProcdumpPrompt {
+            get {
+                return ResourceManager.GetString("EnableDiagnosticsModeInstallProcdumpPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to enable &quot;Diagnostic Mode&quot;. Error message:.
+        /// </summary>
+        public static string EnableDiagnosticsModeProcdumpInstallError {
+            get {
+                return ResourceManager.GetString("EnableDiagnosticsModeProcdumpInstallError", resourceCulture);
             }
         }
         
@@ -261,6 +369,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game is still running, please close it and try again..
+        /// </summary>
+        public static string GameAlreadyRunningError {
+            get {
+                return ResourceManager.GetString("GameAlreadyRunningError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected game path does not exist.
+        /// </summary>
+        public static string GamePathInvalidPath {
+            get {
+                return ResourceManager.GetString("GamePathInvalidPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Browse.
         /// </summary>
         public static string GamePathSelectionBrowseBtn {
@@ -289,11 +415,101 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Celeste location.
+        /// </summary>
+        public static string GamePathSelectorTitle {
+            get {
+                return ResourceManager.GetString("GamePathSelectorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game scan failed..
+        /// </summary>
+        public static string GameScannerDidNotPass {
+            get {
+                return ResourceManager.GetString("GameScannerDidNotPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some game files appear to be missing. Would you like to run a &apos;Game Scan&apos; to repair/download files? If you are installing for the first time click &apos;Yes&apos; to download the rest of the game..
+        /// </summary>
+        public static string GameScannerDidNotPassQuickScan {
+            get {
+                return ResourceManager.GetString("GameScannerDidNotPassQuickScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discord.
         /// </summary>
         public static string GameScannerDiscordLabel {
             get {
                 return ResourceManager.GetString("GameScannerDiscordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        public static string GameScannerDoneLabel {
+            get {
+                return ResourceManager.GetString("GameScannerDoneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game scan has succesfully completed.
+        /// </summary>
+        public static string GameScannerDoneMessage {
+            get {
+                return ResourceManager.GetString("GameScannerDoneMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading.
+        /// </summary>
+        public static string GameScannerDownloading {
+            get {
+                return ResourceManager.GetString("GameScannerDownloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starting download.
+        /// </summary>
+        public static string GameScannerDownloadStarting {
+            get {
+                return ResourceManager.GetString("GameScannerDownloadStarting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extracting downloaded file.
+        /// </summary>
+        public static string GameScannerExtracting {
+            get {
+                return ResourceManager.GetString("GameScannerExtracting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred while running the game scan. Please try again or check the log files..
+        /// </summary>
+        public static string GameScannerFailed {
+            get {
+                return ResourceManager.GetString("GameScannerFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finalizing.
+        /// </summary>
+        public static string GameScannerFinalizing {
+            get {
+                return ResourceManager.GetString("GameScannerFinalizing", resourceCulture);
             }
         }
         
@@ -307,11 +523,65 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game scanner encountered an unexpected problem. Please try again or check the log files..
+        /// </summary>
+        public static string GameScannerScanError {
+            get {
+                return ResourceManager.GetString("GameScannerScanError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not locate Spartan.exe, please run a game scan to make sure you are not missing any game files..
+        /// </summary>
+        public static string GameScannerSpartanNotFound {
+            get {
+                return ResourceManager.GetString("GameScannerSpartanNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Scan.
         /// </summary>
         public static string GameScannerTitle {
             get {
                 return ResourceManager.GetString("GameScannerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verifying file integrity.
+        /// </summary>
+        public static string GameScannerVerifying {
+            get {
+                return ResourceManager.GetString("GameScannerVerifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking downloaded file.
+        /// </summary>
+        public static string GameScannerVerifyingDownloadedFile {
+            get {
+                return ResourceManager.GetString("GameScannerVerifyingDownloadedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking extracted file.
+        /// </summary>
+        public static string GameScannerVerifyingExtractedFile {
+            get {
+                return ResourceManager.GetString("GameScannerVerifyingExtractedFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred. Please try again or check the log files..
+        /// </summary>
+        public static string GenericUnexpectedErrorMessage {
+            get {
+                return ResourceManager.GetString("GenericUnexpectedErrorMessage", resourceCulture);
             }
         }
         
@@ -363,6 +633,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred while performing the update. The application will now close. If this problem continues, try and update manually..
+        /// </summary>
+        public static string LauncherUpdaterError {
+            get {
+                return ResourceManager.GetString("LauncherUpdaterError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Celeste Fan Project Launcher has been updated and will now re-start..
+        /// </summary>
+        public static string LauncherUpdaterUpdateSuccess {
+            get {
+                return ResourceManager.GetString("LauncherUpdaterUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Launcher Update.
         /// </summary>
         public static string LauncherUpdateTitle {
@@ -390,11 +678,29 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The entered email address is not a valid email address..
+        /// </summary>
+        public static string LoginBadEmail {
+            get {
+                return ResourceManager.GetString("LoginBadEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email:.
         /// </summary>
         public static string LoginEmailField {
             get {
                 return ResourceManager.GetString("LoginEmailField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed logging in:.
+        /// </summary>
+        public static string LoginErrorMessage {
+            get {
+                return ResourceManager.GetString("LoginErrorMessage", resourceCulture);
             }
         }
         
@@ -431,6 +737,24 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string LoginRememberPasswordOption {
             get {
                 return ResourceManager.GetString("LoginRememberPasswordOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered password has to be maximum 32 characters..
+        /// </summary>
+        public static string LoginTooLongPassword {
+            get {
+                return ResourceManager.GetString("LoginTooLongPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered password has to be at least 8 characters..
+        /// </summary>
+        public static string LoginTooShortPassword {
+            get {
+                return ResourceManager.GetString("LoginTooShortPassword", resourceCulture);
             }
         }
         
@@ -634,6 +958,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string MultiplayerSettingsOtherNetworkDevice {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsOtherNetworkDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Port Mapping (WAN).
         /// </summary>
         public static string MultiplayerSettingsPortMappingTitle {
@@ -675,6 +1008,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string MultiplayerSettingsWANCheckbox {
             get {
                 return ResourceManager.GetString("MultiplayerSettingsWANCheckbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a network interface.
+        /// </summary>
+        public static string NetworkDeviceSelectorNoDeviceSelected {
+            get {
+                return ResourceManager.GetString("NetworkDeviceSelectorNoDeviceSelected", resourceCulture);
             }
         }
         
@@ -868,6 +1210,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred while installing ProcDump. Please try again or check the log files..
+        /// </summary>
+        public static string ProcdumpInstallError {
+            get {
+                return ResourceManager.GetString("ProcdumpInstallError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Installing ProcDump.
         /// </summary>
         public static string ProcDumpInstallerTitle {
@@ -924,6 +1275,60 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while registering:.
+        /// </summary>
+        public static string RegisterError {
+            get {
+                return ResourceManager.GetString("RegisterError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered email address is not a valid email address..
+        /// </summary>
+        public static string RegisterInvalidEmail {
+            get {
+                return ResourceManager.GetString("RegisterInvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The key you entered is not valid..
+        /// </summary>
+        public static string RegisterInvalidKeyLength {
+            get {
+                return ResourceManager.GetString("RegisterInvalidKeyLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid password, character &apos; and &quot; are not allowed!.
+        /// </summary>
+        public static string RegisterInvalidPassword {
+            get {
+                return ResourceManager.GetString("RegisterInvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password must be between 8 and 32 characters in length..
+        /// </summary>
+        public static string RegisterInvalidPasswordLength {
+            get {
+                return ResourceManager.GetString("RegisterInvalidPasswordLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid username, only letters and digits allowed, minimum length is 3 char and maximum length is 15 characters..
+        /// </summary>
+        public static string RegisterInvalidUsername {
+            get {
+                return ResourceManager.GetString("RegisterInvalidUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm password:.
         /// </summary>
         public static string RegisterPasswordConfirmationLabelText {
@@ -938,6 +1343,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string RegisterPasswordLabelText {
             get {
                 return ResourceManager.GetString("RegisterPasswordLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The confirmed password must match the first password.
+        /// </summary>
+        public static string RegisterPasswordMismatch {
+            get {
+                return ResourceManager.GetString("RegisterPasswordMismatch", resourceCulture);
             }
         }
         
@@ -1014,6 +1428,42 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while resetting the password. Please try again or check the log files..
+        /// </summary>
+        public static string ResetPasswordError {
+            get {
+                return ResourceManager.GetString("ResetPasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed resetting the password due to the following reason:.
+        /// </summary>
+        public static string ResetPasswordFailed {
+            get {
+                return ResourceManager.GetString("ResetPasswordFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered email address is not a valid email address..
+        /// </summary>
+        public static string ResetPasswordInvalidEmail {
+            get {
+                return ResourceManager.GetString("ResetPasswordInvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered key is not valid..
+        /// </summary>
+        public static string ResetPasswordInvalidKey {
+            get {
+                return ResourceManager.GetString("ResetPasswordInvalidKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Password.
         /// </summary>
         public static string ResetPasswordNewPassword {
@@ -1046,6 +1496,42 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string ResetPasswordSendResetBtn {
             get {
                 return ResourceManager.GetString("ResetPasswordSendResetBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the file {0}?.
+        /// </summary>
+        public static string ScenarioEditorDeleteScenarioPrompt {
+            get {
+                return ResourceManager.GetString("ScenarioEditorDeleteScenarioPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scenario files.
+        /// </summary>
+        public static string ScenarioEditorFilePickerFileTypes {
+            get {
+                return ResourceManager.GetString("ScenarioEditorFilePickerFileTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Scenario File.
+        /// </summary>
+        public static string ScenarioEditorFilePickerTitle {
+            get {
+                return ResourceManager.GetString("ScenarioEditorFilePickerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file {0} already exists, overwrite it?.
+        /// </summary>
+        public static string ScenarioEditorOverwritePrompt {
+            get {
+                return ResourceManager.GetString("ScenarioEditorOverwritePrompt", resourceCulture);
             }
         }
         
@@ -1113,6 +1599,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An unexpected error occurred while starting Age of Empires Online. Please try again or check the log files..
+        /// </summary>
+        public static string StartGameError {
+            get {
+                return ResourceManager.GetString("StartGameError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Celeste Fan Project Launcher is already compatible with Steam..
+        /// </summary>
+        public static string SteamConverterAlreadySteamGame {
+            get {
+                return ResourceManager.GetString("SteamConverterAlreadySteamGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string SteamConverterConfirmBtn {
@@ -1122,11 +1626,47 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Celeste Fan Project Launcher needs to be installed in the same folder has the game..
+        /// </summary>
+        public static string SteamConverterIncorrectInstallationDirectory {
+            get {
+                return ResourceManager.GetString("SteamConverterIncorrectInstallationDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Celeste Fan Project Launcher is now compatible with Steam. It will now re-start..
+        /// </summary>
+        public static string SteamConverterSuccess {
+            get {
+                return ResourceManager.GetString("SteamConverterSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please confirm that you want to start Celeste Fan Project Launcher when Age of Empires Online is started through Steam.
         /// </summary>
         public static string SteamConverterTitle {
             get {
                 return ResourceManager.GetString("SteamConverterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to fetch changelog..
+        /// </summary>
+        public static string UpdateServiceChangelogError {
+            get {
+                return ResourceManager.GetString("UpdateServiceChangelogError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: Upnp device not found! &quot;UPnP Port Mapping&quot; has been disabled..
+        /// </summary>
+        public static string UPnPDisabledError {
+            get {
+                return ResourceManager.GetString("UPnPDisabledError", resourceCulture);
             }
         }
         
@@ -1145,6 +1685,60 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string WindowsFeatureHelperEnabledStatus {
             get {
                 return ResourceManager.GetString("WindowsFeatureHelperEnabledStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed.
+        /// </summary>
+        public static string WindowsFeatureHelperFeatureInstalled {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperFeatureInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install pending.
+        /// </summary>
+        public static string WindowsFeatureHelperFeatureIsPendingInstall {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperFeatureIsPendingInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not supported (unknow error).
+        /// </summary>
+        public static string WindowsFeatureHelperFeatureNotSupportedError {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperFeatureNotSupportedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partially installed.
+        /// </summary>
+        public static string WindowsFeatureHelperFeaturePartiallyInstalled {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperFeaturePartiallyInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Staged.
+        /// </summary>
+        public static string WindowsFeatureHelperFeatureStaged {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperFeatureStaged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not supported ({0}).
+        /// </summary>
+        public static string WindowsFeatureHelperFeatureUnsupported {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperFeatureUnsupported", resourceCulture);
             }
         }
         
@@ -1176,6 +1770,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This feature can only be used on Windows 8 and later. Your are running {0}..
+        /// </summary>
+        public static string WindowsFeatureHelperUnsupportedOS {
+            get {
+                return ResourceManager.GetString("WindowsFeatureHelperUnsupportedOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application.
         /// </summary>
         public static string WindowsFirewallHelperApplication {
@@ -1194,6 +1797,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to locate the launcher location..
+        /// </summary>
+        public static string WindowsFirewallHelperLauncherNotFound {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperLauncherNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         public static string WindowsFirewallHelperOpenBtn {
@@ -1208,6 +1820,42 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string WindowsFirewallHelperOutbound {
             get {
                 return ResourceManager.GetString("WindowsFirewallHelperOutbound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid.
+        /// </summary>
+        public static string WindowsFirewallHelperRuleInvalid {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperRuleInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Found.
+        /// </summary>
+        public static string WindowsFirewallHelperRuleNotFound {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperRuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string WindowsFirewallHelperRuleOpen {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperRuleOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spartan.exe was not found, run a game scan to make sure you are not missing any game files..
+        /// </summary>
+        public static string WindowsFirewallHelperSpartanNotFound {
+            get {
+                return ResourceManager.GetString("WindowsFirewallHelperSpartanNotFound", resourceCulture);
             }
         }
         

@@ -24,17 +24,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         {
             try
             {
-                if (request.Password.Length < 8)
-                    throw new Exception("Password minimum length is 8 char!");
-
-                if (request.Password.Length > 32)
-                    throw new Exception("Password maximum length is 32 char!");
-
-                if (!Misc.IsValidEmailAdress(request.Mail))
-                    throw new Exception("Invalid eMail!");
-
-                return await _dataExchange.DoDataExchange<LoginResult, LoginInfo>(request, CmdName);
-                
+                return await _dataExchange.DoDataExchange<LoginResult, LoginInfo>(request, CmdName);               
             }
             catch (Exception e)
             {

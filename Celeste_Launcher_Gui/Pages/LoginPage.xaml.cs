@@ -1,6 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
+using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
@@ -67,7 +68,29 @@ namespace Celeste_Launcher_Gui.Pages
                 else
                 {
                     _logger.Information("Performing login with entered credentials");
-                    loginResult = await PerformLogin(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
+
+                    var password = PasswordInputField.PasswordInputBox.SecurePassword;
+                    var email = EmailInputField.InputContent;
+
+                    if (password.Length < 8)
+                    {
+                        GenericMessageDialog.Show($"{Properties.Resources.LoginTooShortPassword}", DialogIcon.Error, DialogOptions.Ok);
+                        return;
+                    }
+
+                    if (password.Length > 32)
+                    {
+                        GenericMessageDialog.Show($"{Properties.Resources.LoginTooLongPassword}", DialogIcon.Error, DialogOptions.Ok);
+                        return;
+                    }
+
+                    if (!Misc.IsValidEmailAdress(email))
+                    {
+                        GenericMessageDialog.Show($"{Properties.Resources.LoginBadEmail}", DialogIcon.Error, DialogOptions.Ok);
+                        return;
+                    }
+
+                    loginResult = await PerformLogin(email, password);
                 }
 
                 if (loginResult.Result)
@@ -91,7 +114,7 @@ namespace Celeste_Launcher_Gui.Pages
                 else
                 {
                     _logger.Information("Failed signing in because {@Message}", loginResult.Message);
-                    GenericMessageDialog.Show($@"Error: {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show($"{Properties.Resources.LoginErrorMessage} {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
                     PasswordInputField.PasswordInputBox.Clear();
                     UserCredentialService.ClearVault();
                 }
@@ -99,17 +122,20 @@ namespace Celeste_Launcher_Gui.Pages
             catch (Exception ex)
             {
                 _logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
                 PasswordInputField.PasswordInputBox.Clear();
                 UserCredentialService.ClearVault();
             }
-
-            LoginButton.IsEnabled = true;
+            finally
+            {
+                LoginButton.IsEnabled = true;
+            }
         }
 
         private async Task<LoginResult> PerformLogin(string email, SecureString password)
         {
             GameService.SetCredentials(email, password);
+
             return await LegacyBootstrapper.WebSocketApi.DoLogin(email, password);
         }
 
