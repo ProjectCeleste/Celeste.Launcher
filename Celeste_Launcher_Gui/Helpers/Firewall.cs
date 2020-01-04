@@ -56,11 +56,17 @@ namespace Celeste_Launcher_Gui.Helpers
                 }
                 else
                 {
-                    goto default_rule;
+                    AddDefaultApplicationRule(ruleName, fileName, direction, protocol);
                 }
-                return;
             }
-            default_rule:
+            else
+            {
+                AddDefaultApplicationRule(ruleName, fileName, direction, protocol);
+            }
+        }
+
+        private static void AddDefaultApplicationRule(string ruleName, string fileName, FirewallDirection direction, FirewallProtocol protocol)
+        {
             var defaultRule = FirewallManager.Instance.CreateApplicationRule(
                 FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public, ruleName,
                 FirewallAction.Allow, fileName, protocol);
@@ -107,12 +113,18 @@ namespace Celeste_Launcher_Gui.Helpers
                 }
                 else
                 {
-                    goto default_rule;
+                    AddDefaultPortRule(ruleName, portNumber, direction, protocol);
                 }
-
-                return;
             }
-            default_rule:
+            else
+            {
+                AddDefaultPortRule(ruleName, portNumber, direction, protocol);
+            }
+        }
+
+        private static void AddDefaultPortRule(string ruleName, ushort portNumber, FirewallDirection direction,
+            FirewallProtocol protocol)
+        {
             var defaultRule = FirewallManager.Instance.CreatePortRule(
                 FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public, ruleName,
                 FirewallAction.Allow, portNumber, protocol);

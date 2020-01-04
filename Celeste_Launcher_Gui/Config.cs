@@ -79,19 +79,20 @@ namespace Celeste_Launcher_Gui
                 var netInterface = NetworkInterface.GetAllNetworkInterfaces()
                     .FirstOrDefault(elem => elem.Name == selectedNetInt);
 
-                if (netInterface == null)
-                    goto notfound;
-
-                // Get IPv4 address:
-                foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
-                    if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                if (netInterface != null)
+                {
+                    // Get IPv4 address:
+                    foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
                     {
-                        userConfig.MpSettings.PublicIp = ip.Address.ToString();
-                        return userConfig;
+                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            userConfig.MpSettings.PublicIp = ip.Address.ToString();
+                            return userConfig;
+                        }
                     }
+                }
             }
 
-            notfound:
             //Fall back to wan
             userConfig.MpSettings.ConnectionType = ConnectionType.Wan;
 
