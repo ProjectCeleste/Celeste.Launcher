@@ -3,8 +3,10 @@
 using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.ViewModels;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
 using Markdig;
 using ProjectCeleste.GameFiles.GameScanner.FileDownloader;
+using Serilog;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -41,6 +43,8 @@ namespace Celeste_Launcher_Gui.Services
 
         private const string ZipName = "Celeste_Launcher.zip";
 
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public static async Task<Version> GetGitHubAssemblyVersion()
         {
             string version;
@@ -73,7 +77,7 @@ namespace Celeste_Launcher_Gui.Services
                 }
 
                 if (string.IsNullOrWhiteSpace(changelogRaw))
-                    throw new Exception("No Changelog found...");
+                    return Properties.Resources.UpdateServiceChangelogError;
 
                 var changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
                     .Replace("Full Changelog", string.Empty).Replace("Change Log", string.Empty);
@@ -81,11 +85,12 @@ namespace Celeste_Launcher_Gui.Services
                 if (!string.IsNullOrWhiteSpace(changelogFormatted))
                     return changelogFormatted;
 
-                throw new Exception("No Changelog found...");
+                return Properties.Resources.UpdateServiceChangelogError;
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                return exception.Message;
+                Logger.Error(ex, ex.Message);
+                return Properties.Resources.UpdateServiceChangelogError;
             }
         }
 

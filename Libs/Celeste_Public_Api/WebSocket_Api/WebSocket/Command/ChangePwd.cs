@@ -25,18 +25,6 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         {
             try
             {
-                if (request.Old == request.New)
-                    throw new Exception("Old password = New password!");
-
-                if (request.New.Length < 8)
-                    throw new Exception("Password minimum length is 8 char!");
-
-                if (request.New.Length > 32)
-                    throw new Exception("Password maximum length is 32 char!");
-
-                if (!Misc.IsValidPassword(request.New))
-                    throw new Exception("Invalid password, character ' and \" are not allowed!");
-
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;
                 if (lastSendTime <= 90)
                     throw new Exception(

@@ -503,4 +503,220 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="WindowsFirewallHelperTitle" xml:space="preserve">
     <value>Windows Firewall Helper</value>
   </data>
+  <data name="AutoLoginError" xml:space="preserve">
+    <value>Could not perform auto-signin due to an unexpected error</value>
+  </data>
+  <data name="AutoLoginFailed" xml:space="preserve">
+    <value>Could not perform auto-signin, please sign in again manually</value>
+  </data>
+  <data name="ChangePasswordError" xml:space="preserve">
+    <value>Error while changing password:</value>
+  </data>
+  <data name="ChangePasswordInvalidLength" xml:space="preserve">
+    <value>The new password must be at least 8 characters and maximum 32 characters.</value>
+  </data>
+  <data name="ChangePasswordInvalidPassword" xml:space="preserve">
+    <value>Invalid password, character ' and " are not allowed!</value>
+  </data>
+  <data name="ChangePasswordMismatch" xml:space="preserve">
+    <value>The new password and confirmed password does not match.</value>
+  </data>
+  <data name="ChangePasswordSamePassword" xml:space="preserve">
+    <value>The new password must be different from the old.</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Password successfully changed.</value>
+  </data>
+  <data name="DiagnosticsModeError" xml:space="preserve">
+    <value>An unexpected error occurred while starting diagnostics mode. Please try again or check the log files.</value>
+  </data>
+  <data name="DiagnosticsModeMissingProcdump" xml:space="preserve">
+    <value>Diagnostics mode requires ProcDump to be installed which was not found. Diagnostics mode will therefore be disabled.</value>
+  </data>
+  <data name="EnableDiagnosticsModeInstallProcdumpPrompt" xml:space="preserve">
+    <value>ProcDump.exe need to be installed first. Would you like to install it now?</value>
+  </data>
+  <data name="EnableDiagnosticsModeProcdumpInstallError" xml:space="preserve">
+    <value>Failed to enable "Diagnostic Mode". Error message:</value>
+  </data>
+  <data name="GameAlreadyRunningError" xml:space="preserve">
+    <value>Game is still running, please close it and try again.</value>
+  </data>
+  <data name="GamePathInvalidPath" xml:space="preserve">
+    <value>The selected game path does not exist</value>
+  </data>
+  <data name="GamePathSelectorTitle" xml:space="preserve">
+    <value>Select Celeste location</value>
+  </data>
+  <data name="GameScannerDidNotPass" xml:space="preserve">
+    <value>Game scan failed.</value>
+  </data>
+  <data name="GameScannerDidNotPassQuickScan" xml:space="preserve">
+    <value>Some game files appear to be missing. Would you like to run a 'Game Scan' to repair/download files? If you are installing for the first time click 'Yes' to download the rest of the game.</value>
+  </data>
+  <data name="GameScannerDoneLabel" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="GameScannerDoneMessage" xml:space="preserve">
+    <value>Game scan has succesfully completed</value>
+  </data>
+  <data name="GameScannerDownloading" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="GameScannerDownloadStarting" xml:space="preserve">
+    <value>Starting download</value>
+  </data>
+  <data name="GameScannerExtracting" xml:space="preserve">
+    <value>Extracting downloaded file</value>
+  </data>
+  <data name="GameScannerFailed" xml:space="preserve">
+    <value>An unexpected error occurred while running the game scan. Please try again or check the log files.</value>
+  </data>
+  <data name="GameScannerFinalizing" xml:space="preserve">
+    <value>Finalizing</value>
+  </data>
+  <data name="GameScannerScanError" xml:space="preserve">
+    <value>Game scanner encountered an unexpected problem. Please try again or check the log files.</value>
+  </data>
+  <data name="GameScannerSpartanNotFound" xml:space="preserve">
+    <value>Could not locate Spartan.exe, please run a game scan to make sure you are not missing any game files.</value>
+  </data>
+  <data name="GameScannerVerifying" xml:space="preserve">
+    <value>Verifying file integrity</value>
+  </data>
+  <data name="GameScannerVerifyingDownloadedFile" xml:space="preserve">
+    <value>Checking downloaded file</value>
+  </data>
+  <data name="GameScannerVerifyingExtractedFile" xml:space="preserve">
+    <value>Checking extracted file</value>
+  </data>
+  <data name="GenericUnexpectedErrorMessage" xml:space="preserve">
+    <value>An unexpected error occurred. Please try again or check the log files.</value>
+  </data>
+  <data name="LauncherUpdaterError" xml:space="preserve">
+    <value>An unexpected error occurred while performing the update. The application will now close. If this problem continues, try and update manually.</value>
+  </data>
+  <data name="LauncherUpdaterUpdateSuccess" xml:space="preserve">
+    <value>Celeste Fan Project Launcher has been updated and will now re-start.</value>
+  </data>
+  <data name="LoginBadEmail" xml:space="preserve">
+    <value>The entered email address is not a valid email address.</value>
+  </data>
+  <data name="LoginErrorMessage" xml:space="preserve">
+    <value>Failed logging in:</value>
+  </data>
+  <data name="LoginTooLongPassword" xml:space="preserve">
+    <value>The entered password has to be maximum 32 characters.</value>
+  </data>
+  <data name="LoginTooShortPassword" xml:space="preserve">
+    <value>The entered password has to be at least 8 characters.</value>
+  </data>
+  <data name="MultiplayerSettingsOtherNetworkDevice" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="NetworkDeviceSelectorNoDeviceSelected" xml:space="preserve">
+    <value>Please select a network interface</value>
+  </data>
+  <data name="ProcdumpInstallError" xml:space="preserve">
+    <value>An unexpected error occurred while installing ProcDump. Please try again or check the log files.</value>
+  </data>
+  <data name="RegisterError" xml:space="preserve">
+    <value>An error occurred while registering:</value>
+  </data>
+  <data name="RegisterInvalidEmail" xml:space="preserve">
+    <value>The entered email address is not a valid email address.</value>
+  </data>
+  <data name="RegisterInvalidKeyLength" xml:space="preserve">
+    <value>The key you entered is not valid.</value>
+  </data>
+  <data name="RegisterInvalidPassword" xml:space="preserve">
+    <value>Invalid password, character ' and " are not allowed!</value>
+  </data>
+  <data name="RegisterInvalidPasswordLength" xml:space="preserve">
+    <value>Your password must be between 8 and 32 characters in length.</value>
+  </data>
+  <data name="RegisterInvalidUsername" xml:space="preserve">
+    <value>Invalid username, only letters and digits allowed, minimum length is 3 char and maximum length is 15 characters.</value>
+  </data>
+  <data name="RegisterPasswordMismatch" xml:space="preserve">
+    <value>The confirmed password must match the first password</value>
+  </data>
+  <data name="ResetPasswordError" xml:space="preserve">
+    <value>An error occurred while resetting the password. Please try again or check the log files.</value>
+  </data>
+  <data name="ResetPasswordFailed" xml:space="preserve">
+    <value>Failed resetting the password due to the following reason:</value>
+  </data>
+  <data name="ResetPasswordInvalidEmail" xml:space="preserve">
+    <value>The entered email address is not a valid email address.</value>
+  </data>
+  <data name="ResetPasswordInvalidKey" xml:space="preserve">
+    <value>The entered key is not valid.</value>
+  </data>
+  <data name="ScenarioEditorDeleteScenarioPrompt" xml:space="preserve">
+    <value>Are you sure you want to remove the file {0}?</value>
+  </data>
+  <data name="ScenarioEditorFilePickerFileTypes" xml:space="preserve">
+    <value>Scenario files</value>
+  </data>
+  <data name="ScenarioEditorFilePickerTitle" xml:space="preserve">
+    <value>Choose Scenario File</value>
+  </data>
+  <data name="ScenarioEditorOverwritePrompt" xml:space="preserve">
+    <value>The file {0} already exists, overwrite it?</value>
+  </data>
+  <data name="StartGameError" xml:space="preserve">
+    <value>An unexpected error occurred while starting Age of Empires Online. Please try again or check the log files.</value>
+  </data>
+  <data name="SteamConverterAlreadySteamGame" xml:space="preserve">
+    <value>Celeste Fan Project Launcher is already compatible with Steam.</value>
+  </data>
+  <data name="SteamConverterIncorrectInstallationDirectory" xml:space="preserve">
+    <value>Celeste Fan Project Launcher needs to be installed in the same folder has the game.</value>
+  </data>
+  <data name="SteamConverterSuccess" xml:space="preserve">
+    <value>Celeste Fan Project Launcher is now compatible with Steam. It will now re-start.</value>
+  </data>
+  <data name="UpdateServiceChangelogError" xml:space="preserve">
+    <value>Unable to fetch changelog.</value>
+  </data>
+  <data name="UPnPDisabledError" xml:space="preserve">
+    <value>Error: Upnp device not found! "UPnP Port Mapping" has been disabled.</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureInstalled" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureIsPendingInstall" xml:space="preserve">
+    <value>Install pending</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureNotSupportedError" xml:space="preserve">
+    <value>Not supported (unknow error)</value>
+  </data>
+  <data name="WindowsFeatureHelperFeaturePartiallyInstalled" xml:space="preserve">
+    <value>Partially installed</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureStaged" xml:space="preserve">
+    <value>Staged</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureUnsupported" xml:space="preserve">
+    <value>Not supported ({0})</value>
+  </data>
+  <data name="WindowsFeatureHelperUnsupportedOS" xml:space="preserve">
+    <value>This feature can only be used on Windows 8 and later. Your are running {0}.</value>
+  </data>
+  <data name="WindowsFirewallHelperLauncherNotFound" xml:space="preserve">
+    <value>Unable to locate the launcher location.</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleInvalid" xml:space="preserve">
+    <value>Invalid</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleNotFound" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="WindowsFirewallHelperSpartanNotFound" xml:space="preserve">
+    <value>Spartan.exe was not found, run a game scan to make sure you are not missing any game files.</value>
+  </data>
 </root>

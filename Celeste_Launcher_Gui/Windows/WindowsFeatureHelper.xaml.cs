@@ -46,7 +46,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
             }
             IsEnabled = true;
         }
@@ -66,7 +66,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
             }
             IsEnabled = true;
         }
@@ -78,6 +78,16 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var osInfo = OsVersionInfo.GetOsVersionInfo();
+            if (osInfo.Major < 6 || osInfo.Major == 6 && osInfo.Minor < 2)
+            {
+                GenericMessageDialog.Show(string.Format(Properties.Resources.WindowsFeatureHelperUnsupportedOS, osInfo.FullName),
+                    DialogIcon.Warning);
+
+                Close();
+                return;
+            }
+
             try
             {
                 foreach (var feature in await Dism.GetWindowsFeatureInfo(new[] { "DirectPlay", "NetFx3" }))
@@ -101,7 +111,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                NetFrameworkStatusLabel.Text = @"Not supported (unknow error)";
+                NetFrameworkStatusLabel.Text = Properties.Resources.WindowsFeatureHelperFeatureNotSupportedError;
                 NetFrameworkStatusLabel.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
@@ -111,15 +121,15 @@ namespace Celeste_Launcher_Gui.Windows
             switch (featureInfo.FeatureState)
             {
                 case DismPackageFeatureState.Staged:
-                    return ("Staged", Colors.Chocolate, true);
+                    return (Properties.Resources.WindowsFeatureHelperFeatureStaged, Colors.Chocolate, true);
                 case DismPackageFeatureState.PartiallyInstalled:
-                    return ("Partially installed", Colors.Chocolate, true);
+                    return (Properties.Resources.WindowsFeatureHelperFeaturePartiallyInstalled, Colors.Chocolate, true);
                 case DismPackageFeatureState.Installed:
-                    return ("Installed", Colors.DarkGreen, false);
+                    return (Properties.Resources.WindowsFeatureHelperFeatureInstalled, Colors.DarkGreen, false);
                 case DismPackageFeatureState.InstallPending:
-                    return ("Install pending", Colors.DarkGreen, false);
+                    return (Properties.Resources.WindowsFeatureHelperFeatureIsPendingInstall, Colors.DarkGreen, false);
                 default:
-                    return ($"Not supported ({featureInfo.FeatureState})", Colors.Red, false);
+                    return (string.Format(Properties.Resources.WindowsFeatureHelperFeatureUnsupported, featureInfo.FeatureState), Colors.Red, false);
             }
         }
     }

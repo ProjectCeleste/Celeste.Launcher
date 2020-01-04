@@ -26,12 +26,6 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         {
             try
             {
-                if (!Misc.IsValidEmailAdress(request.EMail))
-                    throw new Exception("Invalid eMail!");
-
-                if (request.VerifyKey.Length != 32)
-                    throw new Exception("Invalid Verify Key!");
-
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;
                 if (lastSendTime <= 90)
                     throw new Exception(

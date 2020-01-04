@@ -154,7 +154,7 @@ namespace Celeste_Launcher_Gui.Pages
                     var procdumpFileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
                     if (!File.Exists(procdumpFileName))
                     {
-                        var dialog = new GenericMessageDialog("ProcDump.exe need to be installed first. Would you like to install it now?" , DialogIcon.Warning, DialogOptions.YesNo);
+                        var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo);
 
                         var dr = dialog.ShowDialog();
                         if (dr.Value == true)
@@ -166,7 +166,7 @@ namespace Celeste_Launcher_Gui.Pages
                 catch (Exception exception)
                 {
                     LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
-                    GenericMessageDialog.Show($"Warning: Failed to enable \"Diagnostic Mode\". Error message: {exception.Message}", DialogIcon.Warning, DialogOptions.Ok);
+                    GenericMessageDialog.Show($"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}", DialogIcon.Warning, DialogOptions.Ok);
                 }
             }
         }
@@ -178,16 +178,6 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            var osInfo = OsVersionInfo.GetOsVersionInfo();
-            if (osInfo.Major < 6 || osInfo.Major == 6 && osInfo.Minor < 2)
-            {
-                GenericMessageDialog.Show("Only for Windows 8 and more\r\n" +
-                    $"Your current OS is {osInfo.FullName}",
-                    DialogIcon.Warning);
-
-                return;
-            }
-
             new WindowsFeatureHelper().ShowDialog();
         }
 
@@ -201,7 +191,7 @@ namespace Celeste_Launcher_Gui.Pages
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show($@"Game is still running, please close it and try again", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
                 return;
             }
 
@@ -214,7 +204,7 @@ namespace Celeste_Launcher_Gui.Pages
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show($@"Game is still running, please close it and try again", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
                 return;
             }
 

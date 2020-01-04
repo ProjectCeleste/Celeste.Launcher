@@ -5,21 +5,11 @@ using ProjectCeleste.GameFiles.GameScanner;
 using ProjectCeleste.GameFiles.GameScanner.Models;
 using Serilog;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Windows
 {
@@ -34,9 +24,6 @@ namespace Celeste_Launcher_Gui.Windows
         public GameScannerWindow(string gameFilesPath, bool isSteam)
         {
             InitializeComponent();
-
-            if (string.IsNullOrWhiteSpace(gameFilesPath))
-                throw new Exception(@"Game files path is empty!");
 
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
@@ -83,19 +70,20 @@ namespace Celeste_Launcher_Gui.Windows
                 if (await GameScanner.ScanAndRepair(progress, subProgress))
                 {
                     CurrentFileLabel.Content = string.Empty;
-                    MainProgressLabel.Content = "Done";
+                    MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;
                     FileProgress.ProgressBar.IsIndeterminate = false;
-                    GenericMessageDialog.Show($@"Game scan has succesfully completed", DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
                     DialogResult = true;
                 }
                 else
                 {
-                    FailGameScan("Game scan failed");
+                    FailGameScan(Properties.Resources.GameScannerDidNotPass);
                 }
             }
             catch (Exception ex)
             {
-                FailGameScan(ex.Message);
+                Logger.Error(ex, ex.Message);
+                FailGameScan(Properties.Resources.GameScannerFailed);
             }
         }
 
@@ -114,7 +102,7 @@ namespace Celeste_Launcher_Gui.Windows
             CurrentFileLabel.Content = string.Empty;
             MainProgressLabel.Content = string.Empty;
             TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-            GenericMessageDialog.Show($@"Error: {reason}", DialogIcon.Error, DialogOptions.Ok);
+            GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
         }
 
         private void SubProgressChanged(object sender, ScanSubProgress e)
@@ -122,7 +110,7 @@ namespace Celeste_Launcher_Gui.Windows
             switch (e.Step)
             {
                 case ScanSubProgressStep.Check:
-                    MainProgressLabel.Content = $@"Verifying file integrity";
+                    MainProgressLabel.Content = Properties.Resources.GameScannerVerifying;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     break;
@@ -131,7 +119,7 @@ namespace Celeste_Launcher_Gui.Windows
                     {
                         if (e.DownloadProgress.Size == 0)
                         {
-                            MainProgressLabel.Content = "Starting download";
+                            MainProgressLabel.Content = Properties.Resources.GameScannerDownloadStarting;
                         }
                         else
                         {
@@ -141,7 +129,7 @@ namespace Celeste_Launcher_Gui.Windows
                             var downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
                                 string.Empty : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}/s)";
 
-                            MainProgressLabel.Content = $"Downloading {downloaded}/{leftToDownload} {downloadSpeed}";
+                            MainProgressLabel.Content = $"{Properties.Resources.GameScannerDownloading} {downloaded}/{leftToDownload} {downloadSpeed}";
                         }
                     }
 
@@ -149,20 +137,20 @@ namespace Celeste_Launcher_Gui.Windows
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
                 case ScanSubProgressStep.CheckDownload:
-                    MainProgressLabel.Content = $@"Checking downloaded file";
+                    MainProgressLabel.Content = Properties.Resources.GameScannerVerifyingDownloadedFile;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.ExtractDownload:
-                    MainProgressLabel.Content = $@"Extracting downloaded file";
+                    MainProgressLabel.Content = Properties.Resources.GameScannerExtracting;
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
                 case ScanSubProgressStep.CheckExtractDownload:
-                    MainProgressLabel.Content = $@"Checking extracted file";
+                    MainProgressLabel.Content = Properties.Resources.GameScannerVerifyingExtractedFile;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.Finalize:
-                    MainProgressLabel.Content = $@"Finalizing";
+                    MainProgressLabel.Content = Properties.Resources.GameScannerFinalizing;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.End:

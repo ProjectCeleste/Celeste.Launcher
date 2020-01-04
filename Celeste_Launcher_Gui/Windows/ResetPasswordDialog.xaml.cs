@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
+using Serilog;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,6 +12,8 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class ResetPasswordDialog : Window
     {
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public ResetPasswordDialog()
         {
             InitializeComponent();
@@ -26,6 +31,18 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void OnResetPasswordClick(object sender, RoutedEventArgs e)
         {
+            if (!Misc.IsValidEmailAdress(EmailAddressField.InputContent))
+            {
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error, DialogOptions.Ok);
+                return;
+            }
+
+            if (ResetKeyField.InputContent.Length != 32)
+            {
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidKey, DialogIcon.Error, DialogOptions.Ok);
+                return;
+            }
+
             IsEnabled = false;
 
             try
@@ -41,11 +58,12 @@ namespace Celeste_Launcher_Gui.Windows
                     return;
                 }
 
-                GenericMessageDialog.Show($@"Error: {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.Ok);
             }
 
             IsEnabled = true;
@@ -53,6 +71,12 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void OnSendResetKeyClick(object sender, RoutedEventArgs e)
         {
+            if (!Misc.IsValidEmailAdress(EmailAddressField.InputContent))
+            {
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error, DialogOptions.Ok);
+                return;
+            }
+
             IsEnabled = false;
 
             try
@@ -68,12 +92,13 @@ namespace Celeste_Launcher_Gui.Windows
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"Error: {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
                 }
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show($@"Error: {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.Ok);
             }
 
             IsEnabled = true;

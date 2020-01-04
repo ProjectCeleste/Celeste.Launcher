@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows;
@@ -30,9 +29,6 @@ namespace Celeste_Launcher_Gui.Windows
                 case ConnectionType.Other:
                     OtherConnectionTypeCheckBox.IsChecked = true;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(mpSettings.ConnectionType), mpSettings.ConnectionType,
-                        "Unknown connection type");
             }
 
             switch (mpSettings.PortMappingType)
@@ -46,9 +42,6 @@ namespace Celeste_Launcher_Gui.Windows
                 case PortMappingType.Manual:
                     ManualPortMappingCheckBox.IsChecked = true;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(mpSettings.PortMappingType),
-                        mpSettings.PortMappingType, "Unknown port mapping type");
             }
         }
 
@@ -120,7 +113,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             if (OtherConnectionTypeCheckBox.IsChecked == true)
             {
-                _selectedInterfaceName = "Other";
+                _selectedInterfaceName = Properties.Resources.MultiplayerSettingsOtherNetworkDevice;
             }
             else
             {

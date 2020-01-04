@@ -35,7 +35,7 @@ namespace Celeste_Launcher_Gui.Services
             if (pname.Length > 0)
             {
                 Logger.Information("Game is already started with PID {@PID}", pname.Select(t => t.Id));
-                GenericMessageDialog.Show($"Game already running", DialogIcon.Warning);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Warning);
                 return;
             }
 
@@ -63,8 +63,7 @@ namespace Celeste_Launcher_Gui.Services
                             Logger.Information("Game scanner did not approve game files");
 
                             var dialogResult = GenericMessageDialog.Show(
-                                "Some game files appear to be missing. Would you like to run a 'Game Scan' to repair/download files? " +
-                                "If you are installing for the first time click 'Yes' to download the rest of the game.",
+                                Properties.Resources.GameScannerDidNotPassQuickScan,
                                 DialogIcon.None,
                                 DialogOptions.YesNo);
 
@@ -88,7 +87,7 @@ namespace Celeste_Launcher_Gui.Services
                 catch (Exception ex)
                 {
                     Logger.Error(ex, ex.Message);
-                    GenericMessageDialog.Show($"Warning: Error during quick scan. Error message: {ex.Message}", DialogIcon.Warning);
+                    GenericMessageDialog.Show(Properties.Resources.GameScannerScanError, DialogIcon.Warning);
                 }
             }
 
@@ -118,7 +117,7 @@ namespace Celeste_Launcher_Gui.Services
                             Logger.Error(ex, ex.Message);
                             LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
 
-                            GenericMessageDialog.Show("Error: Upnp device not found! \"UPnP Port Mapping\" has been disabled.", DialogIcon.Error);
+                            GenericMessageDialog.Show(Properties.Resources.UPnPDisabledError, DialogIcon.Error);
                         }
                         finally
                         {
@@ -138,7 +137,10 @@ namespace Celeste_Launcher_Gui.Services
                 var spartanPath = Path.Combine(gamePath, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
-                    throw new FileNotFoundException("Spartan.exe not found!", spartanPath);
+                {
+                    GenericMessageDialog.Show(Properties.Resources.GameScannerSpartanNotFound, DialogIcon.Error);
+                    return;
+                }
 
                 string lang;
                 switch (LegacyBootstrapper.UserConfig.GameLanguage)
@@ -198,8 +200,7 @@ namespace Celeste_Launcher_Gui.Services
                             Logger.Information("Could not find procdump.exe");
                             LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
                             throw new FileNotFoundException(
-                                "Diagonstic Mode requires procdump.exe (File not Found).\r\n" +
-                                "Diagonstic Mode will be disabled.",
+                                Properties.Resources.DiagnosticsModeMissingProcdump,
                                 procdumpFileName);
                         }
 
@@ -250,7 +251,7 @@ namespace Celeste_Launcher_Gui.Services
                 catch (Exception exception)
                 {
                     Logger.Error(exception, exception.Message);
-                    GenericMessageDialog.Show($"Warning: {exception.Message}", DialogIcon.Warning);
+                    GenericMessageDialog.Show(Properties.Resources.DiagnosticsModeError, DialogIcon.Warning);
                 }
 
                 //SymLink CustomScn Folder
@@ -294,7 +295,7 @@ namespace Celeste_Launcher_Gui.Services
             catch (Exception exception)
             {
                 Logger.Error(exception, exception.Message);
-                GenericMessageDialog.Show($"Error: {exception.Message}", DialogIcon.Error);
+                GenericMessageDialog.Show(Properties.Resources.StartGameError, DialogIcon.Error);
             }
         }
     }

@@ -1,5 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
+using Celeste_Public_Api.Logging;
+using Serilog;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -14,6 +16,8 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class UpdateWindow : Window
     {
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         private CancellationTokenSource _cts = new CancellationTokenSource();
 
         public LauncherVersionInfo LauncherVersionInfo { get; set; }
@@ -56,7 +60,6 @@ namespace Celeste_Launcher_Gui.Windows
                 _cts = new CancellationTokenSource();
 
                 var progress = new Progress<int>();
-                progress.ProgressChanged += Progress_ProgressChanged;
 
                 progress.ProgressChanged += (s, value) =>
                 {
@@ -65,23 +68,18 @@ namespace Celeste_Launcher_Gui.Windows
 
                 await UpdateService.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
 
-                GenericMessageDialog.Show(
-                    @"""Celeste Fan Project Launcher"" has been updated, it will now re-start.", DialogIcon.Warning, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterUpdateSuccess, DialogIcon.Warning, DialogOptions.Ok);
 
                 Process.Start(Assembly.GetEntryAssembly().Location);
 
                 Environment.Exit(0);
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                GenericMessageDialog.Show($@"Error: {exception.Message}", DialogIcon.Error, DialogOptions.Ok);
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterError, DialogIcon.Error, DialogOptions.Ok);
                 Environment.Exit(1);
             }
-        }
-
-        private void Progress_ProgressChanged(object sender, int e)
-        {
-            throw new NotImplementedException();
         }
     }
 }

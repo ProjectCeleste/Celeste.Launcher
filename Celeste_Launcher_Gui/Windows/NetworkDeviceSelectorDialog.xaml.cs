@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows;
@@ -42,7 +41,7 @@ namespace Celeste_Launcher_Gui.Windows
 
             if (selectedNetworkInterface == null)
             {
-                GenericMessageDialog.Show("Please select a network interface", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.NetworkDeviceSelectorNoDeviceSelected, DialogIcon.Error, DialogOptions.Ok);
                 return;
             }
 

@@ -1,20 +1,11 @@
 ﻿using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
+using Celeste_Public_Api.Logging;
+using Serilog;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Windows
 {
@@ -23,6 +14,8 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -72,12 +65,13 @@ namespace Celeste_Launcher_Gui.Windows
                     }
                     else
                     {
-                        GenericMessageDialog.Show($@"Could not perform auto-signin, please sign in again manually", DialogIcon.Error);
+                        GenericMessageDialog.Show(Properties.Resources.AutoLoginFailed, DialogIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    GenericMessageDialog.Show($@"Could not perform auto-signin: {ex.Message}", DialogIcon.Error);
+                    Logger.Error(ex, ex.Message);
+                    GenericMessageDialog.Show(Properties.Resources.AutoLoginError, DialogIcon.Error);
                 }
 
                 NavigationFrame.IsEnabled = true;
