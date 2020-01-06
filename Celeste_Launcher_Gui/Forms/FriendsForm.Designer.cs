@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Pending Invite", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Pending Request", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Pending Invite", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Pending Request", System.Windows.Forms.HorizontalAlignment.Center);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FriendsForm));
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Pending Invite", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Pending Request", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Online", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Offline", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Online", System.Windows.Forms.HorizontalAlignment.Center);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Offline", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Pending Invite", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Pending Request", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Online", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Offline", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Online", System.Windows.Forms.HorizontalAlignment.Center);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Offline", System.Windows.Forms.HorizontalAlignment.Center);
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBoxButtonCustom1 = new Celeste_AOEO_Controls.PictureBoxButtonCustom();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -207,16 +207,17 @@
             this.listView4.ContextMenuStrip = this.contextMenuStrip4;
             this.listView4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            listViewGroup1.Header = "Pending Invite";
-            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup1.Name = "lvg_Invite";
-            listViewGroup2.Header = "Pending Request";
-            listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup2.Name = "lvg_Request";
+            listViewGroup7.Header = "Pending Invite";
+            listViewGroup7.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup7.Name = "lvg_Invite";
+            listViewGroup8.Header = "Pending Request";
+            listViewGroup8.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup8.Name = "lvg_Request";
             this.listView4.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup7,
+            listViewGroup8});
             this.listView4.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView4.HideSelection = false;
             this.listView4.Location = new System.Drawing.Point(0, 325);
             this.listView4.Margin = new System.Windows.Forms.Padding(0);
             this.listView4.MultiSelect = false;
@@ -297,6 +298,7 @@
             this.customBtn1.Name = "customBtn1";
             this.customBtn1.Size = new System.Drawing.Size(130, 50);
             this.customBtn1.TabIndex = 0;
+            this.customBtn1.Load += new System.EventHandler(this.customBtn1_Load);
             this.customBtn1.Click += new System.EventHandler(this.CustomBtn1_Click);
             // 
             // listView2
@@ -306,16 +308,17 @@
             this.listView2.ContextMenuStrip = this.contextMenuStrip3;
             this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            listViewGroup3.Header = "Pending Invite";
-            listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup3.Name = "lvg_Invite";
-            listViewGroup4.Header = "Pending Request";
-            listViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup4.Name = "lvg_Request";
+            listViewGroup9.Header = "Pending Invite";
+            listViewGroup9.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup9.Name = "lvg_Invite";
+            listViewGroup10.Header = "Pending Request";
+            listViewGroup10.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup10.Name = "lvg_Request";
             this.listView2.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup9,
+            listViewGroup10});
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(0, 177);
             this.listView2.Margin = new System.Windows.Forms.Padding(0);
             this.listView2.MultiSelect = false;
@@ -486,16 +489,17 @@
             this.listView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView3.FullRowSelect = true;
-            listViewGroup5.Header = "Online";
-            listViewGroup5.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup5.Name = "lvg_Online";
-            listViewGroup6.Header = "Offline";
-            listViewGroup6.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup6.Name = "lvg_Offline";
+            listViewGroup1.Header = "Online";
+            listViewGroup1.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup1.Name = "lvg_Online";
+            listViewGroup2.Header = "Offline";
+            listViewGroup2.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup2.Name = "lvg_Offline";
             this.listView3.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup1,
+            listViewGroup2});
             this.listView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView3.HideSelection = false;
             this.listView3.Location = new System.Drawing.Point(0, 261);
             this.listView3.Margin = new System.Windows.Forms.Padding(0);
             this.listView3.MultiSelect = false;
@@ -550,16 +554,17 @@
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.FullRowSelect = true;
-            listViewGroup7.Header = "Online";
-            listViewGroup7.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup7.Name = "lvg_Online";
-            listViewGroup8.Header = "Offline";
-            listViewGroup8.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            listViewGroup8.Name = "lvg_Offline";
+            listViewGroup3.Header = "Online";
+            listViewGroup3.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup3.Name = "lvg_Online";
+            listViewGroup4.Header = "Offline";
+            listViewGroup4.HeaderAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            listViewGroup4.Name = "lvg_Offline";
             this.listView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup7,
-            listViewGroup8});
+            listViewGroup3,
+            listViewGroup4});
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(0, 50);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.MultiSelect = false;

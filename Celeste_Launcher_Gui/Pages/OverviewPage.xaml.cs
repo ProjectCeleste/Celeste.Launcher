@@ -62,10 +62,11 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnFriendsClick(object sender, RoutedEventArgs e)
         {
-            using (var x = new FriendsForm())
-            {
-                x.ShowDialog();
-            }
+            //using (var x = new FriendsForm())
+            //{
+            //    x.ShowDialog();
+            //}
+            new FriendList().Show();
         }
 
         private void OnDonateClick(object sender, RoutedEventArgs e)

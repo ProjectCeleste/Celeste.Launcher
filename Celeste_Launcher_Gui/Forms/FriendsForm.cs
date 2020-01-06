@@ -293,5 +293,10 @@ namespace Celeste_Launcher_Gui.Forms
             listView4.Enabled = true;
             pictureBoxButtonCustom3.Enabled = true;
         }
+
+        private void customBtn1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
