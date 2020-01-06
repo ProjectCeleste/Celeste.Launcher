@@ -117,88 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="add-folder-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-folder-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RefreshHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RefreshHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DialogBoxSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DialogBoxSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="downloads-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\downloads-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BarSeparatorVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparatorVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="folder-3-64 _g1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-3-64 _g1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="folder-3-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-3-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CelesteWebsiteNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CelesteWebsiteNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FriendsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="help-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="XButton_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="XButton_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\XButton_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddFriends_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddFriends_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FriendRequests_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendRequests_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="RefreshNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RefreshNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DialogBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DialogBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="help-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FriendsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LongOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LongOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add-folder-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-folder-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="downloads-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\downloads-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="folder-3-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-3-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete-64_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="LauncherInstalledVersionLabel" xml:space="preserve">
     <value>Installed:</value>
   </data>
@@ -766,5 +684,8 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="SendFriendRequestUsernameLabel" xml:space="preserve">
     <value>Username:</value>
+  </data>
+  <data name="LauncherAlreadyRunningMessage" xml:space="preserve">
+    <value>The launcher is already running and will now exit.</value>
   </data>
 </root>

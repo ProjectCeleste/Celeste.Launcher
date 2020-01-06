@@ -1,6 +1,4 @@
 ﻿using Celeste_Launcher_Gui.Account;
-using Celeste_Launcher_Gui.Forms;
-using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
@@ -62,10 +60,6 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnFriendsClick(object sender, RoutedEventArgs e)
         {
-            //using (var x = new FriendsForm())
-            //{
-            //    x.ShowDialog();
-            //}
             new FriendList().Show();
         }
 

@@ -74,12 +74,6 @@
     <Compile Include="Commands\FriendList\AcceptFriendRequestCommand.cs" />
     <Compile Include="Commands\FriendList\RemoveFriendCommand.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Forms\FriendsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FriendsForm.Designer.cs">
-      <DependentUpon>FriendsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\FriendListItemTemplateSelector.cs" />
     <Compile Include="Helpers\FriendListViewModelFactory.cs" />
     <Compile Include="Helpers\ProcDump.cs" />
@@ -198,9 +192,6 @@
     <Compile Include="Windows\WindowsFirewallHelper.xaml.cs">
       <DependentUpon>WindowsFirewallHelper.xaml</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\FriendsForm.resx">
-      <DependentUpon>FriendsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -372,42 +363,17 @@
     <Resource Include="Resources\Warning.png" />
     <Resource Include="Resources\YesNoDialogBackground.png" />
     <Resource Include="Resources\ashley_crawford_cg.ttf" />
-    <None Include="Resources\delete-64_gray.png" />
-    <None Include="Resources\help-64_g1.png" />
-    <None Include="Resources\downloads-64 _g.png" />
-    <None Include="Resources\help-64_g.png" />
-    <None Include="Resources\help-64.png" />
-    <None Include="Resources\folder-3-64 _g1.png" />
-    <None Include="Resources\downloads-64.png" />
-    <None Include="Resources\folder-3-64 _g.png" />
-    <None Include="Resources\delete-64_g.png" />
-    <None Include="Resources\add-folder-64 _g.png" />
-    <None Include="Resources\folder-3-64.png" />
-    <None Include="Resources\delete-64.png" />
-    <None Include="Resources\add-folder-64.png" />
-    <None Include="Resources\FriendRequests_Normal.png" />
-    <None Include="Resources\AddFriends_Normal.png" />
     <Resource Include="Resources\LithosPro-Black.otf" />
-    <None Include="Resources\RefreshHover.png" />
-    <None Include="Resources\RefreshNormal.png" />
-    <None Include="Resources\LongOne.png" />
-    <None Include="Resources\DialogBox.png" />
-    <None Include="Resources\XButton_Hover.png" />
-    <None Include="Resources\XButton_Normal.png" />
-    <None Include="Resources\FriendsHover.png" />
-    <None Include="Resources\FriendsNormal.png" />
-    <None Include="Resources\DialogBoxSmall.png" />
-    <None Include="Resources\CelesteWebsiteNormal.png" />
     <None Include="Resources\BarSeparatorVertical.png" />
     <None Include="Resources\BarSeparator.png" />
     <None Include="Resources\BackgroundTexture.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)\Libs\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
-      <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
-      <Name>Celeste_AOEO_Controls</Name>
+    <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
+      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
+      <Name>Celeste_Public_Api</Name>
     </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
+    <ProjectReference Include="C:\Users\marti\Documents\Celeste_Launcher\\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
       <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
       <Name>Celeste_Public_Api</Name>
     </ProjectReference>

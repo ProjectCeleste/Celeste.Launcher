@@ -61,36 +61,6 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap add_folder_64 {
-            get {
-                object obj = ResourceManager.GetObject("add-folder-64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap add_folder_64__g {
-            get {
-                object obj = ResourceManager.GetObject("add-folder-64 _g", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap AddFriends_Normal {
-            get {
-                object obj = ResourceManager.GetObject("AddFriends_Normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Could not perform auto-signin due to an unexpected error.
         /// </summary>
         public static string AutoLoginError {
@@ -105,46 +75,6 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string AutoLoginFailed {
             get {
                 return ResourceManager.GetString("AutoLoginFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap BackgroundTexture {
-            get {
-                object obj = ResourceManager.GetObject("BackgroundTexture", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap BarSeparator {
-            get {
-                object obj = ResourceManager.GetObject("BarSeparator", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap BarSeparatorVertical {
-            get {
-                object obj = ResourceManager.GetObject("BarSeparatorVertical", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap CelesteWebsiteNormal {
-            get {
-                object obj = ResourceManager.GetObject("CelesteWebsiteNormal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -203,36 +133,6 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap delete_64 {
-            get {
-                object obj = ResourceManager.GetObject("delete-64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap delete_64_g {
-            get {
-                object obj = ResourceManager.GetObject("delete-64_g", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap delete_64_gray {
-            get {
-                object obj = ResourceManager.GetObject("delete-64_gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to An unexpected error occurred while starting diagnostics mode. Please try again or check the log files..
         /// </summary>
         public static string DiagnosticsModeError {
@@ -251,46 +151,6 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap DialogBox {
-            get {
-                object obj = ResourceManager.GetObject("DialogBox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap DialogBoxSmall {
-            get {
-                object obj = ResourceManager.GetObject("DialogBoxSmall", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap downloads_64 {
-            get {
-                object obj = ResourceManager.GetObject("downloads-64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap downloads_64__g {
-            get {
-                object obj = ResourceManager.GetObject("downloads-64 _g", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ProcDump.exe need to be installed first. Would you like to install it now?.
         /// </summary>
         public static string EnableDiagnosticsModeInstallProcdumpPrompt {
@@ -305,36 +165,6 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string EnableDiagnosticsModeProcdumpInstallError {
             get {
                 return ResourceManager.GetString("EnableDiagnosticsModeProcdumpInstallError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap folder_3_64 {
-            get {
-                object obj = ResourceManager.GetObject("folder-3-64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap folder_3_64__g {
-            get {
-                object obj = ResourceManager.GetObject("folder-3-64 _g", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap folder_3_64__g1 {
-            get {
-                object obj = ResourceManager.GetObject("folder-3-64 _g1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -425,36 +255,6 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string FriendListTitle {
             get {
                 return ResourceManager.GetString("FriendListTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap FriendRequests_Normal {
-            get {
-                object obj = ResourceManager.GetObject("FriendRequests_Normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap FriendsHover {
-            get {
-                object obj = ResourceManager.GetObject("FriendsHover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap FriendsNormal {
-            get {
-                object obj = ResourceManager.GetObject("FriendsNormal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -685,31 +485,20 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap help_64 {
-            get {
-                object obj = ResourceManager.GetObject("help-64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap help_64_g {
-            get {
-                object obj = ResourceManager.GetObject("help-64_g", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Coming soon™.
         /// </summary>
         public static string LanguageComingSoonToolTip {
             get {
                 return ResourceManager.GetString("LanguageComingSoonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The launcher is already running and will now exit..
+        /// </summary>
+        public static string LauncherAlreadyRunningMessage {
+            get {
+                return ResourceManager.GetString("LauncherAlreadyRunningMessage", resourceCulture);
             }
         }
         
@@ -854,16 +643,6 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string LoginTooShortPassword {
             get {
                 return ResourceManager.GetString("LoginTooShortPassword", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap LongOne {
-            get {
-                object obj = ResourceManager.GetObject("LongOne", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -1323,26 +1102,6 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string ProcDumpInstallerTitle {
             get {
                 return ResourceManager.GetString("ProcDumpInstallerTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap RefreshHover {
-            get {
-                object obj = ResourceManager.GetObject("RefreshHover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap RefreshNormal {
-            get {
-                object obj = ResourceManager.GetObject("RefreshNormal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -2009,26 +1768,6 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string WindowsFirewallHelperTitle {
             get {
                 return ResourceManager.GetString("WindowsFirewallHelperTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap XButton_Hover {
-            get {
-                object obj = ResourceManager.GetObject("XButton_Hover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap XButton_Normal {
-            get {
-                object obj = ResourceManager.GetObject("XButton_Normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
