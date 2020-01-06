@@ -6,15 +6,13 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using Celeste_AOEO_Controls.MsgBox;
-using Celeste_Launcher_Gui.Account;
-using Celeste_Launcher_Gui.Forms;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
 using ProjectCeleste.GameFiles.GameScanner;
+using Celeste_Launcher_Gui.Windows;
 
 #endregion
 
@@ -48,12 +46,7 @@ namespace Celeste_Launcher_Gui
             if (!createdNew)
             {
                 Logger.Information("Launcher is already started, will exit");
-                MsgBox.ShowMessage(
-                    $@"""Celeste Fan Project Launcher"" v{
-                            Assembly.GetEntryAssembly()?.GetName().Version
-                        } already running!", "Celeste Fan Project",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                GenericMessageDialog.Show(Properties.Resources.LauncherAlreadyRunningMessage, DialogIcon.Warning, DialogOptions.Ok);
                 return;
             }
 
