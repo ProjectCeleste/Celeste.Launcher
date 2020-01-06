@@ -1,5 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
+using Celeste_Launcher_Gui.Windows;
 using Serilog;
 using System;
 using System.Windows.Input;
@@ -40,7 +41,9 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
             catch (Exception ex)
             {
                 _logger.Error(ex, ex.Message);
-                // TODO: Show error message to user here
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
+                        DialogIcon.Error,
+                        DialogOptions.Ok);
             }
         }
     }
