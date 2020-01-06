@@ -339,6 +339,96 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string FriendListAcceptRequestBtn {
+            get {
+                return ResourceManager.GetString("FriendListAcceptRequestBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add friend.
+        /// </summary>
+        public static string FriendListAddFriendBtn {
+            get {
+                return ResourceManager.GetString("FriendListAddFriendBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel friend request.
+        /// </summary>
+        public static string FriendListCancelFriendRequest {
+            get {
+                return ResourceManager.GetString("FriendListCancelFriendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decline.
+        /// </summary>
+        public static string FriendListDeclineRequestBtn {
+            get {
+                return ResourceManager.GetString("FriendListDeclineRequestBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        public static string FriendListFilterPlaceholder {
+            get {
+                return ResourceManager.GetString("FriendListFilterPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Has sent you a friend request.
+        /// </summary>
+        public static string FriendListFriendRequestDescription {
+            get {
+                return ResourceManager.GetString("FriendListFriendRequestDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offline.
+        /// </summary>
+        public static string FriendListOffline {
+            get {
+                return ResourceManager.GetString("FriendListOffline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outgoing friend request.
+        /// </summary>
+        public static string FriendListOutgoingFriendRequest {
+            get {
+                return ResourceManager.GetString("FriendListOutgoingFriendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove friend.
+        /// </summary>
+        public static string FriendListRemoveFriend {
+            get {
+                return ResourceManager.GetString("FriendListRemoveFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friends.
+        /// </summary>
+        public static string FriendListTitle {
+            get {
+                return ResourceManager.GetString("FriendListTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap FriendRequests_Normal {
@@ -365,6 +455,15 @@ namespace Celeste_Launcher_Gui.Properties {
             get {
                 object obj = ResourceManager.GetObject("FriendsNormal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friends online:.
+        /// </summary>
+        public static string FriendsOnlineText {
+            get {
+                return ResourceManager.GetString("FriendsOnlineText", resourceCulture);
             }
         }
         
@@ -1595,6 +1694,51 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string ScenarioManagerTitle {
             get {
                 return ResourceManager.GetString("ScenarioManagerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string SendFriendRequestCancelBtn {
+            get {
+                return ResourceManager.GetString("SendFriendRequestCancelBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not send a friend request to {0}.
+        /// </summary>
+        public static string SendFriendRequestFailed {
+            get {
+                return ResourceManager.GetString("SendFriendRequestFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string SendFriendRequestSendBtn {
+            get {
+                return ResourceManager.GetString("SendFriendRequestSendBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send a friend request.
+        /// </summary>
+        public static string SendFriendRequestTitle {
+            get {
+                return ResourceManager.GetString("SendFriendRequestTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username:.
+        /// </summary>
+        public static string SendFriendRequestUsernameLabel {
+            get {
+                return ResourceManager.GetString("SendFriendRequestUsernameLabel", resourceCulture);
             }
         }
         

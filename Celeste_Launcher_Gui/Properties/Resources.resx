@@ -719,4 +719,52 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="WindowsFirewallHelperSpartanNotFound" xml:space="preserve">
     <value>Spartan.exe was not found, run a game scan to make sure you are not missing any game files.</value>
   </data>
+  <data name="FriendListAcceptRequestBtn" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="FriendListAddFriendBtn" xml:space="preserve">
+    <value>Add friend</value>
+  </data>
+  <data name="FriendListCancelFriendRequest" xml:space="preserve">
+    <value>Cancel friend request</value>
+  </data>
+  <data name="FriendListDeclineRequestBtn" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="FriendListFilterPlaceholder" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="FriendListFriendRequestDescription" xml:space="preserve">
+    <value>Has sent you a friend request</value>
+  </data>
+  <data name="FriendListOffline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="FriendListOutgoingFriendRequest" xml:space="preserve">
+    <value>Outgoing friend request</value>
+  </data>
+  <data name="FriendListRemoveFriend" xml:space="preserve">
+    <value>Remove friend</value>
+  </data>
+  <data name="FriendListTitle" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="FriendsOnlineText" xml:space="preserve">
+    <value>Friends online:</value>
+  </data>
+  <data name="SendFriendRequestCancelBtn" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SendFriendRequestFailed" xml:space="preserve">
+    <value>Could not send a friend request to {0}</value>
+  </data>
+  <data name="SendFriendRequestSendBtn" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendFriendRequestTitle" xml:space="preserve">
+    <value>Send a friend request</value>
+  </data>
+  <data name="SendFriendRequestUsernameLabel" xml:space="preserve">
+    <value>Username:</value>
+  </data>
 </root>

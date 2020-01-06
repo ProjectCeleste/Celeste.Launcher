@@ -71,6 +71,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commands\FriendList\AcceptFriendRequestCommand.cs" />
+    <Compile Include="Commands\FriendList\RemoveFriendCommand.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Forms\FriendsForm.cs">
       <SubType>Form</SubType>
@@ -78,6 +80,8 @@
     <Compile Include="Forms\FriendsForm.Designer.cs">
       <DependentUpon>FriendsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FriendListItemTemplateSelector.cs" />
+    <Compile Include="Helpers\FriendListViewModelFactory.cs" />
     <Compile Include="Helpers\ProcDump.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\AppVersionService.cs" />
@@ -88,6 +92,7 @@
     <Compile Include="Helpers\Steam.cs" />
     <Compile Include="Helpers\ButtonThemeProperties.cs" />
     <Compile Include="Helpers\ZipUtils.cs" />
+    <Compile Include="Model\Friends\Friend.cs" />
     <Compile Include="Pages\LanguageSelectionPage.xaml.cs">
       <DependentUpon>LanguageSelectionPage.xaml</DependentUpon>
     </Compile>
@@ -105,6 +110,7 @@
     </Compile>
     <Compile Include="LegacyBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FriendService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\NewsPictureLoader.cs" />
     <Compile Include="Services\UpdateService.cs" />
@@ -142,9 +148,16 @@
     <Compile Include="UserControls\WindowControl.xaml.cs">
       <DependentUpon>WindowControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\FriendListViewModel.cs" />
     <Compile Include="ViewModels\LauncherVersionInfo.cs" />
+    <Compile Include="Windows\AddFriendDialog.xaml.cs">
+      <DependentUpon>AddFriendDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ChangePasswordDialog.xaml.cs">
       <DependentUpon>ChangePasswordDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\FriendList.xaml.cs">
+      <DependentUpon>FriendList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\GamePathSelectionWindow.xaml.cs">
       <DependentUpon>GamePathSelectionWindow.xaml</DependentUpon>
@@ -216,6 +229,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Default.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Babylon.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Celt.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Egypt.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Greek.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Norse.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Persia.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Roman.png" />
+    <Resource Include="Resources\Separator-HorizontalMedium.png" />
+    <Resource Include="Resources\FriendList\AddFriendLong-Hover.png" />
+    <Resource Include="Resources\FriendList\AddFriendLong-Normal.png" />
+    <Resource Include="Resources\Icons\AddFriend-Hover.png" />
+    <Resource Include="Resources\Icons\AddFriend-Normal.png" />
+    <Resource Include="Resources\FriendList\FriendList-Background.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Babylon.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Celt.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Egypt.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Empty.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Greek.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Norse.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Offline.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Outgoing.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Persia.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Requet.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Roman.png" />
     <Resource Include="Resources\Icons\AddScenario-Hover.png" />
     <Resource Include="Resources\Icons\AddScenario-Normal.png" />
     <Resource Include="Resources\Icons\DownloadScenarios-Hover.png" />
@@ -471,7 +509,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Windows\AddFriendDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ChangePasswordDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\FriendList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -557,5 +603,6 @@
       <Version>1.6.3.40</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
