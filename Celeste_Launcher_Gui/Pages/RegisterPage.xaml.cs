@@ -27,7 +27,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private async void OnVerifyEmail(object sender, RoutedEventArgs args)
         {
-            if (!Misc.IsValidEmailAdress(EmailField.LabelContent))
+            if (!Misc.IsValidEmailAdress(EmailField.InputContent))
             {
                 GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
                 return;
@@ -38,7 +38,7 @@ namespace Celeste_Launcher_Gui.Pages
 
             try
             {
-                var response = await LegacyBootstrapper.WebSocketApi.DoValidMail(EmailField.LabelContent);
+                var response = await LegacyBootstrapper.WebSocketApi.DoValidMail(EmailField.InputContent);
 
                 if (response.Result)
                 {
@@ -74,7 +74,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            if (!Misc.IsValidUserName(UsernameField.LabelContent))
+            if (!Misc.IsValidUserName(UsernameField.InputContent))
             {
                 GenericMessageDialog.Show(Properties.Resources.RegisterInvalidUsername, DialogIcon.Error);
                 return;
@@ -92,7 +92,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            if (VerifyKeyField.LabelContent.Length != 32)
+            if (VerifyKeyField.InputContent.Length != 32)
             {
                 GenericMessageDialog.Show(Properties.Resources.RegisterInvalidKeyLength, DialogIcon.Error);
                 return;
@@ -102,8 +102,8 @@ namespace Celeste_Launcher_Gui.Pages
 
             try
             {
-                var response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.LabelContent, VerifyKeyField.LabelContent, 
-                    UsernameField.LabelContent, PasswordField.PasswordInputBox.Password);
+                var response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.InputContent, VerifyKeyField.InputContent, 
+                    UsernameField.InputContent, PasswordField.PasswordInputBox.Password);
 
                 if (response.Result)
                 {
