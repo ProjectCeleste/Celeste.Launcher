@@ -688,6 +688,9 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="LauncherAlreadyRunningMessage" xml:space="preserve">
     <value>The launcher is already running and will now exit.</value>
   </data>
+  <data name="FriendListMaxFriendsReached" xml:space="preserve">
+    <value>Cannot add a friend because your friendlist is full.</value>
+  </data>
   <data name="GamePathSelectionWindowTitle" xml:space="preserve">
     <value>Select game location</value>
   </data>

@@ -24,6 +24,8 @@ namespace Celeste_Launcher_Gui.Services
     {
         private WebSocketApi _webSocket;
 
+        public const int MaxAllowedFriends = 99;
+
         public FriendService(WebSocketApi webSocket)
         {
             _webSocket = webSocket;

@@ -7,6 +7,7 @@ namespace Celeste_Launcher_Gui.ViewModels
     {
         public ObservableCollection<FriendListItem> FriendListItems { get; set; }
         public int OnlineFriendsCount { get; set; }
+        public int FriendListCount { get; set; }
     }
 
     public class OnlineFriend : ExistingFriend
