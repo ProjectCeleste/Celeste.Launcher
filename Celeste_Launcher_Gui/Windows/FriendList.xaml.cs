@@ -66,7 +66,7 @@ namespace Celeste_Launcher_Gui.Windows
             var friendListViewItem = item as FriendListItem;
             var filterText = FilterInputText.Text;
 
-            if (string.IsNullOrWhiteSpace(filterText) || friendListViewItem == null)
+            if (string.IsNullOrWhiteSpace(filterText) || friendListViewItem == null || friendListViewItem.Username == null)
                 return true;
 
             if (CultureInfo.InvariantCulture.CompareInfo.IndexOf(friendListViewItem.Username, filterText, CompareOptions.IgnoreCase) >= 0)
