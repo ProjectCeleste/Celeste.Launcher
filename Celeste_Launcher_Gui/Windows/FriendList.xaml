@@ -43,7 +43,7 @@
         </Style>
 
         <Style TargetType="TextBlock" x:Key="FriendsListItemTitle">
-            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="Height" Value="20" />
             <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
             <Setter Property="LineHeight" Value="14pt"/>
@@ -68,7 +68,7 @@
         </Style>
 
         <Style TargetType="TextBlock" x:Key="FriendsListItemPendingActionDescription">
-            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
         </Style>
 
@@ -178,7 +178,7 @@
                 </StackPanel.Background>
                 <StackPanel Margin="15,0,0,0">
                     <TextBlock Text="{Binding Username}" Style="{StaticResource FriendsListItemTitle}" LineHeight="20pt"/>
-                    <TextBlock Text="{x:Static p:Resources.FriendListAcceptRequestBtn}" Style="{StaticResource FriendsListItemDescription}"/>
+                    <TextBlock Text="{x:Static p:Resources.FriendListFriendRequestDescription}" Style="{StaticResource FriendsListItemDescription}"/>
                     <StackPanel Orientation="Horizontal">
                         <Button Style="{StaticResource GenericCustomizedButton}" Command="{Binding AcceptFriendRequestCommand}" CommandParameter="{Binding}">
                             <TextBlock Text="{x:Static p:Resources.FriendListAcceptRequestBtn}" FontSize="16" Foreground="#00ff00" />
