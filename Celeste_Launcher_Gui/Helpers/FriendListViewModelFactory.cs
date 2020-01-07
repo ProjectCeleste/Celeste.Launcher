@@ -51,6 +51,7 @@ namespace Celeste_Launcher_Gui.Helpers
                 friendListViewModel.FriendListItems.Add(MapOutoingFriendRequest(outgoingRequest, removeFriendCommand));
 
             friendListViewModel.OnlineFriendsCount = friendListViewModel.FriendListItems.Count(t => t is OnlineFriend);
+            friendListViewModel.FriendListCount = friends.Count;
 
             return friendListViewModel;
         }

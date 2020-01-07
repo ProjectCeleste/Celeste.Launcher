@@ -99,6 +99,15 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void AddFriendClick(object sender, RoutedEventArgs e)
         {
+            var friendList = DataContext as FriendListViewModel;
+            if (friendList?.FriendListCount >= FriendService.MaxAllowedFriends)
+            {
+                GenericMessageDialog.Show(Properties.Resources.FriendListMaxFriendsReached,
+                                       DialogIcon.Warning,
+                                       DialogOptions.Ok);
+                return;
+            }
+
             var userSelectedAddFriend = new AddFriendDialog(_friendService).ShowDialog();
             if (userSelectedAddFriend == true)
                 UpdateFriendList();

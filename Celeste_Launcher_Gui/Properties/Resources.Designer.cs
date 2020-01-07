@@ -223,6 +223,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot add a friend because your friendlist is full..
+        /// </summary>
+        public static string FriendListMaxFriendsReached {
+            get {
+                return ResourceManager.GetString("FriendListMaxFriendsReached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offline.
         /// </summary>
         public static string FriendListOffline {
