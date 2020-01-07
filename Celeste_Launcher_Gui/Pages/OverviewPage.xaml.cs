@@ -60,7 +60,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnFriendsClick(object sender, RoutedEventArgs e)
         {
-            new FriendList().Show();
+            FriendList.Display();
         }
 
         private void OnDonateClick(object sender, RoutedEventArgs e)

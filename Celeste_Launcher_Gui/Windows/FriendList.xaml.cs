@@ -22,7 +22,17 @@ namespace Celeste_Launcher_Gui.Windows
         private ILogger _logger;
         private FriendListViewModelFactory _friendListViewModelFactory;
 
-        public FriendList()
+        private static FriendList Instance;
+
+        public static void Display()
+        {
+            if (Instance == null)
+                Instance = new FriendList();
+
+            Instance.Show();
+        }
+
+        private FriendList()
         {
             InitializeComponent();
             _updateTimer = new Timer(new TimerCallback((o) => UpdateFriendList()), null, 0, 30000);
@@ -38,7 +48,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
-            Close();
+            Hide();
         }
 
         private async void UpdateFriendList()
