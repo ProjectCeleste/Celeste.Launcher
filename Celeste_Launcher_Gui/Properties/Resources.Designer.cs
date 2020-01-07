@@ -314,6 +314,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select game location.
+        /// </summary>
+        public static string GamePathSelectionWindowTitle {
+            get {
+                return ResourceManager.GetString("GamePathSelectionWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Celeste location.
         /// </summary>
         public static string GamePathSelectorTitle {
@@ -872,6 +881,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multiplayer Settings.
+        /// </summary>
+        public static string MultiplayerSettingsTitle {
+            get {
+                return ResourceManager.GetString("MultiplayerSettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UPnP using open.nat.
         /// </summary>
         public static string MultiplayerSettingsUpnp {
@@ -1358,6 +1376,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        public static string ResetPasswordTitle {
+            get {
+                return ResourceManager.GetString("ResetPasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        public static string ResetPasswordWindowTitle {
+            get {
+                return ResourceManager.GetString("ResetPasswordWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the file {0}?.
         /// </summary>
         public static string ScenarioEditorDeleteScenarioPrompt {
@@ -1552,6 +1588,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string SteamConverterTitle {
             get {
                 return ResourceManager.GetString("SteamConverterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Steam Conversion.
+        /// </summary>
+        public static string SteamConverterWindowTitle {
+            get {
+                return ResourceManager.GetString("SteamConverterWindowTitle", resourceCulture);
             }
         }
         

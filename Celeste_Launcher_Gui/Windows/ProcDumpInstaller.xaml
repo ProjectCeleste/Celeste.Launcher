@@ -7,7 +7,7 @@
              xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
              mc:Ignorable="d" 
              WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
-             Width="849" Height="308" Loaded="Window_Loaded">
+             Width="849" Height="308" Loaded="Window_Loaded" Title="{x:Static p:Resources.ProcDumpInstallerTitle}">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/MediumDialogue-Background.png"/>
