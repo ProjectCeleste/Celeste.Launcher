@@ -8,7 +8,7 @@
              xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
              mc:Ignorable="d" 
              WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
-             Width="849" Height="308">
+             Width="849" Height="308" Title="{x:Static p:Resources.MultiplayerSettingsTitle}">
     <Window.Resources>
         <Style TargetType="CheckBox">
             <Setter Property="FontSize" Value="15" />

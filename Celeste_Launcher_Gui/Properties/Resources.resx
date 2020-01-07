@@ -688,4 +688,19 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="LauncherAlreadyRunningMessage" xml:space="preserve">
     <value>The launcher is already running and will now exit.</value>
   </data>
+  <data name="GamePathSelectionWindowTitle" xml:space="preserve">
+    <value>Select game location</value>
+  </data>
+  <data name="MultiplayerSettingsTitle" xml:space="preserve">
+    <value>Multiplayer Settings</value>
+  </data>
+  <data name="ResetPasswordTitle" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="ResetPasswordWindowTitle" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="SteamConverterWindowTitle" xml:space="preserve">
+    <value>Confirm Steam Conversion</value>
+  </data>
 </root>
