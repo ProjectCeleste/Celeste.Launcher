@@ -16,12 +16,12 @@
     </Window.Background>
     <Window.Resources>
 
-        <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
         </Style>
 
-        <Style TargetType="TextBox" x:Key="FilterInputBoxStyle">
+        <Style TargetType="TextBox" x:Key="FilterInputBoxStyle" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
             <Setter Property="FontSize" Value="19" />
@@ -30,19 +30,19 @@
             <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
 
-        <Style TargetType="Label">
+        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
             <Setter Property="FontSize" Value="15" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="FriendsOnlineCount">
+        <Style TargetType="TextBlock" x:Key="FriendsOnlineCount" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
             <Setter Property="Foreground" Value="#00ff00" />
             <Setter Property="FontSize" Value="16" />
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="FriendsListItemTitle">
+        <Style TargetType="TextBlock" x:Key="FriendsListItemTitle" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Height" Value="20" />
             <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
@@ -50,7 +50,7 @@
             <Setter Property="Margin" Value="0,6,0,0"/>
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="FriendsListItemDescription">
+        <Style TargetType="TextBlock" x:Key="FriendsListItemDescription" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="Height" Value="14" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="Foreground" Value="#9a9a9a9a" />
@@ -59,7 +59,7 @@
             <Setter Property="Margin" Value="0,4,0,0"/>
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="FriendsListStatus">
+        <Style TargetType="TextBlock" x:Key="FriendsListStatus" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="Height" Value="14" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
@@ -67,7 +67,7 @@
             <Setter Property="Margin" Value="0,4,0,0"/>
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="FriendsListItemPendingActionDescription">
+        <Style TargetType="TextBlock" x:Key="FriendsListItemPendingActionDescription" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="FontSize" Value="12" />
             <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
         </Style>
@@ -83,15 +83,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border Name="border" Background="{TemplateBinding Background}">
                             <Grid>
-                                <ContentPresenter VerticalAlignment="Center" Name="content">
-                                    <ContentPresenter.Effect>
-                                        <DropShadowEffect ShadowDepth="4"
-                                                      Direction="330"
-                                                      Color="Black"
-                                                      Opacity="0.5"
-                                                      BlurRadius="4"/>
-                                    </ContentPresenter.Effect>
-                                </ContentPresenter>
+                                <ContentPresenter VerticalAlignment="Center" Name="content"/>
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>

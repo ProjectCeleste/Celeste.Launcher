@@ -14,11 +14,7 @@
                         <Grid>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Name="content">
                                 <ContentPresenter.Effect>
-                                    <DropShadowEffect ShadowDepth="4"
-                                                      Direction="330"
-                                                      Color="Black"
-                                                      Opacity="0.5"
-                                                      BlurRadius="4"/>
+                                    <DropShadowEffect ShadowDepth="2" Direction="225" BlurRadius="5" />
                                 </ContentPresenter.Effect>
                             </ContentPresenter>
                         </Grid>

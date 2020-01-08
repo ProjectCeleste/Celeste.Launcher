@@ -13,13 +13,6 @@
             <Label Name="LabelText" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Ashley-Crawford-CG}"
                        FontSize="{Binding LabelSize}"
                        Foreground="White" Content="{Binding LabelContents}">
-                <Label.Effect>
-                    <DropShadowEffect ShadowDepth="4"
-                                    Direction="330"
-                                    Color="Black"
-                                    Opacity="0.5"
-                                    BlurRadius="4"/>
-                </Label.Effect>
             </Label>
         </Grid>
         <Image HorizontalAlignment="Left" Stretch="None">

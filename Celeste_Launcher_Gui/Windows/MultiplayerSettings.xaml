@@ -20,13 +20,13 @@
             <Setter Property="Margin" Value="20,0,20,0" />
         </Style>
 
-        <Style TargetType="Label" x:Key="CheckBoxLabel">
+        <Style TargetType="Label" x:Key="CheckBoxLabel" BasedOn="{StaticResource {x:Type Label}}">
             <Setter Property="FontSize" Value="15" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="TextBlockTitle">
+        <Style TargetType="TextBlock" x:Key="TextBlockTitle" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
@@ -43,7 +43,7 @@
             <Setter Property="Margin" Value="2" />
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="PortMappingCheckBoxTextBlock">
+        <Style TargetType="TextBlock" x:Key="PortMappingCheckBoxTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="MaxWidth" Value="200" />
             <Setter Property="Margin" Value="10" />
