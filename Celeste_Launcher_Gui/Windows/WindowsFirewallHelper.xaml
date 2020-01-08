@@ -9,19 +9,20 @@
              WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
              Width="849" Height="308" Loaded="Window_Loaded" Title="{x:Static p:Resources.WindowsFirewallHelperTitle}">
     <Window.Resources>
-        <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
-        <Style TargetType="Label">
+        <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -31,7 +32,7 @@
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <Grid>
                 <Label FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Top"
-                                Content="{x:Static p:Resources.WindowsFirewallHelperTitle}" Margin="0,10,0,0"/>
+                                Content="{x:Static p:Resources.WindowsFirewallHelperTitle}" Margin="0,10,0,0" />
                 <StackPanel Margin="0,60,0,0">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,165,0">
                         <Label Content="{x:Static p:Resources.WindowsFirewallHelperApplication}" Width="200" FontWeight="Bold" Foreground="Gray"/>
@@ -39,7 +40,19 @@
                         <Label Content="{x:Static p:Resources.WindowsFirewallHelperOutbound}" Width="150" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="Gray"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
-                        <Label Content="Launcher" Width="200"/>
+                        <Label Content="Launcher" Width="200">
+
+                        </Label>
+
+
+                        <!--
+                        <telerik:RadWindow.RenderTransform>
+                            <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+                        </telerik:RadWindow.RenderTransform>
+                        <telerik:RadWindow.Effect>
+                            <DropShadowEffect ShadowDepth="10"/>
+                        </telerik:RadWindow.Effect>-->
+
                         <Label Content="-" Width="150" HorizontalContentAlignment="Center"/>
                         <Label Content="Not Found" Width="150" HorizontalContentAlignment="Center" x:Name="LauncherOutboundStatus"/>
                         <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.WindowsFirewallHelperOpenBtn}" x:Name="LauncherOpenBtn" Click="LauncherOpenBtn_Click"/>

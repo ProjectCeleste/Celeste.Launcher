@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Styles/Scrollbars.xaml"/>
                 <ResourceDictionary Source="Styles/ListView.xaml"/>
                 <ResourceDictionary Source="Styles/RadioButton.xaml"/>
+                <ResourceDictionary Source="Styles/TextEffects.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

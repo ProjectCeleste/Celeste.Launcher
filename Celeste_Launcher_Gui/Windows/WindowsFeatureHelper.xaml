@@ -9,14 +9,14 @@
              WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
              Width="849" Height="308" Loaded="Window_Loaded" Title="{x:Static p:Resources.WindowsFeatureHelperTitle}">
     <Window.Resources>
-        <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
-        
-        <Style TargetType="Label">
+
+        <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
