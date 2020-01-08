@@ -30,7 +30,7 @@
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewFriendsSideMenuBtn}" 
                 DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Hover.png" HorizontalAlignment="Left" Click="OnFriendsClick"/>
+                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Hover.png" HorizontalAlignment="Left" Click="OnFriendsClick" x:Name="FriendsIcon"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewDonateSideMenuBtn}" 

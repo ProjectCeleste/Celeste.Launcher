@@ -5,7 +5,6 @@ using Celeste_Public_Api.Logging;
 using Serilog;
 using System;
 using System.Globalization;
-using System.Threading;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -17,11 +16,10 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class FriendList : Window
     {
-        private Timer _updateTimer;
         private IFriendService _friendService;
         private ILogger _logger;
         private FriendListViewModelFactory _friendListViewModelFactory;
-
+        
         private static FriendList Instance;
 
         public static void Display()
@@ -35,10 +33,16 @@ namespace Celeste_Launcher_Gui.Windows
         private FriendList()
         {
             InitializeComponent();
-            _updateTimer = new Timer(new TimerCallback((o) => UpdateFriendList()), null, 0, 30000);
-            _friendService = new FriendService(LegacyBootstrapper.WebSocketApi);
+            _friendService = FriendService.GetInstance();
             _logger = LoggerFactory.GetLogger();
             _friendListViewModelFactory = new FriendListViewModelFactory(_friendService, _logger);
+
+            _friendService.FriendListUpdated += _friendService_FriendListUpdated;
+        }
+
+        private void _friendService_FriendListUpdated(Model.Friends.FriendList friendList)
+        {
+            SetFriendList(friendList);
         }
 
         private void BorderMoved(object sender, MouseButtonEventArgs e)
@@ -51,24 +55,35 @@ namespace Celeste_Launcher_Gui.Windows
             Hide();
         }
 
+        private void FriendListLoaded(object sender, RoutedEventArgs e)
+        {
+            UpdateFriendList();
+        }
+
         private async void UpdateFriendList()
         {
             try
             {
-                var friendListViewModel = await _friendListViewModelFactory.CreateFriendListViewModel(UpdateFriendList);
-
-                Dispatcher.Invoke(() =>
-                {
-                    DataContext = friendListViewModel;
-
-                    var view = (CollectionView)CollectionViewSource.GetDefaultView(friendListViewModel.FriendListItems);
-                    view.Filter = FilterFriendListViewItem;
-                });
+                var friendList = await _friendService.FetchFriendList();
+                SetFriendList(friendList);
             }
             catch (Exception ex)
             {
                 _logger.Error(ex, ex.Message);
             }
+        }
+
+        private void SetFriendList(Model.Friends.FriendList friendList)
+        {
+            var friendListViewModel = _friendListViewModelFactory.CreateFriendListViewModel(friendList, UpdateFriendList);
+
+            Dispatcher.Invoke(() =>
+            {
+                DataContext = friendListViewModel;
+
+                var view = (CollectionView)CollectionViewSource.GetDefaultView(friendListViewModel.FriendListItems);
+                view.Filter = FilterFriendListViewItem;
+            });
         }
 
         private bool FilterFriendListViewItem(object item)
@@ -115,13 +130,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void FilterTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
-
             CollectionViewSource.GetDefaultView(((FriendListViewModel)DataContext).FriendListItems)?.Refresh();
-        }
-
-        private void FriendListClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            _updateTimer.Dispose();
         }
     }
 }
