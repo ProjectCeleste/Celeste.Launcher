@@ -9,8 +9,8 @@
              mc:Ignorable="d" 
              WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" AllowsTransparency="True"
              Width="410" Height="698"
-             Closing="FriendListClosing"
-             Title="{x:Static p:Resources.FriendListTitle}">
+             Title="{x:Static p:Resources.FriendListTitle}"
+             Loaded="FriendListLoaded">
     <Window.Background>
         <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/FriendList-Background.png"/>
     </Window.Background>

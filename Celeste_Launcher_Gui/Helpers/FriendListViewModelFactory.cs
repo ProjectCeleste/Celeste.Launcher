@@ -23,11 +23,8 @@ namespace Celeste_Launcher_Gui.Helpers
             _logger = logger;
         }
 
-        public async Task<FriendListViewModel> CreateFriendListViewModel(Action refreshFriendListAction)
+        public FriendListViewModel CreateFriendListViewModel(FriendList friendList, Action refreshFriendListAction)
         {
-            var friends = await _friendService.GetFriendList();
-            var (incomingRequests, outgoingRequests) = await _friendService.GetFriendRequests();
-
             var friendListViewModel = new FriendListViewModel()
             {
                 FriendListItems = new ObservableCollection<FriendListItem>()
@@ -36,22 +33,22 @@ namespace Celeste_Launcher_Gui.Helpers
             var acceptFriendCommand = new AcceptFriendRequestCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
             var removeFriendCommand = new RemoveFriendCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
 
-            foreach (var friend in friends.Where(t => t.IsOnline))
+            foreach (var friend in friendList.Friends.Where(t => t.IsOnline))
                 friendListViewModel.FriendListItems.Add(MapFriendToViewModel(friend, removeFriendCommand));
 
-            foreach (var friend in friends.Where(t => !t.IsOnline))
+            foreach (var friend in friendList.Friends.Where(t => !t.IsOnline))
                 friendListViewModel.FriendListItems.Add(MapFriendToViewModel(friend, removeFriendCommand));
 
             friendListViewModel.FriendListItems.Add(new FriendListSeparator());
 
-            foreach (var incomingRequest in incomingRequests)
+            foreach (var incomingRequest in friendList.IncomingRequests)
                 friendListViewModel.FriendListItems.Add(MapFriendRequestToViewModel(incomingRequest, acceptFriendCommand, removeFriendCommand));
 
-            foreach (var outgoingRequest in outgoingRequests)
+            foreach (var outgoingRequest in friendList.OutgoingRequests)
                 friendListViewModel.FriendListItems.Add(MapOutoingFriendRequest(outgoingRequest, removeFriendCommand));
 
             friendListViewModel.OnlineFriendsCount = friendListViewModel.FriendListItems.Count(t => t is OnlineFriend);
-            friendListViewModel.FriendListCount = friends.Count;
+            friendListViewModel.FriendListCount = friendList.Friends.Count;
 
             return friendListViewModel;
         }

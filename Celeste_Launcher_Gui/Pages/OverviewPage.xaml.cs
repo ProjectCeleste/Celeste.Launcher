@@ -18,12 +18,29 @@ namespace Celeste_Launcher_Gui.Pages
     {
         public User CurrentUser => LegacyBootstrapper.CurrentUser;
         private NewsPicture _currentNews = NewsPicture.Default();
+        private IFriendService _friendService;
 
         public OverviewPage()
         {
             InitializeComponent();
             SetNewsPictureSource(_currentNews.ImageSource);
             DataContext = this;
+            _friendService = FriendService.GetInstance();
+            _friendService.FriendListUpdated += SetFriendListIcon;
+        }
+
+        private void SetFriendListIcon(Model.Friends.FriendList e)
+        {
+            if (e.IncomingRequests.Count > 0)
+            {
+                FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Alert-Normal.png";
+                FriendsIcon.HoverIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Alert-Hover.png";
+            }
+            else
+            {
+                FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Normal.png";
+                FriendsIcon.HoverIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Hover.png";
+            }
         }
 
         public void OnWebisteClick(object sender, RoutedEventArgs e)
@@ -210,17 +227,19 @@ namespace Celeste_Launcher_Gui.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var newsLoader = new NewsPictureLoader();
             try
             {
+                await _friendService.FetchFriendList();
+
+                var newsLoader = new NewsPictureLoader();
                 _currentNews = await newsLoader.GetNewsDescription();
+
+                SetNewsPictureSource(_currentNews.ImageSource);
             }
             catch
             {
                 _currentNews = NewsPicture.Default();
             }
-
-            SetNewsPictureSource(_currentNews.ImageSource);
         }
 
         private void SetNewsPictureSource(string imageUri)

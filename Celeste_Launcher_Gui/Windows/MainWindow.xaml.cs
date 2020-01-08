@@ -32,8 +32,9 @@ namespace Celeste_Launcher_Gui.Windows
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
-        {
+        { 
             Close();
+            Application.Current.Shutdown();
         }
 
         private void OnMinimize(object sender, RoutedEventArgs e)

@@ -87,6 +87,7 @@
     <Compile Include="Helpers\ButtonThemeProperties.cs" />
     <Compile Include="Helpers\ZipUtils.cs" />
     <Compile Include="Model\Friends\Friend.cs" />
+    <Compile Include="Model\Friends\FriendList.cs" />
     <Compile Include="Pages\LanguageSelectionPage.xaml.cs">
       <DependentUpon>LanguageSelectionPage.xaml</DependentUpon>
     </Compile>
@@ -220,6 +221,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Resource Include="Resources\Icons\Friends-Alert-Hover.png" />
+    <Resource Include="Resources\Icons\Friends-Alert-Normal.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Default.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Babylon.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Celt.png" />
