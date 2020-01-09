@@ -211,6 +211,7 @@ namespace Celeste_Launcher_Gui.Pages
             }
 
             var scanner = new GamePathSelectionWindow();
+            scanner.Owner = Window.GetWindow(this);
             scanner.ShowDialog();
         }
 
