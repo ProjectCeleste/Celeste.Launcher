@@ -123,7 +123,11 @@ namespace Celeste_Launcher_Gui.Windows
                 return;
             }
 
-            var userSelectedAddFriend = new AddFriendDialog(_friendService).ShowDialog();
+            var addFriendDialog = new AddFriendDialog(_friendService);
+            addFriendDialog.Owner = this;
+
+            var userSelectedAddFriend = addFriendDialog.ShowDialog();
+
             if (userSelectedAddFriend == true)
                 UpdateFriendList();
         }

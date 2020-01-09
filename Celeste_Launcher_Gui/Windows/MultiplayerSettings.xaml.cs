@@ -132,7 +132,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (networkInterface == null)
             {
                 var netDeviceSelectDialog = new NetworkDeviceSelectorDialog();
-
+                netDeviceSelectDialog.Owner = this;
                 netDeviceSelectDialog.ShowDialog();
 
                 if (netDeviceSelectDialog.DialogResult != true)
