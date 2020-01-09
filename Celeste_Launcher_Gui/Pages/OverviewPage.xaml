@@ -147,7 +147,7 @@
         <!-- playbuttons box = 480x155 -->
         <Grid Margin="485,434,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="153" Width="479">
             <StackPanel VerticalAlignment="Center">
-                <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.OverviewLoginBtn}" Margin="0,0,0,2" Click="OnLoginClick" x:Name="LoginBtn"/>
+                <Button Style="{StaticResource LargeButton}" Content="{x:Static p:Resources.OverviewLoginBtn}" Margin="0,0,0,2" Click="OnLoginClick" x:Name="LoginBtn" IsDefault="True"/>
                 <WrapPanel HorizontalAlignment="Center">
                     <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OverviewPlayOfflineBtn}" Click="OnPlayOffline" x:Name="PlayOfflineBtn"/>
                 </WrapPanel>
