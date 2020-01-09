@@ -74,7 +74,9 @@ namespace Celeste_Launcher_Gui.Pages
         #region Settings
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            new WindowsFeatureHelper().ShowDialog();
+            var windowsFeatureHelper = new WindowsFeatureHelper();
+            windowsFeatureHelper.Owner = Window.GetWindow(this);
+            windowsFeatureHelper.ShowDialog();
         }
 
         private void EnableDiagnosticsMode(object sender, RoutedEventArgs e)
@@ -89,10 +91,15 @@ namespace Celeste_Launcher_Gui.Pages
                     if (!File.Exists(procdumpFileName))
                     {
                         var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo);
+                        dialog.Owner = Window.GetWindow(this);
 
                         var dr = dialog.ShowDialog();
                         if (dr.Value == true)
-                            new ProcDumpInstaller().ShowDialog();
+                        {
+                            var procDumpInstallerDialog = new ProcDumpInstaller();
+                            procDumpInstallerDialog.Owner = Window.GetWindow(this);
+                            procDumpInstallerDialog.ShowDialog();
+                        }
                         else
                             LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
                     }
@@ -107,7 +114,9 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            new SteamConverterWindow().ShowDialog();
+            var steamConverterWindow = new SteamConverterWindow();
+            steamConverterWindow.Owner = Window.GetWindow(this);
+            steamConverterWindow.ShowDialog();
         }
 
         private void OpenGameLanguage(object sender, RoutedEventArgs e)
@@ -131,7 +140,9 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenFirewallHelper(object sender, RoutedEventArgs e)
         {
-            new Windows.WindowsFirewallHelper().ShowDialog();
+            var firewallHelper = new Windows.WindowsFirewallHelper();
+            firewallHelper.Owner = Window.GetWindow(this);
+            firewallHelper.ShowDialog();
         }
 
         private void OpenLauncherUpdater(object sender, RoutedEventArgs e)
@@ -144,6 +155,7 @@ namespace Celeste_Launcher_Gui.Pages
             }
 
             var updater = new UpdateWindow();
+            updater.Owner = Window.GetWindow(this);
             updater.ShowDialog();
         }
         #endregion
