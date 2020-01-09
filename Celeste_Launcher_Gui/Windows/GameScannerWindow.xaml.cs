@@ -7,6 +7,7 @@ using Serilog;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -67,7 +68,7 @@ namespace Celeste_Launcher_Gui.Windows
                 progress.ProgressChanged += ProgressChanged;
                 subProgress.ProgressChanged += SubProgressChanged;
 
-                if (await GameScanner.ScanAndRepair(progress, subProgress))
+                if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress)))
                 {
                     CurrentFileLabel.Content = string.Empty;
                     MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;
