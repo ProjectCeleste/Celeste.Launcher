@@ -66,6 +66,7 @@ namespace Celeste_Launcher_Gui.Windows
                 LegacyBootstrapper.UserConfig.GameFilesPath = PathLocation.Text;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
                 var scanner = new GameScannerWindow(PathLocation.Text, LegacyBootstrapper.UserConfig.IsSteamVersion);
+                scanner.Owner = Owner;
                 scanner.ShowDialog();
             }
         }
