@@ -1,11 +1,12 @@
 ﻿#region Using directives
 
+using Celeste_Public_Api.Logging;
+using Serilog;
 using System;
 using System.Net;
 using System.Net.Security;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
 
 #endregion
 
@@ -13,6 +14,8 @@ namespace Celeste_Public_Api.Helpers
 {
     public static class InternetUtils
     {
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
+
         public static void SslFix()
         {
 
@@ -34,10 +37,8 @@ namespace Celeste_Public_Api.Helpers
             if (error == SslPolicyErrors.RemoteCertificateNameMismatch || error == SslPolicyErrors.RemoteCertificateChainErrors)
                 return true;
 //#endif      
-            MessageBox.Show($"X509Certificate [{cert.Subject}]\r\n" +
-                            "Policy Error:\r\n" +
-                            $"'{error}'", "", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+
+            Logger.Error($"X509Certificate [{cert.Subject}] Policy Error: {error}");
 
             return false;
         }

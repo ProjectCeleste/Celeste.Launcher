@@ -1,241 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{589BC356-4A36-42FB-AE10-95AEDEC36AE6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Celeste_Launcher_Gui</RootNamespace>
-    <AssemblyName>Celeste_Launcher_Gui</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
+    <TargetFramework>net472</TargetFramework>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>
-    </DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http" />
+    <PackageReference Include="CredentialManagement" Version="1.0.2" />
+    <PackageReference Include="Markdig" Version="0.17.0" />
+    <PackageReference Include="Microsoft.Dism" Version="2.0.14" />
+    <PackageReference Include="Open.NAT" Version="2.1.0" />
+    <PackageReference Include="PanelManager" Version="1.0.0" />
+    <PackageReference Include="ProjectCeleste.GameFiles.GameScanner" Version="2.2.3" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Windows7APICodePack-Shell" Version="1.1.0" />
+    <PackageReference Include="WindowsFirewallHelper" Version="1.6.3.40" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="System.Web" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Account\CurrentUser.cs" />
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Commands\FriendList\AcceptFriendRequestCommand.cs" />
-    <Compile Include="Commands\FriendList\RemoveFriendCommand.cs" />
-    <Compile Include="Config.cs" />
-    <Compile Include="Helpers\FriendListItemTemplateSelector.cs" />
-    <Compile Include="Helpers\FriendListViewModelFactory.cs" />
-    <Compile Include="Helpers\ProcDump.cs" />
-    <Compile Include="Helpers\StringExtensions.cs" />
-    <Compile Include="Helpers\AppVersionService.cs" />
-    <Compile Include="Helpers\Dism.cs" />
-    <Compile Include="Helpers\Firewall.cs" />
-    <Compile Include="Helpers\OpenNat.cs" />
-    <Compile Include="Helpers\OSVersion.cs" />
-    <Compile Include="Helpers\Steam.cs" />
-    <Compile Include="Helpers\ButtonThemeProperties.cs" />
-    <Compile Include="Helpers\ZipUtils.cs" />
-    <Compile Include="Model\Friends\Friend.cs" />
-    <Compile Include="Model\Friends\FriendList.cs" />
-    <Compile Include="Pages\LanguageSelectionPage.xaml.cs">
-      <DependentUpon>LanguageSelectionPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MainMenuPage.xaml.cs">
-      <DependentUpon>MainMenuPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\OverviewPage.xaml.cs">
-      <DependentUpon>OverviewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\RegisterPage.xaml.cs">
-      <DependentUpon>RegisterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LegacyBootstrapper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\FriendService.cs" />
-    <Compile Include="Services\GameService.cs" />
-    <Compile Include="Services\NewsPictureLoader.cs" />
-    <Compile Include="Services\UpdateService.cs" />
-    <Compile Include="Account\UserCredentialService.cs" />
-    <Compile Include="UserControls\ShortRegisterInputField.xaml.cs">
-      <DependentUpon>ShortRegisterInputField.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ShortRegisterPasswordInputField.xaml.cs">
-      <DependentUpon>ShortRegisterPasswordInputField.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SideBarMenuItem.xaml.cs">
-      <DependentUpon>SideBarMenuItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SideBarMenuItemRight.xaml.cs">
-      <DependentUpon>SideBarMenuItemRight.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UpdateProgressBar.xaml.cs">
-      <DependentUpon>UpdateProgressBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UserInfoWidget.xaml.cs">
-      <DependentUpon>UserInfoWidget.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\VersionNumberLabel.xaml.cs">
-      <DependentUpon>VersionNumberLabel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\WideRegisterInputField.xaml.cs">
-      <DependentUpon>WideRegisterInputField.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\WideRegisterPasswordInputField.xaml.cs">
-      <DependentUpon>WideRegisterPasswordInputField.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\WideUpdateProgressBar.xaml.cs">
-      <DependentUpon>WideUpdateProgressBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\WindowControl.xaml.cs">
-      <DependentUpon>WindowControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\FriendListViewModel.cs" />
-    <Compile Include="ViewModels\LauncherVersionInfo.cs" />
-    <Compile Include="Windows\AddFriendDialog.xaml.cs">
-      <DependentUpon>AddFriendDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ChangePasswordDialog.xaml.cs">
-      <DependentUpon>ChangePasswordDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\FriendList.xaml.cs">
-      <DependentUpon>FriendList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\GamePathSelectionWindow.xaml.cs">
-      <DependentUpon>GamePathSelectionWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\GameScannerWindow.xaml.cs">
-      <DependentUpon>GameScannerWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\GenericMessageDialog.xaml.cs">
-      <DependentUpon>GenericMessageDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\MultiplayerSettings.xaml.cs">
-      <DependentUpon>MultiplayerSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\NetworkDeviceSelectorDialog.xaml.cs">
-      <DependentUpon>NetworkDeviceSelectorDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ProcDumpInstaller.xaml.cs">
-      <DependentUpon>ProcDumpInstaller.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ResetPasswordDialog.xaml.cs">
-      <DependentUpon>ResetPasswordDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\ScenarioManager.xaml.cs">
-      <DependentUpon>ScenarioManager.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\SteamConverterWindow.xaml.cs">
-      <DependentUpon>SteamConverterWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\UpdateWindow.xaml.cs">
-      <DependentUpon>UpdateWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\WindowsFeatureHelper.xaml.cs">
-      <DependentUpon>WindowsFeatureHelper.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\WindowsFirewallHelper.xaml.cs">
-      <DependentUpon>WindowsFirewallHelper.xaml</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="icon.ico" />
-    <Resource Include="Resources\Icons\Friends-Alert-Hover.png" />
-    <Resource Include="Resources\Icons\Friends-Alert-Normal.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Default.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Babylon.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Celt.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Egypt.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Greek.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Norse.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Persia.png" />
-    <Resource Include="Resources\FriendList\ProfilePictures\Roman.png" />
-    <Resource Include="Resources\Separator-HorizontalMedium.png" />
+    <Resource Include="Resources\AoEO_Logo.png" />
+    <Resource Include="Resources\ashley_crawford_cg.ttf" />
+    <Resource Include="Resources\BackgroundTexture.png" />
+    <Resource Include="Resources\BarSeparator.png" />
+    <Resource Include="Resources\BarSeparatorVertical.png" />
+    <Resource Include="Resources\ButtonBackgroundBarLong.png" />
+    <Resource Include="Resources\ButtonBackgroundBarShort.png" />
+    <Resource Include="Resources\Buttons\LargeButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\LargeButtonHover.png" />
+    <Resource Include="Resources\Buttons\LargeButtonNormal.png" />
+    <Resource Include="Resources\Buttons\MediumButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\MediumButtonHover.png" />
+    <Resource Include="Resources\Buttons\MediumButtonNormal.png" />
+    <Resource Include="Resources\Buttons\TinyButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\TinyButtonHover.png" />
+    <Resource Include="Resources\Buttons\TinyButtonNormal.png" />
+    <Resource Include="Resources\Celeste Logo Roman Final.png" />
+    <Resource Include="Resources\CheckBoxCheckGreen_ua.png" />
+    <Resource Include="Resources\CheckBoxUnChecked_ua.png" />
+    <Resource Include="Resources\DefaultNewsGraphics.png" />
+    <Resource Include="Resources\Error.png" />
     <Resource Include="Resources\FriendList\AddFriendLong-Hover.png" />
     <Resource Include="Resources\FriendList\AddFriendLong-Normal.png" />
-    <Resource Include="Resources\Icons\AddFriend-Hover.png" />
-    <Resource Include="Resources\Icons\AddFriend-Normal.png" />
     <Resource Include="Resources\FriendList\FriendList-Background.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Babylon.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Celt.png" />
@@ -248,38 +64,29 @@
     <Resource Include="Resources\FriendList\FriendPlate-Persia.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Requet.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Roman.png" />
-    <Resource Include="Resources\Icons\AddScenario-Hover.png" />
-    <Resource Include="Resources\Icons\AddScenario-Normal.png" />
-    <Resource Include="Resources\Icons\DownloadScenarios-Hover.png" />
-    <Resource Include="Resources\Icons\DownloadScenarios-Normal.png" />
-    <Resource Include="Resources\Icons\Help-Hover.png" />
-    <Resource Include="Resources\Icons\Help-Normal.png" />
-    <Resource Include="Resources\Icons\RemoveScenario-Hover.png" />
-    <Resource Include="Resources\Icons\RemoveScenario-Normal.png" />
-    <Resource Include="Resources\Icons\ScenarioDirectory-Hover.png" />
-    <Resource Include="Resources\Icons\ScenarioDirectory-Normal.png" />
-    <Resource Include="Resources\ScenarioManagerBG.png" />
-    <Resource Include="Resources\NetworkSettings-DarkBGMedium.png" />
-    <Resource Include="Resources\Icons\RefreshHover.png" />
-    <Resource Include="Resources\Icons\RefreshNormal.png" />
-    <Resource Include="Resources\Separator-VerticalSmall.png" />
-    <Resource Include="Resources\MediumDialogue-Background.png" />
-    <Resource Include="Resources\Icons\Twitch-Hover.png" />
-    <Resource Include="Resources\Icons\Twitch-Normal.png" />
-    <Resource Include="Resources\RegisterScreenInputBoxLongDisabled.png" />
-    <Resource Include="Resources\RegisterScreenInputBoxShortDisabled.png" />
-    <Resource Include="Resources\Icons\itemsearch-Hover.png" />
-    <Resource Include="Resources\Icons\itemsearch-Normal.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Babylon.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Celt.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Default.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Egypt.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Greek.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Norse.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Persia.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Roman.png" />
     <Resource Include="Resources\GamePathInputBox.png" />
     <Resource Include="Resources\GamePathSelectionWindowBackground.png" />
-    <Resource Include="Resources\ProgressBarOverlayWide.png" />
     <Resource Include="Resources\GameScannerBackground.png" />
-    <Resource Include="Resources\Icons\Language-Hover.png" />
-    <Resource Include="Resources\Icons\Language-Normal.png" />
-    <Resource Include="Resources\DefaultNewsGraphics.png" />
-    <Resource Include="Resources\Buttons\LargeButtonDisabled.png" />
-    <Resource Include="Resources\Buttons\MediumButtonDisabled.png" />
-    <Resource Include="Resources\Buttons\TinyButtonDisabled.png" />
+    <Resource Include="Resources\Icons\Account-Hover.png" />
+    <Resource Include="Resources\Icons\Account-Normal.png" />
+    <Resource Include="Resources\Icons\AddFriend-Hover.png" />
+    <Resource Include="Resources\Icons\AddFriend-Normal.png" />
+    <Resource Include="Resources\Icons\AddScenario-Hover.png" />
+    <Resource Include="Resources\Icons\AddScenario-Normal.png" />
+    <Resource Include="Resources\Icons\Discord-Hover.png" />
+    <Resource Include="Resources\Icons\Discord-Normal.png" />
+    <Resource Include="Resources\Icons\Donate-Hover.png" />
+    <Resource Include="Resources\Icons\Donate-Normal.png" />
+    <Resource Include="Resources\Icons\DownloadScenarios-Hover.png" />
+    <Resource Include="Resources\Icons\DownloadScenarios-Normal.png" />
     <Resource Include="Resources\Icons\Flags\de-DE-Hover.png" />
     <Resource Include="Resources\Icons\Flags\de-DE-Normal.png" />
     <Resource Include="Resources\Icons\Flags\en-US-Hover.png" />
@@ -295,27 +102,16 @@
     <Resource Include="Resources\Icons\Flags\pt-BR-Normal.png" />
     <Resource Include="Resources\Icons\Flags\zh-CHT-Hover.png" />
     <Resource Include="Resources\Icons\Flags\zh-CHT-Normal.png" />
-    <Resource Include="Resources\AoEO_Logo.png" />
-    <Resource Include="Resources\ButtonBackgroundBarLong.png" />
-    <Resource Include="Resources\ButtonBackgroundBarShort.png" />
-    <Resource Include="Resources\Buttons\LargeButtonHover.png" />
-    <Resource Include="Resources\Buttons\LargeButtonNormal.png" />
-    <Resource Include="Resources\Buttons\MediumButtonHover.png" />
-    <Resource Include="Resources\Buttons\MediumButtonNormal.png" />
-    <Resource Include="Resources\Buttons\TinyButtonHover.png" />
-    <Resource Include="Resources\Buttons\TinyButtonNormal.png" />
-    <Resource Include="Resources\Celeste Logo Roman Final.png" />
-    <Resource Include="Resources\CheckBoxCheckGreen_ua.png" />
-    <Resource Include="Resources\CheckBoxUnChecked_ua.png" />
-    <Resource Include="Resources\Error.png" />
-    <Resource Include="Resources\Icons\Account-Hover.png" />
-    <Resource Include="Resources\Icons\Account-Normal.png" />
-    <Resource Include="Resources\Icons\Discord-Hover.png" />
-    <Resource Include="Resources\Icons\Discord-Normal.png" />
-    <Resource Include="Resources\Icons\Donate-Hover.png" />
-    <Resource Include="Resources\Icons\Donate-Normal.png" />
+    <Resource Include="Resources\Icons\Friends-Alert-Hover.png" />
+    <Resource Include="Resources\Icons\Friends-Alert-Normal.png" />
     <Resource Include="Resources\Icons\Friends-Hover.png" />
     <Resource Include="Resources\Icons\Friends-Normal.png" />
+    <Resource Include="Resources\Icons\Help-Hover.png" />
+    <Resource Include="Resources\Icons\Help-Normal.png" />
+    <Resource Include="Resources\Icons\itemsearch-Hover.png" />
+    <Resource Include="Resources\Icons\itemsearch-Normal.png" />
+    <Resource Include="Resources\Icons\Language-Hover.png" />
+    <Resource Include="Resources\Icons\Language-Normal.png" />
     <Resource Include="Resources\Icons\List-Hover.png" />
     <Resource Include="Resources\Icons\List-Normal.png" />
     <Resource Include="Resources\Icons\Logout-Hover.png" />
@@ -330,6 +126,12 @@
     <Resource Include="Resources\Icons\PvPPatchNotes-Normal.png" />
     <Resource Include="Resources\Icons\Reddit-Hover.png" />
     <Resource Include="Resources\Icons\Reddit-Normal.png" />
+    <Resource Include="Resources\Icons\RefreshHover.png" />
+    <Resource Include="Resources\Icons\RefreshNormal.png" />
+    <Resource Include="Resources\Icons\RemoveScenario-Hover.png" />
+    <Resource Include="Resources\Icons\RemoveScenario-Normal.png" />
+    <Resource Include="Resources\Icons\ScenarioDirectory-Hover.png" />
+    <Resource Include="Resources\Icons\ScenarioDirectory-Normal.png" />
     <Resource Include="Resources\Icons\ScenarioManager-Hover.png" />
     <Resource Include="Resources\Icons\ScenarioManager-Normal.png" />
     <Resource Include="Resources\Icons\Settings-Hover.png" />
@@ -338,6 +140,8 @@
     <Resource Include="Resources\Icons\Tools-Normal.png" />
     <Resource Include="Resources\Icons\Tools2-Hover.png" />
     <Resource Include="Resources\Icons\Tools2-Normal.png" />
+    <Resource Include="Resources\Icons\Twitch-Hover.png" />
+    <Resource Include="Resources\Icons\Twitch-Normal.png" />
     <Resource Include="Resources\Icons\WCCloseHover.png" />
     <Resource Include="Resources\Icons\WCCloseNormal.png" />
     <Resource Include="Resources\Icons\WCCloseSmallHover.png" />
@@ -348,234 +152,47 @@
     <Resource Include="Resources\Icons\Website-Normal.png" />
     <Resource Include="Resources\Icons\YouTube-Hover.png" />
     <Resource Include="Resources\Icons\YouTube-Normal.png" />
+    <Resource Include="Resources\LithosPro-Black.otf" />
     <Resource Include="Resources\LoggedInScreenSeparators.png" />
     <Resource Include="Resources\MainWindow_InnerContents.png" />
+    <Resource Include="Resources\MediumDialogue-Background.png" />
+    <Resource Include="Resources\NetworkSettings-DarkBGMedium.png" />
     <Resource Include="Resources\PlayerNameplateEmpty.png" />
     <Resource Include="Resources\ProfilePics\Coin-Agvald.png" />
     <Resource Include="Resources\ProfilePics\Coin-Bahram.png" />
     <Resource Include="Resources\ProfilePics\Coin-Rohham.png" />
     <Resource Include="Resources\ProfilePics\Coin-Tahmineh.png" />
     <Resource Include="Resources\ProgressBarOverlay.png" />
+    <Resource Include="Resources\ProgressBarOverlayWide.png" />
     <Resource Include="Resources\RegisterScreenInputBoxLong.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxLongDisabled.png" />
     <Resource Include="Resources\RegisterScreenInputBoxShort.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxShortDisabled.png" />
+    <Resource Include="Resources\ScenarioManagerBG.png" />
+    <Resource Include="Resources\Separator-HorizontalMedium.png" />
     <Resource Include="Resources\Separator-SuperLongVertical.png" />
+    <Resource Include="Resources\Separator-VerticalSmall.png" />
     <Resource Include="Resources\TopBorder.png" />
     <Resource Include="Resources\UpdateWindow.png" />
     <Resource Include="Resources\VersionNumberBox.png" />
     <Resource Include="Resources\VersionNumberLabelBackground.png" />
     <Resource Include="Resources\Warning.png" />
     <Resource Include="Resources\YesNoDialogBackground.png" />
-    <Resource Include="Resources\ashley_crawford_cg.ttf" />
-    <Resource Include="Resources\LithosPro-Black.otf" />
-    <None Include="Resources\BarSeparatorVertical.png" />
-    <None Include="Resources\BarSeparator.png" />
-    <None Include="Resources\BackgroundTexture.png" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
-      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
-      <Name>Celeste_Public_Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\marti\Documents\Celeste_Launcher\\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
-      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
-      <Name>Celeste_Public_Api</Name>
-    </ProjectReference>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
+
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="Pages\LanguageSelectionPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\LoginPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\MainMenuPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\OverviewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\RegisterPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\TextEffects.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\Fonts.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\CheckBox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\ContextMenus.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\ListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\RadioButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\Scrollbars.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Styles\Buttons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\ShortRegisterInputField.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\ShortRegisterPasswordInputField.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\SideBarMenuItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\SideBarMenuItemRight.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\UpdateProgressBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\UserInfoWidget.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\VersionNumberLabel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\WideRegisterInputField.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\WideRegisterPasswordInputField.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\WideUpdateProgressBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\WindowControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\AddFriendDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\ChangePasswordDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\FriendList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\GamePathSelectionWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\GameScannerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\GenericMessageDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\MultiplayerSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\NetworkDeviceSelectorDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\ProcDumpInstaller.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\ResetPasswordDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\ScenarioManager.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\SteamConverterWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\UpdateWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\WindowsFeatureHelper.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\WindowsFirewallHelper.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="CredentialManagement">
-      <Version>1.0.2</Version>
-    </PackageReference>
-    <PackageReference Include="Markdig">
-      <Version>0.17.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Dism">
-      <Version>2.0.14</Version>
-    </PackageReference>
-    <PackageReference Include="Open.NAT">
-      <Version>2.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="PanelManager">
-      <Version>1.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="ProjectCeleste.GameFiles.GameScanner">
-      <Version>2.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="System.IO.Compression">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="Windows7APICodePack-Shell">
-      <Version>1.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="WindowsFirewallHelper">
-      <Version>1.6.3.40</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
