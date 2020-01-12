@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
+﻿using Celeste_Launcher_Gui.Helpers;
+using Microsoft.Win32;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -28,26 +29,20 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void BrowseBtnClick(object sender, RoutedEventArgs e)
         {
-            var dialog = new CommonOpenFileDialog
+            var openFileDialog = new OpenFileDialog()
             {
                 Title = Properties.Resources.GamePathSelectorTitle,
-                IsFolderPicker = true,
                 InitialDirectory = PathLocation.Text,
-
-                AddToMostRecentlyUsedList = false,
-                AllowNonFileSystemItems = false,
-                DefaultDirectory = PathLocation.Text,
-                EnsureFileExists = true,
-                EnsurePathExists = true,
-                EnsureReadOnly = false,
-                EnsureValidNames = true,
                 Multiselect = false,
-                ShowPlacesList = true
+                ValidateNames = false,
+                CheckFileExists = false,
+                CheckPathExists = true,
+                FileName = "Spartan.exe"
             };
-
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            
+            if (openFileDialog.ShowDialog(Window.GetWindow(this)) == true)
             {
-                PathLocation.Text = dialog.FileName;
+                PathLocation.Text = openFileDialog.FileName;
             }
 
             Focus();

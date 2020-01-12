@@ -464,7 +464,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>The selected game path does not exist</value>
   </data>
   <data name="GamePathSelectorTitle" xml:space="preserve">
-    <value>Select Celeste location</value>
+    <value>Select location of Spartan.exe (Age of Empires Online)</value>
   </data>
   <data name="GameScannerDidNotPass" xml:space="preserve">
     <value>Game scan failed.</value>

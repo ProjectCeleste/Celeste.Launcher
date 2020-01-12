@@ -14,7 +14,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
+using System.Net;
 
 namespace Celeste_Launcher_Gui.Services
 {
@@ -105,7 +105,7 @@ namespace Celeste_Launcher_Gui.Services
         {
             var reg = new Regex("<[^>]+>", RegexOptions.IgnoreCase);
             var stripped = reg.Replace(htmlText, "");
-            return decode ? HttpUtility.HtmlDecode(stripped) : stripped;
+            return decode ? WebUtility.HtmlDecode(stripped) : stripped;
         }
 
         public static async Task DownloadAndInstallUpdate(bool isSteam = false, IProgress<int> progress = null,
