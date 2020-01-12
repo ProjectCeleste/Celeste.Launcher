@@ -101,15 +101,9 @@ namespace Celeste_Launcher_Gui
                 Logger.Error(ex, ex.Message);
             }
 
-            //SslFix (invalid cert)
-            InternetUtils.SslFix();
-
             //Init WebSocketApi
             WebSocketApi = new WebSocketApi(UserConfig.ServerUri);
             Logger.Information("Initialized web socket");
-
-            //Start Gui
-            //Application.Run(new MainForm());
 
             GC.KeepAlive(mutex);
 

@@ -16,7 +16,7 @@
                 <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterVerifyBtnText}" Margin="10,0,0,0" Click="OnVerifyEmail" x:Name="VerifyEmailBtn"/>
             </WrapPanel>
         </Grid>
-        <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-SuperLongVertical.png" Stretch="None" Height="53" VerticalAlignment="Top" Margin="0,150,0,0"/>
+        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/Separator-SuperLongVertical.png" Stretch="None" Height="53" VerticalAlignment="Top" Margin="0,150,0,0"/>
 
         <Grid VerticalAlignment="Bottom" Height="356" Margin="0,0,0,50">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -41,7 +41,7 @@
 
         <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
             <Label.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/VersionNumberBox.png"/>
             </Label.Background>
         </Label>
     </Grid>

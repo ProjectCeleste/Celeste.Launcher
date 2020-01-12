@@ -57,27 +57,27 @@
     </Style>
 
     <Style x:Key="LargeButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
-        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/LargeButtonNormal.png"/>
-        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/LargeButtonHover.png"/>
-        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/LargeButtonDisabled.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/LargeButtonNormal.png"/>
+        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/LargeButtonHover.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/LargeButtonDisabled.png"/>
         <Setter Property="FontSize" Value="30"/>
         <Setter Property="Height" Value="66"/>
         <Setter Property="Width" Value="273"/>
     </Style>
 
     <Style x:Key="MediumButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
-        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/MediumButtonNormal.png"/>
-        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/MediumButtonHover.png"/>
-        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/MediumButtonDisabled.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/MediumButtonNormal.png"/>
+        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/MediumButtonHover.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/MediumButtonDisabled.png"/>
         <Setter Property="FontSize" Value="30"/>
         <Setter Property="Height" Value="51"/>
         <Setter Property="Width" Value="219"/>
     </Style>
 
     <Style x:Key="TinyButton" TargetType="Button" BasedOn="{StaticResource GenericCustomizedButton}">
-        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonNormal.png"/>
-        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonHover.png"/>
-        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Buttons/TinyButtonDisabled.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DefaultIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/TinyButtonNormal.png"/>
+        <Setter Property="theme:ButtonThemeProperties.HoverIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/TinyButtonHover.png"/>
+        <Setter Property="theme:ButtonThemeProperties.DisabledIcon" Value="pack://application:,,,/Celeste Launcher;component/Resources/Buttons/TinyButtonDisabled.png"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="164"/>

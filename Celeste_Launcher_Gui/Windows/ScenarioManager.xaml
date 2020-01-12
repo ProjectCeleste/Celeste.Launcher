@@ -11,11 +11,11 @@
         ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True" Closing="Window_Closing">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/ScenarioManagerBG.png" />
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/ScenarioManagerBG.png" />
         </Grid.Background>
         <local:WindowControl
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseSmallNormal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseSmallHover.png"
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseSmallNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseSmallHover.png"
                     IconWidth="23" IconHeight="23"
                     Click="OnClose"
                     VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,6,8,0"/>
@@ -28,32 +28,32 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
-                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/AddScenario-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/AddScenario-Hover.png"
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/AddScenario-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/AddScenario-Hover.png"
                         Click="OnAddScenarioClick"
                         ToolTip="{x:Static p:Resources.ScenarioManagerAddScenarioTooltip}"/>
 
                 <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
-                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/RemoveScenario-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/RemoveScenario-Hover.png"
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/RemoveScenario-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/RemoveScenario-Hover.png"
                         Margin="2" Click="OnRemoveScenarioClick"
                         ToolTip="{x:Static p:Resources.ScenarioManagerRemoveScenarioTooltip}"/>
 
                 <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
-                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioDirectory-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/ScenarioDirectory-Hover.png"
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/ScenarioDirectory-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/ScenarioDirectory-Hover.png"
                         Margin="2" Click="OnScenarioDirectoryClick"
                         ToolTip="{x:Static p:Resources.ScenarioManagerOpenScenarioDirectoryTooltip}"/>
 
                 <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
-                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/DownloadScenarios-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/DownloadScenarios-Hover.png"
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/DownloadScenarios-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/DownloadScenarios-Hover.png"
                         Margin="2" Click="OnDownloadScenariosClick"
                         ToolTip="{x:Static p:Resources.ScenarioManagerDownloadScenarioTooltip}"/>
 
                 <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
-                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Help-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Help-Hover.png"
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Help-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Help-Hover.png"
                         Margin="2" Click="OnHelpClick"
                         ToolTip="{x:Static p:Resources.ScenarioManagerOpenHelpTooltip}"/>
             </StackPanel>

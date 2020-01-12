@@ -12,7 +12,7 @@
              Title="{x:Static p:Resources.FriendListTitle}"
              Loaded="FriendListLoaded">
     <Window.Background>
-        <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/FriendList-Background.png"/>
+        <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendList-Background.png"/>
     </Window.Background>
     <Window.Resources>
 
@@ -126,7 +126,7 @@
         <DataTemplate x:Key="OfflineFriendTemplate">
             <StackPanel Orientation="Horizontal" Width="338" Height="72">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/FriendPlate-Offline.png"/>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-Offline.png"/>
                 </StackPanel.Background>
                 <StackPanel Margin="15,8,0,0">
                     <TextBlock Text="{Binding Username}" Style="{StaticResource FriendsListItemTitle}" LineHeight="20pt"/>
@@ -142,14 +142,14 @@
 
         <DataTemplate x:Key="Separator">
             <Grid Width="338" Height="44" HorizontalAlignment="Center">
-                <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-HorizontalMedium.png" HorizontalAlignment="Center"/>
+                <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/Separator-HorizontalMedium.png" HorizontalAlignment="Center"/>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="OutgoingFriendRequest">
             <StackPanel Orientation="Horizontal" Width="338" Height="72">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/FriendPlate-Outgoing.png"/>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-Outgoing.png"/>
                 </StackPanel.Background>
                 <StackPanel Margin="15,8,0,0">
                     <TextBlock Text="{Binding Username}" Style="{StaticResource FriendsListItemTitle}" LineHeight="20pt"/>
@@ -166,7 +166,7 @@
         <DataTemplate x:Key="IncomingFriendRequest">
             <StackPanel Orientation="Horizontal" Width="338" Height="72">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/FriendPlate-Requet.png"/>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-Requet.png"/>
                 </StackPanel.Background>
                 <StackPanel Margin="15,0,0,0">
                     <TextBlock Text="{Binding Username}" Style="{StaticResource FriendsListItemTitle}" LineHeight="20pt"/>
@@ -187,8 +187,8 @@
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0">
             <local:WindowControl
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseNormal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseHover.png"
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
                     Click="CloseWindow"/>
         </StackPanel>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="255" Height="35" Margin="0,8,0,0" MouseDown="BorderMoved">
@@ -244,8 +244,8 @@
                         Height="55"
                         Margin="13,2,0,0"
                         HorizontalAlignment="Left"
-                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/AddFriendLong-Normal.png"
-                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/AddFriendLong-Hover.png"
+                        theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/AddFriendLong-Normal.png"
+                        theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/AddFriendLong-Hover.png"
                         Click="AddFriendClick">
                     <Label Content="{x:Static p:Resources.FriendListAddFriendBtn}" FontSize="16" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                 </Button>

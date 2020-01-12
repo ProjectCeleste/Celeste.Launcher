@@ -109,13 +109,13 @@ namespace Celeste_Launcher_Gui.Helpers
         private string DecideProfilePictureForFaction(string status)
         {
             var factionCardName = GetFaction(status) ?? "Default";
-            return $"pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/ProfilePictures/{factionCardName}.png";
+            return $"pack://application:,,,/Celeste Launcher;component/Resources/FriendList/ProfilePictures/{factionCardName}.png";
         }
 
         private string DecideBackgroundForFaction(string status)
         {
             var factionCardName = GetFaction(status) ?? "Empty";
-            return $"pack://application:,,,/Celeste_Launcher_Gui;component/Resources/FriendList/FriendPlate-{factionCardName}.png";
+            return $"pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-{factionCardName}.png";
         }
 
         private string GetFaction(string status)

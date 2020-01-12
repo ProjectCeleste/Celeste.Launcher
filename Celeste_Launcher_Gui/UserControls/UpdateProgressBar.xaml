@@ -7,6 +7,6 @@
              d:DesignHeight="60" d:DesignWidth="500">
     <Grid Width="440" Height="38">
         <ProgressBar Width="430" Height="22" x:Name="ProgressBar"/>
-        <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/ProgressBarOverlay.png" Stretch="None"/>
+        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ProgressBarOverlay.png" Stretch="None"/>
     </Grid>
 </UserControl>

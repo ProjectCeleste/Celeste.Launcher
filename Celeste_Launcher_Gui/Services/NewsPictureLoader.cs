@@ -27,7 +27,7 @@ namespace Celeste_Launcher_Gui.Services
         {
             return new NewsPicture
             {
-                ImageSource = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/DefaultNewsGraphics.png",
+                ImageSource = "pack://application:,,,/Celeste Launcher;component/Resources/DefaultNewsGraphics.png",
                 Href = "https://forums.projectceleste.com/"
             };
         }

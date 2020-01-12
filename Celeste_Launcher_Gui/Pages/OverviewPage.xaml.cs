@@ -35,13 +35,13 @@ namespace Celeste_Launcher_Gui.Pages
             {
                 if (e.IncomingRequests.Count > 0)
                 {
-                    FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Alert-Normal.png";
-                    FriendsIcon.HoverIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Alert-Hover.png";
+                    FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Alert-Normal.png";
+                    FriendsIcon.HoverIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Alert-Hover.png";
                 }
                 else
                 {
-                    FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Normal.png";
-                    FriendsIcon.HoverIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Hover.png";
+                    FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Normal.png";
+                    FriendsIcon.HoverIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Hover.png";
                 }
             });
         }

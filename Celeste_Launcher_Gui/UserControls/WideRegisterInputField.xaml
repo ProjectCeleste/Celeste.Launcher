@@ -11,14 +11,14 @@
         <Style>
             <Setter Property="local:WideRegisterInputField.Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxLong.png" />
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/RegisterScreenInputBoxLong.png" />
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="local:WideRegisterInputField.IsEnabled" Value="False">
                     <Setter Property="local:WideRegisterInputField.Background">
                         <Setter.Value>
-                            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/RegisterScreenInputBoxLongDisabled.png" />
+                            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/RegisterScreenInputBoxLongDisabled.png" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>

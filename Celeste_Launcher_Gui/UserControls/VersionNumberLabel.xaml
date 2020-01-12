@@ -10,7 +10,7 @@
         <Label Content="{Binding LabelContents}" Foreground="White" VerticalAlignment="Center" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15"/>
         <Border Height="32" Width="127">
             <Border.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberLabelBackground.png"/>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/VersionNumberLabelBackground.png"/>
             </Border.Background>
             <TextBlock Text="{Binding VersionNumber}" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="15"/>
         </Border>
