@@ -9,11 +9,11 @@
     <Grid>
         <Border BorderThickness="27" MouseDown="BorderMoved">
             <Border.BorderBrush>
-                <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/TopBorder.png"/>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/TopBorder.png"/>
             </Border.BorderBrush>
             <DockPanel MouseDown="ContentMoved">
                 <DockPanel.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/MainWindow_InnerContents.png"/>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MainWindow_InnerContents.png"/>
                 </DockPanel.Background>
                 <DockPanel DockPanel.Dock="Bottom">
                     <TextBlock TextWrapping="WrapWithOverflow" Height="77" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="16" Foreground="White" TextAlignment="Center">
@@ -24,20 +24,20 @@
                 </DockPanel>
                 <Grid DockPanel.Dock="Bottom" Height="12"/>
                 <Grid>
-                    <Frame x:Name="NavigationFrame" NavigationUIVisibility="Hidden" Source="pack://application:,,,/Celeste_Launcher_Gui;component/Pages/MainMenuPage.xaml" />
+                    <Frame x:Name="NavigationFrame" NavigationUIVisibility="Hidden" Source="pack://application:,,,/Celeste Launcher;component/Pages/MainMenuPage.xaml" />
                 </Grid>
             </DockPanel>
         </Border>
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
             <local:WindowControl
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCMinimizeNormal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCMinimizeHover.png"
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCMinimizeNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCMinimizeHover.png"
                     Click="OnMinimize"/>
             
             <local:WindowControl
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseNormal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseHover.png"
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
                     Click="OnClose"/>
         </StackPanel>
 

@@ -28,7 +28,7 @@ namespace Celeste_Launcher_Gui.UserControls
         }
 
         public static readonly DependencyProperty PlayerIconProperty =
-            DependencyProperty.Register("PlayerIcon", typeof(string), typeof(UserInfoWidget), new PropertyMetadata("pack://application:,,,/Celeste_Launcher_Gui;component/Resources/ProfilePics/Coin-Bahram.png"));
+            DependencyProperty.Register("PlayerIcon", typeof(string), typeof(UserInfoWidget), new PropertyMetadata("pack://application:,,,/Celeste Launcher;component/Resources/ProfilePics/Coin-Bahram.png"));
 
         public string Username
         {
@@ -59,7 +59,7 @@ namespace Celeste_Launcher_Gui.UserControls
         {
             var rnd = new Random();
             var imgIndex = rnd.Next(ProfilePicture.Length);
-            PlayerIcon = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/ProfilePics/" + ProfilePicture[imgIndex];
+            PlayerIcon = "pack://application:,,,/Celeste Launcher;component/Resources/ProfilePics/" + ProfilePicture[imgIndex];
         }
     }
 }

@@ -11,7 +11,7 @@
              Width="849" Height="308" Title="{x:Static p:Resources.NetworkDeviceSelectorTitle}">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/MediumDialogue-Background.png"/>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MediumDialogue-Background.png"/>
         </Grid.Background>
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <Grid>
@@ -23,7 +23,7 @@
 
                             <Grid Height="166" Width="456" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                                 <Grid.Background>
-                                    <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/NetworkSettings-DarkBGMedium.png"/>
+                                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/NetworkSettings-DarkBGMedium.png"/>
                                 </Grid.Background>
                                 <ListView Margin="10" x:Name="NetworkInterfaceListView" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                                 </ListView>
@@ -31,13 +31,13 @@
                         </StackPanel>
                     </DockPanel>
                     <DockPanel Width="44">
-                        <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Separator-VerticalSmall.png" Stretch="None"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/Separator-VerticalSmall.png" Stretch="None"/>
                     </DockPanel>
                     <DockPanel>
                         <StackPanel VerticalAlignment="Center">
                             <Button Style="{StaticResource GenericCustomizedButton}" Width="61" Height="62" 
-                                theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/RefreshNormal.png"
-                                theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/RefreshHover.png"
+                                theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/RefreshNormal.png"
+                                theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/RefreshHover.png"
                                 Margin="10" Click="RefreshNICList"
                                 ToolTip="{x:Static p:Resources.GameScannerPatchNotesLabel}"/>
                             <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.NetworkDeviceSelectorSaveBtn}" Click="ConfirmBtnClick"/>
@@ -48,8 +48,8 @@
         </Border>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
             <local:WindowControl
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseNormal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseHover.png"
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
                     Click="CloseWindow"/>
         </StackPanel>
     </Grid>

@@ -11,7 +11,7 @@
              Title="{x:Static p:Resources.GamePathSelectionWindowTitle}">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/GamePathSelectionWindowBackground.png"/>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/GamePathSelectionWindowBackground.png"/>
         </Grid.Background>
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <Grid>
@@ -19,7 +19,7 @@
                            Text="{x:Static p:Resources.GamePathSelectionTitle}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"/>
                 <Grid Width="729" Height="68" Margin="0,10,0,0">
                     <Grid.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/GamePathInputBox.png"/>
+                        <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/GamePathInputBox.png"/>
                     </Grid.Background>
                     <TextBox Width="528" Height="34" Foreground="Gray" CaretBrush="Gray" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="20" HorizontalAlignment="Left" Background="Transparent" Margin="18,0,0,0" BorderThickness="0" x:Name="PathLocation"/>
                     <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.GamePathSelectionBrowseBtn}" HorizontalAlignment="Right" Margin="0,0,13,0" Click="BrowseBtnClick"/>
@@ -29,8 +29,8 @@
         </Border>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
             <local:WindowControl
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseNormal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/WCCloseHover.png"
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
                     Click="CloseWindow"/>
         </StackPanel>
     </Grid>

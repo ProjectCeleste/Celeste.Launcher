@@ -11,13 +11,13 @@
         UseLayoutRounding="True"
         d:DesignHeight="587" d:DesignWidth="964" Loaded="Page_Loaded">
     <Grid>
-        <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/LoggedInScreenSeparators.png" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/LoggedInScreenSeparators.png" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Grid Height="331" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="186">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewAccountSideMenuBtn}" 
-                DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Account-Hover.png" HorizontalAlignment="Left" Click="OnAccountClick"
+                DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Account-Normal.png"
+                HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Account-Hover.png" HorizontalAlignment="Left" Click="OnAccountClick"
                 x:Name="AccountButton">
                 <local:SideBarMenuItem.ContextMenu>
                     <ContextMenu StaysOpen="true">
@@ -29,24 +29,24 @@
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewFriendsSideMenuBtn}" 
-                DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Friends-Hover.png" HorizontalAlignment="Left" Click="OnFriendsClick" x:Name="FriendsIcon"/>
+                DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Normal.png"
+                HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Hover.png" HorizontalAlignment="Left" Click="OnFriendsClick" x:Name="FriendsIcon"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewDonateSideMenuBtn}" 
-                DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Donate-Hover.png" HorizontalAlignment="Left" Click="OnDonateClick"/>
+                DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Donate-Normal.png"
+                HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Donate-Hover.png" HorizontalAlignment="Left" Click="OnDonateClick"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewScenarioManagerSideMenuBtn}"
                 LabelSize="17"
-                DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/MapsList2-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/MapsList2-Hover.png" HorizontalAlignment="Left" Click="OpenScenarionManager"/>
+                DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/MapsList2-Normal.png"
+                HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/MapsList2-Hover.png" HorizontalAlignment="Left" Click="OpenScenarionManager"/>
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewSettingsSideMenuBtn}" 
-                DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Normal.png"
-                HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Left" Click="OnSettingsClick"
+                DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Settings-Normal.png"
+                HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Left" Click="OnSettingsClick"
                 x:Name="SettingsButton">
                     <local:SideBarMenuItem.ContextMenu>
                         <ContextMenu StaysOpen="true">
@@ -66,7 +66,7 @@
         <Grid Margin="199,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="565" Height="332">
             <StackPanel VerticalAlignment="Center">
                 <local:UserInfoWidget Username="{Binding CurrentUser.ProfileName}" Rank="{Binding CurrentUser.Rank}"/>
-                <Image Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Celeste Logo Roman Final.png" Stretch="None" Margin="0,5,0,0"/>
+                <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/Celeste Logo Roman Final.png" Stretch="None" Margin="0,5,0,0"/>
             </StackPanel>
         </Grid>
 
@@ -75,39 +75,39 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewWebsiteSideMenuBtn}" 
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" Click="OnCelesteClick"/>
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Website-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Website-Hover.png" HorizontalAlignment="Left" Click="OnCelesteClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewDiscordSideMenuBtn}" 
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Discord-Hover.png" HorizontalAlignment="Left" Click="OnDiscordClick"/>
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Discord-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Discord-Hover.png" HorizontalAlignment="Left" Click="OnDiscordClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewRedditSideMenuBtn}" 
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Reddit-Hover.png" HorizontalAlignment="Left" Click="OnRedditClick"/>
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Reddit-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Reddit-Hover.png" HorizontalAlignment="Left" Click="OnRedditClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewYoutubeSideMenuBtn}" 
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/YouTube-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/YouTube-Hover.png" HorizontalAlignment="Left" Click="OnYoutubeClick"/>
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/YouTube-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/YouTube-Hover.png" HorizontalAlignment="Left" Click="OnYoutubeClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewTwitchSideMenuBtn}" 
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Twitch-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Twitch-Hover.png" HorizontalAlignment="Left" Click="OnTwitchClick"/>
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Twitch-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Twitch-Hover.png" HorizontalAlignment="Left" Click="OnTwitchClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewPatchNotesSideMenuBtn}"
                     LabelSize="14"
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnPatchNotesClick"/>
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/PatchNotes-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/PatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnPatchNotesClick"/>
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewChampionModeInfoSideMenuBtn}"
-                    DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PvPPatchNotes-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/PvPPatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnChampionModeInfoClick"/>
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/PvPPatchNotes-Normal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/PvPPatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnChampionModeInfoClick"/>
             </StackPanel>
         </Grid>
 
@@ -116,13 +116,13 @@
             <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
                     <Label.Background>
-                        <ImageBrush ImageSource="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/VersionNumberBox.png"/>
+                        <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/VersionNumberBox.png"/>
                     </Label.Background>
                 </Label>
 
                 <Button Style="{StaticResource GenericCustomizedButton}" Click="OpenToolsButtonToolTip" Margin="5,0,0,0" Width="37" Height="38" x:Name="ToolsButton"
-                            theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Tools2-Normal.png"
-                            theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Icons/Tools2-Hover.png" ToolTip="{x:Static p:Resources.OverviewToolsBtnTooltip}">
+                            theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Tools2-Normal.png"
+                            theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Tools2-Hover.png" ToolTip="{x:Static p:Resources.OverviewToolsBtnTooltip}">
                     <Button.ContextMenu>
                         <ContextMenu StaysOpen="true">
                             <MenuItem Header="Steam" Click="OpenSteam"/>
@@ -139,7 +139,7 @@
         <Grid Margin="0,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="472" Height="244">
             <TextBlock>
                 <Hyperlink Click="OpenNews" TextDecorations="None">
-                    <Image x:Name="NewsImage" Source="pack://application:,,,/Celeste_Launcher_Gui;component/Resources/DefaultNewsGraphics.png" Stretch="Fill"/>
+                    <Image x:Name="NewsImage" Source="pack://application:,,,/Celeste Launcher;component/Resources/DefaultNewsGraphics.png" Stretch="Fill"/>
                 </Hyperlink>   
             </TextBlock>
         </Grid>

@@ -21,9 +21,9 @@ namespace Celeste_Launcher_Gui.Windows
             Message = message;
 
             if (icon == DialogIcon.Error)
-                IconSource = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Error.png";
+                IconSource = "pack://application:,,,/Celeste Launcher;component/Resources/Error.png";
             else if (icon == DialogIcon.Warning)
-                IconSource = "pack://application:,,,/Celeste_Launcher_Gui;component/Resources/Warning.png";
+                IconSource = "pack://application:,,,/Celeste Launcher;component/Resources/Warning.png";
             else
                 DialogIconContents.Visibility = Visibility.Collapsed;
 
