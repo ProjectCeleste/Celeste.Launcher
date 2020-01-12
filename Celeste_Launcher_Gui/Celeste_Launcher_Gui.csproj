@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icon.ico</ApplicationIcon>
@@ -25,7 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <Resource Include="Resources\AoEO_Logo.png" />
     <Resource Include="Resources\ashley_crawford_cg.ttf" />
