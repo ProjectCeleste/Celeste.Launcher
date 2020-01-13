@@ -53,7 +53,22 @@ init:
         {
             $env:CelesteLauncher_PreRelease = "false";
         }
-        $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0";
+        if ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 2)
+        {
+            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0.0.0";
+        }
+        else if ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 3)
+        {
+            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0.0";
+        }
+        else if ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 4)
+        {
+            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0";
+        }
+        else if ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 4)
+        {
+            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0";
+        }
     }
     else
     {
@@ -101,9 +116,9 @@ install:
     {
       # Update VersionManifest
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
-      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:CelesteLauncher_Version
+      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:CelesteLauncher_AVersion
       # Update AppVeyor build
-      Update-AppveyorBuild -Version "$env:CelesteLauncher_Version.$env:APPVEYOR_BUILD_NUMBER"
+      Update-AppveyorBuild -Version "$env:CelesteLauncher_AVersion-$env:APPVEYOR_BUILD_NUMBER"
       # Update AppVeyor BuildNumber
       # $headers = @{
       #   "Authorization" = "Bearer $env:APPVEYOR_TOKEN"
@@ -122,20 +137,22 @@ install:
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
       $ManifestContent = Get-Content -Path $VersionManifestPath -Raw
       # Set Version number
-      $env:CelesteLauncher_Version = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
-      $env:CelesteLauncher_AVersion = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
-      $env:CelesteLauncher_IVersion = "$ManifestContent.$env:APPVEYOR_BUILD_NUMBER"
+      $env:CelesteLauncher_Version = "$ManifestContent"
+      $env:CelesteLauncher_AVersion = "$ManifestContent"
+      $env:CelesteLauncher_IVersion = "$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
       # update AppVeyor build
-      Update-AppveyorBuild -Version $env:CelesteLauncher_Version
+      Update-AppveyorBuild -Version "$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
     }
 
 # enable patching of AssemblyInfo.* files
-assembly_info:
+dotnet_csproj:
   patch: true
-  file: 'Celeste_Launcher_Gui\Properties\AssemblyInfo.cs'
+  file: '**\*.csproj'
+  version: '$(CelesteLauncher_AVersion)'
+  package_version: '$(CelesteLauncher_AVersion)'
   assembly_version: '$(CelesteLauncher_AVersion)'
-  assembly_file_version: '$(CelesteLauncher_AVersion)'
-  assembly_informational_version: '$(CelesteLauncher_IVersion)'
+  file_version: '$(CelesteLauncher_AVersion)'
+  informational_version: '$(CelesteLauncher_IVersion)'
 
 #---------------------------------#
 #       build configuration       #
@@ -248,7 +265,7 @@ before_deploy:
 - git config --global user.email "%github_email%"
 - git config --global user.name "%github_user%"
 - git checkout -b Appveyor "%APPVEYOR_REPO_COMMIT%"
-- git add "Celeste_Launcher_Gui\Properties\AssemblyInfo.cs"
+- git add "Celeste_Launcher_Gui\Celeste_Launcher_Gui.csproj"
 - git add "VersionManifest.md"
 - git commit -m "%APPVEYOR_REPO_TAG_NAME%"
 - git checkout "%APPVEYOR_REPO_BRANCH%"
