@@ -147,9 +147,8 @@ install:
 # enable patching of AssemblyInfo.* files
 dotnet_csproj:
   patch: true
-  file: '**\*.csproj'
+  file: '**\Celeste_Launcher_Gui.csproj'
   version: '$(CelesteLauncher_AVersion)'
-  package_version: '$(CelesteLauncher_AVersion)'
   assembly_version: '$(CelesteLauncher_AVersion)'
   file_version: '$(CelesteLauncher_AVersion)'
   informational_version: '$(CelesteLauncher_IVersion)'
