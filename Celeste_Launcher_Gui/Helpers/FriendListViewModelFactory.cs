@@ -33,6 +33,9 @@ namespace Celeste_Launcher_Gui.Helpers
             var acceptFriendCommand = new AcceptFriendRequestCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
             var removeFriendCommand = new RemoveFriendCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
 
+            foreach (var incomingRequest in friendList.IncomingRequests)
+                friendListViewModel.FriendListItems.Add(MapFriendRequestToViewModel(incomingRequest, acceptFriendCommand, removeFriendCommand));
+
             foreach (var friend in friendList.Friends.Where(t => t.IsOnline))
                 friendListViewModel.FriendListItems.Add(MapFriendToViewModel(friend, removeFriendCommand));
 
@@ -40,9 +43,6 @@ namespace Celeste_Launcher_Gui.Helpers
                 friendListViewModel.FriendListItems.Add(MapFriendToViewModel(friend, removeFriendCommand));
 
             friendListViewModel.FriendListItems.Add(new FriendListSeparator());
-
-            foreach (var incomingRequest in friendList.IncomingRequests)
-                friendListViewModel.FriendListItems.Add(MapFriendRequestToViewModel(incomingRequest, acceptFriendCommand, removeFriendCommand));
 
             foreach (var outgoingRequest in friendList.OutgoingRequests)
                 friendListViewModel.FriendListItems.Add(MapOutoingFriendRequest(outgoingRequest, removeFriendCommand));
