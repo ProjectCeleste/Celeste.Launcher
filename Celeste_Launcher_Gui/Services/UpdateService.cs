@@ -55,13 +55,13 @@ namespace Celeste_Launcher_Gui.Services
                 version = await responseContent.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
 
-            var regex = new Regex(@"\<Version\>(\d{1,})\.(\d{1,})\.(\d{1,})<\/Version\>");
+            var regex = new Regex(@"\<Version\>(\d{1,})\.(\d{1,})\.(\d{1,})\.(\d{1,})<\/Version\>");
             var match = regex.Match(version);
 
             if (!match.Success)
                 throw new Exception("GetLatestVersion() match.Success != true");
 
-            return new Version($"{match.Groups[1]}.{match.Groups[2]}.{match.Groups[3]}");
+            return new Version($"{match.Groups[1]}.{match.Groups[2]}.{match.Groups[3]}.{match.Groups[4]}");
         }
 
         public static async Task<string> GetChangeLog()
