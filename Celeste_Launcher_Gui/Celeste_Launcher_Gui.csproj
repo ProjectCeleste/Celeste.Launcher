@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net48</TargetFramework>
@@ -10,7 +10,6 @@
     <Version>3.0.2.1</Version>
     <AssemblyName>Celeste Launcher</AssemblyName>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="CredentialManagement.Standard" Version="1.0.4" />
     <PackageReference Include="Markdig" Version="0.18.0" />
@@ -21,11 +20,9 @@
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="WindowsFirewallHelper" Version="1.6.3.40" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj" />
   </ItemGroup>
-  
   <ItemGroup>
     <Resource Include="Resources\AoEO_Logo.png" />
     <Resource Include="Resources\ashley_crawford_cg.ttf" />
@@ -177,7 +174,6 @@
     <Resource Include="Resources\Warning.png" />
     <Resource Include="Resources\YesNoDialogBackground.png" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -185,12 +181,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
 </Project>
