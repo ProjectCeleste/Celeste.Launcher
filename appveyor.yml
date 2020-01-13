@@ -227,7 +227,7 @@ test: off
 #---------------------------------#
 
 artifacts:
-  - path: '\build'
+  - path: '\build\net48'
     name: Celeste_Launcher
     type: zip
     
