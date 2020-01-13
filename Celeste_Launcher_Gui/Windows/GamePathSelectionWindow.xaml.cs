@@ -50,7 +50,10 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void ScanBtnClick(object sender, RoutedEventArgs e)
         {
-            if (!Directory.Exists(PathLocation.Text))
+            var spartanDirectory = Path.GetDirectoryName(PathLocation.Text);
+
+
+            if (!Directory.Exists(spartanDirectory))
             {
                 GenericMessageDialog.Show(Properties.Resources.GamePathInvalidPath, DialogIcon.Error, DialogOptions.Ok);
             }
@@ -58,9 +61,9 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 Close();
 
-                LegacyBootstrapper.UserConfig.GameFilesPath = PathLocation.Text;
+                LegacyBootstrapper.UserConfig.GameFilesPath = spartanDirectory;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
-                var scanner = new GameScannerWindow(PathLocation.Text, LegacyBootstrapper.UserConfig.IsSteamVersion);
+                var scanner = new GameScannerWindow(spartanDirectory, LegacyBootstrapper.UserConfig.IsSteamVersion);
                 scanner.Owner = Owner;
                 scanner.ShowDialog();
             }
