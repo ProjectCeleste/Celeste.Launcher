@@ -57,11 +57,11 @@ init:
         {
             $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0.0.0";
         }
-        else if ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 3)
+        elseif ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 3)
         {
             $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0.0";
         }
-        else if ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 4)
+        elseif ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -ilt 4)
         {
             $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0";
         }
