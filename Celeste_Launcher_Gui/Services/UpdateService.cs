@@ -23,7 +23,7 @@ namespace Celeste_Launcher_Gui.Services
 #if IS_BETA
 
         private const string AssemblyInfoUrl =
-                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs";
+            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/Celeste_Launcher_Gui/Celeste_Launcher_Gui.csproj";
 
         private const string ChangelogUrl =
             "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/CHANGELOG.md";
@@ -31,7 +31,7 @@ namespace Celeste_Launcher_Gui.Services
 #else
 
         private const string AssemblyInfoUrl =
-                "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/Celeste_Launcher_Gui/Properties/AssemblyInfo.cs";
+            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/Celeste_Launcher_Gui/Celeste_Launcher_Gui.csproj";
 
         private const string ChangelogUrl =
             "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/CHANGELOG.md";
@@ -55,13 +55,13 @@ namespace Celeste_Launcher_Gui.Services
                 version = await responseContent.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
 
-            var regex = new Regex(@"\[assembly\: AssemblyVersion\(""(\d{1,})\.(\d{1,})\.(\d{1,})\.(\d{1,})""\)\]");
+            var regex = new Regex(@"\<Version\>(\d{1,})\.(\d{1,})\.(\d{1,})<\/Version\>");
             var match = regex.Match(version);
 
             if (!match.Success)
                 throw new Exception("GetLatestVersion() match.Success != true");
 
-            return new Version($"{match.Groups[1]}.{match.Groups[2]}.{match.Groups[3]}.{match.Groups[4]}");
+            return new Version($"{match.Groups[1]}.{match.Groups[2]}.{match.Groups[3]}");
         }
 
         public static async Task<string> GetChangeLog()
