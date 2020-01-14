@@ -36,7 +36,7 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
     ///     Example: 4876-8DB5-EE85-69D3-FE52-8CF7-395D-2EA9
     ///     https://www.codeproject.com/Articles/28678/Generating-Unique-Key-Finger-Print-for-a-Computer
     /// </summary>
-    public static class FingerPrint
+    internal static class FingerPrint
     {
         private static string _fingerPrint = string.Empty;
 
