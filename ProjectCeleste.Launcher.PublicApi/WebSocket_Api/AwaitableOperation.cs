@@ -1,7 +1,11 @@
-﻿using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
+﻿#region Using directives
+
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+
+#endregion Using directives
 
 namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 {
@@ -19,7 +23,7 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
         public async Task<TResponse> WaitForResponseAsync(int timeoutInSeconds)
         {
-            bool waitSucceeded = await _semaphore.WaitAsync(timeoutInSeconds * 1000);
+            var waitSucceeded = await _semaphore.WaitAsync(timeoutInSeconds * 1000);
 
             if (!waitSucceeded)
                 throw new Exception("Operation timed out");
@@ -29,18 +33,15 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
         #region IDisposable Support
 
-        private bool disposedValue;
+        private bool _disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!_disposedValue)
             {
-                if (disposing)
-                {
-                    _semaphore.Dispose();
-                }
+                if (disposing) _semaphore.Dispose();
 
-                disposedValue = true;
+                _disposedValue = true;
             }
         }
 

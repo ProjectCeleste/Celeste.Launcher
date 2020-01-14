@@ -1,13 +1,17 @@
-﻿using System.Linq;
+﻿#region Using directives
+
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Input;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for MultiplayerSettings.xaml
+    ///     Interaction logic for MultiplayerSettings.xaml
     /// </summary>
     public partial class MultiplayerSettings : Window
     {
@@ -17,15 +21,17 @@ namespace Celeste_Launcher_Gui.Windows
         {
             InitializeComponent();
 
-            MpSettings mpSettings = LegacyBootstrapper.UserConfig.MpSettings;
+            var mpSettings = LegacyBootstrapper.UserConfig.MpSettings;
             switch (mpSettings.ConnectionType)
             {
                 case ConnectionType.Wan:
                     WanConnectionTypeCheckBox.IsChecked = true;
                     break;
+
                 case ConnectionType.Lan:
                     LanConnectionTypeCheckBox.IsChecked = true;
                     break;
+
                 case ConnectionType.Other:
                     OtherConnectionTypeCheckBox.IsChecked = true;
                     break;
@@ -36,9 +42,11 @@ namespace Celeste_Launcher_Gui.Windows
                 case PortMappingType.NatPunch:
                     NatPunchthroughPortMappingCheckBox.IsChecked = true;
                     break;
+
                 case PortMappingType.Upnp:
                     UPnPCPortMappingheckBox.IsChecked = true;
                     break;
+
                 case PortMappingType.Manual:
                     ManualPortMappingCheckBox.IsChecked = true;
                     break;
@@ -110,14 +118,9 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void OtherConnectionTypeCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (OtherConnectionTypeCheckBox.IsChecked == true)
-            {
-                _selectedInterfaceName = Properties.Resources.MultiplayerSettingsOtherNetworkDevice;
-            }
-            else
-            {
-                _selectedInterfaceName = string.Empty;
-            }
+            _selectedInterfaceName = OtherConnectionTypeCheckBox.IsChecked == true
+                ? Properties.Resources.MultiplayerSettingsOtherNetworkDevice
+                : string.Empty;
         }
 
         private void LanConnectionTypeCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -125,12 +128,12 @@ namespace Celeste_Launcher_Gui.Windows
             if (LanConnectionTypeCheckBox.IsChecked == false)
                 return;
 
-            NetworkInterface networkInterface = NetworkInterface.GetAllNetworkInterfaces()
+            var networkInterface = NetworkInterface.GetAllNetworkInterfaces()
                 .FirstOrDefault(t => t.Name == LegacyBootstrapper.UserConfig?.MpSettings?.LanNetworkInterface);
 
             if (networkInterface == null)
             {
-                NetworkDeviceSelectorDialog netDeviceSelectDialog = new NetworkDeviceSelectorDialog
+                var netDeviceSelectDialog = new NetworkDeviceSelectorDialog
                 {
                     Owner = this
                 };
@@ -149,16 +152,12 @@ namespace Celeste_Launcher_Gui.Windows
 
             // Get IPv4 address of the network interface:
             if (networkInterface != null)
-            {
-                foreach (UnicastIPAddressInformation ip in networkInterface.GetIPProperties().UnicastAddresses)
-                {
+                foreach (var ip in networkInterface.GetIPProperties().UnicastAddresses)
                     if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                     {
                         RemoteIPField.InputContent = ip.Address.ToString();
                         return;
                     }
-                }
-            }
         }
     }
 }

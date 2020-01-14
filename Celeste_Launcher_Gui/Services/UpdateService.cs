@@ -1,19 +1,24 @@
 ﻿#define IS_BETA
 
+#region Using directives
+
 using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Properties;
 using Celeste_Launcher_Gui.ViewModels;
-using ProjectCeleste.Launcher.PublicApi.Logging;
 using Markdig;
 using ProjectCeleste.GameFiles.GameScanner.FileDownloader;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Net;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Services
 {
@@ -28,7 +33,6 @@ namespace Celeste_Launcher_Gui.Services
             "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/CHANGELOG.md";
 
 #else
-
         private const string AssemblyInfoUrl =
             "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/Celeste_Launcher_Gui/Celeste_Launcher_Gui.csproj";
 
@@ -48,14 +52,14 @@ namespace Celeste_Launcher_Gui.Services
         {
             string version;
 
-            using (HttpClient client = new HttpClient())
+            using (var client = new HttpClient())
             {
-                HttpResponseMessage responseContent = await client.GetAsync(AssemblyInfoUrl).ConfigureAwait(false);
+                var responseContent = await client.GetAsync(AssemblyInfoUrl).ConfigureAwait(false);
                 version = await responseContent.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
 
-            Regex regex = new Regex(@"\<Version\>(\d{1,})\.(\d{1,})\.(\d{1,})\.(\d{1,})<\/Version\>");
-            Match match = regex.Match(version);
+            var regex = new Regex(@"\<Version\>(\d{1,})\.(\d{1,})\.(\d{1,})\.(\d{1,})<\/Version\>");
+            var match = regex.Match(version);
 
             if (!match.Success)
                 throw new Exception("GetLatestVersion() match.Success != true");
@@ -69,41 +73,41 @@ namespace Celeste_Launcher_Gui.Services
             {
                 string changelogRaw;
 
-                using (HttpClient client = new HttpClient())
+                using (var client = new HttpClient())
                 {
-                    HttpResponseMessage responseContent = await client.GetAsync(ChangelogUrl).ConfigureAwait(false);
+                    var responseContent = await client.GetAsync(ChangelogUrl).ConfigureAwait(false);
                     changelogRaw = await responseContent.Content.ReadAsStringAsync().ConfigureAwait(false);
                 }
 
                 if (string.IsNullOrWhiteSpace(changelogRaw))
-                    return Properties.Resources.UpdateServiceChangelogError;
+                    return Resources.UpdateServiceChangelogError;
 
-                string changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
+                var changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
                     .Replace("Full Changelog", string.Empty).Replace("Change Log", string.Empty);
 
                 if (!string.IsNullOrWhiteSpace(changelogFormatted))
                     return changelogFormatted;
 
-                return Properties.Resources.UpdateServiceChangelogError;
+                return Resources.UpdateServiceChangelogError;
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                return Properties.Resources.UpdateServiceChangelogError;
+                return Resources.UpdateServiceChangelogError;
             }
         }
 
         public static async Task LoadUpdateInfo(LauncherVersionInfo launcherVersionInfo)
         {
-            launcherVersionInfo.CurrentVersion = Assembly.GetEntryAssembly().GetName().Version.ToString();
+            launcherVersionInfo.CurrentVersion = Assembly.GetEntryAssembly()?.GetName().Version.ToString();
             launcherVersionInfo.NewVersion = (await GetGitHubAssemblyVersion()).ToString();
             launcherVersionInfo.ChangeLog = await GetChangeLog();
         }
 
         private static string StripHtml(string htmlText, bool decode = true)
         {
-            Regex reg = new Regex("<[^>]+>", RegexOptions.IgnoreCase);
-            string stripped = reg.Replace(htmlText, "");
+            var reg = new Regex("<[^>]+>", RegexOptions.IgnoreCase);
+            var stripped = reg.Replace(htmlText, "");
             return decode ? WebUtility.HtmlDecode(stripped) : stripped;
         }
 
@@ -112,7 +116,7 @@ namespace Celeste_Launcher_Gui.Services
         {
             Files.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
 
-            Version gitVersion = await GetGitHubAssemblyVersion().ConfigureAwait(false);
+            var gitVersion = await GetGitHubAssemblyVersion().ConfigureAwait(false);
 
             progress?.Report(3);
 
@@ -122,7 +126,8 @@ namespace Celeste_Launcher_Gui.Services
             ct.ThrowIfCancellationRequested();
 
 #if IS_BETA
-            string downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}-beta/{ZipName}";
+            var downloadLink =
+                $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}-beta/{ZipName}";
 #else
             var downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}/{ZipName}";
 #endif
@@ -130,13 +135,14 @@ namespace Celeste_Launcher_Gui.Services
             //Download File
             progress?.Report(5);
 
-            string tempFileName = Path.GetTempFileName();
+            var tempFileName = Path.GetTempFileName();
 
             try
             {
-                SimpleFileDownloader downloadFileAsync = new SimpleFileDownloader(downloadLink, tempFileName);
+                var downloadFileAsync = new SimpleFileDownloader(downloadLink, tempFileName);
                 if (progress != null)
-                    downloadFileAsync.ProgressChanged += (sender, args) => progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DownloadProgress / 100))));
+                    downloadFileAsync.ProgressChanged += (sender, args) =>
+                        progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DownloadProgress / 100))));
                 await downloadFileAsync.DownloadAsync(ct);
             }
             catch (AggregateException)
@@ -154,9 +160,11 @@ namespace Celeste_Launcher_Gui.Services
             if (progress != null)
             {
                 extractProgress = new Progress<double>();
-                extractProgress.ProgressChanged += (_, ea) => progress.Report(70 + Convert.ToInt32(Math.Floor(20 * (ea / 100))));
+                extractProgress.ProgressChanged += (_, ea) =>
+                    progress.Report(70 + Convert.ToInt32(Math.Floor(20 * (ea / 100))));
             }
-            string tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
+
+            var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 
             if (Directory.Exists(tempDir))
                 Files.CleanUpFiles(tempDir, "*.*");
@@ -179,7 +187,7 @@ namespace Celeste_Launcher_Gui.Services
             //Move File
             progress?.Report(90);
 
-            string destinationDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
+            var destinationDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
             try
             {
                 Files.MoveFiles(tempDir, destinationDir);

@@ -1,6 +1,8 @@
-﻿using Celeste_Launcher_Gui.Helpers;
-using ProjectCeleste.Launcher.PublicApi.Logging;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Helpers;
 using ProjectCeleste.GameFiles.GameScanner;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.IO;
@@ -12,10 +14,12 @@ using System.Windows.Media;
 using WindowsFirewallHelper;
 using WindowsFirewallHelper.FirewallAPIv2.Rules;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for WindowsFirewallHelper.xaml
+    ///     Interaction logic for WindowsFirewallHelper.xaml
     /// </summary>
     public partial class WindowsFirewallHelper : Window
     {
@@ -41,17 +45,18 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                string launcherPath = Assembly.GetEntryAssembly().Location;
+                var launcherPath = Assembly.GetEntryAssembly()?.Location;
 
                 if (!File.Exists(launcherPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound,
+                        DialogIcon.Error);
                     Close();
                     return;
                 }
 
                 //outbound_tcp
-                bool rule = FirewallHelper.RuleExist("celeste_launcher_outbound_tcp");
+                var rule = FirewallHelper.RuleExist("celeste_launcher_outbound_tcp");
                 if (rule)
                     FirewallHelper.RemoveRules("celeste_launcher_outbound_tcp");
 
@@ -61,7 +66,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             LoadFirewallRules();
@@ -74,21 +79,22 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                string path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
+                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
                     : GameScannnerManager.GetGameFilesRootPath();
 
-                string spartanPath = Path.Combine(path, "Spartan.exe");
+                var spartanPath = Path.Combine(path, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound,
+                        DialogIcon.Error);
                     Close();
                     return;
                 }
 
                 //inbound_tcp
-                bool rule = FirewallHelper.RuleExist("celeste_spartan_inbound_tcp");
+                var rule = FirewallHelper.RuleExist("celeste_spartan_inbound_tcp");
                 if (rule)
                     FirewallHelper.RemoveRules("celeste_spartan_inbound_tcp");
 
@@ -122,7 +128,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             LoadFirewallRules();
@@ -136,7 +142,7 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 //inbound_udp
-                bool rule = FirewallHelper.RuleExist("celeste_port1000_inbound_udp");
+                var rule = FirewallHelper.RuleExist("celeste_port1000_inbound_udp");
                 if (rule)
                     FirewallHelper.RemoveRules("celeste_port1000_inbound_udp");
 
@@ -154,7 +160,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             LoadFirewallRules();
@@ -172,16 +178,17 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 //Launcher
-                string launcherPath = Assembly.GetEntryAssembly().Location;
+                var launcherPath = Assembly.GetEntryAssembly()?.Location;
 
                 if (!File.Exists(launcherPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound,
+                        DialogIcon.Error);
                     Close();
                     return;
                 }
 
-                StandardRuleWin7 rule = (StandardRuleWin7)FirewallHelper.FindRule("celeste_launcher_outbound_tcp");
+                var rule = (StandardRuleWin7)FirewallHelper.FindRule("celeste_launcher_outbound_tcp");
                 if (rule == null)
                 {
                     LauncherOutboundStatus.Content = Properties.Resources.WindowsFirewallHelperRuleNotFound;
@@ -202,22 +209,23 @@ namespace Celeste_Launcher_Gui.Windows
                     }
                 }
 
-                string path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
+                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
                     : GameScannnerManager.GetGameFilesRootPath();
 
-                string spartanPath = Path.Combine(path, "Spartan.exe");
+                var spartanPath = Path.Combine(path, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound,
+                        DialogIcon.Error);
                     Close();
                     return;
                 }
 
                 //Spartan
-                StandardRuleWin7 rule1 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_tcp");
-                StandardRuleWin7 rule2 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_udp");
+                var rule1 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_tcp");
+                var rule2 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_udp");
                 if (rule1 == null || rule2 == null)
                 {
                     SpartanInboundStatus.Content = Properties.Resources.WindowsFirewallHelperRuleNotFound;
@@ -310,7 +318,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
         }
     }

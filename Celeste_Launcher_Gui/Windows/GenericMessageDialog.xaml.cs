@@ -1,18 +1,23 @@
-﻿using System.Media;
+﻿#region Using directives
+
+using System.Media;
 using System.Windows;
 using System.Windows.Input;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for YesNoDialog.xaml
+    ///     Interaction logic for YesNoDialog.xaml
     /// </summary>
     public partial class GenericMessageDialog : Window
     {
         public string Message { get; set; }
         public string IconSource { get; set; }
 
-        public GenericMessageDialog(string message, DialogIcon icon = DialogIcon.None, DialogOptions option = DialogOptions.Ok)
+        public GenericMessageDialog(string message, DialogIcon icon = DialogIcon.None,
+            DialogOptions option = DialogOptions.Ok)
         {
             InitializeComponent();
             SystemSounds.Beep.Play();
@@ -39,9 +44,10 @@ namespace Celeste_Launcher_Gui.Windows
             }
         }
 
-        public static bool? Show(string message, DialogIcon icon = DialogIcon.None, DialogOptions option = DialogOptions.Ok)
+        public static bool? Show(string message, DialogIcon icon = DialogIcon.None,
+            DialogOptions option = DialogOptions.Ok)
         {
-            GenericMessageDialog dialog = new GenericMessageDialog(message, icon, option)
+            var dialog = new GenericMessageDialog(message, icon, option)
             {
                 Owner = Application.Current.MainWindow
             };

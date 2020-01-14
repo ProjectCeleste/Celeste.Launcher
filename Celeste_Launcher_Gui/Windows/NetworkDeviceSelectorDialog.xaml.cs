@@ -1,14 +1,18 @@
-﻿using System.Linq;
+﻿#region Using directives
+
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for NetworkDeviceSelectorDialog.xaml
+    ///     Interaction logic for NetworkDeviceSelectorDialog.xaml
     /// </summary>
     public partial class NetworkDeviceSelectorDialog : Window
     {
@@ -39,7 +43,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             if (!(NetworkInterfaceListView.SelectedItem is ListViewItem selectedNetworkInterface))
             {
-                GenericMessageDialog.Show(Properties.Resources.NetworkDeviceSelectorNoDeviceSelected, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.NetworkDeviceSelectorNoDeviceSelected, DialogIcon.Error);
                 return;
             }
 
@@ -53,14 +57,14 @@ namespace Celeste_Launcher_Gui.Windows
         {
             NetworkInterfaceListView.Items.Clear();
 
-            foreach (NetworkInterface networkInterface in NetworkInterface.GetAllNetworkInterfaces())
+            foreach (var networkInterface in NetworkInterface.GetAllNetworkInterfaces())
             {
-                System.Collections.Generic.IEnumerable<UnicastIPAddressInformation> ips = networkInterface.GetIPProperties().UnicastAddresses
+                var ips = networkInterface.GetIPProperties().UnicastAddresses
                     .Where(key => key.Address.AddressFamily == AddressFamily.InterNetwork);
 
-                foreach (UnicastIPAddressInformation ip in ips)
+                foreach (var ip in ips)
                 {
-                    string content = $"{networkInterface.Name} ({ip.Address})";
+                    var content = $"{networkInterface.Name} ({ip.Address})";
 
                     NetworkInterfaceListView.Items.Add(new ListViewItem
                     {

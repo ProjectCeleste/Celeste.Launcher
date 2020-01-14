@@ -1,6 +1,10 @@
-﻿using Celeste_Launcher_Gui.ViewModels;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -8,20 +12,28 @@ namespace Celeste_Launcher_Gui.Helpers
     {
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            FrameworkElement element = container as FrameworkElement;
+            var element = container as FrameworkElement;
 
-            if (item is OnlineFriend)
-                return element.FindResource("OnlineFriendTemplate") as DataTemplate;
-            else if (item is OfflineFriend)
-                return element.FindResource("OfflineFriendTemplate") as DataTemplate;
-            else if (item is OutgoingFriendRequest)
-                return element.FindResource("OutgoingFriendRequest") as DataTemplate;
-            else if (item is IncomingFriendRequest)
-                return element.FindResource("IncomingFriendRequest") as DataTemplate;
-            else if (item is FriendListSeparator)
-                return element.FindResource("Separator") as DataTemplate;
+            switch (item)
+            {
+                case OnlineFriend _:
+                    return element?.FindResource("OnlineFriendTemplate") as DataTemplate;
 
-            return null;
+                case OfflineFriend _:
+                    return element?.FindResource("OfflineFriendTemplate") as DataTemplate;
+
+                case OutgoingFriendRequest _:
+                    return element?.FindResource("OutgoingFriendRequest") as DataTemplate;
+
+                case IncomingFriendRequest _:
+                    return element?.FindResource("IncomingFriendRequest") as DataTemplate;
+
+                case FriendListSeparator _:
+                    return element?.FindResource("Separator") as DataTemplate;
+
+                default:
+                    return null;
+            }
         }
     }
 }

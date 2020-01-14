@@ -1,10 +1,14 @@
-﻿using System.Windows;
+﻿#region Using directives
+
+using System.Windows;
 using System.Windows.Controls;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Pages
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    ///     Interaction logic for LoginWindow.xaml
     /// </summary>
     public partial class LanguageSelectionPage : Page
     {
@@ -15,7 +19,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnAbortLoginClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
 
         private void SelectGerman(object sender, RoutedEventArgs e)
@@ -57,7 +61,7 @@ namespace Celeste_Launcher_Gui.Pages
         {
             LegacyBootstrapper.UserConfig.GameLanguage = language;
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
     }
 }

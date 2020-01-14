@@ -1,21 +1,28 @@
-﻿using System.Windows;
+﻿#region Using directives
+
+using System.Windows;
 using System.Windows.Controls;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.UserControls
 {
     /// <summary>
-    /// Interaction logic for MainMenuButton.xaml
+    ///     Interaction logic for MainMenuButton.xaml
     /// </summary>
     public partial class WindowControl : UserControl
     {
         public static readonly DependencyProperty ClickProperty =
-            DependencyProperty.Register("Click", typeof(RoutedEventHandler), typeof(WindowControl), new PropertyMetadata(default(RoutedEventHandler)));
+            DependencyProperty.Register("Click", typeof(RoutedEventHandler), typeof(WindowControl),
+                new PropertyMetadata(default(RoutedEventHandler)));
 
         public static readonly DependencyProperty DefaultIconProperty =
-            DependencyProperty.Register("DefaultIcon", typeof(string), typeof(WindowControl), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("DefaultIcon", typeof(string), typeof(WindowControl),
+                new PropertyMetadata(default(string)));
 
         public static readonly DependencyProperty HoverIconProperty =
-            DependencyProperty.Register("HoverIcon", typeof(string), typeof(WindowControl), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("HoverIcon", typeof(string), typeof(WindowControl),
+                new PropertyMetadata(default(string)));
 
         public static readonly DependencyProperty IconWidthProperty =
             DependencyProperty.Register("IconWidth", typeof(int), typeof(WindowControl), new PropertyMetadata(31));
@@ -25,32 +32,32 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public string DefaultIcon
         {
-            get { return (string)GetValue(DefaultIconProperty); }
-            set { SetValue(DefaultIconProperty, value); }
+            get => (string)GetValue(DefaultIconProperty);
+            set => SetValue(DefaultIconProperty, value);
         }
 
         public string HoverIcon
         {
-            get { return (string)GetValue(HoverIconProperty); }
-            set { SetValue(HoverIconProperty, value); }
+            get => (string)GetValue(HoverIconProperty);
+            set => SetValue(HoverIconProperty, value);
         }
 
         public RoutedEventHandler Click
         {
-            get { return (RoutedEventHandler)GetValue(ClickProperty); }
-            set { SetValue(ClickProperty, value); }
+            get => (RoutedEventHandler)GetValue(ClickProperty);
+            set => SetValue(ClickProperty, value);
         }
 
         public int IconWidth
         {
-            get { return (int)GetValue(IconWidthProperty); }
-            set { SetValue(IconWidthProperty, value); }
+            get => (int)GetValue(IconWidthProperty);
+            set => SetValue(IconWidthProperty, value);
         }
 
         public int IconHeight
         {
-            get { return (int)GetValue(IconHeightProperty); }
-            set { SetValue(IconHeightProperty, value); }
+            get => (int)GetValue(IconHeightProperty);
+            set => SetValue(IconHeightProperty, value);
         }
 
         public WindowControl()

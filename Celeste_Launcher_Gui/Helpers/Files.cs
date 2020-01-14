@@ -56,11 +56,11 @@ namespace Celeste_Launcher_Gui.Helpers
 
             Parallel.ForEach(Directory.GetFiles(originalPath), file =>
             {
-                string name = Path.GetFileName(file);
+                var name = Path.GetFileName(file);
                 if (name == null)
                     return;
 
-                string dest = Path.Combine(destPath, name);
+                var dest = Path.Combine(destPath, name);
 
                 if (File.Exists(dest) && doBackup)
                 {
@@ -76,12 +76,12 @@ namespace Celeste_Launcher_Gui.Helpers
                 File.Move(file, dest);
             });
 
-            foreach (string folder in Directory.GetDirectories(originalPath))
+            foreach (var folder in Directory.GetDirectories(originalPath))
             {
-                string name = Path.GetFileName(folder);
+                var name = Path.GetFileName(folder);
                 if (name == null)
                     return;
-                string dest = Path.Combine(destPath, name);
+                var dest = Path.Combine(destPath, name);
                 MoveFiles(folder, dest, doBackup, backupExt);
             }
         }
@@ -141,15 +141,15 @@ namespace Celeste_Launcher_Gui.Helpers
             if (!Directory.Exists(path) && !File.Exists(path))
                 throw new IOException("Path not found");
 
-            DirectoryInfo symlink = new DirectoryInfo(path); // No matter if it's a file or folder
-            SafeFileHandle directoryHandle = CreateFile(symlink.FullName, 0, 2, IntPtr.Zero, CREATION_DISPOSITION_OPEN_EXISTING,
+            var symlink = new DirectoryInfo(path); // No matter if it's a file or folder
+            var directoryHandle = CreateFile(symlink.FullName, 0, 2, IntPtr.Zero, CREATION_DISPOSITION_OPEN_EXISTING,
                 FILE_FLAG_BACKUP_SEMANTICS, IntPtr.Zero); //Handle file / folder
 
             if (directoryHandle.IsInvalid)
                 throw new Win32Exception(Marshal.GetLastWin32Error());
 
-            StringBuilder result = new StringBuilder(512);
-            int mResult = GetFinalPathNameByHandle(directoryHandle.DangerousGetHandle(), result, result.Capacity, 0);
+            var result = new StringBuilder(512);
+            var mResult = GetFinalPathNameByHandle(directoryHandle.DangerousGetHandle(), result, result.Capacity, 0);
 
             if (mResult < 0)
                 throw new Win32Exception(Marshal.GetLastWin32Error());

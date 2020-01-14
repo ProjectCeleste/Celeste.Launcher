@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿#region Using directives
+
+using System.Collections.Generic;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Model.Friends
 {

@@ -1,16 +1,20 @@
-﻿using Celeste_Launcher_Gui.Helpers;
-using ProjectCeleste.Launcher.PublicApi.Logging;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Helpers;
 using Microsoft.Dism;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for WindowsFeatureHelper.xaml
+    ///     Interaction logic for WindowsFeatureHelper.xaml
     /// </summary>
     public partial class WindowsFeatureHelper : Window
     {
@@ -36,8 +40,8 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                DismFeatureInfo feature = await Dism.EnableWindowsFeatures("DirectPlay", OnDismInstallProgress);
-                (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature);
+                var feature = await Dism.EnableWindowsFeatures("DirectPlay", OnDismInstallProgress);
+                var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature);
 
                 DirectPlayStatusLabel.Text = statusText;
                 DirectPlayStatusLabel.Foreground = new SolidColorBrush(colorLabel);
@@ -46,8 +50,9 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
+
             IsEnabled = true;
         }
 
@@ -56,8 +61,8 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                DismFeatureInfo feature = await Dism.EnableWindowsFeatures("NetFx3", OnDismInstallProgress);
-                (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature);
+                var feature = await Dism.EnableWindowsFeatures("NetFx3", OnDismInstallProgress);
+                var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature);
 
                 NetFrameworkStatusLabel.Text = statusText;
                 NetFrameworkStatusLabel.Foreground = new SolidColorBrush(colorLabel);
@@ -66,8 +71,9 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
+
             IsEnabled = true;
         }
 
@@ -78,10 +84,11 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            OsVersionInfo osInfo = OsVersionInfo.GetOsVersionInfo();
+            var osInfo = OsVersionInfo.GetOsVersionInfo();
             if (osInfo.Major < 6 || osInfo.Major == 6 && osInfo.Minor < 2)
             {
-                GenericMessageDialog.Show(string.Format(Properties.Resources.WindowsFeatureHelperUnsupportedOS, osInfo.FullName),
+                GenericMessageDialog.Show(
+                    string.Format(Properties.Resources.WindowsFeatureHelperUnsupportedOS, osInfo.FullName),
                     DialogIcon.Warning);
 
                 Close();
@@ -90,11 +97,10 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                foreach (System.Collections.Generic.KeyValuePair<string, DismFeatureInfo> feature in await Dism.GetWindowsFeatureInfo(new[] { "DirectPlay", "NetFx3" }))
-                {
+                foreach (var feature in await Dism.GetWindowsFeatureInfo(new[] { "DirectPlay", "NetFx3" }))
                     if (string.Equals(feature.Key, "DirectPlay", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
+                        var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
 
                         DirectPlayStatusLabel.Text = statusText;
                         DirectPlayStatusLabel.Foreground = new SolidColorBrush(colorLabel);
@@ -102,13 +108,12 @@ namespace Celeste_Launcher_Gui.Windows
                     }
                     else if (string.Equals(feature.Key, "NetFx3", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
+                        var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
 
                         NetFrameworkStatusLabel.Text = statusText;
                         NetFrameworkStatusLabel.Foreground = new SolidColorBrush(colorLabel);
                         EnableNetFrameworkBtn.IsEnabled = canBeEnabled;
                     }
-                }
             }
             catch (Exception ex)
             {
@@ -118,20 +123,27 @@ namespace Celeste_Launcher_Gui.Windows
             }
         }
 
-        private (string statusText, Color labelColor, bool canBeEnabled) GetLabelStatusForDismFeature(DismFeatureInfo featureInfo)
+        private (string statusText, Color labelColor, bool canBeEnabled) GetLabelStatusForDismFeature(
+            DismFeatureInfo featureInfo)
         {
             switch (featureInfo.FeatureState)
             {
                 case DismPackageFeatureState.Staged:
                     return (Properties.Resources.WindowsFeatureHelperFeatureStaged, Colors.Chocolate, true);
+
                 case DismPackageFeatureState.PartiallyInstalled:
                     return (Properties.Resources.WindowsFeatureHelperFeaturePartiallyInstalled, Colors.Chocolate, true);
+
                 case DismPackageFeatureState.Installed:
                     return (Properties.Resources.WindowsFeatureHelperFeatureInstalled, Colors.DarkGreen, false);
+
                 case DismPackageFeatureState.InstallPending:
                     return (Properties.Resources.WindowsFeatureHelperFeatureIsPendingInstall, Colors.DarkGreen, false);
+
                 default:
-                    return (string.Format(Properties.Resources.WindowsFeatureHelperFeatureUnsupported, featureInfo.FeatureState), Colors.Red, false);
+                    return (
+                        string.Format(Properties.Resources.WindowsFeatureHelperFeatureUnsupported,
+                            featureInfo.FeatureState), Colors.Red, false);
             }
         }
     }

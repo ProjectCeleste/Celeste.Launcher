@@ -1,12 +1,12 @@
 ﻿<UserControl x:Class="Celeste_Launcher_Gui.UserControls.UpdateProgressBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="60" d:DesignWidth="500">
     <Grid Width="440" Height="38">
-        <ProgressBar Width="430" Height="22" x:Name="ProgressBar"/>
-        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ProgressBarOverlay.png" Stretch="None"/>
+        <ProgressBar Width="430" Height="22" x:Name="ProgressBar" />
+        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ProgressBarOverlay.png" Stretch="None" />
     </Grid>
 </UserControl>

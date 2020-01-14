@@ -1,4 +1,6 @@
-﻿using Celeste_Launcher_Gui.Helpers;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Helpers;
 using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
@@ -8,10 +10,12 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for SteamConverterWindow.xaml
+    ///     Interaction logic for SteamConverterWindow.xaml
     /// </summary>
     public partial class SteamConverterWindow : Window
     {
@@ -36,35 +40,38 @@ namespace Celeste_Launcher_Gui.Windows
         {
             try
             {
-                string exePath = Assembly.GetEntryAssembly().Location;
+                var exePath = Assembly.GetEntryAssembly()?.Location;
                 if (exePath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame);
                     Close();
                     return;
                 }
 
-                string exeFolder = Path.GetDirectoryName(exePath);
-                if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, exeFolder, StringComparison.OrdinalIgnoreCase))
+                var exeFolder = Path.GetDirectoryName(exePath);
+                if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, exeFolder,
+                    StringComparison.OrdinalIgnoreCase))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory);
                     Close();
                     return;
                 }
 
                 Steam.ConvertToSteam(LegacyBootstrapper.UserConfig.GameFilesPath);
 
-                GenericMessageDialog.Show(Properties.Resources.SteamConverterSuccess, DialogIcon.None, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.SteamConverterSuccess);
 
-                Process.Start(Assembly.GetEntryAssembly().Location
-                    .Replace("Celeste_Launcher_Gui.exe", "AOEOnline.exe"));
+                Process.Start(Assembly.GetEntryAssembly()
+                                  ?.Location
+                                  .Replace("Celeste_Launcher_Gui.exe", "AOEOnline.exe") ??
+                              throw new InvalidOperationException());
 
                 Environment.Exit(0);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
         }
     }

@@ -1,21 +1,25 @@
-﻿using Serilog;
+﻿#region Using directives
+
+using Serilog;
+
+#endregion Using directives
 
 namespace ProjectCeleste.Launcher.PublicApi.Logging
 {
     public static class LoggerFactory
     {
-        private static readonly ILogger _logger = BuildLogger();
+        private static readonly ILogger Logger = BuildLogger();
 
         public static ILogger GetLogger()
         {
-            return _logger;
+            return Logger;
         }
 
         private static ILogger BuildLogger()
         {
             return new LoggerConfiguration()
-                  .ReadFrom.AppSettings()
-                  .CreateLogger();
+                .ReadFrom.AppSettings()
+                .CreateLogger();
         }
     }
 }

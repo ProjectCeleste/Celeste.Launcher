@@ -1,12 +1,12 @@
 ﻿#region Using directives
 
+using Microsoft.Dism;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Dism;
 
-#endregion
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -15,16 +15,16 @@ namespace Celeste_Launcher_Gui.Helpers
         public static async Task<IEnumerable<KeyValuePair<string, DismFeatureInfo>>> GetWindowsFeatureInfo(
             IEnumerable<string> featureNames)
         {
-            string[] enumerable = featureNames as string[] ?? featureNames.ToArray();
+            var enumerable = featureNames as string[] ?? featureNames.ToArray();
             if (enumerable.Length == 0)
                 throw new ArgumentException();
 
             DismApi.Initialize(DismLogLevel.LogErrors);
 
-            List<KeyValuePair<string, DismFeatureInfo>> retVal = new List<KeyValuePair<string, DismFeatureInfo>>();
+            var retVal = new List<KeyValuePair<string, DismFeatureInfo>>();
             try
             {
-                using (DismSession session = DismApi.OpenOnlineSession())
+                using (var session = DismApi.OpenOnlineSession())
                 {
                     retVal.AddRange(enumerable.Where(key => !string.IsNullOrWhiteSpace(key))
                         .Select(featureName => new KeyValuePair<string, DismFeatureInfo>(featureName,
@@ -48,7 +48,7 @@ namespace Celeste_Launcher_Gui.Helpers
             DismFeatureInfo retVal;
             try
             {
-                using (DismSession session = DismApi.OpenOnlineSession())
+                using (var session = DismApi.OpenOnlineSession())
                 {
                     retVal = DismApi.GetFeatureInfo(session, featureName);
                 }
@@ -74,7 +74,7 @@ namespace Celeste_Launcher_Gui.Helpers
             DismFeatureInfo retVal;
             try
             {
-                using (DismSession session = DismApi.OpenOnlineSession())
+                using (var session = DismApi.OpenOnlineSession())
                 {
                     DismApi.EnableFeatureByPackageName(session, featureName, null, false, true, new List<string>(),
                         dismProgressCallback);

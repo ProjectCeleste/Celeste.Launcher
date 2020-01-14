@@ -1,18 +1,24 @@
-﻿using Celeste_Launcher_Gui.Services;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Services;
 using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
+using ListViewItem = System.Windows.Controls.ListViewItem;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for ScenarioManager.xaml
+    ///     Interaction logic for ScenarioManager.xaml
     /// </summary>
     public partial class ScenarioManager : Window
     {
@@ -59,9 +65,10 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 ScenarioListView.Items.Clear();
-                foreach (string filePath in Directory.GetFiles(_scenarioDirectoryPath, "*.age4scn", SearchOption.AllDirectories))
+                foreach (var filePath in Directory.GetFiles(_scenarioDirectoryPath, "*.age4scn",
+                    SearchOption.AllDirectories))
                 {
-                    string txt = filePath.Replace(_scenarioDirectoryPath, string.Empty).Replace(".age4scn", string.Empty);
+                    var txt = filePath.Replace(_scenarioDirectoryPath, string.Empty).Replace(".age4scn", string.Empty);
                     if (txt.StartsWith("/") || txt.StartsWith(@"\"))
                         txt = txt.Substring(1);
 
@@ -74,7 +81,7 @@ namespace Celeste_Launcher_Gui.Windows
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
                 Logger.Error(ex, ex.Message);
             }
             finally
@@ -85,7 +92,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void FolderListenerEvent(object source, FileSystemEventArgs e)
         {
-            Dispatcher.Invoke(() => RefreshList());
+            Dispatcher?.Invoke(RefreshList);
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
@@ -104,7 +111,7 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                using (System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog
+                using (var dlg = new OpenFileDialog
                 {
                     Filter = $"{Properties.Resources.ScenarioEditorFilePickerFileTypes} (*.age4scn)|*.age4scn",
                     CheckFileExists = true,
@@ -115,15 +122,16 @@ namespace Celeste_Launcher_Gui.Windows
                     if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                         return;
 
-                    foreach (string filename in dlg.FileNames)
+                    foreach (var filename in dlg.FileNames)
                     {
-                        string selectedDestinationPath =
+                        var selectedDestinationPath =
                             Path.Combine(_scenarioDirectoryPath, Path.GetFileName(filename) ?? string.Empty);
 
                         if (File.Exists(selectedDestinationPath))
                         {
-                            bool? userSelectedToOverwrite = GenericMessageDialog.Show(
-                                string.Format(Properties.Resources.ScenarioEditorOverwritePrompt, selectedDestinationPath),
+                            var userSelectedToOverwrite = GenericMessageDialog.Show(
+                                string.Format(Properties.Resources.ScenarioEditorOverwritePrompt,
+                                    selectedDestinationPath),
                                 DialogIcon.None,
                                 DialogOptions.YesNo);
 
@@ -140,7 +148,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
             finally
             {
@@ -157,10 +165,9 @@ namespace Celeste_Launcher_Gui.Windows
                     return;
 
                 foreach (ListViewItem lvi in ScenarioListView.SelectedItems)
-                {
                     if (File.Exists((string)lvi.Tag))
                     {
-                        bool? userSelectedToDeleteFile = GenericMessageDialog.Show(
+                        var userSelectedToDeleteFile = GenericMessageDialog.Show(
                             string.Format(Properties.Resources.ScenarioEditorDeleteScenarioPrompt, lvi.Content),
                             DialogIcon.None,
                             DialogOptions.YesNo);
@@ -168,14 +175,13 @@ namespace Celeste_Launcher_Gui.Windows
                         if (userSelectedToDeleteFile == true)
                             File.Delete((string)lvi.Tag);
                     }
-                }
 
                 RefreshList();
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
             finally
             {
@@ -199,7 +205,7 @@ namespace Celeste_Launcher_Gui.Windows
             Process.Start("https://forums.projectceleste.com/wiki/offline-mode/");
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
             _folderListener.Dispose();
         }

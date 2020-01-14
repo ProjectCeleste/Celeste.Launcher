@@ -1,5 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿#region Using directives
+
+using System.Collections.ObjectModel;
 using System.Windows.Input;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.ViewModels
 {

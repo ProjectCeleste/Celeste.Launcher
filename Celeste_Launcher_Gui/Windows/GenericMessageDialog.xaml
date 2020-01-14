@@ -9,23 +9,23 @@
         Height="312" Width="512" WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/YesNoDialogBackground.png"/>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/YesNoDialogBackground.png" />
         </Grid.Background>
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <DockPanel MouseDown="ContentMoved">
                 <DockPanel VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="YesNoOptions" Visibility="Collapsed">
-                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionYes}" Click="YesClicked" Margin="30"/>
-                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionNo}" Click="NoClicked" Margin="30"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionYes}" Click="YesClicked" Margin="30" />
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionNo}" Click="NoClicked" Margin="30" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="OkOptions">
-                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionOk}" Click="OkClicked" Margin="30"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionOk}" Click="OkClicked" Margin="30" />
                     </StackPanel>
                 </DockPanel>
 
                 <DockPanel>
-                    <Image Source="{Binding IconSource}" Stretch="None" Margin="40,0,0,0" x:Name="DialogIconContents"/>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Ashley-Crawford-CG}" TextWrapping="WrapWithOverflow" Foreground="White" TextAlignment="Center" Text="{Binding Message}" Margin="10,0,20,0"/>
+                    <Image Source="{Binding IconSource}" Stretch="None" Margin="40,0,0,0" x:Name="DialogIconContents" />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontFamily="{StaticResource Ashley-Crawford-CG}" TextWrapping="WrapWithOverflow" Foreground="White" TextAlignment="Center" Text="{Binding Message}" Margin="10,0,20,0" />
                 </DockPanel>
             </DockPanel>
         </Border>

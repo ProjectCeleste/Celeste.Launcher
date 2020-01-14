@@ -3,7 +3,7 @@
 using System;
 using System.IO;
 
-#endregion
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -11,8 +11,8 @@ namespace Celeste_Launcher_Gui.Helpers
     {
         public static void ConvertToSteam(string gamePath)
         {
-            string fileIn = Path.Combine(gamePath, "Celeste Launcher.exe");
-            string fileOut = Path.Combine(gamePath, "AOEOnline.exe");
+            var fileIn = Path.Combine(gamePath, "Celeste Launcher.exe");
+            var fileOut = Path.Combine(gamePath, "AOEOnline.exe");
             Files.MoveFile(fileIn, fileOut);
 
             try
@@ -29,8 +29,8 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public static void ConvertBackFromSteam(string gamePath)
         {
-            string fileOut = Path.Combine(gamePath, "Celeste Launcher.exe");
-            string fileIn = Path.Combine(gamePath, "AOEOnline.exe");
+            var fileOut = Path.Combine(gamePath, "Celeste Launcher.exe");
+            var fileIn = Path.Combine(gamePath, "AOEOnline.exe");
             Files.MoveFile(fileIn, fileOut);
 
             try

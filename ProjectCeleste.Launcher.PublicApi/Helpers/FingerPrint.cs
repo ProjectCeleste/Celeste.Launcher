@@ -13,21 +13,18 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
 {
     public static class FingerPrintProvider
     {
-        private static Task<string> FingerPrintTask;
+        private static Task<string> _fingerPrintTask;
 
         public static void Initialize()
         {
-            FingerPrintTask = Task.Factory.StartNew(FingerPrint.GenerateValue);
+            _fingerPrintTask = Task.Factory.StartNew(FingerPrint.GenerateValue);
         }
 
         public static async Task<string> GetFingerprintAsync()
         {
-            if (FingerPrintTask == null)
-            {
-                Initialize();
-            }
+            if (_fingerPrintTask == null) Initialize();
 
-            return await FingerPrintTask;
+            return await _fingerPrintTask;
         }
     }
 
@@ -43,7 +40,6 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
         public static string GenerateValue()
         {
             if (string.IsNullOrEmpty(_fingerPrint))
-            {
                 _fingerPrint = GetHash("CPU >> " + CpuId() +
                                        "\nBIOS >> " + BiosId() +
                                        "\nBASE >> " + BaseId() +
@@ -51,7 +47,6 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
                                        "\nVIDEO >> " + VideoId() +
                                        "\nMAC >> " + MacId()
                 );
-            }
 
             return _fingerPrint;
         }
@@ -59,19 +54,19 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
         private static string GetHash(string s)
         {
             MD5 sec = new MD5CryptoServiceProvider();
-            ASCIIEncoding enc = new ASCIIEncoding();
-            byte[] bt = enc.GetBytes(s);
+            var enc = new ASCIIEncoding();
+            var bt = enc.GetBytes(s);
             return GetHexString(sec.ComputeHash(bt));
         }
 
         private static string GetHexString(IReadOnlyList<byte> bt)
         {
-            string s = string.Empty;
-            for (int i = 0; i < bt.Count; i++)
+            var s = string.Empty;
+            for (var i = 0; i < bt.Count; i++)
             {
                 int n = bt[i];
-                int n1 = n & 15;
-                int n2 = (n >> 4) & 15;
+                var n1 = n & 15;
+                var n2 = (n >> 4) & 15;
                 if (n2 > 9)
                     s += ((char)(n2 - 10 + 'A')).ToString();
                 else
@@ -82,6 +77,7 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
                     s += n1.ToString();
                 if (i + 1 != bt.Count && (i + 1) % 2 == 0) s += "-";
             }
+
             return s;
         }
 
@@ -92,12 +88,12 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
         private static string Identifier
             (string wmiClass, string wmiProperty, string wmiMustBeTrue)
         {
-            string result = "";
-            ManagementClass mc =
+            var result = "";
+            var mc =
                 new ManagementClass(wmiClass);
-            foreach (ManagementBaseObject o in mc.GetInstances())
+            foreach (var o in mc.GetInstances())
             {
-                ManagementObject mo = (ManagementObject)o;
+                var mo = (ManagementObject)o;
                 if (mo[wmiMustBeTrue].ToString() != "True") continue;
                 if (result != "") continue;
                 try
@@ -110,6 +106,7 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
                     // ignored
                 }
             }
+
             return result;
         }
 
@@ -117,13 +114,13 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
         // ReSharper disable once InconsistentNaming
         private static string Identifier(string wmiClass, string wmiProperty)
         {
-            string result = "";
-            ManagementClass mc =
+            var result = "";
+            var mc =
                 new ManagementClass(wmiClass);
-            foreach (ManagementBaseObject o in mc.GetInstances())
+            foreach (var o in mc.GetInstances())
             //Only get the first one
             {
-                ManagementObject mo = (ManagementObject)o;
+                var mo = (ManagementObject)o;
                 if (result != "") continue;
                 try
                 {
@@ -135,6 +132,7 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
                     // ignored
                 }
             }
+
             return result;
         }
 
@@ -142,7 +140,7 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
         {
             //Uses first CPU identifier available in order of preference
             //Don't get all identifiers, as it is very time consuming
-            string retVal = Identifier("Win32_Processor", "UniqueId");
+            var retVal = Identifier("Win32_Processor", "UniqueId");
 
             if (retVal != "") return retVal;
 

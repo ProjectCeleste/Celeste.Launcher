@@ -1,4 +1,6 @@
-﻿using Celeste_Launcher_Gui.Model.Friends;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Model.Friends;
 using ProjectCeleste.Launcher.PublicApi.Logging;
 using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
 using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
@@ -7,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Services
 {
@@ -29,7 +33,7 @@ namespace Celeste_Launcher_Gui.Services
     {
         public const int MaxAllowedFriends = 99;
         private const int UpdateIntervalInMs = 30 * 1000;
-        private static FriendService Instance;
+        private static FriendService _instance;
 
         public event FriendListUpdatedEventHandler FriendListUpdated;
 
@@ -44,28 +48,29 @@ namespace Celeste_Launcher_Gui.Services
             _webSocket = webSocket;
             _logger = logger;
 
-            _updateTimer = new Timer(new TimerCallback((_) => UpdateFriendList()), null, UpdateIntervalInMs, UpdateIntervalInMs);
+            _updateTimer = new Timer(_ => UpdateFriendList(), null, UpdateIntervalInMs, UpdateIntervalInMs);
         }
 
         // TODO: Singleton instance should be handled through DI once .net core 3.1
         public static FriendService GetInstance()
         {
-            return Instance ?? (Instance = new FriendService(LegacyBootstrapper.WebSocketApi, LoggerFactory.GetLogger()));
+            return _instance ??
+                   (_instance = new FriendService(LegacyBootstrapper.WebSocketApi, LoggerFactory.GetLogger()));
         }
 
         public async Task<FriendList> FetchFriendList()
         {
-            IList<Friend> friends = await GetFriendList();
-            (IList<Friend> incomingFriends, IList<Friend> outgoingFriends) = await GetFriendRequests();
+            var friends = await GetFriendList();
+            var (incomingFriends, outgoingFriends) = await GetFriendRequests();
 
-            FriendList friendList = new FriendList
+            var friendList = new FriendList
             {
                 Friends = friends,
                 IncomingRequests = incomingFriends,
                 OutgoingRequests = outgoingFriends
             };
 
-            FriendListUpdated(friendList);
+            FriendListUpdated?.Invoke(friendList);
 
             return friendList;
         }
@@ -74,10 +79,10 @@ namespace Celeste_Launcher_Gui.Services
         {
             try
             {
-                IList<Friend> friends = await GetFriendList();
-                (IList<Friend> incomingFriends, IList<Friend> outgoingFriends) = await GetFriendRequests();
+                var friends = await GetFriendList();
+                var (incomingFriends, outgoingFriends) = await GetFriendRequests();
 
-                FriendListUpdated(new FriendList
+                FriendListUpdated?.Invoke(new FriendList
                 {
                     Friends = friends,
                     IncomingRequests = incomingFriends,
@@ -92,63 +97,49 @@ namespace Celeste_Launcher_Gui.Services
 
         private async Task<IList<Friend>> GetFriendList()
         {
-            GetFriendsResult response = await _webSocket.DoGetFriends();
+            var response = await _webSocket.DoGetFriends();
 
             if (!response.Result || response.Friends == null)
-            {
                 throw new Exception($"Unable to get friend list: {response.Message}");
-            }
 
-            List<Friend> friends = new List<Friend>();
+            var friends = new List<Friend>();
 
-            foreach (FriendJson friend in response.Friends.Friends)
-            {
-                friends.Add(MapFriend(friend));
-            }
+            foreach (var friend in response.Friends.Friends) friends.Add(MapFriend(friend));
 
             return friends;
         }
 
         private async Task<(IList<Friend> incomingRequests, IList<Friend> outgoingRequests)> GetFriendRequests()
         {
-            GetPendingFriendsResult response = await _webSocket.DoGetPendingFriends();
+            var response = await _webSocket.DoGetPendingFriends();
 
-            if (!response.Result)
-            {
-                throw new Exception($"Unable to get friend list: {response.Message}");
-            }
+            if (!response.Result) throw new Exception($"Unable to get friend list: {response.Message}");
 
-            List<Friend> incomingRequests = new List<Friend>();
-            List<Friend> outgoingRequests = new List<Friend>();
+            var incomingRequests = new List<Friend>();
+            var outgoingRequests = new List<Friend>();
 
-            foreach (FriendJson friend in response.PendingFriendsRequest.Friends)
-            {
-                outgoingRequests.Add(MapFriend(friend));
-            }
+            foreach (var friend in response.PendingFriendsRequest.Friends) outgoingRequests.Add(MapFriend(friend));
 
-            foreach (FriendJson friend in response.PendingFriendsInvite.Friends)
-            {
-                incomingRequests.Add(MapFriend(friend));
-            }
+            foreach (var friend in response.PendingFriendsInvite.Friends) incomingRequests.Add(MapFriend(friend));
 
             return (incomingRequests, outgoingRequests);
         }
 
         public async Task<bool> RemoveFriend(long xuid)
         {
-            RemoveFriendResult response = await _webSocket.DoRemoveFriend(xuid);
+            var response = await _webSocket.DoRemoveFriend(xuid);
             return response.Result;
         }
 
         public async Task<bool> SendFriendRequest(string username)
         {
-            AddFriendResult response = await _webSocket.DoAddFriend(username);
+            var response = await _webSocket.DoAddFriend(username);
             return response.Result;
         }
 
         public async Task<bool> ConfirmFriendRequest(long xuid)
         {
-            ConfirmFriendResult response = await _webSocket.DoConfirmFriend(xuid);
+            var response = await _webSocket.DoConfirmFriend(xuid);
             return response.Result;
         }
 

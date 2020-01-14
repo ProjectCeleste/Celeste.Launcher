@@ -16,23 +16,22 @@
                     HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseSmallHover.png"
                     IconWidth="23" IconHeight="23"
                     Click="OnClose"
-                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,6,8,0"/>
+                    VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,6,8,0" />
         <Grid Width="510" Height="27" VerticalAlignment="Top" Margin="0,11,0,0" MouseDown="OnMoveWindow" Background="Transparent">
-            <TextBlock Text="{x:Static p:Resources.LauncherUpdateTitle}" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+            <TextBlock Text="{x:Static p:Resources.LauncherUpdateTitle}" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" />
         </Grid>
         <Grid Width="510" Height="40" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,50,30,0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.LauncherUpdateNewVersionLabel}" VersionNumber="{Binding NewVersion}" Margin="0,0,10,0"/>
-                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.LauncherInstalledVersionLabel}" VersionNumber="{Binding CurrentVersion}"/>
+                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.LauncherUpdateNewVersionLabel}" VersionNumber="{Binding NewVersion}" Margin="0,0,10,0" />
+                <local:VersionNumberLabel LabelContents="{x:Static p:Resources.LauncherInstalledVersionLabel}" VersionNumber="{Binding CurrentVersion}" />
             </StackPanel>
-            
         </Grid>
-        <TextBox Width="480" Height="225" Text="{Binding ChangeLog}" Margin="5,130,16,0" VerticalAlignment="Top" Style="{StaticResource TextLog}"/>
+        <TextBox Width="480" Height="225" Text="{Binding ChangeLog}" Margin="5,130,16,0" VerticalAlignment="Top" Style="{StaticResource TextLog}" />
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,25" Height="90">
-            <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.LauncherUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate" Visibility="Hidden"/>
+            <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.LauncherUpdateUpdateBtn}" x:Name="UpdateBtn" Click="StartUpdate" Visibility="Hidden" />
             <StackPanel VerticalAlignment="Center" x:Name="UpdateProgressionControls" Visibility="Hidden">
-                <local:UpdateProgressBar x:Name="ProgressBar"/>
-                <Label Content="Update in progress" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="20" HorizontalAlignment="Center"/>
+                <local:UpdateProgressBar x:Name="ProgressBar" />
+                <Label Content="Update in progress" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="20" HorizontalAlignment="Center" />
             </StackPanel>
         </Grid>
     </Grid>

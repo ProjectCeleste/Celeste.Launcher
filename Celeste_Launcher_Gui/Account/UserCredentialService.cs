@@ -1,5 +1,9 @@
-﻿using CredentialManagement;
+﻿#region Using directives
+
+using CredentialManagement;
 using System.Security;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Account
 {
@@ -9,12 +13,12 @@ namespace Celeste_Launcher_Gui.Account
 
         internal static void StoreCredential(string email, SecureString password)
         {
-            Credential credentials = new Credential
+            var credentials = new Credential
             {
                 Target = CelesteLauncherVaultName,
                 Username = email,
                 SecurePassword = password,
-                PersistanceType = PersistanceType.LocalComputer,
+                PersistanceType = PersistanceType.LocalComputer
             };
 
             credentials.Save();
@@ -22,12 +26,9 @@ namespace Celeste_Launcher_Gui.Account
 
         internal static UserCredentials GetStoredUserCredentials()
         {
-            Credential credentials = new Credential { Target = CelesteLauncherVaultName };
+            var credentials = new Credential { Target = CelesteLauncherVaultName };
 
-            if (!credentials.Load())
-            {
-                return null;
-            }
+            if (!credentials.Load()) return null;
 
             return new UserCredentials
             {
@@ -38,7 +39,7 @@ namespace Celeste_Launcher_Gui.Account
 
         internal static void ClearVault()
         {
-            Credential credentials = new Credential { Target = CelesteLauncherVaultName };
+            var credentials = new Credential { Target = CelesteLauncherVaultName };
             credentials.Delete();
         }
     }

@@ -1,6 +1,10 @@
-﻿using System;
+﻿#region Using directives
+
+using System;
 using System.Runtime.InteropServices;
 using System.Security;
+
+#endregion Using directives
 
 namespace ProjectCeleste.Launcher.PublicApi.Helpers
 {
@@ -8,7 +12,7 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
     {
         public static string GetValue(this SecureString secureString)
         {
-            IntPtr unmanagedString = IntPtr.Zero;
+            var unmanagedString = IntPtr.Zero;
             try
             {
                 unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
@@ -22,11 +26,8 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
 
         public static SecureString ToSecureString(this string value)
         {
-            SecureString secureString = new SecureString();
-            for (int i = 0; i < value.Length; i++)
-            {
-                secureString.AppendChar(value[i]);
-            }
+            var secureString = new SecureString();
+            foreach (var t in value) secureString.AppendChar(t);
 
             return secureString;
         }

@@ -8,7 +8,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="Effect">
             <Setter.Value>

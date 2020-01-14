@@ -1,25 +1,25 @@
 ﻿<Window x:Class="Celeste_Launcher_Gui.Windows.ProcDumpInstaller"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
              xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
              Width="849" Height="308" Loaded="Window_Loaded" Title="{x:Static p:Resources.ProcDumpInstallerTitle}">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MediumDialogue-Background.png"/>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MediumDialogue-Background.png" />
         </Grid.Background>
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <Grid>
                 <TextBlock FontFamily="{StaticResource Lithos-Pro-Regular}" FontSize="26" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"
                            MaxWidth="800"
                                 Text="{x:Static p:Resources.ProcDumpInstallerTitle}"
-                           TextWrapping="Wrap" TextAlignment="Center" Margin="0,70,0,0"/>
+                           TextWrapping="Wrap" TextAlignment="Center" Margin="0,70,0,0" />
 
-                <local:UpdateProgressBar VerticalAlignment="Bottom" x:Name="ProgressIndicator" Margin="80"/>
+                <local:UpdateProgressBar VerticalAlignment="Bottom" x:Name="ProgressIndicator" Margin="80" />
             </Grid>
         </Border>
     </Grid>

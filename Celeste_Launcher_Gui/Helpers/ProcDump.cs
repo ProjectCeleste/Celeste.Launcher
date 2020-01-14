@@ -1,12 +1,12 @@
 ﻿#region Using directives
 
+using ProjectCeleste.GameFiles.GameScanner.FileDownloader;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using ProjectCeleste.GameFiles.GameScanner.FileDownloader;
 
-#endregion
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -20,15 +20,14 @@ namespace Celeste_Launcher_Gui.Helpers
 
             const string downloadLink = "https://download.sysinternals.com/files/Procdump.zip";
 
-            string tempFileName = Path.GetTempFileName();
+            var tempFileName = Path.GetTempFileName();
 
             try
             {
-                SimpleFileDownloader downloadFileAsync = new SimpleFileDownloader(downloadLink, tempFileName);
+                var downloadFileAsync = new SimpleFileDownloader(downloadLink, tempFileName);
                 if (progress != null)
-                {
-                    downloadFileAsync.ProgressChanged += (sender, args) => progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DownloadProgress / 100))));
-                }
+                    downloadFileAsync.ProgressChanged += (sender, args) =>
+                        progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DownloadProgress / 100))));
 
                 await downloadFileAsync.DownloadAsync(ct);
             }
@@ -47,9 +46,11 @@ namespace Celeste_Launcher_Gui.Helpers
             if (progress != null)
             {
                 extractProgress = new Progress<double>();
-                extractProgress.ProgressChanged += (_, ea) => progress.Report(70 + Convert.ToInt32(Math.Floor(20 * (ea / 100))));
+                extractProgress.ProgressChanged += (_, ea) =>
+                    progress.Report(70 + Convert.ToInt32(Math.Floor(20 * (ea / 100))));
             }
-            string tempDir = Path.Combine(Path.GetTempPath(), "Celeste_Launcher_ProcDump");
+
+            var tempDir = Path.Combine(Path.GetTempPath(), "Celeste_Launcher_ProcDump");
 
             if (Directory.Exists(tempDir))
                 Files.CleanUpFiles(tempDir, "*.*");
@@ -72,7 +73,7 @@ namespace Celeste_Launcher_Gui.Helpers
             //Move File
             progress?.Report(90);
 
-            string destinationDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
+            var destinationDir = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar;
             try
             {
                 Files.MoveFiles(tempDir, destinationDir);

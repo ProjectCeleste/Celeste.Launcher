@@ -1,9 +1,14 @@
-﻿using Celeste_Launcher_Gui.Services;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Properties;
+using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
 using Celeste_Launcher_Gui.Windows;
 using Serilog;
 using System;
 using System.Windows.Input;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Commands.FriendList
 {
@@ -14,7 +19,8 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
         private readonly IFriendService _friendService;
         private readonly ILogger _logger;
 
-        public AcceptFriendRequestCommand(FriendListViewModel friendListViewModel, Action updateFriendAction, IFriendService friendService, ILogger logger)
+        public AcceptFriendRequestCommand(FriendListViewModel friendListViewModel, Action updateFriendAction,
+            IFriendService friendService, ILogger logger)
         {
             _friendListViewModel = friendListViewModel;
             _updateFriendAction = updateFriendAction;
@@ -35,13 +41,12 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
             {
                 if (_friendListViewModel?.FriendListCount >= FriendService.MaxAllowedFriends)
                 {
-                    GenericMessageDialog.Show(Properties.Resources.FriendListMaxFriendsReached,
-                                           DialogIcon.Warning,
-                                           DialogOptions.Ok);
+                    GenericMessageDialog.Show(Resources.FriendListMaxFriendsReached,
+                        DialogIcon.Warning);
                     return;
                 }
 
-                FriendListItem friend = (FriendListItem)parameter;
+                var friend = (FriendListItem)parameter;
                 _friendListViewModel.FriendListItems.Remove(friend);
                 await _friendService.ConfirmFriendRequest(friend.XUid);
                 _updateFriendAction();
@@ -49,9 +54,8 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
             catch (Exception ex)
             {
                 _logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                GenericMessageDialog.Show(Resources.GenericUnexpectedErrorMessage,
+                    DialogIcon.Error);
             }
         }
 

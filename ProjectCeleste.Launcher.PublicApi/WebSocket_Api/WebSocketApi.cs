@@ -41,7 +41,8 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
             _validMail = new CommandBase<ValidMailInfo, ValidMailResult>(_client, "VALIDMAIL", true);
             _register = new CommandBase<RegisterUserInfo, RegisterUserResult>(_client, "REGISTER", true);
             _getFriends = new CommandBase<GetFriendsInfo, GetFriendsResult>(_client, "GETFRIENDS", true, 30);
-            _getPFriends = new CommandBase<GetPendingFriendsInfo, GetPendingFriendsResult>(_client, "GETPFRIENDS", true, 30);
+            _getPFriends =
+                new CommandBase<GetPendingFriendsInfo, GetPendingFriendsResult>(_client, "GETPFRIENDS", true, 30);
             _removeFriend = new CommandBase<RemoveFriendInfo, RemoveFriendResult>(_client, "REMFRIEND");
             _addFriend = new CommandBase<AddFriendInfo, AddFriendResult>(_client, "ADDFRIEND");
             _confirmFriend = new CommandBase<ConfirmFriendInfo, ConfirmFriendResult>(_client, "CONFFRIEND");
@@ -109,23 +110,24 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
         public async Task<LoginResult> DoLogin(string email, SecureString password)
         {
-            if (!IsValidString.IsValidEmailAdress(email))
+            if (!IsValidString.IsValidEmailAddress(email))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidEmail);
                 throw ex;
             }
 
-            string passwordUnsecure = password.GetValue();
+            var passwordUnsecure = password.GetValue();
             if (!IsValidString.IsValidPasswordLength(passwordUnsecure))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordLength}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordLength}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidPasswordLength);
                 throw ex;
             }
+
             if (!IsValidString.IsValidPassword(passwordUnsecure))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPassword}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPassword}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidPassword);
                 throw ex;
             }
@@ -135,11 +137,11 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
             _lastActivity = DateTime.UtcNow;
 
-            string fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
+            var fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
 
-            LoginInfo request = new LoginInfo(email, passwordUnsecure, _apiVersion, fingerPrint);
+            var request = new LoginInfo(email, passwordUnsecure, _apiVersion, fingerPrint);
 
-            LoginResult response = await _login.Execute(request);
+            var response = await _login.Execute(request);
 
             if (response.Result)
             {
@@ -182,45 +184,47 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
         {
             if (string.Equals(oldPwd, newPwd, StringComparison.CurrentCulture))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordMatch}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordMatch}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidPasswordMatch);
                 throw ex;
             }
 
             if (!IsValidString.IsValidPasswordLength(oldPwd))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordLength}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordLength}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidPasswordLength);
                 throw ex;
             }
+
             if (!IsValidString.IsValidPassword(oldPwd))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPassword}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPassword}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidPassword);
                 throw ex;
             }
 
             if (!IsValidString.IsValidPasswordLength(newPwd))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidNewPasswordLength}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidNewPasswordLength}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidNewPasswordLength);
                 throw ex;
             }
+
             if (!IsValidString.IsValidPassword(newPwd))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidNewPassword}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidNewPassword}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidNewPassword);
                 throw ex;
             }
 
             _lastActivity = DateTime.UtcNow;
 
-            ChangePwdInfo request = new ChangePwdInfo(oldPwd, newPwd);
+            var request = new ChangePwdInfo(oldPwd, newPwd);
 
             if (LoggedIn)
                 return await _changePwd.Execute(request);
 
-            LoginResult loginResponse = await DoReLogin();
+            var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
                 return new ChangePwdResult(false, loginResponse.Message);
 
@@ -229,9 +233,9 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
         public async Task<ForgotPwdResult> DoForgotPwd(string eMail)
         {
-            if (!IsValidString.IsValidEmailAdress(eMail))
+            if (!IsValidString.IsValidEmailAddress(eMail))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidEmail);
                 throw ex;
             }
@@ -241,23 +245,23 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
             _lastActivity = DateTime.UtcNow;
 
-            ForgotPwdInfo request = new ForgotPwdInfo(_apiVersion, eMail);
+            var request = new ForgotPwdInfo(_apiVersion, eMail);
 
             return await _forgotPwd.Execute(request);
         }
 
         public async Task<ResetPwdResult> DoResetPwd(string eMail, string verifyKey)
         {
-            if (!IsValidString.IsValidEmailAdress(eMail))
+            if (!IsValidString.IsValidEmailAddress(eMail))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidEmail);
                 throw ex;
             }
 
             if (!IsValidString.IsValidVerifyKey(verifyKey))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidVerifyKey}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidVerifyKey}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidVerifyKey);
                 throw ex;
             }
@@ -267,7 +271,7 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
             _lastActivity = DateTime.UtcNow;
 
-            ResetPwdInfo request = new ResetPwdInfo(_apiVersion, eMail, verifyKey);
+            var request = new ResetPwdInfo(_apiVersion, eMail, verifyKey);
 
             return await _resetPwd.Execute(request);
         }
@@ -278,9 +282,9 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
         public async Task<ValidMailResult> DoValidMail(string eMail)
         {
-            if (!IsValidString.IsValidEmailAdress(eMail))
+            if (!IsValidString.IsValidEmailAddress(eMail))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidEmail);
                 throw ex;
             }
@@ -290,49 +294,52 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
             _lastActivity = DateTime.UtcNow;
 
-            ValidMailInfo request = new ValidMailInfo(_apiVersion, eMail);
+            var request = new ValidMailInfo(_apiVersion, eMail);
 
             return await _validMail.Execute(request);
         }
 
-        public async Task<RegisterUserResult> DoRegister(string eMail, string verifyKey, string username, string password)
+        public async Task<RegisterUserResult> DoRegister(string eMail, string verifyKey, string username,
+            string password)
         {
-            if (!IsValidString.IsValidEmailAdress(eMail))
+            if (!IsValidString.IsValidEmailAddress(eMail))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidEmail}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidEmail);
                 throw ex;
             }
 
             if (!IsValidString.IsValidVerifyKey(verifyKey))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidVerifyKey}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidVerifyKey}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidVerifyKey);
                 throw ex;
             }
 
             if (!IsValidString.IsValidUserNameLength(username))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsernameLength}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsernameLength}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidUsernameLength);
                 throw ex;
             }
+
             if (!IsValidString.IsValidUserName(username))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsername}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsername}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidUsername);
                 throw ex;
             }
 
             if (!IsValidString.IsValidPasswordLength(password))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordLength}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPasswordLength}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidPasswordLength);
                 throw ex;
             }
+
             if (!IsValidString.IsValidPassword(password))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPassword}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidPassword}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidPassword);
                 throw ex;
             }
@@ -342,9 +349,9 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
             _lastActivity = DateTime.UtcNow;
 
-            string fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
+            var fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
 
-            RegisterUserInfo request = new RegisterUserInfo(_apiVersion, eMail, verifyKey, username, password, fingerPrint);
+            var request = new RegisterUserInfo(_apiVersion, eMail, verifyKey, username, password, fingerPrint);
 
             return await _register.Execute(request);
         }
@@ -357,12 +364,12 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
         {
             _lastActivity = DateTime.UtcNow;
 
-            GetFriendsInfo request = new GetFriendsInfo();
+            var request = new GetFriendsInfo();
 
             if (LoggedIn)
                 return await _getFriends.Execute(request);
 
-            LoginResult loginResponse = await DoReLogin();
+            var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
                 return new GetFriendsResult(false, loginResponse.Message);
 
@@ -373,12 +380,12 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
         {
             _lastActivity = DateTime.UtcNow;
 
-            GetPendingFriendsInfo request = new GetPendingFriendsInfo();
+            var request = new GetPendingFriendsInfo();
 
             if (LoggedIn)
                 return await _getPFriends.Execute(request);
 
-            LoginResult loginResponse = await DoReLogin();
+            var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
                 return new GetPendingFriendsResult(false, loginResponse.Message);
 
@@ -389,12 +396,12 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
         {
             _lastActivity = DateTime.UtcNow;
 
-            RemoveFriendInfo request = new RemoveFriendInfo(xuid);
+            var request = new RemoveFriendInfo(xuid);
 
             if (LoggedIn)
                 return await _removeFriend.Execute(request);
 
-            LoginResult loginResponse = await DoReLogin();
+            var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
                 return new RemoveFriendResult(false, loginResponse.Message);
 
@@ -405,25 +412,26 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
         {
             if (!IsValidString.IsValidUserNameLength(friendName))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsernameLength}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsernameLength}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidUsernameLength);
                 throw ex;
             }
+
             if (!IsValidString.IsValidUserName(friendName, true))
             {
-                Exception ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsername}");
+                var ex = new Exception($"ErrorCode: {CommandErrorCode.InvalidUsername}");
                 ex.Data.Add("ErrorCode", CommandErrorCode.InvalidUsername);
                 throw ex;
             }
 
             _lastActivity = DateTime.UtcNow;
 
-            AddFriendInfo request = new AddFriendInfo(friendName);
+            var request = new AddFriendInfo(friendName);
 
             if (LoggedIn)
                 return await _addFriend.Execute(request);
 
-            LoginResult loginResponse = await DoReLogin();
+            var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
                 return new AddFriendResult(false, loginResponse.Message);
 
@@ -434,12 +442,12 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
         {
             _lastActivity = DateTime.UtcNow;
 
-            ConfirmFriendInfo request = new ConfirmFriendInfo(xuid);
+            var request = new ConfirmFriendInfo(xuid);
 
             if (LoggedIn)
                 return await _confirmFriend.Execute(request);
 
-            LoginResult loginResponse = await DoReLogin();
+            var loginResponse = await DoReLogin();
             if (!loginResponse.Result)
                 return new ConfirmFriendResult(false, loginResponse.Message);
 
@@ -463,10 +471,8 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
             try
             {
                 if (_disconnectIdleSession == null)
-                {
                     _disconnectIdleSession = new Timer(DisconnectIdleSession, new object(), TimerInterval,
                         TimerInterval);
-                }
             }
             catch
             {
@@ -491,7 +497,7 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
             try
             {
-                DateTime timeOut = DateTime.UtcNow.AddMilliseconds(-TimeOutMs);
+                var timeOut = DateTime.UtcNow.AddMilliseconds(-TimeOutMs);
 
                 if (_lastActivity <= timeOut)
                     Disconnect();

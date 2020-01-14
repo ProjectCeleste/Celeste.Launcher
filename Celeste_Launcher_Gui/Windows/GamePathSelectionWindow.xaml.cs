@@ -1,12 +1,16 @@
-﻿using Microsoft.Win32;
+﻿#region Using directives
+
+using Microsoft.Win32;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for GamePathSelectionWindow.xaml
+    ///     Interaction logic for GamePathSelectionWindow.xaml
     /// </summary>
     public partial class GamePathSelectionWindow : Window
     {
@@ -28,7 +32,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void BrowseBtnClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog()
+            var openFileDialog = new OpenFileDialog
             {
                 Title = Properties.Resources.GamePathSelectorTitle,
                 InitialDirectory = PathLocation.Text,
@@ -39,21 +43,18 @@ namespace Celeste_Launcher_Gui.Windows
                 FileName = "Spartan.exe"
             };
 
-            if (openFileDialog.ShowDialog(Window.GetWindow(this)) == true)
-            {
-                PathLocation.Text = openFileDialog.FileName;
-            }
+            if (openFileDialog.ShowDialog(GetWindow(this)) == true) PathLocation.Text = openFileDialog.FileName;
 
             Focus();
         }
 
         private void ScanBtnClick(object sender, RoutedEventArgs e)
         {
-            string spartanDirectory = Path.GetDirectoryName(PathLocation.Text);
+            var spartanDirectory = Path.GetDirectoryName(PathLocation.Text);
 
             if (!Directory.Exists(spartanDirectory))
             {
-                GenericMessageDialog.Show(Properties.Resources.GamePathInvalidPath, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GamePathInvalidPath, DialogIcon.Error);
             }
             else
             {
@@ -61,7 +62,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 LegacyBootstrapper.UserConfig.GameFilesPath = spartanDirectory;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
-                GameScannerWindow scanner = new GameScannerWindow(spartanDirectory, LegacyBootstrapper.UserConfig.IsSteamVersion)
+                var scanner = new GameScannerWindow(spartanDirectory, LegacyBootstrapper.UserConfig.IsSteamVersion)
                 {
                     Owner = Owner
                 };

@@ -10,45 +10,45 @@
         Height="308" Width="849" UseLayoutRounding="True">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MediumDialogue-Background.png"/>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MediumDialogue-Background.png" />
         </Grid.Background>
         <StackPanel VerticalAlignment="Center">
-            <Label FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="30" Foreground="#C0B38F" HorizontalAlignment="Center" Content="Select your game language" Margin="0,0,0,20"/>
+            <Label FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="30" Foreground="#C0B38F" HorizontalAlignment="Center" Content="Select your game language" Margin="0,0,0,20" />
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button Style="{StaticResource FlagButton}"
                     theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/de-DE-Normal.png"
-                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/de-DE-Hover.png" Margin="10" Click="SelectGerman"/>
+                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/de-DE-Hover.png" Margin="10" Click="SelectGerman" />
 
                 <Button Style="{StaticResource FlagButton}"
                     theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/en-US-Normal.png"
-                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/en-US-Hover.png" Margin="10" Click="SelectEnglish"/>
+                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/en-US-Hover.png" Margin="10" Click="SelectEnglish" />
 
                 <Button Style="{StaticResource FlagButton}"
                     theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/es-ES-Normal.png"
-                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/es-ES-Hover.png" Margin="10" Click="SelectSpanish"/>
+                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/es-ES-Hover.png" Margin="10" Click="SelectSpanish" />
 
                 <Button Style="{StaticResource FlagButton}"
                     theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/fr-FR-Normal.png"
-                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/fr-FR-Hover.png" Margin="10" Click="SelectFrench"/>
+                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/fr-FR-Hover.png" Margin="10" Click="SelectFrench" />
 
                 <Button Style="{StaticResource FlagButton}"
                     theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/it-IT-Normal.png"
-                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/it-IT-Hover.png" Margin="10" Click="SelectItalian"/>
+                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/it-IT-Hover.png" Margin="10" Click="SelectItalian" />
 
                 <Button Style="{StaticResource FlagButton}"
                     theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/zh-CHT-Normal.png"
-                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/zh-CHT-Hover.png" Margin="10" Click="SelectChinese"/>
+                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/zh-CHT-Hover.png" Margin="10" Click="SelectChinese" />
 
                 <Button Style="{StaticResource FlagButton}" ToolTip="{x:Static p:Resources.LanguageComingSoonToolTip}"
                     theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/pt-BR-Disabled.png"
-                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/pt-BR-Disabled.png" Margin="10" Click="SelectPortugese"/>
+                    theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Flags/pt-BR-Disabled.png" Margin="10" Click="SelectPortugese" />
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
-             <local:WindowControl
+            <local:WindowControl
                     DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
                     HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
-                    Click="OnAbortLoginClick"/>
+                    Click="OnAbortLoginClick" />
         </StackPanel>
     </Grid>
 </Page>

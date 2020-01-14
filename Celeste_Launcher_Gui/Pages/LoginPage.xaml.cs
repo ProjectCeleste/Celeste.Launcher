@@ -1,4 +1,6 @@
-﻿using Celeste_Launcher_Gui.Account;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using ProjectCeleste.Launcher.PublicApi.Logging;
@@ -11,10 +13,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Pages
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    ///     Interaction logic for LoginWindow.xaml
     /// </summary>
     public partial class LoginPage : Page
     {
@@ -24,7 +28,7 @@ namespace Celeste_Launcher_Gui.Pages
         {
             InitializeComponent();
 
-            UserCredentials storedCredentials = UserCredentialService.GetStoredUserCredentials();
+            var storedCredentials = UserCredentialService.GetStoredUserCredentials();
 
             if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe && storedCredentials != null)
             {
@@ -38,7 +42,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnAbortLoginClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
 
         private async void PerformLogin(object sender, RoutedEventArgs e)
@@ -46,7 +50,7 @@ namespace Celeste_Launcher_Gui.Pages
             LoginButton.IsEnabled = false;
             try
             {
-                UserCredentials storedCredentials = UserCredentialService.GetStoredUserCredentials();
+                var storedCredentials = UserCredentialService.GetStoredUserCredentials();
                 LoginResult loginResult;
 
                 _logger.Information("Stored credentials is null: {@IsNull}", storedCredentials == null);
@@ -59,7 +63,8 @@ namespace Celeste_Launcher_Gui.Pages
                 else
                 {
                     _logger.Information("Performing login with entered credentials");
-                    loginResult = await PerformLogin(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
+                    loginResult = await PerformLogin(EmailInputField.InputContent,
+                        PasswordInputField.PasswordInputBox.SecurePassword);
                 }
 
                 if (loginResult.Result)
@@ -71,19 +76,21 @@ namespace Celeste_Launcher_Gui.Pages
                     if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe && storedCredentials == null)
                     {
                         _logger.Information("User has selected to store new credentials");
-                        UserCredentialService.StoreCredential(EmailInputField.InputContent, PasswordInputField.PasswordInputBox.SecurePassword);
+                        UserCredentialService.StoreCredential(EmailInputField.InputContent,
+                            PasswordInputField.PasswordInputBox.SecurePassword);
                     }
 
                     LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
                     LegacyBootstrapper.CurrentUser = loginResult.User;
 
-                    NavigationService.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
+                    NavigationService?.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
                 }
                 else
                 {
                     _logger.Information("Failed signing in because {@Message}", loginResult.Message);
-                    GenericMessageDialog.Show($"{Properties.Resources.LoginErrorMessage} {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show($"{Properties.Resources.LoginErrorMessage} {loginResult.Message}",
+                        DialogIcon.Error);
                     PasswordInputField.PasswordInputBox.Clear();
                     UserCredentialService.ClearVault();
                 }
@@ -92,27 +99,28 @@ namespace Celeste_Launcher_Gui.Pages
             {
                 _logger.Error(ex, ex.Message);
                 if (ex.Data.Contains("ErrorCode") && ex.Data["ErrorCode"] is CommandErrorCode errorCode)
-                {
                     switch (errorCode)
                     {
                         case CommandErrorCode.InvalidEmail:
                             GenericMessageDialog.Show(Properties.Resources.LoginBadEmail, DialogIcon.Error);
                             break;
+
                         case CommandErrorCode.InvalidPassword:
                             GenericMessageDialog.Show(Properties.Resources.LoginTooLongPassword, DialogIcon.Error);
                             break;
+
                         case CommandErrorCode.InvalidPasswordLength:
                             GenericMessageDialog.Show(Properties.Resources.LoginTooShortPassword, DialogIcon.Error);
                             break;
+
                         default:
-                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
+                                DialogIcon.Error);
                             break;
                     }
-                }
                 else
-                {
                     GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
-                }
+
                 PasswordInputField.PasswordInputBox.Clear();
                 UserCredentialService.ClearVault();
             }
@@ -131,7 +139,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void ForgottenPasswordClick(object sender, RoutedEventArgs e)
         {
-            ResetPasswordDialog resetPasswordDialog = new ResetPasswordDialog
+            var resetPasswordDialog = new ResetPasswordDialog
             {
                 Owner = Window.GetWindow(this)
             };

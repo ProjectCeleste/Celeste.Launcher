@@ -1,20 +1,21 @@
 ﻿#region Using directives
 
+using Celeste_Launcher_Gui.Properties;
+using Celeste_Launcher_Gui.Windows;
+using ProjectCeleste.GameFiles.GameScanner;
+using ProjectCeleste.Launcher.PublicApi.Helpers;
+using ProjectCeleste.Launcher.PublicApi.Logging;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
+using Serilog;
 using System;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using ProjectCeleste.Launcher.PublicApi.Helpers;
-using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
-using Serilog;
-using ProjectCeleste.GameFiles.GameScanner;
-using Celeste_Launcher_Gui.Windows;
 
-#endregion
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui
 {
@@ -22,7 +23,7 @@ namespace Celeste_Launcher_Gui
     {
         public static UserConfig UserConfig { get; private set; } = new UserConfig();
 
-        private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
+        private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly()?.GetName().Version}";
 
         public static WebSocketApi WebSocketApi { get; private set; }
 
@@ -40,13 +41,13 @@ namespace Celeste_Launcher_Gui
             Application.SetCompatibleTextRenderingDefault(false);
 
             // TODO: Move this to app.xaml.cs
-            Mutex mutex = new Mutex(true, AppName, out bool createdNew);
+            var mutex = new Mutex(true, AppName, out var createdNew);
 
             //Only one instance
             if (!createdNew)
             {
                 Logger.Information("Launcher is already started, will exit");
-                GenericMessageDialog.Show(Properties.Resources.LauncherAlreadyRunningMessage, DialogIcon.Warning, DialogOptions.Ok);
+                GenericMessageDialog.Show(Resources.LauncherAlreadyRunningMessage, DialogIcon.Warning);
                 return;
             }
 

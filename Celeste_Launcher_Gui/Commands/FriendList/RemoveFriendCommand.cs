@@ -1,9 +1,14 @@
-﻿using Celeste_Launcher_Gui.Services;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Properties;
+using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
 using Celeste_Launcher_Gui.Windows;
 using Serilog;
 using System;
 using System.Windows.Input;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Commands.FriendList
 {
@@ -14,7 +19,8 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
         private readonly IFriendService _friendService;
         private readonly ILogger _logger;
 
-        public RemoveFriendCommand(FriendListViewModel friendListViewModel, Action updateFriendAction, IFriendService friendService, ILogger logger)
+        public RemoveFriendCommand(FriendListViewModel friendListViewModel, Action updateFriendAction,
+            IFriendService friendService, ILogger logger)
         {
             _friendListViewModel = friendListViewModel;
             _updateFriendAction = updateFriendAction;
@@ -33,7 +39,7 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
         {
             try
             {
-                FriendListItem friend = (FriendListItem)parameter;
+                var friend = (FriendListItem)parameter;
                 _friendListViewModel.FriendListItems.Remove(friend);
                 await _friendService.RemoveFriend(friend.XUid);
                 _updateFriendAction();
@@ -41,9 +47,8 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
             catch (Exception ex)
             {
                 _logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                GenericMessageDialog.Show(Resources.GenericUnexpectedErrorMessage,
+                    DialogIcon.Error);
             }
         }
 

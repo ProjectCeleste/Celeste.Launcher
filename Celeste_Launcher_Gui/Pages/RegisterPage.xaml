@@ -12,36 +12,35 @@
     <Grid>
         <Grid VerticalAlignment="Top" Height="168">
             <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterEmailLabelText}" x:Name="EmailField"/>
-                <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterVerifyBtnText}" Margin="10,0,0,0" Click="OnVerifyEmail" x:Name="VerifyEmailBtn"/>
+                <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterEmailLabelText}" x:Name="EmailField" />
+                <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterVerifyBtnText}" Margin="10,0,0,0" Click="OnVerifyEmail" x:Name="VerifyEmailBtn" />
             </WrapPanel>
         </Grid>
-        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/Separator-SuperLongVertical.png" Stretch="None" Height="53" VerticalAlignment="Top" Margin="0,150,0,0"/>
+        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/Separator-SuperLongVertical.png" Stretch="None" Height="53" VerticalAlignment="Top" Margin="0,150,0,0" />
 
         <Grid VerticalAlignment="Bottom" Height="356" Margin="0,0,0,50">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel IsEnabled="False" x:Name="UserInformationInputGroup">
                     <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" x:Name="VerifyKeyField"/>
-                        <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0" Click="OnResendVerificationKey" x:Name="ResentKeyBtn"/>
+                        <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" x:Name="VerifyKeyField" />
+                        <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0" Click="OnResendVerificationKey" x:Name="ResentKeyBtn" />
                     </WrapPanel>
-                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left" x:Name="UsernameField"/>
-                    <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left" x:Name="PasswordField"/>
+                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left" x:Name="UsernameField" />
+                    <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left" x:Name="PasswordField" />
                     <DockPanel>
-                        <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="ConfirmPasswordField"/>
-                        <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn2"/>
+                        <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="ConfirmPasswordField" />
+                        <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn2" />
                     </DockPanel>
-
                 </StackPanel>
                 <StackPanel>
-                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCancelBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnAbort" x:Name="RegisterBtn"/>
+                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCancelBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnAbort" x:Name="RegisterBtn" />
                 </StackPanel>
             </StackPanel>
         </Grid>
 
         <Label Content="{x:Static h:AppVersionService.CurrentAppVersion}" HorizontalAlignment="Right" Margin="0,0,20,10" VerticalAlignment="Bottom" FontFamily="{StaticResource Ashley-Crawford-CG}" Foreground="White" Width="148" HorizontalContentAlignment="Center" FontSize="15">
             <Label.Background>
-                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/VersionNumberBox.png"/>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/VersionNumberBox.png" />
             </Label.Background>
         </Label>
     </Grid>

@@ -1,4 +1,8 @@
+#region Using directives
+
 using System;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -27,11 +31,9 @@ namespace Celeste_Launcher_Gui.Helpers
                 "TB", "PB", "EB", "ZB", "YB"
             };
 
-            for (int i = 0; i < suffixes.Length; i++)
-            {
+            for (var i = 0; i < suffixes.Length; i++)
                 if (value <= Math.Pow(Kb, i + 1))
                     return ThreeNonZeroDigits(value / Math.Pow(Kb, i)) + " " + suffixes[i];
-            }
 
             return ThreeNonZeroDigits(value / Math.Pow(Kb, suffixes.Length - 1)) + " " +
                    suffixes[suffixes.Length - 1];

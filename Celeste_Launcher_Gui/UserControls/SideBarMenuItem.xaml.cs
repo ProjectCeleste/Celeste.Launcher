@@ -1,44 +1,51 @@
-﻿using System.Windows;
+﻿#region Using directives
+
+using System.Windows;
 using System.Windows.Controls;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.UserControls
 {
     /// <summary>
-    /// Interaction logic for SideBarMenuItem.xaml
+    ///     Interaction logic for SideBarMenuItem.xaml
     /// </summary>
     public partial class SideBarMenuItem : UserControl
     {
         public string LabelContents
         {
-            get { return (string)GetValue(LabelContentsProperty); }
-            set { SetValue(LabelContentsProperty, value); }
+            get => (string)GetValue(LabelContentsProperty);
+            set => SetValue(LabelContentsProperty, value);
         }
 
         public static readonly DependencyProperty LabelContentsProperty =
-            DependencyProperty.Register("LabelContents", typeof(string), typeof(SideBarMenuItem), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("LabelContents", typeof(string), typeof(SideBarMenuItem),
+                new PropertyMetadata(default(string)));
 
         public string DefaultIcon
         {
-            get { return (string)GetValue(DefaultIconProperty); }
-            set { SetValue(DefaultIconProperty, value); }
+            get => (string)GetValue(DefaultIconProperty);
+            set => SetValue(DefaultIconProperty, value);
         }
 
         public static readonly DependencyProperty DefaultIconProperty =
-            DependencyProperty.Register("DefaultIcon", typeof(string), typeof(SideBarMenuItem), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("DefaultIcon", typeof(string), typeof(SideBarMenuItem),
+                new PropertyMetadata(default(string)));
 
         public string HoverIcon
         {
-            get { return (string)GetValue(HoverIconProperty); }
-            set { SetValue(HoverIconProperty, value); }
+            get => (string)GetValue(HoverIconProperty);
+            set => SetValue(HoverIconProperty, value);
         }
 
         public static readonly DependencyProperty HoverIconProperty =
-            DependencyProperty.Register("HoverIcon", typeof(string), typeof(SideBarMenuItem), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("HoverIcon", typeof(string), typeof(SideBarMenuItem),
+                new PropertyMetadata(default(string)));
 
         public int LabelSize
         {
-            get { return (int)GetValue(LabelSizeProperty); }
-            set { SetValue(LabelSizeProperty, value); }
+            get => (int)GetValue(LabelSizeProperty);
+            set => SetValue(LabelSizeProperty, value);
         }
 
         public static readonly DependencyProperty LabelSizeProperty =
@@ -46,12 +53,13 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public RoutedEventHandler Click
         {
-            get { return (RoutedEventHandler)GetValue(ClickProperty); }
-            set { SetValue(ClickProperty, value); }
+            get => (RoutedEventHandler)GetValue(ClickProperty);
+            set => SetValue(ClickProperty, value);
         }
 
         public static readonly DependencyProperty ClickProperty =
-            DependencyProperty.Register("Click", typeof(RoutedEventHandler), typeof(SideBarMenuItem), new PropertyMetadata(default(RoutedEventHandler)));
+            DependencyProperty.Register("Click", typeof(RoutedEventHandler), typeof(SideBarMenuItem),
+                new PropertyMetadata(default(RoutedEventHandler)));
 
         public SideBarMenuItem()
         {

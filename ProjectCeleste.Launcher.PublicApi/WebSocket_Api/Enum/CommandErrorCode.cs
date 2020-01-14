@@ -1,5 +1,4 @@
-﻿
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum
+﻿namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum
 {
     public enum CommandErrorCode
     {
@@ -14,6 +13,6 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum
         InvalidPasswordMatch,
         InvalidVerifyKey,
         InvalidRequestSpam,
-        Unknow,
+        Unknow
     }
 }

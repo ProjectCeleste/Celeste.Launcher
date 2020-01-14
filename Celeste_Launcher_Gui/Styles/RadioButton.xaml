@@ -5,15 +5,15 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Image x:Name="checkImage" Source="pack://application:,,,/Celeste Launcher;component/Resources/CheckBoxUnChecked_ua.png"/>
-                        <ContentControl Content="{TemplateBinding Content}" VerticalAlignment="Center"/>
+                        <Image x:Name="checkImage" Source="pack://application:,,,/Celeste Launcher;component/Resources/CheckBoxUnChecked_ua.png" />
+                        <ContentControl Content="{TemplateBinding Content}" VerticalAlignment="Center" />
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="checkImage" Property="Source" Value="pack://application:,,,/Celeste Launcher;component/Resources/CheckBoxCheckGreen_ua.png"/>
+                            <Setter TargetName="checkImage" Property="Source" Value="pack://application:,,,/Celeste Launcher;component/Resources/CheckBoxCheckGreen_ua.png" />
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter TargetName="checkImage" Property="Source" Value="pack://application:,,,/Celeste Launcher;component/Resources/CheckBoxCheckGreen_ua.png"/>
+                            <Setter TargetName="checkImage" Property="Source" Value="pack://application:,,,/Celeste Launcher;component/Resources/CheckBoxCheckGreen_ua.png" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

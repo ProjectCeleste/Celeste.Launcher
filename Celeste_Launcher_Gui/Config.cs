@@ -1,13 +1,13 @@
 ﻿#region Using directives
 
+using Celeste_Launcher_Gui.Helpers;
 using System;
 using System.ComponentModel;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Xml.Serialization;
-using Celeste_Launcher_Gui.Helpers;
 
-#endregion
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui
 {
@@ -46,8 +46,7 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "GameFilesPath")]
         public string GameFilesPath { get; set; } = string.Empty;
 
-        [XmlIgnore]
-        public bool IsSteamVersion { get; set; } = false;
+        [XmlIgnore] public bool IsSteamVersion { get; set; }
 
         [XmlElement(ElementName = "LoginInfo")]
         public LoginInfo LoginInfo { get; set; } = new LoginInfo();
@@ -64,28 +63,25 @@ namespace Celeste_Launcher_Gui
 
         public static UserConfig Load(string path)
         {
-            UserConfig userConfig = XmlUtils.DeserializeFromFile<UserConfig>(path);
+            var userConfig = XmlUtils.DeserializeFromFile<UserConfig>(path);
 
             if (userConfig.MpSettings.ConnectionType != ConnectionType.Lan)
                 return userConfig;
 
             if (!string.IsNullOrWhiteSpace(userConfig.MpSettings.LanNetworkInterface))
             {
-                string selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
-                NetworkInterface netInterface = Array.Find(NetworkInterface.GetAllNetworkInterfaces(), elem => elem.Name == selectedNetInt);
+                var selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
+                var netInterface = Array.Find(NetworkInterface.GetAllNetworkInterfaces(),
+                    elem => elem.Name == selectedNetInt);
 
                 if (netInterface != null)
-                {
                     // Get IPv4 address:
-                    foreach (UnicastIPAddressInformation ip in netInterface.GetIPProperties().UnicastAddresses)
-                    {
+                    foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
                         if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                         {
                             userConfig.MpSettings.PublicIp = ip.Address.ToString();
                             return userConfig;
                         }
-                    }
-                }
             }
 
             //Fall back to wan

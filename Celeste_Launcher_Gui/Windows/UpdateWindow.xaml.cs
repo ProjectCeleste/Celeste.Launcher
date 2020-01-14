@@ -1,4 +1,6 @@
-﻿using Celeste_Launcher_Gui.Services;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
 using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
@@ -9,10 +11,12 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for UpdateWindow.xaml
+    ///     Interaction logic for UpdateWindow.xaml
     /// </summary>
     public partial class UpdateWindow : Window
     {
@@ -34,9 +38,7 @@ namespace Celeste_Launcher_Gui.Windows
             await UpdateService.LoadUpdateInfo(LauncherVersionInfo);
 
             if (Version.Parse(LauncherVersionInfo.NewVersion) > Version.Parse(LauncherVersionInfo.CurrentVersion))
-            {
                 UpdateBtn.Visibility = Visibility.Visible;
-            }
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
@@ -59,22 +61,23 @@ namespace Celeste_Launcher_Gui.Windows
                 _cts.Cancel();
                 _cts = new CancellationTokenSource();
 
-                Progress<int> progress = new Progress<int>();
+                var progress = new Progress<int>();
 
                 progress.ProgressChanged += (s, value) => ProgressBar.ProgressBar.Value = value;
 
-                await UpdateService.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
+                await UpdateService.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress,
+                    _cts.Token);
 
-                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterUpdateSuccess, DialogIcon.Warning, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterUpdateSuccess, DialogIcon.Warning);
 
-                Process.Start(Assembly.GetEntryAssembly().Location);
+                Process.Start(Assembly.GetEntryAssembly()?.Location ?? throw new InvalidOperationException());
 
                 Environment.Exit(0);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterError, DialogIcon.Error);
                 Environment.Exit(1);
             }
         }

@@ -16,7 +16,7 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             try
             {
-                return InternetGetConnectedState(out int _, 0);
+                return InternetGetConnectedState(out _, 0);
             }
             catch (Exception)
             {

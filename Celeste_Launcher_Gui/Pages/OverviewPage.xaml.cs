@@ -1,4 +1,6 @@
-﻿using Celeste_Launcher_Gui.Account;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
@@ -8,11 +10,14 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using FriendList = Celeste_Launcher_Gui.Model.Friends.FriendList;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Pages
 {
     /// <summary>
-    /// Interaction logic for OverviewWindow.xaml
+    ///     Interaction logic for OverviewWindow.xaml
     /// </summary>
     public partial class OverviewPage : Page
     {
@@ -29,19 +34,23 @@ namespace Celeste_Launcher_Gui.Pages
             _friendService.FriendListUpdated += SetFriendListIcon;
         }
 
-        private void SetFriendListIcon(Model.Friends.FriendList e)
+        private void SetFriendListIcon(FriendList e)
         {
-            Dispatcher.Invoke(() =>
+            Dispatcher?.Invoke(() =>
             {
                 if (e.IncomingRequests.Count > 0)
                 {
-                    FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Alert-Normal.png";
-                    FriendsIcon.HoverIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Alert-Hover.png";
+                    FriendsIcon.DefaultIcon =
+                        "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Alert-Normal.png";
+                    FriendsIcon.HoverIcon =
+                        "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Alert-Hover.png";
                 }
                 else
                 {
-                    FriendsIcon.DefaultIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Normal.png";
-                    FriendsIcon.HoverIcon = "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Hover.png";
+                    FriendsIcon.DefaultIcon =
+                        "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Normal.png";
+                    FriendsIcon.HoverIcon =
+                        "pack://application:,,,/Celeste Launcher;component/Resources/Icons/Friends-Hover.png";
                 }
             });
         }
@@ -52,6 +61,7 @@ namespace Celeste_Launcher_Gui.Pages
         }
 
         #region Links
+
         private void OnCelesteClick(object sender, RoutedEventArgs e)
         {
             Process.Start("https://projectceleste.com");
@@ -74,13 +84,14 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnAccountClick(object sender, RoutedEventArgs e)
         {
+            if (AccountButton.ContextMenu == null) return;
             AccountButton.ContextMenu.PlacementTarget = sender as UIElement;
             AccountButton.ContextMenu.IsOpen = true;
         }
 
         private void OnFriendsClick(object sender, RoutedEventArgs e)
         {
-            FriendList.Display();
+            Windows.FriendList.Display();
         }
 
         private void OnDonateClick(object sender, RoutedEventArgs e)
@@ -108,18 +119,21 @@ namespace Celeste_Launcher_Gui.Pages
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
             }
 
-            NavigationService.Navigate(new Uri("Pages/MainMenuPage.xaml", UriKind.Relative));
+            NavigationService?.Navigate(new Uri("Pages/MainMenuPage.xaml", UriKind.Relative));
         }
 
         private void OnSettingsClick(object sender, RoutedEventArgs e)
         {
-            SettingsButton.ContextMenu.PlacementTarget = sender as UIElement;
-            SettingsButton.ContextMenu.IsOpen = true;
+            if (SettingsButton.ContextMenu != null)
+            {
+                SettingsButton.ContextMenu.PlacementTarget = sender as UIElement;
+                SettingsButton.ContextMenu.IsOpen = true;
+            }
         }
 
         private void OnChangePasswordClick(object sender, RoutedEventArgs e)
         {
-            ChangePasswordDialog changePasswordDialog = new ChangePasswordDialog
+            var changePasswordDialog = new ChangePasswordDialog
             {
                 Owner = Window.GetWindow(this)
             };
@@ -140,9 +154,11 @@ namespace Celeste_Launcher_Gui.Pages
         {
             Process.Start("https://champion.projectceleste.com/greek/military");
         }
-        #endregion
+
+        #endregion Links
 
         #region Settings context menu callbacks
+
         private async void OnLoginClick(object sender, RoutedEventArgs e)
         {
             LoginBtn.IsEnabled = false;
@@ -167,41 +183,45 @@ namespace Celeste_Launcher_Gui.Pages
             LegacyBootstrapper.UserConfig.IsDiagnosticMode = !LegacyBootstrapper.UserConfig.IsDiagnosticMode;
 
             if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
-            {
                 try
                 {
-                    string procdumpFileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
+                    var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
                     if (!File.Exists(procdumpFileName))
                     {
-                        GenericMessageDialog dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo)
-                        {
-                            Owner = Window.GetWindow(this)
-                        };
+                        var dialog =
+                            new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt,
+                                DialogIcon.Warning, DialogOptions.YesNo)
+                            {
+                                Owner = Window.GetWindow(this)
+                            };
 
-                        bool? dr = dialog.ShowDialog();
-                        if (dr.Value)
+                        var dr = dialog.ShowDialog();
+                        if (dr != null && dr.Value)
                         {
-                            ProcDumpInstaller procDumpInstallerDialog = new ProcDumpInstaller
+                            var procDumpInstallerDialog = new ProcDumpInstaller
                             {
                                 Owner = Window.GetWindow(this)
                             };
                             procDumpInstallerDialog.ShowDialog();
                         }
                         else
+                        {
                             LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
+                        }
                     }
                 }
                 catch (Exception exception)
                 {
                     LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
-                    GenericMessageDialog.Show($"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}", DialogIcon.Warning, DialogOptions.Ok);
+                    GenericMessageDialog.Show(
+                        $"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}",
+                        DialogIcon.Warning);
                 }
-            }
         }
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            SteamConverterWindow steamConverterWindow = new SteamConverterWindow
+            var steamConverterWindow = new SteamConverterWindow
             {
                 Owner = Window.GetWindow(this)
             };
@@ -210,7 +230,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            WindowsFeatureHelper featureHelper = new WindowsFeatureHelper
+            var featureHelper = new WindowsFeatureHelper
             {
                 Owner = Window.GetWindow(this)
             };
@@ -219,7 +239,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenWindowsFirewall(object sender, RoutedEventArgs e)
         {
-            Windows.WindowsFirewallHelper firewallHelper = new Windows.WindowsFirewallHelper
+            var firewallHelper = new Windows.WindowsFirewallHelper
             {
                 Owner = Window.GetWindow(this)
             };
@@ -228,14 +248,14 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenGameScanner(object sender, RoutedEventArgs e)
         {
-            Process[] pname = Process.GetProcessesByName("spartan");
+            var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error);
                 return;
             }
 
-            GamePathSelectionWindow scanner = new GamePathSelectionWindow
+            var scanner = new GamePathSelectionWindow
             {
                 Owner = Window.GetWindow(this)
             };
@@ -244,20 +264,21 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenUpdater(object sender, RoutedEventArgs e)
         {
-            Process[] pname = Process.GetProcessesByName("spartan");
+            var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error);
                 return;
             }
 
-            UpdateWindow updater = new UpdateWindow
+            var updater = new UpdateWindow
             {
                 Owner = Window.GetWindow(this)
             };
             updater.ShowDialog();
         }
-        #endregion
+
+        #endregion Settings context menu callbacks
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -265,7 +286,7 @@ namespace Celeste_Launcher_Gui.Pages
             {
                 await _friendService.FetchFriendList();
 
-                NewsPictureLoader newsLoader = new NewsPictureLoader();
+                var newsLoader = new NewsPictureLoader();
                 _currentNews = await newsLoader.GetNewsDescription();
 
                 SetNewsPictureSource(_currentNews.ImageSource);
@@ -278,7 +299,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void SetNewsPictureSource(string imageUri)
         {
-            BitmapImage bitmapImage = new BitmapImage();
+            var bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
             bitmapImage.UriSource = new Uri(imageUri);
             bitmapImage.EndInit();
@@ -293,7 +314,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenScenarionManager(object sender, RoutedEventArgs e)
         {
-            ScenarioManager scenarioManagerDialog = new ScenarioManager
+            var scenarioManagerDialog = new ScenarioManager
             {
                 Owner = Window.GetWindow(this)
             };
@@ -302,7 +323,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenMultiplayerSettings(object sender, RoutedEventArgs e)
         {
-            MultiplayerSettings multiplayerSettingsDialog = new MultiplayerSettings
+            var multiplayerSettingsDialog = new MultiplayerSettings
             {
                 Owner = Window.GetWindow(this)
             };
@@ -311,8 +332,11 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenToolsButtonToolTip(object sender, RoutedEventArgs e)
         {
-            ToolsButton.ContextMenu.PlacementTarget = sender as UIElement;
-            ToolsButton.ContextMenu.IsOpen = true;
+            if (ToolsButton.ContextMenu != null)
+            {
+                ToolsButton.ContextMenu.PlacementTarget = sender as UIElement;
+                ToolsButton.ContextMenu.IsOpen = true;
+            }
         }
     }
 }

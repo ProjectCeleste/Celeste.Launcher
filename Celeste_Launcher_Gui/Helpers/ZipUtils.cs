@@ -1,12 +1,12 @@
 ﻿#region Using directives
 
 using System;
-using System.IO.Compression;
 using System.IO;
+using System.IO.Compression;
 using System.Threading;
 using System.Threading.Tasks;
 
-#endregion
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -15,35 +15,32 @@ namespace Celeste_Launcher_Gui.Helpers
         public static async Task ExtractZipFile(string archiveFileName, string outFolder,
             IProgress<double> progress, CancellationToken ct)
         {
-            using (ZipArchive zipFile = ZipFile.OpenRead(archiveFileName))
+            using (var zipFile = ZipFile.OpenRead(archiveFileName))
             {
-                foreach (ZipArchiveEntry zipEntry in zipFile.Entries)
+                foreach (var zipEntry in zipFile.Entries)
                 {
-                    long length = zipEntry.Length;
+                    var length = zipEntry.Length;
 
-                    string filePath = Path.Combine(outFolder, zipEntry.Name);
-                    string directoryName = Path.GetDirectoryName(filePath);
+                    var filePath = Path.Combine(outFolder, zipEntry.Name);
+                    var directoryName = Path.GetDirectoryName(filePath);
 
                     if (!string.IsNullOrEmpty(directoryName))
                         Directory.CreateDirectory(directoryName);
 
-                    using (Stream a = zipEntry.Open())
+                    using (var a = zipEntry.Open())
                     {
-                        using (FileStream fileStreamFinal =
+                        using (var fileStreamFinal =
                             File.Open(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
                         {
-                            using (BinaryWriter final = new BinaryWriter(fileStreamFinal))
+                            using (var final = new BinaryWriter(fileStreamFinal))
                             {
-                                byte[] buffer = new byte[4096];
+                                var buffer = new byte[4096];
                                 int read;
-                                long totalread = 0L;
+                                var totalread = 0L;
                                 while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
                                 {
                                     //
-                                    if (ct.IsCancellationRequested)
-                                    {
-                                        ct.ThrowIfCancellationRequested();
-                                    }
+                                    if (ct.IsCancellationRequested) ct.ThrowIfCancellationRequested();
 
                                     //
                                     if (read > zipEntry.Length)
@@ -58,7 +55,7 @@ namespace Celeste_Launcher_Gui.Helpers
                                     }
                                     else if (totalread + read > length)
                                     {
-                                        long leftToRead = length - totalread;
+                                        var leftToRead = length - totalread;
                                         totalread += leftToRead;
                                         final.Write(buffer, 0, Convert.ToInt32(leftToRead));
                                     }
@@ -75,6 +72,7 @@ namespace Celeste_Launcher_Gui.Helpers
                     }
                 }
             }
+
             await Task.Delay(200, ct).ConfigureAwait(false);
         }
     }

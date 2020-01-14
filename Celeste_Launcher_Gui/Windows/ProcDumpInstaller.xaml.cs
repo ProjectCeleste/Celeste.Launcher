@@ -1,14 +1,18 @@
-﻿using Celeste_Launcher_Gui.Helpers;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Helpers;
 using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Windows;
 using System.Windows.Input;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for ProcDumpInstallerxaml.xaml
+    ///     Interaction logic for ProcDumpInstallerxaml.xaml
     /// </summary>
     public partial class ProcDumpInstaller : Window
     {
@@ -28,7 +32,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             try
             {
-                Progress<int> progress = new Progress<int>();
+                var progress = new Progress<int>();
                 progress.ProgressChanged += (s, o) => ProgressIndicator.ProgressBar.Value = o;
 
                 await ProcDump.DoDownloadAndInstallProcDump(progress);
@@ -36,7 +40,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception exception)
             {
                 Logger.Error(exception, exception.Message);
-                GenericMessageDialog.Show(Properties.Resources.ProcdumpInstallError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ProcdumpInstallError, DialogIcon.Error);
             }
             finally
             {

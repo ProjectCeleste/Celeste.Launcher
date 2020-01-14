@@ -1,4 +1,8 @@
-﻿using System.Text.RegularExpressions;
+﻿#region Using directives
+
+using System.Text.RegularExpressions;
+
+#endregion Using directives
 
 namespace ProjectCeleste.Launcher.PublicApi.Helpers
 {
@@ -15,14 +19,15 @@ namespace ProjectCeleste.Launcher.PublicApi.Helpers
         private const string MatchUserNameClanPattern =
             "^[A-Za-z0-9_]{3,15}$";
 
-        public static bool IsValidEmailAdress(string emailAdress)
+        public static bool IsValidEmailAddress(string emailAddress)
         {
-            return !string.IsNullOrWhiteSpace(emailAdress) && Regex.IsMatch(emailAdress, MatchEmailPattern);
+            return !string.IsNullOrWhiteSpace(emailAddress) && Regex.IsMatch(emailAddress, MatchEmailPattern);
         }
 
         public static bool IsValidUserName(string userName, bool allowClanTag = false)
         {
-            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName, allowClanTag ? MatchUserNameClanPattern : MatchUserNamePattern);
+            return !string.IsNullOrWhiteSpace(userName) && Regex.IsMatch(userName,
+                       allowClanTag ? MatchUserNameClanPattern : MatchUserNamePattern);
         }
 
         public static bool IsValidUserNameLength(string userName)

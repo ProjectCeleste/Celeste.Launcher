@@ -1,4 +1,6 @@
-﻿using Celeste_Launcher_Gui.Helpers;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
 using ProjectCeleste.Launcher.PublicApi.Logging;
@@ -6,13 +8,16 @@ using Serilog;
 using System;
 using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for FriendList.xaml
+    ///     Interaction logic for FriendList.xaml
     /// </summary>
     public partial class FriendList : Window
     {
@@ -20,11 +25,11 @@ namespace Celeste_Launcher_Gui.Windows
         private readonly ILogger _logger;
         private readonly FriendListViewModelFactory _friendListViewModelFactory;
 
-        private static FriendList Instance;
+        private static FriendList _instance;
 
         public static void Display()
         {
-            (Instance ?? (Instance = new FriendList())).Show();
+            (_instance ?? (_instance = new FriendList())).Show();
         }
 
         private FriendList()
@@ -61,7 +66,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             try
             {
-                Model.Friends.FriendList friendList = await _friendService.FetchFriendList();
+                var friendList = await _friendService.FetchFriendList();
                 SetFriendList(friendList);
             }
             catch (Exception ex)
@@ -72,37 +77,44 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void SetFriendList(Model.Friends.FriendList friendList)
         {
-            FriendListViewModel friendListViewModel = _friendListViewModelFactory.CreateFriendListViewModel(friendList, UpdateFriendList);
+            var friendListViewModel =
+                _friendListViewModelFactory.CreateFriendListViewModel(friendList, UpdateFriendList);
 
-            Dispatcher.Invoke(() =>
+            Dispatcher?.Invoke(() =>
             {
                 DataContext = friendListViewModel;
 
-                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(friendListViewModel.FriendListItems);
+                var view = (CollectionView)CollectionViewSource.GetDefaultView(friendListViewModel.FriendListItems);
                 view.Filter = FilterFriendListViewItem;
             });
         }
 
         private bool FilterFriendListViewItem(object item)
         {
-            string filterText = FilterInputText.Text;
+            var filterText = FilterInputText.Text;
 
-            if (string.IsNullOrWhiteSpace(filterText) || !(item is FriendListItem friendListViewItem) || friendListViewItem.Username == null)
+            if (string.IsNullOrWhiteSpace(filterText) || !(item is FriendListItem friendListViewItem) ||
+                friendListViewItem.Username == null)
                 return true;
 
-            if (CultureInfo.InvariantCulture.CompareInfo.IndexOf(friendListViewItem.Username, filterText, CompareOptions.IgnoreCase) >= 0)
+            if (CultureInfo.InvariantCulture.CompareInfo.IndexOf(friendListViewItem.Username, filterText,
+                    CompareOptions.IgnoreCase) >= 0)
                 return true;
 
-            if (string.Equals("online", filterText, StringComparison.OrdinalIgnoreCase) && friendListViewItem is OnlineFriend)
+            if (string.Equals("online", filterText, StringComparison.OrdinalIgnoreCase) &&
+                friendListViewItem is OnlineFriend)
                 return true;
 
-            if (string.Equals("offline", filterText, StringComparison.OrdinalIgnoreCase) && friendListViewItem is OfflineFriend)
+            if (string.Equals("offline", filterText, StringComparison.OrdinalIgnoreCase) &&
+                friendListViewItem is OfflineFriend)
                 return true;
 
-            if (string.Equals("incoming", filterText, StringComparison.OrdinalIgnoreCase) && friendListViewItem is IncomingFriendRequest)
+            if (string.Equals("incoming", filterText, StringComparison.OrdinalIgnoreCase) &&
+                friendListViewItem is IncomingFriendRequest)
                 return true;
 
-            if (string.Equals("outgoing", filterText, StringComparison.OrdinalIgnoreCase) && friendListViewItem is OutgoingFriendRequest)
+            if (string.Equals("outgoing", filterText, StringComparison.OrdinalIgnoreCase) &&
+                friendListViewItem is OutgoingFriendRequest)
                 return true;
 
             return false;
@@ -110,27 +122,26 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void AddFriendClick(object sender, RoutedEventArgs e)
         {
-            FriendListViewModel friendList = DataContext as FriendListViewModel;
+            var friendList = DataContext as FriendListViewModel;
             if (friendList?.FriendListCount >= FriendService.MaxAllowedFriends)
             {
                 GenericMessageDialog.Show(Properties.Resources.FriendListMaxFriendsReached,
-                                       DialogIcon.Warning,
-                                       DialogOptions.Ok);
+                    DialogIcon.Warning);
                 return;
             }
 
-            AddFriendDialog addFriendDialog = new AddFriendDialog(_friendService)
+            var addFriendDialog = new AddFriendDialog(_friendService)
             {
                 Owner = this
             };
 
-            bool? userSelectedAddFriend = addFriendDialog.ShowDialog();
+            var userSelectedAddFriend = addFriendDialog.ShowDialog();
 
             if (userSelectedAddFriend == true)
                 UpdateFriendList();
         }
 
-        private void FilterTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void FilterTextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(((FriendListViewModel)DataContext).FriendListItems)?.Refresh();
         }

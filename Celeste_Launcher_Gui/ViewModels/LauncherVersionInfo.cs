@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿#region Using directives
+
+using System.ComponentModel;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.ViewModels
 {

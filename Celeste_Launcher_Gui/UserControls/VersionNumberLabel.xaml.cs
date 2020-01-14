@@ -1,25 +1,31 @@
-﻿using System.ComponentModel;
+﻿#region Using directives
+
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.UserControls
 {
     /// <summary>
-    /// Interaction logic for VersionNumberLabel.xaml
+    ///     Interaction logic for VersionNumberLabel.xaml
     /// </summary>
     public partial class VersionNumberLabel : UserControl, INotifyPropertyChanged
     {
         public static readonly DependencyProperty LabelContentsProperty =
-            DependencyProperty.Register("LabelContents", typeof(string), typeof(VersionNumberLabel), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("LabelContents", typeof(string), typeof(VersionNumberLabel),
+                new PropertyMetadata(default(string)));
 
         public static readonly DependencyProperty VersionNumberProperty =
-            DependencyProperty.Register("VersionNumber", typeof(string), typeof(VersionNumberLabel), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("VersionNumber", typeof(string), typeof(VersionNumberLabel),
+                new PropertyMetadata(default(string)));
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string LabelContents
         {
-            get { return (string)GetValue(LabelContentsProperty); }
+            get => (string)GetValue(LabelContentsProperty);
             set
             {
                 SetValue(LabelContentsProperty, value);
@@ -29,7 +35,7 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public string VersionNumber
         {
-            get { return (string)GetValue(VersionNumberProperty); }
+            get => (string)GetValue(VersionNumberProperty);
             set
             {
                 SetValue(VersionNumberProperty, value);

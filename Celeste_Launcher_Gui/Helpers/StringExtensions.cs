@@ -6,7 +6,7 @@
         {
             if (theString.Length > maxLength)
             {
-                int cutIndex = theString.Length - maxLength;
+                var cutIndex = theString.Length - maxLength;
                 return prefix + theString.Substring(cutIndex);
             }
 

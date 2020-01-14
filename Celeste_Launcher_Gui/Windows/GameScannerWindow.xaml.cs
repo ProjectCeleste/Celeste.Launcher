@@ -1,7 +1,9 @@
-﻿using Celeste_Launcher_Gui.Helpers;
-using ProjectCeleste.Launcher.PublicApi.Logging;
+﻿#region Using directives
+
+using Celeste_Launcher_Gui.Helpers;
 using ProjectCeleste.GameFiles.GameScanner;
 using ProjectCeleste.GameFiles.GameScanner.Models;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -10,15 +12,18 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shell;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for GameScannerWindow.xaml
+    ///     Interaction logic for GameScannerWindow.xaml
     /// </summary>
     public partial class GameScannerWindow : Window
     {
-        private readonly GameScannnerManager GameScanner;
+        private readonly GameScannnerManager _gameScanner;
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
         public GameScannerWindow(string gameFilesPath, bool isSteam)
@@ -28,7 +33,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScanner = new GameScannnerManager(gameFilesPath, true, isSteam);
+            _gameScanner = new GameScannnerManager(gameFilesPath, true, isSteam);
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
@@ -53,26 +58,26 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            GameScanner.Dispose();
+            _gameScanner.Dispose();
         }
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                await GameScanner.InitializeFromCelesteManifest();
-                Progress<ScanProgress> progress = new Progress<ScanProgress>();
-                Progress<ScanSubProgress> subProgress = new Progress<ScanSubProgress>();
+                await _gameScanner.InitializeFromCelesteManifest();
+                var progress = new Progress<ScanProgress>();
+                var subProgress = new Progress<ScanSubProgress>();
 
                 progress.ProgressChanged += ProgressChanged;
                 subProgress.ProgressChanged += SubProgressChanged;
 
-                if (await Task.Run(async () => await GameScanner.ScanAndRepair(progress, subProgress)))
+                if (await Task.Run(async () => await _gameScanner.ScanAndRepair(progress, subProgress)))
                 {
                     CurrentFileLabel.Content = string.Empty;
                     MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;
                     FileProgress.ProgressBar.IsIndeterminate = false;
-                    GenericMessageDialog.Show(Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.GameScannerDoneMessage);
                     DialogResult = true;
                 }
                 else
@@ -89,10 +94,10 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void ProgressChanged(object sender, ScanProgress e)
         {
-            string wrappedFileName = e.File.WrapIfLengthIsLongerThan(35, "...");
+            var wrappedFileName = e.File.WrapIfLengthIsLongerThan(35, "...");
             CurrentFileLabel.Content = $"{wrappedFileName} ({e.Index}/{e.TotalIndex})";
             ScanTotalProgress.ProgressBar.Value = e.ProgressPercentage;
-            TaskbarItemInfo.ProgressValue = (e.ProgressPercentage / 100);
+            TaskbarItemInfo.ProgressValue = e.ProgressPercentage / 100;
         }
 
         private void FailGameScan(string reason)
@@ -101,8 +106,8 @@ namespace Celeste_Launcher_Gui.Windows
             ScanTotalProgress.ProgressBar.Foreground = Brushes.Red;
             CurrentFileLabel.Content = string.Empty;
             MainProgressLabel.Content = string.Empty;
-            TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-            GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
+            TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Error;
+            GenericMessageDialog.Show(reason, DialogIcon.Error);
         }
 
         private void SubProgressChanged(object sender, ScanSubProgress e)
@@ -114,6 +119,7 @@ namespace Celeste_Launcher_Gui.Windows
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     break;
+
                 case ScanSubProgressStep.Download:
                     if (e.DownloadProgress != null)
                     {
@@ -123,41 +129,52 @@ namespace Celeste_Launcher_Gui.Windows
                         }
                         else
                         {
-                            string downloaded = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted);
-                            string leftToDownload = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size);
+                            var downloaded =
+                                BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress
+                                    .SizeCompleted);
+                            var leftToDownload =
+                                BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size);
 
-                            string downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
-                                string.Empty : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}/s)";
+                            var downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed)
+                                ? string.Empty
+                                : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}/s)";
 
-                            MainProgressLabel.Content = $"{Properties.Resources.GameScannerDownloading} {downloaded}/{leftToDownload} {downloadSpeed}";
+                            MainProgressLabel.Content =
+                                $"{Properties.Resources.GameScannerDownloading} {downloaded}/{leftToDownload} {downloadSpeed}";
                         }
                     }
 
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
+
                 case ScanSubProgressStep.CheckDownload:
                     MainProgressLabel.Content = Properties.Resources.GameScannerVerifyingDownloadedFile;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
+
                 case ScanSubProgressStep.ExtractDownload:
                     MainProgressLabel.Content = Properties.Resources.GameScannerExtracting;
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
+
                 case ScanSubProgressStep.CheckExtractDownload:
                     MainProgressLabel.Content = Properties.Resources.GameScannerVerifyingExtractedFile;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
+
                 case ScanSubProgressStep.Finalize:
                     MainProgressLabel.Content = Properties.Resources.GameScannerFinalizing;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
+
                 case ScanSubProgressStep.End:
                     FileProgress.ProgressBar.Value = 100;
                     ScanTotalProgress.ProgressBar.Value = 100;
                     TaskbarItemInfo.ProgressValue = 100;
                     return;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(e.Step), e.Step, null);
             }

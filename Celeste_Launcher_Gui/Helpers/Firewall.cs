@@ -7,7 +7,7 @@ using WindowsFirewallHelper;
 using WindowsFirewallHelper.FirewallAPIv2;
 using WindowsFirewallHelper.FirewallAPIv2.Rules;
 
-#endregion
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.Helpers
             {
                 if (StandardRuleWin8.IsSupported)
                 {
-                    StandardRuleWin8 rule = new StandardRuleWin8(ruleName, fileName, FirewallAction.Allow,
+                    var rule = new StandardRuleWin8(ruleName, fileName, FirewallAction.Allow,
                         direction,
                         FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public)
                     {
@@ -38,7 +38,7 @@ namespace Celeste_Launcher_Gui.Helpers
                 }
                 else if (StandardRuleWin7.IsSupported)
                 {
-                    StandardRuleWin7 rule = new StandardRuleWin7(ruleName, fileName, FirewallAction.Allow,
+                    var rule = new StandardRuleWin7(ruleName, fileName, FirewallAction.Allow,
                         direction,
                         FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public)
                     {
@@ -65,9 +65,10 @@ namespace Celeste_Launcher_Gui.Helpers
             }
         }
 
-        private static void AddDefaultApplicationRule(string ruleName, string fileName, FirewallDirection direction, FirewallProtocol protocol)
+        private static void AddDefaultApplicationRule(string ruleName, string fileName, FirewallDirection direction,
+            FirewallProtocol protocol)
         {
-            IRule defaultRule = FirewallManager.Instance.CreateApplicationRule(
+            var defaultRule = FirewallManager.Instance.CreateApplicationRule(
                 FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public, ruleName,
                 FirewallAction.Allow, fileName, protocol);
 
@@ -83,7 +84,7 @@ namespace Celeste_Launcher_Gui.Helpers
             {
                 if (StandardRuleWin8.IsSupported)
                 {
-                    StandardRuleWin8 rule = new StandardRuleWin8(ruleName, portNumber, FirewallAction.Allow,
+                    var rule = new StandardRuleWin8(ruleName, portNumber, FirewallAction.Allow,
                         direction,
                         FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public)
                     {
@@ -98,7 +99,7 @@ namespace Celeste_Launcher_Gui.Helpers
                 }
                 else if (StandardRuleWin7.IsSupported)
                 {
-                    StandardRuleWin7 rule = new StandardRuleWin7(ruleName, portNumber, FirewallAction.Allow,
+                    var rule = new StandardRuleWin7(ruleName, portNumber, FirewallAction.Allow,
                         direction,
                         FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public)
                     {
@@ -125,7 +126,7 @@ namespace Celeste_Launcher_Gui.Helpers
         private static void AddDefaultPortRule(string ruleName, ushort portNumber, FirewallDirection direction,
             FirewallProtocol protocol)
         {
-            IRule defaultRule = FirewallManager.Instance.CreatePortRule(
+            var defaultRule = FirewallManager.Instance.CreatePortRule(
                 FirewallProfiles.Domain | FirewallProfiles.Private | FirewallProfiles.Public, ruleName,
                 FirewallAction.Allow, portNumber, protocol);
 
@@ -136,8 +137,7 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public static void RemoveRules(string ruleName)
         {
-            foreach (IRule rule in FindRules(ruleName).ToArray())
-            {
+            foreach (var rule in FindRules(ruleName).ToArray())
                 try
                 {
                     FirewallManager.Instance.Rules.Remove(rule);
@@ -146,7 +146,6 @@ namespace Celeste_Launcher_Gui.Helpers
                 {
                     //
                 }
-            }
         }
 
         public static bool RemoveRule(string ruleName)
@@ -161,16 +160,20 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public static IEnumerable<IRule> FindRules(string ruleName)
         {
-            return (Firewall.Instance.IsSupported && (StandardRuleWin8.IsSupported || StandardRuleWin7.IsSupported))
-                ? Firewall.Instance.Rules.Where(r => string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase)).ToArray()
-                : FirewallManager.Instance.Rules.Where(r => string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase)).ToArray();
+            return Firewall.Instance.IsSupported && (StandardRuleWin8.IsSupported || StandardRuleWin7.IsSupported)
+                ? Firewall.Instance.Rules
+                    .Where(r => string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase)).ToArray()
+                : FirewallManager.Instance.Rules
+                    .Where(r => string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase)).ToArray();
         }
 
         public static IRule FindRule(string ruleName)
         {
-            return (Firewall.Instance.IsSupported && (StandardRuleWin8.IsSupported || StandardRuleWin7.IsSupported))
-                ? Firewall.Instance.Rules.FirstOrDefault(r => string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase))
-                : FirewallManager.Instance.Rules.FirstOrDefault(r => string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase));
+            return Firewall.Instance.IsSupported && (StandardRuleWin8.IsSupported || StandardRuleWin7.IsSupported)
+                ? Firewall.Instance.Rules.FirstOrDefault(r =>
+                    string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase))
+                : FirewallManager.Instance.Rules.FirstOrDefault(r =>
+                    string.Equals(r.Name, ruleName, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

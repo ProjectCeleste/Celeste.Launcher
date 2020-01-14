@@ -1,14 +1,18 @@
-﻿using ProjectCeleste.Launcher.PublicApi.Logging;
+﻿#region Using directives
+
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using Serilog;
 using System;
 using System.Windows;
 using System.Windows.Input;
 
+#endregion Using directives
+
 namespace Celeste_Launcher_Gui.Windows
 {
     /// <summary>
-    /// Interaction logic for ResetPasswordDialog.xaml
+    ///     Interaction logic for ResetPasswordDialog.xaml
     /// </summary>
     public partial class ResetPasswordDialog : Window
     {
@@ -35,41 +39,42 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged.ResetPwdResult response = await LegacyBootstrapper.WebSocketApi.DoResetPwd(EmailAddressField.InputContent, ResetKeyField.InputContent);
+                var response = await LegacyBootstrapper.WebSocketApi.DoResetPwd(EmailAddressField.InputContent,
+                    ResetKeyField.InputContent);
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show(response.Message, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(response.Message);
 
                     DialogResult = true;
                     Close();
                     return;
                 }
 
-                GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}",
+                    DialogIcon.Error);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
                 if (ex.Data.Contains("ErrorCode") && ex.Data["ErrorCode"] is CommandErrorCode errorCode)
-                {
                     switch (errorCode)
                     {
                         case CommandErrorCode.InvalidEmail:
                             GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error);
                             break;
+
                         case CommandErrorCode.InvalidVerifyKey:
                             GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidKey, DialogIcon.Error);
                             break;
+
                         default:
-                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
+                                DialogIcon.Error);
                             break;
                     }
-                }
                 else
-                {
                     GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
-                }
             }
             finally
             {
@@ -83,39 +88,38 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged.ForgotPwdResult response = await LegacyBootstrapper.WebSocketApi.DoForgotPwd(EmailAddressField.InputContent);
+                var response = await LegacyBootstrapper.WebSocketApi.DoForgotPwd(EmailAddressField.InputContent);
 
                 if (response.Result)
                 {
                     ResetKeyField.IsEnabled = true;
                     ResetPasswordBtn.IsEnabled = true;
 
-                    GenericMessageDialog.Show(response.Message, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(response.Message);
                 }
                 else
                 {
-                    GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}",
+                        DialogIcon.Error);
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
                 if (ex.Data.Contains("ErrorCode") && ex.Data["ErrorCode"] is CommandErrorCode errorCode)
-                {
                     switch (errorCode)
                     {
                         case CommandErrorCode.InvalidEmail:
                             GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error);
                             break;
+
                         default:
-                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
+                                DialogIcon.Error);
                             break;
                     }
-                }
                 else
-                {
                     GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
-                }
             }
             finally
             {

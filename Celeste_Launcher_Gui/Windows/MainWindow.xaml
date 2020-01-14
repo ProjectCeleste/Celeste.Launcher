@@ -9,20 +9,20 @@
     <Grid>
         <Border BorderThickness="27" MouseDown="BorderMoved">
             <Border.BorderBrush>
-                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/TopBorder.png"/>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/TopBorder.png" />
             </Border.BorderBrush>
             <DockPanel MouseDown="ContentMoved">
                 <DockPanel.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MainWindow_InnerContents.png"/>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MainWindow_InnerContents.png" />
                 </DockPanel.Background>
                 <DockPanel DockPanel.Dock="Bottom">
                     <TextBlock TextWrapping="WrapWithOverflow" Height="77" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="16" Foreground="White" TextAlignment="Center">
-                        Age of Empires Online © Microsoft Corporation.<LineBreak/>
-                        Project Celeste was created under Microsoft's "<Hyperlink Click="OpenLegalTermsWebsite" Foreground="#32a5f5">Game Content Usage Rules</Hyperlink>" using assets from<LineBreak/>
+                        Age of Empires Online © Microsoft Corporation.<LineBreak />
+                        Project Celeste was created under Microsoft's "<Hyperlink Click="OpenLegalTermsWebsite" Foreground="#32a5f5">Game Content Usage Rules</Hyperlink>" using assets from<LineBreak />
                         Age of Empires Online, and it is not endorsed by or affiliated with Microsoft.
                     </TextBlock>
                 </DockPanel>
-                <Grid DockPanel.Dock="Bottom" Height="12"/>
+                <Grid DockPanel.Dock="Bottom" Height="12" />
                 <Grid>
                     <Frame x:Name="NavigationFrame" NavigationUIVisibility="Hidden" Source="pack://application:,,,/Celeste Launcher;component/Pages/MainMenuPage.xaml" />
                 </Grid>
@@ -33,14 +33,12 @@
             <local:WindowControl
                     DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCMinimizeNormal.png"
                     HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCMinimizeHover.png"
-                    Click="OnMinimize"/>
-            
+                    Click="OnMinimize" />
+
             <local:WindowControl
                     DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
                     HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
-                    Click="OnClose"/>
+                    Click="OnClose" />
         </StackPanel>
-
-
     </Grid>
 </Window>

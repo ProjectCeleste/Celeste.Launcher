@@ -1,6 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿#region Using directives
+
+using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Services
 {
@@ -10,9 +14,9 @@ namespace Celeste_Launcher_Gui.Services
 
         public async Task<NewsPicture> GetNewsDescription()
         {
-            using (HttpClient client = new HttpClient())
+            using (var client = new HttpClient())
             {
-                string response = await client.GetStringAsync(NewsDescriptionUri);
+                var response = await client.GetStringAsync(NewsDescriptionUri);
                 return JsonConvert.DeserializeObject<NewsPicture>(response);
             }
         }

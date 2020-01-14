@@ -1,5 +1,9 @@
-﻿using System.Windows;
+﻿#region Using directives
+
+using System.Windows;
 using System.Windows.Media;
+
+#endregion Using directives
 
 namespace Celeste_Launcher_Gui.Helpers
 {

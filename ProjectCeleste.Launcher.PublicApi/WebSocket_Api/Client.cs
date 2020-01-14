@@ -100,14 +100,14 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
             _logger.Information("Attempting to connect to {@Uri}", _uri);
             _agent.Open();
 
-            bool receivedSocketCallback = await _socketCallbackSemaphore.WaitAsync(ConnectionTimeoutInMilliseconds);
+            var receivedSocketCallback = await _socketCallbackSemaphore.WaitAsync(ConnectionTimeoutInMilliseconds);
 
             if (!receivedSocketCallback)
             {
                 State = ClientState.TimeOut;
                 _logger.Warning("Timed out connecting to server");
 
-                throw new Exception($"Server connection timeout)!");
+                throw new Exception("Server connection timeout)!");
             }
 
             if (State != ClientState.Connected)
@@ -147,9 +147,7 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
             if (_agent.State != WebSocketState.None ||
                 State != ClientState.Connecting)
-            {
                 return;
-            }
 
             State = ClientState.Offline;
             _socketCallbackSemaphore.Release();

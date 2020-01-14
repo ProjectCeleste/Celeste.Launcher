@@ -24,13 +24,13 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public static void SerializeToXmlFile(this object serializableObject, string xmlFilePath, bool backup = true)
         {
-            string xml = SerializeToString(serializableObject);
+            var xml = SerializeToString(serializableObject);
 
             if (File.Exists(xmlFilePath))
             {
                 if (backup)
                 {
-                    string backupFile = $"{xmlFilePath}.bak";
+                    var backupFile = $"{xmlFilePath}.bak";
 
                     if (File.Exists(backupFile))
                         File.Delete(backupFile);
@@ -50,25 +50,26 @@ namespace Celeste_Launcher_Gui.Helpers
                 return null;
 
             string output;
-            XmlSerializer serializer = new XmlSerializer(serializableObject.GetType());
-            XmlWriterSettings settings = new XmlWriterSettings
+            var serializer = new XmlSerializer(serializableObject.GetType());
+            var settings = new XmlWriterSettings
             {
                 Encoding = Encoding.UTF8,
                 Indent = true,
                 OmitXmlDeclaration = true,
                 NewLineHandling = NewLineHandling.None
             };
-            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+            var ns = new XmlSerializerNamespaces();
             ns.Add(string.Empty, string.Empty);
-            using (Utf8StringWriter stringWriter = new Utf8StringWriter())
+            using (var stringWriter = new Utf8StringWriter())
             {
-                using (XmlWriter xmlWriter = XmlWriter.Create(stringWriter, settings))
+                using (var xmlWriter = XmlWriter.Create(stringWriter, settings))
                 {
                     serializer.Serialize(xmlWriter, serializableObject, ns);
                 }
 
                 output = stringWriter.ToString();
             }
+
             return output;
         }
 
@@ -85,21 +86,22 @@ namespace Celeste_Launcher_Gui.Helpers
                 return null;
 
             T output;
-            XmlSerializer xmls = new XmlSerializer(typeof(T));
-            using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            var xmls = new XmlSerializer(typeof(T));
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
             {
                 output = (T)xmls.Deserialize(ms);
             }
+
             return output;
         }
 
         public static string PrettyXml(string xml)
         {
             string output;
-            XDocument xmlDoc = XDocument.Parse(xml);
-            using (Utf8StringWriter stringWriter = new Utf8StringWriter())
+            var xmlDoc = XDocument.Parse(xml);
+            using (var stringWriter = new Utf8StringWriter())
             {
-                using (XmlWriter xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings
+                using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings
                 {
                     Encoding = Encoding.UTF8,
                     Indent = true,
@@ -109,8 +111,10 @@ namespace Celeste_Launcher_Gui.Helpers
                 {
                     xmlDoc.Save(xmlWriter);
                 }
+
                 output = stringWriter.ToString();
             }
+
             return output;
         }
     }
