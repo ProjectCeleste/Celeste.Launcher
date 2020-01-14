@@ -8,8 +8,8 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Version>3.0.2.1</Version>
-	  <FileVersion>3.0.2.1</FileVersion>
-	  <InformationalVersion>3.0.2.1-beta</InformationalVersion>
+    <FileVersion>3.0.2.1</FileVersion>
+    <InformationalVersion>3.0.2.1-beta</InformationalVersion>
     <AssemblyName>Celeste Launcher</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
