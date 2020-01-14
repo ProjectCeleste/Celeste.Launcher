@@ -6,10 +6,10 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using Celeste_Public_Api.Helpers;
-using Celeste_Public_Api.Logging;
-using Celeste_Public_Api.WebSocket_Api;
-using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
+using ProjectCeleste.Launcher.PublicApi.Helpers;
+using ProjectCeleste.Launcher.PublicApi.Logging;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
 using ProjectCeleste.GameFiles.GameScanner;
 using Celeste_Launcher_Gui.Windows;
@@ -21,7 +21,7 @@ namespace Celeste_Launcher_Gui
     internal static class LegacyBootstrapper
     {
         public static UserConfig UserConfig { get; private set; } = new UserConfig();
-        
+
         private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
         public static WebSocketApi WebSocketApi { get; private set; }
@@ -40,7 +40,7 @@ namespace Celeste_Launcher_Gui
             Application.SetCompatibleTextRenderingDefault(false);
 
             // TODO: Move this to app.xaml.cs
-            var mutex = new Mutex(true, AppName, out bool createdNew);
+            Mutex mutex = new Mutex(true, AppName, out bool createdNew);
 
             //Only one instance
             if (!createdNew)

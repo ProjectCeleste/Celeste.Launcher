@@ -1,6 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Windows;
-using Celeste_Public_Api.Helpers;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
 using Serilog;
 using System;
 using System.Windows;
@@ -27,18 +27,12 @@ namespace Celeste_Launcher_Gui.Pages
 
         private async void OnVerifyEmail(object sender, RoutedEventArgs args)
         {
-            if (!Misc.IsValidEmailAdress(EmailField.InputContent))
-            {
-                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
-                return;
-            }
-
             VerifyEmailBtn.IsEnabled = false;
             ResentKeyBtn.IsEnabled = false;
 
             try
             {
-                var response = await LegacyBootstrapper.WebSocketApi.DoValidMail(EmailField.InputContent);
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged.ValidMailResult response = await LegacyBootstrapper.WebSocketApi.DoValidMail(EmailField.InputContent);
 
                 if (response.Result)
                 {
@@ -53,11 +47,28 @@ namespace Celeste_Launcher_Gui.Pages
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                if (ex.Data.Contains("ErrorCode") && ex.Data["ErrorCode"] is CommandErrorCode errorCode)
+                {
+                    switch (errorCode)
+                    {
+                        case CommandErrorCode.InvalidEmail:
+                            GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
+                            break;
+                        default:
+                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                            break;
+                    }
+                }
+                else
+                {
+                    GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                }
             }
-
-            VerifyEmailBtn.IsEnabled = true;
-            ResentKeyBtn.IsEnabled = true;
+            finally
+            {
+                VerifyEmailBtn.IsEnabled = true;
+                ResentKeyBtn.IsEnabled = true;
+            }
         }
 
         private async void OnRegister(object sender, RoutedEventArgs args)
@@ -68,61 +79,59 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            if (!Misc.IsValidEmailAdress(Properties.Resources.RegisterInvalidEmail))
-            {
-                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
-                return;
-            }
-
-            if (!Misc.IsValidUserName(UsernameField.InputContent))
-            {
-                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidUsername, DialogIcon.Error);
-                return;
-            }
-
-            if (PasswordField.PasswordInputBox.Password.Length < 8 || PasswordField.PasswordInputBox.Password.Length > 32)
-            {
-                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidPasswordLength, DialogIcon.Error);
-                return;
-            }
-
-            if (!Misc.IsValidPassword(PasswordField.PasswordInputBox.Password))
-            {
-                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidPasswordLength, DialogIcon.Error);
-                return;
-            }
-
-            if (VerifyKeyField.InputContent.Length != 32)
-            {
-                GenericMessageDialog.Show(Properties.Resources.RegisterInvalidKeyLength, DialogIcon.Error);
-                return;
-            }
-
             RegisterBtn.IsEnabled = false;
 
             try
             {
-                var response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.InputContent, VerifyKeyField.InputContent, 
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged.RegisterUserResult response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.InputContent, VerifyKeyField.InputContent,
                     UsernameField.InputContent, PasswordField.PasswordInputBox.Password);
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show($@"{response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show($"{response.Message}", DialogIcon.Error);
 
                     NavigationService.Navigate(new Uri("Pages/MainMenuPage.xaml", UriKind.Relative));
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show($"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                if (ex.Data.Contains("ErrorCode") && ex.Data["ErrorCode"] is CommandErrorCode errorCode)
+                {
+                    switch (errorCode)
+                    {
+                        case CommandErrorCode.InvalidEmail:
+                            GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
+                            break;
+                        case CommandErrorCode.InvalidUsername:
+                        case CommandErrorCode.InvalidUsernameLength:
+                            GenericMessageDialog.Show(Properties.Resources.RegisterInvalidUsername, DialogIcon.Error);
+                            break;
+                        case CommandErrorCode.InvalidPassword:
+                        case CommandErrorCode.InvalidPasswordLength:
+                            GenericMessageDialog.Show(Properties.Resources.RegisterInvalidPasswordLength, DialogIcon.Error);
+                            break;
+                        case CommandErrorCode.InvalidVerifyKey:
+                            GenericMessageDialog.Show(Properties.Resources.RegisterInvalidKeyLength, DialogIcon.Error);
+                            break;
+                        default:
+                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                            break;
+                    }
+                }
+                else
+                {
+                    GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                }
             }
-
-            RegisterBtn.IsEnabled = true;
+            finally
+            {
+                RegisterBtn.IsEnabled = true;
+            }
         }
 
         private void OnAbort(object sender, RoutedEventArgs e)

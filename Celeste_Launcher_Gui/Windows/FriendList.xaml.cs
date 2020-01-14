@@ -1,7 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Globalization;
@@ -16,18 +16,15 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class FriendList : Window
     {
-        private IFriendService _friendService;
-        private ILogger _logger;
-        private FriendListViewModelFactory _friendListViewModelFactory;
-        
+        private readonly IFriendService _friendService;
+        private readonly ILogger _logger;
+        private readonly FriendListViewModelFactory _friendListViewModelFactory;
+
         private static FriendList Instance;
 
         public static void Display()
         {
-            if (Instance == null)
-                Instance = new FriendList();
-
-            Instance.Show();
+            (Instance ?? (Instance = new FriendList())).Show();
         }
 
         private FriendList()
@@ -37,10 +34,10 @@ namespace Celeste_Launcher_Gui.Windows
             _logger = LoggerFactory.GetLogger();
             _friendListViewModelFactory = new FriendListViewModelFactory(_friendService, _logger);
 
-            _friendService.FriendListUpdated += _friendService_FriendListUpdated;
+            _friendService.FriendListUpdated += FriendService_FriendListUpdated;
         }
 
-        private void _friendService_FriendListUpdated(Model.Friends.FriendList friendList)
+        private void FriendService_FriendListUpdated(Model.Friends.FriendList friendList)
         {
             SetFriendList(friendList);
         }
@@ -64,7 +61,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             try
             {
-                var friendList = await _friendService.FetchFriendList();
+                Model.Friends.FriendList friendList = await _friendService.FetchFriendList();
                 SetFriendList(friendList);
             }
             catch (Exception ex)
@@ -75,23 +72,22 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void SetFriendList(Model.Friends.FriendList friendList)
         {
-            var friendListViewModel = _friendListViewModelFactory.CreateFriendListViewModel(friendList, UpdateFriendList);
+            FriendListViewModel friendListViewModel = _friendListViewModelFactory.CreateFriendListViewModel(friendList, UpdateFriendList);
 
             Dispatcher.Invoke(() =>
             {
                 DataContext = friendListViewModel;
 
-                var view = (CollectionView)CollectionViewSource.GetDefaultView(friendListViewModel.FriendListItems);
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(friendListViewModel.FriendListItems);
                 view.Filter = FilterFriendListViewItem;
             });
         }
 
         private bool FilterFriendListViewItem(object item)
         {
-            var friendListViewItem = item as FriendListItem;
-            var filterText = FilterInputText.Text;
+            string filterText = FilterInputText.Text;
 
-            if (string.IsNullOrWhiteSpace(filterText) || friendListViewItem == null || friendListViewItem.Username == null)
+            if (string.IsNullOrWhiteSpace(filterText) || !(item is FriendListItem friendListViewItem) || friendListViewItem.Username == null)
                 return true;
 
             if (CultureInfo.InvariantCulture.CompareInfo.IndexOf(friendListViewItem.Username, filterText, CompareOptions.IgnoreCase) >= 0)
@@ -114,7 +110,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void AddFriendClick(object sender, RoutedEventArgs e)
         {
-            var friendList = DataContext as FriendListViewModel;
+            FriendListViewModel friendList = DataContext as FriendListViewModel;
             if (friendList?.FriendListCount >= FriendService.MaxAllowedFriends)
             {
                 GenericMessageDialog.Show(Properties.Resources.FriendListMaxFriendsReached,
@@ -123,10 +119,12 @@ namespace Celeste_Launcher_Gui.Windows
                 return;
             }
 
-            var addFriendDialog = new AddFriendDialog(_friendService);
-            addFriendDialog.Owner = this;
+            AddFriendDialog addFriendDialog = new AddFriendDialog(_friendService)
+            {
+                Owner = this
+            };
 
-            var userSelectedAddFriend = addFriendDialog.ShowDialog();
+            bool? userSelectedAddFriend = addFriendDialog.ShowDialog();
 
             if (userSelectedAddFriend == true)
                 UpdateFriendList();

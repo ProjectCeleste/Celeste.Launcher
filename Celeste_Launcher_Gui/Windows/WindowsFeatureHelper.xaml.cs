@@ -1,5 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Microsoft.Dism;
 using Serilog;
 using System;
@@ -36,8 +36,8 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                var feature = await Dism.EnableWindowsFeatures("DirectPlay", OnDismInstallProgress);
-                var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature);
+                DismFeatureInfo feature = await Dism.EnableWindowsFeatures("DirectPlay", OnDismInstallProgress);
+                (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature);
 
                 DirectPlayStatusLabel.Text = statusText;
                 DirectPlayStatusLabel.Foreground = new SolidColorBrush(colorLabel);
@@ -56,8 +56,8 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                var feature = await Dism.EnableWindowsFeatures("NetFx3", OnDismInstallProgress);
-                var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature);
+                DismFeatureInfo feature = await Dism.EnableWindowsFeatures("NetFx3", OnDismInstallProgress);
+                (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature);
 
                 NetFrameworkStatusLabel.Text = statusText;
                 NetFrameworkStatusLabel.Foreground = new SolidColorBrush(colorLabel);
@@ -78,7 +78,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var osInfo = OsVersionInfo.GetOsVersionInfo();
+            OsVersionInfo osInfo = OsVersionInfo.GetOsVersionInfo();
             if (osInfo.Major < 6 || osInfo.Major == 6 && osInfo.Minor < 2)
             {
                 GenericMessageDialog.Show(string.Format(Properties.Resources.WindowsFeatureHelperUnsupportedOS, osInfo.FullName),
@@ -90,10 +90,11 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                foreach (var feature in await Dism.GetWindowsFeatureInfo(new[] { "DirectPlay", "NetFx3" }))
+                foreach (System.Collections.Generic.KeyValuePair<string, DismFeatureInfo> feature in await Dism.GetWindowsFeatureInfo(new[] { "DirectPlay", "NetFx3" }))
+                {
                     if (string.Equals(feature.Key, "DirectPlay", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
+                        (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
 
                         DirectPlayStatusLabel.Text = statusText;
                         DirectPlayStatusLabel.Foreground = new SolidColorBrush(colorLabel);
@@ -101,12 +102,13 @@ namespace Celeste_Launcher_Gui.Windows
                     }
                     else if (string.Equals(feature.Key, "NetFx3", StringComparison.CurrentCultureIgnoreCase))
                     {
-                        var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
+                        (string statusText, Color colorLabel, bool canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
 
                         NetFrameworkStatusLabel.Text = statusText;
                         NetFrameworkStatusLabel.Foreground = new SolidColorBrush(colorLabel);
                         EnableNetFrameworkBtn.IsEnabled = canBeEnabled;
                     }
+                }
             }
             catch (Exception ex)
             {

@@ -1,5 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -36,7 +36,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             try
             {
-                var exePath = Assembly.GetEntryAssembly().Location;
+                string exePath = Assembly.GetEntryAssembly().Location;
                 if (exePath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
                 {
                     GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame, DialogIcon.None, DialogOptions.Ok);
@@ -44,7 +44,7 @@ namespace Celeste_Launcher_Gui.Windows
                     return;
                 }
 
-                var exeFolder = Path.GetDirectoryName(exePath);
+                string exeFolder = Path.GetDirectoryName(exePath);
                 if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, exeFolder, StringComparison.OrdinalIgnoreCase))
                 {
                     GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);

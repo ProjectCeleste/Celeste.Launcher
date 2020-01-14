@@ -1,5 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Services;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -59,10 +59,10 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 ScenarioListView.Items.Clear();
-                foreach (var filePath in Directory.GetFiles(_scenarioDirectoryPath, "*.age4scn", SearchOption.AllDirectories))
+                foreach (string filePath in Directory.GetFiles(_scenarioDirectoryPath, "*.age4scn", SearchOption.AllDirectories))
                 {
-                    var txt = filePath.Replace(_scenarioDirectoryPath, string.Empty).Replace(".age4scn", string.Empty);
-                    if (txt.StartsWith(@"/") || txt.StartsWith(@"\"))
+                    string txt = filePath.Replace(_scenarioDirectoryPath, string.Empty).Replace(".age4scn", string.Empty);
+                    if (txt.StartsWith("/") || txt.StartsWith(@"\"))
                         txt = txt.Substring(1);
 
                     ScenarioListView.Items.Add(new System.Windows.Controls.ListViewItem
@@ -104,9 +104,9 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                using (var dlg = new System.Windows.Forms.OpenFileDialog
+                using (System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog
                 {
-                    Filter = $@"{Properties.Resources.ScenarioEditorFilePickerFileTypes} (*.age4scn)|*.age4scn",
+                    Filter = $"{Properties.Resources.ScenarioEditorFilePickerFileTypes} (*.age4scn)|*.age4scn",
                     CheckFileExists = true,
                     Title = Properties.Resources.ScenarioEditorFilePickerTitle,
                     Multiselect = true
@@ -115,14 +115,14 @@ namespace Celeste_Launcher_Gui.Windows
                     if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                         return;
 
-                    foreach (var filename in dlg.FileNames)
+                    foreach (string filename in dlg.FileNames)
                     {
-                        var selectedDestinationPath =
+                        string selectedDestinationPath =
                             Path.Combine(_scenarioDirectoryPath, Path.GetFileName(filename) ?? string.Empty);
 
                         if (File.Exists(selectedDestinationPath))
                         {
-                            var userSelectedToOverwrite = GenericMessageDialog.Show(
+                            bool? userSelectedToOverwrite = GenericMessageDialog.Show(
                                 string.Format(Properties.Resources.ScenarioEditorOverwritePrompt, selectedDestinationPath),
                                 DialogIcon.None,
                                 DialogOptions.YesNo);
@@ -160,7 +160,7 @@ namespace Celeste_Launcher_Gui.Windows
                 {
                     if (File.Exists((string)lvi.Tag))
                     {
-                        var userSelectedToDeleteFile = GenericMessageDialog.Show(
+                        bool? userSelectedToDeleteFile = GenericMessageDialog.Show(
                             string.Format(Properties.Resources.ScenarioEditorDeleteScenarioPrompt, lvi.Content),
                             DialogIcon.None,
                             DialogOptions.YesNo);

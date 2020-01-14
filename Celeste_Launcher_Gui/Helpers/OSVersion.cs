@@ -6,7 +6,7 @@ using System;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
-    public class OsVersionInfo
+    public sealed class OsVersionInfo
     {
         private OsVersionInfo()
         {
@@ -14,7 +14,7 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public string Name { get; set; }
 
-        public string FullName => "Microsoft " + Name + " " + "[Version " + Major + "." + Minor + "." + Build + "]";
+        public string FullName => "Microsoft " + Name + " [Version " + Major + "." + Minor + "." + Build + "]";
 
         public int Minor { get; set; }
 
@@ -28,17 +28,15 @@ namespace Celeste_Launcher_Gui.Helpers
         /// <returns></returns>
         public static OsVersionInfo GetOsVersionInfo()
         {
-            var osVersionObj = Environment.OSVersion;
+            OperatingSystem osVersionObj = Environment.OSVersion;
 
-            var osVersionInfo = new OsVersionInfo
+            return new OsVersionInfo
             {
                 Name = GetOsName(osVersionObj),
                 Major = osVersionObj.Version.Major,
                 Minor = osVersionObj.Version.Minor,
                 Build = osVersionObj.Version.Build
             };
-
-            return osVersionInfo;
         }
 
         /// <summary>
@@ -48,24 +46,18 @@ namespace Celeste_Launcher_Gui.Helpers
         /// <returns></returns>
         private static string GetOsName(OperatingSystem osInfo)
         {
-            string osName;
-
             // ReSharper disable once SwitchStatementMissingSomeCases
             switch (osInfo.Platform)
             {
                 //for old windows kernel 
                 case PlatformID.Win32Windows:
-                    osName = ForWin32Windows(osInfo);
-                    break;
+                    return ForWin32Windows(osInfo);
                 //fow NT kernel 
                 case PlatformID.Win32NT:
-                    osName = ForWin32Nt(osInfo);
-                    break;
+                    return ForWin32Nt(osInfo);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(osInfo.Platform), osInfo.Platform, string.Empty);
             }
-
-            return osName;
         }
 
         /// <summary>

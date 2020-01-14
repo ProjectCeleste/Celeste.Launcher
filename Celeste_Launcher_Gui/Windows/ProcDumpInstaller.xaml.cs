@@ -1,5 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Windows;
@@ -28,8 +28,8 @@ namespace Celeste_Launcher_Gui.Windows
         {
             try
             {
-                var progress = new Progress<int>();
-                progress.ProgressChanged += (s, o) => { ProgressIndicator.ProgressBar.Value = o; };
+                Progress<int> progress = new Progress<int>();
+                progress.ProgressChanged += (s, o) => ProgressIndicator.ProgressBar.Value = o;
 
                 await ProcDump.DoDownloadAndInstallProcDump(progress);
             }

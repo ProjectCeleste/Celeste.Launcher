@@ -8,6 +8,8 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Version>3.0.2.1</Version>
+	  <FileVersion>3.0.2.1</FileVersion>
+	  <InformationalVersion>3.0.2.1-beta</InformationalVersion>
     <AssemblyName>Celeste Launcher</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
@@ -21,7 +23,7 @@
     <PackageReference Include="WindowsFirewallHelper" Version="1.6.3.40" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj" />
+    <ProjectReference Include="..\ProjectCeleste.Launcher.PublicApi\ProjectCeleste.Launcher.PublicApi.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AoEO_Logo.png" />

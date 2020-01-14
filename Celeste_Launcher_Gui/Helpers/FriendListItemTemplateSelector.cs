@@ -8,7 +8,7 @@ namespace Celeste_Launcher_Gui.Helpers
     {
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            var element = container as FrameworkElement;
+            FrameworkElement element = container as FrameworkElement;
 
             if (item is OnlineFriend)
                 return element.FindResource("OnlineFriendTemplate") as DataTemplate;

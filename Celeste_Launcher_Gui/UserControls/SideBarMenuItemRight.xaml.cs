@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.UserControls
 {
@@ -55,7 +44,7 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public static readonly DependencyProperty LabelSizeProperty =
             DependencyProperty.Register("LabelSize", typeof(int), typeof(SideBarMenuItemRight), new PropertyMetadata(18));
-        
+
         public RoutedEventHandler Click
         {
             get { return (RoutedEventHandler)GetValue(ClickProperty); }
@@ -64,7 +53,6 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public static readonly DependencyProperty ClickProperty =
            DependencyProperty.Register("Click", typeof(RoutedEventHandler), typeof(SideBarMenuItemRight), new PropertyMetadata(default(RoutedEventHandler)));
-
 
         public SideBarMenuItemRight()
         {

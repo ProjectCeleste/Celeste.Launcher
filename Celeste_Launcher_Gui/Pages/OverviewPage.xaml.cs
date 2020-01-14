@@ -1,7 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
-using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -18,7 +18,7 @@ namespace Celeste_Launcher_Gui.Pages
     {
         public User CurrentUser => LegacyBootstrapper.CurrentUser;
         private NewsPicture _currentNews = NewsPicture.Default();
-        private IFriendService _friendService;
+        private readonly IFriendService _friendService;
 
         public OverviewPage()
         {
@@ -119,8 +119,10 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnChangePasswordClick(object sender, RoutedEventArgs e)
         {
-            var changePasswordDialog = new ChangePasswordDialog();
-            changePasswordDialog.Owner = Window.GetWindow(this);
+            ChangePasswordDialog changePasswordDialog = new ChangePasswordDialog
+            {
+                Owner = Window.GetWindow(this)
+            };
             changePasswordDialog.ShowDialog();
         }
 
@@ -168,17 +170,21 @@ namespace Celeste_Launcher_Gui.Pages
             {
                 try
                 {
-                    var procdumpFileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
+                    string procdumpFileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
                     if (!File.Exists(procdumpFileName))
                     {
-                        var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo);
-                        dialog.Owner = Window.GetWindow(this);
-
-                        var dr = dialog.ShowDialog();
-                        if (dr.Value == true)
+                        GenericMessageDialog dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo)
                         {
-                            var procDumpInstallerDialog = new ProcDumpInstaller();
-                            procDumpInstallerDialog.Owner = Window.GetWindow(this);
+                            Owner = Window.GetWindow(this)
+                        };
+
+                        bool? dr = dialog.ShowDialog();
+                        if (dr.Value)
+                        {
+                            ProcDumpInstaller procDumpInstallerDialog = new ProcDumpInstaller
+                            {
+                                Owner = Window.GetWindow(this)
+                            };
                             procDumpInstallerDialog.ShowDialog();
                         }
                         else
@@ -195,50 +201,60 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            var steamConverterWindow = new SteamConverterWindow();
-            steamConverterWindow.Owner = Window.GetWindow(this);
+            SteamConverterWindow steamConverterWindow = new SteamConverterWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             steamConverterWindow.ShowDialog();
         }
 
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            var featureHelper = new WindowsFeatureHelper();
-            featureHelper.Owner = Window.GetWindow(this);
+            WindowsFeatureHelper featureHelper = new WindowsFeatureHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             featureHelper.ShowDialog();
         }
 
         private void OpenWindowsFirewall(object sender, RoutedEventArgs e)
         {
-            var firewallHelper = new Windows.WindowsFirewallHelper();
-            firewallHelper.Owner = Window.GetWindow(this);
+            Windows.WindowsFirewallHelper firewallHelper = new Windows.WindowsFirewallHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             firewallHelper.ShowDialog();
         }
 
         private void OpenGameScanner(object sender, RoutedEventArgs e)
         {
-            var pname = Process.GetProcessesByName("spartan");
+            Process[] pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
                 GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
                 return;
             }
 
-            var scanner = new GamePathSelectionWindow();
-            scanner.Owner = Window.GetWindow(this);
+            GamePathSelectionWindow scanner = new GamePathSelectionWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             scanner.ShowDialog();
         }
 
         private void OpenUpdater(object sender, RoutedEventArgs e)
         {
-            var pname = Process.GetProcessesByName("spartan");
+            Process[] pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
                 GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
                 return;
             }
 
-            var updater = new UpdateWindow();
-            updater.Owner = Window.GetWindow(this);
+            UpdateWindow updater = new UpdateWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             updater.ShowDialog();
         }
         #endregion
@@ -249,7 +265,7 @@ namespace Celeste_Launcher_Gui.Pages
             {
                 await _friendService.FetchFriendList();
 
-                var newsLoader = new NewsPictureLoader();
+                NewsPictureLoader newsLoader = new NewsPictureLoader();
                 _currentNews = await newsLoader.GetNewsDescription();
 
                 SetNewsPictureSource(_currentNews.ImageSource);
@@ -262,7 +278,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void SetNewsPictureSource(string imageUri)
         {
-            var bitmapImage = new BitmapImage();
+            BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
             bitmapImage.UriSource = new Uri(imageUri);
             bitmapImage.EndInit();
@@ -277,15 +293,19 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenScenarionManager(object sender, RoutedEventArgs e)
         {
-            var scenarioManagerDialog = new ScenarioManager();
-            scenarioManagerDialog.Owner = Window.GetWindow(this);
+            ScenarioManager scenarioManagerDialog = new ScenarioManager
+            {
+                Owner = Window.GetWindow(this)
+            };
             scenarioManagerDialog.Show();
         }
 
         private void OpenMultiplayerSettings(object sender, RoutedEventArgs e)
         {
-            var multiplayerSettingsDialog = new MultiplayerSettings();
-            multiplayerSettingsDialog.Owner = Window.GetWindow(this);
+            MultiplayerSettings multiplayerSettingsDialog = new MultiplayerSettings
+            {
+                Owner = Window.GetWindow(this)
+            };
             multiplayerSettingsDialog.ShowDialog();
         }
 

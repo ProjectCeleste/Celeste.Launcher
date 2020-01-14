@@ -1,4 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Services;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,7 +11,7 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class AddFriendDialog : Window
     {
-        private IFriendService _friendService;
+        private readonly IFriendService _friendService;
 
         public AddFriendDialog(IFriendService friendService)
         {
@@ -29,11 +31,11 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void AddFriendClick(object sender, RoutedEventArgs e)
         {
+            IsEnabled = false;
+
             try
             {
-                IsEnabled = false;
-
-                var result = await _friendService.SendFriendRequest(UsernameInputField.InputContent);
+                bool result = await _friendService.SendFriendRequest(UsernameInputField.InputContent);
 
                 if (result)
                 {
@@ -47,11 +49,25 @@ namespace Celeste_Launcher_Gui.Windows
                             DialogOptions.Ok);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                if (ex.Data.Contains("ErrorCode") && ex.Data["ErrorCode"] is CommandErrorCode errorCode)
+                {
+                    switch (errorCode)
+                    {
+                        case CommandErrorCode.InvalidUsername:
+                        case CommandErrorCode.InvalidUsernameLength:
+                            GenericMessageDialog.Show(Properties.Resources.RegisterInvalidUsername, DialogIcon.Error);
+                            break;
+                        default:
+                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                            break;
+                    }
+                }
+                else
+                {
+                    GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                }
             }
             finally
             {

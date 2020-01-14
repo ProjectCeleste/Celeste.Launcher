@@ -15,28 +15,28 @@ namespace Celeste_Launcher_Gui.Helpers
         public static async Task ExtractZipFile(string archiveFileName, string outFolder,
             IProgress<double> progress, CancellationToken ct)
         {
-            using (var zipFile = ZipFile.OpenRead(archiveFileName))
+            using (ZipArchive zipFile = ZipFile.OpenRead(archiveFileName))
             {
-                foreach (var zipEntry in zipFile.Entries)
+                foreach (ZipArchiveEntry zipEntry in zipFile.Entries)
                 {
-                    var length = zipEntry.Length;
+                    long length = zipEntry.Length;
 
-                    var filePath = Path.Combine(outFolder, zipEntry.Name);
-                    var directoryName = Path.GetDirectoryName(filePath);
+                    string filePath = Path.Combine(outFolder, zipEntry.Name);
+                    string directoryName = Path.GetDirectoryName(filePath);
 
                     if (!string.IsNullOrEmpty(directoryName))
                         Directory.CreateDirectory(directoryName);
 
-                    using (var a = zipEntry.Open())
+                    using (Stream a = zipEntry.Open())
                     {
-                        using (var fileStreamFinal =
+                        using (FileStream fileStreamFinal =
                             File.Open(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
                         {
-                            using (var final = new BinaryWriter(fileStreamFinal))
+                            using (BinaryWriter final = new BinaryWriter(fileStreamFinal))
                             {
-                                var buffer = new byte[4096];
+                                byte[] buffer = new byte[4096];
                                 int read;
-                                var totalread = 0L;
+                                long totalread = 0L;
                                 while ((read = a.Read(buffer, 0, buffer.Length)) > 0)
                                 {
                                     //
@@ -58,7 +58,7 @@ namespace Celeste_Launcher_Gui.Helpers
                                     }
                                     else if (totalread + read > length)
                                     {
-                                        var leftToRead = length - totalread;
+                                        long leftToRead = length - totalread;
                                         totalread += leftToRead;
                                         final.Write(buffer, 0, Convert.ToInt32(leftToRead));
                                     }

@@ -9,10 +9,10 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
 {
     public class AcceptFriendRequestCommand : ICommand
     {
-        private FriendListViewModel _friendListViewModel;
-        private Action _updateFriendAction;
-        private IFriendService _friendService;
-        private ILogger _logger;
+        private readonly FriendListViewModel _friendListViewModel;
+        private readonly Action _updateFriendAction;
+        private readonly IFriendService _friendService;
+        private readonly ILogger _logger;
 
         public AcceptFriendRequestCommand(FriendListViewModel friendListViewModel, Action updateFriendAction, IFriendService friendService, ILogger logger)
         {
@@ -41,7 +41,7 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
                     return;
                 }
 
-                var friend = (FriendListItem)parameter;
+                FriendListItem friend = (FriendListItem)parameter;
                 _friendListViewModel.FriendListItems.Remove(friend);
                 await _friendService.ConfirmFriendRequest(friend.XUid);
                 _updateFriendAction();
@@ -53,6 +53,11 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
                         DialogIcon.Error,
                         DialogOptions.Ok);
             }
+        }
+
+        protected virtual void OnCanExecuteChanged(EventArgs e)
+        {
+            CanExecuteChanged?.Invoke(this, e);
         }
     }
 }

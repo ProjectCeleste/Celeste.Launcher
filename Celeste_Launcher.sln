@@ -5,11 +5,7 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Celeste_Launcher_Gui", "Celeste_Launcher_Gui\Celeste_Launcher_Gui.csproj", "{589BC356-4A36-42FB-AE10-95AEDEC36AE6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{40623A54-2812-491D-9914-2F21B7BE181A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gui", "Gui", "{758E11E7-DC4E-4A53-99FA-667857F6E33F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Celeste_Public_Api", "Libs\Celeste_Public_Api\Celeste_Public_Api.csproj", "{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCeleste.Launcher.PublicApi", "ProjectCeleste.Launcher.PublicApi\ProjectCeleste.Launcher.PublicApi.csproj", "{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{589BC356-4A36-42FB-AE10-95AEDEC36AE6} = {758E11E7-DC4E-4A53-99FA-667857F6E33F}
-		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63} = {40623A54-2812-491D-9914-2F21B7BE181A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99C4C0CE-DC43-4963-A38C-CDD0969F9909}

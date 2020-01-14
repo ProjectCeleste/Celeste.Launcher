@@ -1,6 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.Helpers;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using ProjectCeleste.GameFiles.GameScanner;
 using ProjectCeleste.GameFiles.GameScanner.Models;
 using Serilog;
@@ -19,7 +18,7 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class GameScannerWindow : Window
     {
-        private GameScannnerManager GameScanner;
+        private readonly GameScannnerManager GameScanner;
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
         public GameScannerWindow(string gameFilesPath, bool isSteam)
@@ -62,13 +61,13 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 await GameScanner.InitializeFromCelesteManifest();
-                var progress = new Progress<ScanProgress>();
-                var subProgress = new Progress<ScanSubProgress>();
+                Progress<ScanProgress> progress = new Progress<ScanProgress>();
+                Progress<ScanSubProgress> subProgress = new Progress<ScanSubProgress>();
 
                 progress.ProgressChanged += ProgressChanged;
                 subProgress.ProgressChanged += SubProgressChanged;
 
-                if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress)))
+                if (await Task.Run(async () => await GameScanner.ScanAndRepair(progress, subProgress)))
                 {
                     CurrentFileLabel.Content = string.Empty;
                     MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;
@@ -90,7 +89,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void ProgressChanged(object sender, ScanProgress e)
         {
-            var wrappedFileName = e.File.WrapIfLengthIsLongerThan(35, "...");
+            string wrappedFileName = e.File.WrapIfLengthIsLongerThan(35, "...");
             CurrentFileLabel.Content = $"{wrappedFileName} ({e.Index}/{e.TotalIndex})";
             ScanTotalProgress.ProgressBar.Value = e.ProgressPercentage;
             TaskbarItemInfo.ProgressValue = (e.ProgressPercentage / 100);
@@ -124,10 +123,10 @@ namespace Celeste_Launcher_Gui.Windows
                         }
                         else
                         {
-                            var downloaded = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted);
-                            var leftToDownload = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size);
+                            string downloaded = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.SizeCompleted);
+                            string leftToDownload = BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Size);
 
-                            var downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
+                            string downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
                                 string.Empty : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}/s)";
 
                             MainProgressLabel.Content = $"{Properties.Resources.GameScannerDownloading} {downloaded}/{leftToDownload} {downloadSpeed}";

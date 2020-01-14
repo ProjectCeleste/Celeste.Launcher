@@ -1,6 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Windows
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
-        { 
+        {
             Close();
             Application.Current.Shutdown();
         }
@@ -49,14 +49,14 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var savedCredentials = UserCredentialService.GetStoredUserCredentials();
+            UserCredentials savedCredentials = UserCredentialService.GetStoredUserCredentials();
 
             if (LegacyBootstrapper.UserConfig?.LoginInfo.AutoLogin == true && savedCredentials != null)
             {
                 NavigationFrame.IsEnabled = false;
                 try
                 {
-                    var response = await LegacyBootstrapper.WebSocketApi.DoLogin(savedCredentials.Email, savedCredentials.Password);
+                    ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member.LoginResult response = await LegacyBootstrapper.WebSocketApi.DoLogin(savedCredentials.Email, savedCredentials.Password);
 
                     if (response.Result)
                     {

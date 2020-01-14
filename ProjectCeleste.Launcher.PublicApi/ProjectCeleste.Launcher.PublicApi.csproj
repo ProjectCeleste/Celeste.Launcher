@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PackageId>ProjectCeleste.Launcher.PublicApi</PackageId>
+    <PackageLicense>https://github.com/ProjectCeleste/Celeste_Launcher/blob/master/LICENSE</PackageLicense>
+    <PackageProject>https://www.projectceleste.com</PackageProject>
+    <PackageIcon>icon.ico</PackageIcon>
+    <RepositoryUrl>https://github.com/ProjectCeleste/Celeste_Launcher/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Launcher Public API For Age Of Empires Online Celeste Fan Project
+
+Visit Us: https://www.projectceleste.com/
+
+Age of Empires Online © Microsoft Corporation. Celeste Fan Project was created under Microsoft's Game Content Usage Rules using assets from Age of Empires Online, and it is not endorsed by or affiliated with Microsoft (See: https://www.xbox.com/en-us/developers/rules).
+    </Description>
+    <PackageTags>projectceleste aoeo ageofempires</PackageTags>
+    <Authors>ProjectCeleste</Authors>
+    <Company />
+    <Product>ProjectCeleste.ProjectCeleste.Launcher.PublicApi</Product>
+    <Version>3.0.0.0</Version>
+    <FileVersion>3.0.0.0</FileVersion>
+    <InformationalVersion>3.0.0.0</InformationalVersion>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <LangVersion>latest</LangVersion>
+    <Copyright />
+  </PropertyGroup>
+  <ItemGroup>
+      <None Include="icon.ico" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+    	<PrivateAssets>all</PrivateAssets>
+    	<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Serilog" Version="2.9.0" />
+    <PackageReference Include="Serilog.Settings.AppSettings" Version="2.2.2" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="System.Management" Version="4.7.0" />
+    <PackageReference Include="WebSocket4Net" Version="0.15.2" />
+  </ItemGroup>
+</Project>

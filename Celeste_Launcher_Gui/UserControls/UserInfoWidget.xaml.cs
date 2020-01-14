@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.UserControls
 {
@@ -21,6 +10,7 @@ namespace Celeste_Launcher_Gui.UserControls
     public partial class UserInfoWidget : UserControl
     {
         private static readonly string[] ProfilePicture = { "Coin-Agvald.png", "Coin-Bahram.png", "Coin-Rohham.png", "Coin-Tahmineh.png" };
+
         public string PlayerIcon
         {
             get { return (string)GetValue(PlayerIconProperty); }
@@ -57,8 +47,8 @@ namespace Celeste_Launcher_Gui.UserControls
 
         private void SetRandomProfilePicture()
         {
-            var rnd = new Random();
-            var imgIndex = rnd.Next(ProfilePicture.Length);
+            Random rnd = new Random();
+            int imgIndex = rnd.Next(ProfilePicture.Length);
             PlayerIcon = "pack://application:,,,/Celeste Launcher;component/Resources/ProfilePics/" + ProfilePicture[imgIndex];
         }
     }

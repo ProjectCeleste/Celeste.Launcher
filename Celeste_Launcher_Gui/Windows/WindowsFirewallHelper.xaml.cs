@@ -1,5 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using ProjectCeleste.GameFiles.GameScanner;
 using Serilog;
 using System;
@@ -41,7 +41,7 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                var launcherPath = Assembly.GetEntryAssembly().Location;
+                string launcherPath = Assembly.GetEntryAssembly().Location;
 
                 if (!File.Exists(launcherPath))
                 {
@@ -51,7 +51,7 @@ namespace Celeste_Launcher_Gui.Windows
                 }
 
                 //outbound_tcp
-                var rule = FirewallHelper.RuleExist("celeste_launcher_outbound_tcp");
+                bool rule = FirewallHelper.RuleExist("celeste_launcher_outbound_tcp");
                 if (rule)
                     FirewallHelper.RemoveRules("celeste_launcher_outbound_tcp");
 
@@ -74,11 +74,11 @@ namespace Celeste_Launcher_Gui.Windows
             IsEnabled = false;
             try
             {
-                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
+                string path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
                     : GameScannnerManager.GetGameFilesRootPath();
 
-                var spartanPath = Path.Combine(path, "Spartan.exe");
+                string spartanPath = Path.Combine(path, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
                 {
@@ -88,7 +88,7 @@ namespace Celeste_Launcher_Gui.Windows
                 }
 
                 //inbound_tcp
-                var rule = FirewallHelper.RuleExist("celeste_spartan_inbound_tcp");
+                bool rule = FirewallHelper.RuleExist("celeste_spartan_inbound_tcp");
                 if (rule)
                     FirewallHelper.RemoveRules("celeste_spartan_inbound_tcp");
 
@@ -136,7 +136,7 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 //inbound_udp
-                var rule = FirewallHelper.RuleExist("celeste_port1000_inbound_udp");
+                bool rule = FirewallHelper.RuleExist("celeste_port1000_inbound_udp");
                 if (rule)
                     FirewallHelper.RemoveRules("celeste_port1000_inbound_udp");
 
@@ -172,7 +172,7 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 //Launcher
-                var launcherPath = Assembly.GetEntryAssembly().Location;
+                string launcherPath = Assembly.GetEntryAssembly().Location;
 
                 if (!File.Exists(launcherPath))
                 {
@@ -181,7 +181,7 @@ namespace Celeste_Launcher_Gui.Windows
                     return;
                 }
 
-                var rule = (StandardRuleWin7)FirewallHelper.FindRule("celeste_launcher_outbound_tcp");
+                StandardRuleWin7 rule = (StandardRuleWin7)FirewallHelper.FindRule("celeste_launcher_outbound_tcp");
                 if (rule == null)
                 {
                     LauncherOutboundStatus.Content = Properties.Resources.WindowsFirewallHelperRuleNotFound;
@@ -202,11 +202,11 @@ namespace Celeste_Launcher_Gui.Windows
                     }
                 }
 
-                var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
+                string path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
                     : GameScannnerManager.GetGameFilesRootPath();
 
-                var spartanPath = Path.Combine(path, "Spartan.exe");
+                string spartanPath = Path.Combine(path, "Spartan.exe");
 
                 if (!File.Exists(spartanPath))
                 {
@@ -216,11 +216,10 @@ namespace Celeste_Launcher_Gui.Windows
                 }
 
                 //Spartan
-                var rule1 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_tcp");
-                var rule2 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_udp");
+                StandardRuleWin7 rule1 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_tcp");
+                StandardRuleWin7 rule2 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_udp");
                 if (rule1 == null || rule2 == null)
                 {
-
                     SpartanInboundStatus.Content = Properties.Resources.WindowsFirewallHelperRuleNotFound;
                     SpartanInboundStatus.Foreground = new SolidColorBrush(Colors.Red);
                 }

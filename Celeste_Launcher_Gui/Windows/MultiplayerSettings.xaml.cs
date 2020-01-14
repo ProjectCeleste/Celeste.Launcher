@@ -17,7 +17,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             InitializeComponent();
 
-            var mpSettings = LegacyBootstrapper.UserConfig.MpSettings;
+            MpSettings mpSettings = LegacyBootstrapper.UserConfig.MpSettings;
             switch (mpSettings.ConnectionType)
             {
                 case ConnectionType.Wan:
@@ -57,7 +57,6 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-
             if (WanConnectionTypeCheckBox.IsChecked == true)
             {
                 LegacyBootstrapper.UserConfig.MpSettings.ConnectionType = ConnectionType.Wan;
@@ -126,13 +125,15 @@ namespace Celeste_Launcher_Gui.Windows
             if (LanConnectionTypeCheckBox.IsChecked == false)
                 return;
 
-            var networkInterface = NetworkInterface.GetAllNetworkInterfaces()
+            NetworkInterface networkInterface = NetworkInterface.GetAllNetworkInterfaces()
                 .FirstOrDefault(t => t.Name == LegacyBootstrapper.UserConfig?.MpSettings?.LanNetworkInterface);
 
             if (networkInterface == null)
             {
-                var netDeviceSelectDialog = new NetworkDeviceSelectorDialog();
-                netDeviceSelectDialog.Owner = this;
+                NetworkDeviceSelectorDialog netDeviceSelectDialog = new NetworkDeviceSelectorDialog
+                {
+                    Owner = this
+                };
                 netDeviceSelectDialog.ShowDialog();
 
                 if (netDeviceSelectDialog.DialogResult != true)
@@ -149,7 +150,7 @@ namespace Celeste_Launcher_Gui.Windows
             // Get IPv4 address of the network interface:
             if (networkInterface != null)
             {
-                foreach (var ip in networkInterface.GetIPProperties().UnicastAddresses)
+                foreach (UnicastIPAddressInformation ip in networkInterface.GetIPProperties().UnicastAddresses)
                 {
                     if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                     {

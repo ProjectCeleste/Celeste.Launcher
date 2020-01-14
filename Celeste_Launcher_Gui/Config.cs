@@ -3,18 +3,15 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Xml.Serialization;
 using Celeste_Launcher_Gui.Helpers;
-using Celeste_Public_Api.Helpers;
 
 #endregion
 
 namespace Celeste_Launcher_Gui
 {
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum GameLanguage
     {
         [XmlEnum("de-DE")] deDE,
@@ -68,21 +65,20 @@ namespace Celeste_Launcher_Gui
 
         public static UserConfig Load(string path)
         {
-            var userConfig = XmlUtils.DeserializeFromFile<UserConfig>(path);
+            UserConfig userConfig = XmlUtils.DeserializeFromFile<UserConfig>(path);
 
             if (userConfig.MpSettings.ConnectionType != ConnectionType.Lan)
                 return userConfig;
 
             if (!string.IsNullOrWhiteSpace(userConfig.MpSettings.LanNetworkInterface))
             {
-                var selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
-                var netInterface = NetworkInterface.GetAllNetworkInterfaces()
-                    .FirstOrDefault(elem => elem.Name == selectedNetInt);
+                string selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
+                NetworkInterface netInterface = Array.Find(NetworkInterface.GetAllNetworkInterfaces(), elem => elem.Name == selectedNetInt);
 
                 if (netInterface != null)
                 {
                     // Get IPv4 address:
-                    foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
+                    foreach (UnicastIPAddressInformation ip in netInterface.GetIPProperties().UnicastAddresses)
                     {
                         if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                         {
@@ -124,7 +120,7 @@ namespace Celeste_Launcher_Gui
 
         [DefaultValue(ConnectionType.Wan)]
         [XmlElement(ElementName = "ConnectionType")]
-        public ConnectionType ConnectionType { get; set; } = ConnectionType.Wan;
+        public ConnectionType ConnectionType { get; set; }
 
         [DefaultValue(null)]
         [XmlElement(ElementName = "LanNetworkInterface")]
@@ -132,7 +128,7 @@ namespace Celeste_Launcher_Gui
 
         [DefaultValue(PortMappingType.NatPunch)]
         [XmlElement(ElementName = "PortMappingType")]
-        public PortMappingType PortMappingType { get; set; } = PortMappingType.NatPunch;
+        public PortMappingType PortMappingType { get; set; }
 
         [XmlIgnore]
         public string PublicIp

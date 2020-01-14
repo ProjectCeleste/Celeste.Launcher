@@ -4,15 +4,15 @@ using System.Threading.Tasks;
 
 namespace Celeste_Launcher_Gui.Services
 {
-    class NewsPictureLoader
+    internal class NewsPictureLoader
     {
         private const string NewsDescriptionUri = "https://static.projectceleste.com/launcher/news.json";
 
         public async Task<NewsPicture> GetNewsDescription()
         {
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
-                var response = await client.GetStringAsync(NewsDescriptionUri);
+                string response = await client.GetStringAsync(NewsDescriptionUri);
                 return JsonConvert.DeserializeObject<NewsPicture>(response);
             }
         }

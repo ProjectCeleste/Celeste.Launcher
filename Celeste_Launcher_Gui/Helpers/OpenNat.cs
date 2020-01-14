@@ -15,14 +15,14 @@ using Open.Nat;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
-    public class OpenNat
+    public static class OpenNat
     {
         public static TextWriterTraceListener TextWriterTraceListener =
             new TextWriterTraceListener($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log", "OpenNatTxtLog");
 
         public static async Task<int> MapPortTask(int privatePort, int publicPort)
         {
-            var logFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OpenNat.log");
+            string logFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OpenNat.log");
             try
             {
                 if (!NatDiscoverer.TraceSource.Listeners.Contains(TextWriterTraceListener))
@@ -47,22 +47,20 @@ namespace Celeste_Launcher_Gui.Helpers
             if (!NatDiscoverer.TraceSource.Listeners.Contains(TextWriterTraceListener))
                 NatDiscoverer.TraceSource.Listeners.Add(TextWriterTraceListener);
 
-            var nat = new NatDiscoverer();
+            NatDiscoverer nat = new NatDiscoverer();
 
-            var cts = new CancellationTokenSource(30 * 1000); //30 Sec
-            var device = await nat.DiscoverDeviceAsync(PortMapper.Upnp, cts);
-            var externalIp = await device.GetExternalIPAsync();
-            var allMappings = await device.GetAllMappingsAsync();
+            CancellationTokenSource cts = new CancellationTokenSource(30 * 1000); //30 Sec
+            NatDevice device = await nat.DiscoverDeviceAsync(PortMapper.Upnp, cts);
+            IPAddress externalIp = await device.GetExternalIPAsync();
+            System.Collections.Generic.IEnumerable<Mapping> allMappings = await device.GetAllMappingsAsync();
 
-            var localIp = Dns.GetHostEntry(Dns.GetHostName()).AddressList
-                .FirstOrDefault(key => key.AddressFamily == AddressFamily.InterNetwork);
+            IPAddress localIp = Array.Find(Dns.GetHostEntry(Dns.GetHostName()).AddressList, key => key.AddressFamily == AddressFamily.InterNetwork);
 
-            var enumerable = allMappings as Mapping[] ?? allMappings.ToArray();
+            Mapping[] enumerable = allMappings as Mapping[] ?? allMappings.ToArray();
             if (enumerable.Any(key => //Equals(key.PrivateIP, localIp) && key.Description == "AOEO Project Celeste" 
                 key.PublicPort == 1000))
             {
-                var r = enumerable.FirstOrDefault(
-                    key => //Equals(key.PrivateIP, localIp) && key.Description == "AOEO Project Celeste" 
+                Mapping r = Array.Find(enumerable, key => //Equals(key.PrivateIP, localIp) && key.Description == "AOEO Project Celeste" 
                         key.PublicPort == 1000);
 
                 if (r != null)
@@ -70,7 +68,7 @@ namespace Celeste_Launcher_Gui.Helpers
             }
 
             //var rnd = new Random(DateTime.UtcNow.Millisecond);
-            var newPublicPort = publicPort;
+            int newPublicPort = publicPort;
             //while (enumerable.Any(key => key.PublicPort == newPublicPort))
             //    newPublicPort = rnd.Next(1000, ushort.MaxValue);
 
@@ -80,7 +78,7 @@ namespace Celeste_Launcher_Gui.Helpers
             allMappings = await device.GetAllMappingsAsync();
             enumerable = allMappings as Mapping[] ?? allMappings.ToArray();
 
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.AppendFormat(
                 "\n+------+-------------------------------+--------------------------------+------------------------------------+-------------------------+");
             sb.AppendFormat(
@@ -90,10 +88,13 @@ namespace Celeste_Launcher_Gui.Helpers
             sb.AppendFormat("\n|	  | IP Address		   | Port   | IP Address			| Port   |									| Expires				 |");
             sb.AppendFormat(
                 "\n+------+----------------------+--------+-----------------------+--------+------------------------------------+-------------------------+");
-            foreach (var mapping in enumerable)
+            foreach (Mapping mapping in enumerable)
+            {
                 sb.AppendFormat("\n|  {5} | {0,-20} | {1,6} | {2,-21} | {3,6} | {4,-35}|{6,25}|",
                     externalIp, mapping.PublicPort, mapping.PrivateIP, mapping.PrivatePort, mapping.Description,
                     mapping.Protocol == Protocol.Tcp ? "TCP" : "UDP", mapping.Expiration.ToLocalTime());
+            }
+
             sb.AppendFormat(
                 "\n+------+----------------------+--------+-----------------------+--------+------------------------------------+-------------------------+");
 
@@ -102,7 +103,9 @@ namespace Celeste_Launcher_Gui.Helpers
             if (enumerable.Any(key => Equals(key.PrivateIP, localIp) &&
                                       key.PublicPort == newPublicPort
                                       && key.PrivatePort == privatePort && key.Description == "AOEO Project Celeste"))
+            {
                 return newPublicPort;
+            }
 
             throw new Exception("Port mapping fail!");
         }

@@ -1,5 +1,6 @@
-﻿using Celeste_Public_Api.Helpers;
-using Celeste_Public_Api.Logging;
+﻿using ProjectCeleste.Launcher.PublicApi.Helpers;
+using ProjectCeleste.Launcher.PublicApi.Logging;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
 using Serilog;
 using System;
 using System.Windows;
@@ -31,9 +32,9 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void ConfirmBtnClick(object sender, RoutedEventArgs e)
         {
-            var currentPassword = CurrentPasswordField.PasswordInputBox.Password;
-            var newPassword = NewPasswordField.PasswordInputBox.Password;
-            var confirmedNewPassword = ConfirmedPasswordField.PasswordInputBox.Password;
+            string currentPassword = CurrentPasswordField.PasswordInputBox.Password;
+            string newPassword = NewPasswordField.PasswordInputBox.Password;
+            string confirmedNewPassword = ConfirmedPasswordField.PasswordInputBox.Password;
 
             if (newPassword != confirmedNewPassword)
             {
@@ -44,38 +45,11 @@ namespace Celeste_Launcher_Gui.Windows
                 return;
             }
 
-            if (currentPassword == newPassword)
-            {
-                GenericMessageDialog.Show(Properties.Resources.ChangePasswordSamePassword,
-                    DialogIcon.Error,
-                    DialogOptions.Ok);
-
-                return;
-            }
-
-            if (newPassword.Length < 8 || newPassword.Length > 32)
-            {
-                GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidLength,
-                    DialogIcon.Error,
-                    DialogOptions.Ok);
-
-                return;
-            }
-
-            if (!Misc.IsValidPassword(newPassword))
-            {
-                GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidPassword,
-                    DialogIcon.Error,
-                    DialogOptions.Ok);
-
-                return;
-            }
-
             IsEnabled = false;
 
             try
             {
-                var changePasswordResponse = await LegacyBootstrapper.WebSocketApi.DoChangePassword(currentPassword, newPassword);
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member.ChangePwdResult changePasswordResponse = await LegacyBootstrapper.WebSocketApi.DoChangePassword(currentPassword, newPassword);
 
                 if (changePasswordResponse.Result)
                 {
@@ -94,9 +68,30 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                if (ex.Data.Contains("ErrorCode") && ex.Data["ErrorCode"] is CommandErrorCode errorCode)
+                {
+                    switch (errorCode)
+                    {
+                        case CommandErrorCode.InvalidPassword:
+                        case CommandErrorCode.InvalidNewPassword:
+                            GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidPassword, DialogIcon.Error);
+                            break;
+                        case CommandErrorCode.InvalidPasswordLength:
+                        case CommandErrorCode.InvalidNewPasswordLength:
+                            GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidLength, DialogIcon.Error);
+                            break;
+                        case CommandErrorCode.InvalidPasswordMatch:
+                            GenericMessageDialog.Show(Properties.Resources.ChangePasswordSamePassword, DialogIcon.Error);
+                            break;
+                        default:
+                            GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                            break;
+                    }
+                }
+                else
+                {
+                    GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
+                }
             }
             finally
             {

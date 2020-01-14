@@ -7,15 +7,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
-    class FriendListViewModelFactory
+    internal class FriendListViewModelFactory
     {
-        private IFriendService _friendService;
-        private ILogger _logger;
+        private readonly IFriendService _friendService;
+        private readonly ILogger _logger;
 
         public FriendListViewModelFactory(IFriendService friendService, ILogger logger)
         {
@@ -25,26 +24,26 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public FriendListViewModel CreateFriendListViewModel(FriendList friendList, Action refreshFriendListAction)
         {
-            var friendListViewModel = new FriendListViewModel()
+            FriendListViewModel friendListViewModel = new FriendListViewModel()
             {
                 FriendListItems = new ObservableCollection<FriendListItem>()
             };
 
-            var acceptFriendCommand = new AcceptFriendRequestCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
-            var removeFriendCommand = new RemoveFriendCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
+            AcceptFriendRequestCommand acceptFriendCommand = new AcceptFriendRequestCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
+            RemoveFriendCommand removeFriendCommand = new RemoveFriendCommand(friendListViewModel, refreshFriendListAction, _friendService, _logger);
 
-            foreach (var incomingRequest in friendList.IncomingRequests)
+            foreach (Friend incomingRequest in friendList.IncomingRequests)
                 friendListViewModel.FriendListItems.Add(MapFriendRequestToViewModel(incomingRequest, acceptFriendCommand, removeFriendCommand));
 
-            foreach (var friend in friendList.Friends.Where(t => t.IsOnline))
+            foreach (Friend friend in friendList.Friends.Where(t => t.IsOnline))
                 friendListViewModel.FriendListItems.Add(MapFriendToViewModel(friend, removeFriendCommand));
 
-            foreach (var friend in friendList.Friends.Where(t => !t.IsOnline))
+            foreach (Friend friend in friendList.Friends.Where(t => !t.IsOnline))
                 friendListViewModel.FriendListItems.Add(MapFriendToViewModel(friend, removeFriendCommand));
 
             friendListViewModel.FriendListItems.Add(new FriendListSeparator());
 
-            foreach (var outgoingRequest in friendList.OutgoingRequests)
+            foreach (Friend outgoingRequest in friendList.OutgoingRequests)
                 friendListViewModel.FriendListItems.Add(MapOutoingFriendRequest(outgoingRequest, removeFriendCommand));
 
             friendListViewModel.OnlineFriendsCount = friendListViewModel.FriendListItems.Count(t => t is OnlineFriend);
@@ -55,13 +54,13 @@ namespace Celeste_Launcher_Gui.Helpers
 
         private FriendListItem MapFriendToViewModel(Friend friend, ICommand removeFriendCommand)
         {
-            var presenceComponents = friend.RichPresence.Replace("\\r", "").Split('\n');
-            var friendIsInGame = presenceComponents.Length > 1;
-            var friendStatus = friendIsInGame ? presenceComponents[1] : string.Empty;
+            string[] presenceComponents = friend.RichPresence.Replace("\\r", "").Split('\n');
+            bool friendIsInGame = presenceComponents.Length > 1;
+            string friendStatus = friendIsInGame ? presenceComponents[1] : string.Empty;
 
             if (friend.IsOnline)
             {
-                var faction = presenceComponents[0];
+                string faction = presenceComponents[0];
 
                 return new OnlineFriend()
                 {
@@ -108,23 +107,21 @@ namespace Celeste_Launcher_Gui.Helpers
 
         private string DecideProfilePictureForFaction(string status)
         {
-            var factionCardName = GetFaction(status) ?? "Default";
+            string factionCardName = GetFaction(status) ?? "Default";
             return $"pack://application:,,,/Celeste Launcher;component/Resources/FriendList/ProfilePictures/{factionCardName}.png";
         }
 
         private string DecideBackgroundForFaction(string status)
         {
-            var factionCardName = GetFaction(status) ?? "Empty";
+            string factionCardName = GetFaction(status) ?? "Empty";
             return $"pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-{factionCardName}.png";
         }
 
         private string GetFaction(string status)
         {
-            var comparer = CultureInfo.InvariantCulture.CompareInfo;
+            CompareInfo comparer = CultureInfo.InvariantCulture.CompareInfo;
 
-            var factions = new[] { "Babylon", "Celt", "Egypt", "Greek", "Norse", "Roman", "Persia" };
-
-            foreach (var faction in factions)
+            foreach (string faction in new[] { "Babylon", "Celt", "Egypt", "Greek", "Norse", "Roman", "Persia" })
             {
                 if (comparer.IndexOf(status, faction, CompareOptions.IgnoreCase) >= 0)
                     return faction;

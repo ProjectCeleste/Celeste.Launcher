@@ -74,8 +74,10 @@ namespace Celeste_Launcher_Gui.Pages
         #region Settings
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            var windowsFeatureHelper = new WindowsFeatureHelper();
-            windowsFeatureHelper.Owner = Window.GetWindow(this);
+            WindowsFeatureHelper windowsFeatureHelper = new WindowsFeatureHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             windowsFeatureHelper.ShowDialog();
         }
 
@@ -87,17 +89,21 @@ namespace Celeste_Launcher_Gui.Pages
             {
                 try
                 {
-                    var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
+                    string procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
                     if (!File.Exists(procdumpFileName))
                     {
-                        var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo);
-                        dialog.Owner = Window.GetWindow(this);
-
-                        var dr = dialog.ShowDialog();
-                        if (dr.Value == true)
+                        GenericMessageDialog dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo)
                         {
-                            var procDumpInstallerDialog = new ProcDumpInstaller();
-                            procDumpInstallerDialog.Owner = Window.GetWindow(this);
+                            Owner = Window.GetWindow(this)
+                        };
+
+                        bool? dr = dialog.ShowDialog();
+                        if (dr.Value)
+                        {
+                            ProcDumpInstaller procDumpInstallerDialog = new ProcDumpInstaller
+                            {
+                                Owner = Window.GetWindow(this)
+                            };
                             procDumpInstallerDialog.ShowDialog();
                         }
                         else
@@ -114,8 +120,10 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            var steamConverterWindow = new SteamConverterWindow();
-            steamConverterWindow.Owner = Window.GetWindow(this);
+            SteamConverterWindow steamConverterWindow = new SteamConverterWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             steamConverterWindow.ShowDialog();
         }
 
@@ -126,36 +134,42 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenGameScanner(object sender, RoutedEventArgs e)
         {
-            var pname = Process.GetProcessesByName("spartan");
+            Process[] pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
                 GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
                 return;
             }
 
-            var scanner = new GamePathSelectionWindow();
-            scanner.Owner = Window.GetWindow(this);
+            GamePathSelectionWindow scanner = new GamePathSelectionWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             scanner.ShowDialog();
         }
 
         private void OpenFirewallHelper(object sender, RoutedEventArgs e)
         {
-            var firewallHelper = new Windows.WindowsFirewallHelper();
-            firewallHelper.Owner = Window.GetWindow(this);
+            Windows.WindowsFirewallHelper firewallHelper = new Windows.WindowsFirewallHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             firewallHelper.ShowDialog();
         }
 
         private void OpenLauncherUpdater(object sender, RoutedEventArgs e)
         {
-            var pname = Process.GetProcessesByName("spartan");
+            Process[] pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
                 GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
                 return;
             }
 
-            var updater = new UpdateWindow();
-            updater.Owner = Window.GetWindow(this);
+            UpdateWindow updater = new UpdateWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             updater.ShowDialog();
         }
         #endregion

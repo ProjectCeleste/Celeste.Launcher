@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Celeste_Launcher_Gui.ViewModels
 {
@@ -11,7 +10,8 @@ namespace Celeste_Launcher_Gui.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public string ChangeLog {
+        public string ChangeLog
+        {
             get => _changeLog;
             set
             {

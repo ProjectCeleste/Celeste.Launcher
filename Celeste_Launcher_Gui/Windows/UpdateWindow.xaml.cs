@@ -1,6 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.ViewModels;
-using Celeste_Public_Api.Logging;
+using ProjectCeleste.Launcher.PublicApi.Logging;
 using Serilog;
 using System;
 using System.Diagnostics;
@@ -59,12 +59,9 @@ namespace Celeste_Launcher_Gui.Windows
                 _cts.Cancel();
                 _cts = new CancellationTokenSource();
 
-                var progress = new Progress<int>();
+                Progress<int> progress = new Progress<int>();
 
-                progress.ProgressChanged += (s, value) =>
-                {
-                    ProgressBar.ProgressBar.Value = value;
-                };
+                progress.ProgressChanged += (s, value) => ProgressBar.ProgressBar.Value = value;
 
                 await UpdateService.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
 
