@@ -51,8 +51,8 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 
         private static async Task<TResponse> DoDataExchange(Client webSocketClient, TRequest content, string cmdName)
         {
-            AwaitableOperation<TResponse> responseAction = new AwaitableOperation<TResponse>();
-
+            using AwaitableOperation<TResponse> responseAction = new AwaitableOperation<TResponse>();
+            
             webSocketClient.Query<TResponse>(cmdName, content, responseAction.ReceivedMessage);
 
             TResponse response = await responseAction.WaitForResponseAsync(Client.ConnectionTimeoutInMilliseconds);

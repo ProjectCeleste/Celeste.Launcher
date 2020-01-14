@@ -1,10 +1,11 @@
 ﻿using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 {
-    internal class AwaitableOperation<TResponse> where TResponse : IGenericResponse
+    internal class AwaitableOperation<TResponse> : IDisposable where TResponse : IGenericResponse
     {
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(0, 1);
 
@@ -21,9 +22,33 @@ namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
             bool waitSucceeded = await _semaphore.WaitAsync(timeoutInSeconds * 1000);
 
             if (!waitSucceeded)
-                throw new System.Exception("Operation timed out");
+                throw new Exception("Operation timed out");
 
             return _response;
         }
+
+        #region IDisposable Support
+
+        private bool disposedValue;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _semaphore.Dispose();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        #endregion IDisposable Support
     }
 }
