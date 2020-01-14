@@ -281,11 +281,11 @@ namespace Celeste_Launcher_Gui.Services
                          StringComparison.OrdinalIgnoreCase)))
                 {
                     Directory.Delete(customScnGamePath, true);
-                    Files.CreateSymbolicLink(customScnGamePath, scenarioUserPath, Files.SymLinkFlag.Directory);
+                    Files.CreateSymbolicLink_(customScnGamePath, scenarioUserPath, Files.SymLinkFlag.Directory);
                 }
                 else
                 {
-                    Files.CreateSymbolicLink(customScnGamePath, scenarioUserPath, Files.SymLinkFlag.Directory);
+                    Files.CreateSymbolicLink_(customScnGamePath, scenarioUserPath, Files.SymLinkFlag.Directory);
                 }
 
                 string arg;

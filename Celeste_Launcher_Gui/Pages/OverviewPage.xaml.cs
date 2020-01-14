@@ -175,7 +175,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenGameLanguage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/LanguageSelectionPage.xaml", UriKind.Relative));
+            NavigationService?.Navigate(new Uri("Pages/LanguageSelectionPage.xaml", UriKind.Relative));
         }
 
         private void EnableDiagnosticsMode(object sender, RoutedEventArgs e)

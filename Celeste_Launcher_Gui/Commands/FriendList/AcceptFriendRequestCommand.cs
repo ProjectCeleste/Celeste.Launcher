@@ -47,7 +47,7 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
                 }
 
                 var friend = (FriendListItem)parameter;
-                _friendListViewModel.FriendListItems.Remove(friend);
+                _friendListViewModel?.FriendListItems.Remove(friend);
                 await _friendService.ConfirmFriendRequest(friend.XUid);
                 _updateFriendAction();
             }

@@ -139,7 +139,7 @@ namespace Celeste_Launcher_Gui.Windows
                                 return;
                         }
 
-                        File.Copy(filename, selectedDestinationPath, true);
+                        File.Copy(filename ?? throw new InvalidOperationException(), selectedDestinationPath, true);
                     }
 
                     RefreshList();

@@ -41,7 +41,7 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 var exePath = Assembly.GetEntryAssembly()?.Location;
-                if (exePath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
+                if (exePath != null && exePath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
                 {
                     GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame);
                     Close();
