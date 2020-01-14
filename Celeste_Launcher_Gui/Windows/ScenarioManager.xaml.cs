@@ -65,7 +65,7 @@ namespace Celeste_Launcher_Gui.Windows
                     if (txt.StartsWith("/") || txt.StartsWith(@"\"))
                         txt = txt.Substring(1);
 
-                    ScenarioListView.Items.Add(new System.Windows.Controls.ListViewItem
+                    ScenarioListView.Items.Add(new ListViewItem
                     {
                         Content = txt,
                         Tag = filePath
