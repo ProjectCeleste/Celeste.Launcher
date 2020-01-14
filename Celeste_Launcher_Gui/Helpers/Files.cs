@@ -22,7 +22,7 @@ namespace Celeste_Launcher_Gui.Helpers
                 {
                     File.Delete(file.FullName);
                 }
-                catch (Exception)
+                catch
                 {
                     //
                 }
@@ -96,13 +96,13 @@ namespace Celeste_Launcher_Gui.Helpers
 
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         [return: MarshalAs(UnmanagedType.I1)]
-        private static extern bool CreateSymbolicLink_(string lpSymlinkFileName, string lpTargetFileName,
+        private static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName,
             SymLinkFlag dwFlags);
 
-        public static bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName,
+        public static bool CreateSymbolicLink_(string lpSymlinkFileName, string lpTargetFileName,
             SymLinkFlag dwFlags)
         {
-            return CreateSymbolicLink_(lpSymlinkFileName, lpTargetFileName, dwFlags);
+            return CreateSymbolicLink(lpSymlinkFileName, lpTargetFileName, dwFlags);
         }
 
         public static bool IsSymLink(string path,
