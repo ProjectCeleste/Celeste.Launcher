@@ -1,6 +1,5 @@
-﻿using ProjectCeleste.Launcher.PublicApi.Helpers;
-using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
+﻿using ProjectCeleste.Launcher.PublicApi.Logging;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using Serilog;
 using System;
 using System.Windows;
@@ -36,7 +35,7 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged.ResetPwdResult response = await LegacyBootstrapper.WebSocketApi.DoResetPwd(EmailAddressField.InputContent, ResetKeyField.InputContent);
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged.ResetPwdResult response = await LegacyBootstrapper.WebSocketApi.DoResetPwd(EmailAddressField.InputContent, ResetKeyField.InputContent);
 
                 if (response.Result)
                 {
@@ -84,7 +83,7 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged.ForgotPwdResult response = await LegacyBootstrapper.WebSocketApi.DoForgotPwd(EmailAddressField.InputContent);
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged.ForgotPwdResult response = await LegacyBootstrapper.WebSocketApi.DoForgotPwd(EmailAddressField.InputContent);
 
                 if (response.Result)
                 {

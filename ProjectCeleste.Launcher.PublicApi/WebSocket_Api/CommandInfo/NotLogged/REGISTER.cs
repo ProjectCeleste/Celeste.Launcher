@@ -1,13 +1,13 @@
 #region Using directives
 
 using Newtonsoft.Json;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Interface;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 #endregion Using directives
 
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged
+namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged
 {
     public class RegisterUserInfo
     {

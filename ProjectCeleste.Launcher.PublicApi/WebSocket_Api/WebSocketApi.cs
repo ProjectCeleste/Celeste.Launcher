@@ -1,11 +1,9 @@
 ﻿#region Using directives
 
 using ProjectCeleste.Launcher.PublicApi.Helpers;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Command;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using System;
 using System.Reflection;
 using System.Security;

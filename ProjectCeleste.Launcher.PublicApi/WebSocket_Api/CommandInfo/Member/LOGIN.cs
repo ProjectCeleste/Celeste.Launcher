@@ -2,7 +2,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Interface;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 #endregion Using directives
 
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member
+namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member
 {
     public class LoginInfo
     {

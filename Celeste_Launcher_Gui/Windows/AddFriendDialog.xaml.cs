@@ -1,5 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Services;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using System;
 using System.Windows;
 using System.Windows.Input;

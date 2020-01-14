@@ -1,7 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Model.Friends;
 using ProjectCeleste.Launcher.PublicApi.Logging;
 using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
 using Serilog;
 using System;
 using System.Collections.Generic;

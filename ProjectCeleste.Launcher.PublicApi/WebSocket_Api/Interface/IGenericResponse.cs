@@ -1,4 +1,4 @@
-﻿namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Interface
+﻿namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface
 {
     public interface IGenericResponse
     {

@@ -1,8 +1,8 @@
-﻿using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Interface;
+﻿using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket
+namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 {
     internal class AwaitableOperation<TResponse> where TResponse : IGenericResponse
     {

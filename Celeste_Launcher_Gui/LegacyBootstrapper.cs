@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using ProjectCeleste.Launcher.PublicApi.Helpers;
 using ProjectCeleste.Launcher.PublicApi.Logging;
 using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
 using Serilog;
 using ProjectCeleste.GameFiles.GameScanner;
 using Celeste_Launcher_Gui.Windows;

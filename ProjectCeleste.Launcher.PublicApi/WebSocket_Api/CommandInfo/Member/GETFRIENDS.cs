@@ -1,14 +1,13 @@
 #region Using directives
 
 using Newtonsoft.Json;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Interface;
-using System.Collections;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 #endregion Using directives
 
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member
+namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member
 {
     public class FriendJson
     {

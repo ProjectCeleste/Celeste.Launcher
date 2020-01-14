@@ -1,7 +1,7 @@
 ﻿#region Using directives
 
 using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using Serilog;
 using SuperSocket.ClientEngine;
 using System;
@@ -13,7 +13,7 @@ using WebSocket4Net;
 
 #endregion Using directives
 
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket
+namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 {
     internal class Client
     {

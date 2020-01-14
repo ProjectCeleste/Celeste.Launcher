@@ -1,6 +1,5 @@
-﻿using ProjectCeleste.Launcher.PublicApi.Helpers;
-using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
+﻿using ProjectCeleste.Launcher.PublicApi.Logging;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using Serilog;
 using System;
 using System.Windows;
@@ -49,7 +48,7 @@ namespace Celeste_Launcher_Gui.Windows
 
             try
             {
-                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member.ChangePwdResult changePasswordResponse = await LegacyBootstrapper.WebSocketApi.DoChangePassword(currentPassword, newPassword);
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member.ChangePwdResult changePasswordResponse = await LegacyBootstrapper.WebSocketApi.DoChangePassword(currentPassword, newPassword);
 
                 if (changePasswordResponse.Result)
                 {

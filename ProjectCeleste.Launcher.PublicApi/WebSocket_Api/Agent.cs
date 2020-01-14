@@ -6,7 +6,7 @@ using WebSocket4Net;
 
 #endregion Using directives
 
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket
+namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 {
     internal class Agent : JsonWebSocket
     {

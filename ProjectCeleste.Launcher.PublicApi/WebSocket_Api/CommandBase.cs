@@ -1,13 +1,13 @@
 ﻿#region Using directives
 
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Interface;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Interface;
 using System;
 using System.Threading.Tasks;
 
 #endregion Using directives
 
-namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Command
+namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api
 {
     internal class CommandBase<TRequest, TResponse> where TResponse : IGenericResponse
     {

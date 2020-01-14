@@ -1,7 +1,7 @@
 ﻿using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
 using System;
 using System.Diagnostics;
 using System.IO;

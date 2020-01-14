@@ -1,4 +1,4 @@
-﻿namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum
+﻿namespace ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum
 {
     internal enum ClientState
     {

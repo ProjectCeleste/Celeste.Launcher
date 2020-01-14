@@ -56,7 +56,7 @@ namespace Celeste_Launcher_Gui.Windows
                 NavigationFrame.IsEnabled = false;
                 try
                 {
-                    ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.Member.LoginResult response = await LegacyBootstrapper.WebSocketApi.DoLogin(savedCredentials.Email, savedCredentials.Password);
+                    ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member.LoginResult response = await LegacyBootstrapper.WebSocketApi.DoLogin(savedCredentials.Email, savedCredentials.Password);
 
                     if (response.Result)
                     {

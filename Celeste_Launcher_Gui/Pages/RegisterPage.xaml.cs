@@ -1,6 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Windows;
 using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.Enum;
+using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using Serilog;
 using System;
 using System.Windows;
@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Pages
 
             try
             {
-                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged.ValidMailResult response = await LegacyBootstrapper.WebSocketApi.DoValidMail(EmailField.InputContent);
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged.ValidMailResult response = await LegacyBootstrapper.WebSocketApi.DoValidMail(EmailField.InputContent);
 
                 if (response.Result)
                 {
@@ -83,7 +83,7 @@ namespace Celeste_Launcher_Gui.Pages
 
             try
             {
-                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.WebSocket.CommandInfo.NotLogged.RegisterUserResult response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.InputContent, VerifyKeyField.InputContent,
+                ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.NotLogged.RegisterUserResult response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.InputContent, VerifyKeyField.InputContent,
                     UsernameField.InputContent, PasswordField.PasswordInputBox.Password);
 
                 if (response.Result)
