@@ -1,10 +1,10 @@
 ﻿#region Using directives
 
 using Celeste_Launcher_Gui.Services;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using System;
 using System.Windows;
 using System.Windows.Input;
+using ProjectCeleste.Launcher.PublicApi.WebSocket.CommandInfo.Enum;
 
 #endregion Using directives
 

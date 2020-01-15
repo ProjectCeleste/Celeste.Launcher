@@ -4,14 +4,14 @@ using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using Serilog;
 using System;
 using System.Security;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ProjectCeleste.Launcher.PublicApi.WebSocket.CommandInfo.Enum;
+using ProjectCeleste.Launcher.PublicApi.WebSocket.CommandInfo.Model.Guest;
 
 #endregion Using directives
 
@@ -51,7 +51,7 @@ namespace Celeste_Launcher_Gui.Pages
             try
             {
                 var storedCredentials = UserCredentialService.GetStoredUserCredentials();
-                LoginResult loginResult;
+                LoginResponse loginResult;
 
                 _logger.Information("Stored credentials is null: {@IsNull}", storedCredentials == null);
 
@@ -130,7 +130,7 @@ namespace Celeste_Launcher_Gui.Pages
             }
         }
 
-        private async Task<LoginResult> PerformLogin(string email, SecureString password)
+        private async Task<LoginResponse> PerformLogin(string email, SecureString password)
         {
             GameService.SetCredentials(email, password);
 

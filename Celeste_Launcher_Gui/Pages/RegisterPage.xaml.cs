@@ -2,11 +2,11 @@
 
 using Celeste_Launcher_Gui.Windows;
 using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.Enum;
 using Serilog;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using ProjectCeleste.Launcher.PublicApi.WebSocket.CommandInfo.Enum;
 
 #endregion Using directives
 

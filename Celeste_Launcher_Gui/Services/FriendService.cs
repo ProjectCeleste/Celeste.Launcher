@@ -2,13 +2,13 @@
 
 using Celeste_Launcher_Gui.Model.Friends;
 using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using ProjectCeleste.Launcher.PublicApi.WebSocket.Client;
+using Friend = ProjectCeleste.Launcher.PublicApi.Model.Friend;
 
 #endregion Using directives
 
@@ -37,13 +37,13 @@ namespace Celeste_Launcher_Gui.Services
 
         public event FriendListUpdatedEventHandler FriendListUpdated;
 
-        private readonly WebSocketApi _webSocket;
+        private readonly CelesteWebSocketClient _webSocket;
 
         private readonly Timer _updateTimer;
 
         private readonly ILogger _logger;
 
-        private FriendService(WebSocketApi webSocket, ILogger logger)
+        private FriendService(CelesteWebSocketClient webSocket, ILogger logger)
         {
             _webSocket = webSocket;
             _logger = logger;
@@ -95,32 +95,32 @@ namespace Celeste_Launcher_Gui.Services
             }
         }
 
-        private async Task<IList<Friend>> GetFriendList()
+        private async Task<IList<Model.Friends.Friend>> GetFriendList()
         {
             var response = await _webSocket.DoGetFriends();
 
             if (!response.Result || response.Friends == null)
                 throw new Exception($"Unable to get friend list: {response.Message}");
 
-            var friends = new List<Friend>();
+            var friends = new List<Model.Friends.Friend>();
 
-            foreach (var friend in response.Friends.Friends) friends.Add(MapFriend(friend));
+            foreach (var friend in response.Friends.Friend) friends.Add(MapFriend(friend));
 
             return friends;
         }
 
-        private async Task<(IList<Friend> incomingRequests, IList<Friend> outgoingRequests)> GetFriendRequests()
+        private async Task<(IList<Model.Friends.Friend> incomingRequests, IList<Model.Friends.Friend> outgoingRequests)> GetFriendRequests()
         {
             var response = await _webSocket.DoGetPendingFriends();
 
             if (!response.Result) throw new Exception($"Unable to get friend list: {response.Message}");
 
-            var incomingRequests = new List<Friend>();
-            var outgoingRequests = new List<Friend>();
+            var incomingRequests = new List<Model.Friends.Friend>();
+            var outgoingRequests = new List<Model.Friends.Friend>();
 
-            foreach (var friend in response.PendingFriendsRequest.Friends) outgoingRequests.Add(MapFriend(friend));
+            foreach (var friend in response.PendingFriendsRequest.Friend) outgoingRequests.Add(MapFriend(friend));
 
-            foreach (var friend in response.PendingFriendsInvite.Friends) incomingRequests.Add(MapFriend(friend));
+            foreach (var friend in response.PendingFriendsInvite.Friend) incomingRequests.Add(MapFriend(friend));
 
             return (incomingRequests, outgoingRequests);
         }
@@ -143,9 +143,9 @@ namespace Celeste_Launcher_Gui.Services
             return response.Result;
         }
 
-        private Friend MapFriend(FriendJson friend)
+        private Model.Friends.Friend MapFriend(Friend friend)
         {
-            return new Friend
+            return new Model.Friends.Friend
             {
                 Xuid = friend.Xuid,
                 Username = friend.ProfileName,

@@ -5,8 +5,6 @@ using Celeste_Launcher_Gui.Windows;
 using ProjectCeleste.GameFiles.GameScanner;
 using ProjectCeleste.Launcher.PublicApi.Helpers;
 using ProjectCeleste.Launcher.PublicApi.Logging;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
 using Serilog;
 using System;
 using System.Globalization;
@@ -14,6 +12,8 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
+using ProjectCeleste.Launcher.PublicApi.Model;
+using ProjectCeleste.Launcher.PublicApi.WebSocket.Client;
 
 #endregion Using directives
 
@@ -25,7 +25,7 @@ namespace Celeste_Launcher_Gui
 
         private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly()?.GetName().Version}";
 
-        public static WebSocketApi WebSocketApi { get; private set; }
+        public static CelesteWebSocketClient WebSocketApi { get; private set; }
 
         public static User CurrentUser { get; set; }
 
@@ -103,7 +103,7 @@ namespace Celeste_Launcher_Gui
             }
 
             //Init WebSocketApi
-            WebSocketApi = new WebSocketApi(UserConfig.ServerUri);
+            WebSocketApi = new CelesteWebSocketClient(UserConfig.ServerUri);
             Logger.Information("Initialized web socket");
 
             GC.KeepAlive(mutex);

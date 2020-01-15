@@ -3,13 +3,13 @@
 using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
-using ProjectCeleste.Launcher.PublicApi.WebSocket_Api.CommandInfo.Member;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using ProjectCeleste.Launcher.PublicApi.Model;
 using FriendList = Celeste_Launcher_Gui.Model.Friends.FriendList;
 
 #endregion Using directives
