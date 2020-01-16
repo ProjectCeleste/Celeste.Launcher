@@ -33,7 +33,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            VerifyEmailBtn.IsEnabled = false;
+            EmailInputGroup.IsEnabled = false;
             ResentKeyBtn.IsEnabled = false;
 
             try
@@ -44,10 +44,13 @@ namespace Celeste_Launcher_Gui.Pages
                 {
                     GenericMessageDialog.Show($"{response.Message}", DialogIcon.Warning);
                     UserInformationInputGroup.IsEnabled = true;
+                    EmailInputGroup.IsEnabled = false;
                 }
                 else
                 {
                     GenericMessageDialog.Show($"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
+                    EmailInputGroup.IsEnabled = true;
+                    ResentKeyBtn.IsEnabled = true;
                 }
             }
             catch (Exception ex)
@@ -55,9 +58,6 @@ namespace Celeste_Launcher_Gui.Pages
                 Logger.Error(ex, ex.Message);
                 GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
-
-            VerifyEmailBtn.IsEnabled = true;
-            ResentKeyBtn.IsEnabled = true;
         }
 
         private async void OnRegister(object sender, RoutedEventArgs args)

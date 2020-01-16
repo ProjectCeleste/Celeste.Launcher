@@ -11,7 +11,7 @@
         d:DesignHeight="587" d:DesignWidth="964">
     <Grid>
         <Grid VerticalAlignment="Top" Height="168">
-            <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="EmailInputGroup">
                 <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterEmailLabelText}" x:Name="EmailField"/>
                 <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterVerifyBtnText}" Margin="10,0,0,0" Click="OnVerifyEmail" x:Name="VerifyEmailBtn"/>
             </WrapPanel>
