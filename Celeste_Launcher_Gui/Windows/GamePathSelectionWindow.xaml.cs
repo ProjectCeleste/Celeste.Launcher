@@ -50,8 +50,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void ScanBtnClick(object sender, RoutedEventArgs e)
         {
-            var spartanDirectory = Path.GetDirectoryName(PathLocation.Text);
-
+            var spartanDirectory = Directory.Exists(PathLocation.Text) ? PathLocation.Text : Path.GetDirectoryName(PathLocation.Text);
 
             if (!Directory.Exists(spartanDirectory))
             {
