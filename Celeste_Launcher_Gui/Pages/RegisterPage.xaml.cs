@@ -68,7 +68,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            if (!Misc.IsValidEmailAdress(Properties.Resources.RegisterInvalidEmail))
+            if (!Misc.IsValidEmailAdress(EmailField.InputContent))
             {
                 GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
                 return;
@@ -107,7 +107,7 @@ namespace Celeste_Launcher_Gui.Pages
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show($@"{response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show($@"{response.Message}");
 
                     NavigationService.Navigate(new Uri("Pages/MainMenuPage.xaml", UriKind.Relative));
                 }
