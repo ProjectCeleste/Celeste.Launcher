@@ -10,16 +10,19 @@ namespace Celeste_Launcher_Gui.Helpers
 {
     public static class Steam
     {
-        public static void ConvertToSteam(string gamePath)
+        private const string AOEOnlineExecutableName = "AOEOnline.exe";
+        private const string CelesteLauncherExecutableName = "Celeste Launcher.exe";
+
+        public static void ConvertToSteam(string gameBasePath)
         {
-            var fileIn = Path.Combine(gamePath, "Celeste_Launcher_Gui.exe");
-            var fileOut = Path.Combine(gamePath, "AOEOnline.exe");
+            var fileIn = Path.Combine(gameBasePath, CelesteLauncherExecutableName);
+            var fileOut = Path.Combine(gameBasePath, AOEOnlineExecutableName);
             Misc.MoveFile(fileIn, fileOut);
 
             try
             {
-                fileIn = Path.Combine(gamePath, "Celeste_Launcher_Gui.exe.config");
-                fileOut = Path.Combine(gamePath, "AOEOnline.exe.config");
+                fileIn = Path.Combine(gameBasePath, $"{CelesteLauncherExecutableName}.config");
+                fileOut = Path.Combine(gameBasePath, $"{AOEOnlineExecutableName}.config");
                 Misc.MoveFile(fileIn, fileOut);
             }
             catch (Exception)
@@ -28,16 +31,16 @@ namespace Celeste_Launcher_Gui.Helpers
             }
         }
 
-        public static void ConvertBackFromSteam(string gamePath)
+        public static void ConvertBackFromSteam(string gameBasePath)
         {
-            var fileOut = Path.Combine(gamePath, "Celeste_Launcher_Gui.exe");
-            var fileIn = Path.Combine(gamePath, "AOEOnline.exe");
+            var fileOut = Path.Combine(gameBasePath, CelesteLauncherExecutableName);
+            var fileIn = Path.Combine(gameBasePath, AOEOnlineExecutableName);
             Misc.MoveFile(fileIn, fileOut);
 
             try
             {
-                fileOut = Path.Combine(gamePath, "Celeste_Launcher_Gui.exe.config");
-                fileIn = Path.Combine(gamePath, "AOEOnline.exe.config");
+                fileOut = Path.Combine(gameBasePath, $"{CelesteLauncherExecutableName}.config");
+                fileIn = Path.Combine(gameBasePath, $"{AOEOnlineExecutableName}.config");
                 Misc.MoveFile(fileIn, fileOut);
             }
             catch (Exception)
