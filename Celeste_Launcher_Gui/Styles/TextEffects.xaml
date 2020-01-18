@@ -23,5 +23,15 @@
                 <DropShadowEffect ShadowDepth="2" Direction="225" BlurRadius="5" />
             </Setter.Value>
         </Setter>
+
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem Command="ApplicationCommands.Copy" />
+                    <MenuItem Command="ApplicationCommands.Cut" />
+                    <MenuItem Command="ApplicationCommands.Paste" />
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
