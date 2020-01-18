@@ -36,16 +36,16 @@ namespace Celeste_Launcher_Gui.Windows
         {
             try
             {
-                var exePath = Assembly.GetEntryAssembly().Location;
-                if (exePath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
+                var currentApplicationFullPath = Assembly.GetEntryAssembly().Location;
+                if (currentApplicationFullPath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
                 {
                     GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame, DialogIcon.None, DialogOptions.Ok);
                     Close();
                     return;
                 }
 
-                var exeFolder = Path.GetDirectoryName(exePath);
-                if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, exeFolder, StringComparison.OrdinalIgnoreCase))
+                var currentApplicationDirectory = Path.GetDirectoryName(currentApplicationFullPath);
+                if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, currentApplicationDirectory, StringComparison.OrdinalIgnoreCase))
                 {
                     GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);
                     Close();
@@ -57,7 +57,7 @@ namespace Celeste_Launcher_Gui.Windows
                 GenericMessageDialog.Show(Properties.Resources.SteamConverterSuccess, DialogIcon.None, DialogOptions.Ok);
 
                 Process.Start(Assembly.GetEntryAssembly().Location
-                    .Replace("Celeste_Launcher_Gui.exe", "AOEOnline.exe"));
+                    .Replace(Path.GetFileName(currentApplicationFullPath), "AOEOnline.exe"));
 
                 Environment.Exit(0);
             }
