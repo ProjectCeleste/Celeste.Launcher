@@ -21,8 +21,8 @@
                 x:Name="AccountButton">
                 <local:SideBarMenuItem.ContextMenu>
                     <ContextMenu StaysOpen="true">
-                        <MenuItem Header="Change password" Click="OnChangePasswordClick"/>
-                        <MenuItem Header="Log out" Click="OnLogoutClick"/>
+                        <MenuItem Header="{x:Static p:Resources.OverviewAccountSideMenuBtn}" Click="OnChangePasswordClick"/>
+                        <MenuItem Header="{x:Static p:Resources.OverviewLogOut}" Click="OnLogoutClick"/>
                     </ContextMenu>
                 </local:SideBarMenuItem.ContextMenu>
             </local:SideBarMenuItem>
@@ -50,12 +50,12 @@
                 x:Name="SettingsButton">
                     <local:SideBarMenuItem.ContextMenu>
                         <ContextMenu StaysOpen="true">
-                            <MenuItem Header="Game Settings">
-                                <MenuItem Header="Multiplayer Settings" Click="OpenMultiplayerSettings"/>
-                                <MenuItem Header="Game Language" Click="OpenGameLanguage"/>
-                                <MenuItem Header="Enable Diagnostic Mode" Click="EnableDiagnosticsMode"/>
+                            <MenuItem Header="{x:Static p:Resources.OverviewGameSettings}">
+                                <MenuItem Header="{x:Static p:Resources.OverviewMultiplayerSettings}" Click="OpenMultiplayerSettings"/>
+                                <MenuItem Header="{x:Static p:Resources.OverviewGameLanguageSettings}" Click="OpenGameLanguage"/>
+                                <MenuItem Header="{x:Static p:Resources.OverviewEnableDiagnosticsMode}" Click="EnableDiagnosticsMode"/>
                             </MenuItem>
-                            <MenuItem Header="Update launcher" Click="OpenUpdater"/>
+                            <MenuItem Header="{x:Static p:Resources.OverviewUpdateLauncher}" Click="OpenUpdater"/>
                         </ContextMenu>
                     </local:SideBarMenuItem.ContextMenu>
                 </local:SideBarMenuItem>
@@ -125,10 +125,10 @@
                             theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Tools2-Hover.png" ToolTip="{x:Static p:Resources.OverviewToolsBtnTooltip}">
                     <Button.ContextMenu>
                         <ContextMenu StaysOpen="true">
-                            <MenuItem Header="Steam" Click="OpenSteam"/>
-                            <MenuItem Header="Windows Features" Click="OpenWindowsFeatures"/>
-                            <MenuItem Header="Windows Firewall" Click="OpenWindowsFirewall"/>
-                            <MenuItem Header="Game Scan" Click="OpenGameScanner"/>
+                            <MenuItem Header="{x:Static p:Resources.OverviewSteam}" Click="OpenSteam"/>
+                            <MenuItem Header="{x:Static p:Resources.OverviewWindowsFeatures}" Click="OpenWindowsFeatures"/>
+                            <MenuItem Header="{x:Static p:Resources.OverviewWindowsFirewall}" Click="OpenWindowsFirewall"/>
+                            <MenuItem Header="{x:Static p:Resources.OverviewGameScan}" Click="OpenGameScanner"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

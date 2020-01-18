@@ -706,4 +706,37 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="SteamConverterWindowTitle" xml:space="preserve">
     <value>Confirm Steam Conversion</value>
   </data>
+  <data name="OverviewChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="OverviewEnableDiagnosticsMode" xml:space="preserve">
+    <value>Enable diagnostics mode</value>
+  </data>
+  <data name="OverviewGameLanguageSettings" xml:space="preserve">
+    <value>Game language</value>
+  </data>
+  <data name="OverviewGameScan" xml:space="preserve">
+    <value>Game scan</value>
+  </data>
+  <data name="OverviewGameSettings" xml:space="preserve">
+    <value>Game settings</value>
+  </data>
+  <data name="OverviewLogOut" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="OverviewMultiplayerSettings" xml:space="preserve">
+    <value>Multiplayer settings</value>
+  </data>
+  <data name="OverviewSteam" xml:space="preserve">
+    <value>Convert to Steam game</value>
+  </data>
+  <data name="OverviewUpdateLauncher" xml:space="preserve">
+    <value>Update launcher</value>
+  </data>
+  <data name="OverviewWindowsFeatures" xml:space="preserve">
+    <value>Windows Features</value>
+  </data>
+  <data name="OverviewWindowsFirewall" xml:space="preserve">
+    <value>Windows Firewall</value>
+  </data>
 </root>

@@ -332,7 +332,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Celeste location.
+        ///   Looks up a localized string similar to Select location of Spartan.exe (Age of Empires Online).
         /// </summary>
         public static string GamePathSelectorTitle {
             get {
@@ -989,6 +989,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        public static string OverviewChangePassword {
+            get {
+                return ResourceManager.GetString("OverviewChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discord.
         /// </summary>
         public static string OverviewDiscordSideMenuBtn {
@@ -1007,11 +1016,47 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable diagnostics mode.
+        /// </summary>
+        public static string OverviewEnableDiagnosticsMode {
+            get {
+                return ResourceManager.GetString("OverviewEnableDiagnosticsMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Friends.
         /// </summary>
         public static string OverviewFriendsSideMenuBtn {
             get {
                 return ResourceManager.GetString("OverviewFriendsSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game language.
+        /// </summary>
+        public static string OverviewGameLanguageSettings {
+            get {
+                return ResourceManager.GetString("OverviewGameLanguageSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game scan.
+        /// </summary>
+        public static string OverviewGameScan {
+            get {
+                return ResourceManager.GetString("OverviewGameScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game settings.
+        /// </summary>
+        public static string OverviewGameSettings {
+            get {
+                return ResourceManager.GetString("OverviewGameSettings", resourceCulture);
             }
         }
         
@@ -1030,6 +1075,24 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string OverviewLoginBtn {
             get {
                 return ResourceManager.GetString("OverviewLoginBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log out.
+        /// </summary>
+        public static string OverviewLogOut {
+            get {
+                return ResourceManager.GetString("OverviewLogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiplayer settings.
+        /// </summary>
+        public static string OverviewMultiplayerSettings {
+            get {
+                return ResourceManager.GetString("OverviewMultiplayerSettings", resourceCulture);
             }
         }
         
@@ -1079,6 +1142,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Convert to Steam game.
+        /// </summary>
+        public static string OverviewSteam {
+            get {
+                return ResourceManager.GetString("OverviewSteam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game tools.
         /// </summary>
         public static string OverviewToolsBtnTooltip {
@@ -1097,11 +1169,38 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update launcher.
+        /// </summary>
+        public static string OverviewUpdateLauncher {
+            get {
+                return ResourceManager.GetString("OverviewUpdateLauncher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Website.
         /// </summary>
         public static string OverviewWebsiteSideMenuBtn {
             get {
                 return ResourceManager.GetString("OverviewWebsiteSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Features.
+        /// </summary>
+        public static string OverviewWindowsFeatures {
+            get {
+                return ResourceManager.GetString("OverviewWindowsFeatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Firewall.
+        /// </summary>
+        public static string OverviewWindowsFirewall {
+            get {
+                return ResourceManager.GetString("OverviewWindowsFirewall", resourceCulture);
             }
         }
         
