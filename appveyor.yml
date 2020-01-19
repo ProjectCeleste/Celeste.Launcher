@@ -5,9 +5,6 @@
 # version format
 version: 0.0.0.{build}
 
-environment:
-  APPVEYOR_IGNORE_COMMIT_FILTERING_ON_TAG: true
-  
 # branches to build
 #branches:
   # whitelist
@@ -118,6 +115,7 @@ nuget:
 
 # environment variables
 environment:
+  APPVEYOR_IGNORE_COMMIT_FILTERING_ON_TAG: true
   access_token:
     secure: FCfA6NOUpYu23Acwkb5xfB0fI9iOtw7t7maO76F/0Qu0XTMAXnjLa33b8LUTahEY
   github_email:
