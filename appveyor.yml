@@ -5,6 +5,9 @@
 # version format
 version: 0.0.0.{build}
 
+environment:
+  APPVEYOR_IGNORE_COMMIT_FILTERING_ON_TAG: true
+  
 # branches to build
 #branches:
   # whitelist
@@ -17,10 +20,14 @@ skip_tags: false
 # Start builds on tags only
 skip_non_tags: false
 
+# Skipping commits with specific message
+skip_commits:
+  message: /\[ci deploy\]/
+
 # 
 pull_requests:
   do_not_increment_build_number: true
-
+  
 #---------------------------------#
 #    environment configuration    #
 #---------------------------------#
@@ -30,61 +37,82 @@ image: Visual Studio 2019
 
 # scripts that are called at very beginning, before repo cloning
 init:
-- ps: >-
+- ps: |
+    $env:Celeste_IsTagAndRelease = "false"
+    $env:Celeste_IsDeploy = "false"
     if ($env:APPVEYOR_REPO_TAG -eq "true")
     {
-        $env:CelesteLauncher_IVersion = "$env:APPVEYOR_REPO_TAG_NAME";
+        $env:Celeste_IVersion = "$env:APPVEYOR_REPO_TAG_NAME"
+        if ($env:CONFIGURATION -eq "Release")
+        {
+            if ($env:APPVEYOR_REPO_COMMIT_MESSAGE.Contains("[ci deploy]"))
+            {
+                $env:Celeste_IsDeploy = "true"
+                $env:Celeste_IsTagAndRelease = "false"
+            }
+            else
+            {
+                $env:Celeste_IsDeploy = "false"
+                $env:Celeste_IsTagAndRelease = "true"
+            }
+        }
         if ($env:APPVEYOR_REPO_TAG_NAME.StartsWith("v")) 
         {
-            $env:CelesteLauncher_Version = $env:APPVEYOR_REPO_TAG_NAME.Substring(1);
+            $env:Celeste_Version = $env:APPVEYOR_REPO_TAG_NAME.Substring(1)
         }
         else
         {
-            $env:CelesteLauncher_Version = "$env:APPVEYOR_REPO_TAG_NAME";
+            $env:Celeste_Version = "$env:APPVEYOR_REPO_TAG_NAME"
         }
         if ($env:APPVEYOR_REPO_TAG_NAME.Contains("-rc") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-beta") -or $env:APPVEYOR_REPO_TAG_NAME.Contains("-alpha"))
         {
-            $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-rc", "");
-            $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-beta", "");
-            $env:CelesteLauncher_Version = $env:CelesteLauncher_Version.Replace("-alpha", "");
-            $env:CelesteLauncher_PreRelease = "true";
+            $env:Celeste_Version = $env:Celeste_Version.Replace("-rc", "")
+            $env:Celeste_Version = $env:Celeste_Version.Replace("-beta", "")
+            $env:Celeste_Version = $env:Celeste_Version.Replace("-alpha", "")
+            $env:Celeste_PreRelease = "true"
         }
         else
         {
-            $env:CelesteLauncher_PreRelease = "false";
+            $env:Celeste_PreRelease = "false"
         }
-        if ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -eq 0)
+        if ((($env:Celeste_Version.Split('.')).Count - 1) -eq 0)
         {
-            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0.0.0";
+            $env:Celeste_AVersion = "$env:Celeste_Version.0.0.0"
         }
-        elseif ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -eq 1)
+        elseif ((($env:Celeste_Version.Split('.')).Count - 1) -eq 1)
         {
-            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0.0";
+            $env:Celeste_AVersion = "$env:Celeste_Version.0.0"
         }
-        elseif ((($env:CelesteLauncher_Version.Split('.')).Count - 1) -eq 2)
+        elseif ((($env:Celeste_Version.Split('.')).Count - 1) -eq 2)
         {
-            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version.0";
+            $env:Celeste_AVersion = "$env:Celeste_Version.0"
         }
         else
         {
-            $env:CelesteLauncher_AVersion = "$env:CelesteLauncher_Version";
+            $env:Celeste_AVersion = "$env:Celeste_Version"
         }
     }
     else
     {
-        $env:CelesteLauncher_Version = "$env:APPVEYOR_BUILD_VERSION";
-        $env:CelesteLauncher_AVersion = "$env:APPVEYOR_BUILD_VERSION";
-        $env:CelesteLauncher_IVersion = "$env:APPVEYOR_BUILD_VERSION";
-        $env:CelesteLauncher_PreRelease = "false";
+        $env:Celeste_Version = "$env:APPVEYOR_BUILD_VERSION"
+        $env:Celeste_AVersion = "$env:APPVEYOR_BUILD_VERSION"
+        $env:Celeste_IVersion = "v$env:APPVEYOR_BUILD_VERSION"
+        $env:Celeste_PreRelease = "false"
     }
-- cmd: git config --global core.autocrlf true
+    git config --global core.autocrlf true
 
 # clone directory
-clone_folder: c:\projects\celeste_launcher
+clone_folder: c:\projects\ProjectCeleste.Launcher
 
 # fetch repository as zip archive
 shallow_clone: false
 
+# nuget
+nuget:
+  account_feed: true
+  project_feed: true
+  disable_publish_on_pr: true
+  
 # set clone depth
 #clone_depth:  5                     # clone entire repository history if not defined
 
@@ -98,13 +126,10 @@ environment:
     secure: KQ7QIFa56u+YS86mjhAUnA==
   priv_key:
     secure: 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
-  APPVEYOR_TOKEN:
-    secure: jGj6ymLyuRVFC2DxQFlS8UmlTZbcCjjVVPFFxT4Awbs=
 
 # build cache to preserve files/folders between builds
 cache:
-  - packages -> **\Celeste_Launcher_Gui.csproj
-  - '%LocalAppData%\NuGet\Cache'
+  - '%USERPROFILE%\.nuget\packages -> **\*.csproj' # preserve packages directory but will reset it if *.csproj is modified
 
 # scripts that run after cloning repository
 install:
@@ -116,20 +141,9 @@ install:
     {
       # Update VersionManifest
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
-      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:CelesteLauncher_AVersion
+      Set-Content -NoNewline -Path $VersionManifestPath -Value $env:Celeste_AVersion
       # Update AppVeyor build
-      Update-AppveyorBuild -Version "$env:CelesteLauncher_AVersion-$env:APPVEYOR_BUILD_NUMBER"
-      # Update AppVeyor BuildNumber
-      # $headers = @{
-      #   "Authorization" = "Bearer $env:APPVEYOR_TOKEN"
-      #   "Content-type" = "application/json"
-      #   "Accept" = "application/json"
-      # }
-      # $build = @{
-      #   nextBuildNumber = 1
-      # }
-      # $json = $build | ConvertTo-Json
-      # Invoke-RestMethod -Method Put "https://ci.appveyor.com/api/projects/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/settings/build-number" -Body $json -Headers $headers
+      Update-AppveyorBuild -Version "$env:Celeste_AVersion-$env:APPVEYOR_BUILD_NUMBER"
     }
     else
     {
@@ -137,9 +151,9 @@ install:
       $VersionManifestPath = Join-Path -Path $ENV:APPVEYOR_BUILD_FOLDER -ChildPath 'VersionManifest.md'
       $ManifestContent = Get-Content -Path $VersionManifestPath -Raw
       # Set Version number
-      $env:CelesteLauncher_Version = "$ManifestContent"
-      $env:CelesteLauncher_AVersion = "$ManifestContent"
-      $env:CelesteLauncher_IVersion = "$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
+      $env:Celeste_Version = "$ManifestContent"
+      $env:Celeste_AVersion = "$ManifestContent"
+      $env:Celeste_IVersion = "v$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
       # update AppVeyor build
       Update-AppveyorBuild -Version "$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
     }
@@ -148,11 +162,12 @@ install:
 dotnet_csproj:
   patch: true
   file: '**\Celeste_Launcher_Gui.csproj'
-  version: '$(CelesteLauncher_AVersion)'
-  assembly_version: '$(CelesteLauncher_AVersion)'
-  file_version: '$(CelesteLauncher_AVersion)'
-  informational_version: '$(CelesteLauncher_IVersion)'
-
+  version: '$(Celeste_AVersion)'
+  package_version: '$(Celeste_AVersion)'
+  assembly_version: '$(Celeste_AVersion)'
+  file_version: '$(Celeste_AVersion)'
+  informational_version: '$(Celeste_IVersion)'
+  
 #---------------------------------#
 #       build configuration       #
 #---------------------------------#
@@ -166,20 +181,21 @@ platform: Any CPU
 #  - Any CPU
 
 # build Configuration, i.e. Debug, Release, etc.
-configuration: Release
-
-# to add several configurations to build matrix:
-#configuration:
-#  - Debug
-#  - Release
+configuration:
+  - Debug
+  - Release
 
 build:
+  parallel: true
   # MSBuild verbosity level
   verbosity: minimal
 
 # scripts to run before build
 before_build:
-  - nuget restore
+  # Display .NET Core version
+  - cmd: dotnet --version
+  # Display minimal restore text
+  - cmd: dotnet restore ./src/ProjectCeleste.Launcher.csproj --verbosity m
 
 # scripts to run *after* solution is built and *before* automatic packaging occurs (web apps, NuGet packages, Azure Cloud Services)
 before_package:
@@ -201,7 +217,6 @@ after_build:
         Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\build" -Force;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.pdb" -ErrorAction Ignore;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.xml" -ErrorAction Ignore;
-
     }
     elseif ($env:PLATFORM -eq "Any CPU")
     {
@@ -209,7 +224,6 @@ after_build:
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.pdb" -ErrorAction Ignore;
         Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.xml" -ErrorAction Ignore;
     }
-
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
@@ -229,7 +243,7 @@ artifacts:
   - path: '\build\net48'
     name: Celeste_Launcher
     type: zip
-
+    
 #---------------------------------#
 #     deployment configuration    #
 #---------------------------------#
@@ -241,46 +255,21 @@ deploy:
   # Deploy to GitHub Releases
   - provider: GitHub
     tag: $(APPVEYOR_REPO_TAG_NAME)
-    description: '[View CHANGELOG.md](https://github.com/ProjectCeleste/Celeste_Launcher/blob/$(APPVEYOR_REPO_BRANCH)/CHANGELOG.md)'
-    release: Celeste Launcher $(APPVEYOR_REPO_TAG_NAME)
+    description: '[View CHANGELOG.md](https://github.com/ProjectCeleste/Celeste_Launcher/blob/master/CHANGELOG.md)'
+    release: Celeste Launcher $(Celeste_IVersion)
     auth_token: $(access_token)
     artifact: Celeste_Launcher
     draft: false
-    prerelease: $(CelesteLauncher_PreRelease)
+    prerelease: $(Celeste_PreRelease)
     force_update: true
     on:
-      appveyor_repo_tag: true
-
+      Celeste_IsDeploy: true
+    
 # scripts to run before deployment
 before_deploy:
-- ps: >-
-    $fileContent = "-----BEGIN RSA PRIVATE KEY-----`n";
-    $fileContent += $env:priv_key.Replace(' ', "`n");
-    $fileContent += "`n-----END RSA PRIVATE KEY-----`n";
-    Set-Content "$env:USERPROFILE\.ssh\id_rsa" "$($fileContent)";
-    Set-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n";
-
-- git config --global credential.helper store
-- git config --global user.email "%github_email%"
-- git config --global user.name "%github_user%"
-- git checkout -b Appveyor "%APPVEYOR_REPO_COMMIT%"
-- git add "Celeste_Launcher_Gui\Celeste_Launcher_Gui.csproj"
-- git add "VersionManifest.md"
-- git commit -m "%APPVEYOR_REPO_TAG_NAME%"
-- git checkout "%APPVEYOR_REPO_BRANCH%"
-- git merge Appveyor
-- git branch -d Appveyor
-- git pull "origin" "%APPVEYOR_REPO_BRANCH%"
-- git push "origin" "%APPVEYOR_REPO_BRANCH%"
 
 # scripts to run after deployment
 after_deploy:
-
-# to run your custom scripts instead of provider deployments
-deploy_script:
-
-# to disable deployment
-#deploy: off
 
 #---------------------------------#
 #        global handlers          #
@@ -288,6 +277,31 @@ deploy_script:
 
 # on successful build
 on_success:
+- ps: |
+    if ($env:Celeste_IsTagAndRelease -eq "true")
+    {
+        $env:GIT_REDIRECT_STDERR = '2>&1'
+        $fileContent = "-----BEGIN RSA PRIVATE KEY-----`n"
+        $fileContent += $env:priv_key.Replace(' ', "`n")
+        $fileContent += "`n-----END RSA PRIVATE KEY-----`n"
+        Set-Content "$env:USERPROFILE\.ssh\id_rsa" "$fileContent"
+        Set-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+        git config --global credential.helper store
+        git config --global user.email "$env:github_email"
+        git config --global user.name "$env:github_user"
+        git checkout -b Appveyor "$env:APPVEYOR_REPO_COMMIT"
+        git add .
+        git commit -m "$env:APPVEYOR_REPO_TAG_NAME [ci deploy]"
+        git checkout "$env:APPVEYOR_REPO_BRANCH"
+        git merge --squash Appveyor
+        git add .
+        git commit -m "$env:APPVEYOR_REPO_TAG_NAME [ci deploy]"
+        git branch -d Appveyor
+        git pull "origin" "$env:APPVEYOR_REPO_BRANCH"
+        git push "origin" "$env:APPVEYOR_REPO_BRANCH"
+        git tag -f "$env:APPVEYOR_REPO_TAG_NAME"
+        git push --tags --force
+    }
 
 # on build failure
 on_failure:
