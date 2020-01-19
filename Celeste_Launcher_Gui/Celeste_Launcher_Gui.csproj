@@ -15,7 +15,7 @@
     <PackageReference Include="Markdig" Version="0.18.0" />
     <PackageReference Include="Microsoft.Dism" Version="2.0.21" />
     <PackageReference Include="Open.NAT.Core" Version="2.1.0.5" />
-    <PackageReference Include="ProjectCeleste.GameFiles.GameScanner" Version="2.2.6" />
+    <PackageReference Include="ProjectCeleste.GameFiles.GameScanner" Version="2.3.0" />
     <PackageReference Include="System.IO.Compression" Version="4.3.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="WindowsFirewallHelper" Version="1.6.3.40" />
