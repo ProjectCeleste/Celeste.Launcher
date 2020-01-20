@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Services
         // TODO: Find a better way to do this (for example using an auth token)
         private static string CurrentEmail;
         private static SecureString CurrentPassword;
-        private static ILogger Logger = LoggerFactory.GetLogger();
+        private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
         internal static void SetCredentials(string email, SecureString password)
         {

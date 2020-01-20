@@ -18,7 +18,7 @@ namespace Celeste_Launcher_Gui.Pages
     {
         public User CurrentUser => LegacyBootstrapper.CurrentUser;
         private NewsPicture _currentNews = NewsPicture.Default();
-        private IFriendService _friendService;
+        private readonly IFriendService _friendService;
 
         public OverviewPage()
         {

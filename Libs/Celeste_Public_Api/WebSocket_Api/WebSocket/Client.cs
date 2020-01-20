@@ -23,7 +23,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
         private readonly string _uri;
 
         private Agent _agent;
-        private ILogger _logger;
+        private readonly ILogger _logger;
 
         private SemaphoreSlim _socketCallbackSemaphore;
 

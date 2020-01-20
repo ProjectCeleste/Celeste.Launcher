@@ -33,10 +33,10 @@ namespace Celeste_Launcher_Gui.Services
 
         public event FriendListUpdatedEventHandler FriendListUpdated;
 
-        private WebSocketApi _webSocket;
+        private readonly WebSocketApi _webSocket;
         private Timer _updateTimer;
 
-        private ILogger _logger;
+        private readonly ILogger _logger;
 
         private FriendService(WebSocketApi webSocket, ILogger logger)
         {

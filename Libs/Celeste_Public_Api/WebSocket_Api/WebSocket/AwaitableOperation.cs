@@ -6,7 +6,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
 {
     public class AwaitableOperation<TResponse> where TResponse : IGenericResponse
     {
-        private SemaphoreSlim _semaphore = new SemaphoreSlim(0, 1);
+        private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(0, 1);
 
         private TResponse _response;
 

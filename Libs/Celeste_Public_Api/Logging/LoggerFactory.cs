@@ -4,7 +4,7 @@ namespace Celeste_Public_Api.Logging
 {
     public class LoggerFactory
     {
-        private static ILogger _logger = BuildLogger();
+        private static readonly ILogger _logger = BuildLogger();
         public static ILogger GetLogger()
         {
             return _logger;

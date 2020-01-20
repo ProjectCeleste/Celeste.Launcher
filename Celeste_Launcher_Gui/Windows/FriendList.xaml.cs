@@ -16,9 +16,9 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class FriendList : Window
     {
-        private IFriendService _friendService;
-        private ILogger _logger;
-        private FriendListViewModelFactory _friendListViewModelFactory;
+        private readonly IFriendService _friendService;
+        private readonly ILogger _logger;
+        private readonly FriendListViewModelFactory _friendListViewModelFactory;
         
         private static FriendList Instance;
 

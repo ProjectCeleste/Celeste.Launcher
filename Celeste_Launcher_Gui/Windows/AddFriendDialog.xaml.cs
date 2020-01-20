@@ -9,7 +9,7 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class AddFriendDialog : Window
     {
-        private IFriendService _friendService;
+        private readonly IFriendService _friendService;
 
         public AddFriendDialog(IFriendService friendService)
         {

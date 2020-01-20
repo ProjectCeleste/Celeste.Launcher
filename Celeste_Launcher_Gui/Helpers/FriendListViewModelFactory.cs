@@ -14,8 +14,8 @@ namespace Celeste_Launcher_Gui.Helpers
 {
     class FriendListViewModelFactory
     {
-        private IFriendService _friendService;
-        private ILogger _logger;
+        private readonly IFriendService _friendService;
+        private readonly ILogger _logger;
 
         public FriendListViewModelFactory(IFriendService friendService, ILogger logger)
         {
