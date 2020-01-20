@@ -27,7 +27,7 @@ namespace Celeste_Launcher_Gui.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
-        private ILogger _logger = LoggerFactory.GetLogger();
+        private readonly ILogger _logger = LoggerFactory.GetLogger();
 
         public LoginPage()
         {

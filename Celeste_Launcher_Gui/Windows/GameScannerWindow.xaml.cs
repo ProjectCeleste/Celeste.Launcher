@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class GameScannerWindow : Window
     {
-        private GameScannnerManager GameScanner;
+        private readonly GameScannnerManager GameScanner;
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
         public GameScannerWindow(string gameFilesPath, bool isSteam)

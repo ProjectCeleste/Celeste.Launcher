@@ -12,7 +12,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     {
         public const string CmdName = "CONFFRIEND";
 
-        private DataExchange _dataExchange;
+        private readonly DataExchange _dataExchange;
 
         public ConfirmFriend(DataExchange dataExchange)
         {

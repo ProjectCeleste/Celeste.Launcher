@@ -9,10 +9,10 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
 {
     public class AcceptFriendRequestCommand : ICommand
     {
-        private FriendListViewModel _friendListViewModel;
-        private Action _updateFriendAction;
-        private IFriendService _friendService;
-        private ILogger _logger;
+        private readonly FriendListViewModel _friendListViewModel;
+        private readonly Action _updateFriendAction;
+        private readonly IFriendService _friendService;
+        private readonly ILogger _logger;
 
         public AcceptFriendRequestCommand(FriendListViewModel friendListViewModel, Action updateFriendAction, IFriendService friendService, ILogger logger)
         {
