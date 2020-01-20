@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Celeste_Launcher_Gui.Services
 {
-    class GameService
+    static class GameService
     {
         // TODO: Find a better way to do this (for example using an auth token)
         private static string CurrentEmail;

@@ -3,7 +3,7 @@ using System.Security;
 
 namespace Celeste_Launcher_Gui.Account
 {
-    internal class UserCredentialService
+    internal static class UserCredentialService
     {
         private const string CelesteLauncherVaultName = "Project Celeste";
 
