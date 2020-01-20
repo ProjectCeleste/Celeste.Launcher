@@ -151,9 +151,18 @@ install:
       # Set Version number
       $env:Celeste_Version = "$ManifestContent"
       $env:Celeste_AVersion = "$ManifestContent"
-      $env:Celeste_IVersion = "v$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
       # update AppVeyor build
-      Update-AppveyorBuild -Version "$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
+      if ($env:APPVEYOR_PULL_REQUEST_NUMBER)
+      {
+        $ShortSHA = $env:APPVEYOR_PULL_REQUEST_HEAD_COMMIT.Substring(0,7)
+        Update-AppveyorBuild -Version "$ManifestContent-$env:APPVEYOR_BUILD_NUMBER--PR$env:APPVEYOR_PULL_REQUEST_NUMBER-$ShortSHA"
+        $env:Celeste_IVersion = "v$ManifestContent-$env:APPVEYOR_BUILD_NUMBER--PR$env:APPVEYOR_PULL_REQUEST_NUMBER-$ShortSHA"
+      }
+      else
+      {
+        Update-AppveyorBuild -Version "$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
+        $env:Celeste_IVersion = "v$ManifestContent-$env:APPVEYOR_BUILD_NUMBER"
+      }
     }
 
 # enable patching of AssemblyInfo.* files
@@ -190,8 +199,6 @@ build:
 
 # scripts to run before build
 before_build:
-  # Display .NET Core version
-  - cmd: dotnet --version
   # Restore nuget
   - cmd: nuget restore
 
