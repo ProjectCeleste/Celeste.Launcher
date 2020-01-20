@@ -2,7 +2,7 @@
 
 namespace Celeste_Public_Api.Helpers
 {
-    public class FingerPrintProvider
+    public static class FingerPrintProvider
     {
         private static Task<string> FingerPrintTask;
 

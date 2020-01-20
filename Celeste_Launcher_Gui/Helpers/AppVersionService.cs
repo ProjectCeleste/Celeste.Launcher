@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
-    public class AppVersionService
+    public static class AppVersionService
     {
         public static string CurrentAppVersion
         {
