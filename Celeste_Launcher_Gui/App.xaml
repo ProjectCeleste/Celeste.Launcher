@@ -9,10 +9,10 @@
                 <ResourceDictionary Source="Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="Styles/CheckBox.xaml"/>
                 <ResourceDictionary Source="Styles/ContextMenus.xaml"/>
-                <ResourceDictionary Source="Styles/Scrollbars.xaml"/>
                 <ResourceDictionary Source="Styles/ListView.xaml"/>
                 <ResourceDictionary Source="Styles/RadioButton.xaml"/>
                 <ResourceDictionary Source="Styles/TextEffects.xaml"/>
+                <ResourceDictionary Source="Styles/Scrollbars.xaml"/>
                 <ResourceDictionary Source="Styles/Tooltip.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
