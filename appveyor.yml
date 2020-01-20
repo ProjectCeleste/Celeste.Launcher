@@ -214,20 +214,20 @@ after_build:
     if ($env:PLATFORM -eq "x86")
     {
         Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\build" -Force;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.pdb" -ErrorAction Ignore;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.xml" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\net48\*.pdb" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\net48\*.xml" -ErrorAction Ignore;
     }  
     elseif ($env:PLATFORM -eq "x64")
     {
         Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:PLATFORM)\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\build" -Force;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.pdb" -ErrorAction Ignore;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.xml" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\net48\*.pdb" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\net48\*.xml" -ErrorAction Ignore;
     }
     elseif ($env:PLATFORM -eq "Any CPU")
     {
         Move-Item -Path "$($env:APPVEYOR_BUILD_FOLDER)\Celeste_Launcher_Gui\bin\$($env:CONFIGURATION)" -Destination "$($env:APPVEYOR_BUILD_FOLDER)\build" -Force;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.pdb" -ErrorAction Ignore;
-        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\*.xml" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\net48\*.pdb" -ErrorAction Ignore;
+        Remove-Item "$($env:APPVEYOR_BUILD_FOLDER)\build\net48\*.xml" -ErrorAction Ignore;
     }
 
 # to run your custom scripts instead of automatic MSBuild
