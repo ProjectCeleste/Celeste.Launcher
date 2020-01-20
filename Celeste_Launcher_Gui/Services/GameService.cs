@@ -50,7 +50,7 @@ namespace Celeste_Launcher_Gui.Services
                         : GameScannnerManager.GetGameFilesRootPath();
 
                     Logger.Information("Preparing games canner api");
-                    var gameScannner = new GameScannnerManager(gameFilePath, false, LegacyBootstrapper.UserConfig.IsSteamVersion);
+                    var gameScannner = new GameScannnerManager(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
                     await gameScannner.InitializeFromCelesteManifest();
 
                     var success = false;

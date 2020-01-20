@@ -29,7 +29,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScanner = new GameScannnerManager(gameFilesPath, true, isSteam);
+            GameScanner = new GameScannnerManager(gameFilesPath, isSteam);
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
