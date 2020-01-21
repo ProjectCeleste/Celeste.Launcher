@@ -133,6 +133,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string ChangePasswordTitle {
+            get {
+                return ResourceManager.GetString("ChangePasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unexpected error occurred while starting diagnostics mode. Please try again or check the log files..
         /// </summary>
         public static string DiagnosticsModeError {

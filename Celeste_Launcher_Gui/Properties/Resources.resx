@@ -739,4 +739,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="OverviewWindowsFirewall" xml:space="preserve">
     <value>Windows Firewall</value>
   </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
 </root>
