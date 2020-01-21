@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Celeste_Public_Api.Logging;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -17,6 +18,14 @@ namespace Celeste_Launcher_Gui
         public App()
         {
             LegacyBootstrapper.InitializeLegacyComponents();
+
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var exception = e.ExceptionObject as Exception;
+            LoggerFactory.GetLogger().Error(exception, exception.Message);
         }
     }
 }
