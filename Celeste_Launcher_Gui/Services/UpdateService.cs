@@ -123,9 +123,9 @@ namespace Celeste_Launcher_Gui.Services
             ct.ThrowIfCancellationRequested();
 
 #if IS_BETA
-            var downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}-beta/{ZipName}";
+            var downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}.{gitVersion.Revision}-beta/{ZipName}";
 #else
-            var downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}/{ZipName}";
+            var downloadLink = $"{ReleaseZipUrl}v{gitVersion.Major}.{gitVersion.Minor}.{gitVersion.Build}.{gitVersion.Revision}/{ZipName}";
 #endif
 
             //Download File
