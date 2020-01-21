@@ -21,7 +21,7 @@
                 x:Name="AccountButton">
                 <local:SideBarMenuItem.ContextMenu>
                     <ContextMenu StaysOpen="true">
-                        <MenuItem Header="{x:Static p:Resources.OverviewAccountSideMenuBtn}" Click="OnChangePasswordClick"/>
+                        <MenuItem Header="{x:Static p:Resources.OverviewChangePassword}" Click="OnChangePasswordClick"/>
                         <MenuItem Header="{x:Static p:Resources.OverviewLogOut}" Click="OnLogoutClick"/>
                     </ContextMenu>
                 </local:SideBarMenuItem.ContextMenu>
