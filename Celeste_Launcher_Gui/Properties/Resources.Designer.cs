@@ -1682,7 +1682,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Celeste Fan Project Launcher needs to be installed in the same folder has the game..
+        ///   Looks up a localized string similar to Celeste Fan Project Launcher must be placed in the same folder has the Steam game files..
         /// </summary>
         public static string SteamConverterIncorrectInstallationDirectory {
             get {

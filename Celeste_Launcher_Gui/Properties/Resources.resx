@@ -590,7 +590,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Celeste Fan Project Launcher is already compatible with Steam.</value>
   </data>
   <data name="SteamConverterIncorrectInstallationDirectory" xml:space="preserve">
-    <value>Celeste Fan Project Launcher needs to be installed in the same folder has the game.</value>
+    <value>Celeste Fan Project Launcher must be placed in the same folder has the Steam game files.</value>
   </data>
   <data name="SteamConverterSuccess" xml:space="preserve">
     <value>Celeste Fan Project Launcher is now compatible with Steam. It will now re-start.</value>
