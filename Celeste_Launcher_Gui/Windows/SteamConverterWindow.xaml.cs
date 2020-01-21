@@ -44,13 +44,17 @@ namespace Celeste_Launcher_Gui.Windows
                     return;
                 }
 
-                var currentApplicationDirectory = Path.GetDirectoryName(currentApplicationFullPath);
-                if (!string.Equals(LegacyBootstrapper.UserConfig.GameFilesPath, currentApplicationDirectory, StringComparison.OrdinalIgnoreCase))
+                var currentWorkingDirectory = Path.GetDirectoryName(currentApplicationFullPath);
+
+                if (!File.Exists($"{currentWorkingDirectory}\\steam_appid.txt"))
                 {
                     GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);
                     Close();
                     return;
                 }
+
+                LegacyBootstrapper.UserConfig.GameFilesPath = currentWorkingDirectory;
+                LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
                 Steam.ConvertToSteam(LegacyBootstrapper.UserConfig.GameFilesPath);
 
