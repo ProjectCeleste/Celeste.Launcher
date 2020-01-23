@@ -33,13 +33,13 @@ namespace Celeste_Launcher_Gui.Windows
         {
             if (!Misc.IsValidEmailAdress(EmailAddressField.InputContent))
             {
-                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error);
                 return;
             }
 
             if (ResetKeyField.InputContent.Length != 32)
             {
-                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidKey, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidKey, DialogIcon.Error);
                 return;
             }
 
@@ -51,19 +51,19 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show(response.Message, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(response.Message);
 
                     DialogResult = true;
                     Close();
                     return;
                 }
 
-                GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error);
             }
 
             IsEnabled = true;
@@ -73,7 +73,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             if (!Misc.IsValidEmailAdress(EmailAddressField.InputContent))
             {
-                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error);
                 return;
             }
 
@@ -88,17 +88,17 @@ namespace Celeste_Launcher_Gui.Windows
                     ResetKeyField.IsEnabled = true;
                     ResetPasswordBtn.IsEnabled = true;
 
-                    GenericMessageDialog.Show(response.Message, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(response.Message);
                 }
                 else
                 {
-                    GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error);
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error);
             }
 
             IsEnabled = true;

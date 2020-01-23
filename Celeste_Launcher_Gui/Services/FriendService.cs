@@ -5,6 +5,7 @@ using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ namespace Celeste_Launcher_Gui.Services
         event FriendListUpdatedEventHandler FriendListUpdated;
     }
 
-    public class FriendService : IFriendService
+    public sealed class FriendService : IFriendService
     {
         public const int MaxAllowedFriends = 99;
         private const int UpdateIntervalInMs = 30 * 1000;
@@ -34,7 +35,9 @@ namespace Celeste_Launcher_Gui.Services
         public event FriendListUpdatedEventHandler FriendListUpdated;
 
         private readonly WebSocketApi _webSocket;
-        private Timer _updateTimer;
+#pragma warning disable IDE0052
+        private readonly Timer _updateTimer;
+#pragma warning restore IDE0052
 
         private readonly ILogger _logger;
 
@@ -43,16 +46,14 @@ namespace Celeste_Launcher_Gui.Services
             _webSocket = webSocket;
             _logger = logger;
 
-            _updateTimer = new Timer(new TimerCallback((o) => UpdateFriendList()), null, UpdateIntervalInMs, UpdateIntervalInMs);
+            _updateTimer = new Timer(o => UpdateFriendList(), null, UpdateIntervalInMs, UpdateIntervalInMs);
         }
-        
+
         // TODO: Singleton instance should be handled through DI once .net core 3.1
         public static FriendService GetInstance()
         {
-            if (Instance == null)
-                Instance = new FriendService(LegacyBootstrapper.WebSocketApi, LoggerFactory.GetLogger());
-
-            return Instance;
+            return Instance ??
+                   (Instance = new FriendService(LegacyBootstrapper.WebSocketApi, LoggerFactory.GetLogger()));
         }
 
         public async Task<FriendList> FetchFriendList()
@@ -101,14 +102,7 @@ namespace Celeste_Launcher_Gui.Services
                 throw new Exception($"Unable to get friend list: {response.Message}");
             }
 
-            var friends = new List<Friend>();
-
-            foreach (var friend in response.Friends.Friends)
-            {
-                friends.Add(MapFriend(friend));
-            }
-
-            return friends;
+            return response.Friends.Friends.Select(MapFriend).ToList();
         }
 
         private async Task<(IList<Friend> incomingRequests, IList<Friend> outgoingRequests)> GetFriendRequests()
@@ -120,18 +114,9 @@ namespace Celeste_Launcher_Gui.Services
                 throw new Exception($"Unable to get friend list: {response.Message}");
             }
 
-            var incomingRequests = new List<Friend>();
-            var outgoingRequests = new List<Friend>();
+            var outgoingRequests = response.PendingFriendsRequest.Friends.Select(MapFriend).ToList();
 
-            foreach (var friend in response.PendingFriendsRequest.Friends)
-            {
-                outgoingRequests.Add(MapFriend(friend));
-            }
-
-            foreach (var friend in response.PendingFriendsInvite.Friends)
-            {
-                incomingRequests.Add(MapFriend(friend));
-            }
+            var incomingRequests = response.PendingFriendsInvite.Friends.Select(MapFriend).ToList();
 
             return (incomingRequests, outgoingRequests);
         }
@@ -154,7 +139,7 @@ namespace Celeste_Launcher_Gui.Services
             return response.Result;
         }
 
-        private Friend MapFriend(FriendJson friend)
+        private static Friend MapFriend(FriendJson friend)
         {
             return new Friend
             {

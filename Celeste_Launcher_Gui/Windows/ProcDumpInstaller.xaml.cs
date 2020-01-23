@@ -29,14 +29,14 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 var progress = new Progress<int>();
-                progress.ProgressChanged += (s, o) => { ProgressIndicator.ProgressBar.Value = o; };
+                progress.ProgressChanged += (s, o) => ProgressIndicator.ProgressBar.Value = o;
 
                 await ProcDump.DoDownloadAndInstallProcDump(progress);
             }
             catch (Exception exception)
             {
                 Logger.Error(exception, exception.Message);
-                GenericMessageDialog.Show(Properties.Resources.ProcdumpInstallError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ProcdumpInstallError, DialogIcon.Error);
             }
             finally
             {

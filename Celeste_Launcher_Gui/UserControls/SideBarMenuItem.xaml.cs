@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.UserControls
 {
@@ -22,8 +10,8 @@ namespace Celeste_Launcher_Gui.UserControls
     {
         public string LabelContents
         {
-            get { return (string)GetValue(LabelContentsProperty); }
-            set { SetValue(LabelContentsProperty, value); }
+            get => (string)GetValue(LabelContentsProperty);
+            set => SetValue(LabelContentsProperty, value);
         }
 
         public static readonly DependencyProperty LabelContentsProperty =
@@ -31,8 +19,8 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public string DefaultIcon
         {
-            get { return (string)GetValue(DefaultIconProperty); }
-            set { SetValue(DefaultIconProperty, value); }
+            get => (string)GetValue(DefaultIconProperty);
+            set => SetValue(DefaultIconProperty, value);
         }
 
         public static readonly DependencyProperty DefaultIconProperty =
@@ -40,8 +28,8 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public string HoverIcon
         {
-            get { return (string)GetValue(HoverIconProperty); }
-            set { SetValue(HoverIconProperty, value); }
+            get => (string)GetValue(HoverIconProperty);
+            set => SetValue(HoverIconProperty, value);
         }
 
         public static readonly DependencyProperty HoverIconProperty =
@@ -49,8 +37,8 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public int LabelSize
         {
-            get { return (int)GetValue(LabelSizeProperty); }
-            set { SetValue(LabelSizeProperty, value); }
+            get => (int)GetValue(LabelSizeProperty);
+            set => SetValue(LabelSizeProperty, value);
         }
 
         public static readonly DependencyProperty LabelSizeProperty =
@@ -58,8 +46,8 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public RoutedEventHandler Click
         {
-            get { return (RoutedEventHandler)GetValue(ClickProperty); }
-            set { SetValue(ClickProperty, value); }
+            get => (RoutedEventHandler)GetValue(ClickProperty);
+            set => SetValue(ClickProperty, value);
         }
 
         public static readonly DependencyProperty ClickProperty =

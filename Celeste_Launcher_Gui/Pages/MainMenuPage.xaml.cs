@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 
 namespace Celeste_Launcher_Gui.Pages
 {
@@ -74,8 +73,10 @@ namespace Celeste_Launcher_Gui.Pages
         #region Settings
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            var windowsFeatureHelper = new WindowsFeatureHelper();
-            windowsFeatureHelper.Owner = Window.GetWindow(this);
+            var windowsFeatureHelper = new WindowsFeatureHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             windowsFeatureHelper.ShowDialog();
         }
 
@@ -83,39 +84,45 @@ namespace Celeste_Launcher_Gui.Pages
         {
             LegacyBootstrapper.UserConfig.IsDiagnosticMode = !LegacyBootstrapper.UserConfig.IsDiagnosticMode;
 
-            if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
-            {
-                try
-                {
-                    var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
-                    if (!File.Exists(procdumpFileName))
-                    {
-                        var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo);
-                        dialog.Owner = Window.GetWindow(this);
+            if (!LegacyBootstrapper.UserConfig.IsDiagnosticMode)
+                return;
 
-                        var dr = dialog.ShowDialog();
-                        if (dr.Value == true)
-                        {
-                            var procDumpInstallerDialog = new ProcDumpInstaller();
-                            procDumpInstallerDialog.Owner = Window.GetWindow(this);
-                            procDumpInstallerDialog.ShowDialog();
-                        }
-                        else
-                            LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
-                    }
+            try
+            {
+                var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
+                if (File.Exists(procdumpFileName))
+                    return;
+                var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt,
+                    DialogIcon.Warning, DialogOptions.YesNo)
+                { Owner = Window.GetWindow(this) };
+
+                var dr = dialog.ShowDialog();
+                if (dr != null && dr.Value)
+                {
+                    var procDumpInstallerDialog = new ProcDumpInstaller
+                    {
+                        Owner = Window.GetWindow(this)
+                    };
+                    procDumpInstallerDialog.ShowDialog();
                 }
-                catch (Exception exception)
+                else
                 {
                     LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
-                    GenericMessageDialog.Show($"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}", DialogIcon.Warning, DialogOptions.Ok);
                 }
+            }
+            catch (Exception exception)
+            {
+                LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
+                GenericMessageDialog.Show($"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}", DialogIcon.Warning);
             }
         }
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            var steamConverterWindow = new SteamConverterWindow();
-            steamConverterWindow.Owner = Window.GetWindow(this);
+            var steamConverterWindow = new SteamConverterWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             steamConverterWindow.ShowDialog();
         }
 
@@ -129,19 +136,23 @@ namespace Celeste_Launcher_Gui.Pages
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error);
                 return;
             }
 
-            var scanner = new GamePathSelectionWindow();
-            scanner.Owner = Window.GetWindow(this);
+            var scanner = new GamePathSelectionWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             scanner.ShowDialog();
         }
 
         private void OpenFirewallHelper(object sender, RoutedEventArgs e)
         {
-            var firewallHelper = new Windows.WindowsFirewallHelper();
-            firewallHelper.Owner = Window.GetWindow(this);
+            var firewallHelper = new Windows.WindowsFirewallHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             firewallHelper.ShowDialog();
         }
 
@@ -150,12 +161,14 @@ namespace Celeste_Launcher_Gui.Pages
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error);
                 return;
             }
 
-            var updater = new UpdateWindow();
-            updater.Owner = Window.GetWindow(this);
+            var updater = new UpdateWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             updater.ShowDialog();
         }
         #endregion

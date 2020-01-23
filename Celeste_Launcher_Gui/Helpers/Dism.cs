@@ -1,12 +1,8 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Dism;
-
-#endregion
 
 namespace Celeste_Launcher_Gui.Helpers
 {

@@ -43,15 +43,13 @@ namespace Celeste_Launcher_Gui.Windows
                 else
                 {
                     GenericMessageDialog.Show(string.Format(Properties.Resources.SendFriendRequestFailed, UsernameInputField.InputContent),
-                            DialogIcon.Warning,
-                            DialogOptions.Ok);
+                            DialogIcon.Warning);
                 }
             }
             catch
             {
                 GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                        DialogIcon.Error);
             }
             finally
             {

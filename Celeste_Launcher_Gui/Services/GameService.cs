@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Celeste_Launcher_Gui.Services
 {
-    static class GameService
+    internal static class GameService
     {
         // TODO: Find a better way to do this (for example using an auth token)
         private static string CurrentEmail;
@@ -58,7 +58,7 @@ namespace Celeste_Launcher_Gui.Services
                     while (!success)
                     {
                         Logger.Information("Starting quick game scan");
-                        if (!await gameScannner.Scan(true))
+                        if (!await gameScannner.Scan())
                         {
                             Logger.Information("Game scanner did not approve game files");
 
@@ -67,7 +67,7 @@ namespace Celeste_Launcher_Gui.Services
                                 DialogIcon.None,
                                 DialogOptions.YesNo);
 
-                            if (dialogResult.Value)
+                            if (dialogResult != null && dialogResult.Value)
                             {
                                 var scanner = new GamePathSelectionWindow();
                                 scanner.ShowDialog();
@@ -162,6 +162,9 @@ namespace Celeste_Launcher_Gui.Services
                         break;
                     case GameLanguage.zhCHT:
                         lang = "zh-CHT";
+                        break;
+                    case GameLanguage.ptBR:
+                        lang = "pt-BR";
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(LegacyBootstrapper.UserConfig.GameLanguage),
@@ -279,15 +282,21 @@ namespace Celeste_Launcher_Gui.Services
 
                 string arg;
                 if (isOffline)
+                {
                     arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                }
                 else if (LegacyBootstrapper.UserConfig?.MpSettings == null ||
-                         LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
+                        LegacyBootstrapper.UserConfig.MpSettings.ConnectionType == ConnectionType.Wan)
+                {
                     arg = LegacyBootstrapper.UserConfig.MpSettings.PortMappingType == PortMappingType.NatPunch
-                        ? $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
-                        : $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                       ? $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033"
+                       : $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --no-nat-punchthrough --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                }
                 else
+                {
                     arg =
-                        $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                       $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
+                }
 
                 Logger.Information("Starting game {@GameExecutable} at {@GamePath}", spartanPath, gamePath);
                 Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });

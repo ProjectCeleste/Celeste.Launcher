@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Windows;
@@ -29,6 +29,8 @@ namespace Celeste_Launcher_Gui.Windows
                 case ConnectionType.Other:
                     OtherConnectionTypeCheckBox.IsChecked = true;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mpSettings.ConnectionType), mpSettings.ConnectionType, null);
             }
 
             switch (mpSettings.PortMappingType)
@@ -42,6 +44,8 @@ namespace Celeste_Launcher_Gui.Windows
                 case PortMappingType.Manual:
                     ManualPortMappingCheckBox.IsChecked = true;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mpSettings.PortMappingType), mpSettings.PortMappingType, null);
             }
         }
 
@@ -57,7 +61,6 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-
             if (WanConnectionTypeCheckBox.IsChecked == true)
             {
                 LegacyBootstrapper.UserConfig.MpSettings.ConnectionType = ConnectionType.Wan;
@@ -90,35 +93,28 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void WanConnectionTypeCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (WanConnectionTypeCheckBox.IsChecked == true)
-            {
-                if (LegacyBootstrapper.CurrentUser != null &&
-                    !string.IsNullOrWhiteSpace(LegacyBootstrapper.CurrentUser.Ip))
-                {
-                    RemoteIPField.InputContent = LegacyBootstrapper.CurrentUser.Ip;
-                }
-                else
-                {
-                    //FallBack to Other
-                    RemoteIPField.InputContent = "127.0.0.1";
-                    OtherConnectionTypeCheckBox.IsChecked = true;
-                    return;
-                }
+            if (WanConnectionTypeCheckBox.IsChecked != true)
+                return;
 
-                _selectedInterfaceName = string.Empty;
+            if (LegacyBootstrapper.CurrentUser != null &&
+                !string.IsNullOrWhiteSpace(LegacyBootstrapper.CurrentUser.Ip))
+            {
+                RemoteIPField.InputContent = LegacyBootstrapper.CurrentUser.Ip;
             }
+            else
+            {
+                //FallBack to Other
+                RemoteIPField.InputContent = "127.0.0.1";
+                OtherConnectionTypeCheckBox.IsChecked = true;
+                return;
+            }
+
+            _selectedInterfaceName = string.Empty;
         }
 
         private void OtherConnectionTypeCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (OtherConnectionTypeCheckBox.IsChecked == true)
-            {
-                _selectedInterfaceName = Properties.Resources.MultiplayerSettingsOtherNetworkDevice;
-            }
-            else
-            {
-                _selectedInterfaceName = string.Empty;
-            }
+            _selectedInterfaceName = OtherConnectionTypeCheckBox.IsChecked == true ? Properties.Resources.MultiplayerSettingsOtherNetworkDevice : string.Empty;
         }
 
         private void LanConnectionTypeCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -126,13 +122,14 @@ namespace Celeste_Launcher_Gui.Windows
             if (LanConnectionTypeCheckBox.IsChecked == false)
                 return;
 
-            var networkInterface = NetworkInterface.GetAllNetworkInterfaces()
-                .FirstOrDefault(t => t.Name == LegacyBootstrapper.UserConfig?.MpSettings?.LanNetworkInterface);
+            var networkInterface = Array.Find(NetworkInterface.GetAllNetworkInterfaces(), t => t.Name == LegacyBootstrapper.UserConfig?.MpSettings?.LanNetworkInterface);
 
             if (networkInterface == null)
             {
-                var netDeviceSelectDialog = new NetworkDeviceSelectorDialog();
-                netDeviceSelectDialog.Owner = this;
+                var netDeviceSelectDialog = new NetworkDeviceSelectorDialog
+                {
+                    Owner = this
+                };
                 netDeviceSelectDialog.ShowDialog();
 
                 if (netDeviceSelectDialog.DialogResult != true)
@@ -147,16 +144,15 @@ namespace Celeste_Launcher_Gui.Windows
             }
 
             // Get IPv4 address of the network interface:
-            if (networkInterface != null)
+            if (networkInterface == null)
+                return;
+
+            foreach (var ip in networkInterface.GetIPProperties().UnicastAddresses)
             {
-                foreach (var ip in networkInterface.GetIPProperties().UnicastAddresses)
-                {
-                    if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                    {
-                        RemoteIPField.InputContent = ip.Address.ToString();
-                        return;
-                    }
-                }
+                if (ip.Address.AddressFamily != AddressFamily.InterNetwork)
+                    continue;
+                RemoteIPField.InputContent = ip.Address.ToString();
+                return;
             }
         }
     }

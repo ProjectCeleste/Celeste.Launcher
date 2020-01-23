@@ -6,19 +6,10 @@ using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.Pages
 {
@@ -35,14 +26,14 @@ namespace Celeste_Launcher_Gui.Pages
 
             var storedCredentials = UserCredentialService.GetStoredUserCredentials();
 
-            if (LegacyBootstrapper.UserConfig.LoginInfo.RememberMe == true && storedCredentials != null)
-            {
-                _logger.Information("User has already stored credentials before");
-                EmailInputField.InputContent = storedCredentials.Email;
-                PasswordInputField.PasswordInputBox.Password = "**********";
-                RememberPasswordOption.IsChecked = true;
-                AutoLoginOption.IsEnabled = true;
-            }
+            if (!LegacyBootstrapper.UserConfig.LoginInfo.RememberMe || storedCredentials == null)
+                return;
+
+            _logger.Information("User has already stored credentials before");
+            EmailInputField.InputContent = storedCredentials.Email;
+            PasswordInputField.PasswordInputBox.Password = "**********";
+            RememberPasswordOption.IsChecked = true;
+            AutoLoginOption.IsEnabled = true;
         }
 
         private void OnAbortLoginClick(object sender, RoutedEventArgs e)
@@ -58,7 +49,7 @@ namespace Celeste_Launcher_Gui.Pages
                 var storedCredentials = UserCredentialService.GetStoredUserCredentials();
                 LoginResult loginResult;
 
-                _logger.Information("Stored credentials is null: {@IsNull}", (storedCredentials == null));
+                _logger.Information("Stored credentials is null: {@IsNull}", storedCredentials == null);
 
                 if (storedCredentials != null && (RememberPasswordOption.IsChecked ?? false))
                 {
@@ -74,19 +65,19 @@ namespace Celeste_Launcher_Gui.Pages
 
                     if (password.Length < 8)
                     {
-                        GenericMessageDialog.Show($"{Properties.Resources.LoginTooShortPassword}", DialogIcon.Error, DialogOptions.Ok);
+                        GenericMessageDialog.Show($"{Properties.Resources.LoginTooShortPassword}", DialogIcon.Error);
                         return;
                     }
 
                     if (password.Length > 32)
                     {
-                        GenericMessageDialog.Show($"{Properties.Resources.LoginTooLongPassword}", DialogIcon.Error, DialogOptions.Ok);
+                        GenericMessageDialog.Show($"{Properties.Resources.LoginTooLongPassword}", DialogIcon.Error);
                         return;
                     }
 
                     if (!Misc.IsValidEmailAdress(email))
                     {
-                        GenericMessageDialog.Show($"{Properties.Resources.LoginBadEmail}", DialogIcon.Error, DialogOptions.Ok);
+                        GenericMessageDialog.Show($"{Properties.Resources.LoginBadEmail}", DialogIcon.Error);
                         return;
                     }
 
@@ -114,7 +105,7 @@ namespace Celeste_Launcher_Gui.Pages
                 else
                 {
                     _logger.Information("Failed signing in because {@Message}", loginResult.Message);
-                    GenericMessageDialog.Show($"{Properties.Resources.LoginErrorMessage} {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show($"{Properties.Resources.LoginErrorMessage} {loginResult.Message}", DialogIcon.Error);
                     PasswordInputField.PasswordInputBox.Clear();
                     UserCredentialService.ClearVault();
                 }
@@ -122,7 +113,7 @@ namespace Celeste_Launcher_Gui.Pages
             catch (Exception ex)
             {
                 _logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
                 PasswordInputField.PasswordInputBox.Clear();
                 UserCredentialService.ClearVault();
             }
@@ -132,7 +123,7 @@ namespace Celeste_Launcher_Gui.Pages
             }
         }
 
-        private async Task<LoginResult> PerformLogin(string email, SecureString password)
+        private static async Task<LoginResult> PerformLogin(string email, SecureString password)
         {
             GameService.SetCredentials(email, password);
 
@@ -141,8 +132,10 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void ForgottenPasswordClick(object sender, RoutedEventArgs e)
         {
-            var resetPasswordDialog = new ResetPasswordDialog();
-            resetPasswordDialog.Owner = Window.GetWindow(this);
+            var resetPasswordDialog = new ResetPasswordDialog
+            {
+                Owner = Window.GetWindow(this)
+            };
             resetPasswordDialog.ShowDialog();
         }
 

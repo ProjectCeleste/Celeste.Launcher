@@ -1,12 +1,8 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.IO.Compression;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-
-#endregion
 
 namespace Celeste_Launcher_Gui.Helpers
 {

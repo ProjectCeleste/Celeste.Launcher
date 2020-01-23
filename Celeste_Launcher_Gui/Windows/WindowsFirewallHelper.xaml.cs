@@ -45,7 +45,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (!File.Exists(launcherPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound, DialogIcon.Error);
                     Close();
                     return;
                 }
@@ -61,7 +61,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             LoadFirewallRules();
@@ -82,7 +82,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (!File.Exists(spartanPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound, DialogIcon.Error);
                     Close();
                     return;
                 }
@@ -122,7 +122,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             LoadFirewallRules();
@@ -154,7 +154,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
 
             LoadFirewallRules();
@@ -176,7 +176,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (!File.Exists(launcherPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperLauncherNotFound, DialogIcon.Error);
                     Close();
                     return;
                 }
@@ -210,7 +210,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (!File.Exists(spartanPath))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound, DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.WindowsFirewallHelperSpartanNotFound, DialogIcon.Error);
                     Close();
                     return;
                 }
@@ -220,7 +220,6 @@ namespace Celeste_Launcher_Gui.Windows
                 var rule2 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_udp");
                 if (rule1 == null || rule2 == null)
                 {
-
                     SpartanInboundStatus.Content = Properties.Resources.WindowsFirewallHelperRuleNotFound;
                     SpartanInboundStatus.Foreground = new SolidColorBrush(Colors.Red);
                 }
@@ -311,7 +310,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
         }
     }

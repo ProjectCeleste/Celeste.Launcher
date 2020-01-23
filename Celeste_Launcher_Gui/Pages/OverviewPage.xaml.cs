@@ -31,7 +31,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void SetFriendListIcon(Model.Friends.FriendList e)
         {
-            Dispatcher.Invoke(() =>
+            Dispatcher?.Invoke(() =>
             {
                 if (e.IncomingRequests.Count > 0)
                 {
@@ -119,8 +119,10 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnChangePasswordClick(object sender, RoutedEventArgs e)
         {
-            var changePasswordDialog = new ChangePasswordDialog();
-            changePasswordDialog.Owner = Window.GetWindow(this);
+            var changePasswordDialog = new ChangePasswordDialog
+            {
+                Owner = Window.GetWindow(this)
+            };
             changePasswordDialog.ShowDialog();
         }
 
@@ -164,53 +166,65 @@ namespace Celeste_Launcher_Gui.Pages
         {
             LegacyBootstrapper.UserConfig.IsDiagnosticMode = !LegacyBootstrapper.UserConfig.IsDiagnosticMode;
 
-            if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
-            {
-                try
-                {
-                    var procdumpFileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
-                    if (!File.Exists(procdumpFileName))
-                    {
-                        var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo);
-                        dialog.Owner = Window.GetWindow(this);
+            if (!LegacyBootstrapper.UserConfig.IsDiagnosticMode)
+                return;
 
-                        var dr = dialog.ShowDialog();
-                        if (dr.Value == true)
-                        {
-                            var procDumpInstallerDialog = new ProcDumpInstaller();
-                            procDumpInstallerDialog.Owner = Window.GetWindow(this);
-                            procDumpInstallerDialog.ShowDialog();
-                        }
-                        else
-                            LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
-                    }
+            try
+            {
+                var procdumpFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "procdump.exe");
+                if (File.Exists(procdumpFileName))
+                    return;
+
+                var dialog = new GenericMessageDialog(Properties.Resources.EnableDiagnosticsModeInstallProcdumpPrompt, DialogIcon.Warning, DialogOptions.YesNo)
+                {
+                    Owner = Window.GetWindow(this)
+                };
+
+                var dr = dialog.ShowDialog();
+                if (dr != null && dr.Value)
+                {
+                    var procDumpInstallerDialog = new ProcDumpInstaller
+                    {
+                        Owner = Window.GetWindow(this)
+                    };
+                    procDumpInstallerDialog.ShowDialog();
                 }
-                catch (Exception exception)
+                else
                 {
                     LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
-                    GenericMessageDialog.Show($"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}", DialogIcon.Warning, DialogOptions.Ok);
                 }
+            }
+            catch (Exception exception)
+            {
+                LegacyBootstrapper.UserConfig.IsDiagnosticMode = false;
+                GenericMessageDialog.Show($"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}", DialogIcon.Warning);
             }
         }
 
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
-            var steamConverterWindow = new SteamConverterWindow();
-            steamConverterWindow.Owner = Window.GetWindow(this);
+            var steamConverterWindow = new SteamConverterWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             steamConverterWindow.ShowDialog();
         }
 
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            var featureHelper = new WindowsFeatureHelper();
-            featureHelper.Owner = Window.GetWindow(this);
+            var featureHelper = new WindowsFeatureHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             featureHelper.ShowDialog();
         }
 
         private void OpenWindowsFirewall(object sender, RoutedEventArgs e)
         {
-            var firewallHelper = new Windows.WindowsFirewallHelper();
-            firewallHelper.Owner = Window.GetWindow(this);
+            var firewallHelper = new Windows.WindowsFirewallHelper
+            {
+                Owner = Window.GetWindow(this)
+            };
             firewallHelper.ShowDialog();
         }
 
@@ -219,12 +233,14 @@ namespace Celeste_Launcher_Gui.Pages
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error);
                 return;
             }
 
-            var scanner = new GamePathSelectionWindow();
-            scanner.Owner = Window.GetWindow(this);
+            var scanner = new GamePathSelectionWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             scanner.ShowDialog();
         }
 
@@ -233,12 +249,14 @@ namespace Celeste_Launcher_Gui.Pages
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
             {
-                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Error);
                 return;
             }
 
-            var updater = new UpdateWindow();
-            updater.Owner = Window.GetWindow(this);
+            var updater = new UpdateWindow
+            {
+                Owner = Window.GetWindow(this)
+            };
             updater.ShowDialog();
         }
         #endregion
@@ -277,15 +295,19 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenScenarionManager(object sender, RoutedEventArgs e)
         {
-            var scenarioManagerDialog = new ScenarioManager();
-            scenarioManagerDialog.Owner = Window.GetWindow(this);
+            var scenarioManagerDialog = new ScenarioManager
+            {
+                Owner = Window.GetWindow(this)
+            };
             scenarioManagerDialog.Show();
         }
 
         private void OpenMultiplayerSettings(object sender, RoutedEventArgs e)
         {
-            var multiplayerSettingsDialog = new MultiplayerSettings();
-            multiplayerSettingsDialog.Owner = Window.GetWindow(this);
+            var multiplayerSettingsDialog = new MultiplayerSettings
+            {
+                Owner = Window.GetWindow(this)
+            };
             multiplayerSettingsDialog.ShowDialog();
         }
 

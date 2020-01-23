@@ -1,4 +1,5 @@
-﻿using System.Media;
+﻿using System;
+using System.Media;
 using System.Windows;
 using System.Windows.Input;
 
@@ -20,29 +21,40 @@ namespace Celeste_Launcher_Gui.Windows
 
             Message = message;
 
-            if (icon == DialogIcon.Error)
-                IconSource = "pack://application:,,,/Celeste Launcher;component/Resources/Error.png";
-            else if (icon == DialogIcon.Warning)
-                IconSource = "pack://application:,,,/Celeste Launcher;component/Resources/Warning.png";
-            else
-                DialogIconContents.Visibility = Visibility.Collapsed;
-
-            if (option == DialogOptions.Ok)
+            switch (icon)
             {
-                YesNoOptions.Visibility = Visibility.Collapsed;
-                OkOptions.Visibility = Visibility.Visible;
+                case DialogIcon.Error:
+                    IconSource = "pack://application:,,,/Celeste Launcher;component/Resources/Error.png";
+                    break;
+                case DialogIcon.Warning:
+                    IconSource = "pack://application:,,,/Celeste Launcher;component/Resources/Warning.png";
+                    break;
+                default:
+                    DialogIconContents.Visibility = Visibility.Collapsed;
+                    break;
             }
-            else if (option == DialogOptions.YesNo)
+
+            switch (option)
             {
-                YesNoOptions.Visibility = Visibility.Visible;
-                OkOptions.Visibility = Visibility.Collapsed;
+                case DialogOptions.Ok:
+                    YesNoOptions.Visibility = Visibility.Collapsed;
+                    OkOptions.Visibility = Visibility.Visible;
+                    break;
+                case DialogOptions.YesNo:
+                    YesNoOptions.Visibility = Visibility.Visible;
+                    OkOptions.Visibility = Visibility.Collapsed;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(option), option, null);
             }
         }
 
         public static bool? Show(string message, DialogIcon icon = DialogIcon.None, DialogOptions option = DialogOptions.Ok)
         {
-            var dialog = new GenericMessageDialog(message, icon, option);
-            dialog.Owner = Application.Current.MainWindow;
+            var dialog = new GenericMessageDialog(message, icon, option)
+            {
+                Owner = Application.Current.MainWindow
+            };
             return dialog.ShowDialog();
         }
 

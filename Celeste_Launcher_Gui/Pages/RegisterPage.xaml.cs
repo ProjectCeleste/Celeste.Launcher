@@ -102,18 +102,18 @@ namespace Celeste_Launcher_Gui.Pages
 
             try
             {
-                var response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.InputContent, VerifyKeyField.InputContent, 
+                var response = await LegacyBootstrapper.WebSocketApi.DoRegister(EmailField.InputContent, VerifyKeyField.InputContent,
                     UsernameField.InputContent, PasswordField.PasswordInputBox.Password);
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show($@"{response.Message}");
+                    GenericMessageDialog.Show($"{response.Message}");
 
                     NavigationService.Navigate(new Uri("Pages/MainMenuPage.xaml", UriKind.Relative));
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show($"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
                 }
             }
             catch (Exception ex)

@@ -37,11 +37,9 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void ConfirmBtnClick(object sender, RoutedEventArgs e)
         {
-            var selectedNetworkInterface = NetworkInterfaceListView.SelectedItem as ListViewItem;
-
-            if (selectedNetworkInterface == null)
+            if (!(NetworkInterfaceListView.SelectedItem is ListViewItem selectedNetworkInterface))
             {
-                GenericMessageDialog.Show(Properties.Resources.NetworkDeviceSelectorNoDeviceSelected, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.NetworkDeviceSelectorNoDeviceSelected, DialogIcon.Error);
                 return;
             }
 
@@ -64,7 +62,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 foreach (var ip in ips)
                 {
-                    string content = $"{networkInterface.Name} ({ip.Address})";
+                    var content = $"{networkInterface.Name} ({ip.Address})";
 
                     NetworkInterfaceListView.Items.Add(new ListViewItem
                     {

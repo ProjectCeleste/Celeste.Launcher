@@ -36,8 +36,7 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
                 if (_friendListViewModel?.FriendListCount >= FriendService.MaxAllowedFriends)
                 {
                     GenericMessageDialog.Show(Properties.Resources.FriendListMaxFriendsReached,
-                                           DialogIcon.Warning,
-                                           DialogOptions.Ok);
+                                           DialogIcon.Warning);
                     return;
                 }
 
@@ -50,9 +49,13 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
             {
                 _logger.Error(ex, ex.Message);
                 GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                        DialogIcon.Error);
             }
+        }
+
+        protected virtual void OnCanExecuteChanged(EventArgs e)
+        {
+            CanExecuteChanged?.Invoke(this, e);
         }
     }
 }

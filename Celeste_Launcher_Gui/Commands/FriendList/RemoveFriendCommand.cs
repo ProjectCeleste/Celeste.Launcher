@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Celeste_Launcher_Gui.Commands.FriendList
 {
-    class RemoveFriendCommand : ICommand
+    internal class RemoveFriendCommand : ICommand
     {
         private readonly FriendListViewModel _friendListViewModel;
         private readonly Action _updateFriendAction;
@@ -42,9 +42,13 @@ namespace Celeste_Launcher_Gui.Commands.FriendList
             {
                 _logger.Error(ex, ex.Message);
                 GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                        DialogIcon.Error);
             }
+        }
+
+        protected virtual void OnCanExecuteChanged(EventArgs e)
+        {
+            CanExecuteChanged?.Invoke(this, e);
         }
     }
 }

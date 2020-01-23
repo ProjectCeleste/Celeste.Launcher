@@ -7,12 +7,11 @@ using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
-    class FriendListViewModelFactory
+    internal class FriendListViewModelFactory
     {
         private readonly IFriendService _friendService;
         private readonly ILogger _logger;
@@ -25,7 +24,7 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public FriendListViewModel CreateFriendListViewModel(FriendList friendList, Action refreshFriendListAction)
         {
-            var friendListViewModel = new FriendListViewModel()
+            var friendListViewModel = new FriendListViewModel
             {
                 FriendListItems = new ObservableCollection<FriendListItem>()
             };
@@ -53,41 +52,39 @@ namespace Celeste_Launcher_Gui.Helpers
             return friendListViewModel;
         }
 
-        private FriendListItem MapFriendToViewModel(Friend friend, ICommand removeFriendCommand)
+        private static FriendListItem MapFriendToViewModel(Friend friend, ICommand removeFriendCommand)
         {
             var presenceComponents = friend.RichPresence.Replace("\\r", "").Split('\n');
             var friendIsInGame = presenceComponents.Length > 1;
             var friendStatus = friendIsInGame ? presenceComponents[1] : string.Empty;
 
-            if (friend.IsOnline)
+            if (!friend.IsOnline)
             {
-                var faction = presenceComponents[0];
-
-                return new OnlineFriend()
-                {
-                    XUid = friend.Xuid,
-                    Username = friend.Username,
-                    Faction = faction,
-                    Status = friendStatus,
-                    RemoveFriendCommand = removeFriendCommand,
-                    ProfilePictureBackgroundLocation = DecideProfilePictureForFaction(faction),
-                    ListViewItemBackgroundLocation = DecideBackgroundForFaction(faction)
-                };
-            }
-            else
-            {
-                return new OfflineFriend()
+                return new OfflineFriend
                 {
                     XUid = friend.Xuid,
                     Username = friend.Username,
                     RemoveFriendCommand = removeFriendCommand
                 };
             }
+
+            var faction = presenceComponents[0];
+
+            return new OnlineFriend
+            {
+                XUid = friend.Xuid,
+                Username = friend.Username,
+                Faction = faction,
+                Status = friendStatus,
+                RemoveFriendCommand = removeFriendCommand,
+                ProfilePictureBackgroundLocation = DecideProfilePictureForFaction(faction),
+                ListViewItemBackgroundLocation = DecideBackgroundForFaction(faction)
+            };
         }
 
-        private FriendListItem MapFriendRequestToViewModel(Friend incomingFriend, ICommand acceptFriendCommand, ICommand declineFriendCommand)
+        private static FriendListItem MapFriendRequestToViewModel(Friend incomingFriend, ICommand acceptFriendCommand, ICommand declineFriendCommand)
         {
-            return new IncomingFriendRequest()
+            return new IncomingFriendRequest
             {
                 AcceptFriendRequestCommand = acceptFriendCommand,
                 DeclineFriendRequestCommand = declineFriendCommand,
@@ -96,9 +93,9 @@ namespace Celeste_Launcher_Gui.Helpers
             };
         }
 
-        private FriendListItem MapOutoingFriendRequest(Friend outgoingRequest, ICommand cancelRequestCommand)
+        private static FriendListItem MapOutoingFriendRequest(Friend outgoingRequest, ICommand cancelRequestCommand)
         {
-            return new OutgoingFriendRequest()
+            return new OutgoingFriendRequest
             {
                 Username = outgoingRequest.Username,
                 XUid = outgoingRequest.Xuid,
@@ -106,31 +103,25 @@ namespace Celeste_Launcher_Gui.Helpers
             };
         }
 
-        private string DecideProfilePictureForFaction(string status)
+        private static string DecideProfilePictureForFaction(string status)
         {
             var factionCardName = GetFaction(status) ?? "Default";
             return $"pack://application:,,,/Celeste Launcher;component/Resources/FriendList/ProfilePictures/{factionCardName}.png";
         }
 
-        private string DecideBackgroundForFaction(string status)
+        private static string DecideBackgroundForFaction(string status)
         {
             var factionCardName = GetFaction(status) ?? "Empty";
             return $"pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-{factionCardName}.png";
         }
 
-        private string GetFaction(string status)
+        private static string GetFaction(string status)
         {
             var comparer = CultureInfo.InvariantCulture.CompareInfo;
 
             var factions = new[] { "Babylon", "Celt", "Egypt", "Greek", "Norse", "Roman", "Persia" };
 
-            foreach (var faction in factions)
-            {
-                if (comparer.IndexOf(status, faction, CompareOptions.IgnoreCase) >= 0)
-                    return faction;
-            }
-
-            return null;
+            return Array.Find(factions, faction => comparer.IndexOf(status, faction, CompareOptions.IgnoreCase) >= 0);
         }
     }
 }

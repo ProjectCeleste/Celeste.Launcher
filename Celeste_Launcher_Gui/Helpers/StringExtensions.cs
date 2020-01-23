@@ -4,13 +4,11 @@
     {
         public static string WrapIfLengthIsLongerThan(this string theString, int maxLength, string prefix = "")
         {
-            if (theString.Length > maxLength)
-            {
-                var cutIndex = theString.Length - maxLength;
-                return prefix + theString.Substring(cutIndex);
-            }
+            if (theString.Length <= maxLength)
+                return theString;
 
-            return theString;
+            var cutIndex = theString.Length - maxLength;
+            return prefix + theString.Substring(cutIndex);
         }
     }
 }

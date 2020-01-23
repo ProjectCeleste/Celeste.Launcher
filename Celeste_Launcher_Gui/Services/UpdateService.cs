@@ -82,10 +82,7 @@ namespace Celeste_Launcher_Gui.Services
                 var changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
                     .Replace("Full Changelog", string.Empty).Replace("Change Log", string.Empty);
 
-                if (!string.IsNullOrWhiteSpace(changelogFormatted))
-                    return changelogFormatted;
-
-                return Properties.Resources.UpdateServiceChangelogError;
+                return !string.IsNullOrWhiteSpace(changelogFormatted) ? changelogFormatted : Properties.Resources.UpdateServiceChangelogError;
             }
             catch (Exception ex)
             {
@@ -109,7 +106,7 @@ namespace Celeste_Launcher_Gui.Services
         }
 
         public static async Task DownloadAndInstallUpdate(bool isSteam = false, IProgress<int> progress = null,
-            CancellationToken ct = default(CancellationToken))
+            CancellationToken ct = default)
         {
             Misc.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
 
@@ -137,10 +134,10 @@ namespace Celeste_Launcher_Gui.Services
             {
                 var downloadFileAsync = new SimpleFileDownloader(downloadLink, tempFileName);
                 if (progress != null)
-                    downloadFileAsync.ProgressChanged += (sender, args) =>
-                    {
-                        progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DownloadProgress / 100))));
-                    };
+                {
+                    downloadFileAsync.ProgressChanged += (sender, args) => progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DownloadProgress / 100))));
+                }
+
                 await downloadFileAsync.DownloadAsync(ct);
             }
             catch (AggregateException)
@@ -158,10 +155,7 @@ namespace Celeste_Launcher_Gui.Services
             if (progress != null)
             {
                 extractProgress = new Progress<double>();
-                extractProgress.ProgressChanged += (o, ea) =>
-                {
-                    progress.Report(70 + Convert.ToInt32(Math.Floor(20 * (ea / 100))));
-                };
+                extractProgress.ProgressChanged += (o, ea) => progress.Report(70 + Convert.ToInt32(Math.Floor(20 * (ea / 100))));
             }
             var tempDir = Path.Combine(Path.GetTempPath(), $"Celeste_Launcher_v{gitVersion}");
 

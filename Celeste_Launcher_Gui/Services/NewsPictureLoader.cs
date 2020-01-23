@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Celeste_Launcher_Gui.Services
 {
-    class NewsPictureLoader
+    internal class NewsPictureLoader
     {
         private const string NewsDescriptionUri = "https://static.projectceleste.com/launcher/news.json";
 

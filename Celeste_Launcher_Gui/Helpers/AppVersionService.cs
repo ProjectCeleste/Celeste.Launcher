@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
     public static class AppVersionService
     {
-        public static string CurrentAppVersion
-        {
-            get
-            {
-                return $"V {Assembly.GetExecutingAssembly().GetName().Version}";
-            }
-        }
+        public static string CurrentAppVersion => $"V {Assembly.GetExecutingAssembly().GetName().Version}";
     }
 }

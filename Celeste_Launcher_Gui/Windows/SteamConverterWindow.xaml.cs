@@ -39,7 +39,7 @@ namespace Celeste_Launcher_Gui.Windows
                 var currentApplicationFullPath = Assembly.GetEntryAssembly().Location;
                 if (currentApplicationFullPath.EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.SteamConverterAlreadySteamGame);
                     Close();
                     return;
                 }
@@ -48,7 +48,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (!File.Exists($"{currentWorkingDirectory}\\steam_appid.txt"))
                 {
-                    GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory);
                     Close();
                     return;
                 }
@@ -58,7 +58,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 Steam.ConvertToSteam(LegacyBootstrapper.UserConfig.GameFilesPath);
 
-                GenericMessageDialog.Show(Properties.Resources.SteamConverterSuccess, DialogIcon.None, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.SteamConverterSuccess);
 
                 Process.Start(Assembly.GetEntryAssembly().Location
                     .Replace(Path.GetFileName(currentApplicationFullPath), "AOEOnline.exe"));
@@ -68,7 +68,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
         }
     }

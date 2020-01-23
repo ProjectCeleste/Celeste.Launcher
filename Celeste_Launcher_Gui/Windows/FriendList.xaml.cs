@@ -14,20 +14,18 @@ namespace Celeste_Launcher_Gui.Windows
     /// <summary>
     /// Interaction logic for FriendList.xaml
     /// </summary>
-    public partial class FriendList : Window
+    public sealed partial class FriendList : Window
     {
         private readonly IFriendService _friendService;
         private readonly ILogger _logger;
         private readonly FriendListViewModelFactory _friendListViewModelFactory;
-        
+
         private static FriendList Instance;
 
         public static void Display()
         {
-            if (Instance == null)
-                Instance = new FriendList();
 
-            Instance.Show();
+            (Instance ?? (Instance = new FriendList())).Show();
         }
 
         private FriendList()
@@ -91,7 +89,7 @@ namespace Celeste_Launcher_Gui.Windows
             var friendListViewItem = item as FriendListItem;
             var filterText = FilterInputText.Text;
 
-            if (string.IsNullOrWhiteSpace(filterText) || friendListViewItem == null || friendListViewItem.Username == null)
+            if (string.IsNullOrWhiteSpace(filterText) || friendListViewItem?.Username == null)
                 return true;
 
             if (CultureInfo.InvariantCulture.CompareInfo.IndexOf(friendListViewItem.Username, filterText, CompareOptions.IgnoreCase) >= 0)
@@ -106,10 +104,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (string.Equals("incoming", filterText, StringComparison.OrdinalIgnoreCase) && friendListViewItem is IncomingFriendRequest)
                 return true;
 
-            if (string.Equals("outgoing", filterText, StringComparison.OrdinalIgnoreCase) && friendListViewItem is OutgoingFriendRequest)
-                return true;
-
-            return false;
+            return string.Equals("outgoing", filterText, StringComparison.OrdinalIgnoreCase) && friendListViewItem is OutgoingFriendRequest;
         }
 
         private void AddFriendClick(object sender, RoutedEventArgs e)
@@ -118,13 +113,14 @@ namespace Celeste_Launcher_Gui.Windows
             if (friendList?.FriendListCount >= FriendService.MaxAllowedFriends)
             {
                 GenericMessageDialog.Show(Properties.Resources.FriendListMaxFriendsReached,
-                                       DialogIcon.Warning,
-                                       DialogOptions.Ok);
+                                       DialogIcon.Warning);
                 return;
             }
 
-            var addFriendDialog = new AddFriendDialog(_friendService);
-            addFriendDialog.Owner = this;
+            var addFriendDialog = new AddFriendDialog(_friendService)
+            {
+                Owner = this
+            };
 
             var userSelectedAddFriend = addFriendDialog.ShowDialog();
 

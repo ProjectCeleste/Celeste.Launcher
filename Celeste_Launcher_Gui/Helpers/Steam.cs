@@ -1,10 +1,6 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.IO;
 using Celeste_Public_Api.Helpers;
-
-#endregion
 
 namespace Celeste_Launcher_Gui.Helpers
 {

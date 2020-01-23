@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.UserControls
 {
@@ -34,35 +22,35 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public static readonly DependencyProperty IconHeightProperty =
             DependencyProperty.Register("IconHeight", typeof(int), typeof(WindowControl), new PropertyMetadata(32));
-        
+
         public string DefaultIcon
         {
-            get { return (string)GetValue(DefaultIconProperty); }
-            set { SetValue(DefaultIconProperty, value); }
+            get => (string)GetValue(DefaultIconProperty);
+            set => SetValue(DefaultIconProperty, value);
         }
 
         public string HoverIcon
         {
-            get { return (string)GetValue(HoverIconProperty); }
-            set { SetValue(HoverIconProperty, value); }
+            get => (string)GetValue(HoverIconProperty);
+            set => SetValue(HoverIconProperty, value);
         }
 
         public RoutedEventHandler Click
         {
-            get { return (RoutedEventHandler)GetValue(ClickProperty); }
-            set { SetValue(ClickProperty, value); }
+            get => (RoutedEventHandler)GetValue(ClickProperty);
+            set => SetValue(ClickProperty, value);
         }
 
         public int IconWidth
         {
-            get { return (int)GetValue(IconWidthProperty); }
-            set { SetValue(IconWidthProperty, value); }
+            get => (int)GetValue(IconWidthProperty);
+            set => SetValue(IconWidthProperty, value);
         }
 
         public int IconHeight
         {
-            get { return (int)GetValue(IconHeightProperty); }
-            set { SetValue(IconHeightProperty, value); }
+            get => (int)GetValue(IconHeightProperty);
+            set => SetValue(IconHeightProperty, value);
         }
 
         public WindowControl()

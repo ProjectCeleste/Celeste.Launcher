@@ -68,12 +68,12 @@ namespace Celeste_Launcher_Gui.Windows
                 progress.ProgressChanged += ProgressChanged;
                 subProgress.ProgressChanged += SubProgressChanged;
 
-                if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress)))
+                if (await Task.Run(async () => await GameScanner.ScanAndRepair(progress, subProgress)))
                 {
                     CurrentFileLabel.Content = string.Empty;
                     MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;
                     FileProgress.ProgressBar.IsIndeterminate = false;
-                    GenericMessageDialog.Show(Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.GameScannerDoneMessage);
                     DialogResult = true;
                 }
                 else
@@ -93,7 +93,7 @@ namespace Celeste_Launcher_Gui.Windows
             var wrappedFileName = e.File.WrapIfLengthIsLongerThan(35, "...");
             CurrentFileLabel.Content = $"{wrappedFileName} ({e.Index}/{e.TotalIndex})";
             ScanTotalProgress.ProgressBar.Value = e.ProgressPercentage;
-            TaskbarItemInfo.ProgressValue = (e.ProgressPercentage / 100);
+            TaskbarItemInfo.ProgressValue = e.ProgressPercentage / 100;
         }
 
         private void FailGameScan(string reason)
@@ -103,7 +103,7 @@ namespace Celeste_Launcher_Gui.Windows
             CurrentFileLabel.Content = string.Empty;
             MainProgressLabel.Content = string.Empty;
             TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-            GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
+            GenericMessageDialog.Show(reason, DialogIcon.Error);
         }
 
         private void SubProgressChanged(object sender, ScanSubProgress e)

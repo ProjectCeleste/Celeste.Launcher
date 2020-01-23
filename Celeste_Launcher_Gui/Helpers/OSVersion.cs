@@ -1,8 +1,4 @@
-﻿#region Using directives
-
-using System;
-
-#endregion
+﻿using System;
 
 namespace Celeste_Launcher_Gui.Helpers
 {

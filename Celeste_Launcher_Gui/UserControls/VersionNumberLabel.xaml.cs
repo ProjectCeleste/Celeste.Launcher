@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Celeste_Launcher_Gui.UserControls
 {
@@ -31,7 +19,7 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public string LabelContents
         {
-            get { return (string)GetValue(LabelContentsProperty); }
+            get => (string)GetValue(LabelContentsProperty);
             set
             {
                 SetValue(LabelContentsProperty, value);
@@ -41,7 +29,7 @@ namespace Celeste_Launcher_Gui.UserControls
 
         public string VersionNumber
         {
-            get { return (string)GetValue(VersionNumberProperty); }
+            get => (string)GetValue(VersionNumberProperty);
             set
             {
                 SetValue(VersionNumberProperty, value);

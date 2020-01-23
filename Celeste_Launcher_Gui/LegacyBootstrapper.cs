@@ -1,6 +1,4 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -13,15 +11,12 @@ using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
 using ProjectCeleste.GameFiles.GameScanner;
 using Celeste_Launcher_Gui.Windows;
-
-#endregion
-
 namespace Celeste_Launcher_Gui
 {
     internal static class LegacyBootstrapper
     {
         public static UserConfig UserConfig { get; private set; } = new UserConfig();
-        
+
         private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
         public static WebSocketApi WebSocketApi { get; private set; }
@@ -40,13 +35,13 @@ namespace Celeste_Launcher_Gui
             Application.SetCompatibleTextRenderingDefault(false);
 
             // TODO: Move this to app.xaml.cs
-            var mutex = new Mutex(true, AppName, out bool createdNew);
+            var mutex = new Mutex(true, AppName, out var createdNew);
 
             //Only one instance
             if (!createdNew)
             {
                 Logger.Information("Launcher is already started, will exit");
-                GenericMessageDialog.Show(Properties.Resources.LauncherAlreadyRunningMessage, DialogIcon.Warning, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.LauncherAlreadyRunningMessage, DialogIcon.Warning);
                 return;
             }
 

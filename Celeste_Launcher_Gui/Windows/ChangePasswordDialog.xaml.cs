@@ -38,8 +38,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (newPassword != confirmedNewPassword)
             {
                 GenericMessageDialog.Show(Properties.Resources.ChangePasswordMismatch,
-                    DialogIcon.Error,
-                    DialogOptions.Ok);
+                    DialogIcon.Error);
 
                 return;
             }
@@ -47,8 +46,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (currentPassword == newPassword)
             {
                 GenericMessageDialog.Show(Properties.Resources.ChangePasswordSamePassword,
-                    DialogIcon.Error,
-                    DialogOptions.Ok);
+                    DialogIcon.Error);
 
                 return;
             }
@@ -56,8 +54,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (newPassword.Length < 8 || newPassword.Length > 32)
             {
                 GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidLength,
-                    DialogIcon.Error,
-                    DialogOptions.Ok);
+                    DialogIcon.Error);
 
                 return;
             }
@@ -65,8 +62,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (!Misc.IsValidPassword(newPassword))
             {
                 GenericMessageDialog.Show(Properties.Resources.ChangePasswordInvalidPassword,
-                    DialogIcon.Error,
-                    DialogOptions.Ok);
+                    DialogIcon.Error);
 
                 return;
             }
@@ -79,24 +75,20 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (changePasswordResponse.Result)
                 {
-                    GenericMessageDialog.Show(Properties.Resources.ChangePasswordSuccess,
-                        DialogIcon.None,
-                        DialogOptions.Ok);
+                    GenericMessageDialog.Show(Properties.Resources.ChangePasswordSuccess);
 
                     Close();
                     return;
                 }
 
                 GenericMessageDialog.Show($"{Properties.Resources.ChangePasswordError} {changePasswordResponse.Message}",
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                        DialogIcon.Error);
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
                 GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage,
-                        DialogIcon.Error,
-                        DialogOptions.Ok);
+                        DialogIcon.Error);
             }
             finally
             {

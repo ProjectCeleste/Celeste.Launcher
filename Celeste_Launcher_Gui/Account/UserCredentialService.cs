@@ -14,7 +14,7 @@ namespace Celeste_Launcher_Gui.Account
                 Target = CelesteLauncherVaultName,
                 Username = email,
                 SecurePassword = password,
-                PersistanceType = PersistanceType.LocalComputer,
+                PersistanceType = PersistanceType.LocalComputer
             };
 
             credentials.Save();
@@ -23,7 +23,7 @@ namespace Celeste_Launcher_Gui.Account
         internal static UserCredentials GetStoredUserCredentials()
         {
             var credentials = new Credential { Target = CelesteLauncherVaultName };
-            
+
             if (!credentials.Load())
             {
                 return null;

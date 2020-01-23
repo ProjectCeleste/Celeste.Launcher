@@ -1,22 +1,14 @@
-﻿#region Using directives
-
-using System;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Xml.Serialization;
-using Celeste_Launcher_Gui.Helpers;
 using Celeste_Public_Api.Helpers;
-
-#endregion
 
 namespace Celeste_Launcher_Gui
 {
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public enum GameLanguage
     {
+        // ReSharper disable InconsistentNaming
         [XmlEnum("de-DE")] deDE,
         [XmlEnum("en-US")] enUS,
         [XmlEnum("es-ES")] esES,
@@ -24,6 +16,7 @@ namespace Celeste_Launcher_Gui
         [XmlEnum("it-IT")] itIT,
         [XmlEnum("zh-CHT")] zhCHT,
         [XmlEnum("pt-BR")] ptBR
+        // ReSharper restore InconsistentNaming
     }
 
     public enum ConnectionType
@@ -51,7 +44,7 @@ namespace Celeste_Launcher_Gui
         public string GameFilesPath { get; set; } = string.Empty;
 
         [XmlIgnore]
-        public bool IsSteamVersion { get; set; } = false;
+        public bool IsSteamVersion { get; set; }
 
         [XmlElement(ElementName = "LoginInfo")]
         public LoginInfo LoginInfo { get; set; } = new LoginInfo();
@@ -76,19 +69,18 @@ namespace Celeste_Launcher_Gui
             if (!string.IsNullOrWhiteSpace(userConfig.MpSettings.LanNetworkInterface))
             {
                 var selectedNetInt = userConfig.MpSettings.LanNetworkInterface;
-                var netInterface = NetworkInterface.GetAllNetworkInterfaces()
-                    .FirstOrDefault(elem => elem.Name == selectedNetInt);
+                var netInterface = System.Array.Find(NetworkInterface.GetAllNetworkInterfaces(), elem => elem.Name == selectedNetInt);
 
                 if (netInterface != null)
                 {
                     // Get IPv4 address:
                     foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
                     {
-                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                        {
-                            userConfig.MpSettings.PublicIp = ip.Address.ToString();
-                            return userConfig;
-                        }
+                        if (ip.Address.AddressFamily != AddressFamily.InterNetwork)
+                            continue;
+
+                        userConfig.MpSettings.PublicIp = ip.Address.ToString();
+                        return userConfig;
                     }
                 }
             }
@@ -124,7 +116,7 @@ namespace Celeste_Launcher_Gui
 
         [DefaultValue(ConnectionType.Wan)]
         [XmlElement(ElementName = "ConnectionType")]
-        public ConnectionType ConnectionType { get; set; } = ConnectionType.Wan;
+        public ConnectionType ConnectionType { get; set; }
 
         [DefaultValue(null)]
         [XmlElement(ElementName = "LanNetworkInterface")]
@@ -132,7 +124,7 @@ namespace Celeste_Launcher_Gui
 
         [DefaultValue(PortMappingType.NatPunch)]
         [XmlElement(ElementName = "PortMappingType")]
-        public PortMappingType PortMappingType { get; set; } = PortMappingType.NatPunch;
+        public PortMappingType PortMappingType { get; set; }
 
         [XmlIgnore]
         public string PublicIp

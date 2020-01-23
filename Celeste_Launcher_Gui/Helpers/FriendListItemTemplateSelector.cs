@@ -10,18 +10,21 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             var element = container as FrameworkElement;
 
-            if (item is OnlineFriend)
-                return element.FindResource("OnlineFriendTemplate") as DataTemplate;
-            else if (item is OfflineFriend)
-                return element.FindResource("OfflineFriendTemplate") as DataTemplate;
-            else if (item is OutgoingFriendRequest)
-                return element.FindResource("OutgoingFriendRequest") as DataTemplate;
-            else if (item is IncomingFriendRequest)
-                return element.FindResource("IncomingFriendRequest") as DataTemplate;
-            else if (item is FriendListSeparator)
-                return element.FindResource("Separator") as DataTemplate;
-
-            return null;
+            switch (item)
+            {
+                case OnlineFriend _:
+                    return element.FindResource("OnlineFriendTemplate") as DataTemplate;
+                case OfflineFriend _:
+                    return element.FindResource("OfflineFriendTemplate") as DataTemplate;
+                case OutgoingFriendRequest _:
+                    return element.FindResource("OutgoingFriendRequest") as DataTemplate;
+                case IncomingFriendRequest _:
+                    return element.FindResource("IncomingFriendRequest") as DataTemplate;
+                case FriendListSeparator _:
+                    return element.FindResource("Separator") as DataTemplate;
+                default:
+                    return null;
+            }
         }
     }
 }

@@ -1,13 +1,9 @@
-﻿#region Using directives
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using WindowsFirewallHelper;
 using WindowsFirewallHelper.FirewallAPIv2;
 using WindowsFirewallHelper.FirewallAPIv2.Rules;
-
-#endregion
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -138,6 +134,7 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             var myRule = FindRules(ruleName).ToArray();
             foreach (var rule in myRule)
+            {
                 try
                 {
                     FirewallManager.Instance.Rules.Remove(rule);
@@ -146,6 +143,7 @@ namespace Celeste_Launcher_Gui.Helpers
                 {
                     //
                 }
+            }
         }
 
         public static bool RemoveRule(string ruleName)
@@ -162,8 +160,10 @@ namespace Celeste_Launcher_Gui.Helpers
         public static IEnumerable<IRule> FindRules(string ruleName)
         {
             if (Firewall.Instance.IsSupported && (StandardRuleWin8.IsSupported || StandardRuleWin7.IsSupported))
+            {
                 return Firewall.Instance.Rules.Where(r => string.Equals(r.Name, ruleName,
                     StringComparison.OrdinalIgnoreCase)).ToArray();
+            }
 
             return FirewallManager.Instance.Rules.Where(r => string.Equals(r.Name, ruleName,
                 StringComparison.OrdinalIgnoreCase)).ToArray();
@@ -172,8 +172,10 @@ namespace Celeste_Launcher_Gui.Helpers
         public static IRule FindRule(string ruleName)
         {
             if (Firewall.Instance.IsSupported && (StandardRuleWin8.IsSupported || StandardRuleWin7.IsSupported))
+            {
                 return Firewall.Instance.Rules.FirstOrDefault(r => string.Equals(r.Name, ruleName,
                     StringComparison.OrdinalIgnoreCase));
+            }
 
             return FirewallManager.Instance.Rules.FirstOrDefault(r => string.Equals(r.Name, ruleName,
                 StringComparison.OrdinalIgnoreCase));

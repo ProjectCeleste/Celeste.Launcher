@@ -46,7 +46,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
             IsEnabled = true;
         }
@@ -66,7 +66,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
             IsEnabled = true;
         }
@@ -91,6 +91,7 @@ namespace Celeste_Launcher_Gui.Windows
             try
             {
                 foreach (var feature in await Dism.GetWindowsFeatureInfo(new[] { "DirectPlay", "NetFx3" }))
+                {
                     if (string.Equals(feature.Key, "DirectPlay", StringComparison.CurrentCultureIgnoreCase))
                     {
                         var (statusText, colorLabel, canBeEnabled) = GetLabelStatusForDismFeature(feature.Value);
@@ -107,6 +108,7 @@ namespace Celeste_Launcher_Gui.Windows
                         NetFrameworkStatusLabel.Foreground = new SolidColorBrush(colorLabel);
                         EnableNetFrameworkBtn.IsEnabled = canBeEnabled;
                     }
+                }
             }
             catch (Exception ex)
             {
@@ -116,7 +118,7 @@ namespace Celeste_Launcher_Gui.Windows
             }
         }
 
-        private (string statusText, Color labelColor, bool canBeEnabled) GetLabelStatusForDismFeature(DismFeatureInfo featureInfo)
+        private static (string statusText, Color labelColor, bool canBeEnabled) GetLabelStatusForDismFeature(DismFeatureInfo featureInfo)
         {
             switch (featureInfo.FeatureState)
             {

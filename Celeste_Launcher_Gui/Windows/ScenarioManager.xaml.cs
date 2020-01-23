@@ -62,10 +62,10 @@ namespace Celeste_Launcher_Gui.Windows
                 foreach (var filePath in Directory.GetFiles(_scenarioDirectoryPath, "*.age4scn", SearchOption.AllDirectories))
                 {
                     var txt = filePath.Replace(_scenarioDirectoryPath, string.Empty).Replace(".age4scn", string.Empty);
-                    if (txt.StartsWith(@"/") || txt.StartsWith(@"\"))
+                    if (txt.StartsWith("/") || txt.StartsWith(@"\"))
                         txt = txt.Substring(1);
 
-                    ScenarioListView.Items.Add(new System.Windows.Controls.ListViewItem
+                    ScenarioListView.Items.Add(new ListViewItem
                     {
                         Content = txt,
                         Tag = filePath
@@ -74,7 +74,7 @@ namespace Celeste_Launcher_Gui.Windows
             }
             catch (Exception ex)
             {
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
                 Logger.Error(ex, ex.Message);
             }
             finally
@@ -85,7 +85,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void FolderListenerEvent(object source, FileSystemEventArgs e)
         {
-            Dispatcher.Invoke(() => RefreshList());
+            Dispatcher.Invoke(RefreshList);
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
@@ -106,7 +106,7 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 using (var dlg = new System.Windows.Forms.OpenFileDialog
                 {
-                    Filter = $@"{Properties.Resources.ScenarioEditorFilePickerFileTypes} (*.age4scn)|*.age4scn",
+                    Filter = $"{Properties.Resources.ScenarioEditorFilePickerFileTypes} (*.age4scn)|*.age4scn",
                     CheckFileExists = true,
                     Title = Properties.Resources.ScenarioEditorFilePickerTitle,
                     Multiselect = true
@@ -140,7 +140,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
             finally
             {
@@ -158,16 +158,16 @@ namespace Celeste_Launcher_Gui.Windows
 
                 foreach (ListViewItem lvi in ScenarioListView.SelectedItems)
                 {
-                    if (File.Exists((string)lvi.Tag))
-                    {
-                        var userSelectedToDeleteFile = GenericMessageDialog.Show(
-                            string.Format(Properties.Resources.ScenarioEditorDeleteScenarioPrompt, lvi.Content),
-                            DialogIcon.None,
-                            DialogOptions.YesNo);
+                    if (!File.Exists((string)lvi.Tag))
+                        continue;
 
-                        if (userSelectedToDeleteFile == true)
-                            File.Delete((string)lvi.Tag);
-                    }
+                    var userSelectedToDeleteFile = GenericMessageDialog.Show(
+                        string.Format(Properties.Resources.ScenarioEditorDeleteScenarioPrompt, lvi.Content),
+                        DialogIcon.None,
+                        DialogOptions.YesNo);
+
+                    if (userSelectedToDeleteFile == true)
+                        File.Delete((string)lvi.Tag);
                 }
 
                 RefreshList();
@@ -175,7 +175,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error);
             }
             finally
             {

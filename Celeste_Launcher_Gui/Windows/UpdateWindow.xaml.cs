@@ -61,14 +61,11 @@ namespace Celeste_Launcher_Gui.Windows
 
                 var progress = new Progress<int>();
 
-                progress.ProgressChanged += (s, value) =>
-                {
-                    ProgressBar.ProgressBar.Value = value;
-                };
+                progress.ProgressChanged += (s, value) => ProgressBar.ProgressBar.Value = value;
 
                 await UpdateService.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
 
-                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterUpdateSuccess, DialogIcon.Warning, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterUpdateSuccess, DialogIcon.Warning);
 
                 Process.Start(Assembly.GetEntryAssembly().Location);
 
@@ -77,7 +74,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterError, DialogIcon.Error);
                 Environment.Exit(1);
             }
         }

@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Windows
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
-        { 
+        {
             Close();
             Application.Current.Shutdown();
         }
@@ -51,32 +51,32 @@ namespace Celeste_Launcher_Gui.Windows
         {
             var savedCredentials = UserCredentialService.GetStoredUserCredentials();
 
-            if (LegacyBootstrapper.UserConfig?.LoginInfo.AutoLogin == true && savedCredentials != null)
+            if (LegacyBootstrapper.UserConfig?.LoginInfo.AutoLogin != true || savedCredentials == null)
+                return;
+
+            NavigationFrame.IsEnabled = false;
+            try
             {
-                NavigationFrame.IsEnabled = false;
-                try
-                {
-                    var response = await LegacyBootstrapper.WebSocketApi.DoLogin(savedCredentials.Email, savedCredentials.Password);
+                var response = await LegacyBootstrapper.WebSocketApi.DoLogin(savedCredentials.Email, savedCredentials.Password);
 
-                    if (response.Result)
-                    {
-                        GameService.SetCredentials(savedCredentials.Email, savedCredentials.Password);
-                        LegacyBootstrapper.CurrentUser = response.User;
-                        NavigationFrame.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
-                    }
-                    else
-                    {
-                        GenericMessageDialog.Show(Properties.Resources.AutoLoginFailed, DialogIcon.Error);
-                    }
-                }
-                catch (Exception ex)
+                if (response.Result)
                 {
-                    Logger.Error(ex, ex.Message);
-                    GenericMessageDialog.Show(Properties.Resources.AutoLoginError, DialogIcon.Error);
+                    GameService.SetCredentials(savedCredentials.Email, savedCredentials.Password);
+                    LegacyBootstrapper.CurrentUser = response.User;
+                    NavigationFrame.Navigate(new Uri("Pages/OverviewPage.xaml", UriKind.Relative));
                 }
-
-                NavigationFrame.IsEnabled = true;
+                else
+                {
+                    GenericMessageDialog.Show(Properties.Resources.AutoLoginFailed, DialogIcon.Error);
+                }
             }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
+                GenericMessageDialog.Show(Properties.Resources.AutoLoginError, DialogIcon.Error);
+            }
+
+            NavigationFrame.IsEnabled = true;
         }
     }
 }
