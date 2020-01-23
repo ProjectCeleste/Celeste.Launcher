@@ -82,7 +82,9 @@ namespace Celeste_Launcher_Gui.Services
                 var changelogFormatted = StripHtml(Markdown.ToHtml(changelogRaw))
                     .Replace("Full Changelog", string.Empty).Replace("Change Log", string.Empty);
 
-                return !string.IsNullOrWhiteSpace(changelogFormatted) ? changelogFormatted : Properties.Resources.UpdateServiceChangelogError;
+                return !string.IsNullOrWhiteSpace(changelogFormatted)
+                    ? changelogFormatted
+                    : Properties.Resources.UpdateServiceChangelogError;
             }
             catch (Exception ex)
             {
