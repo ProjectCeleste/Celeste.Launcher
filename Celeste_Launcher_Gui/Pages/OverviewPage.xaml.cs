@@ -151,7 +151,7 @@ namespace Celeste_Launcher_Gui.Pages
         private async void OnPlayOffline(object sender, RoutedEventArgs e)
         {
             PlayOfflineBtn.IsEnabled = false;
-            await GameService.StartGame();
+            await GameService.StartGame(true);
             PlayOfflineBtn.IsEnabled = true;
         }
 
