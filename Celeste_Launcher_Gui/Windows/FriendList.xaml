@@ -247,12 +247,14 @@
                         theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/AddFriendLong-Normal.png"
                         theme:ButtonThemeProperties.HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/AddFriendLong-Hover.png"
                         Click="AddFriendClick">
-                    <Label Content="{x:Static p:Resources.FriendListAddFriendBtn}" FontSize="16" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                    <Label Content="{x:Static p:Resources.FriendListAddFriendBtn}" FontSize="15" HorizontalAlignment="Right" Margin="0,0,5,0"/>
                 </Button>
                 
                 <Grid Margin="63,14,0,0">
-                    <Label Content="{x:Static p:Resources.FriendsOnlineText}" FontSize="16" Margin="123,0,0,0"/>
-                    <TextBlock Text="{Binding OnlineFriendsCount}" Margin="275,5,0,0" Style="{StaticResource FriendsOnlineCount}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{x:Static p:Resources.FriendsOnlineText}" FontSize="15" Margin="123,0,0,0"/>
+                        <TextBlock Text="{Binding OnlineFriendsCount}" FontSize="15" Margin="0,5,0,0" Style="{StaticResource FriendsOnlineCount}"/>
+                    </StackPanel>
                 </Grid>
             </Grid>
         </StackPanel>

@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LauncherInstalledVersionLabel" xml:space="preserve">
+    <value>Installé :</value>
+  </data>
+  <data name="LauncherUpdateNewVersionLabel" xml:space="preserve">
+    <value>Nouveau :</value>
+  </data>
+  <data name="LauncherUpdateTitle" xml:space="preserve">
+    <value>Mise à jour du lanceur</value>
+  </data>
+  <data name="LauncherUpdateUpdateBtn" xml:space="preserve">
+    <value>Mettre à jour</value>
+  </data>
+  <data name="LoginAutoLoginOption" xml:space="preserve">
+    <value>Connexion automatique</value>
+  </data>
+  <data name="LoginEmailField" xml:space="preserve">
+    <value>Email :</value>
+  </data>
+  <data name="LoginForgottenPassword" xml:space="preserve">
+    <value>Mot de passe oublié ?</value>
+  </data>
+  <data name="LoginPasswordField" xml:space="preserve">
+    <value>Mot de passe :</value>
+  </data>
+  <data name="LoginPerformLoginBtn" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="LoginRememberPasswordOption" xml:space="preserve">
+    <value>Retenir le mot de passe</value>
+  </data>
+  <data name="MainMenuCelesteSideMenuBtn" xml:space="preserve">
+    <value>Site web</value>
+  </data>
+  <data name="MainMenuDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="MainMenuLoginBtn" xml:space="preserve">
+    <value>Connexion</value>
+  </data>
+  <data name="MainMenuPlayOfflineBtn" xml:space="preserve">
+    <value>Jouer Hors Ligne</value>
+  </data>
+  <data name="MainMenuRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="MainMenuRegisterBtn" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="MainMenuYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="OptionNo" xml:space="preserve">
+    <value>Non</value>
+  </data>
+  <data name="OptionOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="OptionYes" xml:space="preserve">
+    <value>Oui</value>
+  </data>
+  <data name="OverviewAccountSideMenuBtn" xml:space="preserve">
+    <value>Compte</value>
+  </data>
+  <data name="OverviewItemSearchSideMenuBtn" xml:space="preserve">
+    <value>Recherche d'objet</value>
+  </data>
+  <data name="OverviewChampionModeInfoSideMenuBtn" xml:space="preserve">
+    <value>Info JcJ</value>
+  </data>
+  <data name="OverviewDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="OverviewDonateSideMenuBtn" xml:space="preserve">
+    <value>Faire un don</value>
+  </data>
+  <data name="OverviewFriendsSideMenuBtn" xml:space="preserve">
+    <value>Amis</value>
+  </data>
+  <data name="OverviewLoginBtn" xml:space="preserve">
+    <value>Jouer</value>
+  </data>
+  <data name="OverviewScenarioManagerSideMenuBtn" xml:space="preserve">
+    <value>Scénarios</value>
+  </data>
+  <data name="OverviewPatchNotesSideMenuBtn" xml:space="preserve">
+    <value>Notes de MàJ</value>
+  </data>
+  <data name="OverviewPlayOfflineBtn" xml:space="preserve">
+    <value>Jouer Hors Ligne</value>
+  </data>
+  <data name="OverviewRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="OverviewSettingsSideMenuBtn" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="OverviewWebsiteSideMenuBtn" xml:space="preserve">
+    <value>Site web</value>
+  </data>
+  <data name="OverviewYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="RegisterCompleteRegistrationBtnText" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
+  <data name="RegisterEmailLabelText" xml:space="preserve">
+    <value>Email :</value>
+  </data>
+  <data name="RegisterPasswordConfirmationLabelText" xml:space="preserve">
+    <value>Confirmer le mot de passe :</value>
+  </data>
+  <data name="RegisterPasswordLabelText" xml:space="preserve">
+    <value>Mot de passe :</value>
+  </data>
+  <data name="RegisterResendBtnText" xml:space="preserve">
+    <value>Renvoyer</value>
+  </data>
+  <data name="RegisterUsernameLabelText" xml:space="preserve">
+    <value>Nom d'utilisateur :</value>
+  </data>
+  <data name="RegisterVerifyBtnText" xml:space="preserve">
+    <value>Vérifier</value>
+  </data>
+  <data name="RegisterVerifyLabelText" xml:space="preserve">
+    <value>Clé de vérification :</value>
+  </data>
+  <data name="RegisterCancelBtnText" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="MainMenuGameSettingsBtn" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="LanguageComingSoonToolTip" xml:space="preserve">
+    <value>Bientôt disponible™</value>
+  </data>
+  <data name="GameScannerTitle" xml:space="preserve">
+    <value>Scan du jeu</value>
+  </data>
+  <data name="GamePathSelectionBrowseBtn" xml:space="preserve">
+    <value>Parcourir</value>
+  </data>
+  <data name="GamePathSelectionScanBtn" xml:space="preserve">
+    <value>Scanner</value>
+  </data>
+  <data name="GamePathSelectionTitle" xml:space="preserve">
+    <value>Lancer un scan du jeu pour installer/mettre à jour/réparer 
+Age of Empires Online - Celeste Fan Project</value>
+  </data>
+  <data name="GameScannerDiscordLabel" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="GameScannerPatchNotesLabel" xml:space="preserve">
+    <value>Notes de mise à jour</value>
+  </data>
+  <data name="OverviewToolsBtnTooltip" xml:space="preserve">
+    <value>Outils</value>
+  </data>
+  <data name="MainMenuDonateSideMenuBtn" xml:space="preserve">
+    <value>Faire un don</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuChangeGameLanguage" xml:space="preserve">
+    <value>Changer la langue du jeu</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuConvertToSteamGame" xml:space="preserve">
+    <value>Convertir en jeu Steam</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuDiagnosticsMode" xml:space="preserve">
+    <value>Activer le mode diagnostic</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuFirewallHelper" xml:space="preserve">
+    <value>Outil pare-feu</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuGameScanner" xml:space="preserve">
+    <value>Scan du jeu</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuLauncherUpdater" xml:space="preserve">
+    <value>Vérifier les mises à jour</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuWindowsFeatures" xml:space="preserve">
+    <value>Fonctionnalités Windows</value>
+  </data>
+  <data name="OverviewTwitchSideMenuBtn" xml:space="preserve">
+    <value>Twitch</value>
+  </data>
+  <data name="ResetPasswordConfirmBtn" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="ResetPasswordConfirmNewPassword" xml:space="preserve">
+    <value>Confirmer le mot de passe</value>
+  </data>
+  <data name="ResetPasswordCurrentPassword" xml:space="preserve">
+    <value>Mot de passe actuel</value>
+  </data>
+  <data name="ResetPasswordNewPassword" xml:space="preserve">
+    <value>Nouveau mot de passe</value>
+  </data>
+  <data name="MultiplayerSettingsConnectionTypeTitle" xml:space="preserve">
+    <value>Type de connexion</value>
+  </data>
+  <data name="MultiplayerSettingsLANCheckbox" xml:space="preserve">
+    <value>LAN uniquement</value>
+  </data>
+  <data name="MultiplayerSettingsManual" xml:space="preserve">
+    <value>Manuel (protocole : UDP, port : 1000)</value>
+  </data>
+  <data name="MultiplayerSettingsNatPunchthrough" xml:space="preserve">
+    <value>NAT Punchthrough (par défaut)</value>
+  </data>
+  <data name="MultiplayerSettingsOtherCheckbox" xml:space="preserve">
+    <value>Autre</value>
+  </data>
+  <data name="MultiplayerSettingsPortMappingTitle" xml:space="preserve">
+    <value>Mappage des Ports (WAN)</value>
+  </data>
+  <data name="MultiplayerSettingsRemoteIPLabel" xml:space="preserve">
+    <value>IP distante :</value>
+  </data>
+  <data name="MultiplayerSettingsSaveBtn" xml:space="preserve">
+    <value>Enregistrer</value>
+  </data>
+  <data name="MultiplayerSettingsUpnp" xml:space="preserve">
+    <value>UPnP avec open.nat</value>
+  </data>
+  <data name="MultiplayerSettingsWANCheckbox" xml:space="preserve">
+    <value>WAN</value>
+  </data>
+  <data name="NetworkDeviceSelectorSaveBtn" xml:space="preserve">
+    <value>Selectionner</value>
+  </data>
+  <data name="NetworkDeviceSelectorTitle" xml:space="preserve">
+    <value>Selectionner le périphérique réseau</value>
+  </data>
+  <data name="ScenarioManagerAddScenarioTooltip" xml:space="preserve">
+    <value>Ajouter un scénario</value>
+  </data>
+  <data name="ScenarioManagerDownloadScenarioTooltip" xml:space="preserve">
+    <value>Télécharger des scénarios</value>
+  </data>
+  <data name="ScenarioManagerOpenHelpTooltip" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="ScenarioManagerOpenScenarioDirectoryTooltip" xml:space="preserve">
+    <value>Ouvrir un dossier de scénario dans Explorer</value>
+  </data>
+  <data name="ScenarioManagerPlayScenarioBtn" xml:space="preserve">
+    <value>Jouer le Scénario</value>
+  </data>
+  <data name="ScenarioManagerRemoveScenarioTooltip" xml:space="preserve">
+    <value>Supprimer le scénario sélectionné</value>
+  </data>
+  <data name="ScenarioManagerTitle" xml:space="preserve">
+    <value>Gestionnaire de Scénario</value>
+  </data>
+  <data name="ResetPasswordEmailAddressField" xml:space="preserve">
+    <value>Adresse Email :</value>
+  </data>
+  <data name="ResetPasswordResetBtn" xml:space="preserve">
+    <value>Réinitialiser le mot de passe</value>
+  </data>
+  <data name="ResetPasswordResetKeyField" xml:space="preserve">
+    <value>Clé de réinitialisation :</value>
+  </data>
+  <data name="ResetPasswordSendResetBtn" xml:space="preserve">
+    <value>Envoyer la clé de réinitialisation</value>
+  </data>
+  <data name="WindowsFeatureHelperEnableBtn" xml:space="preserve">
+    <value>Activer</value>
+  </data>
+  <data name="WindowsFeatureHelperEnabledStatus" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="WindowsFeatureHelperNotEnabledStatus" xml:space="preserve">
+    <value>Désactivé</value>
+  </data>
+  <data name="WindowsFeatureHelperTitle" xml:space="preserve">
+    <value>Outil Fonctionnalité Windows</value>
+  </data>
+  <data name="WindowsFeatureHelperUnknownStatus" xml:space="preserve">
+    <value>Inconnu</value>
+  </data>
+  <data name="ProcDumpInstallerTitle" xml:space="preserve">
+    <value>Installation de ProcDump</value>
+  </data>
+  <data name="SteamConverterConfirmBtn" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="SteamConverterTitle" xml:space="preserve">
+    <value>Veuillez confirmer que vous souhaitez démarrer le Lanceur Celeste Fan Project quand Age of Empires Online est démarré avec Steam</value>
+  </data>
+  <data name="WindowsFirewallHelperApplication" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="WindowsFirewallHelperInbound" xml:space="preserve">
+    <value>Entrée</value>
+  </data>
+  <data name="WindowsFirewallHelperOpenBtn" xml:space="preserve">
+    <value>Ouvrir</value>
+  </data>
+  <data name="WindowsFirewallHelperOutbound" xml:space="preserve">
+    <value>Sortie</value>
+  </data>
+  <data name="WindowsFirewallHelperTitle" xml:space="preserve">
+    <value>Outil Pare-feu Windows</value>
+  </data>
+  <data name="AutoLoginError" xml:space="preserve">
+    <value>La connexion automatique a échoué à cause d'une erreur inattendue</value>
+  </data>
+  <data name="AutoLoginFailed" xml:space="preserve">
+    <value>La connexion automatique a échoué, veuillez vous reconnecter manuellement</value>
+  </data>
+  <data name="ChangePasswordError" xml:space="preserve">
+    <value>Erreur lors du changement de mot de passe :</value>
+  </data>
+  <data name="ChangePasswordInvalidLength" xml:space="preserve">
+    <value>Le nouveau mot de passe doit faire entre 8 et 32 caractères.</value>
+  </data>
+  <data name="ChangePasswordInvalidPassword" xml:space="preserve">
+    <value>Mot de passe invalide, les caractères ' et " ne sont pas autorisés !</value>
+  </data>
+  <data name="ChangePasswordMismatch" xml:space="preserve">
+    <value>Le nouveau mot de passe et la confirmation ne correspondent pas.</value>
+  </data>
+  <data name="ChangePasswordSamePassword" xml:space="preserve">
+    <value>Le nouveau mot de passe doit être différent du précédent.</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Mot de passe modifié avec succès.</value>
+  </data>
+  <data name="DiagnosticsModeError" xml:space="preserve">
+    <value>Une erreur inattendue s'est produite lors du lancement du mode de diagnostic. Veuillez réessayer ou lire les fichiers journaux.</value>
+  </data>
+  <data name="DiagnosticsModeMissingProcdump" xml:space="preserve">
+    <value>Le mode Diagnostic a besoin de ProcDump pour fonctionner. Ce dernier n'a pas été trouvé. Le mode Diagnostic sera donc désactivé.</value>
+  </data>
+  <data name="EnableDiagnosticsModeInstallProcdumpPrompt" xml:space="preserve">
+    <value>ProcDump.exe doit d'abord être installé. Souhaitez-vous l'installer maintenant ?</value>
+  </data>
+  <data name="EnableDiagnosticsModeProcdumpInstallError" xml:space="preserve">
+    <value>Échec de l'activation du mode Diagnostic. Erreur :</value>
+  </data>
+  <data name="GameAlreadyRunningError" xml:space="preserve">
+    <value>Le jeu est encore en cours d'exécution, veuillez le stopper et réessayer.</value>
+  </data>
+  <data name="GamePathInvalidPath" xml:space="preserve">
+    <value>Le chemin spécifié n'existe pas</value>
+  </data>
+  <data name="GamePathSelectorTitle" xml:space="preserve">
+    <value>Sélectionnez l'emplacement de Spartan.exe (Age of Empires Online)</value>
+  </data>
+  <data name="GameScannerDidNotPass" xml:space="preserve">
+    <value>Échec du scan du jeu.</value>
+  </data>
+  <data name="GameScannerDidNotPassQuickScan" xml:space="preserve">
+    <value>Certains fichiers semblent manquer. Voulez-vous lancer un scan du jeu pour réparer ou télécharger ces fichiers ? Si vous installez pour la première fois, cliquez sur "Oui" pour télécharger le reste du jeu.</value>
+  </data>
+  <data name="GameScannerDoneLabel" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
+  <data name="GameScannerDoneMessage" xml:space="preserve">
+    <value>Le scan du jeu s'est terminé avec succès</value>
+  </data>
+  <data name="GameScannerDownloading" xml:space="preserve">
+    <value>Téléchargement</value>
+  </data>
+  <data name="GameScannerDownloadStarting" xml:space="preserve">
+    <value>Démarrage du téléchargement</value>
+  </data>
+  <data name="GameScannerExtracting" xml:space="preserve">
+    <value>Exctraction du fichier téléchargé</value>
+  </data>
+  <data name="GameScannerFailed" xml:space="preserve">
+    <value>Une erreur inattendue s'est produite lors du scan du jeu. Veuillez réessayer ou lire les fichiers journaux.</value>
+  </data>
+  <data name="GameScannerFinalizing" xml:space="preserve">
+    <value>Finalisation</value>
+  </data>
+  <data name="GameScannerScanError" xml:space="preserve">
+    <value>Le scan du jeu a rencontré un problème inattendu. Veuillez réessayer ou lire les fichiers journaux.</value>
+  </data>
+  <data name="GameScannerSpartanNotFound" xml:space="preserve">
+    <value>Spartan.exe n'a pas été trouvé, veuillez lancer un scan du jeu pour vous assurer qu'il ne vous manque aucun fichier.</value>
+  </data>
+  <data name="GameScannerVerifying" xml:space="preserve">
+    <value>Vérification de l'intégrité des fichiers</value>
+  </data>
+  <data name="GameScannerVerifyingDownloadedFile" xml:space="preserve">
+    <value>Vérification du fichier téléchargé</value>
+  </data>
+  <data name="GameScannerVerifyingExtractedFile" xml:space="preserve">
+    <value>Vérification du fichier extrait</value>
+  </data>
+  <data name="GenericUnexpectedErrorMessage" xml:space="preserve">
+    <value>Une erreur est survenue. Veuillez réessayer ou lire les fichiers journaux.</value>
+  </data>
+  <data name="LauncherUpdaterError" xml:space="preserve">
+    <value>Une erreur inattendue s'est produite lors de la mise à jour. L'application va se fermer. Si le problème persiste, essayez de mettre à jour manuellement.</value>
+  </data>
+  <data name="LauncherUpdaterUpdateSuccess" xml:space="preserve">
+    <value>Le Lanceur Celeste Fan Project a été mis à jour et va maintenant redémarrer.</value>
+  </data>
+  <data name="LoginBadEmail" xml:space="preserve">
+    <value>L'adresse email saisie n'est pas valide.</value>
+  </data>
+  <data name="LoginErrorMessage" xml:space="preserve">
+    <value>Échec de la connexion :</value>
+  </data>
+  <data name="LoginTooLongPassword" xml:space="preserve">
+    <value>Le mot de passe saisi ne doit pas faire plus de 32 caractères.</value>
+  </data>
+  <data name="LoginTooShortPassword" xml:space="preserve">
+    <value>Le mot de passe saisi doit faire au moins 8 caractères.</value>
+  </data>
+  <data name="MultiplayerSettingsOtherNetworkDevice" xml:space="preserve">
+    <value>Autre</value>
+  </data>
+  <data name="NetworkDeviceSelectorNoDeviceSelected" xml:space="preserve">
+    <value>Veuillez sélectionner un périphérique réseau</value>
+  </data>
+  <data name="ProcdumpInstallError" xml:space="preserve">
+    <value>Une erreur est survenue lors de l'installation de ProcDump. Veuillez réessayer ou lire les fichiers journaux.</value>
+  </data>
+  <data name="RegisterError" xml:space="preserve">
+    <value>Une erreur est survenue pendant l'inscription :</value>
+  </data>
+  <data name="RegisterInvalidEmail" xml:space="preserve">
+    <value>L'adresse email saisie n'est pas valide.</value>
+  </data>
+  <data name="RegisterInvalidKeyLength" xml:space="preserve">
+    <value>La clé saisie n'est pas valide.</value>
+  </data>
+  <data name="RegisterInvalidPassword" xml:space="preserve">
+    <value>Mot de passe invalide, les caractères ' et " ne sont pas autorisés !</value>
+  </data>
+  <data name="RegisterInvalidPasswordLength" xml:space="preserve">
+    <value>Votre mot de passe doit faire entre 8 et 32 caractères.</value>
+  </data>
+  <data name="RegisterInvalidUsername" xml:space="preserve">
+    <value>Nom d'utilisateur invalide, seuls les lettres et les chiffres sont autorisés, et la longueur doit être comprise entre 3 et 15 caractères.</value>
+  </data>
+  <data name="RegisterPasswordMismatch" xml:space="preserve">
+    <value>Le mot de passe et la confirmation ne correspondent pas.</value>
+  </data>
+  <data name="ResetPasswordError" xml:space="preserve">
+    <value>Une erreur est survenue lors de la réinitialisation. Veuillez réessayer ou lire les fichiers journaux.</value>
+  </data>
+  <data name="ResetPasswordFailed" xml:space="preserve">
+    <value>Échec de la réinitialisation du mot de passe :</value>
+  </data>
+  <data name="ResetPasswordInvalidEmail" xml:space="preserve">
+    <value>L'adresse email saisie n'est pas valide.</value>
+  </data>
+  <data name="ResetPasswordInvalidKey" xml:space="preserve">
+    <value>La clé saisie n'est pas valide.</value>
+  </data>
+  <data name="ScenarioEditorDeleteScenarioPrompt" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer le fichier {0} ?</value>
+  </data>
+  <data name="ScenarioEditorFilePickerFileTypes" xml:space="preserve">
+    <value>Fichiers de scénario</value>
+  </data>
+  <data name="ScenarioEditorFilePickerTitle" xml:space="preserve">
+    <value>Choisissez un fichier de scénario</value>
+  </data>
+  <data name="ScenarioEditorOverwritePrompt" xml:space="preserve">
+    <value>Le fichier {0} existe, l'écraser ?</value>
+  </data>
+  <data name="StartGameError" xml:space="preserve">
+    <value>Une erreur inattendue s'est produite lors du lancement de Age of Empires Online. Veuillez réessayer ou lire les fichiers journaux.</value>
+  </data>
+  <data name="SteamConverterAlreadySteamGame" xml:space="preserve">
+    <value>Le Lanceur Celeste Fan Project est déjà compatible avec Steam.</value>
+  </data>
+  <data name="SteamConverterIncorrectInstallationDirectory" xml:space="preserve">
+    <value>Le Lanceur Celeste Fan Project Launcher doit être placé dans le même dossier que les fichiers du jeu Steam.</value>
+  </data>
+  <data name="SteamConverterSuccess" xml:space="preserve">
+    <value>Le Lanceur Celeste Fan Project est désormais compatible avec Steam. Il va désormais redémarrer.</value>
+  </data>
+  <data name="UpdateServiceChangelogError" xml:space="preserve">
+    <value>Impossible de récupérer le journal des changements.</value>
+  </data>
+  <data name="UPnPDisabledError" xml:space="preserve">
+    <value>Erreur: périphérique Upnp non trouvé ! "Mappage des Ports UPnP" a été désactivé.</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureInstalled" xml:space="preserve">
+    <value>Installé</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureIsPendingInstall" xml:space="preserve">
+    <value>Installation en attente</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureNotSupportedError" xml:space="preserve">
+    <value>Non supporté (erreur inconnue)</value>
+  </data>
+  <data name="WindowsFeatureHelperFeaturePartiallyInstalled" xml:space="preserve">
+    <value>Partiellement installé</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureStaged" xml:space="preserve">
+    <value>Sélectionné</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureUnsupported" xml:space="preserve">
+    <value>Non supporté ({0})</value>
+  </data>
+  <data name="WindowsFeatureHelperUnsupportedOS" xml:space="preserve">
+    <value>Cette fonctionnalité ne peut être utilisée que sur Windows 8 et plus. Vous utilisez {0}.</value>
+  </data>
+  <data name="WindowsFirewallHelperLauncherNotFound" xml:space="preserve">
+    <value>Impossible de localiser le Lanceur.</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleInvalid" xml:space="preserve">
+    <value>Invalide</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleNotFound" xml:space="preserve">
+    <value>Introuvable</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleOpen" xml:space="preserve">
+    <value>Ouvrir</value>
+  </data>
+  <data name="WindowsFirewallHelperSpartanNotFound" xml:space="preserve">
+    <value>Spartan.exe n'a pas été trouvé, lancez un scan du jeu pour vous assurer qu'il ne manque aucun fichier.</value>
+  </data>
+  <data name="FriendListAcceptRequestBtn" xml:space="preserve">
+    <value>Accepter</value>
+  </data>
+  <data name="FriendListAddFriendBtn" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="FriendListCancelFriendRequest" xml:space="preserve">
+    <value>Annuler la requête d'ami</value>
+  </data>
+  <data name="FriendListDeclineRequestBtn" xml:space="preserve">
+    <value>Refuser</value>
+  </data>
+  <data name="FriendListFilterPlaceholder" xml:space="preserve">
+    <value>Filtrer</value>
+  </data>
+  <data name="FriendListFriendRequestDescription" xml:space="preserve">
+    <value>Vous a envoyé une requête d'ami</value>
+  </data>
+  <data name="FriendListOffline" xml:space="preserve">
+    <value>Hors ligne</value>
+  </data>
+  <data name="FriendListOutgoingFriendRequest" xml:space="preserve">
+    <value>Requêtes d'ami envoyées</value>
+  </data>
+  <data name="FriendListRemoveFriend" xml:space="preserve">
+    <value>Retirer l'ami</value>
+  </data>
+  <data name="FriendListTitle" xml:space="preserve">
+    <value>Amis</value>
+  </data>
+  <data name="FriendsOnlineText" xml:space="preserve">
+    <value>Amis en ligne :</value>
+  </data>
+  <data name="SendFriendRequestCancelBtn" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="SendFriendRequestFailed" xml:space="preserve">
+    <value>Impossible d'envoyer une requête d'ami à {0}</value>
+  </data>
+  <data name="SendFriendRequestSendBtn" xml:space="preserve">
+    <value>Envoyer</value>
+  </data>
+  <data name="SendFriendRequestTitle" xml:space="preserve">
+    <value>Envoyer une requête d'ami</value>
+  </data>
+  <data name="SendFriendRequestUsernameLabel" xml:space="preserve">
+    <value>Nom d'utilisateur :</value>
+  </data>
+  <data name="LauncherAlreadyRunningMessage" xml:space="preserve">
+    <value>Le Lanceur est déjà en cours d'exécution et va maintenant se fermer.</value>
+  </data>
+  <data name="FriendListMaxFriendsReached" xml:space="preserve">
+    <value>Votre liste d'amis est pleine, impossible d'ajouter plus d'amis.</value>
+  </data>
+  <data name="GamePathSelectionWindowTitle" xml:space="preserve">
+    <value>Sélectionner l'emplacement du jeu</value>
+  </data>
+  <data name="MultiplayerSettingsTitle" xml:space="preserve">
+    <value>Paramètres Multijoueur</value>
+  </data>
+  <data name="ResetPasswordTitle" xml:space="preserve">
+    <value>Réinitialiser le mot de passe</value>
+  </data>
+  <data name="ResetPasswordWindowTitle" xml:space="preserve">
+    <value>Réinitialiser le mot de passe</value>
+  </data>
+  <data name="SteamConverterWindowTitle" xml:space="preserve">
+    <value>Confirmer la conversion en jeu Steam</value>
+  </data>
+  <data name="OverviewChangePassword" xml:space="preserve">
+    <value>Changer de mot de passe</value>
+  </data>
+  <data name="OverviewEnableDiagnosticsMode" xml:space="preserve">
+    <value>Activer le mode diagnotic</value>
+  </data>
+  <data name="OverviewGameLanguageSettings" xml:space="preserve">
+    <value>Langue du jeu</value>
+  </data>
+  <data name="OverviewGameScan" xml:space="preserve">
+    <value>Scan du jeu</value>
+  </data>
+  <data name="OverviewGameSettings" xml:space="preserve">
+    <value>Paramètres du jeu</value>
+  </data>
+  <data name="OverviewLogOut" xml:space="preserve">
+    <value>Déconnexion</value>
+  </data>
+  <data name="OverviewMultiplayerSettings" xml:space="preserve">
+    <value>Paramètres Multijoueur</value>
+  </data>
+  <data name="OverviewSteam" xml:space="preserve">
+    <value>Convertir en jeu Steam</value>
+  </data>
+  <data name="OverviewUpdateLauncher" xml:space="preserve">
+    <value>Mettre à jour le lanceur</value>
+  </data>
+  <data name="OverviewWindowsFeatures" xml:space="preserve">
+    <value>Fonctionnalités Windows</value>
+  </data>
+  <data name="OverviewWindowsFirewall" xml:space="preserve">
+    <value>Pare-feu Windows</value>
+  </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>Changer de mot de passe</value>
+  </data>
+</root>
