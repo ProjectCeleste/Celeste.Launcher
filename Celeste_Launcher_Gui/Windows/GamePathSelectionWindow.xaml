@@ -15,8 +15,8 @@
         </Grid.Background>
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <Grid>
-                <TextBlock FontFamily="{StaticResource Lithos-Pro-Regular}" FontSize="26" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"
-                           Text="{x:Static p:Resources.GamePathSelectionTitle}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock FontFamily="{StaticResource Lithos-Pro-Regular}" FontSize="22" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top"
+                           Text="{x:Static p:Resources.GamePathSelectionTitle}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,15,0,0"/>
                 <Grid Width="729" Height="68" Margin="0,10,0,0">
                     <Grid.Background>
                         <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/GamePathInputBox.png"/>

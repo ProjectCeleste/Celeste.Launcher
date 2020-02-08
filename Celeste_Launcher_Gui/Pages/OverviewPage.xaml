@@ -39,7 +39,6 @@
 
             <local:SideBarMenuItem
                 LabelContents="{x:Static p:Resources.OverviewScenarioManagerSideMenuBtn}"
-                LabelSize="17"
                 DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/MapsList2-Normal.png"
                 HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/MapsList2-Hover.png" HorizontalAlignment="Left" Click="OpenScenarionManager"/>
 
@@ -100,9 +99,8 @@
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewPatchNotesSideMenuBtn}"
-                    LabelSize="14"
                     DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/PatchNotes-Normal.png"
-                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/PatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnPatchNotesClick"/>
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/PatchNotes-Hover.png" HorizontalAlignment="Left" Click="OnPatchNotesClick" />
 
                 <local:SideBarMenuItemRight
                     LabelContents="{x:Static p:Resources.OverviewChampionModeInfoSideMenuBtn}"

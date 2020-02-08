@@ -54,7 +54,7 @@ namespace Celeste_Launcher_Gui.UserControls
         }
 
         public static readonly DependencyProperty LabelSizeProperty =
-            DependencyProperty.Register("LabelSize", typeof(int), typeof(SideBarMenuItem), new PropertyMetadata(18));
+            DependencyProperty.Register("LabelSize", typeof(int), typeof(SideBarMenuItem), new PropertyMetadata(13));
 
         public RoutedEventHandler Click
         {

@@ -22,11 +22,11 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel IsEnabled="False" x:Name="UserInformationInputGroup">
                     <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" x:Name="VerifyKeyField"/>
+                        <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterVerifyLabelText}" LabelFontSize="14" x:Name="VerifyKeyField"/>
                         <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterResendBtnText}" Margin="10,0,0,0" Click="OnResendVerificationKey" x:Name="ResentKeyBtn"/>
                     </WrapPanel>
-                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" HorizontalAlignment="Left" x:Name="UsernameField"/>
-                    <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" HorizontalAlignment="Left" x:Name="PasswordField"/>
+                    <local:WideRegisterInputField LabelContent="{x:Static p:Resources.RegisterUsernameLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="UsernameField"/>
+                    <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="PasswordField"/>
                     <DockPanel>
                         <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.RegisterPasswordConfirmationLabelText}" LabelFontSize="14" HorizontalAlignment="Left" x:Name="ConfirmPasswordField"/>
                         <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.RegisterCompleteRegistrationBtnText}" Margin="10,0,0,0" HorizontalAlignment="Right" Click="OnRegister" x:Name="RegisterBtn2"/>

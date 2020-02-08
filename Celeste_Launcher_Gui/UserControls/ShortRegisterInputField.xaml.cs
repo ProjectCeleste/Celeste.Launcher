@@ -27,7 +27,7 @@ namespace Celeste_Launcher_Gui.UserControls
             DependencyProperty.Register("InputContent", typeof(string), typeof(ShortRegisterInputField), new PropertyMetadata(default(string)));
 
         public static readonly DependencyProperty LabelFontSizeProperty =
-            DependencyProperty.Register("LabelFontSize", typeof(int), typeof(ShortRegisterInputField), new PropertyMetadata(20));
+            DependencyProperty.Register("LabelFontSize", typeof(int), typeof(ShortRegisterInputField), new PropertyMetadata(18));
 
         public string LabelContent
         {

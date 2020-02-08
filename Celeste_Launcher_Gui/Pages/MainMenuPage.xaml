@@ -48,7 +48,7 @@
             <local:SideBarMenuItemRight 
                         LabelContents="{x:Static p:Resources.MainMenuGameSettingsBtn}" 
                         DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Settings-Normal.png"
-                        HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Right" Click="OpenSettings" x:Name="SettingsButton">
+                        HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/Settings-Hover.png" HorizontalAlignment="Right" Click="OpenSettings" x:Name="SettingsButton" LabelSize="13">
                 <local:SideBarMenuItemRight.ContextMenu>
                     <ContextMenu StaysOpen="true">
                         <MenuItem Header="{x:Static p:Resources.MainMenuGameSettingsMenuGameScanner}" Click="OpenGameScanner"/>

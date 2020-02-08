@@ -62,13 +62,14 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void SelectPortugese(object sender, RoutedEventArgs e)
         {
-            //SetLanguage(GameLanguage.ptBR);
+            SetLanguage(GameLanguage.ptBR);
         }
 
         private void SetLanguage(GameLanguage language)
         {
             LegacyBootstrapper.UserConfig.GameLanguage = language;
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
+            LegacyBootstrapper.SetUILanguage();
             NavigationService.GoBack();
         }
     }

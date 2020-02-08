@@ -110,7 +110,44 @@ namespace Celeste_Launcher_Gui
             Logger.Information("Initializing fingerprint provider");
             FingerPrintProvider.Initialize();
 
+            SetUILanguage();
+
             Logger.Information("Bootstrapper initialized");
+        }
+
+        public static void SetUILanguage()
+        {
+            var localizedCultureInfo = MapGameLanguageToCultureInfo(UserConfig.GameLanguage);
+            if (localizedCultureInfo != null)
+            {
+                Thread.CurrentThread.CurrentUICulture = localizedCultureInfo;
+                Logger.Information("Localized UI language to {@Language}", localizedCultureInfo);
+            }
+            else
+            {
+                Logger.Information("Unknown culture {@Language}", localizedCultureInfo);
+            }
+        }
+
+        private static CultureInfo MapGameLanguageToCultureInfo(GameLanguage gameLanguage)
+        {
+            switch (gameLanguage)
+            {
+                case GameLanguage.deDE:
+                    return new CultureInfo("de-DE");
+                case GameLanguage.esES:
+                    return new CultureInfo("es-ES");
+                case GameLanguage.frFR:
+                    return new CultureInfo("fr-FR");
+                case GameLanguage.itIT:
+                    return new CultureInfo("it-IT");
+                case GameLanguage.ptBR:
+                    return new CultureInfo("pt-BR");
+                case GameLanguage.zhCHT:
+                    return new CultureInfo("zh-CHT");
+                default:
+                    return new CultureInfo("en-US");
+            }
         }
     }
 }
