@@ -113,9 +113,9 @@ namespace Celeste_Launcher_Gui.Helpers
                 if (progress != null)
                     downloadFileAsync.ProgressChanged += (sender, args) =>
                     {
-                        progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DwnlProgress / 100))));
+                        progress.Report(Convert.ToInt32(Math.Floor(70 * (downloadFileAsync.DownloadProgress / 100))));
                     };
-                await downloadFileAsync.Download(ct);
+                await downloadFileAsync.DownloadAsync(ct);
             }
             catch (AggregateException)
             {

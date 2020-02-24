@@ -475,9 +475,9 @@ namespace Celeste_Launcher_Gui.Forms
                 {
                     var gameFilePath = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                         ? Program.UserConfig.GameFilesPath
-                        : GameScannnerManager.GetGameFilesRootPath();
+                        : GameScannerManager.GetGameFilesRootPath();
 
-                    using (var gameScannner = new GameScannnerManager(gameFilePath, Program.UserConfig.IsSteamVersion))
+                    using (var gameScannner = new GameScannerManager(gameFilePath, Program.UserConfig.IsSteamVersion))
                     {
                         await gameScannner.InitializeFromCelesteManifest();
 
@@ -552,7 +552,7 @@ namespace Celeste_Launcher_Gui.Forms
                 //Launch Game
                 var path = !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath)
                     ? Program.UserConfig.GameFilesPath
-                    : GameScannnerManager.GetGameFilesRootPath();
+                    : GameScannerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
 

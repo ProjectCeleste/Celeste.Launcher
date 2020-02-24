@@ -15,9 +15,9 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScanProgressForm : Form
     {
-        private GameScannnerManager _gameScannner;
+        private GameScannerManager _gameScannner;
 
-        public GameScanProgressForm(string gameFilesPath, bool isSteam = false, bool downloadBoost = false)
+        public GameScanProgressForm(string gameFilesPath, bool isSteam = false)
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            _gameScannner = new GameScannnerManager(gameFilesPath, downloadBoost, isSteam);
+            _gameScannner = new GameScannerManager(gameFilesPath, isSteam);
             lbl_ProgressTitle.Text = string.Empty;
             lbl_ProgressDetail.Text = string.Empty;
             lbl_GlobalProgress.Text = string.Empty;

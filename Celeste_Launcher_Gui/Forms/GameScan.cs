@@ -21,7 +21,7 @@ namespace Celeste_Launcher_Gui.Forms
             if (Program.UserConfig != null && !string.IsNullOrWhiteSpace(Program.UserConfig.GameFilesPath))
                 tb_GamePath.Text = Program.UserConfig.GameFilesPath;
             else
-                tb_GamePath.Text = GameScannnerManager.GetGameFilesRootPath();
+                tb_GamePath.Text = GameScannerManager.GetGameFilesRootPath();
         }
 
         private void BtnRunScan_Click(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.UserConfig.Save(Program.UserConfigFilePath);
 
                 using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath,
-                    Program.UserConfig.IsSteamVersion, checkBox1.Checked))
+                    Program.UserConfig.IsSteamVersion))
                 {
                     var dr = form.ShowDialog();
 

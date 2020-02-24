@@ -68,7 +68,7 @@ namespace Celeste_Launcher_Gui
             try
             {
                 if (string.IsNullOrWhiteSpace(UserConfig.GameFilesPath))
-                    UserConfig.GameFilesPath = GameScannnerManager.GetGameFilesRootPath();
+                    UserConfig.GameFilesPath = GameScannerManager.GetGameFilesRootPath();
             }
             catch (Exception)
             {
