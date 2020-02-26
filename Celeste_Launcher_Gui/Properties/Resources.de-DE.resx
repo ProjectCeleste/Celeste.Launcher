@@ -323,7 +323,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Manuell (Protokoll: UDP, Port:1000)</value>
   </data>
   <data name="MultiplayerSettingsNatPunchthrough" xml:space="preserve">
-    <value>NAT Durchschlag (Standard)</value>
+    <value>NAT Punchthrough (Standard)</value>
   </data>
   <data name="MultiplayerSettingsOtherCheckbox" xml:space="preserve">
     <value>Sonstiges</value>
@@ -413,7 +413,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Eingehend</value>
   </data>
   <data name="WindowsFirewallHelperOpenBtn" xml:space="preserve">
-    <value>Offen</value>
+    <value>Öffnen</value>
   </data>
   <data name="WindowsFirewallHelperOutbound" xml:space="preserve">
     <value>Ausgehend</value>

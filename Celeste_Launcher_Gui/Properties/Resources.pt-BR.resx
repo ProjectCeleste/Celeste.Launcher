@@ -178,7 +178,7 @@
     <value>Sim</value>
   </data>
   <data name="OverviewAccountSideMenuBtn" xml:space="preserve">
-    <value>Counta</value>
+    <value>Conta</value>
   </data>
   <data name="OverviewItemSearchSideMenuBtn" xml:space="preserve">
     <value>Pesquisar Itens</value>
@@ -323,13 +323,13 @@ Age of Empires Online - Projeto de Fãs Celeste</value>
     <value>Manual (protocolo: UDP, porta:1000)</value>
   </data>
   <data name="MultiplayerSettingsNatPunchthrough" xml:space="preserve">
-    <value>NAT Perfurar (padrão)</value>
+    <value>NAT (padrão)</value>
   </data>
   <data name="MultiplayerSettingsOtherCheckbox" xml:space="preserve">
     <value>Outros</value>
   </data>
   <data name="MultiplayerSettingsPortMappingTitle" xml:space="preserve">
-    <value>Mapeamento de Portas (WAN)</value>
+    <value>Portas (WAN)</value>
   </data>
   <data name="MultiplayerSettingsRemoteIPLabel" xml:space="preserve">
     <value>IP Remoto:</value>
@@ -362,7 +362,7 @@ Age of Empires Online - Projeto de Fãs Celeste</value>
     <value>Abra o diretório de cenários no Explorador de Arquivos</value>
   </data>
   <data name="ScenarioManagerPlayScenarioBtn" xml:space="preserve">
-    <value>Reproduzir Cenário</value>
+    <value>Jogar Cenário</value>
   </data>
   <data name="ScenarioManagerRemoveScenarioTooltip" xml:space="preserve">
     <value>Remover cenário selecionado</value>
