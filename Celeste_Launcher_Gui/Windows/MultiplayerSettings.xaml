@@ -57,7 +57,7 @@
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <Grid>
                 <DockPanel>
-                    <DockPanel DockPanel.Dock="Left" Width="500" HorizontalAlignment="Left">
+                    <DockPanel DockPanel.Dock="Left" Width="450" HorizontalAlignment="Left">
                         <StackPanel>
                             <TextBlock Style="{StaticResource TextBlockTitle}" Text="{x:Static p:Resources.MultiplayerSettingsConnectionTypeTitle}"/>
 
