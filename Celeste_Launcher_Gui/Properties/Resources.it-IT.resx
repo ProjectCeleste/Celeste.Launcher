@@ -338,7 +338,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Salva</value>
   </data>
   <data name="MultiplayerSettingsUpnp" xml:space="preserve">
-    <value>UPnP con Aperto.nat</value>
+    <value>UPnP con open.nat</value>
   </data>
   <data name="MultiplayerSettingsWANCheckbox" xml:space="preserve">
     <value>WAN</value>
@@ -356,7 +356,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Scarica scenari</value>
   </data>
   <data name="ScenarioManagerOpenHelpTooltip" xml:space="preserve">
-    <value>Aiuta</value>
+    <value>Aiuto</value>
   </data>
   <data name="ScenarioManagerOpenScenarioDirectoryTooltip" xml:space="preserve">
     <value>Apri la cartella dello scenario in Esplora file</value>
