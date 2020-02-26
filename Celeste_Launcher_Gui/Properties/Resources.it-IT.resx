@@ -329,7 +329,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Altro</value>
   </data>
   <data name="MultiplayerSettingsPortMappingTitle" xml:space="preserve">
-    <value>Mappatura delle porte (WAN)</value>
+    <value>Mappatura porte (WAN)</value>
   </data>
   <data name="MultiplayerSettingsRemoteIPLabel" xml:space="preserve">
     <value>IP remoto:</value>
