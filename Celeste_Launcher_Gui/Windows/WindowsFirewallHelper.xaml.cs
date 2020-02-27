@@ -76,7 +76,7 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
-                    : GameScannnerManager.GetGameFilesRootPath();
+                    : GameScannerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
 
@@ -204,7 +204,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 var path = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig?.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig?.GameFilesPath
-                    : GameScannnerManager.GetGameFilesRootPath();
+                    : GameScannerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(path, "Spartan.exe");
 
