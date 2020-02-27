@@ -47,10 +47,10 @@ namespace Celeste_Launcher_Gui.Services
                 {
                     var gameFilePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
                         ? LegacyBootstrapper.UserConfig.GameFilesPath
-                        : GameScannnerManager.GetGameFilesRootPath();
+                        : GameScannerManager.GetGameFilesRootPath();
 
                     Logger.Information("Preparing games canner api");
-                    var gameScannner = new GameScannnerManager(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
+                    var gameScannner = new GameScannerManager(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
                     await gameScannner.InitializeFromCelesteManifest();
 
                     var success = false;
@@ -132,7 +132,7 @@ namespace Celeste_Launcher_Gui.Services
                 //Launch Game
                 var gamePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
                     ? LegacyBootstrapper.UserConfig.GameFilesPath
-                    : GameScannnerManager.GetGameFilesRootPath();
+                    : GameScannerManager.GetGameFilesRootPath();
 
                 var spartanPath = Path.Combine(gamePath, "Spartan.exe");
 

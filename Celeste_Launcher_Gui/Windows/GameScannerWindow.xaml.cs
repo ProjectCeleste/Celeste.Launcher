@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Windows
     /// </summary>
     public partial class GameScannerWindow : Window
     {
-        private readonly GameScannnerManager GameScanner;
+        private readonly GameScannerManager GameScanner;
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
         public GameScannerWindow(string gameFilesPath, bool isSteam)
@@ -29,7 +29,7 @@ namespace Celeste_Launcher_Gui.Windows
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            GameScanner = new GameScannnerManager(gameFilesPath, isSteam);
+            GameScanner = new GameScannerManager(gameFilesPath, isSteam);
         }
 
         private void OnClose(object sender, RoutedEventArgs e)

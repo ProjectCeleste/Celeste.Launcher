@@ -75,7 +75,7 @@ namespace Celeste_Launcher_Gui
             {
                 if (string.IsNullOrWhiteSpace(UserConfig.GameFilesPath))
                 {
-                    UserConfig.GameFilesPath = GameScannnerManager.GetGameFilesRootPath();
+                    UserConfig.GameFilesPath = GameScannerManager.GetGameFilesRootPath();
                     Logger.Information("Game path set to {@Path}", UserConfigFilePath);
                 }
                 else
