@@ -31,7 +31,7 @@ namespace Celeste_Launcher_Gui.Services
 #else
 
         private const string AssemblyInfoUrl =
-            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/beta/Celeste_Launcher_Gui/Celeste_Launcher_Gui.csproj";
+            "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/Celeste_Launcher_Gui/Celeste_Launcher_Gui.csproj";
 
         private const string ChangelogUrl =
             "https://raw.githubusercontent.com/ProjectCeleste/Celeste_Launcher/master/CHANGELOG.md";
