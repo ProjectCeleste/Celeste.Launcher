@@ -677,7 +677,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>No puedes enviar solicitud de amistad a {0}</value>
   </data>
   <data name="SendFriendRequestSendBtn" xml:space="preserve">
-    <value>Enviada</value>
+    <value>Enviar</value>
   </data>
   <data name="SendFriendRequestTitle" xml:space="preserve">
     <value>Enviar solicitud de amistad</value>
