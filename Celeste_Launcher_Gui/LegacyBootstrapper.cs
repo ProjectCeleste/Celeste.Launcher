@@ -121,11 +121,11 @@ namespace Celeste_Launcher_Gui
             if (localizedCultureInfo != null)
             {
                 Thread.CurrentThread.CurrentUICulture = localizedCultureInfo;
-                Logger.Information("Localized UI language to {@Language}", localizedCultureInfo);
+                Logger.Information("Localized UI language to {@Language}", localizedCultureInfo.DisplayName);
             }
             else
             {
-                Logger.Information("Unknown culture {@Language}", localizedCultureInfo);
+                Logger.Information("Unknown culture {@Language}", localizedCultureInfo.DisplayName);
             }
         }
 
