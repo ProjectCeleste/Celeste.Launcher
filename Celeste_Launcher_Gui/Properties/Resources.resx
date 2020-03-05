@@ -154,6 +154,9 @@
   <data name="CelesteWebsiteNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CelesteWebsiteNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="delete-64_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete-64_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FriendsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FriendsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,8 +175,14 @@
   <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pt-BR-Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pt-BR-Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="XButton_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BigOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BigOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,11 +202,8 @@
   <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FlagFRNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagFRNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FriendRequests_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendRequests_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SmallOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SmallOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="RedditHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\RedditHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,17 +229,14 @@
   <data name="ToolsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ToolsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FriendsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="LongOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LongOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AOEDBNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AOEDBNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FlagFRNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlagFRNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DonateHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DonateHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,8 +256,8 @@
   <data name="FlagUSHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlagUSHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AccountNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="delete-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="downloads-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\downloads-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,14 +265,17 @@
   <data name="FlagDEHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlagDEHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SmallOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SmallOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FriendRequests_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FriendRequests_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FlagFRHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FlagFRHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AccountHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AccountHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AccountNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AccountNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SettingsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SettingsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -289,10 +295,10 @@
   <data name="folder-3-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-3-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AccountHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FriendsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FriendsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete-64_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pt-BR-Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pt-BR-Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

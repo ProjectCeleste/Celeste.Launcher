@@ -22,7 +22,8 @@ namespace Celeste_Launcher_Gui
         [XmlEnum("es-ES")] esES,
         [XmlEnum("fr-FR")] frFR,
         [XmlEnum("it-IT")] itIT,
-        [XmlEnum("zh-CHT")] zhCHT
+        [XmlEnum("zh-CHT")] zhCHT,
+        [XmlEnum("pt-BR")] ptBR
     }
 
     public enum ConnectionType

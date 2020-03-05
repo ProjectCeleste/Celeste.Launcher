@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Properties {
     // à l'aide d'un outil, tel que ResGen ou Visual Studio.
     // Pour ajouter ou supprimer un membre, modifiez votre fichier .ResX, puis réexécutez ResGen
     // avec l'option /str ou régénérez votre projet VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -526,6 +526,26 @@ namespace Celeste_Launcher_Gui.Properties {
         internal static System.Drawing.Bitmap MiddleOne {
             get {
                 object obj = ResourceManager.GetObject("MiddleOne", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pt_BR_Hover {
+            get {
+                object obj = ResourceManager.GetObject("pt-BR-Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pt_BR_Normal {
+            get {
+                object obj = ResourceManager.GetObject("pt-BR-Normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -297,6 +297,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\pt-BR-Hover.png" />
+    <None Include="Resources\pt-BR-Normal.png" />
     <None Include="Resources\delete-64_gray.png" />
     <None Include="Resources\help-64_g1.png" />
     <None Include="Resources\downloads-64 _g.png" />

@@ -79,5 +79,17 @@ namespace Celeste_Launcher_Gui.Forms
             DialogResult = DialogResult.OK;
             Close();
         }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBoxButtonCustom3_Click(object sender, EventArgs e)
+        {
+            SelectedLang = GameLanguage.ptBR;
+            DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }
