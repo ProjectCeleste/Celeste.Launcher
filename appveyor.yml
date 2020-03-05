@@ -165,10 +165,6 @@ install:
       }
     }
 
-# scripts that run after cloning repository
-install:
-- git submodule update --init --recursive
-
 # enable patching of AssemblyInfo.* files
 assembly_info:
   patch: true
