@@ -15,9 +15,10 @@ namespace Celeste_Launcher_Gui.Forms
 {
     public partial class GameScanProgressForm : Form
     {
-        private GameScannerManager _gameScannner;
+        private GameScannerManager _gameScanner;
+        private readonly int _concurrentDownload;
 
-        public GameScanProgressForm(string gameFilesPath, bool isSteam = false)
+        public GameScanProgressForm(string gameFilesPath, bool isSteam = false, int concurrentDownload = 0)
         {
             InitializeComponent();
 
@@ -29,7 +30,8 @@ namespace Celeste_Launcher_Gui.Forms
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
 
-            _gameScannner = new GameScannerManager(gameFilesPath, isSteam);
+            _concurrentDownload = concurrentDownload;
+            _gameScanner = new GameScannerManager(gameFilesPath, isSteam);
             lbl_ProgressTitle.Text = string.Empty;
             lbl_ProgressDetail.Text = string.Empty;
             lbl_GlobalProgress.Text = string.Empty;
@@ -116,8 +118,8 @@ namespace Celeste_Launcher_Gui.Forms
 
         private void GameScan_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _gameScannner?.Dispose();
-            _gameScannner = null;
+            _gameScanner?.Dispose();
+            _gameScanner = null;
         }
 
         private void PictureBoxButtonCustom1_Click(object sender, EventArgs e)
@@ -135,8 +137,8 @@ namespace Celeste_Launcher_Gui.Forms
             subProgress.ProgressChanged += SubProgressChanged;
             try
             {
-                await _gameScannner.InitializeFromCelesteManifest();
-                if (await _gameScannner.ScanAndRepair(progress, subProgress))
+                await _gameScanner.InitializeFromCelesteManifest();
+                if (await _gameScanner.ScanAndRepair(progress, subProgress, _concurrentDownload))
                 {
                     MsgBox.ShowMessage(@"Game scan completed with success.",
                         @"Celeste Fan Project",
@@ -151,9 +153,9 @@ namespace Celeste_Launcher_Gui.Forms
             }
             catch (Exception ex)
             {
-                _gameScannner?.Abort();
-                _gameScannner?.Dispose();
-                _gameScannner = null;
+                _gameScanner?.Abort();
+                _gameScanner?.Dispose();
+                _gameScanner = null;
 
                 MsgBox.ShowMessage("Exception:\r\n" + ex.Message,
                     @"Celeste Fan Project",

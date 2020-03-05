@@ -64,8 +64,8 @@
     <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
     </Reference>
-    <Reference Include="ProjectCeleste.GameFiles.GameScanner, Version=2.4.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ProjectCeleste.GameFiles.GameScanner.2.4.3\lib\netstandard2.0\ProjectCeleste.GameFiles.GameScanner.dll</HintPath>
+    <Reference Include="ProjectCeleste.GameFiles.GameScanner, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ProjectCeleste.GameFiles.GameScanner.2.5.0\lib\netstandard2.0\ProjectCeleste.GameFiles.GameScanner.dll</HintPath>
     </Reference>
     <Reference Include="ProjectCeleste.GameFiles.Tools, Version=2.2.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ProjectCeleste.GameFiles.Tools.2.2.7\lib\netstandard2.0\ProjectCeleste.GameFiles.Tools.dll</HintPath>

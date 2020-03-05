@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Forms
                 Program.UserConfig.Save(Program.UserConfigFilePath);
 
                 using (var form = new GameScanProgressForm(Program.UserConfig.GameFilesPath,
-                    Program.UserConfig.IsSteamVersion))
+                    Program.UserConfig.IsSteamVersion, checkBox1.Checked ? 10 : 1))
                 {
                     var dr = form.ShowDialog();
 
