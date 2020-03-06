@@ -45,19 +45,20 @@ namespace Celeste_Launcher_Gui.Services
                 Logger.Information("User is online, will perform game scan");
                 try
                 {
-                    var gameFilePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
-                        ? LegacyBootstrapper.UserConfig.GameFilesPath
-                        : GameScannerManager.GetGameFilesRootPath();
-
-                    Logger.Information("Preparing games canner api");
-                    var gameScannner = new GameScannerManager(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
-                    await gameScannner.InitializeFromCelesteManifest();
-
                     var success = false;
 
                     while (!success)
                     {
                         Logger.Information("Starting quick game scan");
+                        var gameFilePath = !string.IsNullOrWhiteSpace(LegacyBootstrapper.UserConfig.GameFilesPath)
+                            ? LegacyBootstrapper.UserConfig.GameFilesPath 
+                            : GameScannerManager.GetGameFilesRootPath();
+
+                        Logger.Information("Preparing games canner api");
+
+                        var gameScannner = new GameScannerManager(gameFilePath, LegacyBootstrapper.UserConfig.IsSteamVersion);
+                        await gameScannner.InitializeFromCelesteManifest();
+
                         if (!await gameScannner.Scan(true))
                         {
                             Logger.Information("Game scanner did not approve game files");
@@ -69,8 +70,8 @@ namespace Celeste_Launcher_Gui.Services
 
                             if (dialogResult.Value)
                             {
-                                var scanner = new GamePathSelectionWindow();
-                                scanner.ShowDialog();
+                                var gamePathSelectionWindow = new GamePathSelectionWindow();
+                                gamePathSelectionWindow.ShowDialog();
                             }
                             else
                             {
