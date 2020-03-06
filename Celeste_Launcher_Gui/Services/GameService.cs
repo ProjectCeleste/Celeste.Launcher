@@ -163,6 +163,9 @@ namespace Celeste_Launcher_Gui.Services
                     case GameLanguage.zhCHT:
                         lang = "zh-CHT";
                         break;
+                    case GameLanguage.ptBR:
+                        lang = "pt-BR";
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(LegacyBootstrapper.UserConfig.GameLanguage),
                             LegacyBootstrapper.UserConfig.GameLanguage, null);
