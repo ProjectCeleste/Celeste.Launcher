@@ -46,7 +46,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 var currentWorkingDirectory = Path.GetDirectoryName(currentApplicationFullPath);
 
-                if (!File.Exists($"{currentWorkingDirectory}\\steam_appid.txt"))
+                if (!File.Exists($"{currentWorkingDirectory}\\steam_appid.txt") && !File.Exists($"{currentWorkingDirectory}\\steam_api.dll"))
                 {
                     GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);
                     Close();
