@@ -46,6 +46,13 @@ namespace Celeste_Launcher_Gui.Windows
 
                 var currentWorkingDirectory = Path.GetDirectoryName(currentApplicationFullPath);
 
+                if (!File.Exists($"{currentWorkingDirectory}\\Spartan.exe"))
+                {
+                    GenericMessageDialog.Show(Properties.Resources.SteamConverterIncorrectInstallationDirectory, DialogIcon.None, DialogOptions.Ok);
+                    Close();
+                    return;
+                }
+
                 LegacyBootstrapper.UserConfig.GameFilesPath = currentWorkingDirectory;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
