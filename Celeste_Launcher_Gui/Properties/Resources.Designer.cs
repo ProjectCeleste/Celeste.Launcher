@@ -431,6 +431,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fast download.
+        /// </summary>
+        public static string GameScannerFastDownloadOption {
+            get {
+                return ResourceManager.GetString("GameScannerFastDownloadOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling fast downloads might cause issues downloading game data. If it fails downloading your game files, try again with this option disabled..
+        /// </summary>
+        public static string GameScannerFastDownloadWarning {
+            get {
+                return ResourceManager.GetString("GameScannerFastDownloadWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finalizing.
         /// </summary>
         public static string GameScannerFinalizing {

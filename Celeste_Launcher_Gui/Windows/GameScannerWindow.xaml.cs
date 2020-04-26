@@ -21,8 +21,9 @@ namespace Celeste_Launcher_Gui.Windows
     {
         private readonly GameScannerManager GameScanner;
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
+        private readonly bool _useParallelDownloader;
 
-        public GameScannerWindow(string gameFilesPath, bool isSteam)
+        public GameScannerWindow(string gameFilesPath, bool isSteam, bool useParallelDownloader)
         {
             InitializeComponent();
 
@@ -30,6 +31,7 @@ namespace Celeste_Launcher_Gui.Windows
                 Directory.CreateDirectory(gameFilesPath);
 
             GameScanner = new GameScannerManager(gameFilesPath, isSteam);
+            _useParallelDownloader = useParallelDownloader;
         }
 
         private void OnClose(object sender, RoutedEventArgs e)
@@ -68,7 +70,7 @@ namespace Celeste_Launcher_Gui.Windows
                 progress.ProgressChanged += ProgressChanged;
                 subProgress.ProgressChanged += SubProgressChanged;
 
-                if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress)))
+                if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress, _useParallelDownloader)))
                 {
                     CurrentFileLabel.Content = string.Empty;
                     MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;

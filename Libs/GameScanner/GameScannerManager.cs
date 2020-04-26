@@ -164,7 +164,7 @@ namespace ProjectCeleste.GameFiles.GameScanner
         }
 
         public async Task<bool> ScanAndRepair(IProgress<ScanProgress> progress = null,
-            IProgress<ScanSubProgress> subProgress = null, int concurrentDownload = 0)
+            IProgress<ScanSubProgress> subProgress = null, bool useParallelDownloads = false)
         {
             EnsureInitialized();
             EnsureGameScannerIsNotRunning();
@@ -201,7 +201,7 @@ namespace ProjectCeleste.GameFiles.GameScanner
                     progress?.Report(new ScanProgress(fileInfo.FileName,
                         (double) globalProgress / totalSize * 100, i, totalIndex));
 
-                    retVal = await ScanAndRepairFile(fileInfo, _filesRootPath, subProgress, concurrentDownload, token);
+                    retVal = await ScanAndRepairFile(fileInfo, _filesRootPath, subProgress, useParallelDownloads, token);
 
                     if (!retVal)
                         break;
@@ -305,7 +305,7 @@ namespace ProjectCeleste.GameFiles.GameScanner
         }
 
         public static async Task<bool> ScanAndRepairFile(GameFileInfo fileInfo, string gameFilePath,
-            IProgress<ScanSubProgress> progress = null, int concurrentDownload = 0,  CancellationToken ct = default)
+            IProgress<ScanSubProgress> progress = null, bool useParallelDownloads = false,  CancellationToken ct = default)
         {
             var filePath = Path.Combine(gameFilePath, fileInfo.FileName);
 
@@ -338,10 +338,9 @@ namespace ProjectCeleste.GameFiles.GameScanner
             if (File.Exists(tempFileName))
                 File.Delete(tempFileName);
 
-            var fileDownloader = concurrentDownload == 1
-                ? (IFileDownloader) new SimpleFileDownloader(fileInfo.HttpLink, tempFileName)
-                : new ChunkFileDownloader(fileInfo.HttpLink, tempFileName, GameScannerTempPath,
-                    concurrentDownload);
+            var fileDownloader = useParallelDownloads
+                ? new ChunkFileDownloader(fileInfo.HttpLink, tempFileName, GameScannerTempPath, 5)
+                : (IFileDownloader)new SimpleFileDownloader(fileInfo.HttpLink, tempFileName);
 
             if (progress != null)
                 fileDownloader.ProgressChanged += (sender, eventArg) =>
