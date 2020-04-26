@@ -15,13 +15,13 @@
     <PackageReference Include="Markdig" Version="0.18.1" />
     <PackageReference Include="Microsoft.Dism" Version="2.0.23" />
     <PackageReference Include="Open.NAT.Core" Version="2.1.0.5" />
-    <PackageReference Include="ProjectCeleste.GameFiles.GameScanner" Version="2.5.0" />
     <PackageReference Include="System.IO.Compression" Version="4.3.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="WindowsFirewallHelper" Version="1.6.3.40" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj" />
+    <ProjectReference Include="..\Libs\GameScanner\ProjectCeleste.GameFiles.GameScanner.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AoEO_Logo.png" />

@@ -4,12 +4,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Celeste_Launcher_Gui", "Celeste_Launcher_Gui\Celeste_Launcher_Gui.csproj", "{589BC356-4A36-42FB-AE10-95AEDEC36AE6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA} = {88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{40623A54-2812-491D-9914-2F21B7BE181A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gui", "Gui", "{758E11E7-DC4E-4A53-99FA-667857F6E33F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Celeste_Public_Api", "Libs\Celeste_Public_Api\Celeste_Public_Api.csproj", "{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCeleste.GameFiles.GameScanner", "Libs\GameScanner\ProjectCeleste.GameFiles.GameScanner.csproj", "{88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DA9DD635-F340-46DA-969F-B82A40A6093A} = {DA9DD635-F340-46DA-969F-B82A40A6093A}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectCeleste.GameFiles.Tools", "Libs\Tools\ProjectCeleste.GameFiles.Tools.csproj", "{DA9DD635-F340-46DA-969F-B82A40A6093A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +35,14 @@ Global
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA9DD635-F340-46DA-969F-B82A40A6093A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA9DD635-F340-46DA-969F-B82A40A6093A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA9DD635-F340-46DA-969F-B82A40A6093A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA9DD635-F340-46DA-969F-B82A40A6093A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +50,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{589BC356-4A36-42FB-AE10-95AEDEC36AE6} = {758E11E7-DC4E-4A53-99FA-667857F6E33F}
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63} = {40623A54-2812-491D-9914-2F21B7BE181A}
+		{88BA90A7-9BA4-486C-A4E3-2C85A6F88DDA} = {40623A54-2812-491D-9914-2F21B7BE181A}
+		{DA9DD635-F340-46DA-969F-B82A40A6093A} = {40623A54-2812-491D-9914-2F21B7BE181A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99C4C0CE-DC43-4963-A38C-CDD0969F9909}
