@@ -17,6 +17,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- powershell: |
+    $lastTagHash = $(git rev-list --tags --max-count=1)
+    $lastTagName = $(git describe --tags $lastTagHash)
+    $lastRelease = $lastTagName.Substring(1)
+    Write-Host "##vso[task.setvariable variable=lastReleaseVersion]$lastRelease"
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -28,17 +34,19 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    msbuildArgs: '/p:Version=$(lastReleaseVersion)'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'Celeste_Launcher_Gui\bin\Release'
+    SourceFolder: 'Celeste_Launcher_Gui\bin\Release\net48'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'Celeste_Launcher_Gui\bin\Release'
+    rootFolderOrFile: 'Celeste_Launcher_Gui\bin\Release\net48'
     archiveFile: '$(Build.ArtifactStagingDirectory)/CelesteLauncher.zip'
+    includeRootFolder: false
 
 - task: GitHubRelease@1
   inputs:
