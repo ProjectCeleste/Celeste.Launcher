@@ -742,4 +742,10 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ChangePasswordTitle" xml:space="preserve">
     <value>Changer de mot de passe</value>
   </data>
+  <data name="GameScannerFastDownloadOption" xml:space="preserve">
+    <value>Téléchargement rapide</value>
+  </data>
+  <data name="GameScannerFastDownloadWarning" xml:space="preserve">
+    <value>Activer le téléchargement rapide peut poser problème lors du téléchargement des fichiers du jeu. Si le téléchargement échoue, essayez à nouveau en désactivant cette option.</value>
+  </data>
 </root>
