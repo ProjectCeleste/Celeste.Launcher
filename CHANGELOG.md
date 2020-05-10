@@ -1,5 +1,25 @@
 # Change Log
 
+## [v3.1.0]
+
+**New features:**
+
+- Complete redesign of the user interface in WPF
+- A new friend list
+- Translated launcher to German, Spanish, French, Italian, Portugese, and Chinese
+- Game scanner will show progress status on the taskbar
+- Can start the game without using the mouse
+- Fast download (optional) available when starting a game scan
+- Log files that makes it easier to diagnose problems
+
+**Changed:**
+- Fixed CPU and memory leaks in game scanner
+- More responsive UI
+- The launcher runs on .NET Framework 4.8
+- Passwords are stored using Windows Credentials Manager
+- Improved UI, and clearer text and dialog messages
+- Many small code-cleanups, tweaks, and fixes
+
 ## [v2.1.2.0](https://github.com/ProjectCeleste/Celeste_Launcher/tree/v2.1.2.0) (2019-10-08)
 
 [Full Changelog](https://github.com/ProjectCeleste/Celeste_Launcher/compare/v2.1.1.0...v2.1.2.0)
