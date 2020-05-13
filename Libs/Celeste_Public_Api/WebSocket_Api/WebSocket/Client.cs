@@ -88,7 +88,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
         {
             try
             {
-                _agent.Close();
+                _agent?.Close();
             }
             catch (Exception)
             {

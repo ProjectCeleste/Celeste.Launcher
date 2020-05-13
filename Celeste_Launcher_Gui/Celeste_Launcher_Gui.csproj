@@ -48,29 +48,45 @@
     <Reference Include="Crc32.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dc0b95cf99bf4e99, processorArchitecture=MSIL">
       <HintPath>..\packages\Crc32.NET.1.2.0\lib\net20\Crc32.NET.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetZip, Version=1.13.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.1.13.6\lib\net40\DotNetZip.dll</HintPath>
+    <Reference Include="DotNetZip, Version=1.13.7.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.13.7\lib\net40\DotNetZip.dll</HintPath>
     </Reference>
-    <Reference Include="Markdig, Version=0.18.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Markdig.0.18.1\lib\net40\Markdig.dll</HintPath>
+    <Reference Include="Markdig, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Markdig.0.20.0\lib\netstandard2.0\Markdig.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Dism.2.0.23\lib\net40\Microsoft.Dism.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Dism.2.1.4\lib\net40\Microsoft.Dism.dll</HintPath>
     </Reference>
     <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
       <HintPath>..\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
     </Reference>
+    <Reference Include="Overby.Extensions.AsyncBinaryReaderWriter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Overby.Extensions.AsyncBinaryReaderWriter.1.0.39\lib\net461\Overby.Extensions.AsyncBinaryReaderWriter.dll</HintPath>
+    </Reference>
     <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
     </Reference>
-    <Reference Include="ProjectCeleste.GameFiles.GameScanner, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ProjectCeleste.GameFiles.GameScanner.2.5.0\lib\netstandard2.0\ProjectCeleste.GameFiles.GameScanner.dll</HintPath>
+    <Reference Include="ProjectCeleste.GameFiles.GameScanner, Version=2.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ProjectCeleste.GameFiles.GameScanner.2.6.1\lib\netstandard2.0\ProjectCeleste.GameFiles.GameScanner.dll</HintPath>
     </Reference>
-    <Reference Include="ProjectCeleste.GameFiles.Tools, Version=2.2.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ProjectCeleste.GameFiles.Tools.2.2.7\lib\netstandard2.0\ProjectCeleste.GameFiles.Tools.dll</HintPath>
+    <Reference Include="ProjectCeleste.GameFiles.Tools, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ProjectCeleste.GameFiles.Tools.2.3.1\lib\netstandard2.0\ProjectCeleste.GameFiles.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
@@ -361,9 +377,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- <Target Name="AfterBuild"> -->
-    <!-- <ItemGroup> -->
-      <!-- <MoveToLibFolder Include="$(OutputPath)*.dll ; $(OutputPath)*.pdb ; $(OutputPath)*.xml" /> -->
-    <!-- </ItemGroup> -->
-    <!-- <Move SourceFiles="@(MoveToLibFolder)" DestinationFolder="$(OutputPath)Celeste_Launcher_Libs" OverwriteReadOnlyFiles="true" /> -->
+  <!-- <ItemGroup> -->
+  <!-- <MoveToLibFolder Include="$(OutputPath)*.dll ; $(OutputPath)*.pdb ; $(OutputPath)*.xml" /> -->
+  <!-- </ItemGroup> -->
+  <!-- <Move SourceFiles="@(MoveToLibFolder)" DestinationFolder="$(OutputPath)Celeste_Launcher_Libs" OverwriteReadOnlyFiles="true" /> -->
   <!-- </Target> -->
 </Project>
