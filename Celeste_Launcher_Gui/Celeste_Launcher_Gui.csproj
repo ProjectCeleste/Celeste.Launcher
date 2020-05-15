@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="CredentialManagement.Standard" Version="1.0.4" />
     <PackageReference Include="Markdig" Version="0.20.0" />
-    <PackageReference Include="Microsoft.Dism" Version="2.1.4" />
+    <PackageReference Include="Microsoft.Dism" Version="2.1.6" />
     <PackageReference Include="Open.NAT.Core" Version="2.1.0.5" />
     <PackageReference Include="ProjectCeleste.GameFiles.GameScanner" Version="2.6.1" />
     <PackageReference Include="System.IO.Compression" Version="4.3.0" />
