@@ -11,6 +11,7 @@
     <AssemblyName>Celeste Launcher</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Celeste.GameFiles.GameScanner" Version="2.6.1" />
     <PackageReference Include="CredentialManagement.Standard" Version="1.0.4" />
     <PackageReference Include="Markdig" Version="0.20.0" />
     <PackageReference Include="Microsoft.Dism" Version="2.1.4" />
@@ -21,7 +22,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj" />
-    <ProjectReference Include="..\Libs\GameScanner\ProjectCeleste.GameFiles.GameScanner.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AoEO_Logo.png" />

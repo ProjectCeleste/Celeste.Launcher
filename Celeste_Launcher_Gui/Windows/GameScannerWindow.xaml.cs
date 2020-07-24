@@ -70,7 +70,7 @@ namespace Celeste_Launcher_Gui.Windows
                 progress.ProgressChanged += ProgressChanged;
                 subProgress.ProgressChanged += SubProgressChanged;
 
-                if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress, _useParallelDownloader)))
+                if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress, _useParallelDownloader ? 4 : 1)))
                 {
                     CurrentFileLabel.Content = string.Empty;
                     MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;
