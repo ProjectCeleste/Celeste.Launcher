@@ -196,17 +196,12 @@ namespace Celeste_Launcher_Gui.Windows
 
         private void OnHelpClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://forums.projectceleste.com/wiki/offline-mode/");
+            Process.Start("https://forums.projectceleste.com/threads/offline-mode-2-0.3988/");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             _folderListener.Dispose();
-        }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            await GameService.StartGame(true);
         }
     }
 }

@@ -22,10 +22,10 @@
         <Grid Width="510" Height="27" VerticalAlignment="Top" Margin="0,11,0,0" MouseDown="OnMoveWindow" Background="Transparent">
             <TextBlock Text="{x:Static p:Resources.ScenarioManagerTitle}" Foreground="White" FontFamily="{StaticResource Ashley-Crawford-CG}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
         </Grid>
-        <ListView Width="490" Height="240" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,105,0,0" x:Name="ScenarioListView">
+        <ListView Width="490" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,105,0,0" x:Name="ScenarioListView">
             
         </ListView>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,38">
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource GenericCustomizedButton}" Width="53" Height="55"
                         theme:ButtonThemeProperties.DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/AddScenario-Normal.png"
@@ -57,7 +57,6 @@
                         Margin="2" Click="OnHelpClick"
                         ToolTip="{x:Static p:Resources.ScenarioManagerOpenHelpTooltip}"/>
             </StackPanel>
-            <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.ScenarioManagerPlayScenarioBtn}" FontSize="20" Margin="10" Click="Button_Click" />
         </StackPanel>
     </Grid>
 </Window>
