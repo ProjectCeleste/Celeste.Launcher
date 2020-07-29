@@ -17,12 +17,12 @@ namespace Celeste_Launcher_Gui.Services
 
         public async Task<LatestDownloadableRelease> GetLatestVersion()
         {
-            var lastRelease = await _gitHubClient.GetLastReleaseDownloadLink("ProjectCeleste", "Celeste_Launcher");
+            var lastRelease = await _gitHubClient.GetLastReleaseDownloadLink("ProjectCeleste", "Celeste.Launcher");
 
             if (lastRelease == null)
                 return null;
 
-            var launcherAsset = lastRelease.Assets.FirstOrDefault(t => t.Name == "Celeste_Launcher.zip");
+            var launcherAsset = lastRelease.Assets.FirstOrDefault(t => t.Name == "CelesteLauncher.zip");
 
             if (launcherAsset == null)
                 return null;
