@@ -13,7 +13,7 @@ using Microsoft.Win32.SafeHandles;
 
 namespace Celeste_Public_Api.Helpers
 {
-    public class Misc
+    public static class Misc
     {
         private const string MatchEmailPattern =
             @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"

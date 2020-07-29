@@ -19,7 +19,7 @@ namespace Celeste_Public_Api.Helpers
     {
         private static string _fingerPrint = string.Empty;
 
-        public static string Value()
+        public static string GenerateValue()
         {
             if (string.IsNullOrEmpty(_fingerPrint))
                 _fingerPrint = GetHash("CPU >> " + CpuId() +
@@ -95,26 +95,25 @@ namespace Celeste_Public_Api.Helpers
         // ReSharper disable once InconsistentNaming
         private static string Identifier(string wmiClass, string wmiProperty)
         {
-            var result = "";
-            var mc =
-                new ManagementClass(wmiClass);
+            var mc = new ManagementClass(wmiClass);
             var moc = mc.GetInstances();
             foreach (var o in moc)
                 //Only get the first one
             {
                 var mo = (ManagementObject) o;
-                if (result != "") continue;
                 try
                 {
-                    result = mo[wmiProperty].ToString();
-                    break;
+                    var propertyValue = mo[wmiProperty]?.ToString();
+                    if (!string.IsNullOrEmpty(propertyValue))
+                        return propertyValue;
                 }
                 catch (Exception)
                 {
                     // ignored
                 }
             }
-            return result;
+
+            return "";
         }
 
         private static string CpuId()

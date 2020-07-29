@@ -60,7 +60,7 @@ namespace Celeste_Launcher_Gui.Helpers
 
             try
             {
-                await ZipUtils.ExtractZipFile(tempFileName, tempDir, ct, null, extractProgress);
+                await ZipUtils.ExtractZipFile(tempFileName, tempDir, extractProgress, ct);
             }
             catch (AggregateException)
             {

@@ -1,0 +1,46 @@
+﻿<Window x:Class="Celeste_Launcher_Gui.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+        mc:Ignorable="d"
+        Title="Celeste Launcher" Width="1018" Height="730" WindowStyle="none" ResizeMode="NoResize" Background="Black" UseLayoutRounding="True" Loaded="Window_Loaded">
+    <Grid>
+        <Border BorderThickness="27" MouseDown="BorderMoved">
+            <Border.BorderBrush>
+                <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/TopBorder.png"/>
+            </Border.BorderBrush>
+            <DockPanel MouseDown="ContentMoved">
+                <DockPanel.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MainWindow_InnerContents.png"/>
+                </DockPanel.Background>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <TextBlock TextWrapping="WrapWithOverflow" Height="77" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="16" Foreground="White" TextAlignment="Center">
+                        Age of Empires Online © Microsoft Corporation.<LineBreak/>
+                        Project Celeste was created under Microsoft's "<Hyperlink Click="OpenLegalTermsWebsite" Foreground="#32a5f5">Game Content Usage Rules</Hyperlink>" using assets from<LineBreak/>
+                        Age of Empires Online, and it is not endorsed by or affiliated with Microsoft.
+                    </TextBlock>
+                </DockPanel>
+                <Grid DockPanel.Dock="Bottom" Height="12"/>
+                <Grid>
+                    <Frame x:Name="NavigationFrame" NavigationUIVisibility="Hidden" Source="pack://application:,,,/Celeste Launcher;component/Pages/MainMenuPage.xaml" />
+                </Grid>
+            </DockPanel>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
+            <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCMinimizeNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCMinimizeHover.png"
+                    Click="OnMinimize"/>
+            
+            <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
+                    Click="OnClose"/>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

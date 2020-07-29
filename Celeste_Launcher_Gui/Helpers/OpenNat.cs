@@ -15,7 +15,7 @@ using Open.Nat;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
-    public class OpenNat
+    public static class OpenNat
     {
         public static TextWriterTraceListener TextWriterTraceListener =
             new TextWriterTraceListener($"{AppDomain.CurrentDomain.BaseDirectory}OpenNat.log", "OpenNatTxtLog");

@@ -1,0 +1,751 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LauncherInstalledVersionLabel" xml:space="preserve">
+    <value>安装：</value>
+  </data>
+  <data name="LauncherUpdateNewVersionLabel" xml:space="preserve">
+    <value>新的：</value>
+  </data>
+  <data name="LauncherUpdateTitle" xml:space="preserve">
+    <value>更新启动程序</value>
+  </data>
+  <data name="LauncherUpdateUpdateBtn" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="LoginAutoLoginOption" xml:space="preserve">
+    <value>自动登录</value>
+  </data>
+  <data name="LoginEmailField" xml:space="preserve">
+    <value>电子邮箱：</value>
+  </data>
+  <data name="LoginForgottenPassword" xml:space="preserve">
+    <value>忘记了你的密码？</value>
+  </data>
+  <data name="LoginPasswordField" xml:space="preserve">
+    <value>密码：</value>
+  </data>
+  <data name="LoginPerformLoginBtn" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="LoginRememberPasswordOption" xml:space="preserve">
+    <value>记住密码</value>
+  </data>
+  <data name="MainMenuCelesteSideMenuBtn" xml:space="preserve">
+    <value>官方网站</value>
+  </data>
+  <data name="MainMenuDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="MainMenuLoginBtn" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="MainMenuPlayOfflineBtn" xml:space="preserve">
+    <value>离线游戏</value>
+  </data>
+  <data name="MainMenuRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="MainMenuRegisterBtn" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="MainMenuYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="OptionNo" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="OptionOk" xml:space="preserve">
+    <value>好的</value>
+  </data>
+  <data name="OptionYes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="OverviewAccountSideMenuBtn" xml:space="preserve">
+    <value>账号</value>
+  </data>
+  <data name="OverviewItemSearchSideMenuBtn" xml:space="preserve">
+    <value>道具搜索</value>
+  </data>
+  <data name="OverviewChampionModeInfoSideMenuBtn" xml:space="preserve">
+    <value>玩家对战信息</value>
+  </data>
+  <data name="OverviewDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="OverviewDonateSideMenuBtn" xml:space="preserve">
+    <value>捐赠</value>
+  </data>
+  <data name="OverviewFriendsSideMenuBtn" xml:space="preserve">
+    <value>好友</value>
+  </data>
+  <data name="OverviewLoginBtn" xml:space="preserve">
+    <value>开始游戏</value>
+  </data>
+  <data name="OverviewScenarioManagerSideMenuBtn" xml:space="preserve">
+    <value>场景</value>
+  </data>
+  <data name="OverviewPatchNotesSideMenuBtn" xml:space="preserve">
+    <value>更新包说明</value>
+  </data>
+  <data name="OverviewPlayOfflineBtn" xml:space="preserve">
+    <value>离线游戏</value>
+  </data>
+  <data name="OverviewRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
+  </data>
+  <data name="OverviewSettingsSideMenuBtn" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="OverviewWebsiteSideMenuBtn" xml:space="preserve">
+    <value>官方网站</value>
+  </data>
+  <data name="OverviewYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
+  </data>
+  <data name="RegisterCompleteRegistrationBtnText" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="RegisterEmailLabelText" xml:space="preserve">
+    <value>电子邮件：</value>
+  </data>
+  <data name="RegisterPasswordConfirmationLabelText" xml:space="preserve">
+    <value>确认密码：</value>
+  </data>
+  <data name="RegisterPasswordLabelText" xml:space="preserve">
+    <value>密码：</value>
+  </data>
+  <data name="RegisterResendBtnText" xml:space="preserve">
+    <value>重新发送</value>
+  </data>
+  <data name="RegisterUsernameLabelText" xml:space="preserve">
+    <value>用户名：</value>
+  </data>
+  <data name="RegisterVerifyBtnText" xml:space="preserve">
+    <value>验证</value>
+  </data>
+  <data name="RegisterVerifyLabelText" xml:space="preserve">
+    <value>验证密码：</value>
+  </data>
+  <data name="RegisterCancelBtnText" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="MainMenuGameSettingsBtn" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="LanguageComingSoonToolTip" xml:space="preserve">
+    <value>Coming soon™</value>
+  </data>
+  <data name="GameScannerTitle" xml:space="preserve">
+    <value>游戏扫描</value>
+  </data>
+  <data name="GamePathSelectionBrowseBtn" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="GamePathSelectionScanBtn" xml:space="preserve">
+    <value>扫描</value>
+  </data>
+  <data name="GamePathSelectionTitle" xml:space="preserve">
+    <value>执行验证游戏完整性操作以安装/更新/修复 
+Age of Empires Online - Celeste Fan Project</value>
+  </data>
+  <data name="GameScannerDiscordLabel" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="GameScannerPatchNotesLabel" xml:space="preserve">
+    <value>更新包说明</value>
+  </data>
+  <data name="OverviewToolsBtnTooltip" xml:space="preserve">
+    <value>游戏工具</value>
+  </data>
+  <data name="MainMenuDonateSideMenuBtn" xml:space="preserve">
+    <value>捐赠</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuChangeGameLanguage" xml:space="preserve">
+    <value>切换游戏语言</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuConvertToSteamGame" xml:space="preserve">
+    <value>转换为 Steam 游戏</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuDiagnosticsMode" xml:space="preserve">
+    <value>启用诊断模式</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuFirewallHelper" xml:space="preserve">
+    <value>防火墙帮助</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuGameScanner" xml:space="preserve">
+    <value>游戏扫描工具</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuLauncherUpdater" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="MainMenuGameSettingsMenuWindowsFeatures" xml:space="preserve">
+    <value>Windows 功能</value>
+  </data>
+  <data name="OverviewTwitchSideMenuBtn" xml:space="preserve">
+    <value>Twitch</value>
+  </data>
+  <data name="ResetPasswordConfirmBtn" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="ResetPasswordConfirmNewPassword" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="ResetPasswordCurrentPassword" xml:space="preserve">
+    <value>当前密码</value>
+  </data>
+  <data name="ResetPasswordNewPassword" xml:space="preserve">
+    <value>新的密码</value>
+  </data>
+  <data name="MultiplayerSettingsConnectionTypeTitle" xml:space="preserve">
+    <value>连接类型</value>
+  </data>
+  <data name="MultiplayerSettingsLANCheckbox" xml:space="preserve">
+    <value>仅限局域网</value>
+  </data>
+  <data name="MultiplayerSettingsManual" xml:space="preserve">
+    <value>手动设置（协议：UDP，端口：1000）</value>
+  </data>
+  <data name="MultiplayerSettingsNatPunchthrough" xml:space="preserve">
+    <value>NAT穿透（默认）</value>
+  </data>
+  <data name="MultiplayerSettingsOtherCheckbox" xml:space="preserve">
+    <value>其它</value>
+  </data>
+  <data name="MultiplayerSettingsPortMappingTitle" xml:space="preserve">
+    <value>端口映射（广域网）</value>
+  </data>
+  <data name="MultiplayerSettingsRemoteIPLabel" xml:space="preserve">
+    <value>远程IP：</value>
+  </data>
+  <data name="MultiplayerSettingsSaveBtn" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="MultiplayerSettingsUpnp" xml:space="preserve">
+    <value>使用open.nat的UPnP</value>
+  </data>
+  <data name="MultiplayerSettingsWANCheckbox" xml:space="preserve">
+    <value>广域网</value>
+  </data>
+  <data name="NetworkDeviceSelectorSaveBtn" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="NetworkDeviceSelectorTitle" xml:space="preserve">
+    <value>选择网络设备</value>
+  </data>
+  <data name="ScenarioManagerAddScenarioTooltip" xml:space="preserve">
+    <value>添加场景</value>
+  </data>
+  <data name="ScenarioManagerDownloadScenarioTooltip" xml:space="preserve">
+    <value>下载场景</value>
+  </data>
+  <data name="ScenarioManagerOpenHelpTooltip" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="ScenarioManagerOpenScenarioDirectoryTooltip" xml:space="preserve">
+    <value>在文件资源管理器中打开场景目录</value>
+  </data>
+  <data name="ScenarioManagerPlayScenarioBtn" xml:space="preserve">
+    <value>开始玩场景</value>
+  </data>
+  <data name="ScenarioManagerRemoveScenarioTooltip" xml:space="preserve">
+    <value>删除选中场景</value>
+  </data>
+  <data name="ScenarioManagerTitle" xml:space="preserve">
+    <value>场景管理器</value>
+  </data>
+  <data name="ResetPasswordEmailAddressField" xml:space="preserve">
+    <value>电子邮件地址：</value>
+  </data>
+  <data name="ResetPasswordResetBtn" xml:space="preserve">
+    <value>重置密码</value>
+  </data>
+  <data name="ResetPasswordResetKeyField" xml:space="preserve">
+    <value>重置密码：</value>
+  </data>
+  <data name="ResetPasswordSendResetBtn" xml:space="preserve">
+    <value>发送重置密码</value>
+  </data>
+  <data name="WindowsFeatureHelperEnableBtn" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="WindowsFeatureHelperEnabledStatus" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="WindowsFeatureHelperNotEnabledStatus" xml:space="preserve">
+    <value>未启用</value>
+  </data>
+  <data name="WindowsFeatureHelperTitle" xml:space="preserve">
+    <value>Windows 功能帮助程序</value>
+  </data>
+  <data name="WindowsFeatureHelperUnknownStatus" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="ProcDumpInstallerTitle" xml:space="preserve">
+    <value>正在安装 ProcDump</value>
+  </data>
+  <data name="SteamConverterConfirmBtn" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="SteamConverterTitle" xml:space="preserve">
+    <value>请确认你想在 Age of Empires Online 通过 Steam 启动时启动 Celeste Fan Project 启动程序</value>
+  </data>
+  <data name="WindowsFirewallHelperApplication" xml:space="preserve">
+    <value>应用程序</value>
+  </data>
+  <data name="WindowsFirewallHelperInbound" xml:space="preserve">
+    <value>入站</value>
+  </data>
+  <data name="WindowsFirewallHelperOpenBtn" xml:space="preserve">
+    <value>开启</value>
+  </data>
+  <data name="WindowsFirewallHelperOutbound" xml:space="preserve">
+    <value>出站</value>
+  </data>
+  <data name="WindowsFirewallHelperTitle" xml:space="preserve">
+    <value>Windows 防火墙帮助</value>
+  </data>
+  <data name="AutoLoginError" xml:space="preserve">
+    <value>由于意外错误，无法执行自动登录</value>
+  </data>
+  <data name="AutoLoginFailed" xml:space="preserve">
+    <value>无法执行自动登录，请手动重新登录</value>
+  </data>
+  <data name="ChangePasswordError" xml:space="preserve">
+    <value>修改密码时出现错误：</value>
+  </data>
+  <data name="ChangePasswordInvalidLength" xml:space="preserve">
+    <value>新密码长度限制为8~32个字符。</value>
+  </data>
+  <data name="ChangePasswordInvalidPassword" xml:space="preserve">
+    <value>无效的密码，使用 ' 和 " 不被允许！</value>
+  </data>
+  <data name="ChangePasswordMismatch" xml:space="preserve">
+    <value>新密码与密码确认不一致。</value>
+  </data>
+  <data name="ChangePasswordSamePassword" xml:space="preserve">
+    <value>新密码不能与旧密码相同。</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>密码已成功更改。</value>
+  </data>
+  <data name="DiagnosticsModeError" xml:space="preserve">
+    <value>启动诊断模式时发生意外错误，请重试或检查日志文件。</value>
+  </data>
+  <data name="DiagnosticsModeMissingProcdump" xml:space="preserve">
+    <value>诊断模式需要安装的 ProcDump 没有找到，因此诊断模式将被禁用。</value>
+  </data>
+  <data name="EnableDiagnosticsModeInstallProcdumpPrompt" xml:space="preserve">
+    <value>ProcDump.exe 需要安装，你想要现在安装吗？</value>
+  </data>
+  <data name="EnableDiagnosticsModeProcdumpInstallError" xml:space="preserve">
+    <value>无法启用“诊断模式”，错误信息：</value>
+  </data>
+  <data name="GameAlreadyRunningError" xml:space="preserve">
+    <value>游戏仍在运行，请关闭并重试。</value>
+  </data>
+  <data name="GamePathInvalidPath" xml:space="preserve">
+    <value>所选择的游戏路径不存在</value>
+  </data>
+  <data name="GamePathSelectorTitle" xml:space="preserve">
+    <value>选择 Spartan.exe 的位置（它一般位于 Age of Empires Online 文件夹）</value>
+  </data>
+  <data name="GameScannerDidNotPass" xml:space="preserve">
+    <value>游戏扫描失败。</value>
+  </data>
+  <data name="GameScannerDidNotPassQuickScan" xml:space="preserve">
+    <value>一些游戏文件似乎丢失了，你是否运行“游戏扫描”来修复/下载文件？如果你是第一次安装游戏，请点击“是”下载游戏的其余部分。</value>
+  </data>
+  <data name="GameScannerDoneLabel" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="GameScannerDoneMessage" xml:space="preserve">
+    <value>游戏扫描成功完成</value>
+  </data>
+  <data name="GameScannerDownloading" xml:space="preserve">
+    <value>下载中……</value>
+  </data>
+  <data name="GameScannerDownloadStarting" xml:space="preserve">
+    <value>开始下载</value>
+  </data>
+  <data name="GameScannerExtracting" xml:space="preserve">
+    <value>正在提取下载的文件……</value>
+  </data>
+  <data name="GameScannerFailed" xml:space="preserve">
+    <value>运行游戏扫描时发生意外错误，请重试或检查日志文件。</value>
+  </data>
+  <data name="GameScannerFinalizing" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="GameScannerScanError" xml:space="preserve">
+    <value>游戏扫描时遇到意外问题，请重试或检查日志文件。</value>
+  </data>
+  <data name="GameScannerSpartanNotFound" xml:space="preserve">
+    <value>找不到 Spartan.exe ，请运行游戏扫描以确保没有丢失任何游戏文件。</value>
+  </data>
+  <data name="GameScannerVerifying" xml:space="preserve">
+    <value>验证文件完整性</value>
+  </data>
+  <data name="GameScannerVerifyingDownloadedFile" xml:space="preserve">
+    <value>正在检查下载的文件</value>
+  </data>
+  <data name="GameScannerVerifyingExtractedFile" xml:space="preserve">
+    <value>正在检查提取的文件</value>
+  </data>
+  <data name="GenericUnexpectedErrorMessage" xml:space="preserve">
+    <value>发生意外错误，请重试或检查日志文件。</value>
+  </data>
+  <data name="LauncherUpdaterError" xml:space="preserve">
+    <value>执行更新时发生意外错误，启动程序现在将关闭。如果问题仍然存在，请尝试手动更新。</value>
+  </data>
+  <data name="LauncherUpdaterUpdateSuccess" xml:space="preserve">
+    <value>Celeste Fan Project 启动程序已更新，现在将重启程序。</value>
+  </data>
+  <data name="LoginBadEmail" xml:space="preserve">
+    <value>输入的电子邮箱地址是无效的。</value>
+  </data>
+  <data name="LoginErrorMessage" xml:space="preserve">
+    <value>登陆失败：</value>
+  </data>
+  <data name="LoginTooLongPassword" xml:space="preserve">
+    <value>输入的密码最多为32个字符。</value>
+  </data>
+  <data name="LoginTooShortPassword" xml:space="preserve">
+    <value>输入的密码至少为8个字符。</value>
+  </data>
+  <data name="MultiplayerSettingsOtherNetworkDevice" xml:space="preserve">
+    <value>其它</value>
+  </data>
+  <data name="NetworkDeviceSelectorNoDeviceSelected" xml:space="preserve">
+    <value>请选择网络接口</value>
+  </data>
+  <data name="ProcdumpInstallError" xml:space="preserve">
+    <value>安装 ProcDump 时发生意外错误，请重试或检查日志文件。</value>
+  </data>
+  <data name="RegisterError" xml:space="preserve">
+    <value>注册时出现错误：</value>
+  </data>
+  <data name="RegisterInvalidEmail" xml:space="preserve">
+    <value>输入的电子邮箱地址是无效的。</value>
+  </data>
+  <data name="RegisterInvalidKeyLength" xml:space="preserve">
+    <value>你输入的密码无效。</value>
+  </data>
+  <data name="RegisterInvalidPassword" xml:space="preserve">
+    <value>无效的密码，使用 ' 和 " 不被允许！</value>
+  </data>
+  <data name="RegisterInvalidPasswordLength" xml:space="preserve">
+    <value>密码长度限制为8~32个字符。</value>
+  </data>
+  <data name="RegisterInvalidUsername" xml:space="preserve">
+    <value>无效的用户名，只允许字母和数字，长度限制为3~15个字符。</value>
+  </data>
+  <data name="RegisterPasswordMismatch" xml:space="preserve">
+    <value>确认的密码必须与第一次输入的密码一致</value>
+  </data>
+  <data name="ResetPasswordError" xml:space="preserve">
+    <value>重置密码时出错，请重试或检查日志文件。</value>
+  </data>
+  <data name="ResetPasswordFailed" xml:space="preserve">
+    <value>由于以下原因，重置密码失败：</value>
+  </data>
+  <data name="ResetPasswordInvalidEmail" xml:space="preserve">
+    <value>输入的电子邮箱地址是无效的。</value>
+  </data>
+  <data name="ResetPasswordInvalidKey" xml:space="preserve">
+    <value>输入的密码无效。</value>
+  </data>
+  <data name="ScenarioEditorDeleteScenarioPrompt" xml:space="preserve">
+    <value>你确定要删除 {0}？</value>
+  </data>
+  <data name="ScenarioEditorFilePickerFileTypes" xml:space="preserve">
+    <value>场景文件</value>
+  </data>
+  <data name="ScenarioEditorFilePickerTitle" xml:space="preserve">
+    <value>选择场景文件</value>
+  </data>
+  <data name="ScenarioEditorOverwritePrompt" xml:space="preserve">
+    <value>文件 {0} 已经存在，要覆盖它吗？</value>
+  </data>
+  <data name="StartGameError" xml:space="preserve">
+    <value>在启动 Age of Empires Online 时发生意外错误，请重试或检查日志文件。</value>
+  </data>
+  <data name="SteamConverterAlreadySteamGame" xml:space="preserve">
+    <value>Celeste Fan Project 启动程序已经与 Steam 兼容了。</value>
+  </data>
+  <data name="SteamConverterIncorrectInstallationDirectory" xml:space="preserve">
+    <value>Celeste Fan Project 启动程序必须与 Steam 游戏文件放在同一个文件夹中。</value>
+  </data>
+  <data name="SteamConverterSuccess" xml:space="preserve">
+    <value>Celeste Fan Project 启动程序现在与 Steam 兼容，现在将重启程序。</value>
+  </data>
+  <data name="UpdateServiceChangelogError" xml:space="preserve">
+    <value>无法获取更改日志。</value>
+  </data>
+  <data name="UPnPDisabledError" xml:space="preserve">
+    <value>错误：找不到Upnp设备！“UPnP端口映射”被禁用。</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureInstalled" xml:space="preserve">
+    <value>已安装</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureIsPendingInstall" xml:space="preserve">
+    <value>暂停安装</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureNotSupportedError" xml:space="preserve">
+    <value>不支持（未知错误）</value>
+  </data>
+  <data name="WindowsFeatureHelperFeaturePartiallyInstalled" xml:space="preserve">
+    <value>部分安装</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureStaged" xml:space="preserve">
+    <value>分阶段</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureUnsupported" xml:space="preserve">
+    <value>不支持（{0}）</value>
+  </data>
+  <data name="WindowsFeatureHelperUnsupportedOS" xml:space="preserve">
+    <value>只能在 Windows 8 或更高级的系统版本上运行，你当前使用的是 {0}。</value>
+  </data>
+  <data name="WindowsFirewallHelperLauncherNotFound" xml:space="preserve">
+    <value>无法定位启动程序的位置。</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleInvalid" xml:space="preserve">
+    <value>无效的</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleNotFound" xml:space="preserve">
+    <value>找不到</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleOpen" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="WindowsFirewallHelperSpartanNotFound" xml:space="preserve">
+    <value>找不到 Spartan.exe 请运行游戏扫描工具以确保没有丢失任何游戏文件。</value>
+  </data>
+  <data name="FriendListAcceptRequestBtn" xml:space="preserve">
+    <value>接受</value>
+  </data>
+  <data name="FriendListAddFriendBtn" xml:space="preserve">
+    <value>添加好友</value>
+  </data>
+  <data name="FriendListCancelFriendRequest" xml:space="preserve">
+    <value>取消好友请求</value>
+  </data>
+  <data name="FriendListDeclineRequestBtn" xml:space="preserve">
+    <value>拒绝</value>
+  </data>
+  <data name="FriendListFilterPlaceholder" xml:space="preserve">
+    <value>过滤器</value>
+  </data>
+  <data name="FriendListFriendRequestDescription" xml:space="preserve">
+    <value>已向你发送的好友请求</value>
+  </data>
+  <data name="FriendListOffline" xml:space="preserve">
+    <value>离线</value>
+  </data>
+  <data name="FriendListOutgoingFriendRequest" xml:space="preserve">
+    <value>发送好友请求</value>
+  </data>
+  <data name="FriendListRemoveFriend" xml:space="preserve">
+    <value>删除好友</value>
+  </data>
+  <data name="FriendListTitle" xml:space="preserve">
+    <value>好友列表</value>
+  </data>
+  <data name="FriendsOnlineText" xml:space="preserve">
+    <value>在线好友：</value>
+  </data>
+  <data name="SendFriendRequestCancelBtn" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="SendFriendRequestFailed" xml:space="preserve">
+    <value>无法向 {0} 发送好友请求</value>
+  </data>
+  <data name="SendFriendRequestSendBtn" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="SendFriendRequestTitle" xml:space="preserve">
+    <value>发送好友请求</value>
+  </data>
+  <data name="SendFriendRequestUsernameLabel" xml:space="preserve">
+    <value>用户名：</value>
+  </data>
+  <data name="LauncherAlreadyRunningMessage" xml:space="preserve">
+    <value>启动程序已经运行，并将退出。</value>
+  </data>
+  <data name="FriendListMaxFriendsReached" xml:space="preserve">
+    <value>无法添加好友，因为你的好友列表已满。</value>
+  </data>
+  <data name="GamePathSelectionWindowTitle" xml:space="preserve">
+    <value>选择游戏安装位置</value>
+  </data>
+  <data name="MultiplayerSettingsTitle" xml:space="preserve">
+    <value>多人游戏设置</value>
+  </data>
+  <data name="ResetPasswordTitle" xml:space="preserve">
+    <value>重置密码</value>
+  </data>
+  <data name="ResetPasswordWindowTitle" xml:space="preserve">
+    <value>重置密码</value>
+  </data>
+  <data name="SteamConverterWindowTitle" xml:space="preserve">
+    <value>确认 Steam 转化</value>
+  </data>
+  <data name="OverviewChangePassword" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="OverviewEnableDiagnosticsMode" xml:space="preserve">
+    <value>启用诊断模式</value>
+  </data>
+  <data name="OverviewGameLanguageSettings" xml:space="preserve">
+    <value>游戏语言</value>
+  </data>
+  <data name="OverviewGameScan" xml:space="preserve">
+    <value>游戏扫描</value>
+  </data>
+  <data name="OverviewGameSettings" xml:space="preserve">
+    <value>游戏设置</value>
+  </data>
+  <data name="OverviewLogOut" xml:space="preserve">
+    <value>登出</value>
+  </data>
+  <data name="OverviewMultiplayerSettings" xml:space="preserve">
+    <value>多人游戏设置</value>
+  </data>
+  <data name="OverviewSteam" xml:space="preserve">
+    <value>转化为 Steam 平台进行游戏</value>
+  </data>
+  <data name="OverviewUpdateLauncher" xml:space="preserve">
+    <value>更新启动程序</value>
+  </data>
+  <data name="OverviewWindowsFeatures" xml:space="preserve">
+    <value>Windows 功能</value>
+  </data>
+  <data name="OverviewWindowsFirewall" xml:space="preserve">
+    <value>Windows 防火墙</value>
+  </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="GameScannerFastDownloadOption" xml:space="preserve">
+    <value>Fast download</value>
+  </data>
+  <data name="GameScannerFastDownloadWarning" xml:space="preserve">
+    <value>Enabling fast downloads might cause issues downloading game data. If it fails downloading your game files, try again with this option disabled.</value>
+  </data>
+</root>

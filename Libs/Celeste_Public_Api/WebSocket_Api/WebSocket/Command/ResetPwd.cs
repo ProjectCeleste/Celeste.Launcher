@@ -15,38 +15,28 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
         private DateTime _lastTime = DateTime.UtcNow.AddMinutes(-5);
 
-        public ResetPwd(Client webSocketClient)
-        {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
-        }
+        private readonly DataExchange _dataExchange;
 
-        private DataExchange DataExchange { get; }
+        public ResetPwd(DataExchange dataExchange)
+        {
+            _dataExchange = dataExchange;
+        }
 
         public async Task<ResetPwdResult> DoResetPwd(ResetPwdInfo request)
         {
             try
             {
-                if (!Misc.IsValidEmailAdress(request.EMail))
-                    throw new Exception("Invalid eMail!");
-
-                if (request.VerifyKey.Length != 32)
-                    throw new Exception("Invalid Verify Key!");
-
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;
                 if (lastSendTime <= 90)
                     throw new Exception(
                         $"You need to wait at least 90 seconds before asking to resend an new password! Last request was {lastSendTime} seconds ago.");
 
-                dynamic requestInfo = request;
+                var result = await _dataExchange.DoDataExchange<ResetPwdResult, ResetPwdInfo>(request, CmdName);
 
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                ResetPwdResult retVal = result.ToObject<ResetPwdResult>();
-
-                if (retVal.Result)
+                if (result.Result)
                     _lastTime = DateTime.UtcNow;
 
-                return retVal;
+                return result;
             }
             catch (Exception e)
             {

@@ -117,188 +117,635 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="add-folder-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-folder-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LauncherInstalledVersionLabel" xml:space="preserve">
+    <value>Installed:</value>
   </data>
-  <data name="CelesteLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CelesteLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LauncherUpdateNewVersionLabel" xml:space="preserve">
+    <value>New:</value>
   </data>
-  <data name="DiscordHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiscordHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LauncherUpdateTitle" xml:space="preserve">
+    <value>Launcher Update</value>
   </data>
-  <data name="FlagCNHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagCNHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LauncherUpdateUpdateBtn" xml:space="preserve">
+    <value>Update</value>
   </data>
-  <data name="FlagCNNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagCNNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginAutoLoginOption" xml:space="preserve">
+    <value>Auto-login</value>
   </data>
-  <data name="RefreshHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RefreshHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginEmailField" xml:space="preserve">
+    <value>Email:</value>
   </data>
-  <data name="DialogBoxSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DialogBoxSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginForgottenPassword" xml:space="preserve">
+    <value>Forgot password?</value>
   </data>
-  <data name="downloads-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\downloads-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginPasswordField" xml:space="preserve">
+    <value>Password:</value>
   </data>
-  <data name="BarSeparatorVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparatorVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginPerformLoginBtn" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="folder-3-64 _g1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-3-64 _g1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginRememberPasswordOption" xml:space="preserve">
+    <value>Remember password</value>
   </data>
-  <data name="folder-3-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-3-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuCelesteSideMenuBtn" xml:space="preserve">
+    <value>Website</value>
   </data>
-  <data name="CelesteWebsiteNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CelesteWebsiteNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
   </data>
-  <data name="delete-64_gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64_gray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuLoginBtn" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="FriendsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuPlayOfflineBtn" xml:space="preserve">
+    <value>Play Offline</value>
   </data>
-  <data name="help-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
   </data>
-  <data name="VersionNumberPlate" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VersionNumberPlate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuRegisterBtn" xml:space="preserve">
+    <value>Register</value>
   </data>
-  <data name="AOEDBHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AOEDBHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
   </data>
-  <data name="DonateNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DonateNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OptionNo" xml:space="preserve">
+    <value>No</value>
   </data>
-  <data name="BackgroundTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackgroundTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OptionOk" xml:space="preserve">
+    <value>Ok</value>
   </data>
-  <data name="pt-BR-Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pt-BR-Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OptionYes" xml:space="preserve">
+    <value>Yes</value>
   </data>
-  <data name="XButton_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\XButton_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewAccountSideMenuBtn" xml:space="preserve">
+    <value>Account</value>
   </data>
-  <data name="delete-64_g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64_g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewItemSearchSideMenuBtn" xml:space="preserve">
+    <value>Item Search</value>
   </data>
-  <data name="BigOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BigOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewChampionModeInfoSideMenuBtn" xml:space="preserve">
+    <value>PvP Info</value>
   </data>
-  <data name="XButton_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\XButton_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewDiscordSideMenuBtn" xml:space="preserve">
+    <value>Discord</value>
   </data>
-  <data name="AddFriends_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddFriends_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewDonateSideMenuBtn" xml:space="preserve">
+    <value>Donate</value>
   </data>
-  <data name="DiscordNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DiscordNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewFriendsSideMenuBtn" xml:space="preserve">
+    <value>Friends</value>
   </data>
-  <data name="FlagDENormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagDENormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewLoginBtn" xml:space="preserve">
+    <value>Play</value>
   </data>
-  <data name="BarSeparator" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BarSeparator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewScenarioManagerSideMenuBtn" xml:space="preserve">
+    <value>Scenarios</value>
   </data>
-  <data name="SmallOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SmallOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewPatchNotesSideMenuBtn" xml:space="preserve">
+    <value>Patch Notes</value>
   </data>
-  <data name="RedditHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RedditHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewPlayOfflineBtn" xml:space="preserve">
+    <value>Play Offline</value>
   </data>
-  <data name="FlagESNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagESNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewRedditSideMenuBtn" xml:space="preserve">
+    <value>Reddit</value>
   </data>
-  <data name="FlagITNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagITNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewSettingsSideMenuBtn" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="RefreshNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RefreshNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewWebsiteSideMenuBtn" xml:space="preserve">
+    <value>Website</value>
   </data>
-  <data name="DialogBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DialogBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewYoutubeSideMenuBtn" xml:space="preserve">
+    <value>Youtube</value>
   </data>
-  <data name="help-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterCompleteRegistrationBtnText" xml:space="preserve">
+    <value>Register</value>
   </data>
-  <data name="FlagITHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagITHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterEmailLabelText" xml:space="preserve">
+    <value>Email:</value>
   </data>
-  <data name="ToolsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ToolsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterPasswordConfirmationLabelText" xml:space="preserve">
+    <value>Confirm password:</value>
   </data>
-  <data name="LongOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LongOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterPasswordLabelText" xml:space="preserve">
+    <value>Password:</value>
   </data>
-  <data name="AOEDBNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AOEDBNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterResendBtnText" xml:space="preserve">
+    <value>Resend</value>
   </data>
-  <data name="FlagFRNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagFRNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterUsernameLabelText" xml:space="preserve">
+    <value>Username:</value>
   </data>
-  <data name="DonateHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DonateHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterVerifyBtnText" xml:space="preserve">
+    <value>Verify</value>
   </data>
-  <data name="FlagESHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagESHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterVerifyLabelText" xml:space="preserve">
+    <value>Verify key:</value>
   </data>
-  <data name="SettingsNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SettingsNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RegisterCancelBtnText" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="MiddleOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MiddleOne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsBtn" xml:space="preserve">
+    <value>Settings</value>
   </data>
-  <data name="add-folder-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-folder-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LanguageComingSoonToolTip" xml:space="preserve">
+    <value>Coming soon™</value>
   </data>
-  <data name="FlagUSHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagUSHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GameScannerTitle" xml:space="preserve">
+    <value>Game Scan</value>
   </data>
-  <data name="delete-64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GamePathSelectionBrowseBtn" xml:space="preserve">
+    <value>Browse</value>
   </data>
-  <data name="downloads-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\downloads-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GamePathSelectionScanBtn" xml:space="preserve">
+    <value>Scan</value>
   </data>
-  <data name="FlagDEHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagDEHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GamePathSelectionTitle" xml:space="preserve">
+    <value>Run a game scan to install/update/repair 
+Age of Empires Online - Celeste Fan Project</value>
   </data>
-  <data name="FriendRequests_Normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendRequests_Normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GameScannerDiscordLabel" xml:space="preserve">
+    <value>Discord</value>
   </data>
-  <data name="FlagFRHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagFRHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GameScannerPatchNotesLabel" xml:space="preserve">
+    <value>Patch Notes</value>
   </data>
-  <data name="AccountHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewToolsBtnTooltip" xml:space="preserve">
+    <value>Game tools</value>
   </data>
-  <data name="AccountNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AccountNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuDonateSideMenuBtn" xml:space="preserve">
+    <value>Donate</value>
   </data>
-  <data name="SettingsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SettingsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsMenuChangeGameLanguage" xml:space="preserve">
+    <value>Change game language</value>
   </data>
-  <data name="FlagUSNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FlagUSNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsMenuConvertToSteamGame" xml:space="preserve">
+    <value>Convert to Steam game</value>
   </data>
-  <data name="CelesteWebsiteHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CelesteWebsiteHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsMenuDiagnosticsMode" xml:space="preserve">
+    <value>Enable diagnostic mode</value>
   </data>
-  <data name="RedditNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RedditNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsMenuFirewallHelper" xml:space="preserve">
+    <value>Firewall helper</value>
   </data>
-  <data name="ToolsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ToolsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsMenuGameScanner" xml:space="preserve">
+    <value>Game scanner</value>
   </data>
-  <data name="folder-3-64 _g" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder-3-64 _g.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsMenuLauncherUpdater" xml:space="preserve">
+    <value>Check for updates</value>
   </data>
-  <data name="FriendsHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FriendsHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MainMenuGameSettingsMenuWindowsFeatures" xml:space="preserve">
+    <value>Windows features</value>
   </data>
-  <data name="pt-BR-Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pt-BR-Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OverviewTwitchSideMenuBtn" xml:space="preserve">
+    <value>Twitch</value>
+  </data>
+  <data name="ResetPasswordConfirmBtn" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ResetPasswordConfirmNewPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="ResetPasswordCurrentPassword" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="ResetPasswordNewPassword" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="MultiplayerSettingsConnectionTypeTitle" xml:space="preserve">
+    <value>Connection Type</value>
+  </data>
+  <data name="MultiplayerSettingsLANCheckbox" xml:space="preserve">
+    <value>LAN only</value>
+  </data>
+  <data name="MultiplayerSettingsManual" xml:space="preserve">
+    <value>Manual (protocol: UDP, port:1000)</value>
+  </data>
+  <data name="MultiplayerSettingsNatPunchthrough" xml:space="preserve">
+    <value>NAT Punchthrough (default)</value>
+  </data>
+  <data name="MultiplayerSettingsOtherCheckbox" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="MultiplayerSettingsPortMappingTitle" xml:space="preserve">
+    <value>Port Mapping (WAN)</value>
+  </data>
+  <data name="MultiplayerSettingsRemoteIPLabel" xml:space="preserve">
+    <value>Remote IP:</value>
+  </data>
+  <data name="MultiplayerSettingsSaveBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="MultiplayerSettingsUpnp" xml:space="preserve">
+    <value>UPnP using open.nat</value>
+  </data>
+  <data name="MultiplayerSettingsWANCheckbox" xml:space="preserve">
+    <value>WAN</value>
+  </data>
+  <data name="NetworkDeviceSelectorSaveBtn" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="NetworkDeviceSelectorTitle" xml:space="preserve">
+    <value>Select network device</value>
+  </data>
+  <data name="ScenarioManagerAddScenarioTooltip" xml:space="preserve">
+    <value>Add scenario</value>
+  </data>
+  <data name="ScenarioManagerDownloadScenarioTooltip" xml:space="preserve">
+    <value>Download scenarios</value>
+  </data>
+  <data name="ScenarioManagerOpenHelpTooltip" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ScenarioManagerOpenScenarioDirectoryTooltip" xml:space="preserve">
+    <value>Open scenario directory in File Explorer</value>
+  </data>
+  <data name="ScenarioManagerPlayScenarioBtn" xml:space="preserve">
+    <value>Play Scenario</value>
+  </data>
+  <data name="ScenarioManagerRemoveScenarioTooltip" xml:space="preserve">
+    <value>Remove selected scenario</value>
+  </data>
+  <data name="ScenarioManagerTitle" xml:space="preserve">
+    <value>Scenario Manager</value>
+  </data>
+  <data name="ResetPasswordEmailAddressField" xml:space="preserve">
+    <value>Email address:</value>
+  </data>
+  <data name="ResetPasswordResetBtn" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="ResetPasswordResetKeyField" xml:space="preserve">
+    <value>Reset key:</value>
+  </data>
+  <data name="ResetPasswordSendResetBtn" xml:space="preserve">
+    <value>Send reset key</value>
+  </data>
+  <data name="WindowsFeatureHelperEnableBtn" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="WindowsFeatureHelperEnabledStatus" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="WindowsFeatureHelperNotEnabledStatus" xml:space="preserve">
+    <value>Not enabled</value>
+  </data>
+  <data name="WindowsFeatureHelperTitle" xml:space="preserve">
+    <value>Windows Feature Helper</value>
+  </data>
+  <data name="WindowsFeatureHelperUnknownStatus" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="ProcDumpInstallerTitle" xml:space="preserve">
+    <value>Installing ProcDump</value>
+  </data>
+  <data name="SteamConverterConfirmBtn" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="SteamConverterTitle" xml:space="preserve">
+    <value>Please confirm that you want to start Celeste Fan Project Launcher when Age of Empires Online is started through Steam</value>
+  </data>
+  <data name="WindowsFirewallHelperApplication" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="WindowsFirewallHelperInbound" xml:space="preserve">
+    <value>Inbound</value>
+  </data>
+  <data name="WindowsFirewallHelperOpenBtn" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="WindowsFirewallHelperOutbound" xml:space="preserve">
+    <value>Outbound</value>
+  </data>
+  <data name="WindowsFirewallHelperTitle" xml:space="preserve">
+    <value>Windows Firewall Helper</value>
+  </data>
+  <data name="AutoLoginError" xml:space="preserve">
+    <value>Could not perform auto-signin due to an unexpected error</value>
+  </data>
+  <data name="AutoLoginFailed" xml:space="preserve">
+    <value>Could not perform auto-signin, please sign in again manually</value>
+  </data>
+  <data name="ChangePasswordError" xml:space="preserve">
+    <value>Error while changing password:</value>
+  </data>
+  <data name="ChangePasswordInvalidLength" xml:space="preserve">
+    <value>The new password must be at least 8 characters and maximum 32 characters.</value>
+  </data>
+  <data name="ChangePasswordInvalidPassword" xml:space="preserve">
+    <value>Invalid password, character ' and " are not allowed!</value>
+  </data>
+  <data name="ChangePasswordMismatch" xml:space="preserve">
+    <value>The new password and confirmed password does not match.</value>
+  </data>
+  <data name="ChangePasswordSamePassword" xml:space="preserve">
+    <value>The new password must be different from the old.</value>
+  </data>
+  <data name="ChangePasswordSuccess" xml:space="preserve">
+    <value>Password successfully changed.</value>
+  </data>
+  <data name="DiagnosticsModeError" xml:space="preserve">
+    <value>An unexpected error occurred while starting diagnostics mode. Please try again or check the log files.</value>
+  </data>
+  <data name="DiagnosticsModeMissingProcdump" xml:space="preserve">
+    <value>Diagnostics mode requires ProcDump to be installed which was not found. Diagnostics mode will therefore be disabled.</value>
+  </data>
+  <data name="EnableDiagnosticsModeInstallProcdumpPrompt" xml:space="preserve">
+    <value>ProcDump.exe need to be installed first. Would you like to install it now?</value>
+  </data>
+  <data name="EnableDiagnosticsModeProcdumpInstallError" xml:space="preserve">
+    <value>Failed to enable "Diagnostic Mode". Error message:</value>
+  </data>
+  <data name="GameAlreadyRunningError" xml:space="preserve">
+    <value>Game is still running, please close it and try again.</value>
+  </data>
+  <data name="GamePathInvalidPath" xml:space="preserve">
+    <value>The selected game path does not exist</value>
+  </data>
+  <data name="GamePathSelectorTitle" xml:space="preserve">
+    <value>Select location of Spartan.exe (Age of Empires Online)</value>
+  </data>
+  <data name="GameScannerDidNotPass" xml:space="preserve">
+    <value>Game scan failed.</value>
+  </data>
+  <data name="GameScannerDidNotPassQuickScan" xml:space="preserve">
+    <value>Some game files appear to be missing. Would you like to run a 'Game Scan' to repair/download files? If you are installing for the first time click 'Yes' to download the rest of the game.</value>
+  </data>
+  <data name="GameScannerDoneLabel" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="GameScannerDoneMessage" xml:space="preserve">
+    <value>Game scan has succesfully completed</value>
+  </data>
+  <data name="GameScannerDownloading" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="GameScannerDownloadStarting" xml:space="preserve">
+    <value>Starting download</value>
+  </data>
+  <data name="GameScannerExtracting" xml:space="preserve">
+    <value>Extracting downloaded file</value>
+  </data>
+  <data name="GameScannerFailed" xml:space="preserve">
+    <value>An unexpected error occurred while running the game scan. Please try again or check the log files.</value>
+  </data>
+  <data name="GameScannerFinalizing" xml:space="preserve">
+    <value>Finalizing</value>
+  </data>
+  <data name="GameScannerScanError" xml:space="preserve">
+    <value>Game scanner encountered an unexpected problem. Please try again or check the log files.</value>
+  </data>
+  <data name="GameScannerSpartanNotFound" xml:space="preserve">
+    <value>Could not locate Spartan.exe, please run a game scan to make sure you are not missing any game files.</value>
+  </data>
+  <data name="GameScannerVerifying" xml:space="preserve">
+    <value>Verifying file integrity</value>
+  </data>
+  <data name="GameScannerVerifyingDownloadedFile" xml:space="preserve">
+    <value>Checking downloaded file</value>
+  </data>
+  <data name="GameScannerVerifyingExtractedFile" xml:space="preserve">
+    <value>Checking extracted file</value>
+  </data>
+  <data name="GenericUnexpectedErrorMessage" xml:space="preserve">
+    <value>An unexpected error occurred. Please try again or check the log files.</value>
+  </data>
+  <data name="LauncherUpdaterError" xml:space="preserve">
+    <value>An unexpected error occurred while performing the update. The application will now close. If this problem continues, try and update manually.</value>
+  </data>
+  <data name="LauncherUpdaterUpdateSuccess" xml:space="preserve">
+    <value>Celeste Fan Project Launcher has been updated and will now re-start.</value>
+  </data>
+  <data name="LoginBadEmail" xml:space="preserve">
+    <value>The entered email address is not a valid email address.</value>
+  </data>
+  <data name="LoginErrorMessage" xml:space="preserve">
+    <value>Failed logging in:</value>
+  </data>
+  <data name="LoginTooLongPassword" xml:space="preserve">
+    <value>The entered password has to be maximum 32 characters.</value>
+  </data>
+  <data name="LoginTooShortPassword" xml:space="preserve">
+    <value>The entered password has to be at least 8 characters.</value>
+  </data>
+  <data name="MultiplayerSettingsOtherNetworkDevice" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="NetworkDeviceSelectorNoDeviceSelected" xml:space="preserve">
+    <value>Please select a network interface</value>
+  </data>
+  <data name="ProcdumpInstallError" xml:space="preserve">
+    <value>An unexpected error occurred while installing ProcDump. Please try again or check the log files.</value>
+  </data>
+  <data name="RegisterError" xml:space="preserve">
+    <value>An error occurred while registering:</value>
+  </data>
+  <data name="RegisterInvalidEmail" xml:space="preserve">
+    <value>The entered email address is not a valid email address.</value>
+  </data>
+  <data name="RegisterInvalidKeyLength" xml:space="preserve">
+    <value>The key you entered is not valid.</value>
+  </data>
+  <data name="RegisterInvalidPassword" xml:space="preserve">
+    <value>Invalid password, character ' and " are not allowed!</value>
+  </data>
+  <data name="RegisterInvalidPasswordLength" xml:space="preserve">
+    <value>Your password must be between 8 and 32 characters in length.</value>
+  </data>
+  <data name="RegisterInvalidUsername" xml:space="preserve">
+    <value>Invalid username, only letters and digits allowed, minimum length is 3 char and maximum length is 15 characters.</value>
+  </data>
+  <data name="RegisterPasswordMismatch" xml:space="preserve">
+    <value>The confirmed password must match the first password</value>
+  </data>
+  <data name="ResetPasswordError" xml:space="preserve">
+    <value>An error occurred while resetting the password. Please try again or check the log files.</value>
+  </data>
+  <data name="ResetPasswordFailed" xml:space="preserve">
+    <value>Failed resetting the password due to the following reason:</value>
+  </data>
+  <data name="ResetPasswordInvalidEmail" xml:space="preserve">
+    <value>The entered email address is not a valid email address.</value>
+  </data>
+  <data name="ResetPasswordInvalidKey" xml:space="preserve">
+    <value>The entered key is not valid.</value>
+  </data>
+  <data name="ScenarioEditorDeleteScenarioPrompt" xml:space="preserve">
+    <value>Are you sure you want to remove the file {0}?</value>
+  </data>
+  <data name="ScenarioEditorFilePickerFileTypes" xml:space="preserve">
+    <value>Scenario files</value>
+  </data>
+  <data name="ScenarioEditorFilePickerTitle" xml:space="preserve">
+    <value>Choose Scenario File</value>
+  </data>
+  <data name="ScenarioEditorOverwritePrompt" xml:space="preserve">
+    <value>The file {0} already exists, overwrite it?</value>
+  </data>
+  <data name="StartGameError" xml:space="preserve">
+    <value>An unexpected error occurred while starting Age of Empires Online. Please try again or check the log files.</value>
+  </data>
+  <data name="SteamConverterAlreadySteamGame" xml:space="preserve">
+    <value>Celeste Fan Project Launcher is already compatible with Steam.</value>
+  </data>
+  <data name="SteamConverterIncorrectInstallationDirectory" xml:space="preserve">
+    <value>Celeste Fan Project Launcher must be placed in the same folder has the Steam game files.</value>
+  </data>
+  <data name="SteamConverterSuccess" xml:space="preserve">
+    <value>Celeste Fan Project Launcher is now compatible with Steam. It will now re-start.</value>
+  </data>
+  <data name="UpdateServiceChangelogError" xml:space="preserve">
+    <value>Unable to fetch changelog.</value>
+  </data>
+  <data name="UPnPDisabledError" xml:space="preserve">
+    <value>Error: Upnp device not found! "UPnP Port Mapping" has been disabled.</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureInstalled" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureIsPendingInstall" xml:space="preserve">
+    <value>Install pending</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureNotSupportedError" xml:space="preserve">
+    <value>Not supported (unknow error)</value>
+  </data>
+  <data name="WindowsFeatureHelperFeaturePartiallyInstalled" xml:space="preserve">
+    <value>Partially installed</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureStaged" xml:space="preserve">
+    <value>Staged</value>
+  </data>
+  <data name="WindowsFeatureHelperFeatureUnsupported" xml:space="preserve">
+    <value>Not supported ({0})</value>
+  </data>
+  <data name="WindowsFeatureHelperUnsupportedOS" xml:space="preserve">
+    <value>This feature can only be used on Windows 8 and later. Your are running {0}.</value>
+  </data>
+  <data name="WindowsFirewallHelperLauncherNotFound" xml:space="preserve">
+    <value>Unable to locate the launcher location.</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleInvalid" xml:space="preserve">
+    <value>Invalid</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleNotFound" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="WindowsFirewallHelperRuleOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="WindowsFirewallHelperSpartanNotFound" xml:space="preserve">
+    <value>Spartan.exe was not found, run a game scan to make sure you are not missing any game files.</value>
+  </data>
+  <data name="FriendListAcceptRequestBtn" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="FriendListAddFriendBtn" xml:space="preserve">
+    <value>Add friend</value>
+  </data>
+  <data name="FriendListCancelFriendRequest" xml:space="preserve">
+    <value>Cancel friend request</value>
+  </data>
+  <data name="FriendListDeclineRequestBtn" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="FriendListFilterPlaceholder" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="FriendListFriendRequestDescription" xml:space="preserve">
+    <value>Has sent you a friend request</value>
+  </data>
+  <data name="FriendListOffline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="FriendListOutgoingFriendRequest" xml:space="preserve">
+    <value>Outgoing friend request</value>
+  </data>
+  <data name="FriendListRemoveFriend" xml:space="preserve">
+    <value>Remove friend</value>
+  </data>
+  <data name="FriendListTitle" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="FriendsOnlineText" xml:space="preserve">
+    <value>Friends online:</value>
+  </data>
+  <data name="SendFriendRequestCancelBtn" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SendFriendRequestFailed" xml:space="preserve">
+    <value>Could not send a friend request to {0}</value>
+  </data>
+  <data name="SendFriendRequestSendBtn" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SendFriendRequestTitle" xml:space="preserve">
+    <value>Send a friend request</value>
+  </data>
+  <data name="SendFriendRequestUsernameLabel" xml:space="preserve">
+    <value>Username:</value>
+  </data>
+  <data name="LauncherAlreadyRunningMessage" xml:space="preserve">
+    <value>The launcher is already running and will now exit.</value>
+  </data>
+  <data name="FriendListMaxFriendsReached" xml:space="preserve">
+    <value>Cannot add a friend because your friendlist is full.</value>
+  </data>
+  <data name="GamePathSelectionWindowTitle" xml:space="preserve">
+    <value>Select game location</value>
+  </data>
+  <data name="MultiplayerSettingsTitle" xml:space="preserve">
+    <value>Multiplayer Settings</value>
+  </data>
+  <data name="ResetPasswordTitle" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="ResetPasswordWindowTitle" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="SteamConverterWindowTitle" xml:space="preserve">
+    <value>Confirm Steam Conversion</value>
+  </data>
+  <data name="OverviewChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="OverviewEnableDiagnosticsMode" xml:space="preserve">
+    <value>Enable diagnostics mode</value>
+  </data>
+  <data name="OverviewGameLanguageSettings" xml:space="preserve">
+    <value>Game language</value>
+  </data>
+  <data name="OverviewGameScan" xml:space="preserve">
+    <value>Game scan</value>
+  </data>
+  <data name="OverviewGameSettings" xml:space="preserve">
+    <value>Game settings</value>
+  </data>
+  <data name="OverviewLogOut" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="OverviewMultiplayerSettings" xml:space="preserve">
+    <value>Multiplayer settings</value>
+  </data>
+  <data name="OverviewSteam" xml:space="preserve">
+    <value>Convert to Steam game</value>
+  </data>
+  <data name="OverviewUpdateLauncher" xml:space="preserve">
+    <value>Update launcher</value>
+  </data>
+  <data name="OverviewWindowsFeatures" xml:space="preserve">
+    <value>Windows Features</value>
+  </data>
+  <data name="OverviewWindowsFirewall" xml:space="preserve">
+    <value>Windows Firewall</value>
+  </data>
+  <data name="ChangePasswordTitle" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="GameScannerFastDownloadOption" xml:space="preserve">
+    <value>Fast download</value>
+  </data>
+  <data name="GameScannerFastDownloadWarning" xml:space="preserve">
+    <value>Enabling fast downloads might cause issues downloading game data. If it fails downloading your game files, try again with this option disabled.</value>
   </data>
 </root>

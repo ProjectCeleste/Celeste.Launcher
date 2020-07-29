@@ -13,31 +13,18 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     {
         public const string CmdName = "LOGIN";
 
-        public Login(Client webSocketClient)
-        {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
-        }
+        private readonly DataExchange _dataExchange;
 
-        private DataExchange DataExchange { get; }
+        public Login(DataExchange dataExchange)
+        {
+            _dataExchange = dataExchange;
+        }
 
         public async Task<LoginResult> DoLogin(LoginInfo request)
         {
             try
             {
-                if (request.Password.Length < 8)
-                    throw new Exception("Password minimum length is 8 char!");
-
-                if (request.Password.Length > 32)
-                    throw new Exception("Password maximum length is 32 char!");
-
-                if (!Misc.IsValidEmailAdress(request.Mail))
-                    throw new Exception("Invalid eMail!");
-
-                dynamic requestInfo = request;
-
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                return result.ToObject<LoginResult>();
+                return await _dataExchange.DoDataExchange<LoginResult, LoginInfo>(request, CmdName);               
             }
             catch (Exception e)
             {

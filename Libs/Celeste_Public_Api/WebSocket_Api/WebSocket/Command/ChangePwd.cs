@@ -14,30 +14,17 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         public const string CmdName = "CHANGEPWD";
 
         private DateTime _lastTime = DateTime.UtcNow.AddMinutes(-5);
+        private readonly DataExchange _dataExchange;
 
-        public ChangePwd(Client webSocketClient)
+        public ChangePwd(DataExchange dataExchange)
         {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
+            _dataExchange = dataExchange;
         }
-
-        private DataExchange DataExchange { get; }
 
         public async Task<ChangePwdResult> DoChangePwd(ChangePwdInfo request)
         {
             try
             {
-                if (request.Old == request.New)
-                    throw new Exception("Old password = New password!");
-
-                if (request.New.Length < 8)
-                    throw new Exception("Password minimum length is 8 char!");
-
-                if (request.New.Length > 32)
-                    throw new Exception("Password maximum length is 32 char!");
-
-                if (!Misc.IsValidPassword(request.New))
-                    throw new Exception("Invalid password, character ' and \" are not allowed!");
-
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;
                 if (lastSendTime <= 90)
                     throw new Exception(
@@ -45,14 +32,12 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
 
                 dynamic requestInfo = request;
 
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
+                var result = await _dataExchange.DoDataExchange<ChangePwdResult, ChangePwdInfo>(request, CmdName);
 
-                ChangePwdResult retVal = result.ToObject<ChangePwdResult>();
-
-                if (retVal.Result)
+                if (result.Result)
                     _lastTime = DateTime.UtcNow;
 
-                return retVal;
+                return result;
             }
             catch (Exception e)
             {

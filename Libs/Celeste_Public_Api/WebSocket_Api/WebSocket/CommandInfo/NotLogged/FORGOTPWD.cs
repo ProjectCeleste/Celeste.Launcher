@@ -27,7 +27,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged
         public string EMail { get; }
     }
 
-    public class ForgotPwdResult
+    public class ForgotPwdResult : IGenericResponse
     {
         [JsonConstructor]
         public ForgotPwdResult([JsonProperty("Result", Required = Required.Always)] bool result,

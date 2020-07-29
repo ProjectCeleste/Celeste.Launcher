@@ -1,0 +1,82 @@
+﻿<Window x:Class="Celeste_Launcher_Gui.Windows.WindowsFirewallHelper"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+             xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+             mc:Ignorable="d" 
+             WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
+             Width="849" Height="308" Loaded="Window_Loaded" Title="{x:Static p:Resources.WindowsFirewallHelperTitle}">
+    <Window.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource Ashley-Crawford-CG}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MediumDialogue-Background.png"/>
+        </Grid.Background>
+        <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
+            <Grid>
+                <Label FontSize="26" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                Content="{x:Static p:Resources.WindowsFirewallHelperTitle}" Margin="0,10,0,0" />
+                <StackPanel Margin="0,60,0,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,165,0">
+                        <Label Content="{x:Static p:Resources.WindowsFirewallHelperApplication}" Width="200" FontWeight="Bold" Foreground="Gray"/>
+                        <Label Content="{x:Static p:Resources.WindowsFirewallHelperInbound}" Width="150" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="Gray"/>
+                        <Label Content="{x:Static p:Resources.WindowsFirewallHelperOutbound}" Width="150" HorizontalContentAlignment="Center" FontWeight="Bold" Foreground="Gray"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+                        <Label Content="Launcher" Width="200">
+
+                        </Label>
+
+
+                        <!--
+                        <telerik:RadWindow.RenderTransform>
+                            <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+                        </telerik:RadWindow.RenderTransform>
+                        <telerik:RadWindow.Effect>
+                            <DropShadowEffect ShadowDepth="10"/>
+                        </telerik:RadWindow.Effect>-->
+
+                        <Label Content="-" Width="150" HorizontalContentAlignment="Center"/>
+                        <Label Content="Not Found" Width="150" HorizontalContentAlignment="Center" x:Name="LauncherOutboundStatus"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.WindowsFirewallHelperOpenBtn}" x:Name="LauncherOpenBtn" Click="LauncherOpenBtn_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+                        <Label Content="Spartan" Width="200"/>
+                        <Label Content="Not Found" Width="150" HorizontalContentAlignment="Center" x:Name="SpartanInboundStatus"/>
+                        <Label Content="Not Found" Width="150" HorizontalContentAlignment="Center" x:Name="SpartanOutboundStatus"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.WindowsFirewallHelperOpenBtn}" x:Name="SpartanOpenBtn" Click="SpartanOpenBtn_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+                        <Label Content="Multiplayer" Width="200"/>
+                        <Label Content="Not Found" Width="150" HorizontalContentAlignment="Center" x:Name="MultiplayerInboundStatus"/>
+                        <Label Content="Not Found" Width="150" HorizontalContentAlignment="Center" x:Name="MultiplayerOutboundStatus"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.WindowsFirewallHelperOpenBtn}" x:Name="MultiplayerOpenBtn" Click="MultiplayerOpenBtn_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
+            <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
+                    Click="CloseWindow"/>
+        </StackPanel>
+    </Grid>
+</Window>

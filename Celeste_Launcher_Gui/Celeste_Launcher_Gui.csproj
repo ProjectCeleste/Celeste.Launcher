@@ -1,385 +1,255 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{589BC356-4A36-42FB-AE10-95AEDEC36AE6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Celeste_Launcher_Gui</RootNamespace>
-    <AssemblyName>Celeste_Launcher_Gui</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>None</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icon.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
-  </PropertyGroup>
-  <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>3.0.5.3</Version>
+    <AssemblyName>Celeste Launcher</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Crc32.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dc0b95cf99bf4e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\Crc32.NET.1.2.0\lib\net20\Crc32.NET.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetZip, Version=1.13.7.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.1.13.7\lib\net40\DotNetZip.dll</HintPath>
-    </Reference>
-    <Reference Include="Markdig, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Markdig.0.20.0\lib\netstandard2.0\Markdig.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Dism.2.1.4\lib\net40\Microsoft.Dism.dll</HintPath>
-    </Reference>
-    <Reference Include="Open.Nat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f22a6a4582336c76, processorArchitecture=MSIL">
-      <HintPath>..\packages\Open.NAT.2.1.0.0\lib\net45\Open.Nat.dll</HintPath>
-    </Reference>
-    <Reference Include="Overby.Extensions.AsyncBinaryReaderWriter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Overby.Extensions.AsyncBinaryReaderWriter.1.0.39\lib\net461\Overby.Extensions.AsyncBinaryReaderWriter.dll</HintPath>
-    </Reference>
-    <Reference Include="PanelManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PanelManager.1.0.0\lib\net20\PanelManager.dll</HintPath>
-    </Reference>
-    <Reference Include="ProjectCeleste.GameFiles.GameScanner, Version=2.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ProjectCeleste.GameFiles.GameScanner.2.6.1\lib\netstandard2.0\ProjectCeleste.GameFiles.GameScanner.dll</HintPath>
-    </Reference>
-    <Reference Include="ProjectCeleste.GameFiles.Tools, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ProjectCeleste.GameFiles.Tools.2.3.1\lib\netstandard2.0\ProjectCeleste.GameFiles.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsFirewallHelper, Version=1.6.3.40, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsFirewallHelper.1.6.3.40\lib\net40\WindowsFirewallHelper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
+    <PackageReference Include="Celeste.GameFiles.GameScanner" Version="2.6.1" />
+    <PackageReference Include="CredentialManagement.Standard" Version="1.0.4" />
+    <PackageReference Include="Markdig" Version="0.20.0" />
+    <PackageReference Include="Microsoft.Dism" Version="2.1.9" />
+    <PackageReference Include="Open.NAT.Core" Version="2.1.0.5" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="WindowsFirewallHelper" Version="1.6.3.40" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)Libs\Celeste_AOEO_Controls\Celeste_AOEO_Controls.csproj">
-      <Project>{d84366a3-0232-4680-b838-9ec2f23cd52b}</Project>
-      <Name>Celeste_AOEO_Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(SolutionDir)Libs\Celeste_Public_Api\Celeste_Public_Api.csproj">
-      <Project>{11e428ad-8fb2-4ae1-b922-fe363f3c6a63}</Project>
-      <Name>Celeste_Public_Api</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\Libs\Celeste_Public_Api\Celeste_Public_Api.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
-    <Compile Include="Forms\FriendsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FriendsForm.Designer.cs">
-      <DependentUpon>FriendsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ScnManagerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ScnManagerForm.Designer.cs">
-      <DependentUpon>ScnManagerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\InstallProcDump.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\InstallProcDump.Designer.cs">
-      <DependentUpon>InstallProcDump.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\SteamForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SteamForm.Designer.cs">
-      <DependentUpon>SteamForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FirewallForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FirewallForm.Designer.cs">
-      <DependentUpon>FirewallForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\ProcDump.cs" />
-    <Compile Include="Helpers\Updater.cs" />
-    <Compile Include="Forms\WindowsFeaturesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\WindowsFeaturesForm.Designer.cs">
-      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\GameScanProgressForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GameScanProgressForm.Designer.cs">
-      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\LanguageChooser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LanguageChooser.Designer.cs">
-      <DependentUpon>LanguageChooser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\GameScan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\GameScan.Designer.cs">
-      <DependentUpon>GameScan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\NetworkDeviceSelectionDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NetworkDeviceSelectionDialog.Designer.cs">
-      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ResetPwdForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ResetPwdForm.Designer.cs">
-      <DependentUpon>ResetPwdForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ChangePwdForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ChangePwdForm.Designer.cs">
-      <DependentUpon>ChangePwdForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MpSettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MpSettingForm.Designer.cs">
-      <DependentUpon>MpSettingForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\EncryptDecrypt.cs" />
-    <Compile Include="Helpers\Dism.cs" />
-    <Compile Include="Helpers\Firewall.cs" />
-    <Compile Include="Helpers\OpenNat.cs" />
-    <Compile Include="Helpers\OSVersion.cs" />
-    <Compile Include="Helpers\Steam.cs" />
-    <Compile Include="Helpers\ZipUtils.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\RegisterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\RegisterForm.Designer.cs">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\UpdaterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UpdaterForm.Designer.cs">
-      <DependentUpon>UpdaterForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Forms\ChangePwdForm.resx">
-      <DependentUpon>ChangePwdForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FriendsForm.resx">
-      <DependentUpon>FriendsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ScnManagerForm.resx">
-      <DependentUpon>ScnManagerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InstallProcDump.resx">
-      <DependentUpon>InstallProcDump.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SteamForm.resx">
-      <DependentUpon>SteamForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FirewallForm.resx">
-      <DependentUpon>FirewallForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\WindowsFeaturesForm.resx">
-      <DependentUpon>WindowsFeaturesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GameScanProgressForm.resx">
-      <DependentUpon>GameScanProgressForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LanguageChooser.resx">
-      <DependentUpon>LanguageChooser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GameScan.resx">
-      <DependentUpon>GameScan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MpSettingForm.resx">
-      <DependentUpon>MpSettingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NetworkDeviceSelectionDialog.resx">
-      <DependentUpon>NetworkDeviceSelectionDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ResetPwdForm.resx">
-      <DependentUpon>ResetPwdForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Resource Include="Resources\AoEO_Logo.png" />
+    <Resource Include="Resources\ashley_crawford_cg.ttf" />
+    <Resource Include="Resources\BackgroundTexture.png" />
+    <Resource Include="Resources\BarSeparator.png" />
+    <Resource Include="Resources\BarSeparatorVertical.png" />
+    <Resource Include="Resources\ButtonBackgroundBarLong.png" />
+    <Resource Include="Resources\ButtonBackgroundBarShort.png" />
+    <Resource Include="Resources\Buttons\LargeButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\LargeButtonHover.png" />
+    <Resource Include="Resources\Buttons\LargeButtonNormal.png" />
+    <Resource Include="Resources\Buttons\MediumButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\MediumButtonHover.png" />
+    <Resource Include="Resources\Buttons\MediumButtonNormal.png" />
+    <Resource Include="Resources\Buttons\TinyButtonDisabled.png" />
+    <Resource Include="Resources\Buttons\TinyButtonHover.png" />
+    <Resource Include="Resources\Buttons\TinyButtonNormal.png" />
+    <Resource Include="Resources\Celeste Logo Roman Final.png" />
+    <Resource Include="Resources\CheckBoxCheckGreen_ua.png" />
+    <Resource Include="Resources\CheckBoxUnChecked_ua.png" />
+    <Resource Include="Resources\DefaultNewsGraphics.png" />
+    <Resource Include="Resources\Error.png" />
+    <Resource Include="Resources\FriendList\AddFriendLong-Hover.png" />
+    <Resource Include="Resources\FriendList\AddFriendLong-Normal.png" />
+    <Resource Include="Resources\FriendList\FriendList-Background.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Babylon.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Celt.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Egypt.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Empty.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Greek.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Norse.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Offline.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Outgoing.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Persia.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Requet.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Roman.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Babylon.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Celt.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Default.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Egypt.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Greek.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Norse.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Persia.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Roman.png" />
+    <Resource Include="Resources\GamePathInputBox.png" />
+    <Resource Include="Resources\GamePathSelectionWindowBackground.png" />
+    <Resource Include="Resources\GameScannerBackground.png" />
+    <Resource Include="Resources\Icons\Account-Hover.png" />
+    <Resource Include="Resources\Icons\Account-Normal.png" />
+    <Resource Include="Resources\Icons\AddFriend-Hover.png" />
+    <Resource Include="Resources\Icons\AddFriend-Normal.png" />
+    <Resource Include="Resources\Icons\AddScenario-Hover.png" />
+    <Resource Include="Resources\Icons\AddScenario-Normal.png" />
+    <Resource Include="Resources\Icons\Discord-Hover.png" />
+    <Resource Include="Resources\Icons\Discord-Normal.png" />
+    <Resource Include="Resources\Icons\Donate-Hover.png" />
+    <Resource Include="Resources\Icons\Donate-Normal.png" />
+    <Resource Include="Resources\Icons\DownloadScenarios-Hover.png" />
+    <Resource Include="Resources\Icons\DownloadScenarios-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\de-DE-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\de-DE-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\en-US-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\en-US-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\es-ES-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\es-ES-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\fr-FR-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\fr-FR-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\it-IT-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\it-IT-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\pt-BR-Disabled.png" />
+    <Resource Include="Resources\Icons\Flags\pt-BR-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\pt-BR-Normal.png" />
+    <Resource Include="Resources\Icons\Flags\zh-CHT-Hover.png" />
+    <Resource Include="Resources\Icons\Flags\zh-CHT-Normal.png" />
+    <Resource Include="Resources\Icons\Friends-Alert-Hover.png" />
+    <Resource Include="Resources\Icons\Friends-Alert-Normal.png" />
+    <Resource Include="Resources\Icons\Friends-Hover.png" />
+    <Resource Include="Resources\Icons\Friends-Normal.png" />
+    <Resource Include="Resources\Icons\Help-Hover.png" />
+    <Resource Include="Resources\Icons\Help-Normal.png" />
+    <Resource Include="Resources\Icons\itemsearch-Hover.png" />
+    <Resource Include="Resources\Icons\itemsearch-Normal.png" />
+    <Resource Include="Resources\Icons\Language-Hover.png" />
+    <Resource Include="Resources\Icons\Language-Normal.png" />
+    <Resource Include="Resources\Icons\List-Hover.png" />
+    <Resource Include="Resources\Icons\List-Normal.png" />
+    <Resource Include="Resources\Icons\Logout-Hover.png" />
+    <Resource Include="Resources\Icons\Logout-Normal.png" />
+    <Resource Include="Resources\Icons\MapsList-Hover.png" />
+    <Resource Include="Resources\Icons\MapsList-Normal.png" />
+    <Resource Include="Resources\Icons\MapsList2-Hover.png" />
+    <Resource Include="Resources\Icons\MapsList2-Normal.png" />
+    <Resource Include="Resources\Icons\PatchNotes-Hover.png" />
+    <Resource Include="Resources\Icons\PatchNotes-Normal.png" />
+    <Resource Include="Resources\Icons\PvPPatchNotes-Hover.png" />
+    <Resource Include="Resources\Icons\PvPPatchNotes-Normal.png" />
+    <Resource Include="Resources\Icons\Reddit-Hover.png" />
+    <Resource Include="Resources\Icons\Reddit-Normal.png" />
+    <Resource Include="Resources\Icons\RefreshHover.png" />
+    <Resource Include="Resources\Icons\RefreshNormal.png" />
+    <Resource Include="Resources\Icons\RemoveScenario-Hover.png" />
+    <Resource Include="Resources\Icons\RemoveScenario-Normal.png" />
+    <Resource Include="Resources\Icons\ScenarioDirectory-Hover.png" />
+    <Resource Include="Resources\Icons\ScenarioDirectory-Normal.png" />
+    <Resource Include="Resources\Icons\ScenarioManager-Hover.png" />
+    <Resource Include="Resources\Icons\ScenarioManager-Normal.png" />
+    <Resource Include="Resources\Icons\Settings-Hover.png" />
+    <Resource Include="Resources\Icons\Settings-Normal.png" />
+    <Resource Include="Resources\Icons\Tools-Hover.png" />
+    <Resource Include="Resources\Icons\Tools-Normal.png" />
+    <Resource Include="Resources\Icons\Tools2-Hover.png" />
+    <Resource Include="Resources\Icons\Tools2-Normal.png" />
+    <Resource Include="Resources\Icons\Twitch-Hover.png" />
+    <Resource Include="Resources\Icons\Twitch-Normal.png" />
+    <Resource Include="Resources\Icons\WCCloseHover.png" />
+    <Resource Include="Resources\Icons\WCCloseNormal.png" />
+    <Resource Include="Resources\Icons\WCCloseSmallHover.png" />
+    <Resource Include="Resources\Icons\WCCloseSmallNormal.png" />
+    <Resource Include="Resources\Icons\WCMinimizeHover.png" />
+    <Resource Include="Resources\Icons\WCMinimizeNormal.png" />
+    <Resource Include="Resources\Icons\Website-Hover.png" />
+    <Resource Include="Resources\Icons\Website-Normal.png" />
+    <Resource Include="Resources\Icons\YouTube-Hover.png" />
+    <Resource Include="Resources\Icons\YouTube-Normal.png" />
+    <Resource Include="Resources\LithosPro-Black.otf" />
+    <Resource Include="Resources\LoggedInScreenSeparators.png" />
+    <Resource Include="Resources\MainWindow_InnerContents.png" />
+    <Resource Include="Resources\MediumDialogue-Background.png" />
+    <Resource Include="Resources\NetworkSettings-DarkBGMedium.png" />
+    <Resource Include="Resources\PlayerNameplateEmpty.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Agvald.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Bahram.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Rohham.png" />
+    <Resource Include="Resources\ProfilePics\Coin-Tahmineh.png" />
+    <Resource Include="Resources\ProgressBarOverlay.png" />
+    <Resource Include="Resources\ProgressBarOverlayWide.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxLong.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxLongDisabled.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxShort.png" />
+    <Resource Include="Resources\RegisterScreenInputBoxShortDisabled.png" />
+    <Resource Include="Resources\ScenarioManagerBG.png" />
+    <Resource Include="Resources\Separator-HorizontalMedium.png" />
+    <Resource Include="Resources\Separator-SuperLongVertical.png" />
+    <Resource Include="Resources\Separator-VerticalSmall.png" />
+    <Resource Include="Resources\TopBorder.png" />
+    <Resource Include="Resources\UpdateWindow.png" />
+    <Resource Include="Resources\VersionNumberBox.png" />
+    <Resource Include="Resources\VersionNumberLabelBackground.png" />
+    <Resource Include="Resources\Warning.png" />
+    <Resource Include="Resources\YesNoDialogBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\RegisterForm.resx">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UpdaterForm.resx">
-      <DependentUpon>UpdaterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\Settings.settings">
+    <Compile Update="Properties\Resources.de-DE.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.es-ES.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.es-ES.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.fr-FR.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.fr-FR.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.it-IT.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.it-IT.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.pt-BR.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.zh-CHT.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.zh-CHT.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
-    <None Include="Resources\pt-BR-Hover.png" />
-    <None Include="Resources\pt-BR-Normal.png" />
-    <None Include="Resources\delete-64_gray.png" />
-    <None Include="Resources\help-64_g1.png" />
-    <None Include="Resources\downloads-64 _g.png" />
-    <None Include="Resources\help-64_g.png" />
-    <None Include="Resources\help-64.png" />
-    <None Include="Resources\folder-3-64 _g1.png" />
-    <None Include="Resources\downloads-64.png" />
-    <None Include="Resources\folder-3-64 _g.png" />
-    <None Include="Resources\delete-64_g.png" />
-    <None Include="Resources\add-folder-64 _g.png" />
-    <None Include="Resources\folder-3-64.png" />
-    <None Include="Resources\delete-64.png" />
-    <None Include="Resources\add-folder-64.png" />
-    <None Include="Resources\FriendRequests_Normal.png" />
-    <None Include="Resources\AddFriends_Normal.png" />
-    <None Include="Resources\RefreshHover.png" />
-    <None Include="Resources\RefreshNormal.png" />
-    <None Include="Resources\LongOne.png" />
-    <None Include="Resources\BigOne.png" />
-    <None Include="Resources\SmallOne.png" />
-    <None Include="Resources\MiddleOne.png" />
-    <None Include="Resources\DialogBox.png" />
-    <None Include="Resources\VersionNumberPlate.png" />
-    <None Include="Resources\XButton_Hover.png" />
-    <None Include="Resources\XButton_Normal.png" />
-    <None Include="Resources\FriendsHover.png" />
-    <None Include="Resources\FriendsNormal.png" />
-    <None Include="Resources\AccountHover.png" />
-    <None Include="Resources\AccountNormal.png" />
-    <None Include="Resources\FlagCNHover.png" />
-    <None Include="Resources\FlagCNNormal.png" />
-    <None Include="Resources\FlagITHover.png" />
-    <None Include="Resources\FlagITNormal.png" />
-    <None Include="Resources\FlagFRHover.png" />
-    <None Include="Resources\FlagFRNormal.png" />
-    <None Include="Resources\FlagESHover.png" />
-    <None Include="Resources\FlagESNormal.png" />
-    <None Include="Resources\FlagUSHover.png" />
-    <None Include="Resources\FlagUSNormal.png" />
-    <None Include="Resources\FlagDEHover.png" />
-    <None Include="Resources\FlagDENormal.png" />
-    <None Include="Resources\DialogBoxSmall.png" />
-    <None Include="Resources\ToolsHover.png" />
-    <None Include="Resources\ToolsNormal.png" />
-    <None Include="Resources\CelesteLogo.png" />
-    <None Include="Resources\DonateHover.png" />
-    <None Include="Resources\DonateNormal.png" />
-    <None Include="Resources\AOEDBHover.png" />
-    <None Include="Resources\AOEDBNormal.png" />
-    <None Include="Resources\CelesteWebsiteHover.png" />
-    <None Include="Resources\CelesteWebsiteNormal.png" />
-    <None Include="Resources\RedditHover.png" />
-    <None Include="Resources\RedditNormal.png" />
-    <None Include="Resources\DiscordHover.png" />
-    <None Include="Resources\DiscordNormal.png" />
-    <None Include="Resources\SettingsHover.png" />
-    <None Include="Resources\SettingsNormal.png" />
-    <None Include="Resources\BarSeparatorVertical.png" />
-    <None Include="Resources\BarSeparator.png" />
-    <None Include="Resources\BackgroundTexture.png" />
+    <EmbeddedResource Update="Properties\Resources.de-DE.resx">
+      <LastGenOutput>Resources.de-DE.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.es-ES.resx">
+      <LastGenOutput>Resources.es-ES.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.fr-FR.resx">
+      <LastGenOutput>Resources.fr-FR.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.it-IT.resx">
+      <LastGenOutput>Resources.it-IT.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.pt-BR.resx">
+      <LastGenOutput>Resources.pt-BR.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.zh-CHT.resx">
+      <LastGenOutput>Resources.zh-CHT.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- <Target Name="AfterBuild"> -->
-  <!-- <ItemGroup> -->
-  <!-- <MoveToLibFolder Include="$(OutputPath)*.dll ; $(OutputPath)*.pdb ; $(OutputPath)*.xml" /> -->
-  <!-- </ItemGroup> -->
-  <!-- <Move SourceFiles="@(MoveToLibFolder)" DestinationFolder="$(OutputPath)Celeste_Launcher_Libs" OverwriteReadOnlyFiles="true" /> -->
-  <!-- </Target> -->
 </Project>

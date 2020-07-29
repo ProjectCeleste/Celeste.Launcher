@@ -14,36 +14,28 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         public const string CmdName = "FORGOTPWD";
 
         private DateTime _lastTime = DateTime.UtcNow.AddMinutes(-5);
+        private readonly DataExchange _dataExchange;
 
-        public ForgotPwd(Client webSocketClient)
+        public ForgotPwd(DataExchange dataExchange)
         {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
+            _dataExchange = dataExchange;
         }
-
-        private DataExchange DataExchange { get; }
 
         public async Task<ForgotPwdResult> DoForgotPwd(ForgotPwdInfo request)
         {
             try
             {
-                if (!Misc.IsValidEmailAdress(request.EMail))
-                    throw new Exception("Invalid eMail!");
-
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;
                 if (lastSendTime <= 90)
                     throw new Exception(
                         $"You need to wait at least 90 seconds before asking to resend an confirmation key! Last request was {lastSendTime} seconds ago.");
 
-                dynamic requestInfo = request;
+                var result = await _dataExchange.DoDataExchange<ForgotPwdResult, ForgotPwdInfo>(request, CmdName);
 
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                ForgotPwdResult retVal = result.ToObject<ForgotPwdResult>();
-
-                if (retVal.Result)
+                if (result.Result)
                     _lastTime = DateTime.UtcNow;
 
-                return retVal;
+                return result;
             }
             catch (Exception e)
             {

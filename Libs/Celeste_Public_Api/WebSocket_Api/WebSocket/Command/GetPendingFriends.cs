@@ -12,24 +12,18 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
     {
         public const string CmdName = "GETPFRIENDS";
 
-        public GetPendingFriends(Client webSocketClient)
-        {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
-        }
+        private readonly DataExchange _dataExchange;
 
-        private DataExchange DataExchange { get; }
+        public GetPendingFriends(DataExchange dataExchange)
+        {
+            _dataExchange = dataExchange;
+        }
 
         public async Task<GetPendingFriendsResult> DoGetPendingFriends(GetPendingFriendsInfo request)
         {
             try
             {
-                dynamic requestInfo = request;
-
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                GetPendingFriendsResult retVal = result.ToObject<GetPendingFriendsResult>();
-
-                return retVal;
+                return await _dataExchange.DoDataExchange<GetPendingFriendsResult, GetPendingFriendsInfo>(request, CmdName);
             }
             catch (Exception e)
             {

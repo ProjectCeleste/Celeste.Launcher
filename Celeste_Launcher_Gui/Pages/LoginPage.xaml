@@ -1,0 +1,47 @@
+﻿<Page x:Class="Celeste_Launcher_Gui.Pages.LoginPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+        xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        mc:Ignorable="d"
+        Height="308" Width="849" UseLayoutRounding="True">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/MediumDialogue-Background.png"/>
+        </Grid.Background>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel.InputBindings>
+                <KeyBinding Command="" Key="Return" />
+            </StackPanel.InputBindings>
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type local:WideRegisterInputField}">
+                    <Setter Property="Margin" Value="0,10,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+            <local:WideRegisterInputField LabelContent="{x:Static p:Resources.LoginEmailField}" Margin="2" x:Name="EmailInputField"/>
+            <local:WideRegisterPasswordInputField LabelContent="{x:Static p:Resources.LoginPasswordField}" x:Name="PasswordInputField" Margin="2"/>
+            <DockPanel>
+                <StackPanel HorizontalAlignment="Left" Margin="4,2,0,0">
+                    <CheckBox Style="{StaticResource LeftSidedCheckBox}" Content="{x:Static p:Resources.LoginRememberPasswordOption}" x:Name="RememberPasswordOption" Margin="2" Unchecked="DisableRememberMeOption"/>
+                    <CheckBox Style="{StaticResource LeftSidedCheckBox}" Content="{x:Static p:Resources.LoginAutoLoginOption}" x:Name="AutoLoginOption" Margin="2" Checked="AutoLoginOption_Checked"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Margin="2">
+                    <Button Style="{StaticResource MediumButton}" Content="{x:Static p:Resources.LoginPerformLoginBtn}" Click="PerformLogin" Margin="2" x:Name="LoginButton" IsDefault="True"/>
+                    <Label Margin="2" HorizontalAlignment="Center">
+                        <Hyperlink Foreground="#32a5f5" FontFamily="{StaticResource Ashley-Crawford-CG}" FontSize="17" Click="ForgottenPasswordClick">
+                            <TextBlock Text="{x:Static p:Resources.LoginForgottenPassword}"/>
+                        </Hyperlink>
+                    </Label>
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
+             <local:WindowControl
+                    DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                    HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
+                    Click="OnAbortLoginClick"/>
+        </StackPanel>
+    </Grid>
+</Page>

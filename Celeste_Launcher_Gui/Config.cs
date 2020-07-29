@@ -43,15 +43,9 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "Celeste_Launcher_Gui_Config")]
     public class UserConfig
     {
-#if DEBUG
-        [DefaultValue("wss://127.0.0.1:4513/")]
-        [XmlElement(ElementName = "ServerUri")]
-        public string ServerUri { get; set; } = "wss://127.0.0.1:4513/";
-#else
         [DefaultValue("wss://ns544971.ip-66-70-180.net:4513/")]
         [XmlElement(ElementName = "ServerUri")]
         public string ServerUri { get; set; } = "wss://ns544971.ip-66-70-180.net:4513/";
-#endif
 
         [XmlElement(ElementName = "GameFilesPath")]
         public string GameFilesPath { get; set; } = string.Empty;
@@ -85,19 +79,20 @@ namespace Celeste_Launcher_Gui
                 var netInterface = NetworkInterface.GetAllNetworkInterfaces()
                     .FirstOrDefault(elem => elem.Name == selectedNetInt);
 
-                if (netInterface == null)
-                    goto notfound;
-
-                // Get IPv4 address:
-                foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
-                    if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                if (netInterface != null)
+                {
+                    // Get IPv4 address:
+                    foreach (var ip in netInterface.GetIPProperties().UnicastAddresses)
                     {
-                        userConfig.MpSettings.PublicIp = ip.Address.ToString();
-                        return userConfig;
+                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                        {
+                            userConfig.MpSettings.PublicIp = ip.Address.ToString();
+                            return userConfig;
+                        }
                     }
+                }
             }
 
-            notfound:
             //Fall back to wan
             userConfig.MpSettings.ConnectionType = ConnectionType.Wan;
 
@@ -113,39 +108,6 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "LoginInfo")]
     public class LoginInfo
     {
-        [XmlIgnore] private string _cryptedPassword = string.Empty;
-
-        [XmlIgnore] private string _uncryptedPassword = string.Empty;
-
-        [DefaultValue(null)]
-        [XmlElement(ElementName = "Email")]
-        public string Email { get; set; }
-
-        [DefaultValue(null)]
-        [XmlElement(ElementName = "Password")]
-        public string CryptedPassword
-        {
-            get => _cryptedPassword;
-            set
-            {
-                _cryptedPassword = value;
-
-                if (!string.IsNullOrWhiteSpace(_uncryptedPassword))
-                    return;
-
-                try
-                {
-                    _uncryptedPassword = string.IsNullOrWhiteSpace(value)
-                        ? string.Empty
-                        : EncryptDecrypt.Decrypt(value, true);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-            }
-        }
-
         [DefaultValue(false)]
         [XmlElement(ElementName = "RememberMe")]
         public bool RememberMe { get; set; }
@@ -153,47 +115,6 @@ namespace Celeste_Launcher_Gui
         [DefaultValue(false)]
         [XmlElement(ElementName = "AutoLogin")]
         public bool AutoLogin { get; set; }
-
-        [XmlIgnore]
-        public string Password
-        {
-            get
-            {
-                if (!string.IsNullOrWhiteSpace(_uncryptedPassword))
-                    return _uncryptedPassword;
-
-                try
-                {
-                    _uncryptedPassword = string.IsNullOrWhiteSpace(CryptedPassword)
-                        ? string.Empty
-                        : EncryptDecrypt.Decrypt(CryptedPassword, true);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-
-                return _uncryptedPassword;
-            }
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    CryptedPassword = string.Empty;
-
-                try
-                {
-                    CryptedPassword = string.IsNullOrWhiteSpace(value)
-                        ? string.Empty
-                        : EncryptDecrypt.Encrypt(value, true);
-                }
-                catch (Exception)
-                {
-                    //
-                }
-
-                _uncryptedPassword = value;
-            }
-        }
     }
 
     [XmlRoot(ElementName = "MpSettings")]

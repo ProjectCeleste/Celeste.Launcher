@@ -14,49 +14,28 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.Command
         public const string CmdName = "REGISTER";
 
         private DateTime _lastTime = DateTime.UtcNow.AddMinutes(-5);
+        private readonly DataExchange _dataExchange;
 
-        public Register(Client webSocketClient)
+        public Register(DataExchange dataExchange)
         {
-            DataExchange = new DataExchange(webSocketClient, CmdName);
+            _dataExchange = dataExchange;
         }
-
-        private DataExchange DataExchange { get; }
 
         public async Task<RegisterUserResult> DoRegister(RegisterUserInfo request)
         {
             try
             {
-                if (!Misc.IsValidEmailAdress(request.Mail))
-                    throw new Exception("Invalid eMail!");
-
-                if (!Misc.IsValidUserName(request.UserName))
-                    throw new Exception(
-                        "Invalid User Name, only letters and digits allowed, minimum length is 3 char and maximum length is 15 char!");
-
-                if (request.Password.Length < 8 || request.Password.Length > 32)
-                    throw new Exception("Password minimum length is 8 char,  maximum length is 32 char!");
-
-                if (!Misc.IsValidPassword(request.Password))
-                    throw new Exception("Invalid password, character ' and \" are not allowed!");
-
-                if (request.VerifyKey.Length != 32)
-                    throw new Exception("Invalid Verify Key!");
-
                 var lastSendTime = (DateTime.UtcNow - _lastTime).TotalSeconds;
                 if (lastSendTime <= 90)
                     throw new Exception(
                         $"You need to wait at least 90 seconds before to try again! Last try was {lastSendTime} seconds ago.");
 
-                dynamic requestInfo = request;
+                var result = await _dataExchange.DoDataExchange<RegisterUserResult, RegisterUserInfo>(request, CmdName);
 
-                var result = await DataExchange.DoDataExchange((object) requestInfo);
-
-                RegisterUserResult retVal = result.ToObject<RegisterUserResult>();
-
-                if (retVal.Result)
+                if (result.Result)
                     _lastTime = DateTime.UtcNow;
 
-                return retVal;
+                return result;
             }
             catch (Exception e)
             {

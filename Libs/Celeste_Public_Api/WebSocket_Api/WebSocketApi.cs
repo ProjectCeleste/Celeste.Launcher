@@ -1,14 +1,17 @@
 ﻿#region Using directives
 
 using System;
+using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Celeste_Public_Api.Helpers;
+using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api.WebSocket;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Command;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.NotLogged;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.Enum;
+using Serilog;
 
 #endregion
 
@@ -19,8 +22,8 @@ namespace Celeste_Public_Api.WebSocket_Api
         private readonly AddFriend _addFriend;
 
         private readonly Version _apiVersion = new Version(2, 2, 0, 0);
-
-        private readonly ChangePwd _changePwd;
+        
+		private readonly ChangePwd _changePwd;
 
         private readonly Client _client;
 
@@ -46,22 +49,28 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private bool _loggedIn;
 
-        private LoginInfo _loginRequest;
+        private string _currentEmail;
+        private SecureString _currentPassword;
+
+        private readonly ILogger _logger;
 
         public WebSocketApi(string uri)
         {
             _client = new Client(uri);
-            _login = new Login(_client);
-            _changePwd = new ChangePwd(_client);
-            _forgotPwd = new ForgotPwd(_client);
-            _resetPwd = new ResetPwd(_client);
-            _validMail = new ValidMail(_client);
-            _register = new Register(_client);
-            _getFriends = new GetFriends(_client);
-            _getPFriends = new GetPendingFriends(_client);
-            _removeFriend = new RemoveFriend(_client);
-            _addFriend = new AddFriend(_client);
-            _confirmFriend = new ConfirmFriend(_client);
+            var dataExchange = new DataExchange(_client);
+
+            _login = new Login(dataExchange);
+            _changePwd = new ChangePwd(dataExchange);
+            _forgotPwd = new ForgotPwd(dataExchange);
+            _resetPwd = new ResetPwd(dataExchange);
+            _validMail = new ValidMail(dataExchange);
+            _register = new Register(dataExchange);
+            _getFriends = new GetFriends(dataExchange);
+            _getPFriends = new GetPendingFriends(dataExchange);
+            _removeFriend = new RemoveFriend(dataExchange);
+            _addFriend = new AddFriend(dataExchange);
+            _confirmFriend = new ConfirmFriend(dataExchange);
+            _logger = LoggerFactory.GetLogger();
         }
 
         public bool Connected => _client?.State == ClientState.Connected;
@@ -96,26 +105,30 @@ namespace Celeste_Public_Api.WebSocket_Api
             }
         }
 
-        public async Task<LoginResult> DoLogin(string eMail, string password)
+        public async Task<LoginResult> DoLogin(string email, SecureString password)
         {
             if (_client.State != ClientState.Connected)
                 await Connect();
-
+            
             _lastActivity = DateTime.UtcNow;
 
-            var request = new LoginInfo(eMail, password, _apiVersion, FingerPrint.Value());
+            var fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
+
+            var request = new LoginInfo(email, password.GetValue(), _apiVersion, fingerPrint);
 
             var response = await _login.DoLogin(request);
 
             if (response.Result)
             {
                 LoggedIn = true;
-                _loginRequest = request;
+                _currentEmail = email;
+                _currentPassword = password;
             }
             else
             {
                 LoggedIn = false;
-                _loginRequest = null;
+                _currentEmail = null;
+                _currentPassword = null;
 
                 try
                 {
@@ -132,10 +145,10 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private async Task<LoginResult> DoReLogin()
         {
-            if (_loginRequest == null)
+            if (_currentEmail == null || _currentPassword == null)
                 return new LoginResult(false, "Invalid stored login information");
 
-            return await DoLogin(_loginRequest.Mail, _loginRequest.Password);
+            return await DoLogin(_currentEmail, _currentPassword);
         }
 
         public async Task<ChangePwdResult> DoChangePassword(string oldPwd, string newPwd)
@@ -204,7 +217,9 @@ namespace Celeste_Public_Api.WebSocket_Api
 
             _lastActivity = DateTime.UtcNow;
 
-            var request = new RegisterUserInfo(_apiVersion, eMail, verifyKey, username, password, FingerPrint.Value());
+            var fingerPrint = await FingerPrintProvider.GetFingerprintAsync();
+
+            var request = new RegisterUserInfo(_apiVersion, eMail, verifyKey, username, password, fingerPrint);
 
             var response = await _register.DoRegister(request);
 
