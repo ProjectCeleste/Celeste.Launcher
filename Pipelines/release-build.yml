@@ -52,7 +52,7 @@ steps:
 
 - task: GitHubRelease@1
   inputs:
-    gitHubConnection: 'ProjectCeleste'
+    gitHubConnection: 'github.com_martinmine'
     repositoryName: 'CelesteLauncher/Celeste_Launcher'
     action: 'create'
     target: '$(Build.SourceVersion)'
