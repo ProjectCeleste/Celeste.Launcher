@@ -386,7 +386,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Game scan has succesfully completed.
+        ///   Looks up a localized string similar to Game scan has successfully completed.
         /// </summary>
         public static string GameScannerDoneMessage {
             get {

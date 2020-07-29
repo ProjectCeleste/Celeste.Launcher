@@ -476,7 +476,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Done</value>
   </data>
   <data name="GameScannerDoneMessage" xml:space="preserve">
-    <value>Game scan has succesfully completed</value>
+    <value>Game scan has successfully completed</value>
   </data>
   <data name="GameScannerDownloading" xml:space="preserve">
     <value>Downloading</value>
