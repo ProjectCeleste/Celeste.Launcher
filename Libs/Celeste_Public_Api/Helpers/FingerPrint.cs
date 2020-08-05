@@ -66,35 +66,29 @@ namespace Celeste_Public_Api.Helpers
 
         //Return a hardware identifier
         // ReSharper disable once InconsistentNaming
-        private static string Identifier(string wmiClass, string wmiProperty)
+        private static string Identifier
+            (string wmiClass, string wmiProperty, string wmiMustBeTrue)
         {
-            try
+            var result = "";
+            var mc =
+                new ManagementClass(wmiClass);
+            var moc = mc.GetInstances();
+            foreach (var o in moc)
             {
-                var result = "";
-                var mc =
-                    new ManagementClass(wmiClass);
-                var moc = mc.GetInstances();
-                foreach (var o in moc)
-                //Only get the first one
+                var mo = (ManagementObject) o;
+                if (mo[wmiMustBeTrue].ToString() != "True") continue;
+                if (result != "") continue;
+                try
                 {
-                    var mo = (ManagementObject)o;
-                    if (result != "") continue;
-                    try
-                    {
-                        result = mo[wmiProperty].ToString();
-                        break;
-                    }
-                    catch (Exception)
-                    {
-                        // ignored
-                    }
+                    result = mo[wmiProperty].ToString();
+                    break;
                 }
-                return result;
+                catch (Exception)
+                {
+                    // ignored
+                }
             }
-            catch (COMException)
-            {
-                return "";
-            }
+            return result;
         }
 
         //Return a hardware identifier
