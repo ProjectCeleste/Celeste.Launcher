@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -66,54 +67,68 @@ namespace Celeste_Public_Api.Helpers
 
         //Return a hardware identifier
         // ReSharper disable once InconsistentNaming
-        private static string Identifier
-            (string wmiClass, string wmiProperty, string wmiMustBeTrue)
+        private static string Identifier(string wmiClass, string wmiProperty, string wmiMustBeTrue)
         {
-            var result = "";
-            var mc =
-                new ManagementClass(wmiClass);
-            var moc = mc.GetInstances();
-            foreach (var o in moc)
+            try
             {
-                var mo = (ManagementObject) o;
-                if (mo[wmiMustBeTrue].ToString() != "True") continue;
-                if (result != "") continue;
-                try
+                var result = "";
+                var mc =
+                    new ManagementClass(wmiClass);
+                var moc = mc.GetInstances();
+                foreach (var o in moc)
                 {
-                    result = mo[wmiProperty].ToString();
-                    break;
+                    var mo = (ManagementObject)o;
+                    if (mo[wmiMustBeTrue].ToString() != "True") continue;
+                    if (result != "") continue;
+                    try
+                    {
+                        result = mo[wmiProperty].ToString();
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                    }
                 }
-                catch (Exception)
-                {
-                    // ignored
-                }
+
+                return result;
             }
-            return result;
+            catch (COMException)
+            {
+                return "";
+            }
         }
 
         //Return a hardware identifier
         // ReSharper disable once InconsistentNaming
         private static string Identifier(string wmiClass, string wmiProperty)
         {
-            var mc = new ManagementClass(wmiClass);
-            var moc = mc.GetInstances();
-            foreach (var o in moc)
-                //Only get the first one
+            try
             {
-                var mo = (ManagementObject) o;
-                try
+                var mc = new ManagementClass(wmiClass);
+                var moc = mc.GetInstances();
+                foreach (var o in moc)
+                //Only get the first one
                 {
-                    var propertyValue = mo[wmiProperty]?.ToString();
-                    if (!string.IsNullOrEmpty(propertyValue))
-                        return propertyValue;
+                    var mo = (ManagementObject)o;
+                    try
+                    {
+                        var propertyValue = mo[wmiProperty]?.ToString();
+                        if (!string.IsNullOrEmpty(propertyValue))
+                            return propertyValue;
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                    }
                 }
-                catch (Exception)
-                {
-                    // ignored
-                }
-            }
 
-            return "";
+                return "";
+            }
+            catch (COMException)
+            {
+                return "";
+            }
         }
 
         private static string CpuId()
