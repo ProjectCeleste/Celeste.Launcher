@@ -1,4 +1,5 @@
-﻿using Celeste_Public_Api.Helpers;
+﻿using Celeste_Launcher_Gui.Extensions;
+using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Serilog;
 using System;
@@ -87,7 +88,7 @@ namespace Celeste_Launcher_Gui.Windows
                     return;
                 }
 
-                GenericMessageDialog.Show($"{Properties.Resources.ChangePasswordError} {changePasswordResponse.Message}",
+                GenericMessageDialog.Show(changePasswordResponse.GetLocalizedMessage(),
                         DialogIcon.Error,
                         DialogOptions.Ok);
             }
