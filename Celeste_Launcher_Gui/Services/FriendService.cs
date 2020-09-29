@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Model.Friends;
+﻿using Celeste_Launcher_Gui.Extensions;
+using Celeste_Launcher_Gui.Model.Friends;
 using Celeste_Public_Api.Logging;
 using Celeste_Public_Api.WebSocket_Api;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
@@ -98,7 +99,7 @@ namespace Celeste_Launcher_Gui.Services
 
             if (!response.Result || response.Friends == null)
             {
-                throw new Exception($"Unable to get friend list: {response.Message}");
+                throw new Exception(response.GetLocalizedMessage());
             }
 
             var friends = new List<Friend>();
@@ -117,7 +118,7 @@ namespace Celeste_Launcher_Gui.Services
 
             if (!response.Result)
             {
-                throw new Exception($"Unable to get friend list: {response.Message}");
+                throw new Exception(response.GetLocalizedMessage());
             }
 
             var incomingRequests = new List<Friend>();

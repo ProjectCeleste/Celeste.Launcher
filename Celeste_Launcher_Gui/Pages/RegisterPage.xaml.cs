@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Windows;
+﻿using Celeste_Launcher_Gui.Extensions;
+using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Serilog;
@@ -42,13 +43,13 @@ namespace Celeste_Launcher_Gui.Pages
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show($"{response.Message}", DialogIcon.Warning);
+                    GenericMessageDialog.Show(response.GetLocalizedMessage(), DialogIcon.Warning);
                     UserInformationInputGroup.IsEnabled = true;
                     EmailInputGroup.IsEnabled = false;
                 }
                 else
                 {
-                    GenericMessageDialog.Show($"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show(response.GetLocalizedMessage(), DialogIcon.Error);
                     EmailInputGroup.IsEnabled = true;
                     ResentKeyBtn.IsEnabled = true;
                 }
@@ -107,13 +108,13 @@ namespace Celeste_Launcher_Gui.Pages
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show($@"{response.Message}");
+                    GenericMessageDialog.Show(response.GetLocalizedMessage());
 
                     NavigationService.Navigate(new Uri("Pages/MainMenuPage.xaml", UriKind.Relative));
                 }
                 else
                 {
-                    GenericMessageDialog.Show($@"{Properties.Resources.RegisterError} {response.Message}", DialogIcon.Error);
+                    GenericMessageDialog.Show(response.GetLocalizedMessage(), DialogIcon.Error);
                 }
             }
             catch (Exception ex)

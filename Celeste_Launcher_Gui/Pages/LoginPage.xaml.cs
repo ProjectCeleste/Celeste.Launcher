@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Account;
+using Celeste_Launcher_Gui.Extensions;
 using Celeste_Launcher_Gui.Services;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
@@ -114,7 +115,7 @@ namespace Celeste_Launcher_Gui.Pages
                 else
                 {
                     _logger.Information("Failed signing in because {@Message}", loginResult.Message);
-                    GenericMessageDialog.Show($"{Properties.Resources.LoginErrorMessage} {loginResult.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(loginResult.GetLocalizedMessage(), DialogIcon.Error, DialogOptions.Ok);
                     PasswordInputField.PasswordInputBox.Clear();
                     UserCredentialService.ClearVault();
                 }

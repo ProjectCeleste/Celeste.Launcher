@@ -1,4 +1,5 @@
-﻿using Celeste_Public_Api.Helpers;
+﻿using Celeste_Launcher_Gui.Extensions;
+using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using Serilog;
 using System;
@@ -51,14 +52,14 @@ namespace Celeste_Launcher_Gui.Windows
 
                 if (response.Result)
                 {
-                    GenericMessageDialog.Show(response.Message, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(response.GetLocalizedMessage(), DialogIcon.None, DialogOptions.Ok);
 
                     DialogResult = true;
                     Close();
                     return;
                 }
 
-                GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(response.GetLocalizedMessage(), DialogIcon.Error, DialogOptions.Ok);
             }
             catch (Exception ex)
             {
@@ -88,11 +89,11 @@ namespace Celeste_Launcher_Gui.Windows
                     ResetKeyField.IsEnabled = true;
                     ResetPasswordBtn.IsEnabled = true;
 
-                    GenericMessageDialog.Show(response.Message, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(response.GetLocalizedMessage(), DialogIcon.None, DialogOptions.Ok);
                 }
                 else
                 {
-                    GenericMessageDialog.Show($"{Properties.Resources.ResetPasswordFailed} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    GenericMessageDialog.Show(response.GetLocalizedMessage(), DialogIcon.Error, DialogOptions.Ok);
                 }
             }
             catch (Exception ex)
