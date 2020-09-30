@@ -748,4 +748,79 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>Habilitar la descarga rápida puede causar problemas al descargar los datos del juego. Si no puede descargar los archivos del juego, intente nuevamente con esta opción desactivada.</value>
   </data>
+    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+    <value>Esta cuenta está suspendida.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
+    <value>Ya eres amigo de este usuario.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST" xml:space="preserve">
+    <value>Ya has recibido una solicitud de amistad de este usuario.</value>
+  </data>
+  <data name="ServerResponse_BAD_LOGIN" xml:space="preserve">
+    <value>Dirección de email o contraseña invalida.</value>
+  </data>
+  <data name="ServerResponse_CANNOT_FRIEND_YOURSELF" xml:space="preserve">
+    <value>No te puedes enviar solicitud de amistad a ti mismo.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ADDRESSES_DONT_MATCH" xml:space="preserve">
+    <value>Las direcciones de email introducidas no coinciden.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ALREADY_IN_USE" xml:space="preserve">
+    <value>Esta dirección de email ya está en uso.</value>
+  </data>
+  <data name="ServerResponse_FRIEND_REQUEST_PENDING" xml:space="preserve">
+    <value>Ya tienes una solicitud de amistad pendiente para este usuario.</value>
+  </data>
+  <data name="ServerResponse_GENERAL_ERROR" xml:space="preserve">
+    <value>Algo malo sucedió. Vuelve a intentarlo o pregunta en los foros o Discord si el problema persiste.</value>
+  </data>
+  <data name="ServerResponse_INVALID_EMAIL" xml:space="preserve">
+    <value>Esta dirección de email no es valida.</value>
+  </data>
+  <data name="ServerResponse_MAINT_MODE" xml:space="preserve">
+    <value>El servidor está en mantenimiento, consulta https://forums.projectceleste.com/ para más información.</value>
+  </data>
+  <data name="ServerResponse_METHOD_NOT_ALLOWED" xml:space="preserve">
+    <value>No tienes permiso para hacer eso.</value>
+  </data>
+  <data name="ServerResponse_OUTDATED_LAUNCHER" xml:space="preserve">
+    <value>Tu lanzador está anticuado. Actualiza para iniciar sesión.</value>
+  </data>
+  <data name="ServerResponse_PASSWORDS_DOES_NOT_MATCH" xml:space="preserve">
+    <value>La contraseña introducida no coincide.</value>
+  </data>
+  <data name="ServerResponse_PASSWORD_TOO_SHORT" xml:space="preserve">
+    <value>La contraseña introducida es demasiado corta.</value>
+  </data>
+  <data name="ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Tu amigo tiene demasiados amigos y no puede recibir tu solicitud.</value>
+  </data>
+  <data name="ServerResponse_REGISTRATION_DISABLED" xml:space="preserve">
+    <value>El registro esta deshabilitado.</value>
+  </data>
+  <data name="ServerResponse_RESET_AWAITING_COOLDOWN" xml:space="preserve">
+    <value>Debe esperar 3 minutos entre cada reinicio.</value>
+  </data>
+  <data name="ServerResponse_RESET_SUCCESS" xml:space="preserve">
+    <value>Cuenta reinicida con éxito.</value>
+  </data>
+  <data name="ServerResponse_SUCCESS" xml:space="preserve">
+    <value>¡Éxito!</value>
+  </data>
+  <data name="ServerResponse_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Tienes demasiados amigos, no puedes aceptar más.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_EMAIL" xml:space="preserve">
+    <value>No se ha encontrado cuenta con esta dirección de email.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
+    <value>Esta clave de verificación es desconocida o no es válida.</value>
+  </data>
+  <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
+    <value>Este usuario no se ha encontrado.</value>
+  </data>
+  <data name="UnknownServerResponse" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
 </root>

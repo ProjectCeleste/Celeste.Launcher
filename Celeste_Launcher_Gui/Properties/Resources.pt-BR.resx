@@ -748,4 +748,79 @@ Age of Empires Online - Projeto de Fãs Celeste</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>A ativação de downloads rápidos pode causar problemas ao baixar os dados do jogo. Se falhar no download dos arquivos do jogo, tente novamente com esta opção desativada.</value>
   </data>
+    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+    <value>Esta conta foi banida.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
+    <value>Você já é amigo deste usuário.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST" xml:space="preserve">
+    <value>Você já recebeu um pedido de amizade deste usuário.</value>
+  </data>
+  <data name="ServerResponse_BAD_LOGIN" xml:space="preserve">
+    <value>E-mail ou senha inválidos.</value>
+  </data>
+  <data name="ServerResponse_CANNOT_FRIEND_YOURSELF" xml:space="preserve">
+    <value>Você não pode enviar um pedido de amizade para si mesmo.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ADDRESSES_DONT_MATCH" xml:space="preserve">
+    <value>Os endereços de e-mail inseridos não coincidem.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ALREADY_IN_USE" xml:space="preserve">
+    <value>Este endereço de e-mail já está em uso.</value>
+  </data>
+  <data name="ServerResponse_FRIEND_REQUEST_PENDING" xml:space="preserve">
+    <value>Você já tem uma solicitação de amizade pendente para este usuário.</value>
+  </data>
+  <data name="ServerResponse_GENERAL_ERROR" xml:space="preserve">
+    <value>Algo ruím aconteceu. Tente novamente ou pergunte nos fóruns ou no Discord se o problema persistir.</value>
+  </data>
+  <data name="ServerResponse_INVALID_EMAIL" xml:space="preserve">
+    <value>Este endereço de e-mail não é válido.</value>
+  </data>
+  <data name="ServerResponse_MAINT_MODE" xml:space="preserve">
+    <value>A manutenção do servidor está em andamento, consulte https://forums.projectceleste.com/ para maiores informações.</value>
+  </data>
+  <data name="ServerResponse_METHOD_NOT_ALLOWED" xml:space="preserve">
+    <value>Você não tem permissão para fazer isso.</value>
+  </data>
+  <data name="ServerResponse_OUTDATED_LAUNCHER" xml:space="preserve">
+    <value>Seu inicializador está desatualizado. Por favor, atualize para fazer o login.</value>
+  </data>
+  <data name="ServerResponse_PASSWORDS_DOES_NOT_MATCH" xml:space="preserve">
+    <value>As senhas inseridas não correspondem.</value>
+  </data>
+  <data name="ServerResponse_PASSWORD_TOO_SHORT" xml:space="preserve">
+    <value>A senha inserida é muito curta.</value>
+  </data>
+  <data name="ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Seu amigo tem muitos amigos e não pode receber sua solicitação.</value>
+  </data>
+  <data name="ServerResponse_REGISTRATION_DISABLED" xml:space="preserve">
+    <value>O registro está desativado.</value>
+  </data>
+  <data name="ServerResponse_RESET_AWAITING_COOLDOWN" xml:space="preserve">
+    <value>Você deve esperar 3 minutos entre cada reinicialização.</value>
+  </data>
+  <data name="ServerResponse_RESET_SUCCESS" xml:space="preserve">
+    <value>A conta foi redefinida com sucesso</value>
+  </data>
+  <data name="ServerResponse_SUCCESS" xml:space="preserve">
+    <value>Sucesso!</value>
+  </data>
+  <data name="ServerResponse_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Você tem muitos amigos para aceitar novos.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_EMAIL" xml:space="preserve">
+    <value>Nenhuma conta foi encontrada com este endereço de e-mail.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
+    <value>Esta chave de verificação é desconhecida ou inválida.</value>
+  </data>
+  <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
+    <value>Este usuário não foi encontrado.</value>
+  </data>
+  <data name="UnknownServerResponse" xml:space="preserve">
+    <value>Erro: {0}</value>
+  </data>
 </root>
