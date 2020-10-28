@@ -748,4 +748,79 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>Enabling fast downloads might cause issues downloading game data. If it fails downloading your game files, try again with this option disabled.</value>
   </data>
+  <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+    <value>This account is banned.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
+    <value>You are already friends with this user.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST" xml:space="preserve">
+    <value>You have already received a friend request from this user.</value>
+  </data>
+  <data name="ServerResponse_BAD_LOGIN" xml:space="preserve">
+    <value>Invalid email address or password.</value>
+  </data>
+  <data name="ServerResponse_CANNOT_FRIEND_YOURSELF" xml:space="preserve">
+    <value>You cannot send a friend request to yourself.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ADDRESSES_DONT_MATCH" xml:space="preserve">
+    <value>The entered email addresses don't match.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ALREADY_IN_USE" xml:space="preserve">
+    <value>This email address is already in use.</value>
+  </data>
+  <data name="ServerResponse_FRIEND_REQUEST_PENDING" xml:space="preserve">
+    <value>You already have a pending friend request towards this user.</value>
+  </data>
+  <data name="ServerResponse_GENERAL_ERROR" xml:space="preserve">
+    <value>Something bad happened. Try again or ask in the forums or Discord if this issue persists.</value>
+  </data>
+  <data name="ServerResponse_INVALID_EMAIL" xml:space="preserve">
+    <value>This email address is not valid.</value>
+  </data>
+  <data name="ServerResponse_MAINT_MODE" xml:space="preserve">
+    <value>Server maintenance is ongoing, see https://forums.projectceleste.com/ for more information.</value>
+  </data>
+  <data name="ServerResponse_METHOD_NOT_ALLOWED" xml:space="preserve">
+    <value>You are not allowed to do that.</value>
+  </data>
+  <data name="ServerResponse_OUTDATED_LAUNCHER" xml:space="preserve">
+    <value>Your launcher is outdated. Please update in order to login.</value>
+  </data>
+  <data name="ServerResponse_PASSWORDS_DOES_NOT_MATCH" xml:space="preserve">
+    <value>The entered passwords don't match.</value>
+  </data>
+  <data name="ServerResponse_PASSWORD_TOO_SHORT" xml:space="preserve">
+    <value>The entered password is too short.</value>
+  </data>
+  <data name="ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Your friend has too many friends and cannot receive your request.</value>
+  </data>
+  <data name="ServerResponse_REGISTRATION_DISABLED" xml:space="preserve">
+    <value>Registration is disabled.</value>
+  </data>
+  <data name="ServerResponse_RESET_AWAITING_COOLDOWN" xml:space="preserve">
+    <value>You must wait 3 minuets between each reset.</value>
+  </data>
+  <data name="ServerResponse_RESET_SUCCESS" xml:space="preserve">
+    <value>Account has been successfully reset</value>
+  </data>
+  <data name="ServerResponse_SUCCESS" xml:space="preserve">
+    <value>Success!</value>
+  </data>
+  <data name="ServerResponse_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>You have too many friends to accept new ones.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_EMAIL" xml:space="preserve">
+    <value>No account was found with this email address.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
+    <value>This verification key is unknown or not valid.</value>
+  </data>
+  <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
+    <value>This user was not found.</value>
+  </data>
+  <data name="UnknownServerResponse" xml:space="preserve">
+    <value>Error: {0}</value>
+  </data>
 </root>
