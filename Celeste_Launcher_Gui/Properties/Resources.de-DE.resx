@@ -817,7 +817,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
     <value>Der Bestätigungsschlüssel ist unbekannt oder falsch.</value>
   </data>
-  <data name="ServerResponse_Spieler_NOT_FOUND" xml:space="preserve">
+  <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
     <value>Der Spieler wurde nicht gefunden.</value>
   </data>
   <data name="UnknownServerResponse" xml:space="preserve">
