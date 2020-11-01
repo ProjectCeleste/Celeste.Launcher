@@ -748,4 +748,79 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>L'abilitazione del download veloce potrebbe causare problemi durante il download dei dati di gioco. Se non riesci a scaricare i file di gioco, riprova con questa opzione disattivata.</value>
   </data>
+    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+    <value>Questo account è stato bannato.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
+    <value>Sei già amico di questo utente.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST" xml:space="preserve">
+    <value>Hai già ricevuto una richiesta di amicizia da questo utente.</value>
+  </data>
+  <data name="ServerResponse_BAD_LOGIN" xml:space="preserve">
+    <value>Indirizzo email o password non validi.</value>
+  </data>
+  <data name="ServerResponse_CANNOT_FRIEND_YOURSELF" xml:space="preserve">
+    <value>Non puoi inviare una richiesta di amicizia a te stesso.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ADDRESSES_DONT_MATCH" xml:space="preserve">
+    <value>Gli indirizzi e-mail inseriti non corrispondono.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ALREADY_IN_USE" xml:space="preserve">
+    <value>Questo indirizzo e-mail è già in uso.</value>
+  </data>
+  <data name="ServerResponse_FRIEND_REQUEST_PENDING" xml:space="preserve">
+    <value>Hai già una richiesta di amicizia in sospeso con questo utente.</value>
+  </data>
+  <data name="ServerResponse_GENERAL_ERROR" xml:space="preserve">
+    <value>Si è verificato un errore. Riprova o chiedi nei forum o Discord se il problema persiste.</value>
+  </data>
+  <data name="ServerResponse_INVALID_EMAIL" xml:space="preserve">
+    <value>Questo indirizzo email non è valido.</value>
+  </data>
+  <data name="ServerResponse_MAINT_MODE" xml:space="preserve">
+    <value>La manutenzione del server è in corso, controlla https://forums.projectceleste.com/ per maggiori informazioni.</value>
+  </data>
+  <data name="ServerResponse_METHOD_NOT_ALLOWED" xml:space="preserve">
+    <value>Non ti è permesso farlo.</value>
+  </data>
+  <data name="ServerResponse_OUTDATED_LAUNCHER" xml:space="preserve">
+    <value>Il tuo programma di avvio è obsoleto. Aggiorna per accedere.</value>
+  </data>
+  <data name="ServerResponse_PASSWORDS_DOES_NOT_MATCH" xml:space="preserve">
+    <value>Le password inserite non corrispondono.</value>
+  </data>
+  <data name="ServerResponse_PASSWORD_TOO_SHORT" xml:space="preserve">
+    <value>La password inserita è troppo corta.</value>
+  </data>
+  <data name="ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Il tuo amico ha troppi amici e non può ricevere la tua richiesta.</value>
+  </data>
+  <data name="ServerResponse_REGISTRATION_DISABLED" xml:space="preserve">
+    <value>La registrazione è disabilitata.</value>
+  </data>
+  <data name="ServerResponse_RESET_AWAITING_COOLDOWN" xml:space="preserve">
+    <value>È necessario attendere 3 minuti tra ogni ripristino.</value>
+  </data>
+  <data name="ServerResponse_RESET_SUCCESS" xml:space="preserve">
+    <value>Account è stato ripristinato con successo</value>
+  </data>
+  <data name="ServerResponse_SUCCESS" xml:space="preserve">
+    <value>Successo!</value>
+  </data>
+  <data name="ServerResponse_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Hai troppi amici per accettarne di nuovi.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_EMAIL" xml:space="preserve">
+    <value>Nessun account trovato con questo indirizzo email.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
+    <value>Questa chiave di verifica è sconosciuta o non valida.</value>
+  </data>
+  <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
+    <value>Questo utente non è stato trovato.</value>
+  </data>
+  <data name="UnknownServerResponse" xml:space="preserve">
+    <value>Errore: {0}</value>
+  </data>
 </root>

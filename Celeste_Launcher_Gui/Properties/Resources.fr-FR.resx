@@ -748,4 +748,79 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>Activer le téléchargement rapide peut poser problème lors du téléchargement des fichiers du jeu. Si le téléchargement échoue, essayez à nouveau en désactivant cette option.</value>
   </data>
+    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+    <value>Ce compte est banni.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
+    <value>Vous êtes déjà ami avec cet utilisateur.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST" xml:space="preserve">
+    <value>Vous avez déjà reçu une invitation d&apos;ami de la part de cet utilisateur.</value>
+  </data>
+  <data name="ServerResponse_BAD_LOGIN" xml:space="preserve">
+    <value>Adresse email ou mot de passe invalide.</value>
+  </data>
+  <data name="ServerResponse_CANNOT_FRIEND_YOURSELF" xml:space="preserve">
+    <value>Vous ne pouvez pas vous inviter en ami vous-même.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ADDRESSES_DONT_MATCH" xml:space="preserve">
+    <value>Les adresses email saisies ne correspondent pas.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ALREADY_IN_USE" xml:space="preserve">
+    <value>Cette adresse email est déjà utilisée.</value>
+  </data>
+  <data name="ServerResponse_FRIEND_REQUEST_PENDING" xml:space="preserve">
+    <value>Vous avez déjà une invitation d&apos;ami en attente pour cet utilisateur.</value>
+  </data>
+  <data name="ServerResponse_GENERAL_ERROR" xml:space="preserve">
+    <value>Une erreur est survenue. Essayez à nouveau ou demandez de l&apos;aide sur nos forums ou Discord si le problème persiste.</value>
+  </data>
+  <data name="ServerResponse_INVALID_EMAIL" xml:space="preserve">
+    <value>L&apos;adresse email est invalide.</value>
+  </data>
+  <data name="ServerResponse_MAINT_MODE" xml:space="preserve">
+    <value>Maintenance du serveur en cours, consultez https://forums.projectceleste.com/ pour plus d&apos; informations.</value>
+  </data>
+  <data name="ServerResponse_METHOD_NOT_ALLOWED" xml:space="preserve">
+    <value>Vous n&apos;êtes pas autorisé à faire cela.</value>
+  </data>
+  <data name="ServerResponse_OUTDATED_LAUNCHER" xml:space="preserve">
+    <value>Votre lanceur n&apos;est pas à jour. Veuillez le mettre à jour avant de vous connecter.</value>
+  </data>
+  <data name="ServerResponse_PASSWORDS_DOES_NOT_MATCH" xml:space="preserve">
+    <value>Les mots de passe saisis ne correspondent pas.</value>
+  </data>
+  <data name="ServerResponse_PASSWORD_TOO_SHORT" xml:space="preserve">
+    <value>Le mot de passe saisi est trop court.</value>
+  </data>
+  <data name="ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Votre ami a trop d&apos;amis et ne peut pas recevoir votre demande.</value>
+  </data>
+  <data name="ServerResponse_REGISTRATION_DISABLED" xml:space="preserve">
+    <value>Les inscriptions sont désactivées.</value>
+  </data>
+  <data name="ServerResponse_RESET_AWAITING_COOLDOWN" xml:space="preserve">
+    <value>Vous devez attendre 3 minutes entre chaque réinitialisation.</value>
+  </data>
+  <data name="ServerResponse_RESET_SUCCESS" xml:space="preserve">
+    <value>Votre compte a été réinitialisé avec succès.</value>
+  </data>
+  <data name="ServerResponse_SUCCESS" xml:space="preserve">
+    <value>Succès !</value>
+  </data>
+  <data name="ServerResponse_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Vous avez trop d&apos;amis pour pouvoir en accepter de nouveaux.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_EMAIL" xml:space="preserve">
+    <value>Aucun compte n&apos;a été trouvé pour cette adresse email.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
+    <value>Cette clé de vérification est inconnue ou invalide.</value>
+  </data>
+  <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
+    <value>Cet utilisateur n&apos;a pas été trouvé.</value>
+  </data>
+  <data name="UnknownServerResponse" xml:space="preserve">
+    <value>Erreur : {0}</value>
+  </data>
 </root>

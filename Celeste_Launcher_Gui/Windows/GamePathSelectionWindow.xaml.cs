@@ -62,15 +62,10 @@ namespace Celeste_Launcher_Gui.Windows
 
                 LegacyBootstrapper.UserConfig.GameFilesPath = spartanDirectory;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
-                var scanner = new GameScannerWindow(spartanDirectory, LegacyBootstrapper.UserConfig.IsSteamVersion, FastDownloadOption.IsChecked ?? false);
+                var scanner = new GameScannerWindow(spartanDirectory, LegacyBootstrapper.UserConfig.IsSteamVersion);
                 scanner.Owner = Owner;
                 scanner.ShowDialog();
             }
-        }
-
-        private void FastDownloadOption_Checked(object sender, RoutedEventArgs e)
-        {
-            GenericMessageDialog.Show(Properties.Resources.GameScannerFastDownloadWarning, DialogIcon.None, DialogOptions.Ok);
         }
     }
 }

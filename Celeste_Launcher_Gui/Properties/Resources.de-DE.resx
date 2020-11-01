@@ -748,4 +748,79 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>Schneller Download kann beim Herunterladen der Spieledateien Probleme verursachen. Deaktiviere es, falls das Herunterladen der Spieledateien fehlschlägt.</value>
   </data>
+    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+    <value>Dieses Konto wurde gebannt.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
+    <value>Du bist bereits mit diesem Spieler befreundet.</value>
+  </data>
+  <data name="ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST" xml:space="preserve">
+    <value>Du hast bereits eine Freundschaftsanfrage von diesem Spieler erhalten.</value>
+  </data>
+  <data name="ServerResponse_BAD_LOGIN" xml:space="preserve">
+    <value>Ungültiges Email Adresse oder Passwort.</value>
+  </data>
+  <data name="ServerResponse_CANNOT_FRIEND_YOURSELF" xml:space="preserve">
+    <value>Du kannst dir selber keine Freundschaftsanfrage senden.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ADDRESSES_DONT_MATCH" xml:space="preserve">
+    <value>Die Email Adressen sind nicht identisch.</value>
+  </data>
+  <data name="ServerResponse_EMAIL_ALREADY_IN_USE" xml:space="preserve">
+    <value>Die angegebene Email Adresse wird schon genutzt.</value>
+  </data>
+  <data name="ServerResponse_FRIEND_REQUEST_PENDING" xml:space="preserve">
+    <value>Es wurde schon eine Freundschaftsanfrage an diesen Spieler gesendet.</value>
+  </data>
+  <data name="ServerResponse_GENERAL_ERROR" xml:space="preserve">
+    <value>Etwas ist schief gegangen. Versuche es erneut oder frage im Forum oder in Discord nach, sofern das Problem unverändert bleibt.</value>
+  </data>
+  <data name="ServerResponse_INVALID_EMAIL" xml:space="preserve">
+    <value>Die Email Adresse ist ungültig.</value>
+  </data>
+  <data name="ServerResponse_MAINT_MODE" xml:space="preserve">
+    <value>Die Server-Wartung ist noch im Gange. Verfolge den Server-Zustand hier: https://forums.projectceleste.com/.</value>
+  </data>
+  <data name="ServerResponse_METHOD_NOT_ALLOWED" xml:space="preserve">
+    <value>Du hast dafür keine Berechtigung.</value>
+  </data>
+  <data name="ServerResponse_OUTDATED_LAUNCHER" xml:space="preserve">
+    <value>Dein Launcher ist veraltet. Update den Launcher um einzuloggen.</value>
+  </data>
+  <data name="ServerResponse_PASSWORDS_DOES_NOT_MATCH" xml:space="preserve">
+    <value>Die Passwörter sind nicht identisch.</value>
+  </data>
+  <data name="ServerResponse_PASSWORD_TOO_SHORT" xml:space="preserve">
+    <value>Das Passwort ist zu kurz.</value>
+  </data>
+  <data name="ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Dein Freund besitzt zu viele Freunde und kann daher deine Anfrage nicht erhalten.</value>
+  </data>
+  <data name="ServerResponse_REGISTRATION_DISABLED" xml:space="preserve">
+    <value>Die Registrierung ist nicht verfügbar.</value>
+  </data>
+  <data name="ServerResponse_RESET_AWAITING_COOLDOWN" xml:space="preserve">
+    <value>Du musst zwischen dem Zurücksetzen 3 Minuten warten.</value>
+  </data>
+  <data name="ServerResponse_RESET_SUCCESS" xml:space="preserve">
+    <value>Das Konto wurde erfolgreich zurückgesetzt.</value>
+  </data>
+  <data name="ServerResponse_SUCCESS" xml:space="preserve">
+    <value>Erfolg!</value>
+  </data>
+  <data name="ServerResponse_TOO_MANY_FRIENDS" xml:space="preserve">
+    <value>Du hast die maximale Anzahl an Freunden erreicht.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_EMAIL" xml:space="preserve">
+    <value>Kein Konto wurde unter dieser Email Adresse gefunden.</value>
+  </data>
+  <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
+    <value>Der Bestätigungsschlüssel ist unbekannt oder falsch.</value>
+  </data>
+  <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
+    <value>Der Spieler wurde nicht gefunden.</value>
+  </data>
+  <data name="UnknownServerResponse" xml:space="preserve">
+    <value>Fehler: {0}</value>
+  </data>
 </root>

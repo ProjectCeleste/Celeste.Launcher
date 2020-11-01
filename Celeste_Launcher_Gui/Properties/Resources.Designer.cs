@@ -1673,6 +1673,222 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This account is banned..
+        /// </summary>
+        public static string ServerResponse_ACCOUNT_BANNED {
+            get {
+                return ResourceManager.GetString("ServerResponse_ACCOUNT_BANNED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are already friends with this user..
+        /// </summary>
+        public static string ServerResponse_ALREADY_A_FRIEND {
+            get {
+                return ResourceManager.GetString("ServerResponse_ALREADY_A_FRIEND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have already received a friend request from this user..
+        /// </summary>
+        public static string ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST {
+            get {
+                return ResourceManager.GetString("ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid email address or password..
+        /// </summary>
+        public static string ServerResponse_BAD_LOGIN {
+            get {
+                return ResourceManager.GetString("ServerResponse_BAD_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot send a friend request to yourself..
+        /// </summary>
+        public static string ServerResponse_CANNOT_FRIEND_YOURSELF {
+            get {
+                return ResourceManager.GetString("ServerResponse_CANNOT_FRIEND_YOURSELF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered email addresses don&apos;t match..
+        /// </summary>
+        public static string ServerResponse_EMAIL_ADDRESSES_DONT_MATCH {
+            get {
+                return ResourceManager.GetString("ServerResponse_EMAIL_ADDRESSES_DONT_MATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This email address is already in use..
+        /// </summary>
+        public static string ServerResponse_EMAIL_ALREADY_IN_USE {
+            get {
+                return ResourceManager.GetString("ServerResponse_EMAIL_ALREADY_IN_USE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You already have a pending friend request towards this user..
+        /// </summary>
+        public static string ServerResponse_FRIEND_REQUEST_PENDING {
+            get {
+                return ResourceManager.GetString("ServerResponse_FRIEND_REQUEST_PENDING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something bad happened. Try again or ask in the forums or Discord if this issue persists..
+        /// </summary>
+        public static string ServerResponse_GENERAL_ERROR {
+            get {
+                return ResourceManager.GetString("ServerResponse_GENERAL_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This email address is not valid..
+        /// </summary>
+        public static string ServerResponse_INVALID_EMAIL {
+            get {
+                return ResourceManager.GetString("ServerResponse_INVALID_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server maintenance is ongoing, see https://forums.projectceleste.com/ for more information..
+        /// </summary>
+        public static string ServerResponse_MAINT_MODE {
+            get {
+                return ResourceManager.GetString("ServerResponse_MAINT_MODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not allowed to do that..
+        /// </summary>
+        public static string ServerResponse_METHOD_NOT_ALLOWED {
+            get {
+                return ResourceManager.GetString("ServerResponse_METHOD_NOT_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your launcher is outdated. Please update in order to login..
+        /// </summary>
+        public static string ServerResponse_OUTDATED_LAUNCHER {
+            get {
+                return ResourceManager.GetString("ServerResponse_OUTDATED_LAUNCHER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered password is too short..
+        /// </summary>
+        public static string ServerResponse_PASSWORD_TOO_SHORT {
+            get {
+                return ResourceManager.GetString("ServerResponse_PASSWORD_TOO_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The entered passwords don&apos;t match..
+        /// </summary>
+        public static string ServerResponse_PASSWORDS_DOES_NOT_MATCH {
+            get {
+                return ResourceManager.GetString("ServerResponse_PASSWORDS_DOES_NOT_MATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your friend has too many friends and cannot receive your request..
+        /// </summary>
+        public static string ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS {
+            get {
+                return ResourceManager.GetString("ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration is disabled..
+        /// </summary>
+        public static string ServerResponse_REGISTRATION_DISABLED {
+            get {
+                return ResourceManager.GetString("ServerResponse_REGISTRATION_DISABLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must wait 3 minuets between each reset..
+        /// </summary>
+        public static string ServerResponse_RESET_AWAITING_COOLDOWN {
+            get {
+                return ResourceManager.GetString("ServerResponse_RESET_AWAITING_COOLDOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account has been successfully reset.
+        /// </summary>
+        public static string ServerResponse_RESET_SUCCESS {
+            get {
+                return ResourceManager.GetString("ServerResponse_RESET_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success!.
+        /// </summary>
+        public static string ServerResponse_SUCCESS {
+            get {
+                return ResourceManager.GetString("ServerResponse_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have too many friends to accept new ones..
+        /// </summary>
+        public static string ServerResponse_TOO_MANY_FRIENDS {
+            get {
+                return ResourceManager.GetString("ServerResponse_TOO_MANY_FRIENDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No account was found with this email address..
+        /// </summary>
+        public static string ServerResponse_UNKNOWN_EMAIL {
+            get {
+                return ResourceManager.GetString("ServerResponse_UNKNOWN_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This verification key is unknown or not valid..
+        /// </summary>
+        public static string ServerResponse_UNKNOWN_VERIFICATION_KEY {
+            get {
+                return ResourceManager.GetString("ServerResponse_UNKNOWN_VERIFICATION_KEY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user was not found..
+        /// </summary>
+        public static string ServerResponse_USER_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ServerResponse_USER_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unexpected error occurred while starting Age of Empires Online. Please try again or check the log files..
         /// </summary>
         public static string StartGameError {
@@ -1732,6 +1948,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string SteamConverterWindowTitle {
             get {
                 return ResourceManager.GetString("SteamConverterWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: {0}.
+        /// </summary>
+        public static string UnknownServerResponse {
+            get {
+                return ResourceManager.GetString("UnknownServerResponse", resourceCulture);
             }
         }
         
