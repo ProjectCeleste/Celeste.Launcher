@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
 using ProjectCeleste.GameFiles.GameScanner;
@@ -12,7 +13,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Celeste_Launcher_Gui.Windows
+namespace CelesteGameScannerUI
 {
     /// <summary>
     /// Interaction logic for GameScannerWindow.xaml
@@ -22,8 +23,11 @@ namespace Celeste_Launcher_Gui.Windows
         private readonly GameScannerManager GameScanner;
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
-        public GameScannerWindow(string gameFilesPath, bool isSteam)
+        public GameScannerWindow()
         {
+            var gameFilesPath = App.GamePath;
+            var isSteam = App.IsSteamInstallation;
+
             InitializeComponent();
 
             if (!Directory.Exists(gameFilesPath))
@@ -71,20 +75,20 @@ namespace Celeste_Launcher_Gui.Windows
                 if (await Task.Run(async() => await GameScanner.ScanAndRepair(progress, subProgress, 1)))
                 {
                     CurrentFileLabel.Content = string.Empty;
-                    MainProgressLabel.Content = Properties.Resources.GameScannerDoneLabel;
+                    MainProgressLabel.Content =  Celeste_Launcher_Gui.Properties.Resources.GameScannerDoneLabel;
                     FileProgress.ProgressBar.IsIndeterminate = false;
-                    GenericMessageDialog.Show(Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
+                    GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
                     DialogResult = true;
                 }
                 else
                 {
-                    FailGameScan(Properties.Resources.GameScannerDidNotPass);
+                    FailGameScan(Celeste_Launcher_Gui.Properties.Resources.GameScannerDidNotPass);
                 }
             }
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                FailGameScan(Properties.Resources.GameScannerFailed);
+                FailGameScan(Celeste_Launcher_Gui.Properties.Resources.GameScannerFailed);
             }
         }
 
@@ -111,7 +115,7 @@ namespace Celeste_Launcher_Gui.Windows
             switch (e.Step)
             {
                 case ScanSubProgressStep.Check:
-                    MainProgressLabel.Content = Properties.Resources.GameScannerVerifying;
+                    MainProgressLabel.Content = Celeste_Launcher_Gui.Properties.Resources.GameScannerVerifying;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     break;
@@ -120,7 +124,7 @@ namespace Celeste_Launcher_Gui.Windows
                     {
                         if (e.DownloadProgress.Size == 0)
                         {
-                            MainProgressLabel.Content = Properties.Resources.GameScannerDownloadStarting;
+                            MainProgressLabel.Content = Celeste_Launcher_Gui.Properties.Resources.GameScannerDownloadStarting;
                         }
                         else
                         {
@@ -130,7 +134,7 @@ namespace Celeste_Launcher_Gui.Windows
                             var downloadSpeed = double.IsInfinity(e.DownloadProgress.Speed) ?
                                 string.Empty : $"({BytesSizeExtension.FormatToBytesSizeThreeNonZeroDigits(e.DownloadProgress.Speed)}/s)";
 
-                            MainProgressLabel.Content = $"{Properties.Resources.GameScannerDownloading} {downloaded}/{leftToDownload} {downloadSpeed}";
+                            MainProgressLabel.Content = $"{Celeste_Launcher_Gui.Properties.Resources.GameScannerDownloading} {downloaded}/{leftToDownload} {downloadSpeed}";
                         }
                     }
 
@@ -138,20 +142,20 @@ namespace Celeste_Launcher_Gui.Windows
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
                 case ScanSubProgressStep.CheckDownload:
-                    MainProgressLabel.Content = Properties.Resources.GameScannerVerifyingDownloadedFile;
+                    MainProgressLabel.Content = Celeste_Launcher_Gui.Properties.Resources.GameScannerVerifyingDownloadedFile;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.ExtractDownload:
-                    MainProgressLabel.Content = Properties.Resources.GameScannerExtracting;
+                    MainProgressLabel.Content = Celeste_Launcher_Gui.Properties.Resources.GameScannerExtracting;
                     FileProgress.ProgressBar.Value = e.ProgressPercentage;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     break;
                 case ScanSubProgressStep.CheckExtractDownload:
-                    MainProgressLabel.Content = Properties.Resources.GameScannerVerifyingExtractedFile;
+                    MainProgressLabel.Content = Celeste_Launcher_Gui.Properties.Resources.GameScannerVerifyingExtractedFile;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.Finalize:
-                    MainProgressLabel.Content = Properties.Resources.GameScannerFinalizing;
+                    MainProgressLabel.Content = Celeste_Launcher_Gui.Properties.Resources.GameScannerFinalizing;
                     FileProgress.ProgressBar.IsIndeterminate = true;
                     break;
                 case ScanSubProgressStep.End:

@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gui", "Gui", "{758E11E7-DC4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Celeste_Public_Api", "Libs\Celeste_Public_Api\Celeste_Public_Api.csproj", "{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{28D2A00A-FAE9-49D5-881F-1C6C86D04E47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelesteGameScannerUI", "CelesteGameScannerUI\CelesteGameScannerUI.csproj", "{59CA5C8C-8A99-419A-849D-BB2A517AA108}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59CA5C8C-8A99-419A-849D-BB2A517AA108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CA5C8C-8A99-419A-849D-BB2A517AA108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CA5C8C-8A99-419A-849D-BB2A517AA108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CA5C8C-8A99-419A-849D-BB2A517AA108}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{589BC356-4A36-42FB-AE10-95AEDEC36AE6} = {758E11E7-DC4E-4A53-99FA-667857F6E33F}
 		{11E428AD-8FB2-4AE1-B922-FE363F3C6A63} = {40623A54-2812-491D-9914-2F21B7BE181A}
+		{59CA5C8C-8A99-419A-849D-BB2A517AA108} = {28D2A00A-FAE9-49D5-881F-1C6C86D04E47}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99C4C0CE-DC43-4963-A38C-CDD0969F9909}
