@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Helpers;
+﻿using Celeste_Launcher_Gui;
+using Celeste_Launcher_Gui.Helpers;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
@@ -25,10 +26,12 @@ namespace CelesteGameScannerUI
 
         public GameScannerWindow()
         {
-            var gameFilesPath = App.GamePath;
-            var isSteam = App.IsSteamInstallation;
+            var gameFilesPath = LegacyBootstrapper.UserConfig.GameFilesPath;
+            var isSteam = LegacyBootstrapper.UserConfig.IsSteamVersion;
 
             InitializeComponent();
+
+            Logger.Information($"Initialized game scanner to directory {gameFilesPath}");
 
             if (!Directory.Exists(gameFilesPath))
                 Directory.CreateDirectory(gameFilesPath);
@@ -78,7 +81,6 @@ namespace CelesteGameScannerUI
                     MainProgressLabel.Content =  Celeste_Launcher_Gui.Properties.Resources.GameScannerDoneLabel;
                     FileProgress.ProgressBar.IsIndeterminate = false;
                     GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
-                    DialogResult = true;
                 }
                 else
                 {
@@ -89,6 +91,10 @@ namespace CelesteGameScannerUI
             {
                 Logger.Error(ex, ex.Message);
                 FailGameScan(Celeste_Launcher_Gui.Properties.Resources.GameScannerFailed);
+            }
+            finally
+            {
+                Close();
             }
         }
 
