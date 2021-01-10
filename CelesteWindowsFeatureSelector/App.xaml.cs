@@ -1,10 +1,6 @@
 ﻿using Celeste_Launcher_Gui;
+using Celeste_Public_Api.Logging;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CelesteWindowsFeatureSelector
@@ -14,5 +10,17 @@ namespace CelesteWindowsFeatureSelector
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            AppDomain.CurrentDomain.UnhandledException += (o, exArgs) =>
+            {
+                var logger = LoggerFactory.GetLogger();
+                var ex = (Exception)exArgs.ExceptionObject;
+                logger.Fatal(ex, ex.Message);
+            };
+
+            LegacyBootstrapper.LoadUserConfig();
+            LegacyBootstrapper.SetUILanguage();
+        }
     }
 }
