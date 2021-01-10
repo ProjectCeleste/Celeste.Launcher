@@ -29,8 +29,10 @@ namespace Celeste_Launcher_Gui.Services
         {
             try
             {
-                var directoryInfo = new DirectoryInfo(path);
-                return directoryInfo.Attributes == FileAttributes.Directory;
+                var testTmpFileLocation = Path.Combine(path, "test.tmp");
+                File.WriteAllText(testTmpFileLocation, "_");
+                File.Delete(testTmpFileLocation);
+                return true;
             }
             catch (UnauthorizedAccessException)
             {
