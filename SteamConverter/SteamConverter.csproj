@@ -7,7 +7,7 @@
 	<ApplicationManifest>app.manifest</ApplicationManifest>
 	<ApplicationIcon>..\icon.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <OutputPath>..\Celeste_Launcher_Gui\bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
 
