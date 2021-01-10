@@ -10,7 +10,7 @@
     <Version>3.0.5.3</Version>
     <AssemblyName>Celeste Windows Feature Selector</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <OutputPath>..\Celeste_Launcher_Gui\bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
