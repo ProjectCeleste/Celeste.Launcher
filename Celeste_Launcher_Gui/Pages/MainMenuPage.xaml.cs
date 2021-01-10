@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Services;
+using Celeste_Launcher_Gui.Win32;
 using Celeste_Launcher_Gui.Windows;
 using System;
 using System.Diagnostics;
@@ -74,9 +75,7 @@ namespace Celeste_Launcher_Gui.Pages
         #region Settings
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            var windowsFeatureHelper = new WindowsFeatureHelper();
-            windowsFeatureHelper.Owner = Window.GetWindow(this);
-            windowsFeatureHelper.ShowDialog();
+            ProcesInvoker.StartNewProcessAsDialog("Celeste Windows Feature Selector.exe");
         }
 
         private void EnableDiagnosticsMode(object sender, RoutedEventArgs e)
@@ -140,9 +139,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenFirewallHelper(object sender, RoutedEventArgs e)
         {
-            var firewallHelper = new Windows.WindowsFirewallHelper();
-            firewallHelper.Owner = Window.GetWindow(this);
-            firewallHelper.ShowDialog();
+            ProcesInvoker.StartNewProcessAsDialog("Celeste Windows Firewall Helper.exe");
         }
 
         private void OpenLauncherUpdater(object sender, RoutedEventArgs e)

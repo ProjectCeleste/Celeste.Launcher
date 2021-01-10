@@ -1,5 +1,6 @@
 ﻿using Celeste_Launcher_Gui.Account;
 using Celeste_Launcher_Gui.Services;
+using Celeste_Launcher_Gui.Win32;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using System;
@@ -202,16 +203,12 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenWindowsFeatures(object sender, RoutedEventArgs e)
         {
-            var featureHelper = new WindowsFeatureHelper();
-            featureHelper.Owner = Window.GetWindow(this);
-            featureHelper.ShowDialog();
+            ProcesInvoker.StartNewProcessAsDialog("Celeste Windows Feature Selector.exe");
         }
 
         private void OpenWindowsFirewall(object sender, RoutedEventArgs e)
         {
-            var firewallHelper = new Windows.WindowsFirewallHelper();
-            firewallHelper.Owner = Window.GetWindow(this);
-            firewallHelper.ShowDialog();
+            ProcesInvoker.StartNewProcessAsDialog("Celeste Windows Firewall Helper.exe");
         }
 
         private void OpenGameScanner(object sender, RoutedEventArgs e)

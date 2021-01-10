@@ -18,7 +18,7 @@ using Celeste_Launcher_Gui.Windows;
 
 namespace Celeste_Launcher_Gui
 {
-    internal static class LegacyBootstrapper
+    public static class LegacyBootstrapper
     {
         public static UserConfig UserConfig { get; private set; } = new UserConfig();
         
@@ -50,26 +50,9 @@ namespace Celeste_Launcher_Gui
                 return;
             }
 
-            //
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
-            //Load UserConfig
-            try
-            {
-                if (File.Exists(UserConfigFilePath))
-                {
-                    UserConfig = UserConfig.Load(UserConfigFilePath);
-                    Logger.Information("User config loaded from {@Path}", UserConfigFilePath);
-                }
-                else
-                {
-                    Logger.Information("No user config loaded, path {@Path} does not exist", UserConfigFilePath);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, ex.Message);
-            }
+            LoadUserConfig();
 
             try
             {
@@ -147,6 +130,26 @@ namespace Celeste_Launcher_Gui
                     return new CultureInfo("zh-CHT");
                 default:
                     return new CultureInfo("en-US");
+            }
+        }
+
+        public static void LoadUserConfig()
+        {
+            try
+            {
+                if (File.Exists(UserConfigFilePath))
+                {
+                    UserConfig = UserConfig.Load(UserConfigFilePath);
+                    Logger.Information("User config loaded from {@Path}", UserConfigFilePath);
+                }
+                else
+                {
+                    Logger.Information("No user config loaded, path {@Path} does not exist", UserConfigFilePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, ex.Message);
             }
         }
     }

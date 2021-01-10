@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Logging;
 using Microsoft.Dism;
 using Serilog;
@@ -7,7 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Celeste_Launcher_Gui.Windows
+namespace CelesteWindowsFirewallHelper
 {
     /// <summary>
     /// Interaction logic for WindowsFeatureHelper.xaml
@@ -46,7 +47,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
             }
             IsEnabled = true;
         }
@@ -66,7 +67,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
             }
             IsEnabled = true;
         }
@@ -81,7 +82,7 @@ namespace Celeste_Launcher_Gui.Windows
             var osInfo = OsVersionInfo.GetOsVersionInfo();
             if (osInfo.Major < 6 || osInfo.Major == 6 && osInfo.Minor < 2)
             {
-                GenericMessageDialog.Show(string.Format(Properties.Resources.WindowsFeatureHelperUnsupportedOS, osInfo.FullName),
+                GenericMessageDialog.Show(string.Format(Celeste_Launcher_Gui.Properties.Resources.WindowsFeatureHelperUnsupportedOS, osInfo.FullName),
                     DialogIcon.Warning);
 
                 Close();
@@ -111,7 +112,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                NetFrameworkStatusLabel.Text = Properties.Resources.WindowsFeatureHelperFeatureNotSupportedError;
+                NetFrameworkStatusLabel.Text = Celeste_Launcher_Gui.Properties.Resources.WindowsFeatureHelperFeatureNotSupportedError;
                 NetFrameworkStatusLabel.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
@@ -121,15 +122,15 @@ namespace Celeste_Launcher_Gui.Windows
             switch (featureInfo.FeatureState)
             {
                 case DismPackageFeatureState.Staged:
-                    return (Properties.Resources.WindowsFeatureHelperFeatureStaged, Colors.Chocolate, true);
+                    return (Celeste_Launcher_Gui.Properties.Resources.WindowsFeatureHelperFeatureStaged, Colors.Chocolate, true);
                 case DismPackageFeatureState.PartiallyInstalled:
-                    return (Properties.Resources.WindowsFeatureHelperFeaturePartiallyInstalled, Colors.Chocolate, true);
+                    return (Celeste_Launcher_Gui.Properties.Resources.WindowsFeatureHelperFeaturePartiallyInstalled, Colors.Chocolate, true);
                 case DismPackageFeatureState.Installed:
-                    return (Properties.Resources.WindowsFeatureHelperFeatureInstalled, Colors.DarkGreen, false);
+                    return (Celeste_Launcher_Gui.Properties.Resources.WindowsFeatureHelperFeatureInstalled, Colors.DarkGreen, false);
                 case DismPackageFeatureState.InstallPending:
-                    return (Properties.Resources.WindowsFeatureHelperFeatureIsPendingInstall, Colors.DarkGreen, false);
+                    return (Celeste_Launcher_Gui.Properties.Resources.WindowsFeatureHelperFeatureIsPendingInstall, Colors.DarkGreen, false);
                 default:
-                    return (string.Format(Properties.Resources.WindowsFeatureHelperFeatureUnsupported, featureInfo.FeatureState), Colors.Red, false);
+                    return (string.Format(Celeste_Launcher_Gui.Properties.Resources.WindowsFeatureHelperFeatureUnsupported, featureInfo.FeatureState), Colors.Red, false);
             }
         }
     }

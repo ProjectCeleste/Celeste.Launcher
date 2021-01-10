@@ -6,7 +6,17 @@ namespace Celeste_Launcher_Gui.Win32
 {
     public static class ProcesInvoker
     {
-        public static void StartNewProcessAsDialog(string processName, string processArguments, bool runAsElevated)
+        public static void StartNewProcessAsDialog(string processName, string processArguments = "", bool runAsElevated = false)
+        {
+            var process = StartNewProcess(processName, processArguments, runAsElevated);
+
+            var processWindowHandle = WaitForWindowToAppear(process);
+            WindowsInterop.SetWindowOwner(processWindowHandle, Process.GetCurrentProcess().MainWindowHandle);
+
+            process.WaitForExit();
+        }
+
+        public static Process StartNewProcess(string processName, string processArguments = "", bool runAsElevated = false)
         {
             var startInfo = new ProcessStartInfo(processName)
             {
@@ -16,12 +26,7 @@ namespace Celeste_Launcher_Gui.Win32
             if (runAsElevated)
                 startInfo.Verb = "runas";
 
-            var process = Process.Start(startInfo);
-
-            var processWindowHandle = WaitForWindowToAppear(process);
-            WindowsInterop.SetWindowOwner(processWindowHandle, Process.GetCurrentProcess().MainWindowHandle);
-
-            process.WaitForExit();
+            return Process.Start(startInfo);
         }
 
         private static IntPtr WaitForWindowToAppear(Process process)

@@ -6,15 +6,13 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
 	<ApplicationIcon>..\icon.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>	  
     <Version>3.0.5.3</Version>
-    <AssemblyName>Celeste Game Scanner UI</AssemblyName>
+    <AssemblyName>Celeste Windows Firewall Helper</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>..\Celeste_Launcher_Gui\bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Celeste.GameFiles.GameScanner" Version="2.6.1" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Celeste_Launcher_Gui\Celeste_Launcher_Gui.csproj" />
   </ItemGroup>
@@ -32,7 +30,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="GameScannerWindow.xaml">
+    <Page Update="WindowsFirewallHelper.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
   </ItemGroup>
