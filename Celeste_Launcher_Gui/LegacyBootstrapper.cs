@@ -74,8 +74,14 @@ namespace Celeste_Launcher_Gui
             //Check if Steam Version
             try
             {
-                UserConfig.IsSteamVersion = Assembly.GetEntryAssembly().Location
+                var isSteamVersion = Assembly.GetEntryAssembly().Location
                     .EndsWith("AOEOnline.exe", StringComparison.OrdinalIgnoreCase);
+
+                if (UserConfig.IsSteamVersion != isSteamVersion)
+                {
+                    UserConfig.IsSteamVersion = isSteamVersion;
+                    UserConfig.Save(UserConfigFilePath);
+                }
 
                 Logger.Information("IsSteamVersion: {@IsSteamVersion}", UserConfig.IsSteamVersion);
             }

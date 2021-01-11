@@ -30,6 +30,7 @@ namespace Celeste_Launcher_Gui.Services
         public static async Task StartGame(bool isOffline = false)
         {
             Logger.Information("Preparing to start game, is offline: {@isOffline}", isOffline);
+            LegacyBootstrapper.LoadUserConfig();
 
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)

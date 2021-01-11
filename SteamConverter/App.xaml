@@ -4,6 +4,18 @@
              xmlns:local="clr-namespace:SteamConverter"
              Startup="Application_Startup">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/Fonts.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/CheckBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/ContextMenus.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/TextEffects.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/Scrollbars.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/ListView.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/RadioButton.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Celeste Launcher;component/Styles/Tooltip.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

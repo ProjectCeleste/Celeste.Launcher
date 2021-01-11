@@ -55,9 +55,12 @@ namespace Celeste_Launcher_Gui.Windows
                 LegacyBootstrapper.UserConfig.GameFilesPath = currentWorkingDirectory;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
-                var converterNeedsAdmin = !IsWritableDirectory(Path.Combine(currentWorkingDirectory, "AOEOnline.exe"));
+                var aoeoOnlineExePath = Path.Combine(currentWorkingDirectory, "AOEOnline.exe");
+                var converterNeedsAdmin = !IsWritableDirectory(aoeoOnlineExePath);
 
-                ProcesInvoker.StartNewProcess("SteamConverter.exe", $"\"{currentApplicationFullPath}\"", converterNeedsAdmin);
+                ProcesInvoker.StartNewProcessAsDialog("SteamConverter.exe", runAsElevated: converterNeedsAdmin);
+                ProcesInvoker.StartNewProcess(aoeoOnlineExePath);
+
                 Environment.Exit(0);
             }
             catch (Exception ex)

@@ -1,10 +1,4 @@
-﻿#region Using directives
-
-using System;
-using System.IO;
-using Celeste_Public_Api.Helpers;
-
-#endregion
+﻿using System.IO;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -15,38 +9,22 @@ namespace Celeste_Launcher_Gui.Helpers
 
         public static void ConvertToSteam(string gameBasePath)
         {
-            var fileIn = Path.Combine(gameBasePath, CelesteLauncherExecutableName);
-            var fileOut = Path.Combine(gameBasePath, AOEOnlineExecutableName);
-            Misc.MoveFile(fileIn, fileOut);
+            var celesteLauncherExePath = Path.Combine(gameBasePath, CelesteLauncherExecutableName);
+            var aoeoOnlineExePath = Path.Combine(gameBasePath, AOEOnlineExecutableName);
 
-            try
-            {
-                fileIn = Path.Combine(gameBasePath, $"{CelesteLauncherExecutableName}.config");
-                fileOut = Path.Combine(gameBasePath, $"{AOEOnlineExecutableName}.config");
-                Misc.MoveFile(fileIn, fileOut);
-            }
-            catch (Exception)
-            {
-                //Optional
-            }
+            OverwriteFile(celesteLauncherExePath, aoeoOnlineExePath);
+
+            var celesteLauncherExeConfigPath = Path.Combine(gameBasePath, $"{CelesteLauncherExecutableName}.config");
+            var aoeoOnlineExeConfigPath = Path.Combine(gameBasePath, $"{AOEOnlineExecutableName}.config");
+            OverwriteFile(celesteLauncherExeConfigPath, aoeoOnlineExeConfigPath);
         }
 
-        public static void ConvertBackFromSteam(string gameBasePath)
+        private static void OverwriteFile(string source, string target)
         {
-            var fileOut = Path.Combine(gameBasePath, CelesteLauncherExecutableName);
-            var fileIn = Path.Combine(gameBasePath, AOEOnlineExecutableName);
-            Misc.MoveFile(fileIn, fileOut);
+            if (File.Exists(target))
+                File.Delete(target);
 
-            try
-            {
-                fileOut = Path.Combine(gameBasePath, $"{CelesteLauncherExecutableName}.config");
-                fileIn = Path.Combine(gameBasePath, $"{AOEOnlineExecutableName}.config");
-                Misc.MoveFile(fileIn, fileOut);
-            }
-            catch (Exception)
-            {
-                //Optional
-            }
+            File.Copy(source, target);
         }
     }
 }
