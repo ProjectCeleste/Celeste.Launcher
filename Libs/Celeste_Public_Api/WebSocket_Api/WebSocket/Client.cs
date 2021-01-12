@@ -48,17 +48,6 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
                 throw new Exception($"Invalid server URI ({_uri}).Exception: {ex.Message}");
             }
 
-//#if DEBUG
-            if (_uri.StartsWith("wss://", StringComparison.OrdinalIgnoreCase))
-            {
-                _agent.Security.EnabledSslProtocols = SslProtocols.Tls;
-
-                _agent.Security.AllowUnstrustedCertificate = true;
-                _agent.Security.AllowNameMismatchCertificate = true;
-                _agent.Security.AllowCertificateChainErrors = true;
-            }
-//#endif
-
             _agent.Closed += WebSocket_Closed;
             _agent.Error += WebSocket_Error;
             _agent.Opened += WebSocket_Opened;
