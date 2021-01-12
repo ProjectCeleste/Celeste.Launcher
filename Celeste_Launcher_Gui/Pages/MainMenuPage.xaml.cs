@@ -35,6 +35,7 @@ namespace Celeste_Launcher_Gui.Pages
         {
             PlayOfflineBtn.IsEnabled = false;
             await GameService.StartGame(true);
+            await GameService.WaitForGameToExit();
             PlayOfflineBtn.IsEnabled = true;
         }
         #endregion

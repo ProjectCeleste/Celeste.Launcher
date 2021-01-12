@@ -146,6 +146,7 @@ namespace Celeste_Launcher_Gui.Pages
         {
             LoginBtn.IsEnabled = false;
             await GameService.StartGame();
+            await GameService.WaitForGameToExit();
             LoginBtn.IsEnabled = true;
         }
 
@@ -153,6 +154,7 @@ namespace Celeste_Launcher_Gui.Pages
         {
             PlayOfflineBtn.IsEnabled = false;
             await GameService.StartGame(true);
+            await GameService.WaitForGameToExit();
             PlayOfflineBtn.IsEnabled = true;
         }
 

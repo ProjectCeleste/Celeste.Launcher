@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Celeste_Launcher_Gui.Win32
 {
@@ -27,6 +28,14 @@ namespace Celeste_Launcher_Gui.Win32
                 startInfo.Verb = "runas";
 
             return Process.Start(startInfo);
+        }
+
+        public static async Task WaitForProcessToExit(string processName)
+        {
+            while (Process.GetProcessesByName(processName).Length > 0)
+            {
+                await Task.Delay(1000);
+            }
         }
 
         private static IntPtr WaitForWindowToAppear(Process process)

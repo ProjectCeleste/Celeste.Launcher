@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Win32;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
@@ -302,6 +303,11 @@ namespace Celeste_Launcher_Gui.Services
                 Logger.Error(exception, exception.Message);
                 GenericMessageDialog.Show(Properties.Resources.StartGameError, DialogIcon.Error);
             }
+        }
+
+        public static async Task WaitForGameToExit()
+        {
+            await ProcesInvoker.WaitForProcessToExit("Spartan");
         }
     }
 }
