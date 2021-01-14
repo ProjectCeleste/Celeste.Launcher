@@ -1,6 +1,20 @@
 # Change Log
 
-## [v3.1.0]
+## [3.3.1](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.3.1) (2021-01-14)
+ - The launcher will no longer start as administrator, and will ask for admin rights when needed
+ - Start game button will be disabled until the game (Spartan.exe) is closed
+ - Network security fixes (use system-default settings)
+ - Fixed a bug with the password context menu being badly styled
+
+## [3.2.1](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.2.1) (2020-11-01)
+- Fixed an issue with zip extraction that broke the updater
+
+## [3.2.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.2.0) (2020-11-01)
+- Internationalized server messages
+- Fast download option has been removed as it is no longer needed
+- Minor fixes
+
+## [v3.1.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.1.0) (2020-07-30)
 
 **New features:**
 
