@@ -1,8 +1,7 @@
-﻿using Celeste_Launcher_Gui.Helpers;
+﻿using Celeste_Launcher_Gui.Win32;
 using Celeste_Public_Api.Logging;
 using Serilog;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -56,12 +55,11 @@ namespace Celeste_Launcher_Gui.Windows
                 LegacyBootstrapper.UserConfig.GameFilesPath = currentWorkingDirectory;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
 
-                Steam.ConvertToSteam(LegacyBootstrapper.UserConfig.GameFilesPath);
+                var aoeoOnlineExePath = Path.Combine(currentWorkingDirectory, "AOEOnline.exe");
+                var converterNeedsAdmin = !IsWritableDirectory(aoeoOnlineExePath);
 
-                GenericMessageDialog.Show(Properties.Resources.SteamConverterSuccess, DialogIcon.None, DialogOptions.Ok);
-
-                Process.Start(Assembly.GetEntryAssembly().Location
-                    .Replace(Path.GetFileName(currentApplicationFullPath), "AOEOnline.exe"));
+                ProcesInvoker.StartNewProcessAsDialog("SteamConverter.exe", runAsElevated: converterNeedsAdmin);
+                ProcesInvoker.StartNewProcess(aoeoOnlineExePath);
 
                 Environment.Exit(0);
             }
@@ -69,6 +67,19 @@ namespace Celeste_Launcher_Gui.Windows
             {
                 Logger.Error(ex, ex.Message);
                 GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+            }
+        }
+
+        private static bool IsWritableDirectory(string path)
+        {
+            try
+            {
+                using var _ = File.Open(path, FileMode.Open, FileAccess.ReadWrite);
+                return true;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return false;
             }
         }
     }

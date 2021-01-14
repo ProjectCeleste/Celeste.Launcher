@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Services;
 using Microsoft.Win32;
 using System.IO;
 using System.Windows;
@@ -62,9 +63,7 @@ namespace Celeste_Launcher_Gui.Windows
 
                 LegacyBootstrapper.UserConfig.GameFilesPath = spartanDirectory;
                 LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
-                var scanner = new GameScannerWindow(spartanDirectory, LegacyBootstrapper.UserConfig.IsSteamVersion);
-                scanner.Owner = Owner;
-                scanner.ShowDialog();
+                GameScannerService.StartGameScanner(spartanDirectory, LegacyBootstrapper.UserConfig.IsSteamVersion);
             }
         }
     }

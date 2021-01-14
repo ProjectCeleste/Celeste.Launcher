@@ -43,6 +43,7 @@ namespace Celeste_Launcher_Gui.Windows
         {
             var dialog = new GenericMessageDialog(message, icon, option);
             dialog.Owner = Application.Current.MainWindow;
+
             return dialog.ShowDialog();
         }
 

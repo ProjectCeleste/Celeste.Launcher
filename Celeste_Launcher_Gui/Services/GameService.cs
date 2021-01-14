@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Win32;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
 using Celeste_Public_Api.Logging;
@@ -30,6 +31,7 @@ namespace Celeste_Launcher_Gui.Services
         public static async Task StartGame(bool isOffline = false)
         {
             Logger.Information("Preparing to start game, is offline: {@isOffline}", isOffline);
+            LegacyBootstrapper.LoadUserConfig();
 
             var pname = Process.GetProcessesByName("spartan");
             if (pname.Length > 0)
@@ -301,6 +303,11 @@ namespace Celeste_Launcher_Gui.Services
                 Logger.Error(exception, exception.Message);
                 GenericMessageDialog.Show(Properties.Resources.StartGameError, DialogIcon.Error);
             }
+        }
+
+        public static async Task WaitForGameToExit()
+        {
+            await ProcesInvoker.WaitForProcessToExit("Spartan");
         }
     }
 }

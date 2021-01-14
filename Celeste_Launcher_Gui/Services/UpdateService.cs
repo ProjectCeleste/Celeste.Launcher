@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Services
     public static class UpdateService
     {
         private const string ChangelogUrl =
-            "https://raw.githubusercontent.com/CelesteLauncher/Celeste_Launcher/master/CHANGELOG.md";
+            "https://raw.githubusercontent.com/ProjectCeleste/Celeste.Launcher/master/CHANGELOG.md";
 
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
