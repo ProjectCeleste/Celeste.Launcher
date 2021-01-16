@@ -261,9 +261,9 @@ namespace Celeste_Launcher_Gui.Services
                 }
 
                 //SymLink CustomScn Folder
-                var profileDir = Path.Combine(Environment.GetEnvironmentVariable("userprofile"));
+                var myDocumentsDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 var customScnGamePath = Path.Combine(gamePath, "Scenario", "CustomScn");
-                var scenarioUserPath = Path.Combine(profileDir, "Documents", "Spartan", "Scenario");
+                var scenarioUserPath = Path.Combine(myDocumentsDir, "Spartan", "Scenario");
 
                 Logger.Information("CustomScn directory: {@customScnPath}", customScnGamePath);
                 Logger.Information("Scenario directory: {@scenarioPath}", scenarioUserPath);

@@ -20,7 +20,7 @@ namespace Celeste_Launcher_Gui.Windows
         private static readonly ILogger Logger = LoggerFactory.GetLogger();
 
         private readonly string _scenarioDirectoryPath =
-            Path.Combine(Environment.GetEnvironmentVariable("userprofile") ?? string.Empty, "Documents", "Spartan",
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Spartan",
                 "Scenario");
 
         private readonly object _syncLock = new object();
