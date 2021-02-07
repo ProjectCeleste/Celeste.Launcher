@@ -1,5 +1,9 @@
 # Change Log
 
+## [3.4.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.4.0) (2021-02-07)
+- Launcher will show an error message if you start it in a non-writable location
+- Added some error messages for registration that was missing
+
 ## [3.3.1](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.3.1) (2021-01-14)
  - The launcher will no longer start as administrator, and will ask for admin rights when needed
  - Start game button will be disabled until the game (Spartan.exe) is closed
