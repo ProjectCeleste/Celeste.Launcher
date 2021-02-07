@@ -823,4 +823,16 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="UnknownServerResponse" xml:space="preserve">
     <value>Error: {0}</value>
   </data>
+  <data name="InstallationPathForbidden" xml:space="preserve">
+    <value>The launcher cannot be started from {0} because it is not allowed to write files here. Please install your launcher in a directory under "Documents" or a location where it is allowed to write files.</value>
+  </data>
+  <data name="ServerResponse_INVALID_PASSWORD" xml:space="preserve">
+    <value>This password is empty or contains illegal characters.</value>
+  </data>
+  <data name="ServerResponse_INVALID_USERNAME" xml:space="preserve">
+    <value>This is not a valid username, only digits and letters allowed.</value>
+  </data>
+  <data name="ServerResponse_USERNAME_ALREADY_TAKEN" xml:space="preserve">
+    <value>This username is already taken.</value>
+  </data>
 </root>

@@ -13,6 +13,7 @@ using Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member;
 using Serilog;
 using ProjectCeleste.GameFiles.GameScanner;
 using Celeste_Launcher_Gui.Windows;
+using Celeste_Launcher_Gui.Helpers;
 
 #endregion
 
@@ -35,6 +36,13 @@ namespace Celeste_Launcher_Gui
 
         public static void InitializeLegacyComponents()
         {
+            if (!FileSystem.IsWritableDirectory(AppDomain.CurrentDomain.BaseDirectory))
+            {
+                MessageBox.Show(string.Format(Properties.Resources.InstallationPathForbidden, AppDomain.CurrentDomain.BaseDirectory), "Celeste Launcher", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Windows.Application.Current.Shutdown();
+                return;
+            }
+
             Logger.Information("Initializing bootstrapper");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

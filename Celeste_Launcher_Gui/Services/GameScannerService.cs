@@ -1,4 +1,5 @@
-﻿using Celeste_Launcher_Gui.Win32;
+﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -20,24 +21,9 @@ namespace Celeste_Launcher_Gui.Services
 
             var language = Thread.CurrentThread.CurrentCulture.Name;
 
-            var adminRequired = !IsWritableDirectory(gamePath);
+            var adminRequired = !FileSystem.IsWritableDirectory(gamePath);
 
             ProcesInvoker.StartNewProcessAsDialog(GameScannerBinaryName, $"\"{gamePath}\" \"{language}\" {isSteamInstallation}", adminRequired);
-        }
-
-        private static bool IsWritableDirectory(string path)
-        {
-            try
-            {
-                var testTmpFileLocation = Path.Combine(path, "test.tmp");
-                File.WriteAllText(testTmpFileLocation, "_");
-                File.Delete(testTmpFileLocation);
-                return true;
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return false;
-            }
         }
 
         private static bool GameScanInProgress()

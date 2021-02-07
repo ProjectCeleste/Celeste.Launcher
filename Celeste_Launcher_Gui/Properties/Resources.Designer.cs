@@ -530,6 +530,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The launcher cannot be started from {0} because it is not allowed to write files here. Please install your launcher in a directory under &quot;My Documents&quot; or a location where it is allowed to write files..
+        /// </summary>
+        public static string InstallationPathForbidden {
+            get {
+                return ResourceManager.GetString("InstallationPathForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Coming soon™.
         /// </summary>
         public static string LanguageComingSoonToolTip {
@@ -1763,6 +1772,24 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This password is empty or contains illegal characters..
+        /// </summary>
+        public static string ServerResponse_INVALID_PASSWORD {
+            get {
+                return ResourceManager.GetString("ServerResponse_INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is not a valid username, only digits and letters allowed..
+        /// </summary>
+        public static string ServerResponse_INVALID_USERNAME {
+            get {
+                return ResourceManager.GetString("ServerResponse_INVALID_USERNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server maintenance is ongoing, see https://forums.projectceleste.com/ for more information..
         /// </summary>
         public static string ServerResponse_MAINT_MODE {
@@ -1885,6 +1912,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string ServerResponse_USER_NOT_FOUND {
             get {
                 return ResourceManager.GetString("ServerResponse_USER_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This username is already taken..
+        /// </summary>
+        public static string ServerResponse_USERNAME_ALREADY_TAKEN {
+            get {
+                return ResourceManager.GetString("ServerResponse_USERNAME_ALREADY_TAKEN", resourceCulture);
             }
         }
         
