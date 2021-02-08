@@ -260,29 +260,6 @@ namespace Celeste_Launcher_Gui.Services
                     GenericMessageDialog.Show(Properties.Resources.DiagnosticsModeError, DialogIcon.Warning);
                 }
 
-                //SymLink CustomScn Folder
-                var myDocumentsDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var customScnGamePath = Path.Combine(gamePath, "Scenario", "CustomScn");
-                var scenarioUserPath = Path.Combine(myDocumentsDir, "Spartan", "Scenario");
-
-                Logger.Information("CustomScn directory: {@customScnPath}", customScnGamePath);
-                Logger.Information("Scenario directory: {@scenarioPath}", scenarioUserPath);
-
-                if (!Directory.Exists(scenarioUserPath))
-                    Directory.CreateDirectory(scenarioUserPath);
-
-                if (Directory.Exists(customScnGamePath) &&
-                    (!Misc.IsSymLink(customScnGamePath, Misc.SymLinkFlag.Directory) ||
-                     !string.Equals(Misc.GetRealPath(customScnGamePath), scenarioUserPath, StringComparison.OrdinalIgnoreCase)))
-                {
-                    Directory.Delete(customScnGamePath, true);
-                    Misc.CreateSymbolicLink(customScnGamePath, scenarioUserPath, Misc.SymLinkFlag.Directory);
-                }
-                else
-                {
-                    Misc.CreateSymbolicLink(customScnGamePath, scenarioUserPath, Misc.SymLinkFlag.Directory);
-                }
-
                 string arg;
                 if (isOffline)
                     arg = $"--offline --ignore_rest LauncherLang={lang} LauncherLocale=1033";

@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.4.1](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.4.1) (2021-02-08)
+- Fixed an issue with custom scenario linking not working
+
 ## [3.4.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.4.0) (2021-02-07)
 - Launcher will show an error message if you start it in a non-writable location
 - Added some error messages for registration that was missing
