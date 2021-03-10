@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.4.2](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.4.2) (2021-03-10)
+- Fixed an issue with fingerprint crashing the launcher on some systems
+
 ## [3.4.1](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.4.1) (2021-02-08)
 - Fixed an issue with custom scenario linking not working
 

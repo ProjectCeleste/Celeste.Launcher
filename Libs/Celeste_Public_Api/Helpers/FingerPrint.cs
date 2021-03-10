@@ -125,6 +125,10 @@ namespace Celeste_Public_Api.Helpers
 
                 return "";
             }
+            catch (ManagementException)
+            {
+                return "";
+            }
             catch (COMException)
             {
                 return "";
