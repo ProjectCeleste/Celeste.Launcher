@@ -93,6 +93,10 @@ namespace Celeste_Public_Api.Helpers
 
                 return result;
             }
+            catch (ManagementException)
+            {
+                return "";
+            }
             catch (COMException)
             {
                 return "";
