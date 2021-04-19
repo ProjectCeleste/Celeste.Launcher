@@ -359,7 +359,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some game files appear to be missing. Would you like to run a &apos;Game Scan&apos; to repair/download files? If you are installing for the first time click &apos;Yes&apos; to download the rest of the game..
+        ///   Looks up a localized string similar to Some of your game files are outdated. Would you like to run a &apos;Game Scan&apos; to update these files?.
         /// </summary>
         public static string GameScannerDidNotPassQuickScan {
             get {
@@ -530,7 +530,7 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The launcher cannot be started from {0} because it is not allowed to write files here. Please install your launcher in a directory under &quot;My Documents&quot; or a location where it is allowed to write files..
+        ///   Looks up a localized string similar to The launcher cannot be started from {0} because it is not allowed to write files here. Please install your launcher in a directory under &quot;Documents&quot; or a location where it is allowed to write files..
         /// </summary>
         public static string InstallationPathForbidden {
             get {

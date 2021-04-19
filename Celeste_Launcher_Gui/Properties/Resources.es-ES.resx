@@ -470,7 +470,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Escaneo del juego fallido.</value>
   </data>
   <data name="GameScannerDidNotPassQuickScan" xml:space="preserve">
-    <value>Parece que faltan algunos archivos del juego. ¿Deseas ejecutar un 'escaner del juego' para reparar/descargar archivos? Si estas instalando por primera vez, haz clic en 'Sí' para descargar el resto del juego.</value>
+    <value>Algunos de tus archivos del juego están obsoletos. ¿Quieres ejecutar un escaneo del juego para actualizar estos archivos?</value>
   </data>
   <data name="GameScannerDoneLabel" xml:space="preserve">
     <value>Hecho</value>

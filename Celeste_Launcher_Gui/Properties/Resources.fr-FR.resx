@@ -470,7 +470,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Échec du scan du jeu.</value>
   </data>
   <data name="GameScannerDidNotPassQuickScan" xml:space="preserve">
-    <value>Certains fichiers semblent manquer. Voulez-vous lancer un scan du jeu pour réparer ou télécharger ces fichiers ? Si vous installez pour la première fois, cliquez sur "Oui" pour télécharger le reste du jeu.</value>
+    <value>Certains fichiers du jeu sont périmés. Souhaitez-vous lancer un scan pour les mettre à jour ?</value>
   </data>
   <data name="GameScannerDoneLabel" xml:space="preserve">
     <value>Terminé</value>

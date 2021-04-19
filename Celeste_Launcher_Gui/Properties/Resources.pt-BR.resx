@@ -470,7 +470,7 @@ Age of Empires Online - Projeto de Fãs Celeste</value>
     <value>Falha na verificação do jogo.</value>
   </data>
   <data name="GameScannerDidNotPassQuickScan" xml:space="preserve">
-    <value>Alguns arquivos do jogo parecem estar ausentes. Deseja executar um 'Verificar Jogo' para reparar/baixar arquivos? Se você estiver instalando pela primeira vez, clique em 'Sim' para baixar o resto do jogo.</value>
+    <value>Alguns arquivos do jogo estão desatualizados. Gostaria de executar a 'Verificação do Jogo' para atualizar os arquivos?</value>
   </data>
   <data name="GameScannerDoneLabel" xml:space="preserve">
     <value>Feito</value>
