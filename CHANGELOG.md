@@ -1,5 +1,9 @@
 # Change Log
 
+## [3.5.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.5.0) (2021-04-19)
+- Made game scan prompt text more clear
+- Fixed an issue with settings not being saved after enabling diagnostics mode
+
 ## [3.4.3](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.4.3) (2021-03-11)
 - Fixed an additional issue with fingerprint crashing the launcher on some systems
 
