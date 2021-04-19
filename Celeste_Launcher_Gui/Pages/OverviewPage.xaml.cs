@@ -194,6 +194,8 @@ namespace Celeste_Launcher_Gui.Pages
                     GenericMessageDialog.Show($"{Properties.Resources.EnableDiagnosticsModeProcdumpInstallError} {exception.Message}", DialogIcon.Warning, DialogOptions.Ok);
                 }
             }
+
+            LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
         }
 
         private void OpenSteam(object sender, RoutedEventArgs e)
