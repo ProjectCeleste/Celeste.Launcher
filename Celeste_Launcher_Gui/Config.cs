@@ -43,9 +43,9 @@ namespace Celeste_Launcher_Gui
     [XmlRoot(ElementName = "Celeste_Launcher_Gui_Config")]
     public class UserConfig
     {
-        [DefaultValue("wss://ns544971.ip-66-70-180.net:4513/")]
+        [DefaultValue("wss://prod.projectceleste.com:4513/")]
         [XmlElement(ElementName = "ServerUri")]
-        public string ServerUri { get; set; } = "wss://ns544971.ip-66-70-180.net:4513/";
+        public string ServerUri { get; set; } = "wss://prod.projectceleste.com:4513/";
 
         [XmlElement(ElementName = "GameFilesPath")]
         public string GameFilesPath { get; set; } = string.Empty;
