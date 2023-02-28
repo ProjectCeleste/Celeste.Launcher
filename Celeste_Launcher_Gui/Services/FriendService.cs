@@ -28,7 +28,7 @@ namespace Celeste_Launcher_Gui.Services
 
     public class FriendService : IFriendService
     {
-        public const int MaxAllowedFriends = 99;
+        public const int MaxAllowedFriends = 199;
         private const int UpdateIntervalInMs = 30 * 1000;
         private static FriendService Instance;
 
