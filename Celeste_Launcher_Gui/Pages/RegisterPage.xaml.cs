@@ -93,7 +93,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            if (VerifyKeyField.InputContent.Length != 32)
+            if (string.IsNullOrEmpty(VerifyKeyField.InputContent) || VerifyKeyField.InputContent.Length != 32)
             {
                 GenericMessageDialog.Show(Properties.Resources.RegisterInvalidKeyLength, DialogIcon.Error);
                 return;
