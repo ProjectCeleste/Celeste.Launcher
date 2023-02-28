@@ -12,7 +12,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using WindowsFirewallHelper;
-using WindowsFirewallHelper.FirewallAPIv2.Rules;
 
 namespace CelesteWindowsFirewallHelper
 {
@@ -183,7 +182,7 @@ namespace CelesteWindowsFirewallHelper
                     return;
                 }
 
-                var rule = (StandardRuleWin7)FirewallHelper.FindRule("celeste_launcher_outbound_tcp");
+                var rule = FirewallHelper.FindRule("celeste_launcher_outbound_tcp");
                 if (rule == null)
                 {
                     LauncherOutboundStatus.Content = Celeste_Launcher_Gui.Properties.Resources.WindowsFirewallHelperRuleNotFound;
@@ -218,8 +217,8 @@ namespace CelesteWindowsFirewallHelper
                 }
 
                 //Spartan
-                var rule1 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_tcp");
-                var rule2 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_inbound_udp");
+                var rule1 = FirewallHelper.FindRule("celeste_spartan_inbound_tcp");
+                var rule2 = FirewallHelper.FindRule("celeste_spartan_inbound_udp");
                 if (rule1 == null || rule2 == null)
                 {
 
@@ -243,8 +242,8 @@ namespace CelesteWindowsFirewallHelper
                     }
                 }
 
-                rule1 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_outbound_tcp");
-                rule2 = (StandardRuleWin7)FirewallHelper.FindRule("celeste_spartan_outbound_udp");
+                rule1 = FirewallHelper.FindRule("celeste_spartan_outbound_tcp");
+                rule2 = FirewallHelper.FindRule("celeste_spartan_outbound_udp");
                 if (rule1 == null || rule2 == null)
                 {
                     SpartanOutboundStatus.Content = Celeste_Launcher_Gui.Properties.Resources.WindowsFirewallHelperRuleNotFound;
@@ -268,7 +267,7 @@ namespace CelesteWindowsFirewallHelper
                 }
 
                 //Port 1000
-                rule = (StandardRuleWin7)FirewallHelper.FindRule("celeste_port1000_inbound_udp");
+                rule = FirewallHelper.FindRule("celeste_port1000_inbound_udp");
                 if (rule == null)
                 {
                     MultiplayerInboundStatus.Content = Celeste_Launcher_Gui.Properties.Resources.WindowsFirewallHelperRuleNotFound;
@@ -289,7 +288,7 @@ namespace CelesteWindowsFirewallHelper
                     }
                 }
 
-                rule = (StandardRuleWin7)FirewallHelper.FindRule("celeste_port1000_outbound_udp");
+                rule = FirewallHelper.FindRule("celeste_port1000_outbound_udp");
                 if (rule == null)
                 {
                     MultiplayerOutboundStatus.Content = Celeste_Launcher_Gui.Properties.Resources.WindowsFirewallHelperRuleNotFound;

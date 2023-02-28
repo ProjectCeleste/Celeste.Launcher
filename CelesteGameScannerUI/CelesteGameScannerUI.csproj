@@ -13,7 +13,7 @@
     <OutputPath>..\Celeste_Launcher_Gui\bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Celeste.GameFiles.GameScanner" Version="2.6.1" />
+    <PackageReference Include="Celeste.GameFiles.GameScanner" Version="8.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Celeste_Launcher_Gui\Celeste_Launcher_Gui.csproj" />
