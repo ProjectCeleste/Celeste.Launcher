@@ -1,5 +1,9 @@
 # Change Log
 
+## [3.7.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.7.0) (2023-02-28)
+- Increase friend list limit
+- Updated package dependencies
+
 ## [3.5.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.5.0) (2021-04-19)
 - Made game scan prompt text more clear
 - Fixed an issue with settings not being saved after enabling diagnostics mode
