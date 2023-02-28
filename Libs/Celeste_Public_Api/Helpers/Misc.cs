@@ -15,14 +15,9 @@ namespace Celeste_Public_Api.Helpers
 {
     public static class Misc
     {
-        private const string MatchEmailPattern =
-            @"^(([\w-]+\.)+[\w-]+|([a-zA-Z]{1}|[\w-]{2,}))@"
-            + @"((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
-				[0-9]{1,2}|25[0-5]|2[0-4][0-9])\."
-            + @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?
-				[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-            + @"([a-zA-Z0-9]+[\w-]+\.)+[a-zA-Z]{1}[a-zA-Z0-9-]{1,23})$";
-
+        private const string ValidEmailAddressPattern =
+            @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+        
         private const string MatchUserNamePattern =
             @"^[A-Za-z0-9]{3,15}$";
 
@@ -100,9 +95,9 @@ namespace Celeste_Public_Api.Helpers
             }
         }
 
-        public static bool IsValidEmailAdress(string emailAdress)
+        public static bool IsValidEmailAddress(string emailAddress)
         {
-            return !string.IsNullOrWhiteSpace(emailAdress) && Regex.IsMatch(emailAdress, MatchEmailPattern);
+            return Regex.IsMatch(emailAddress, ValidEmailAddressPattern, RegexOptions.IgnoreCase);
         }
 
         public static bool IsValidUserName(string userName)

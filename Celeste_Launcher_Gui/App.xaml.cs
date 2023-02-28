@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Celeste_Public_Api.Helpers;
 
 namespace Celeste_Launcher_Gui
 {

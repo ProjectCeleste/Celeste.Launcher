@@ -28,7 +28,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private async void OnVerifyEmail(object sender, RoutedEventArgs args)
         {
-            if (!Misc.IsValidEmailAdress(EmailField.InputContent))
+            if (!Misc.IsValidEmailAddress(EmailField.InputContent))
             {
                 GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
                 return;
@@ -69,7 +69,7 @@ namespace Celeste_Launcher_Gui.Pages
                 return;
             }
 
-            if (!Misc.IsValidEmailAdress(EmailField.InputContent))
+            if (!Misc.IsValidEmailAddress(EmailField.InputContent))
             {
                 GenericMessageDialog.Show(Properties.Resources.RegisterInvalidEmail, DialogIcon.Error);
                 return;

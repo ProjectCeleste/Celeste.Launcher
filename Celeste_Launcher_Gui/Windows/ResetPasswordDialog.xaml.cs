@@ -32,7 +32,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void OnResetPasswordClick(object sender, RoutedEventArgs e)
         {
-            if (!Misc.IsValidEmailAdress(EmailAddressField.InputContent))
+            if (!Misc.IsValidEmailAddress(EmailAddressField.InputContent))
             {
                 GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error, DialogOptions.Ok);
                 return;
@@ -72,7 +72,7 @@ namespace Celeste_Launcher_Gui.Windows
 
         private async void OnSendResetKeyClick(object sender, RoutedEventArgs e)
         {
-            if (!Misc.IsValidEmailAdress(EmailAddressField.InputContent))
+            if (!Misc.IsValidEmailAddress(EmailAddressField.InputContent))
             {
                 GenericMessageDialog.Show(Properties.Resources.ResetPasswordInvalidEmail, DialogIcon.Error, DialogOptions.Ok);
                 return;

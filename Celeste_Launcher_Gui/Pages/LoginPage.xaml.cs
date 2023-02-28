@@ -85,7 +85,7 @@ namespace Celeste_Launcher_Gui.Pages
                         return;
                     }
 
-                    if (!Misc.IsValidEmailAdress(email))
+                    if (!Misc.IsValidEmailAddress(email))
                     {
                         GenericMessageDialog.Show($"{Properties.Resources.LoginBadEmail}", DialogIcon.Error, DialogOptions.Ok);
                         return;
