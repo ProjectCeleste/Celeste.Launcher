@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -156,6 +156,24 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string DiagnosticsModeMissingProcdump {
             get {
                 return ResourceManager.GetString("DiagnosticsModeMissingProcdump", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPU Compatibility Mode is now Disabled..
+        /// </summary>
+        public static string DisableCPUCompatibilityMode {
+            get {
+                return ResourceManager.GetString("DisableCPUCompatibilityMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPU Compatibility Mode is now Enabled..
+        /// </summary>
+        public static string EnableCPUCompatibilityMode {
+            get {
+                return ResourceManager.GetString("EnableCPUCompatibilityMode", resourceCulture);
             }
         }
         
@@ -1048,6 +1066,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string OverviewDonateSideMenuBtn {
             get {
                 return ResourceManager.GetString("OverviewDonateSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable CPU Compatibility Mode.
+        /// </summary>
+        public static string OverviewEnableCPUCompatibilityMode {
+            get {
+                return ResourceManager.GetString("OverviewEnableCPUCompatibilityMode", resourceCulture);
             }
         }
         

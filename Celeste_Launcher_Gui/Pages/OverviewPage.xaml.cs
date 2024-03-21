@@ -197,7 +197,22 @@ namespace Celeste_Launcher_Gui.Pages
 
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
         }
-
+        
+        private void EnableCPUCompatibilityMode(object sender, RoutedEventArgs e)
+        {
+        	
+            LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode = !LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode;
+            
+            if (LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode)
+            {
+                GenericMessageDialog.Show($"{Properties.Resources.EnableCPUCompatibilityMode}");        	 
+            }
+            else
+                GenericMessageDialog.Show($"{Properties.Resources.DisableCPUCompatibilityMode}");
+                
+            LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
+        }
+        
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
             var steamConverterWindow = new SteamConverterWindow();

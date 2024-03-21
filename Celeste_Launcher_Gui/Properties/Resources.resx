@@ -457,6 +457,12 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="EnableDiagnosticsModeProcdumpInstallError" xml:space="preserve">
     <value>Failed to enable "Diagnostic Mode". Error message:</value>
   </data>
+  <data name="EnableCPUCompatibilityMode" xml:space="preserve">
+    <value>CPU Compatibility Mode is now Enabled.</value>
+  </data>
+  <data name="DisableCPUCompatibilityMode" xml:space="preserve">
+    <value>CPU Compatibility Mode is now Disabled.</value>
+  </data>
   <data name="GameAlreadyRunningError" xml:space="preserve">
     <value>Game is still running, please close it and try again.</value>
   </data>
@@ -834,5 +840,8 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="ServerResponse_USERNAME_ALREADY_TAKEN" xml:space="preserve">
     <value>This username is already taken.</value>
+  </data>
+  <data name="OverviewEnableCPUCompatibilityMode" xml:space="preserve">
+    <value>Enable CPU Compatibility Mode</value>
   </data>
 </root>
