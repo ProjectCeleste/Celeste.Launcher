@@ -199,8 +199,7 @@ namespace Celeste_Launcher_Gui.Pages
         }
         
         private void EnableCPUCompatibilityMode(object sender, RoutedEventArgs e)
-        {
-        	
+        {      	
             LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode = !LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode;
             
             if (LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode)
@@ -208,7 +207,9 @@ namespace Celeste_Launcher_Gui.Pages
                 GenericMessageDialog.Show($"{Properties.Resources.EnableCPUCompatibilityMode}");        	 
             }
             else
+            {
                 GenericMessageDialog.Show($"{Properties.Resources.DisableCPUCompatibilityMode}");
+            }
                 
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
         }

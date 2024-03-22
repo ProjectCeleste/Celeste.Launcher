@@ -273,14 +273,13 @@ namespace Celeste_Launcher_Gui.Services
                         $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
                 Logger.Information("Starting game {@GameExecutable} at {@GamePath}", spartanPath, gamePath);
-                Process SProcess = Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });
+                var gameProcess = Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });
                 
                 if (LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode)
                 {
-                    SProcess.PriorityClass = ProcessPriorityClass.High;
-                    SProcess.ProcessorAffinity = (IntPtr) 0xF;
+                    gameProcess.PriorityClass = ProcessPriorityClass.High;
+                    gameProcess.ProcessorAffinity = (IntPtr) 0xF;
                 }
-
             }
             catch (Exception exception)
             {
