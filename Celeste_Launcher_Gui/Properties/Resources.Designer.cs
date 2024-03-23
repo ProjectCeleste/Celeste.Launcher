@@ -160,20 +160,11 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CPU Compatibility Mode is now Disabled..
+        ///   Looks up a localized string similar to CPU Core Limit has been Disabled..
         /// </summary>
-        public static string DisableCPUCompatibilityMode {
+        public static string DisableLimitCPUCores {
             get {
-                return ResourceManager.GetString("DisableCPUCompatibilityMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CPU Compatibility Mode is now Enabled..
-        /// </summary>
-        public static string EnableCPUCompatibilityMode {
-            get {
-                return ResourceManager.GetString("EnableCPUCompatibilityMode", resourceCulture);
+                return ResourceManager.GetString("DisableLimitCPUCores", resourceCulture);
             }
         }
         
@@ -192,6 +183,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string EnableDiagnosticsModeProcdumpInstallError {
             get {
                 return ResourceManager.GetString("EnableDiagnosticsModeProcdumpInstallError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPU Core Limit has been Enabled..
+        /// </summary>
+        public static string EnableLimitCPUCores {
+            get {
+                return ResourceManager.GetString("EnableLimitCPUCores", resourceCulture);
             }
         }
         
@@ -1070,20 +1070,20 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable CPU Compatibility Mode.
-        /// </summary>
-        public static string OverviewEnableCPUCompatibilityMode {
-            get {
-                return ResourceManager.GetString("OverviewEnableCPUCompatibilityMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enable diagnostics mode.
         /// </summary>
         public static string OverviewEnableDiagnosticsMode {
             get {
                 return ResourceManager.GetString("OverviewEnableDiagnosticsMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limit CPU Cores.
+        /// </summary>
+        public static string OverviewEnableLimitCPUCores {
+            get {
+                return ResourceManager.GetString("OverviewEnableLimitCPUCores", resourceCulture);
             }
         }
         

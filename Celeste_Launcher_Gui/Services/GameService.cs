@@ -275,7 +275,7 @@ namespace Celeste_Launcher_Gui.Services
                 Logger.Information("Starting game {@GameExecutable} at {@GamePath}", spartanPath, gamePath);
                 var gameProcess = Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });
                 
-                if (LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode)
+                if (LegacyBootstrapper.UserConfig.LimitCPUCores)
                 {
                     gameProcess.PriorityClass = ProcessPriorityClass.High;
                     gameProcess.ProcessorAffinity = (IntPtr) 0xF;

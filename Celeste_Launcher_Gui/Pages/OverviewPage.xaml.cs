@@ -198,17 +198,17 @@ namespace Celeste_Launcher_Gui.Pages
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
         }
         
-        private void EnableCPUCompatibilityMode(object sender, RoutedEventArgs e)
+        private void EnableLimitCPUCores(object sender, RoutedEventArgs e)
         {      	
-            LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode = !LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode;
+            LegacyBootstrapper.UserConfig.LimitCPUCores = !LegacyBootstrapper.UserConfig.LimitCPUCores;
             
-            if (LegacyBootstrapper.UserConfig.IsCPUCompatibilityMode)
+            if (LegacyBootstrapper.UserConfig.LimitCPUCores)
             {
-                GenericMessageDialog.Show($"{Properties.Resources.EnableCPUCompatibilityMode}");        	 
+                GenericMessageDialog.Show($"{Properties.Resources.EnableLimitCPUCores}");        	 
             }
             else
             {
-                GenericMessageDialog.Show($"{Properties.Resources.DisableCPUCompatibilityMode}");
+                GenericMessageDialog.Show($"{Properties.Resources.DisableLimitCPUCores}");
             }
                 
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
