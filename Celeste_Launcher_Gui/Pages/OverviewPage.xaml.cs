@@ -197,7 +197,23 @@ namespace Celeste_Launcher_Gui.Pages
 
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
         }
-
+        
+        private void EnableLimitCPUCores(object sender, RoutedEventArgs e)
+        {      	
+            LegacyBootstrapper.UserConfig.LimitCPUCores = !LegacyBootstrapper.UserConfig.LimitCPUCores;
+            
+            if (LegacyBootstrapper.UserConfig.LimitCPUCores)
+            {
+                GenericMessageDialog.Show($"{Properties.Resources.EnableLimitCPUCores}");        	 
+            }
+            else
+            {
+                GenericMessageDialog.Show($"{Properties.Resources.DisableLimitCPUCores}");
+            }
+                
+            LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
+        }
+        
         private void OpenSteam(object sender, RoutedEventArgs e)
         {
             var steamConverterWindow = new SteamConverterWindow();

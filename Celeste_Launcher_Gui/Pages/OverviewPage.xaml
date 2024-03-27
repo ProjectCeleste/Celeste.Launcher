@@ -53,6 +53,7 @@
                                 <MenuItem Header="{x:Static p:Resources.OverviewMultiplayerSettings}" Click="OpenMultiplayerSettings"/>
                                 <MenuItem Header="{x:Static p:Resources.OverviewGameLanguageSettings}" Click="OpenGameLanguage"/>
                                 <MenuItem Header="{x:Static p:Resources.OverviewEnableDiagnosticsMode}" Click="EnableDiagnosticsMode"/>
+                                <MenuItem Header="{x:Static p:Resources.OverviewEnableLimitCPUCores}" Click="EnableLimitCPUCores"/>
                             </MenuItem>
                             <MenuItem Header="{x:Static p:Resources.OverviewUpdateLauncher}" Click="OpenUpdater"/>
                         </ContextMenu>

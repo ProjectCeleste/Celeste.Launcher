@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -160,6 +160,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CPU Core Limit has been Disabled..
+        /// </summary>
+        public static string DisableLimitCPUCores {
+            get {
+                return ResourceManager.GetString("DisableLimitCPUCores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ProcDump.exe need to be installed first. Would you like to install it now?.
         /// </summary>
         public static string EnableDiagnosticsModeInstallProcdumpPrompt {
@@ -174,6 +183,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string EnableDiagnosticsModeProcdumpInstallError {
             get {
                 return ResourceManager.GetString("EnableDiagnosticsModeProcdumpInstallError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPU Core Limit has been Enabled..
+        /// </summary>
+        public static string EnableLimitCPUCores {
+            get {
+                return ResourceManager.GetString("EnableLimitCPUCores", resourceCulture);
             }
         }
         
@@ -1057,6 +1075,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string OverviewEnableDiagnosticsMode {
             get {
                 return ResourceManager.GetString("OverviewEnableDiagnosticsMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limit CPU Cores.
+        /// </summary>
+        public static string OverviewEnableLimitCPUCores {
+            get {
+                return ResourceManager.GetString("OverviewEnableLimitCPUCores", resourceCulture);
             }
         }
         
