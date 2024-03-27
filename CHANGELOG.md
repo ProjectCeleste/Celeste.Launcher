@@ -1,6 +1,6 @@
 # Change Log
 
-## [3.8.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.8.0) (2023-02-28)
+## [3.8.1](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.8.1) (2024-03-27)
 - Added Option to Limit CPU Cores
 
 ## [3.8.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.8.0) (2023-02-28)
