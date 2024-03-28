@@ -1,6 +1,6 @@
 # Change Log
 
-## [3.8.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.9.0) (2024-03-27)
+## [3.9.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.9.0) (2024-03-27)
 - New New Game Setting in the Launcher - Limit CPU Cores (thanks @CWO333)
 - Updates of third-party dependencies
 
