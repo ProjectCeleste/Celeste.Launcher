@@ -485,7 +485,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Démarrage du téléchargement</value>
   </data>
   <data name="GameScannerExtracting" xml:space="preserve">
-    <value>Exctraction du fichier téléchargé</value>
+    <value>Extraction du fichier téléchargé</value>
   </data>
   <data name="GameScannerFailed" xml:space="preserve">
     <value>Une erreur inattendue s'est produite lors du scan du jeu. Veuillez réessayer ou lire les fichiers journaux.</value>
