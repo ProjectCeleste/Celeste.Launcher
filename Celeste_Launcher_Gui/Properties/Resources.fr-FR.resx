@@ -457,6 +457,12 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="EnableDiagnosticsModeProcdumpInstallError" xml:space="preserve">
     <value>Échec de l'activation du mode Diagnostic. Erreur :</value>
   </data>
+  <data name="EnableLimitCPUCores" xml:space="preserve">
+    <value>Le jeu utilisera désormais un nombre de coeurs de processeur limité.</value>
+  </data>
+  <data name="DisableLimitCPUCores" xml:space="preserve">
+    <value>Le nombre de coeurs de processeur utilisés par le jeu n'est plus limité.</value>
+  </data>
   <data name="GameAlreadyRunningError" xml:space="preserve">
     <value>Le jeu est encore en cours d'exécution, veuillez le stopper et réessayer.</value>
   </data>
@@ -748,7 +754,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>Activer le téléchargement rapide peut poser problème lors du téléchargement des fichiers du jeu. Si le téléchargement échoue, essayez à nouveau en désactivant cette option.</value>
   </data>
-    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+  <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
     <value>Ce compte est banni.</value>
   </data>
   <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
@@ -834,5 +840,8 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="ServerResponse_USERNAME_ALREADY_TAKEN" xml:space="preserve">
     <value>Ce nom d'utilisateur est déjà utilisé.</value>
+  </data>
+  <data name="OverviewEnableLimitCPUCores" xml:space="preserve">
+    <value>Limiter nb. de coeurs utilisés</value>
   </data>
 </root>
