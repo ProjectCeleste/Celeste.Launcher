@@ -166,5 +166,28 @@ namespace Celeste_Launcher_Gui
                 Logger.Error(ex, ex.Message);
             }
         }
+
+        public static void LoadOptionalOverrideArgs(string[] args)
+        {
+            if (args.Length >= 3)
+            {
+                try
+                {
+                    LegacyBootstrapper.UserConfig.GameFilesPath = args[0];
+                    if (Enum.TryParse(args[1], true, out GameLanguage gamelang))
+                    {
+                        LegacyBootstrapper.UserConfig.GameLanguage = gamelang;
+                    }
+                    if (bool.TryParse(args[2], out bool isStream))
+                    {
+                        LegacyBootstrapper.UserConfig.IsSteamVersion = isStream;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, ex.Message);
+                }
+            }
+        }
     }
 }
