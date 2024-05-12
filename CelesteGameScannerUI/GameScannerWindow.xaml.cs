@@ -81,7 +81,8 @@ namespace CelesteGameScannerUI
                     CurrentFileLabel.Content = string.Empty;
                     MainProgressLabel.Content =  Celeste_Launcher_Gui.Properties.Resources.GameScannerDoneLabel;
                     FileProgress.ProgressBar.IsIndeterminate = false;
-                    GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
+                    if (!LegacyBootstrapper.GameScannerNoConfirmDialog)
+                        GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GameScannerDoneMessage, DialogIcon.None, DialogOptions.Ok);
                 }
                 else
                 {
@@ -142,7 +143,8 @@ namespace CelesteGameScannerUI
             CurrentFileLabel.Content = string.Empty;
             MainProgressLabel.Content = string.Empty;
             TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
-            GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
+            if (!LegacyBootstrapper.GameScannerNoConfirmDialog)
+                GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
         }
 
         private void SubProgressChanged(object sender, ScanSubProgress e)

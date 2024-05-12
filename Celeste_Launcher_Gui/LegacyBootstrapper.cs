@@ -22,7 +22,9 @@ namespace Celeste_Launcher_Gui
     public static class LegacyBootstrapper
     {
         public static UserConfig UserConfig { get; private set; } = new UserConfig();
-        
+
+        public static bool GameScannerNoConfirmDialog { get; private set; } = false;
+
         private static readonly string AppName = $"CelesteFanProject_v{Assembly.GetEntryAssembly().GetName().Version}";
 
         public static WebSocketApi WebSocketApi { get; private set; }
@@ -164,6 +166,37 @@ namespace Celeste_Launcher_Gui
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
+            }
+        }
+
+        public static void LoadOptionalOverrideArgs(string[] args)
+        {
+            if (args.Length >= 3)
+            {
+                try
+                {
+                    LegacyBootstrapper.UserConfig.GameFilesPath = args[0];
+                    if (Enum.TryParse(args[1], true, out GameLanguage gamelang))
+                    {
+                        LegacyBootstrapper.UserConfig.GameLanguage = gamelang;
+                    }
+                    if (bool.TryParse(args[2], out bool isStream))
+                    {
+                        LegacyBootstrapper.UserConfig.IsSteamVersion = isStream;
+                    }
+
+                    if (args.Length >= 4)
+                    {
+                        if (bool.TryParse(args[3], out bool noConfirmDialog))
+                        {
+                            LegacyBootstrapper.GameScannerNoConfirmDialog = noConfirmDialog;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, ex.Message);
+                }
             }
         }
     }

@@ -20,6 +20,7 @@ namespace CelesteGameScannerUI
             };
 
             LegacyBootstrapper.LoadUserConfig();
+            LegacyBootstrapper.LoadOptionalOverrideArgs(e.Args);
             LegacyBootstrapper.SetUILanguage();
         }
     }
