@@ -38,7 +38,7 @@ jobs:
     - name: Generate changelog
       id: generate_changelog
       run: |
-        $PREVIOUS_TAG = "$env:lastReleaseVersion"
+        $PREVIOUS_TAG = "v$env:lastReleaseVersion"
         $CURRENT_TAG = "$(git describe --tags)"
         Write-Output "Previous tag: $PREVIOUS_TAG"
         Write-Output "Current tag: $CURRENT_TAG"
