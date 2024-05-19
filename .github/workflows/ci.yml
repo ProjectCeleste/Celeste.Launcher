@@ -24,8 +24,8 @@ jobs:
     - uses: microsoft/setup-msbuild@v2
     - uses: NuGet/setup-nuget@v1.0.2
    
-   - name: Restore NuGet packages
-      run: nuget restore *.sln
+    - name: Restore NuGet packages
+        run: nuget restore *.sln
     
     - name: Build solution
       run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastRelease /p:platform="Any CPU" /p:configuration="Release"
