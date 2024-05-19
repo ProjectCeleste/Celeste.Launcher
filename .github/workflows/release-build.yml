@@ -40,12 +40,9 @@ jobs:
       run: |
         $PREVIOUS_TAG = "v$env:lastReleaseVersion"
         $CURRENT_TAG = "$(git describe --tags)"
-        $PREVIOUS_TAG = "eb247aea80cd4f9e463d561c83768269ac347673"
-        $CURRENT_TAG = "fc81fb6eb21451b16d5aa1a212aa2aee7e5355b0"
         Write-Output "Previous tag: $PREVIOUS_TAG"
         Write-Output "Current tag: $CURRENT_TAG"
-        git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"* %h %s" --abbrev-commit
-        git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"* %h %s" --abbrev-commit > Changelog.md
+        git log "$PREVIOUS_TAG..$CURRENT_TAG" --pretty=format:"* %h %s" --abbrev-commit > Changelog.md
         Write-Output "Changelog:"
         Get-Content Changelog.md
 
