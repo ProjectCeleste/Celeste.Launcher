@@ -29,7 +29,7 @@ jobs:
       run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=${{ steps.get_latest_release.outputs.tag }} /p:platform="Any CPU" /p:configuration="Release"
 
     - name: Zip the build output directory
-    - run: Compress-Archive -Path Celeste_Launcher_Gui/bin/Release/net48/* -Destination CelesteLauncher.zip
+      run: Compress-Archive -Path Celeste_Launcher_Gui/bin/Release/net48/* -Destination CelesteLauncher.zip
 
     - name: Generate changelog
       id: generate_changelog
