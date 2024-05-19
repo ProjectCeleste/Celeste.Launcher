@@ -1,0 +1,38 @@
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+          fetch-depth: 0
+    - name: Get Build Version
+      run: |
+        $lastTagHash = $(git rev-list --tags --max-count=1)
+        $lastTagName = $(git describe --tags $lastTagHash)
+        $lastRelease = $lastTagName.Substring(1)
+        echo "lastReleaseVersion=$lastRelease" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+        Write-Host $env:lastReleaseVersion
+      shell: pwsh
+    - uses: microsoft/setup-msbuild@v2
+    - uses: NuGet/setup-nuget@v2
+   
+    - name: Restore NuGet packages
+      run: nuget restore Celeste_Launcher.sln
+    
+    - name: Build solution
+      run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastReleaseVersion /p:platform="Any CPU" /p:configuration="Release"
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: CI-Artifact
+        path: "Celeste_Launcher_Gui/bin/Release/net48/"   
