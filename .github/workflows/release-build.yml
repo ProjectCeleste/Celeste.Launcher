@@ -42,12 +42,14 @@ jobs:
         $CURRENT_TAG = "$(git describe --tags)"
         Write-Output "Previous tag: $PREVIOUS_TAG"
         Write-Output "Current tag: $CURRENT_TAG"
-        git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"* %h %s" --abbrev-commit > changelog.txt
+        git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"* %h %s" --abbrev-commit > Changelog.md
+        Write-Output "Changelog:"
+        Get-Content Changelog.md
 
     - name: Release
       uses: softprops/action-gh-release@v2
       with:
         draft: true
-        body_path: changelog.txt
+        body_path: Changelog.md
         files: |
           CelesteLauncher.zip
