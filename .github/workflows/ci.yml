@@ -20,6 +20,7 @@ jobs:
         $lastTagName = $(git describe --tags $lastTagHash)
         $lastRelease = $lastTagName.Substring(1)
         echo "lastReleaseVersion=$lastRelease" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+        Write-Host $env:lastReleaseVersion
       shell: pwsh
     - uses: microsoft/setup-msbuild@v2
     - uses: NuGet/setup-nuget@v2
@@ -28,7 +29,7 @@ jobs:
       run: nuget restore Celeste_Launcher.sln
     
     - name: Build solution
-      run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastRelease /p:platform="Any CPU" /p:configuration="Release"
+      run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastReleaseVersion /p:platform="Any CPU" /p:configuration="Release"
     
   
       # "msbuild.exe" "D:\a\1\s\Celeste_Launcher.sln" /nologo /nr:false /dl:CentralLogger,"D:\a\_tasks\VSBuild_71a9a2d3-a98a-4caa-96ab-affca411ecda\1.231.0\node_modules\azure-pipelines-tasks-msbuildhelpers\tools\Microsoft.TeamFoundation.DistributedTask.MSBuild.Logger.dll";"RootDetailId=3cefbdaf-2324-49fd-9159-b9ceb46a7025|SolutionDir=D:\a\1\s|enableOrphanedProjectsLogs=true"*ForwardingLogger,"D:\a\_tasks\VSBuild_71a9a2d3-a98a-4caa-96ab-affca411ecda\1.231.0\node_modules\azure-pipelines-tasks-msbuildhelpers\tools\Microsoft.TeamFoundation.DistributedTask.MSBuild.Logger.dll" /p:Version=3.9.0 /p:platform="Any CPU" /p:configuration="Release" /p:VisualStudioVersion="17.0" /p:_MSDeployUserAgent="VSTS_460e7037-08b0-4e9d-a767-9b7668758519_build_1_0"
