@@ -1,5 +1,5 @@
 on:
-  push:
+#  push:
   pull_request:
     branches:
     - master
@@ -42,25 +42,12 @@ jobs:
         $CURRENT_TAG = "$(git describe --tags)"
         Write-Output "Previous tag: $PREVIOUS_TAG"
         Write-Output "Current tag: $CURRENT_TAG"
-        git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"%h - %s (%an)" --abbrev-commit > changelog.txt
+        git log $PREVIOUS_TAG..$CURRENT_TAG --pretty=format:"* %h %s" --abbrev-commit > changelog.txt
 
-    - name: Create GitHub Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Release
+      uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body_path: ./changelog.txt
         draft: true
-        prerelease: false
-
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./CelesteLauncher.zip
-        asset_name: CelesteLauncher.zip
-        asset_content_type: application/zip
+        body_path: changelog.txt
+        files: |
+          CelesteLauncher.zip
