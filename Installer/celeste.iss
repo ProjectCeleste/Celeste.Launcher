@@ -70,7 +70,7 @@ function PrepareToInstall(var NeedsRestart: Boolean): String;
 var
   ResultCode: Integer; 
 begin
-  Exec('Dism', ' /online /enable-feature /featurename:DirectPlay /All /NoRestart', '', SW_SHOW, ewWaitUntilTerminated, ResultCode)
+  Exec('Dism', ' /online /enable-feature /featurename:DirectPlay /All /NoRestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
 end;
 
 procedure InitializeWizard;
