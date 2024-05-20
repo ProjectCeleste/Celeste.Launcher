@@ -6,6 +6,9 @@ on:
     branches:
     - dev_standalone_installer
 
+env:
+  CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}/Celeste_Launcher_Gui/bin/Release/net48/
+
 jobs:
   build:
     runs-on: windows-latest
@@ -14,9 +17,9 @@ jobs:
     - uses: actions/checkout@v4
       with:
           fetch-depth: 0
-    - name: Setup env variables # Will also be used by the installer
-      run: |
-        echo "CELESTE_LAUNCHER_OUTPUT='${{github.workspace}}/Celeste_Launcher_Gui/bin/Release/net48/'" >> "$GITHUB_ENV"
+#     - name: Setup env variables # Will also be used by the installer
+#       run: |
+#         echo "CELESTE_LAUNCHER_OUTPUT='${{github.workspace}}/Celeste_Launcher_Gui/bin/Release/net48/'" >> "$GITHUB_ENV"
     - name: Output env variables
       run: |
         echo "Output path1: $CELESTE_LAUNCHER_OUTPUT"
