@@ -27,11 +27,12 @@ AppUpdatesURL={#MyAppURL}
 AppCopyright={#MyAppCopyright}
 DefaultDirName={userdocs}\ProjectCeleste
 DisableProgramGroupPage=yes
+SetupIconFile=icon.ico
 ; In case of dependencies - just in case
 ; AlwaysRestart=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputBaseFilename=mysetup
+OutputBaseFilename=CelesteInstaller
 #if NO_COMPRESSION
 Compression=none
 #else
@@ -86,7 +87,8 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Filename: "{app}\{#MyAppScannerName}"; Parameters: "{app} enUS false true"; StatusMsg: "Running Game Scanner..."; Flags: skipifsilent
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange("Celeste Launcher", '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
-
+[Messages]
+UninstalledAll=%1 was successfully removed from your computer. You may now delete the rest of the game folder to remove the game files.
 
 
 
