@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
     - name: Setup env variables # Will also be used by the installer
       run: |
-        echo "CELESTE_LAUNCHER_OUTPUT='${{GITHUB_WORKSPACE}}/Celeste_Launcher_Gui/bin/Release/net48/'" >> "$GITHUB_ENV"
+        echo "CELESTE_LAUNCHER_OUTPUT='${{github.workspace}}/Celeste_Launcher_Gui/bin/Release/net48/'" >> "$GITHUB_ENV"
     - name: Output env variables
       run: |
         echo "Output path1: $CELESTE_LAUNCHER_OUTPUT"
