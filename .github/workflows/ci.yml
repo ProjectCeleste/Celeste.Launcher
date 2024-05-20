@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-    - master
+    - dev_standalone_installer
   pull_request:
     branches:
-    - master
+    - dev_standalone_installer
 
 env:
   CELESTE_LAUNCHER_OUTPUT: Celeste_Launcher_Gui/bin/Release/net48/ # Will also be used by the installer
