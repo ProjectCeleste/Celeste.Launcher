@@ -43,11 +43,11 @@ jobs:
     - name: Upload artifact (binary files)
       uses: actions/upload-artifact@v4
       with:
-        name: CI-Artifact
+        name: CI-Artifact-Binary
         path: "${{ env.CELESTE_LAUNCHER_OUTPUT }}"
 
     - name: Upload artifact (installer)
       uses: actions/upload-artifact@v4
       with:
-        name: CI-Artifact
+        name: CI-Artifact-Installer
         path: "${{ env.CELESTE_INSTALLER_OUTPUT }}"
