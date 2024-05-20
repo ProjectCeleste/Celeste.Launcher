@@ -50,7 +50,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 ; Source: "aoeo-install\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "celeste-install\*"; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#GetEnv('CELESTE_LAUNCHER_OUTPUT')}\*"; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Code]
 

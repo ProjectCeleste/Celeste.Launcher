@@ -6,6 +6,9 @@ on:
     branches:
     - master
 
+env:
+  CELESTE_LAUNCHER_OUTPUT: Celeste_Launcher_Gui/bin/Release/net48/ # Will also be used by the installer
+
 jobs:
   build:
     runs-on: windows-latest
@@ -30,9 +33,14 @@ jobs:
     
     - name: Build solution
       run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastReleaseVersion /p:platform="Any CPU" /p:configuration="Release"
-    
+
+    - name: Build installer
+      uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+      with:
+          path: Installer/celeste.iss
+
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: CI-Artifact
-        path: "Celeste_Launcher_Gui/bin/Release/net48/"   
+        path: "$CELESTE_LAUNCHER_OUTPUT"
