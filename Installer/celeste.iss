@@ -40,6 +40,10 @@ Compression=lzma
 #endif
 SolidCompression=yes
 WizardStyle=modern
+DisableWelcomePage=no
+WizardImageFile=Left.png
+WizardSmallImageFile=NewLauncherIcon.png
+
 ; DiskSpanning=yes
 
 [Languages]
