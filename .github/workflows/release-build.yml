@@ -2,6 +2,8 @@ on:
   push:
     tags:
     - "v[0-9]+.[0-9]+.[0-9]+"
+    branches:
+    - dev_standalone_installer
 
 env:
   CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}/Celeste_Launcher_Gui/bin/Release/net48/
