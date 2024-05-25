@@ -45,6 +45,9 @@ jobs:
     - name: Zip the build output directory
       run: Compress-Archive -Path ${{ env.CELESTE_LAUNCHER_OUTPUT }}\* -Destination CelesteLauncher.zip
 
+    - name: Copy installer artifact
+      run: cp "${{ env.CELESTE_INSTALLER_OUTPUT }}\CelesteInstaller.exe" CelesteInstaller.exe
+
     - name: Generate changelog
       id: generate_changelog
       run: |
@@ -63,4 +66,4 @@ jobs:
         body_path: Changelog.md
         files: |
           CelesteLauncher.zip
-          ${{ env.CELESTE_INSTALLER_OUTPUT }}\CelesteInstaller.exe
+          CelesteInstaller.exe
