@@ -1,7 +1,8 @@
 on:
   push:
-    tags:
-    - "v[0-9]+.[0-9]+.[0-9]+"
+    branches:
+    - dev_standalone_installer
+  pull_request:
     branches:
     - dev_standalone_installer
 
