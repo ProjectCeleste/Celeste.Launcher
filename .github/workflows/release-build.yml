@@ -7,8 +7,8 @@ on:
     - dev_standalone_installer
 
 env:
-  CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}/Celeste_Launcher_Gui/bin/Release/net48/
-  CELESTE_INSTALLER_OUTPUT: ${{github.workspace}}/Installer/Output/
+  CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}\Celeste_Launcher_Gui\bin\Release\net48
+  CELESTE_INSTALLER_OUTPUT: ${{github.workspace}}\Installer\Output
 
 
 jobs:
@@ -43,7 +43,7 @@ jobs:
           path: Installer/celeste.iss
 
     - name: Zip the build output directory
-      run: Compress-Archive -Path ${{ env.CELESTE_LAUNCHER_OUTPUT }}/* -Destination CelesteLauncher.zip
+      run: Compress-Archive -Path ${{ env.CELESTE_LAUNCHER_OUTPUT }}\* -Destination CelesteLauncher.zip
 
     - name: Generate changelog
       id: generate_changelog
@@ -63,4 +63,4 @@ jobs:
         body_path: Changelog.md
         files: |
           CelesteLauncher.zip
-          "${{ env.CELESTE_INSTALLER_OUTPUT }}/CelesteInstaller.exe"
+          "${{ env.CELESTE_INSTALLER_OUTPUT }}\CelesteInstaller.exe"

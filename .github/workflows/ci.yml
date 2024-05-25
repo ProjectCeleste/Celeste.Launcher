@@ -7,8 +7,8 @@ on:
     - dev_standalone_installer
 
 env:
-  CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}/Celeste_Launcher_Gui/bin/Release/net48/
-  CELESTE_INSTALLER_OUTPUT: ${{github.workspace}}/Installer/Output/
+  CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}\Celeste_Launcher_Gui\bin\Release\net48
+  CELESTE_INSTALLER_OUTPUT: ${{github.workspace}}\Installer\Output
 
 jobs:
   build:
