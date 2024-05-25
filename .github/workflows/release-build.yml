@@ -63,4 +63,4 @@ jobs:
         body_path: Changelog.md
         files: |
           CelesteLauncher.zip
-          "${{ env.CELESTE_INSTALLER_OUTPUT }}\CelesteInstaller.exe"
+          ${{ env.CELESTE_INSTALLER_OUTPUT }}\CelesteInstaller.exe
