@@ -19,13 +19,14 @@
 AppId={{310CECDC-62C3-440B-BD34-053582C22A04}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
+AppVerName={#MyAppName}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 AppCopyright={#MyAppCopyright}
-DefaultDirName={userdocs}\ProjectCeleste
+DefaultDirName={userappdata}\ProjectCeleste
 DisableProgramGroupPage=yes
 SetupIconFile=icon.ico
 ; In case of dependencies - just in case
