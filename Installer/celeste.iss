@@ -44,6 +44,7 @@ WizardStyle=modern
 DisableWelcomePage=no
 WizardImageFile=Left.bmp
 WizardSmallImageFile=NewLauncherIcon.bmp
+UninstallDisplayIcon={app}\Spartan.exe,7
 
 ; DiskSpanning=yes
 
