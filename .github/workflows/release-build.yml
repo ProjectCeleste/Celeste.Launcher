@@ -63,4 +63,4 @@ jobs:
         body_path: Changelog.md
         files: |
           CelesteLauncher.zip
-          CelesteInstaller.exe
+          Celeste Installer.exe
