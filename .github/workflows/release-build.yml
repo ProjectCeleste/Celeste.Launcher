@@ -3,6 +3,11 @@ on:
     tags:
     - "v[0-9]+.[0-9]+.[0-9]+"
 
+env:
+  CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}\Celeste_Launcher_Gui\bin\Release\net48
+  CELESTE_INSTALLER_OUTPUT: ${{github.workspace}}\Installer\Output
+
+
 jobs:
   build:
     runs-on: windows-latest
@@ -29,8 +34,16 @@ jobs:
     - name: Build solution
       run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastReleaseVersion /p:platform="Any CPU" /p:configuration="Release"
 
+    - name: Build installer
+      uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+      with:
+          path: Installer/celeste.iss
+
     - name: Zip the build output directory
-      run: Compress-Archive -Path Celeste_Launcher_Gui/bin/Release/net48/* -Destination CelesteLauncher.zip
+      run: Compress-Archive -Path ${{ env.CELESTE_LAUNCHER_OUTPUT }}\* -Destination CelesteLauncher.zip
+
+    - name: Copy installer artifact
+      run: cp "${{ env.CELESTE_INSTALLER_OUTPUT }}\CelesteInstaller.exe" CelesteInstaller.exe
 
     - name: Generate changelog
       id: generate_changelog
@@ -50,3 +63,4 @@ jobs:
         body_path: Changelog.md
         files: |
           CelesteLauncher.zip
+          Celeste Installer.exe

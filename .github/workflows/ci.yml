@@ -1,10 +1,14 @@
 on:
   push:
     branches:
-    - master
+    - dev_standalone_installer
   pull_request:
     branches:
-    - master
+    - dev_standalone_installer
+
+env:
+  CELESTE_LAUNCHER_OUTPUT: ${{github.workspace}}\Celeste_Launcher_Gui\bin\Release\net48
+  CELESTE_INSTALLER_OUTPUT: ${{github.workspace}}\Installer\Output
 
 jobs:
   build:
@@ -30,9 +34,20 @@ jobs:
     
     - name: Build solution
       run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastReleaseVersion /p:platform="Any CPU" /p:configuration="Release"
-    
-    - name: Upload artifact
+
+    - name: Build installer
+      uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
+      with:
+          path: Installer/celeste.iss
+
+    - name: Upload artifact (binary files)
       uses: actions/upload-artifact@v4
       with:
-        name: CI-Artifact
-        path: "Celeste_Launcher_Gui/bin/Release/net48/"   
+        name: CI-Artifact-Binary
+        path: "${{ env.CELESTE_LAUNCHER_OUTPUT }}"
+
+    - name: Upload artifact (installer)
+      uses: actions/upload-artifact@v4
+      with:
+        name: CI-Artifact-Installer
+        path: "${{ env.CELESTE_INSTALLER_OUTPUT }}"
