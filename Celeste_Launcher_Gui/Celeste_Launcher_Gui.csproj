@@ -59,7 +59,7 @@
     <Resource Include="Resources\FriendList\FriendPlate-Offline.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Outgoing.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Persia.png" />
-    <Resource Include="Resources\FriendList\FriendPlate-Requet.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Request.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Roman.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Babylon.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Celt.png" />

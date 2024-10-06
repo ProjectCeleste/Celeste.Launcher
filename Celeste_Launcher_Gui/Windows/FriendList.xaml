@@ -166,7 +166,7 @@
         <DataTemplate x:Key="IncomingFriendRequest">
             <StackPanel Orientation="Horizontal" Width="338" Height="72">
                 <StackPanel.Background>
-                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-Requet.png"/>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/FriendList/FriendPlate-Request.png"/>
                 </StackPanel.Background>
                 <StackPanel Margin="15,0,0,0">
                     <TextBlock Text="{Binding Username}" Style="{StaticResource FriendsListItemTitle}" LineHeight="20pt"/>
