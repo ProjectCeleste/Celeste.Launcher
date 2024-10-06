@@ -54,6 +54,7 @@
     <Resource Include="Resources\FriendList\FriendPlate-Egypt.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Empty.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Greek.png" />
+    <Resource Include="Resources\FriendList\FriendPlate-Indian.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Norse.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Offline.png" />
     <Resource Include="Resources\FriendList\FriendPlate-Outgoing.png" />
@@ -65,6 +66,7 @@
     <Resource Include="Resources\FriendList\ProfilePictures\Default.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Egypt.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Greek.png" />
+    <Resource Include="Resources\FriendList\ProfilePictures\Indian.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Norse.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Persia.png" />
     <Resource Include="Resources\FriendList\ProfilePictures\Roman.png" />

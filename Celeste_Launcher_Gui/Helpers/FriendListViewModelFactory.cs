@@ -122,7 +122,7 @@ namespace Celeste_Launcher_Gui.Helpers
         {
             var comparer = CultureInfo.InvariantCulture.CompareInfo;
 
-            var factions = new[] { "Babylon", "Celt", "Egypt", "Greek", "Norse", "Roman", "Persia" };
+            var factions = new[] { "Babylon", "Celt", "Egypt", "Greek", "Norse", "Roman", "Persia", "Indian" };
 
             foreach (var faction in factions)
             {
