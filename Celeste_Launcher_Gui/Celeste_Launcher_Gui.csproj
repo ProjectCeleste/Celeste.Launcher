@@ -42,6 +42,7 @@
     <Resource Include="Resources\Buttons\TinyButtonHover.png" />
     <Resource Include="Resources\Buttons\TinyButtonNormal.png" />
     <Resource Include="Resources\Celeste Logo Roman Final.png" />
+    <Resource Include="Resources\Celeste_Logo_Indian.png" />
     <Resource Include="Resources\CheckBoxCheckGreen_ua.png" />
     <Resource Include="Resources\CheckBoxUnChecked_ua.png" />
     <Resource Include="Resources\DefaultNewsGraphics.png" />

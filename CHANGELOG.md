@@ -1,5 +1,18 @@
 # Change Log
 
+## [3.12.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.12.0) (2024-10-13)
+- Indian logo in launcher
+
+## [3.11.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.11.0) (2024-10-06)
+- Friend list now displays Indian civs
+
+## [3.10.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.10.0) (2024-05-31)
+- Small French typo fix in Game Scanner messages by @Menshin
+- Added missing Launcher localization strings (Limit CPU Cores option) for French language by @Menshin
+- Allow settings from LegacyBootstrapper to be overriden by commandline by @KevinW1998
+- GitHub actions by @martinmine
+- Inno Installer + CI by @KevinW1998
+
 ## [3.9.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.9.0) (2024-03-27)
 - New New Game Setting in the Launcher - Limit CPU Cores (thanks @CWO333)
 - Updates of third-party dependencies
