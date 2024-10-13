@@ -74,6 +74,7 @@
     <Resource Include="Resources\GamePathInputBox.png" />
     <Resource Include="Resources\GamePathSelectionWindowBackground.png" />
     <Resource Include="Resources\GameScannerBackground.png" />
+    <Resource Include="Resources\GameScannerBackgroundIndian.png" />
     <Resource Include="Resources\Icons\Account-Hover.png" />
     <Resource Include="Resources\Icons\Account-Normal.png" />
     <Resource Include="Resources\Icons\AddFriend-Hover.png" />

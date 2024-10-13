@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.13.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.13.0) (2024-10-13)
+- Indian game scanner
+
 ## [3.12.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.12.0) (2024-10-13)
 - Indian logo in launcher
 

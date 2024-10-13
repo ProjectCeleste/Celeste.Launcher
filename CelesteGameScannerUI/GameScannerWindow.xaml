@@ -14,7 +14,7 @@
     </Window.TaskbarItemInfo>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/GameScannerBackground.png" />
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/GameScannerBackgroundIndian.png" />
         </Grid.Background>
         <local:WindowControl
                     DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseSmallNormal.png"
