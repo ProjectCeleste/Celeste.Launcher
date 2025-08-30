@@ -1,5 +1,8 @@
 # Change Log
 
+## [3.15.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.14.0) (2025-08-30)
+- Better server connection security (TLS upgrade)
+
 ## [3.13.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.13.0) (2024-10-13)
 - Indian game scanner
 

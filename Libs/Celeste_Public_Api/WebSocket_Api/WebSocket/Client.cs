@@ -42,6 +42,7 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket
             try
             {
                 _agent = new Agent(_uri);
+                _agent.Security.EnabledSslProtocols = SslProtocols.Tls12;
             }
             catch (Exception ex)
             {
