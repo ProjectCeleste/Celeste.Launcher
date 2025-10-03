@@ -4,6 +4,7 @@ using Celeste_Public_Api.Logging;
 using Serilog;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
@@ -69,6 +70,13 @@ namespace Celeste_Launcher_Gui.Windows
                 await UpdateService.DownloadAndInstallUpdate(LegacyBootstrapper.UserConfig.IsSteamVersion, progress, _cts.Token);
 
                 GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterUpdateSuccess, DialogIcon.Warning, DialogOptions.Ok);
+
+                //Steam Version
+                if (LegacyBootstrapper.UserConfig.IsSteamVersion)
+                {
+                    Process.Start(Directory.GetCurrentDirectory() + "\\SteamConverter.exe", "update");
+                    Environment.Exit(0);
+                }
 
                 Process.Start(Assembly.GetEntryAssembly().Location);
 

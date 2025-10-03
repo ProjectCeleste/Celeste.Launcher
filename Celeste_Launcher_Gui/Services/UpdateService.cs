@@ -154,13 +154,6 @@ namespace Celeste_Launcher_Gui.Services
                 Misc.CleanUpFiles(tempDir, "*.*");
             }
 
-            //isSteam Version
-            if (isSteam)
-            {
-                progress?.Report(95);
-                Steam.ConvertToSteam(destinationDir);
-            }
-
             //Clean Old File
             progress?.Report(97);
             Misc.CleanUpFiles(Directory.GetCurrentDirectory(), "*.old");
