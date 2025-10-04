@@ -35,12 +35,16 @@
     <Resource Include="Resources\Buttons\LargeButtonDisabled.png" />
     <Resource Include="Resources\Buttons\LargeButtonHover.png" />
     <Resource Include="Resources\Buttons\LargeButtonNormal.png" />
+    <Resource Include="Resources\Buttons\LargeButtonNormalYellow.png" />
+    <Resource Include="Resources\Buttons\LargeButtonHoverYellow.png" />
     <Resource Include="Resources\Buttons\MediumButtonDisabled.png" />
     <Resource Include="Resources\Buttons\MediumButtonHover.png" />
     <Resource Include="Resources\Buttons\MediumButtonNormal.png" />
     <Resource Include="Resources\Buttons\TinyButtonDisabled.png" />
     <Resource Include="Resources\Buttons\TinyButtonHover.png" />
     <Resource Include="Resources\Buttons\TinyButtonNormal.png" />
+    <Resource Include="Resources\Buttons\TinyButtonNormalYellow.png" />
+    <Resource Include="Resources\Buttons\TinyButtonHoverYellow.png" />
     <Resource Include="Resources\Celeste Logo Roman Final.png" />
     <Resource Include="Resources\Celeste_Logo_Indian.png" />
     <Resource Include="Resources\CheckBoxCheckGreen_ua.png" />
