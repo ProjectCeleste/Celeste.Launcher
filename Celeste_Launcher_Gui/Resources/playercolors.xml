@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<playercolors>
+	<player num="0" color1="255 255 255" color2="255 255 255" color3="255 255 255" minimap="114 94 55"/>
+	<player num="1" color1="2 146 239" color2="55 55 255" color3="111 127 178" minimap="0 0 255"/>
+	<player num="2" color1="210 40 40" color2="240 50 50" color3="154 77 77" minimap="255 50 50"/>
+	<player num="3" color1="255 255 0" color2="225 225 40" color3="181 169 90" minimap="255 255 0"/>
+	<player num="4" color1="150 15 250" color2="160 25 255" color3="116 86 126" minimap="148 0 197"/>
+	<player num="5" color1="15 210 80" color2="25 220 90" color3="82 122 82" minimap="0 255 0"/>
+	<player num="6" color1="255 150 5" color2="255 160 15" color3="192 142 77" minimap="255 100 0"/>
+	<player num="7" color1="150 255 240" color2="160 255 250" color3="99 163 159 " minimap="6 190 179"/>
+	<player num="8" color1="255 190 255" color2="255 200 255" color3="186 117 185" minimap="255 0 253"/>
+	<player num="9" color1="80 80 105" color2="80 80 105" color3="80 80 105" minimap="0 0 0"/>
+	<player num="10" color1="180 250 190" color2="190 255 200" color3="202 227 204" minimap="179 251 186"/>
+	<player num="11" color1="110 125 190" color2="90 90 90" color3="124 124 124" minimap="60 60 90"/>
+	<player num="12" color1="255 0 100" color2="255 10 110" color3="174 87 122" minimap="255 0 102"/>
+	<player num="13" color1="255 255 0" color2="225 225 40" color3="181 169 90" minimap="255 255 0"/>
+	<friendorfoeself color1="0 0 255" color2="75 75 230" color3="75 75 230" minimap="0 0 255"/>
+	<friendorfoeally color1="255 255 0" color2="215 215 30" color3="215 215 30" minimap="255 255 0"/>
+	<friendorfoeenemy color1="255 0 0" color2="230 40 40" color3="230 40 40" minimap="255 0 0"/>
+	<nuggetguardian color1="255 150 5" color2="255 160 15" color3="192 142 77" minimap="255 100 0"/>
+</playercolors>

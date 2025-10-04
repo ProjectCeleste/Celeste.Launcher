@@ -258,6 +258,13 @@ namespace Celeste_Launcher_Gui.Pages
             updater.Owner = Window.GetWindow(this);
             updater.ShowDialog();
         }
+
+        private void OpenPlayerColors(object sender, RoutedEventArgs e)
+        {
+            var colorWindow = new SetPlayerColorWindow();
+            colorWindow.Owner = Window.GetWindow(this);
+            colorWindow.ShowDialog();
+        }
         #endregion
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)

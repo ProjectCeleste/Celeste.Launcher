@@ -56,6 +56,7 @@
                                 <MenuItem Header="{x:Static p:Resources.OverviewEnableLimitCPUCores}" Click="EnableLimitCPUCores"/>
                             </MenuItem>
                             <MenuItem Header="{x:Static p:Resources.OverviewUpdateLauncher}" Click="OpenUpdater"/>
+                            <MenuItem Header="Player colors" Click="OpenPlayerColors"/>
                         </ContextMenu>
                     </local:SideBarMenuItem.ContextMenu>
                 </local:SideBarMenuItem>

@@ -823,4 +823,16 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="UnknownServerResponse" xml:space="preserve">
     <value>Error: {0}</value>
   </data>
+  <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
+    <value>You must first do a game scan before changing colors.</value>
+  </data>
+  <data name="ColorPickerPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="ColorPickerPlayer1" xml:space="preserve">
+    <value>Player 1</value>
+  </data>
+  <data name="ColorPickerSaveBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

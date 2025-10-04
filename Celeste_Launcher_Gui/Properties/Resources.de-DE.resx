@@ -748,7 +748,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>Schneller Download kann beim Herunterladen der Spieledateien Probleme verursachen. Deaktiviere es, falls das Herunterladen der Spieledateien fehlschlägt.</value>
   </data>
-    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+  <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
     <value>Dieses Konto wurde gebannt.</value>
   </data>
   <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
@@ -834,5 +834,17 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="ServerResponse_USERNAME_ALREADY_TAKEN" xml:space="preserve">
     <value>Dieser Benutzername ist schon vergeben.</value>
+  </data>
+  <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
+    <value>You must first do a game scan before changing colors.</value>
+  </data>
+  <data name="ColorPickerPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="ColorPickerPlayer1" xml:space="preserve">
+    <value>Player 1</value>
+  </data>
+  <data name="ColorPickerSaveBtn" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

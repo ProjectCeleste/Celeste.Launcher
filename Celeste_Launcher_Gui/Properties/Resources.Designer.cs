@@ -142,6 +142,240 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ally.
+        /// </summary>
+        public static string ColorPickerAlly {
+            get {
+                return ResourceManager.GetString("ColorPickerAlly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue.
+        /// </summary>
+        public static string ColorPickerBlue {
+            get {
+                return ResourceManager.GetString("ColorPickerBlue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cyan.
+        /// </summary>
+        public static string ColorPickerCyan {
+            get {
+                return ResourceManager.GetString("ColorPickerCyan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string ColorPickerDefault {
+            get {
+                return ResourceManager.GetString("ColorPickerDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foe.
+        /// </summary>
+        public static string ColorPickerFoe {
+            get {
+                return ResourceManager.GetString("ColorPickerFoe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend or foe colors.
+        /// </summary>
+        public static string ColorPickerFriendOrFoeTitle {
+            get {
+                return ResourceManager.GetString("ColorPickerFriendOrFoeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must first do a game scan before changing colors..
+        /// </summary>
+        public static string ColorPickerGamePathNotYetSet {
+            get {
+                return ResourceManager.GetString("ColorPickerGamePathNotYetSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Green.
+        /// </summary>
+        public static string ColorPickerGreen {
+            get {
+                return ResourceManager.GetString("ColorPickerGreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orange.
+        /// </summary>
+        public static string ColorPickerOrange {
+            get {
+                return ResourceManager.GetString("ColorPickerOrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pink.
+        /// </summary>
+        public static string ColorPickerPink {
+            get {
+                return ResourceManager.GetString("ColorPickerPink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 1.
+        /// </summary>
+        public static string ColorPickerPlayer1 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 2.
+        /// </summary>
+        public static string ColorPickerPlayer2 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 3.
+        /// </summary>
+        public static string ColorPickerPlayer3 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 4.
+        /// </summary>
+        public static string ColorPickerPlayer4 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 5.
+        /// </summary>
+        public static string ColorPickerPlayer5 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 6.
+        /// </summary>
+        public static string ColorPickerPlayer6 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 7.
+        /// </summary>
+        public static string ColorPickerPlayer7 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player 8.
+        /// </summary>
+        public static string ColorPickerPlayer8 {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayer8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player colors.
+        /// </summary>
+        public static string ColorPickerPlayerColorTitle {
+            get {
+                return ResourceManager.GetString("ColorPickerPlayerColorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purple.
+        /// </summary>
+        public static string ColorPickerPurple {
+            get {
+                return ResourceManager.GetString("ColorPickerPurple", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red.
+        /// </summary>
+        public static string ColorPickerRed {
+            get {
+                return ResourceManager.GetString("ColorPickerRed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string ColorPickerSaveBtn {
+            get {
+                return ResourceManager.GetString("ColorPickerSaveBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Self.
+        /// </summary>
+        public static string ColorPickerSelf {
+            get {
+                return ResourceManager.GetString("ColorPickerSelf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string ColorPickerTitleColor {
+            get {
+                return ResourceManager.GetString("ColorPickerTitleColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picker.
+        /// </summary>
+        public static string ColorPickerTitlePicker {
+            get {
+                return ResourceManager.GetString("ColorPickerTitlePicker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yellow.
+        /// </summary>
+        public static string ColorPickerYellow {
+            get {
+                return ResourceManager.GetString("ColorPickerYellow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unexpected error occurred while starting diagnostics mode. Please try again or check the log files..
         /// </summary>
         public static string DiagnosticsModeError {

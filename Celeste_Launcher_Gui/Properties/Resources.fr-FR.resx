@@ -761,7 +761,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Vous êtes déjà ami avec cet utilisateur.</value>
   </data>
   <data name="ServerResponse_ALREADY_RECEIVED_A_FRIEND_REQUEST" xml:space="preserve">
-    <value>Vous avez déjà reçu une invitation d&apos;ami de la part de cet utilisateur.</value>
+    <value>Vous avez déjà reçu une invitation d'ami de la part de cet utilisateur.</value>
   </data>
   <data name="ServerResponse_BAD_LOGIN" xml:space="preserve">
     <value>Adresse email ou mot de passe invalide.</value>
@@ -776,22 +776,22 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Cette adresse email est déjà utilisée.</value>
   </data>
   <data name="ServerResponse_FRIEND_REQUEST_PENDING" xml:space="preserve">
-    <value>Vous avez déjà une invitation d&apos;ami en attente pour cet utilisateur.</value>
+    <value>Vous avez déjà une invitation d'ami en attente pour cet utilisateur.</value>
   </data>
   <data name="ServerResponse_GENERAL_ERROR" xml:space="preserve">
-    <value>Une erreur est survenue. Essayez à nouveau ou demandez de l&apos;aide sur nos forums ou Discord si le problème persiste.</value>
+    <value>Une erreur est survenue. Essayez à nouveau ou demandez de l'aide sur nos forums ou Discord si le problème persiste.</value>
   </data>
   <data name="ServerResponse_INVALID_EMAIL" xml:space="preserve">
-    <value>L&apos;adresse email est invalide.</value>
+    <value>L'adresse email est invalide.</value>
   </data>
   <data name="ServerResponse_MAINT_MODE" xml:space="preserve">
-    <value>Maintenance du serveur en cours, consultez https://forums.projectceleste.com/ pour plus d&apos; informations.</value>
+    <value>Maintenance du serveur en cours, consultez https://forums.projectceleste.com/ pour plus d' informations.</value>
   </data>
   <data name="ServerResponse_METHOD_NOT_ALLOWED" xml:space="preserve">
-    <value>Vous n&apos;êtes pas autorisé à faire cela.</value>
+    <value>Vous n'êtes pas autorisé à faire cela.</value>
   </data>
   <data name="ServerResponse_OUTDATED_LAUNCHER" xml:space="preserve">
-    <value>Votre lanceur n&apos;est pas à jour. Veuillez le mettre à jour avant de vous connecter.</value>
+    <value>Votre lanceur n'est pas à jour. Veuillez le mettre à jour avant de vous connecter.</value>
   </data>
   <data name="ServerResponse_PASSWORDS_DOES_NOT_MATCH" xml:space="preserve">
     <value>Les mots de passe saisis ne correspondent pas.</value>
@@ -800,7 +800,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Le mot de passe saisi est trop court.</value>
   </data>
   <data name="ServerResponse_RECEIVER_HAS_TOO_MANY_FRIENDS" xml:space="preserve">
-    <value>Votre ami a trop d&apos;amis et ne peut pas recevoir votre demande.</value>
+    <value>Votre ami a trop d'amis et ne peut pas recevoir votre demande.</value>
   </data>
   <data name="ServerResponse_REGISTRATION_DISABLED" xml:space="preserve">
     <value>Les inscriptions sont désactivées.</value>
@@ -815,16 +815,16 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Succès !</value>
   </data>
   <data name="ServerResponse_TOO_MANY_FRIENDS" xml:space="preserve">
-    <value>Vous avez trop d&apos;amis pour pouvoir en accepter de nouveaux.</value>
+    <value>Vous avez trop d'amis pour pouvoir en accepter de nouveaux.</value>
   </data>
   <data name="ServerResponse_UNKNOWN_EMAIL" xml:space="preserve">
-    <value>Aucun compte n&apos;a été trouvé pour cette adresse email.</value>
+    <value>Aucun compte n'a été trouvé pour cette adresse email.</value>
   </data>
   <data name="ServerResponse_UNKNOWN_VERIFICATION_KEY" xml:space="preserve">
     <value>Cette clé de vérification est inconnue ou invalide.</value>
   </data>
   <data name="ServerResponse_USER_NOT_FOUND" xml:space="preserve">
-    <value>Cet utilisateur n&apos;a pas été trouvé.</value>
+    <value>Cet utilisateur n'a pas été trouvé.</value>
   </data>
   <data name="UnknownServerResponse" xml:space="preserve">
     <value>Erreur : {0}</value>
@@ -843,5 +843,17 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="OverviewEnableLimitCPUCores" xml:space="preserve">
     <value>Limiter nb. de coeurs utilisés</value>
+  </data>
+  <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
+    <value>You must first do a game scan before changing colors.</value>
+  </data>
+  <data name="ColorPickerPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="ColorPickerPlayer1" xml:space="preserve">
+    <value>Player 1</value>
+  </data>
+  <data name="ColorPickerSaveBtn" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>
