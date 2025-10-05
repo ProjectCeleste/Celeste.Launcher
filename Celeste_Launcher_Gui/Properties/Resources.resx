@@ -934,4 +934,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ColorPickerRedFoe" xml:space="preserve">
     <value>Red (foe)</value>
   </data>
+  <data name="ColorPickerWindowTitle" xml:space="preserve">
+    <value>Color Picker</value>
+  </data>
 </root>

@@ -385,6 +385,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Color Picker.
+        /// </summary>
+        public static string ColorPickerWindowTitle {
+            get {
+                return ResourceManager.GetString("ColorPickerWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yellow.
         /// </summary>
         public static string ColorPickerYellow {

@@ -79,12 +79,13 @@ namespace Celeste_Launcher_Gui.Windows
             _playerColors.FriendOrFoeAlly = FriendorfoeallyColorPicker.SelectedColor == ColorPickerColors.Default ? _defaults.FriendOrFoeAlly : LabelToColor(_playerColors.FriendOrFoeAlly, FriendorfoeallyColorPicker.SelectedColor);
             _playerColors.FriendOrFoeEnemy = FriendorfoeenemyColorPicker.SelectedColor == ColorPickerColors.Default ? _defaults.FriendOrFoeEnemy : LabelToColor(_playerColors.FriendOrFoeEnemy, FriendorfoeenemyColorPicker.SelectedColor);
 
-            SerializeToXmlFile(_playerColors, GetPathToPlayerColors());
+            var pathToPlayerColors = GetPathToPlayerColors();
+            SerializeToXmlFile(_playerColors, pathToPlayerColors);
             Close();
         }
 
         private string GetPathToPlayerColors()
-            => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.xml");
+        => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.xml");
 
         private PlayerColors Defaults()
         {
