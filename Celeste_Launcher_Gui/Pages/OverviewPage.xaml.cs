@@ -195,6 +195,16 @@ namespace Celeste_Launcher_Gui.Pages
                 }
             }
 
+            if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
+            {
+                LoginBtn.Style = FindResource("LargeButtonDiag") as Style;
+                PlayOfflineBtn.Style = FindResource("TinyButtonDiag") as Style;
+            }
+            else
+            {
+                LoginBtn.Style = FindResource("LargeButton") as Style;
+                PlayOfflineBtn.Style = FindResource("TinyButton") as Style;
+            }
             LegacyBootstrapper.UserConfig.Save(LegacyBootstrapper.UserConfigFilePath);
         }
         
@@ -274,6 +284,11 @@ namespace Celeste_Launcher_Gui.Pages
             catch
             {
                 _currentNews = NewsPicture.Default();
+            }
+            if (LegacyBootstrapper.UserConfig.IsDiagnosticMode)
+            {
+                LoginBtn.Style = FindResource("LargeButtonDiag") as Style;
+                PlayOfflineBtn.Style = FindResource("TinyButtonDiag") as Style;
             }
         }
 
