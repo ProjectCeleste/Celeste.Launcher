@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+             xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
              mc:Ignorable="d" 
              d:DesignWidth="352" d:DesignHeight="68"
              Width="352" Height="68">
@@ -49,16 +50,21 @@
             BorderThickness="0"
             Name="ColorElements"
             SelectionChanged="ColorElements_SelectionChanged">
-            <ComboBoxItem Foreground="Blue" Content="Blue" />
-            <ComboBoxItem Foreground="Red" Content="Red" />
-            <ComboBoxItem Foreground="Yellow" Content="Yellow" />
-            <ComboBoxItem Foreground="Purple" Content="Purple" />
-            <ComboBoxItem Foreground="Green" Content="Green" />
-            <ComboBoxItem Foreground="Orange" Content="Orange" />
-            <ComboBoxItem Foreground="Cyan" Content="Cyan" />
-            <ComboBoxItem Foreground="Pink" Content="Pink" />
-            <ComboBoxItem Foreground="Black" Content="Black" />
-            <ComboBoxItem Foreground="Black" Content="Default" />
+            <ComboBoxItem Foreground="Blue" Content="{x:Static p:Resources.ColorPickerBlue}" />
+            <ComboBoxItem Foreground="Red" Content="{x:Static p:Resources.ColorPickerRed}" />
+            <ComboBoxItem Foreground="Yellow" Content="{x:Static p:Resources.ColorPickerYellow}" />
+            <ComboBoxItem Foreground="Purple" Content="{x:Static p:Resources.ColorPickerPurple}" />
+            <ComboBoxItem Foreground="Green" Content="{x:Static p:Resources.ColorPickerGreen}" />
+            <ComboBoxItem Foreground="Orange" Content="{x:Static p:Resources.ColorPickerOrange}" />
+            <ComboBoxItem Foreground="Cyan" Content="{x:Static p:Resources.ColorPickerCyan}" />
+            <ComboBoxItem Foreground="Pink" Content="{x:Static p:Resources.ColorPickerPink}" />
+
+            <ComboBoxItem Foreground="DarkBlue" Content="{x:Static p:Resources.ColorPickerBlueSelf}" />
+            <ComboBoxItem Foreground="Red" Content="{x:Static p:Resources.ColorPickerRedFoe}" />
+            <ComboBoxItem Foreground="Yellow" Content="{x:Static p:Resources.ColorPickerYellowAlly}" />
+
+            <ComboBoxItem Foreground="Black" Content="{x:Static p:Resources.ColorPickerDefault}" />
+
         </ComboBox>
     </Grid>
 </UserControl>

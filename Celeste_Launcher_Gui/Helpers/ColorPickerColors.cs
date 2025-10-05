@@ -11,6 +11,9 @@ internal class ColorPickerColors
     public static readonly string Orange = Properties.Resources.ColorPickerOrange;
     public static readonly string Cyan = Properties.Resources.ColorPickerCyan;
     public static readonly string Pink = Properties.Resources.ColorPickerPink;
+    public static readonly string BlueSelf = Properties.Resources.ColorPickerBlueSelf;
+    public static readonly string RedFoe = Properties.Resources.ColorPickerRedFoe;
+    public static readonly string YellowAlly = Properties.Resources.ColorPickerYellowAlly;
 
     internal class Category
     {

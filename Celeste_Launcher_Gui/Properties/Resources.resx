@@ -844,7 +844,6 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="OverviewEnableLimitCPUCores" xml:space="preserve">
     <value>Limit CPU Cores</value>
   </data>
-
   <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
     <value>You must first do a game scan before changing colors.</value>
   </data>
@@ -922,5 +921,17 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="ColorPickerSaveBtn" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="OverviewPlayerColors" xml:space="preserve">
+    <value>Player colors</value>
+  </data>
+  <data name="ColorPickerBlueSelf" xml:space="preserve">
+    <value>Blue (self)</value>
+  </data>
+  <data name="ColorPickerYellowAlly" xml:space="preserve">
+    <value>Yellow (ally)</value>
+  </data>
+  <data name="ColorPickerRedFoe" xml:space="preserve">
+    <value>Red (foe)</value>
   </data>
 </root>

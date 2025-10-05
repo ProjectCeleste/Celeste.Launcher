@@ -160,6 +160,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Blue (self).
+        /// </summary>
+        public static string ColorPickerBlueSelf {
+            get {
+                return ResourceManager.GetString("ColorPickerBlueSelf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cyan.
         /// </summary>
         public static string ColorPickerCyan {
@@ -331,6 +340,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Red (foe).
+        /// </summary>
+        public static string ColorPickerRedFoe {
+            get {
+                return ResourceManager.GetString("ColorPickerRedFoe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string ColorPickerSaveBtn {
@@ -372,6 +390,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string ColorPickerYellow {
             get {
                 return ResourceManager.GetString("ColorPickerYellow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yellow (ally).
+        /// </summary>
+        public static string ColorPickerYellowAlly {
+            get {
+                return ResourceManager.GetString("ColorPickerYellowAlly", resourceCulture);
             }
         }
         
@@ -1399,6 +1426,15 @@ namespace Celeste_Launcher_Gui.Properties {
         public static string OverviewPatchNotesSideMenuBtn {
             get {
                 return ResourceManager.GetString("OverviewPatchNotesSideMenuBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player colors.
+        /// </summary>
+        public static string OverviewPlayerColors {
+            get {
+                return ResourceManager.GetString("OverviewPlayerColors", resourceCulture);
             }
         }
         

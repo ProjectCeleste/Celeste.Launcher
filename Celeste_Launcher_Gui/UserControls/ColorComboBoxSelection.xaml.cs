@@ -105,36 +105,50 @@ namespace Celeste_Launcher_Gui.UserControls
             {
                 return System.Windows.Media.Brushes.Blue;
             }
-            if (colorName == ColorPickerColors.Red)
+            else if (colorName == ColorPickerColors.Red)
             {
                 return System.Windows.Media.Brushes.Red;
             }
-            if (colorName == ColorPickerColors.Yellow)
+            else if (colorName == ColorPickerColors.Yellow)
             {
                 return System.Windows.Media.Brushes.Yellow;
             }
-            if (colorName == ColorPickerColors.Purple)
+            else if (colorName == ColorPickerColors.Purple)
             {
                 return System.Windows.Media.Brushes.Purple;
             }
-            if (colorName == ColorPickerColors.Green)
+            else if (colorName == ColorPickerColors.Green)
             {
                 return System.Windows.Media.Brushes.Green;
             }
-            if (colorName == ColorPickerColors.Orange)
+            else if (colorName == ColorPickerColors.Orange)
             {
                 return System.Windows.Media.Brushes.Orange;
             }
-            if (colorName == ColorPickerColors.Cyan)
+            else if (colorName == ColorPickerColors.Cyan)
             {
                 return System.Windows.Media.Brushes.Cyan;
             }
-            if (colorName == ColorPickerColors.Pink)
+            else if (colorName == ColorPickerColors.Pink)
             {
                 return System.Windows.Media.Brushes.Pink;
             }
-
-            return System.Windows.Media.Brushes.Black;
+            else if (colorName == ColorPickerColors.BlueSelf)
+            {
+                return System.Windows.Media.Brushes.DarkBlue;
+            }
+            else if (colorName == ColorPickerColors.RedFoe)
+            {
+                return System.Windows.Media.Brushes.Red;
+            }
+            else if (colorName == ColorPickerColors.YellowAlly)
+            {
+                return System.Windows.Media.Brushes.Yellow;
+            }
+            else
+            {
+                return System.Windows.Media.Brushes.Black;
+            }
         }
     }
 }

@@ -838,13 +838,26 @@ Age of Empires Online - Projeto de Fãs Celeste</value>
   <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
     <value>You must first do a game scan before changing colors.</value>
   </data>
-  <data name="ColorPickerPlayer" xml:space="preserve">
-    <value>Player</value>
-  </data>
   <data name="ColorPickerPlayer1" xml:space="preserve">
     <value>Player 1</value>
   </data>
   <data name="ColorPickerSaveBtn" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="OverviewPlayerColors" xml:space="preserve">
+    <value>Player colors</value>
+  </data>
+  <data name="ColorPickerPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ColorPickerBlueSelf" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ColorPickerYellowAlly" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ColorPickerRedFoe" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
 </root>

@@ -39,17 +39,17 @@ namespace Celeste_Launcher_Gui.Windows
             _playerColors = XmlUtils.DeserializeFromFile<PlayerColors>(GetPathToPlayerColors());
             _defaults = Defaults();
 
-            Player1ColorPicker.SelectedColor = _playerColors.Players[1].IsUserSet ? RgbToLabel(_playerColors.Players[1].Color1) : ColorPickerColors.Default;
-            Player2ColorPicker.SelectedColor = _playerColors.Players[2].IsUserSet ? RgbToLabel(_playerColors.Players[2].Color1) : ColorPickerColors.Default;
-            Player3ColorPicker.SelectedColor = _playerColors.Players[3].IsUserSet ? RgbToLabel(_playerColors.Players[3].Color1) : ColorPickerColors.Default;
-            Player4ColorPicker.SelectedColor = _playerColors.Players[4].IsUserSet ? RgbToLabel(_playerColors.Players[4].Color1) : ColorPickerColors.Default;
-            Player5ColorPicker.SelectedColor = _playerColors.Players[5].IsUserSet ? RgbToLabel(_playerColors.Players[5].Color1) : ColorPickerColors.Default;
-            Player6ColorPicker.SelectedColor = _playerColors.Players[6].IsUserSet ? RgbToLabel(_playerColors.Players[6].Color1) : ColorPickerColors.Default;
-            Player7ColorPicker.SelectedColor = _playerColors.Players[7].IsUserSet ? RgbToLabel(_playerColors.Players[7].Color1) : ColorPickerColors.Default;
-            Player8ColorPicker.SelectedColor = _playerColors.Players[8].IsUserSet ? RgbToLabel(_playerColors.Players[8].Color1) : ColorPickerColors.Default;
-            FriendorfoeselfColorPicker.SelectedColor = _playerColors.FriendOrFoeSelf.IsUserSet ? RgbToLabel(_playerColors.FriendOrFoeSelf.Color1) : ColorPickerColors.Default;
-            FriendorfoeallyColorPicker.SelectedColor = _playerColors.FriendOrFoeAlly.IsUserSet ? RgbToLabel(_playerColors.FriendOrFoeAlly.Color1) : ColorPickerColors.Default;
-            FriendorfoeenemyColorPicker.SelectedColor = _playerColors.FriendOrFoeEnemy.IsUserSet ? RgbToLabel(_playerColors.FriendOrFoeEnemy.Color1) : ColorPickerColors.Default;
+            Player1ColorPicker.SelectedColor = _playerColors.Players[1].IsUserSet ? RgbToLabel(_playerColors.Players[1]) : ColorPickerColors.Default;
+            Player2ColorPicker.SelectedColor = _playerColors.Players[2].IsUserSet ? RgbToLabel(_playerColors.Players[2]) : ColorPickerColors.Default;
+            Player3ColorPicker.SelectedColor = _playerColors.Players[3].IsUserSet ? RgbToLabel(_playerColors.Players[3]) : ColorPickerColors.Default;
+            Player4ColorPicker.SelectedColor = _playerColors.Players[4].IsUserSet ? RgbToLabel(_playerColors.Players[4]) : ColorPickerColors.Default;
+            Player5ColorPicker.SelectedColor = _playerColors.Players[5].IsUserSet ? RgbToLabel(_playerColors.Players[5]) : ColorPickerColors.Default;
+            Player6ColorPicker.SelectedColor = _playerColors.Players[6].IsUserSet ? RgbToLabel(_playerColors.Players[6]) : ColorPickerColors.Default;
+            Player7ColorPicker.SelectedColor = _playerColors.Players[7].IsUserSet ? RgbToLabel(_playerColors.Players[7]) : ColorPickerColors.Default;
+            Player8ColorPicker.SelectedColor = _playerColors.Players[8].IsUserSet ? RgbToLabel(_playerColors.Players[8]) : ColorPickerColors.Default;
+            FriendorfoeselfColorPicker.SelectedColor = _playerColors.FriendOrFoeSelf.IsUserSet ? RgbToLabel(_playerColors.FriendOrFoeSelf) : ColorPickerColors.Default;
+            FriendorfoeallyColorPicker.SelectedColor = _playerColors.FriendOrFoeAlly.IsUserSet ? RgbToLabel(_playerColors.FriendOrFoeAlly) : ColorPickerColors.Default;
+            FriendorfoeenemyColorPicker.SelectedColor = _playerColors.FriendOrFoeEnemy.IsUserSet ? RgbToLabel(_playerColors.FriendOrFoeEnemy) : ColorPickerColors.Default;
 
             UpdatePlayerColorPreview();
         }
@@ -159,15 +159,40 @@ namespace Celeste_Launcher_Gui.Windows
                 selectedColor.Color3 = "186 117 185";
                 selectedColor.Minimap = "255 0 253";
             }
-
+            else if (color == ColorPickerColors.BlueSelf)
+            {
+                selectedColor.Color1 = "0 0 255";
+                selectedColor.Color2 = "75 75 230";
+                selectedColor.Color3 = "75 75 230";
+                selectedColor.Minimap = "0 0 255";
+            }
+            else if (color == ColorPickerColors.RedFoe)
+            {
+                selectedColor.Color1 = "255 0 0";
+                selectedColor.Color2 = "230 40 40";
+                selectedColor.Color3 = "230 40 40";
+                selectedColor.Minimap = "255 0 0";
+            }
+            else if (color == ColorPickerColors.YellowAlly)
+            {
+                selectedColor.Color1 = "255 255 0";
+                selectedColor.Color2 = "215 215 30";
+                selectedColor.Color3 = "215 215 30";
+                selectedColor.Minimap = "255 255 0";
+            }
 
             selectedColor.IsUserSet = true;
             return selectedColor;
         }
 
-        private string RgbToLabel(string rgb)
+        private string RgbToLabel(ColorSetting rgb)
         {
-            return rgb switch
+            if (rgb.Color1 == "255 255 0" && rgb.Color2 == "215 215 30")
+            {
+                return ColorPickerColors.YellowAlly;
+            }
+
+            return rgb.Color1 switch
             {
                 "2 146 239" => ColorPickerColors.Blue,
                 "210 40 40" => ColorPickerColors.Red,
@@ -177,6 +202,8 @@ namespace Celeste_Launcher_Gui.Windows
                 "255 150 5" => ColorPickerColors.Orange,
                 "150 255 240" => ColorPickerColors.Cyan,
                 "255 190 255" => ColorPickerColors.Pink,
+                "0 0 255" => ColorPickerColors.BlueSelf,
+                "255 0 0" => ColorPickerColors.RedFoe,
                 _ => ColorPickerColors.Default,
             };
         }
@@ -268,6 +295,12 @@ namespace Celeste_Launcher_Gui.Windows
                 return "C7";
             else if (colorName == ColorPickerColors.Pink)
                 return "C8";
+            else if (colorName == ColorPickerColors.BlueSelf)
+                return "C9";
+            else if (colorName == ColorPickerColors.RedFoe)
+                return "C10";
+            else if (colorName == ColorPickerColors.YellowAlly)
+                return "C11";
             else
                 return "C1";
         }
