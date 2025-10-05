@@ -17,9 +17,8 @@ namespace SteamConverter
         {
             LegacyBootstrapper.LoadUserConfig();
             LegacyBootstrapper.SetUILanguage();
-            if (e.Args.Length > 0)
+            if (e.Args.Contains("update"))
             {
-                if (e.Args.Contains("update"))
                 {
                     Thread.Sleep(2500); // Wait for the updater to exit and Steam to notice it's closed
                     Steam.ConvertToSteam(LegacyBootstrapper.UserConfig.GameFilesPath);
