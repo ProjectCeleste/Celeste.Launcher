@@ -85,7 +85,7 @@ namespace Celeste_Launcher_Gui.Windows
         }
 
         private string GetPathToPlayerColors()
-        => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.xml");
+        => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.shadow.xml");
 
         private PlayerColors Defaults()
         {
