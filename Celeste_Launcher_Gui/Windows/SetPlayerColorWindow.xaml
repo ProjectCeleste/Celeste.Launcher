@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
         xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
         Title="{x:Static p:Resources.ColorPickerWindowTitle}" 
         WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
         Width="850" Height="950">
