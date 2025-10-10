@@ -1,4 +1,6 @@
 # Change Log
+## [3.16.2](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.2) (2025-10-10)
+- New feature: Color picker for customizing in-game player colors.
 
 ## [3.15.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.14.0) (2025-08-30)
 - Better server connection security (TLS upgrade)
