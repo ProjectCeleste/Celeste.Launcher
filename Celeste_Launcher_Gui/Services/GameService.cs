@@ -41,6 +41,8 @@ namespace Celeste_Launcher_Gui.Services
                 return;
             }
 
+            BackupOrRestorePlayerColors();
+
             //QuickGameScan
             if (!isOffline || InternetUtils.IsConnectedToInternet())
             {
@@ -272,17 +274,8 @@ namespace Celeste_Launcher_Gui.Services
                     arg =
                         $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
-                var playerColorsConfigPath = Path.Combine(gamePath, "Data", "playercolors.shadow.xml");
-                var playerColorsGamePath = Path.Combine(gamePath, "Data", "playercolors.xml");
+                PatchPlayerColors();
 
-                if (File.Exists(playerColorsConfigPath))
-                {
-                    if (File.Exists(playerColorsGamePath))
-                        File.Delete(playerColorsGamePath);
-
-                    File.Move(playerColorsConfigPath, playerColorsGamePath);
-                }
-                
                 Logger.Information("Starting game {@GameExecutable} at {@GamePath}", spartanPath, gamePath);
                 var gameProcess = Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });
                 
@@ -298,6 +291,52 @@ namespace Celeste_Launcher_Gui.Services
                 GenericMessageDialog.Show(Properties.Resources.StartGameError, DialogIcon.Error);
             }
         }
+
+        private static void BackupOrRestorePlayerColors()
+        {
+            var backupPath = PlayerColorsBackup();
+            var gamePath = PlayerColorsGame();
+            var userPath = PlayerColorsPathUserModified();
+
+            // If a user has set settings that should be patched, we start with this flow
+            if (File.Exists(userPath))
+            {
+                // If there is a backup, restore it
+                if (File.Exists(backupPath))
+                {
+                    File.Delete(gamePath);
+                    File.Copy(backupPath, gamePath);
+                }
+                else
+                {
+                    // No backup exists, create it
+                    File.Copy(gamePath, backupPath);
+                }
+            }
+        }
+
+        private static void PatchPlayerColors()
+        {
+            var playerColorsConfigPath = PlayerColorsPathUserModified();
+            var playerColorsGamePath = PlayerColorsGame();
+
+            if (File.Exists(playerColorsConfigPath))
+            {
+                if (File.Exists(playerColorsGamePath))
+                    File.Delete(playerColorsGamePath);
+
+                File.Copy(playerColorsConfigPath, playerColorsGamePath);
+            }
+        }
+
+        private static string PlayerColorsPathUserModified()
+            => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.shadow.xml");
+
+        private static string PlayerColorsGame()
+            => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.xml");
+
+        private static string PlayerColorsBackup()
+            => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.bak.xml");
 
         public static async Task WaitForGameToExit()
         {
