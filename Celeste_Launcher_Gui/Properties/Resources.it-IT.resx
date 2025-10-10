@@ -748,7 +748,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="GameScannerFastDownloadWarning" xml:space="preserve">
     <value>L'abilitazione del download veloce potrebbe causare problemi durante il download dei dati di gioco. Se non riesci a scaricare i file di gioco, riprova con questa opzione disattivata.</value>
   </data>
-    <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
+  <data name="ServerResponse_ACCOUNT_BANNED" xml:space="preserve">
     <value>Questo account è stato bannato.</value>
   </data>
   <data name="ServerResponse_ALREADY_A_FRIEND" xml:space="preserve">
@@ -834,5 +834,33 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="ServerResponse_USERNAME_ALREADY_TAKEN" xml:space="preserve">
     <value>Questo nome utente è già stato utilizzato.</value>
+  </data>
+  <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
+    <value>You must first do a game scan before changing colors.</value>
+  </data>
+  <data name="ColorPickerPlayer1" xml:space="preserve">
+    <value>Player 1</value>
+  </data>
+  <data name="ColorPickerSaveBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="OverviewPlayerColors" xml:space="preserve">
+    <value>Player colors</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ColorPickerBlueSelf" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ColorPickerYellowAlly" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ColorPickerRedFoe" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ColorPickerPlayer" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="ColorPickerWindowTitle" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
 </root>

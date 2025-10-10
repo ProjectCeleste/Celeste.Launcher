@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Celeste_Launcher_Gui.UserControls.ColorComboBoxSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+             xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+             mc:Ignorable="d" 
+             d:DesignWidth="352" d:DesignHeight="68"
+             Width="352" Height="68">
+    <UserControl.Style>
+        <Style>
+            <Setter Property="local:ColorComboBoxSelection.Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/RegisterScreenInputBoxShort.png" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="local:ColorComboBoxSelection.IsEnabled" Value="False">
+                    <Setter Property="local:ColorComboBoxSelection.Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/RegisterScreenInputBoxShortDisabled.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+    <Grid x:Name="LayoutRoot">
+        <TextBlock
+            Foreground="White"
+            FontFamily="{StaticResource Ashley-Crawford-CG}"
+            FontSize="{Binding LabelFontSize}"
+            Width="143"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Margin="17,0,0,0"
+            TextWrapping="WrapWithOverflow"
+            Text="{Binding LabelContent}">
+        </TextBlock>
+
+        <ComboBox
+            Width="175"
+            Height="34"
+            FontFamily="{StaticResource Ashley-Crawford-CG}"
+            FontSize="20"
+            HorizontalAlignment="Right"
+            Background="Blue"
+            Margin="0,0,15,0"
+            BorderThickness="0"
+            Name="ColorElements"
+            SelectionChanged="ColorElements_SelectionChanged">
+            <ComboBoxItem Foreground="Blue" Content="{x:Static p:Resources.ColorPickerBlue}" />
+            <ComboBoxItem Foreground="Red" Content="{x:Static p:Resources.ColorPickerRed}" />
+            <ComboBoxItem Foreground="Yellow" Content="{x:Static p:Resources.ColorPickerYellow}" />
+            <ComboBoxItem Foreground="Purple" Content="{x:Static p:Resources.ColorPickerPurple}" />
+            <ComboBoxItem Foreground="Green" Content="{x:Static p:Resources.ColorPickerGreen}" />
+            <ComboBoxItem Foreground="Orange" Content="{x:Static p:Resources.ColorPickerOrange}" />
+            <ComboBoxItem Foreground="Cyan" Content="{x:Static p:Resources.ColorPickerCyan}" />
+            <ComboBoxItem Foreground="Pink" Content="{x:Static p:Resources.ColorPickerPink}" />
+
+            <ComboBoxItem Foreground="DarkBlue" Content="{x:Static p:Resources.ColorPickerBlueSelf}" />
+            <ComboBoxItem Foreground="Red" Content="{x:Static p:Resources.ColorPickerRedFoe}" />
+            <ComboBoxItem Foreground="Yellow" Content="{x:Static p:Resources.ColorPickerYellowAlly}" />
+
+            <ComboBoxItem Foreground="Black" Content="{x:Static p:Resources.ColorPickerDefault}" />
+
+        </ComboBox>
+    </Grid>
+</UserControl>

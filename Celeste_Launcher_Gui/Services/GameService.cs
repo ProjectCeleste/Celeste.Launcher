@@ -272,6 +272,17 @@ namespace Celeste_Launcher_Gui.Services
                     arg =
                         $"--email \"{CurrentEmail}\" --password \"{CurrentPassword.GetValue()}\" --online-ip \"{LegacyBootstrapper.UserConfig.MpSettings.PublicIp}\" --ignore_rest LauncherLang={lang} LauncherLocale=1033";
 
+                var playerColorsConfigPath = Path.Combine(gamePath, "Data", "playercolors.shadow.xml");
+                var playerColorsGamePath = Path.Combine(gamePath, "Data", "playercolors.xml");
+
+                if (File.Exists(playerColorsConfigPath))
+                {
+                    if (File.Exists(playerColorsGamePath))
+                        File.Delete(playerColorsGamePath);
+
+                    File.Move(playerColorsConfigPath, playerColorsGamePath);
+                }
+                
                 Logger.Information("Starting game {@GameExecutable} at {@GamePath}", spartanPath, gamePath);
                 var gameProcess = Process.Start(new ProcessStartInfo(spartanPath, arg) { WorkingDirectory = gamePath });
                 

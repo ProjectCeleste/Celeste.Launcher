@@ -1,0 +1,286 @@
+﻿<Window x:Class="Celeste_Launcher_Gui.Windows.SetPlayerColorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Celeste_Launcher_Gui.UserControls"
+        xmlns:p="clr-namespace:Celeste_Launcher_Gui.Properties"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="{x:Static p:Resources.ColorPickerWindowTitle}" 
+        WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
+        Width="850" Height="950">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/ColorPickerDialogue-BackgroundV4.png"/>
+        </Grid.Background>
+        <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
+            <Grid>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,10">
+                    <DockPanel Margin="0,39,0,0">
+
+                        <DockPanel Margin="0,0,0,0" Width="340">
+                            <TextBlock
+                                Foreground="White"
+                                FontFamily="{StaticResource Ashley-Crawford-CG}"
+                                FontSize="22"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                TextWrapping="WrapWithOverflow"
+                                Text="{x:Static p:Resources.ColorPickerTitleColor}" />
+                        </DockPanel>
+
+                        <DockPanel Margin="0,0,0,0" Width="339" HorizontalAlignment="Right">
+                            <TextBlock
+                                 Foreground="White"
+                                 FontFamily="{StaticResource Ashley-Crawford-CG}"
+                                 FontSize="22"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 TextWrapping="WrapWithOverflow"
+                                 Text="{x:Static p:Resources.ColorPickerTitlePicker}" />
+                        </DockPanel>
+
+                    </DockPanel>
+                    <TextBlock
+                        Foreground="White"
+                        FontFamily="{StaticResource Ashley-Crawford-CG}"
+                        FontSize="22"
+                        Width="300"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="40,12,0,0"
+                        TextWrapping="WrapWithOverflow"
+                        Text="{x:Static p:Resources.ColorPickerPlayerColorTitle}" />
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="0"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer1}"
+                            x:Name="Player1ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="1"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer2}"
+                            x:Name="Player2ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P1.png"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Margin="-35,0,0,0"
+                            Panel.ZIndex="1"/>
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P2.png"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,-35,0"
+                            Panel.ZIndex="1"/>
+                    </Grid>
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="0"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer3}"
+                            x:Name="Player3ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="1"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer4}"
+                            x:Name="Player4ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P3.png"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Margin="-35,0,0,0"
+                            Panel.ZIndex="1" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P4.png"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,-35,0"
+                            Panel.ZIndex="1" />
+                    </Grid>
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="0"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer5}"
+                            x:Name="Player5ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="1"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer6}"
+                            x:Name="Player6ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P5.png"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Margin="-35,0,0,0"
+                            Panel.ZIndex="1" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P6.png"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,-35,0"
+                            Panel.ZIndex="1" />
+                    </Grid>
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="0"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer7}"
+                            x:Name="Player7ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="1"
+                            LabelContent="{x:Static p:Resources.ColorPickerPlayer8}"
+                            x:Name="Player8ColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P7.png"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Margin="-35,0,0,0"
+                            Panel.ZIndex="1" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/P8.png"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,-35,0"
+                            Panel.ZIndex="1" />
+                    </Grid>
+                    <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Separator.png" Stretch="None" />
+                    <TextBlock
+                        Foreground="White"
+                        FontFamily="{StaticResource Ashley-Crawford-CG}"
+                        FontSize="22"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="40,0,0,0"
+                        TextWrapping="WrapWithOverflow"
+                        Text="{x:Static p:Resources.ColorPickerFriendOrFoeTitle}" />
+
+
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="0"
+                            LabelContent="{x:Static p:Resources.ColorPickerSelf}"
+                            x:Name="FriendorfoeselfColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="1"
+                            LabelContent="{x:Static p:Resources.ColorPickerAlly}"
+                            x:Name="FriendorfoeallyColorPicker"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/Self.png"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Margin="-35,0,0,0"
+                            Panel.ZIndex="1" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/Ally.png"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,-35,0"
+                            Panel.ZIndex="1" />
+                    </Grid>
+
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="0"
+                            LabelContent="{x:Static p:Resources.ColorPickerFoe}"
+                            x:Name="FriendorfoeenemyColorPicker"
+                            HorizontalAlignment="Left"
+                            ColorChanged="ColorPicker_ColorChanged" />
+
+                        <local:ColorComboBoxSelection
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            Visibility="Hidden" />
+
+                        <Image
+                            Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Indicators/Enemy.png"
+                            Grid.Column="0"
+                            HorizontalAlignment="Left"
+                            Margin="-35,0,0,0"
+                            Panel.ZIndex="1" />
+                    </Grid>
+
+                    <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Separator.png" Stretch="None" />
+
+                    <Grid Width="778" Height="177" Margin="0,0,0,0">
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Base.png" Stretch="None"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Labels.png" Stretch="None"/>
+
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P1C2.png" x:Name="ColorP1Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,70,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P2C2.png" x:Name="ColorP2Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="98,70,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P3C2.png" x:Name="ColorP3Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="173,70,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P4C2.png" x:Name="ColorP4Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="241,70,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P5C2.png" x:Name="ColorP5Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="315,70,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P6C2.png" x:Name="ColorP6Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="384,70,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P7C2.png" x:Name="ColorP7Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="447,70,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/P8C2.png" x:Name="ColorP8Preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="512,70,0,0"/>
+
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/AllyC2.png" x:Name="ColorAPreview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="649,33,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/SelfC2.png" x:Name="ColorSPreview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="605,78,0,0"/>
+                        <Image Source="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/Preview/FoeC2.png" x:Name="ColorFPreview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="687,87,0,0"/>
+                    </Grid>
+
+                    <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.ColorPickerSaveBtn}" Click="ConfirmBtnClick" Margin="0,12,0,0"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
+            <local:WindowControl
+                 DefaultIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseNormal.png"
+                 HoverIcon="pack://application:,,,/Celeste Launcher;component/Resources/Icons/WCCloseHover.png"
+                 Click="CloseWindow"/>
+        </StackPanel>
+    </Grid>
+</Window>

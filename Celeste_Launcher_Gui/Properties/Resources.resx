@@ -844,4 +844,97 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="OverviewEnableLimitCPUCores" xml:space="preserve">
     <value>Limit CPU Cores</value>
   </data>
+  <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
+    <value>You must first do a game scan before changing colors.</value>
+  </data>
+  <data name="ColorPickerTitleColor" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ColorPickerTitlePicker" xml:space="preserve">
+    <value>Picker</value>
+  </data>
+  <data name="ColorPickerPlayerColorTitle" xml:space="preserve">
+    <value>Player colors</value>
+  </data>
+  <data name="ColorPickerFriendOrFoeTitle" xml:space="preserve">
+    <value>Friend or foe colors</value>
+  </data>
+  <data name="ColorPickerSelf" xml:space="preserve">
+    <value>Self</value>
+  </data>
+  <data name="ColorPickerAlly" xml:space="preserve">
+    <value>Ally</value>
+  </data>
+  <data name="ColorPickerFoe" xml:space="preserve">
+    <value>Foe</value>
+  </data>
+  <data name="ColorPickerDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="ColorPickerBlue" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="ColorPickerRed" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="ColorPickerYellow" xml:space="preserve">
+    <value>Yellow</value>
+  </data>
+  <data name="ColorPickerPurple" xml:space="preserve">
+    <value>Purple</value>
+  </data>
+  <data name="ColorPickerGreen" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="ColorPickerOrange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="ColorPickerCyan" xml:space="preserve">
+    <value>Cyan</value>
+  </data>
+  <data name="ColorPickerPink" xml:space="preserve">
+    <value>Pink</value>
+  </data>
+  <data name="ColorPickerPlayer1" xml:space="preserve">
+    <value>Player 1</value>
+  </data>
+  <data name="ColorPickerPlayer2" xml:space="preserve">
+    <value>Player 2</value>
+  </data>
+  <data name="ColorPickerPlayer3" xml:space="preserve">
+    <value>Player 3</value>
+  </data>
+  <data name="ColorPickerPlayer4" xml:space="preserve">
+    <value>Player 4</value>
+  </data>
+  <data name="ColorPickerPlayer5" xml:space="preserve">
+    <value>Player 5</value>
+  </data>
+  <data name="ColorPickerPlayer6" xml:space="preserve">
+    <value>Player 6</value>
+  </data>
+  <data name="ColorPickerPlayer7" xml:space="preserve">
+    <value>Player 7</value>
+  </data>
+  <data name="ColorPickerPlayer8" xml:space="preserve">
+    <value>Player 8</value>
+  </data>
+  <data name="ColorPickerSaveBtn" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="OverviewPlayerColors" xml:space="preserve">
+    <value>Player colors</value>
+  </data>
+  <data name="ColorPickerBlueSelf" xml:space="preserve">
+    <value>Blue (self)</value>
+  </data>
+  <data name="ColorPickerYellowAlly" xml:space="preserve">
+    <value>Yellow (ally)</value>
+  </data>
+  <data name="ColorPickerRedFoe" xml:space="preserve">
+    <value>Red (foe)</value>
+  </data>
+  <data name="ColorPickerWindowTitle" xml:space="preserve">
+    <value>Color Picker</value>
+  </data>
 </root>
