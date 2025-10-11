@@ -1,4 +1,7 @@
 # Change Log
+## [3.16.3](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.3) (2025-10-11)
+- Fixed a cosmetic bug with default color on ally/self/foe preview.
+
 ## [3.16.2](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.2) (2025-10-10)
 - New feature: Color picker for customizing in-game player colors.
 

@@ -262,15 +262,15 @@ namespace Celeste_Launcher_Gui.Windows
         {
             if (playerNum == "Ally")
             {
-                return "C9";
+                return "C11";
             }
             else if (playerNum == "Self")
             {
-                return "C10";
+                return "C9";
             }
             else if (playerNum == "Foe")
             {
-                return "C11";
+                return "C10";
             }
             else
             {
