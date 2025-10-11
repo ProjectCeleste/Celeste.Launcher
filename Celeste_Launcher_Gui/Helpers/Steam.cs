@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Celeste_Public_Api.Helpers;
 
 namespace Celeste_Launcher_Gui.Helpers
 {
@@ -12,19 +13,11 @@ namespace Celeste_Launcher_Gui.Helpers
             var celesteLauncherExePath = Path.Combine(gameBasePath, CelesteLauncherExecutableName);
             var aoeoOnlineExePath = Path.Combine(gameBasePath, AOEOnlineExecutableName);
 
-            OverwriteFile(celesteLauncherExePath, aoeoOnlineExePath);
+            Misc.MoveFile(celesteLauncherExePath, aoeoOnlineExePath);
 
             var celesteLauncherExeConfigPath = Path.Combine(gameBasePath, $"{CelesteLauncherExecutableName}.config");
             var aoeoOnlineExeConfigPath = Path.Combine(gameBasePath, $"{AOEOnlineExecutableName}.config");
-            OverwriteFile(celesteLauncherExeConfigPath, aoeoOnlineExeConfigPath);
-        }
-
-        private static void OverwriteFile(string source, string target)
-        {
-            if (File.Exists(target))
-                File.Delete(target);
-
-            File.Copy(source, target);
+            Misc.MoveFile(celesteLauncherExeConfigPath, aoeoOnlineExeConfigPath);
         }
     }
 }

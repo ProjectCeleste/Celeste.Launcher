@@ -70,7 +70,12 @@ namespace Celeste_Launcher_Gui.Windows
 
                 GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterUpdateSuccess, DialogIcon.Warning, DialogOptions.Ok);
 
-                Process.Start(Assembly.GetEntryAssembly().Location);
+                if (LegacyBootstrapper.UserConfig.IsSteamVersion)
+                {
+                    Process.Start("steam://rungameid/105430");
+                }
+                else
+                    Process.Start(Assembly.GetEntryAssembly().Location);
 
                 Environment.Exit(0);
             }
