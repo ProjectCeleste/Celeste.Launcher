@@ -10,6 +10,7 @@
         Title="{x:Static p:Resources.ColorPickerWindowTitle}" 
         WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
         Width="850" Height="950">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/ColorPickerDialogue-BackgroundV4.png"/>
@@ -283,4 +284,5 @@
                  Click="CloseWindow"/>
         </StackPanel>
     </Grid>
+    </ScrollViewer>
 </Window>
