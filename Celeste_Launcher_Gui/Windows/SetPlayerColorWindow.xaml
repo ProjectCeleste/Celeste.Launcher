@@ -9,15 +9,15 @@
         WindowStartupLocation="CenterOwner"
         Title="{x:Static p:Resources.ColorPickerWindowTitle}" 
         WindowStyle="none" ResizeMode="NoResize" UseLayoutRounding="True" Background="Transparent" AllowsTransparency="True"
-        Width="850" Height="950">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        Width="850" Height="950" MaxHeight="{x:Static SystemParameters.MaximizedPrimaryScreenHeight}">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="pack://application:,,,/Celeste Launcher;component/Resources/ColorPicker/ColorPickerDialogue-BackgroundV4.png"/>
         </Grid.Background>
         <Border BorderThickness="22" BorderBrush="Transparent" MouseDown="BorderMoved">
             <Grid>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,10">
+                <Viewbox StretchDirection="DownOnly">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0">
                     <DockPanel Margin="0,39,0,0">
 
                         <DockPanel Margin="0,0,0,0" Width="340">
@@ -274,7 +274,7 @@
 
                     <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.ColorPickerSaveBtn}" Click="ConfirmBtnClick" Margin="0,12,0,0"/>
                 </StackPanel>
-
+            </Viewbox>
             </Grid>
         </Border>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,30,0">
@@ -284,5 +284,4 @@
                  Click="CloseWindow"/>
         </StackPanel>
     </Grid>
-    </ScrollViewer>
 </Window>

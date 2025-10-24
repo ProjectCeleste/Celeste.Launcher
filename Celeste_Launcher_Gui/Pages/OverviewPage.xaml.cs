@@ -273,10 +273,6 @@ namespace Celeste_Launcher_Gui.Pages
         {
             var colorWindow = new SetPlayerColorWindow();
             colorWindow.Owner = Window.GetWindow(this);
-            if (System.Windows.SystemParameters.PrimaryScreenHeight < 1000)
-            {
-                colorWindow.Height = System.Windows.SystemParameters.PrimaryScreenHeight - 100;
-            }
             colorWindow.ShowDialog();
         }
         #endregion
