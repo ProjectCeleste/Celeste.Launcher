@@ -31,6 +31,8 @@ namespace Celeste_Launcher_Gui.Windows
                 Close();
             }
 
+            MaxWidth = MaxHeight * 0.9;
+
             if (!File.Exists(GetPathToPlayerColors()))
             {
                 File.WriteAllText(GetPathToPlayerColors(), GetDefaultXml());
