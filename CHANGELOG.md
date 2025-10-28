@@ -1,4 +1,9 @@
 # Change Log
+## [3.16.4](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.4) (2025-10-28)
+- Color picker translations (de,es,fr,it,zh)
+- Adjust color picker window height if it doesn't fit on screen (thanks CWO333 and Sonicflare)
+- Fixed Launcher Updater when converting to Steam (thanks CWO333)
+
 ## [3.16.3](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.3) (2025-10-11)
 - Fixed a cosmetic bug with default color on ally/self/foe preview.
 
