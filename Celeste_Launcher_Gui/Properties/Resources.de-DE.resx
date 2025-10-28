@@ -835,32 +835,98 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ServerResponse_USERNAME_ALREADY_TAKEN" xml:space="preserve">
     <value>Dieser Benutzername ist schon vergeben.</value>
   </data>
+
   <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
-    <value>You must first do a game scan before changing colors.</value>
+    <value>Bevor du die Farben änderst, musst du erst mal einen Spiel-Scan machen.</value>
+  </data>
+  <data name="ColorPickerTitleColor" xml:space="preserve">
+    <value>Farb</value>
+  </data>
+  <data name="ColorPickerTitlePicker" xml:space="preserve">
+    <value>Wähler</value>
+  </data>
+  <data name="ColorPickerPlayerColorTitle" xml:space="preserve">
+    <value>Spielerfarben</value>
+  </data>
+  <data name="ColorPickerFriendOrFoeTitle" xml:space="preserve">
+    <value>Verbündete oder Feind Farben</value>
+  </data>
+  <data name="ColorPickerSelf" xml:space="preserve">
+    <value>Selbst</value>
+  </data>
+  <data name="ColorPickerAlly" xml:space="preserve">
+    <value>Verbündete</value>
+  </data>
+  <data name="ColorPickerFoe" xml:space="preserve">
+    <value>Feind</value>
+  </data>
+  <data name="ColorPickerDefault" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="ColorPickerBlue" xml:space="preserve">
+    <value>Blau</value>
+  </data>
+  <data name="ColorPickerRed" xml:space="preserve">
+    <value>Rot</value>
+  </data>
+  <data name="ColorPickerYellow" xml:space="preserve">
+    <value>Gelb</value>
+  </data>
+  <data name="ColorPickerPurple" xml:space="preserve">
+    <value>Lila</value>
+  </data>
+  <data name="ColorPickerGreen" xml:space="preserve">
+    <value>Grün</value>
+  </data>
+  <data name="ColorPickerOrange" xml:space="preserve">
+    <value>Orange</value>
+  </data>
+  <data name="ColorPickerCyan" xml:space="preserve">
+    <value>Cyan</value>
+  </data>
+  <data name="ColorPickerPink" xml:space="preserve">
+    <value>Rosa</value>
   </data>
   <data name="ColorPickerPlayer1" xml:space="preserve">
-    <value>Player 1</value>
+    <value>Spieler 1</value>
+  </data>
+  <data name="ColorPickerPlayer2" xml:space="preserve">
+    <value>Spieler 2</value>
+  </data>
+  <data name="ColorPickerPlayer3" xml:space="preserve">
+    <value>Spieler 3</value>
+  </data>
+  <data name="ColorPickerPlayer4" xml:space="preserve">
+    <value>Spieler 4</value>
+  </data>
+  <data name="ColorPickerPlayer5" xml:space="preserve">
+    <value>Spieler 5</value>
+  </data>
+  <data name="ColorPickerPlayer6" xml:space="preserve">
+    <value>Spieler 6</value>
+  </data>
+  <data name="ColorPickerPlayer7" xml:space="preserve">
+    <value>Spieler 7</value>
+  </data>
+  <data name="ColorPickerPlayer8" xml:space="preserve">
+    <value>Spieler 8</value>
   </data>
   <data name="ColorPickerSaveBtn" xml:space="preserve">
-    <value>Save</value>
+    <value>Speichern</value>
   </data>
   <data name="OverviewPlayerColors" xml:space="preserve">
-    <value>Player colors</value>
+    <value>Spielerfarben</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ColorPickerBlueSelf" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerBlueSelf" xml:space="preserve">
+    <value>Blau (selbst)</value>
   </data>
-  <data name="ColorPickerYellowAlly" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerYellowAlly" xml:space="preserve">
+    <value>Gelb (verbündete)</value>
   </data>
-  <data name="ColorPickerRedFoe" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerRedFoe" xml:space="preserve">
+    <value>Rot (feind)</value>
   </data>
-  <data name="ColorPickerPlayer" xml:space="preserve">
-    <value>Player</value>
-  </data>
-  <data name="ColorPickerWindowTitle" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerWindowTitle" xml:space="preserve">
+    <value>Farbwähler</value>
   </data>
 </root>

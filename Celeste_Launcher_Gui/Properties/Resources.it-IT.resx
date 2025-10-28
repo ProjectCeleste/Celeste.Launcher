@@ -836,31 +836,96 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Questo nome utente è già stato utilizzato.</value>
   </data>
   <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
-    <value>You must first do a game scan before changing colors.</value>
+	  <value>Devi prima eseguire una scansione del gioco prima di modificare i colori.</value>
+  </data>
+  <data name="ColorPickerTitleColor" xml:space="preserve">
+    <value>Colore</value>
+  </data>
+  <data name="ColorPickerTitlePicker" xml:space="preserve">
+    <value>Selettore</value>
+  </data>
+  <data name="ColorPickerPlayerColorTitle" xml:space="preserve">
+    <value>Colori dei giocatori</value>
+  </data>
+  <data name="ColorPickerFriendOrFoeTitle" xml:space="preserve">
+    <value>Colori amici o nemici</value>
+  </data>
+  <data name="ColorPickerSelf" xml:space="preserve">
+    <value>Giocatore</value>
+  </data>
+  <data name="ColorPickerAlly" xml:space="preserve">
+    <value>Alleati</value>
+  </data>
+  <data name="ColorPickerFoe" xml:space="preserve">
+    <value>Nemici</value>
+  </data>
+  <data name="ColorPickerDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="ColorPickerBlue" xml:space="preserve">
+    <value>Blu</value>
+  </data>
+  <data name="ColorPickerRed" xml:space="preserve">
+    <value>Rosso</value>
+  </data>
+  <data name="ColorPickerYellow" xml:space="preserve">
+    <value>Giallo</value>
+  </data>
+  <data name="ColorPickerPurple" xml:space="preserve">
+    <value>Viola</value>
+  </data>
+  <data name="ColorPickerGreen" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="ColorPickerOrange" xml:space="preserve">
+    <value>Arancio</value>
+  </data>
+  <data name="ColorPickerCyan" xml:space="preserve">
+    <value>Azzurro</value>
+  </data>
+  <data name="ColorPickerPink" xml:space="preserve">
+    <value>Rosa</value>
   </data>
   <data name="ColorPickerPlayer1" xml:space="preserve">
-    <value>Player 1</value>
+    <value>Giocatore 1</value>
+  </data>
+  <data name="ColorPickerPlayer2" xml:space="preserve">
+    <value>Giocatore 2</value>
+  </data>
+  <data name="ColorPickerPlayer3" xml:space="preserve">
+    <value>Giocatore 3</value>
+  </data>
+  <data name="ColorPickerPlayer4" xml:space="preserve">
+    <value>Giocatore 4</value>
+  </data>
+  <data name="ColorPickerPlayer5" xml:space="preserve">
+    <value>Giocatore 5</value>
+  </data>
+  <data name="ColorPickerPlayer6" xml:space="preserve">
+    <value>Giocatore 6</value>
+  </data>
+  <data name="ColorPickerPlayer7" xml:space="preserve">
+    <value>Giocatore 7</value>
+  </data>
+  <data name="ColorPickerPlayer8" xml:space="preserve">
+    <value>Giocatore 8</value>
   </data>
   <data name="ColorPickerSaveBtn" xml:space="preserve">
-    <value>Save</value>
+    <value>Salva</value>
   </data>
   <data name="OverviewPlayerColors" xml:space="preserve">
-    <value>Player colors</value>
+    <value>Colori dei giocatori</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ColorPickerBlueSelf" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerBlueSelf" xml:space="preserve">
+    <value>Blu (giocatore)</value>
   </data>
-  <data name="ColorPickerYellowAlly" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerYellowAlly" xml:space="preserve">
+    <value>Giallo (alleati)</value>
   </data>
-  <data name="ColorPickerRedFoe" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerRedFoe" xml:space="preserve">
+    <value>Rosso (nemici)</value>
   </data>
-  <data name="ColorPickerPlayer" xml:space="preserve">
-    <value>Player</value>
-  </data>
-  <data name="ColorPickerWindowTitle" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ColorPickerWindowTitle" xml:space="preserve">
+    <value>Selettore colore</value>
   </data>
 </root>
