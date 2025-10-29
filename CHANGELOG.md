@@ -1,4 +1,7 @@
 # Change Log
+## [3.16.5](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.5) (2025-10-29)
+- Fixed a bug with Steam converter that caused the launcher to crash (thanks CWO333)
+
 ## [3.16.4](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.4) (2025-10-28)
 - Color picker translations (de,es,fr,it,zh)
 - Adjust color picker window height if it doesn't fit on screen (thanks CWO333 and Sonicflare)
