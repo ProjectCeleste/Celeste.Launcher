@@ -121,7 +121,7 @@ namespace Celeste_Launcher_Gui.Services
                             Logger.Error(ex, ex.Message);
                             LegacyBootstrapper.UserConfig.MpSettings.PortMappingType = PortMappingType.NatPunch;
 
-                            GenericMessageDialog.Show(Properties.Resources.UPnPDisabledError, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
+                            GenericMessageDialog.Show(Properties.Resources.UPnPDisabledError, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
                         }
                         finally
                         {
@@ -287,7 +287,7 @@ namespace Celeste_Launcher_Gui.Services
             catch (Exception exception)
             {
                 Logger.Error(exception, exception.Message);
-                GenericMessageDialog.Show(Properties.Resources.StartGameError, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
+                GenericMessageDialog.Show(Properties.Resources.StartGameError, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
             }
         }
 

@@ -175,7 +175,7 @@
     <value>Ok</value>
   </data>
   <data name="OptionOpenLog" xml:space="preserve">
-    <value>Protokoll öffnen</value>
+    <value>Log öffnen</value>
   </data>
   <data name="OptionYes" xml:space="preserve">
     <value>Ja</value>

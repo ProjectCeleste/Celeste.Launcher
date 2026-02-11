@@ -72,7 +72,7 @@ namespace Celeste_Launcher_Gui.Windows
                 catch (Exception ex)
                 {
                     Logger.Error(ex, ex.Message);
-                    GenericMessageDialog.Show(Properties.Resources.AutoLoginError, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
+                    GenericMessageDialog.Show(Properties.Resources.AutoLoginError, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
                 }
 
                 NavigationFrame.IsEnabled = true;

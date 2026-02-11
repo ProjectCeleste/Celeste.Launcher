@@ -64,7 +64,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
             }
 
             IsEnabled = true;
@@ -99,7 +99,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
+                GenericMessageDialog.Show(Properties.Resources.ResetPasswordError, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
             }
 
             IsEnabled = true;

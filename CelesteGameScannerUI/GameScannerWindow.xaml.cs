@@ -146,7 +146,7 @@ namespace CelesteGameScannerUI
             if (!LegacyBootstrapper.GameScannerNoConfirmDialog)
             {
                 if (showLogButton)
-                    GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.OkWithLog, Celeste_Public_Api.Logging.LogHelper.FindMostRecentLogFile(System.IO.Path.Combine("Logs", "game-scanner.log")));
+                    GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.ViewLog, Celeste_Public_Api.Logging.LogHelper.FindMostRecentLogFile(System.IO.Path.Combine("Logs", "game-scanner.log")));
                 else
                     GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
             }

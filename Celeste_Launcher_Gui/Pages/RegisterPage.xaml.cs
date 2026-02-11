@@ -57,7 +57,7 @@ namespace Celeste_Launcher_Gui.Pages
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
             }
         }
 
@@ -120,7 +120,7 @@ namespace Celeste_Launcher_Gui.Pages
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
             }
 
             RegisterBtn.IsEnabled = true;

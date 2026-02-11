@@ -40,7 +40,7 @@ namespace Celeste_Launcher_Gui.Windows
                 OkOptions.Visibility = Visibility.Collapsed;
                 LogOptions.Visibility = Visibility.Collapsed;
             }
-            else if (option == DialogOptions.OkWithLog)
+            else if (option == DialogOptions.ViewLog)
             {
                 YesNoOptions.Visibility = Visibility.Collapsed;
                 OkOptions.Visibility = Visibility.Collapsed;
@@ -129,6 +129,6 @@ namespace Celeste_Launcher_Gui.Windows
     {
         YesNo,
         Ok,
-        OkWithLog
+        ViewLog
     }
 }
