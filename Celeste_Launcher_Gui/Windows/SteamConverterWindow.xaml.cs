@@ -66,7 +66,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
             }
         }
 

@@ -1284,7 +1284,16 @@ namespace Celeste_Launcher_Gui.Properties {
                 return ResourceManager.GetString("OptionOk", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Open Log.
+        /// </summary>
+        public static string OptionOpenLog {
+            get {
+                return ResourceManager.GetString("OptionOpenLog", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>

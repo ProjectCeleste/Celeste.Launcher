@@ -36,7 +36,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception exception)
             {
                 Logger.Error(exception, exception.Message);
-                GenericMessageDialog.Show(Properties.Resources.ProcdumpInstallError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.ProcdumpInstallError, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
             }
             finally
             {

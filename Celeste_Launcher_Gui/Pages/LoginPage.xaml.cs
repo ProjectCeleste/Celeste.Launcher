@@ -123,7 +123,7 @@ namespace Celeste_Launcher_Gui.Pages
             catch (Exception ex)
             {
                 _logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.OkWithLog, LogHelper.GetLogFilePath());
                 PasswordInputField.PasswordInputBox.Clear();
                 UserCredentialService.ClearVault();
             }

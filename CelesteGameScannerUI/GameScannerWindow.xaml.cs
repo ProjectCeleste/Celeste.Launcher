@@ -92,7 +92,7 @@ namespace CelesteGameScannerUI
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                FailGameScan(Celeste_Launcher_Gui.Properties.Resources.GameScannerFailed);
+                FailGameScan(Celeste_Launcher_Gui.Properties.Resources.GameScannerFailed, showLogButton: true);
             }
             finally
             {
@@ -136,7 +136,7 @@ namespace CelesteGameScannerUI
             TaskbarItemInfo.ProgressValue = (e.ProgressPercentage / 100);
         }
 
-        private void FailGameScan(string reason)
+        private void FailGameScan(string reason, bool showLogButton = false)
         {
             FileProgress.ProgressBar.Foreground = Brushes.Red;
             ScanTotalProgress.ProgressBar.Foreground = Brushes.Red;
@@ -144,7 +144,12 @@ namespace CelesteGameScannerUI
             MainProgressLabel.Content = string.Empty;
             TaskbarItemInfo.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Error;
             if (!LegacyBootstrapper.GameScannerNoConfirmDialog)
-                GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
+            {
+                if (showLogButton)
+                    GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.OkWithLog, Celeste_Public_Api.Logging.LogHelper.FindMostRecentLogFile(System.IO.Path.Combine("Logs", "game-scanner.log")));
+                else
+                    GenericMessageDialog.Show(reason, DialogIcon.Error, DialogOptions.Ok);
+            }
         }
 
         private void SubProgressChanged(object sender, ScanSubProgress e)
