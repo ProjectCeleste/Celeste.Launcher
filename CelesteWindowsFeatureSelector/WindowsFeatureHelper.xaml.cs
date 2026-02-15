@@ -47,7 +47,7 @@ namespace CelesteWindowsFirewallHelper
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.ViewLog, Celeste_Public_Api.Logging.LogHelper.FindMostRecentLogFile(System.IO.Path.Combine("Logs", "windows-features.log")));
             }
             IsEnabled = true;
         }
@@ -67,7 +67,7 @@ namespace CelesteWindowsFirewallHelper
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Celeste_Launcher_Gui.Properties.Resources.GenericUnexpectedErrorMessage, DialogIcon.Error, DialogOptions.ViewLog, Celeste_Public_Api.Logging.LogHelper.FindMostRecentLogFile(System.IO.Path.Combine("Logs", "windows-features.log")));
             }
             IsEnabled = true;
         }

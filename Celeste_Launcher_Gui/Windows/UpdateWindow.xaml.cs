@@ -82,7 +82,7 @@ namespace Celeste_Launcher_Gui.Windows
             catch (Exception ex)
             {
                 Logger.Error(ex, ex.Message);
-                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterError, DialogIcon.Error, DialogOptions.Ok);
+                GenericMessageDialog.Show(Properties.Resources.LauncherUpdaterError, DialogIcon.Error, DialogOptions.ViewLog, LogHelper.GetLogFilePath());
                 Environment.Exit(1);
             }
         }

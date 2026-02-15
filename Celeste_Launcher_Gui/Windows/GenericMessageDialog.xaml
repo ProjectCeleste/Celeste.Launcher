@@ -21,6 +21,10 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="OkOptions">
                         <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionOk}" Click="OkClicked" Margin="30"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" DockPanel.Dock="Bottom" x:Name="LogOptions" Visibility="Collapsed">
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionOk}" Click="OkClicked" Margin="15"/>
+                        <Button Style="{StaticResource TinyButton}" Content="{x:Static p:Resources.OptionOpenLog}" Click="OpenLogClicked" Margin="15"/>
+                    </StackPanel>
                 </DockPanel>
 
                 <DockPanel>
