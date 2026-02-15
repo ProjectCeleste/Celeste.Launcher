@@ -271,6 +271,11 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OpenPlayerColors(object sender, RoutedEventArgs e)
         {
+            if (!File.Exists(PlayerColorsXML()))
+            {
+                GenericMessageDialog.Show(Properties.Resources.ColorPickerGamePathNotYetSet);
+                return;
+            }
             var colorWindow = new SetPlayerColorWindow();
             colorWindow.Owner = Window.GetWindow(this);
             colorWindow.ShowDialog();
@@ -333,5 +338,7 @@ namespace Celeste_Launcher_Gui.Pages
             ToolsButton.ContextMenu.PlacementTarget = sender as UIElement;
             ToolsButton.ContextMenu.IsOpen = true;
         }
+        private static string PlayerColorsXML()
+            => Path.Combine(LegacyBootstrapper.UserConfig.GameFilesPath, "Data", "playercolors.xml");
     }
 }
