@@ -1,4 +1,13 @@
 # Change Log
+## [3.17.2](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.17.2) (2026-02-21)
+- Enable Limit CPU Cores by default - CWO333
+
+## [3.17.1](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.17.1) (2026-02-14)
+- Fixed Launcher Crashing if Color Picker is used before a Game Scan (thanks CWO333)
+
+## [3.17.0](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.17.0) (2026-02-14)
+- Add ViewLog button to error messageboxes (thanks NCSGeek)
+
 ## [3.16.5](https://github.com/ProjectCeleste/Celeste.Launcher/releases/tag/v3.16.5) (2025-10-29)
 - Fixed a bug with Steam converter that caused the launcher to crash (thanks CWO333)
 
