@@ -41,6 +41,55 @@ namespace Celeste_Launcher_Gui.Services
                 return;
             }
 
+            try
+            {
+                string dllPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), "msvcp140.dll");
+                bool msvcpInsufficient = false;
+
+                if (!File.Exists(dllPath))
+                {
+                    Logger.Warning("msvcp140.dll not found at {@path}", dllPath);
+                    msvcpInsufficient = true;
+                }
+                else
+                {
+                    var versionInfo = FileVersionInfo.GetVersionInfo(dllPath);
+                    var version = new Version(versionInfo.FileMajorPart, versionInfo.FileMinorPart,
+                                               versionInfo.FileBuildPart, versionInfo.FilePrivatePart);
+
+                    if (version < new Version(14, 40, 0, 0))
+                    {
+                        Logger.Warning("msvcp140.dll version too old: {@version}", version);
+                        msvcpInsufficient = true;
+                    }
+                }
+
+                if (msvcpInsufficient)
+                {
+                    var dialog = new GenericMessageDialog(
+                        "Your Visual C++ Runtime is outdated or missing.\n" +
+                        "The game will likely crash without updating.\n" +
+                        "Download the Runtime installer now?",
+                        DialogIcon.Warning,
+                        DialogOptions.YesNo);
+
+                    var dr = dialog.ShowDialog();
+                    if (dr.Value == true)
+                    {
+                        Process.Start(new ProcessStartInfo("https://aka.ms/vs/17/release/vc_redist.x86.exe")
+                        {
+                            UseShellExecute = true
+                        });
+                        return;
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warning(ex, "Could not verify MSVC runtime version, proceeding anyway");
+            }
+
             BackupOrRestorePlayerColors();
 
             //QuickGameScan
