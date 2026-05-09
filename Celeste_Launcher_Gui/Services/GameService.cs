@@ -43,8 +43,8 @@ namespace Celeste_Launcher_Gui.Services
 
             try
             {
-                string dllPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), "msvcp140.dll");
-                bool msvcpInsufficient = false;
+                var dllPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), "msvcp140.dll");
+                var msvcpInsufficient = false;
 
                 if (!File.Exists(dllPath))
                 {
@@ -87,7 +87,7 @@ namespace Celeste_Launcher_Gui.Services
             }
             catch (Exception ex)
             {
-                Logger.Warning(ex, "Could not verify MSVC runtime version, proceeding anyway");
+                Logger.Warning(ex, "Could not verify MSVC runtime version, proceeding anyway. Error Message: " + ex.Message);
             }
 
             BackupOrRestorePlayerColors();
