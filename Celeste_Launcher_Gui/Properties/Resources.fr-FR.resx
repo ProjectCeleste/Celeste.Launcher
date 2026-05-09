@@ -940,4 +940,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ColorPickerWindowTitle" xml:space="preserve">
     <value>Sélecteur de couleur</value>
   </data>
+  <data name="MSVCPUpdateNeeded" xml:space="preserve">
+    <value>Votre environnement d’exécution Visual C++ est obsolète ou manquant.\nLe jeu risque de planter sans mise à jour.\nTélécharger l’installateur de l’environnement d’exécution maintenant?</value>
+  </data>
 </root>

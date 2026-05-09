@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Properties;
 using Celeste_Launcher_Gui.Win32;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
@@ -67,9 +68,7 @@ namespace Celeste_Launcher_Gui.Services
                 if (msvcpInsufficient)
                 {
                     var dialog = new GenericMessageDialog(
-                        "Your Visual C++ Runtime is outdated or missing.\n" +
-                        "The game will likely crash without updating.\n" +
-                        "Download the Runtime installer now?",
+                        Resources.MSVCPUpdateNeeded,
                         DialogIcon.Warning,
                         DialogOptions.YesNo);
 

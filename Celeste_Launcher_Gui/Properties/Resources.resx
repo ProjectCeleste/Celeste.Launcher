@@ -940,4 +940,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ColorPickerWindowTitle" xml:space="preserve">
     <value>Color Picker</value>
   </data>
+  <data name="MSVCPUpdateNeeded" xml:space="preserve">
+    <value>Your Visual C++ Runtime is outdated or missing.\nThe game will likely crash without updating.\nDownload the Runtime installer now?</value>
+  </data>
 </root>

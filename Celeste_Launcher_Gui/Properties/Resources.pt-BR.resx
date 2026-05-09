@@ -860,10 +860,13 @@ Age of Empires Online - Projeto de Fãs Celeste</value>
   <data name="ColorPickerRedFoe" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="ColorPickerWindowTitle" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
   <data name="ColorPickerPlayer" xml:space="preserve">
     <value>Player</value>
   </data>
-  <data name="ColorPickerWindowTitle" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="MSVCPUpdateNeeded" xml:space="preserve">
+    <value>Seu runtime do Visual C++ está desatualizado ou ausente.\nO jogo provavelmente vai travar sem uma atualização.\nBaixar o instalador do runtime agora?</value>
   </data>
 </root>

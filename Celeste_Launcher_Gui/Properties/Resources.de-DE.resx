@@ -838,7 +838,6 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ServerResponse_USERNAME_ALREADY_TAKEN" xml:space="preserve">
     <value>Dieser Benutzername ist schon vergeben.</value>
   </data>
-
   <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
     <value>Bevor du die Farben änderst, musst du erst mal einen Spiel-Scan machen.</value>
   </data>
@@ -931,5 +930,8 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="ColorPickerWindowTitle" xml:space="preserve">
     <value>Farbwähler</value>
+  </data>
+  <data name="MSVCPUpdateNeeded" xml:space="preserve">
+    <value>Ihre Visual C++-Runtime ist veraltet oder fehlt.\nDas Spiel wird ohne Aktualisierung wahrscheinlich abstürzen.\nDen Runtime-Installer jetzt herunterladen?</value>
   </data>
 </root>
