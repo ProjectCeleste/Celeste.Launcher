@@ -45,12 +45,12 @@ namespace Celeste_Launcher_Gui.Services
             try
             {
                 var dllPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), "msvcp140.dll");
-                var msvcpInsufficient = false;
+                var msvcpOutdated = false;
 
                 if (!File.Exists(dllPath))
                 {
                     Logger.Warning("msvcp140.dll not found at {@path}", dllPath);
-                    msvcpInsufficient = true;
+                    msvcpOutdated = true;
                 }
                 else
                 {
@@ -61,11 +61,11 @@ namespace Celeste_Launcher_Gui.Services
                     if (version < new Version(14, 40, 0, 0))
                     {
                         Logger.Warning("msvcp140.dll version too old: {@version}", version);
-                        msvcpInsufficient = true;
+                        msvcpOutdated = true;
                     }
                 }
 
-                if (msvcpInsufficient)
+                if (msvcpOutdated)
                 {
                     var dialog = new GenericMessageDialog(
                         Resources.MSVCPUpdateNeeded,
