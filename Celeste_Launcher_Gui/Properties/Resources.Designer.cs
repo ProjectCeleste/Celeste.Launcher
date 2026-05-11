@@ -19,7 +19,7 @@ namespace Celeste_Launcher_Gui.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -1133,6 +1133,15 @@ namespace Celeste_Launcher_Gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Visual C++ Runtime is outdated or missing.\nThe game will likely crash without updating.\nDownload the Runtime installer now?.
+        /// </summary>
+        public static string MSVCPUpdateNeeded {
+            get {
+                return ResourceManager.GetString("MSVCPUpdateNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connection Type.
         /// </summary>
         public static string MultiplayerSettingsConnectionTypeTitle {
@@ -1284,7 +1293,7 @@ namespace Celeste_Launcher_Gui.Properties {
                 return ResourceManager.GetString("OptionOk", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Open Log.
         /// </summary>
@@ -1293,7 +1302,7 @@ namespace Celeste_Launcher_Gui.Properties {
                 return ResourceManager.GetString("OptionOpenLog", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>

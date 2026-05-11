@@ -919,4 +919,7 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="ColorPickerWindowTitle" xml:space="preserve">
     <value>颜色选取</value>
   </data>
+  <data name="MSVCPUpdateNeeded" xml:space="preserve">
+    <value>您的 Visual C++ 執行階段已過時或遺失。\n如果不更新，遊戲很可能會當機。\n要立即下載執行階段安裝程式嗎？</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using Celeste_Launcher_Gui.Helpers;
+using Celeste_Launcher_Gui.Properties;
 using Celeste_Launcher_Gui.Win32;
 using Celeste_Launcher_Gui.Windows;
 using Celeste_Public_Api.Helpers;
@@ -39,6 +40,53 @@ namespace Celeste_Launcher_Gui.Services
                 Logger.Information("Game is already started with PID {@PID}", pname.Select(t => t.Id));
                 GenericMessageDialog.Show(Properties.Resources.GameAlreadyRunningError, DialogIcon.Warning);
                 return;
+            }
+
+            try
+            {
+                var dllPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86), "msvcp140.dll");
+                var msvcpOutdated = false;
+
+                if (!File.Exists(dllPath))
+                {
+                    Logger.Warning("msvcp140.dll not found at {@path}", dllPath);
+                    msvcpOutdated = true;
+                }
+                else
+                {
+                    var versionInfo = FileVersionInfo.GetVersionInfo(dllPath);
+                    var version = new Version(versionInfo.FileMajorPart, versionInfo.FileMinorPart,
+                                               versionInfo.FileBuildPart, versionInfo.FilePrivatePart);
+
+                    if (version < new Version(14, 40, 0, 0))
+                    {
+                        Logger.Warning("msvcp140.dll version too old: {@version}", version);
+                        msvcpOutdated = true;
+                    }
+                }
+
+                if (msvcpOutdated)
+                {
+                    var dialog = new GenericMessageDialog(
+                        Resources.MSVCPUpdateNeeded,
+                        DialogIcon.Warning,
+                        DialogOptions.YesNo);
+
+                    var dr = dialog.ShowDialog();
+                    if (dr.Value == true)
+                    {
+                        Process.Start(new ProcessStartInfo("https://aka.ms/vs/17/release/vc_redist.x86.exe")
+                        {
+                            UseShellExecute = true
+                        });
+                        return;
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Warning(ex, "Could not verify MSVC runtime version, proceeding anyway. Error Message: " + ex.Message);
             }
 
             BackupOrRestorePlayerColors();

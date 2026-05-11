@@ -839,7 +839,7 @@ Age of Empires Online - Celeste Fan Project</value>
     <value>Questo nome utente è già stato utilizzato.</value>
   </data>
   <data name="ColorPickerGamePathNotYetSet" xml:space="preserve">
-	  <value>Devi prima eseguire una scansione del gioco prima di modificare i colori.</value>
+    <value>Devi prima eseguire una scansione del gioco prima di modificare i colori.</value>
   </data>
   <data name="ColorPickerTitleColor" xml:space="preserve">
     <value>Colore</value>
@@ -930,5 +930,8 @@ Age of Empires Online - Celeste Fan Project</value>
   </data>
   <data name="ColorPickerWindowTitle" xml:space="preserve">
     <value>Selettore colore</value>
+  </data>
+  <data name="MSVCPUpdateNeeded" xml:space="preserve">
+    <value>Il runtime di Visual C++ è obsoleto o mancante.\nIl gioco potrebbe bloccarsi senza un aggiornamento.\nScaricare ora il programma di installazione del runtime?</value>
   </data>
 </root>
