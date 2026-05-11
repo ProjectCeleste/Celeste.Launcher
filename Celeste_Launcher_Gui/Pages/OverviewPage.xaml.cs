@@ -86,7 +86,7 @@ namespace Celeste_Launcher_Gui.Pages
 
         private void OnDonateClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://forums.projectceleste.com/donations/project-celeste-donations.2/campaign");
+            Process.Start("https://forums.projectceleste.com/donate/");
         }
 
         private void OnLogoutClick(object sender, RoutedEventArgs e)
