@@ -66,7 +66,9 @@ namespace Celeste_Launcher_Gui
         [XmlElement(ElementName = "IsDiagnosticMode")]
         public bool IsDiagnosticMode { get; set; }
 
-        public bool LimitCPUCores { get; set; }
+        [DefaultValue(true)]
+        [XmlElement(ElementName = "LimitCPUCores")]
+        public bool LimitCPUCores { get; set; } = true;
 
         public static UserConfig Load(string path)
         {
