@@ -34,6 +34,30 @@ jobs:
     - name: Build solution
       run: msbuild Celeste_Launcher.sln /nologo /nr:false /p:Version=$env:lastReleaseVersion /p:platform="Any CPU" /p:configuration="Release"
 
+    - name: Verify System.Configuration.ConfigurationManager DLL
+      run: |
+        $outputDir = $env:CELESTE_LAUNCHER_OUTPUT
+        $cfgDll = Join-Path $outputDir 'System.Configuration.ConfigurationManager.dll'
+
+        if (-not (Test-Path $cfgDll)) { throw "Missing System.Configuration.ConfigurationManager.dll in $outputDir" }
+
+        $actual = [System.Reflection.AssemblyName]::GetAssemblyName($cfgDll).FullName
+
+        $required = Get-ChildItem $outputDir -Filter *.dll | ForEach-Object {
+            try { ([System.Reflection.Assembly]::LoadFile($_.FullName)).GetReferencedAssemblies() }
+            catch { }
+        } | Where-Object { $_.Name -eq 'System.Configuration.ConfigurationManager' } |
+            Select-Object -ExpandProperty FullName -Unique
+
+        if (-not $required) {
+            return
+        }
+
+        $mismatch = $required | Where-Object { $_ -ne $actual }
+        if ($mismatch) {
+            throw "Assembly identity mismatch`n  deployed: $actual`n  required: $($mismatch -join ', ')"
+        }
+
     - name: Build installer
       uses: Minionguyjpro/Inno-Setup-Action@v1.2.7
       with:
