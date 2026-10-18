@@ -43,6 +43,8 @@ namespace Celeste_Public_Api.WebSocket_Api
 
         private readonly ResetPwd _resetPwd;
 
+        private readonly SetPreview _setPreview;
+
         private readonly ValidMail _validMail;
 
         private DateTime _lastActivity = DateTime.UtcNow;
@@ -70,6 +72,7 @@ namespace Celeste_Public_Api.WebSocket_Api
             _removeFriend = new RemoveFriend(dataExchange);
             _addFriend = new AddFriend(dataExchange);
             _confirmFriend = new ConfirmFriend(dataExchange);
+            _setPreview = new SetPreview(dataExchange);
             _logger = LoggerFactory.GetLogger();
         }
 
@@ -304,6 +307,22 @@ namespace Celeste_Public_Api.WebSocket_Api
                 return new ConfirmFriendResult(false, loginResponse.Message);
 
             return await _confirmFriend.DoConfirmFriend(request);
+        }
+
+        public async Task<SetPreviewResult> DoSetPreview(bool isPreview)
+        {
+            _lastActivity = DateTime.UtcNow;
+
+            var request = new SetPreviewInfo(isPreview);
+
+            if (LoggedIn)
+                return await _setPreview.DoSetPreview(request);
+
+            var loginResponse = await DoReLogin();
+            if (!loginResponse.Result)
+                return new SetPreviewResult(false, loginResponse.Message);
+
+            return await _setPreview.DoSetPreview(request);
         }
 
         #region Disconnect Idle Session

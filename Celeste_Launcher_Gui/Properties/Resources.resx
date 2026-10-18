@@ -727,6 +727,18 @@ Age of Empires Online - Celeste Fan Project</value>
   <data name="OverviewGameScan" xml:space="preserve">
     <value>Game scan</value>
   </data>
+  <data name="OverviewPreviewBuilds" xml:space="preserve">
+    <value>Play preview builds</value>
+  </data>
+  <data name="PreviewBuildsEnabled" xml:space="preserve">
+    <value>Preview builds have been enabled for your account.</value>
+  </data>
+  <data name="PreviewBuildsDisabled" xml:space="preserve">
+    <value>Preview builds have been disabled for your account.</value>
+  </data>
+  <data name="PreviewBuildsSetError" xml:space="preserve">
+    <value>Failed to change preview build setting:</value>
+  </data>
   <data name="OverviewGameSettings" xml:space="preserve">
     <value>Game settings</value>
   </data>

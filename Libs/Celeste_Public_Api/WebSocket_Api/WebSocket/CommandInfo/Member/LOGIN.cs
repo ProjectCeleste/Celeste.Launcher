@@ -61,13 +61,15 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
             [JsonProperty("Mail", Required = Required.Always)] string mail,
             [JsonProperty("ProfileName", Required = Required.Always)] string profileName,
             [JsonProperty("Rank", Required = Required.Always)] RankEnum rank,
-            [JsonProperty("Xuid", Required = Required.Always)] long xuid)
+            [JsonProperty("Xuid", Required = Required.Always)] long xuid,
+            [JsonProperty("IsPreview")] bool isPreview = false)
         {
             Ip = ip;
             Mail = mail;
             ProfileName = profileName;
             Xuid = xuid;
             Rank = rank;
+            IsPreview = isPreview;
         }
 
         [Required(AllowEmptyStrings = false)]
@@ -92,6 +94,9 @@ namespace Celeste_Public_Api.WebSocket_Api.WebSocket.CommandInfo.Member
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("Rank", Required = Required.Always)]
         public RankEnum Rank { get; }
+
+        [JsonProperty("IsPreview")]
+        public bool IsPreview { get; set; }
     }
 
     public class LoginResult : IGenericResponse

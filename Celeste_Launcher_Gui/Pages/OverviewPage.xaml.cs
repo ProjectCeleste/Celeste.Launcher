@@ -255,6 +255,39 @@ namespace Celeste_Launcher_Gui.Pages
             scanner.ShowDialog();
         }
 
+        private async void TogglePreviewBuilds(object sender, RoutedEventArgs e)
+        {
+            if (CurrentUser == null)
+                return;
+
+            PreviewBuildsMenuItem.IsEnabled = false;
+            try
+            {
+                var response = await LegacyBootstrapper.WebSocketApi.DoSetPreview(!CurrentUser.IsPreview);
+
+                if (!response.Result)
+                {
+                    GenericMessageDialog.Show($"{Properties.Resources.PreviewBuildsSetError} {response.Message}", DialogIcon.Error, DialogOptions.Ok);
+                    return;
+                }
+
+                CurrentUser.IsPreview = response.IsPreview;
+                PreviewBuildsMenuItem.IsChecked = CurrentUser.IsPreview;
+
+                GenericMessageDialog.Show(CurrentUser.IsPreview
+                    ? Properties.Resources.PreviewBuildsEnabled
+                    : Properties.Resources.PreviewBuildsDisabled);
+            }
+            catch (Exception ex)
+            {
+                GenericMessageDialog.Show($"{Properties.Resources.PreviewBuildsSetError} {ex.Message}", DialogIcon.Error, DialogOptions.Ok);
+            }
+            finally
+            {
+                PreviewBuildsMenuItem.IsEnabled = true;
+            }
+        }
+
         private void OpenUpdater(object sender, RoutedEventArgs e)
         {
             var pname = Process.GetProcessesByName("spartan");
@@ -284,6 +317,8 @@ namespace Celeste_Launcher_Gui.Pages
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            PreviewBuildsMenuItem.IsChecked = CurrentUser?.IsPreview ?? false;
+
             try
             {
                 await _friendService.FetchFriendList();

@@ -1401,6 +1401,42 @@ namespace Celeste_Launcher_Gui.Properties {
                 return ResourceManager.GetString("OverviewGameScan", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Play preview builds.
+        /// </summary>
+        public static string OverviewPreviewBuilds {
+            get {
+                return ResourceManager.GetString("OverviewPreviewBuilds", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Preview builds have been enabled for your account..
+        /// </summary>
+        public static string PreviewBuildsEnabled {
+            get {
+                return ResourceManager.GetString("PreviewBuildsEnabled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Preview builds have been disabled for your account..
+        /// </summary>
+        public static string PreviewBuildsDisabled {
+            get {
+                return ResourceManager.GetString("PreviewBuildsDisabled", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to change preview build setting:.
+        /// </summary>
+        public static string PreviewBuildsSetError {
+            get {
+                return ResourceManager.GetString("PreviewBuildsSetError", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Game settings.

@@ -129,6 +129,7 @@
                             <MenuItem Header="{x:Static p:Resources.OverviewWindowsFeatures}" Click="OpenWindowsFeatures"/>
                             <MenuItem Header="{x:Static p:Resources.OverviewWindowsFirewall}" Click="OpenWindowsFirewall"/>
                             <MenuItem Header="{x:Static p:Resources.OverviewGameScan}" Click="OpenGameScanner"/>
+                            <MenuItem Header="{x:Static p:Resources.OverviewPreviewBuilds}" Click="TogglePreviewBuilds" x:Name="PreviewBuildsMenuItem"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
